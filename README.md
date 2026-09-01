@@ -6,9 +6,10 @@ into the files. Detection covers C2PA/Content Credentials, the IPTC digital
 source type, generator signatures in PNG chunks and EXIF/XMP, MP4 boxes and MP3
 declarations.
 
-- Requires WordPress 6.2+ and PHP 8.1+
+- Requires WordPress 6.2+ and PHP 7.4+ (tested up to PHP 8.5)
 - No external requests, no telemetry. Everything runs on your server.
 - Author: [Patrick Schlesinger](https://www.cms-admins.de/)
+- Contact: transparai@cms-admins.de
 - Listing: https://wordpress.org/plugins/transparai/
 
 ## Development

@@ -36,6 +36,24 @@ if ( ! defined( 'DAY_IN_SECONDS' ) ) {
 	define( 'DAY_IN_SECONDS', 86400 );
 }
 
+/* PHP 8 string helpers. WordPress polyfills these globally since 5.9; the
+   unit tests run without WordPress, so PHP 7.4 needs them here. */
+if ( ! function_exists( 'str_contains' ) ) {
+	function str_contains( $haystack, $needle ) {
+		return '' === $needle || false !== strpos( $haystack, $needle );
+	}
+}
+if ( ! function_exists( 'str_starts_with' ) ) {
+	function str_starts_with( $haystack, $needle ) {
+		return 0 === strncmp( $haystack, $needle, strlen( $needle ) );
+	}
+}
+if ( ! function_exists( 'str_ends_with' ) ) {
+	function str_ends_with( $haystack, $needle ) {
+		return '' === $needle || substr( $haystack, -strlen( $needle ) ) === $needle;
+	}
+}
+
 global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients;
 $trai_test_options    = array();
 $trai_test_meta       = array();

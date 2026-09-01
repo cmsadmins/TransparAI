@@ -4,7 +4,7 @@ Tags: ai, eu ai act, media library, transparency, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
 Stable tag: 1.0.0
-Requires PHP: 8.1
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,10 @@ By default your labels stay in the database (reinstalling restores them) and met
 = Can I label media programmatically? =
 
 Yes. The meta key `_transparai_ai` is registered for the REST API, WP-CLI commands cover bulk work, and other plugins can call `do_action( 'transparai_mark_ai', $attachment_id, 'Generator name' )`.
+
+= Where do I get help? =
+
+Post in the support forum here on wordpress.org, or write to transparai@cms-admins.de. The plugin is built and maintained by Patrick Schlesinger (cms-admins.de).
 
 == External services ==
 

@@ -6,7 +6,7 @@
  * Version:           1.0.0
  * Requires at least: 6.2
  * Tested up to:      7.1
- * Requires PHP:      8.1
+ * Requires PHP:      7.4
  * Author:            Patrick Schlesinger
  * Author URI:        https://www.cms-admins.de/
  * License:           GPL-2.0-or-later
