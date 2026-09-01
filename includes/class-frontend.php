@@ -284,6 +284,7 @@ final class TransparAI_Frontend {
 			array(
 				'post_type'              => 'attachment',
 				'post_status'            => 'inherit',
+				'post_mime_type'         => 'image',
 				'fields'                 => 'ids',
 				'posts_per_page'         => 500, // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- hard upper bound for the JS map, cached for an hour.
 				'no_found_rows'          => true,
