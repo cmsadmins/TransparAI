@@ -1,6 +1,6 @@
 <?php
 /**
- * WP-CLI commands: bulk-scan, label, audit-export and metadata verification —
+ * WP-CLI commands: bulk-scan, label, audit-export and metadata verification,
  * built for agencies and large libraries.
  *
  * @package TransparAI
@@ -109,7 +109,7 @@ final class TransparAI_CLI {
 
 		WP_CLI::success(
 			sprintf(
-				'%d scanned — %d flagged, %d queued for review, %d clean, %d unreadable.%s',
+				'%d scanned: %d flagged, %d queued for review, %d clean, %d unreadable.%s',
 				$total,
 				$stats['flagged'],
 				$stats['queued'],

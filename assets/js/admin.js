@@ -7,6 +7,20 @@
 
 	var labels = transparaiAdmin.labels;
 
+	/* Non-blocking toast. Native alert() freezes the tab (and automation),
+	   so every feedback path goes through this instead. */
+	function notify(message) {
+		var toast = document.createElement('div');
+		toast.className = 'trai-toast';
+		toast.setAttribute('role', 'status');
+		toast.textContent = message;
+		document.body.appendChild(toast);
+		window.setTimeout(function () {
+			toast.classList.add('trai-toast--out');
+			window.setTimeout(function () { toast.remove(); }, 400);
+		}, 4000);
+	}
+
 	/* =====================================================================
 	 * Settings page: batched library scan with progress
 	 * =================================================================== */
@@ -57,7 +71,7 @@
 					step(mode, data.offset);
 				} else {
 					progressBar.style.width = '100%';
-					progressText.textContent = progressText.textContent + ' — ' + labels.scanDone;
+					progressText.textContent = progressText.textContent + ' ' + labels.scanDone;
 					running = false;
 					scanStop.hidden = true;
 				}
@@ -106,6 +120,9 @@
 		}, function (resp) {
 			if (resp && resp.success) {
 				wrap.remove();
+				/* Sync the checkbox: a later save of any other modal field would
+				   otherwise re-submit the stale unchecked state and unflag. */
+				jQuery('input[name="attachments[' + id + '][transparai_ai]"]').prop('checked', op === 'confirm');
 				if (window.wp && wp.media && wp.media.attachment(id)) {
 					wp.media.attachment(id).set('traiDetected', false);
 					if (op === 'confirm') {
@@ -114,10 +131,10 @@
 					toggleTile(id);
 				}
 			} else {
-				window.alert(labels.updateFailed);
+				notify(labels.updateFailed);
 			}
 		}).fail(function () {
-			window.alert(labels.updateFailed);
+			notify(labels.updateFailed);
 		});
 	});
 
@@ -132,23 +149,32 @@
 		}, function (resp) {
 			button.prop('disabled', false);
 			if (!resp || !resp.success) {
-				window.alert(labels.updateFailed);
+				notify(labels.updateFailed);
 				return;
 			}
 			var data = resp.data;
-			if (data.status === 'clean') {
-				window.alert(labels.recheckClean);
-			} else {
-				window.alert(labels.recheckDone + ': ' + (data.generator || data.source) + ' (' + data.confidence + ')\n' + data.evidence);
+			var summary = data.status === 'clean'
+				? labels.recheckClean
+				: labels.recheckDone + ': ' + (data.generator || data.source) + ' (' + data.confidence + ')';
+			var out = button.closest('.trai-recheck-wrap').find('.trai-recheck-result');
+			if (!out.length) {
+				out = jQuery('<span class="trai-recheck-result"></span>');
+				button.closest('.trai-recheck-wrap').append(out);
+			}
+			out.text(summary).attr('title', data.evidence || '');
+			if (data.status === 'flagged') {
+				jQuery('input[name="attachments[' + id + '][transparai_ai]"]').prop('checked', true);
 			}
 			if (window.wp && wp.media && wp.media.attachment(id)) {
-				wp.media.attachment(id).set('traiFlag', data.status === 'flagged');
-				wp.media.attachment(id).set('traiDetected', data.status === 'queued');
-				toggleTile(id);
+				if (data.status === 'flagged' || data.status === 'queued') {
+					wp.media.attachment(id).set('traiFlag', data.status === 'flagged');
+					wp.media.attachment(id).set('traiDetected', data.status === 'queued');
+					toggleTile(id);
+				}
 			}
 		}).fail(function () {
 			button.prop('disabled', false);
-			window.alert(labels.updateFailed);
+			notify(labels.updateFailed);
 		});
 	});
 
@@ -223,7 +249,7 @@
 				var state = view.controller.state();
 				var selection = state && state.get('selection');
 				if (!selection || !selection.length) {
-					window.alert(labels.selectFirst);
+					notify(labels.selectFirst);
 					return;
 				}
 				var ids = selection.map(function (model) { return model.id; });
@@ -240,10 +266,10 @@
 							toggleTile(model.id);
 						});
 					} else {
-						window.alert(labels.updateFailed);
+						notify(labels.updateFailed);
 					}
 				}).fail(function () {
-					window.alert(labels.updateFailed);
+					notify(labels.updateFailed);
 				});
 			};
 			this.toolbar.set('traiBulkOn', new wp.media.view.Button({

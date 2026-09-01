@@ -13,7 +13,7 @@
  *  5. Filename patterns (optional)                           -> hint
  *
  * Matching only ever runs on EXTRACTED metadata blocks, never on raw file
- * bytes, and generator names use word boundaries — both measures prevent the
+ * bytes, and generator names use word boundaries, both measures prevent the
  * false positives observed in competing implementations.
  *
  * @package TransparAI
@@ -40,7 +40,7 @@ final class TransparAI_Detector {
 	/**
 	 * Claim generator substrings that identify a generative-AI producer.
 	 * Deliberately excludes plain editors/libraries (Adobe_Photoshop, c2pa-rs)
-	 * and camera vendors — their manifests do not prove AI origin.
+	 * and camera vendors, their manifests do not prove AI origin.
 	 */
 	private const AI_CLAIM_GENERATORS = array(
 		'openai'     => 'OpenAI',
@@ -209,7 +209,7 @@ final class TransparAI_Detector {
 	}
 
 	/**
-	 * WebP: XMP chunk sits at the END of the file per spec — read the tail too.
+	 * WebP: XMP chunk sits at the END of the file per spec, read the tail too.
 	 */
 	private static function detect_webp( string $path, string $head ): ?array {
 		$chunks = TransparAI_Parsers::webp_chunks( $head, true );
@@ -332,7 +332,7 @@ final class TransparAI_Detector {
 	}
 
 	/**
-	 * Rule: IPTC-IIM datasets (JPEG APP13) — Google credit or a dST token.
+	 * Rule: IPTC-IIM datasets (JPEG APP13), Google credit or a dST token.
 	 */
 	private static function from_iim( string $path ): ?array {
 		if ( ! function_exists( 'iptcparse' ) ) {
@@ -376,7 +376,7 @@ final class TransparAI_Detector {
 	 * Rule: C2PA manifest presence.
 	 *
 	 * Camera rule: cameras (Leica, Sony, Nikon) embed Content Credentials in
-	 * REAL photos — presence alone is only 'likely'. Only an AI claim
+	 * REAL photos, presence alone is only 'likely'. Only an AI claim
 	 * generator upgrades to 'certain'.
 	 */
 	private static function from_c2pa( bool $present, string $payload ): ?array {
@@ -392,7 +392,7 @@ final class TransparAI_Detector {
 				}
 			}
 		}
-		$evidence = 'C2PA/Content Credentials manifest present' . ( '' !== $claim ? ' (claim generator: ' . $claim . ')' : '' ) . ' — could also stem from a camera or editor';
+		$evidence = 'C2PA/Content Credentials manifest present' . ( '' !== $claim ? ' (claim generator: ' . $claim . ')' : '' ) . ', could also stem from a camera or editor';
 		return self::result( 'generated', 'c2pa', $claim, 'likely', $evidence );
 	}
 
@@ -470,7 +470,7 @@ final class TransparAI_Detector {
 	}
 
 	/**
-	 * Rule (opt-in): filename patterns. Suggestions only — never auto-flag.
+	 * Rule (opt-in): filename patterns. Suggestions only, never auto-flag.
 	 */
 	private static function detect_filename( string $path ): ?array {
 		$name     = strtolower( basename( $path ) );

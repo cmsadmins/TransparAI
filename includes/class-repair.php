@@ -6,9 +6,9 @@
  *
  * Two complementary paths:
  *  1. `wp_update_attachment_metadata` at a very late priority with a per-file
- *     fingerprint (size + mtime) — catches optimizers that update metadata.
- *  2. An hourly cron sweep over labeled attachments (batch with cursor) —
- *     catches rewrites that never touch attachment metadata.
+ *     fingerprint (size + mtime), catches optimizers that update metadata.
+ *  2. An hourly cron sweep over labeled attachments (batch with cursor)
+ *     that catches rewrites which never touch attachment metadata.
  *
  * @package TransparAI
  */
@@ -65,7 +65,7 @@ final class TransparAI_Repair {
 	}
 
 	/**
-	 * size+mtime per file — cheap change detection without re-parsing.
+	 * size+mtime per file, cheap change detection without re-parsing.
 	 *
 	 * @return array<string, array{size:int, mtime:int}>
 	 */
@@ -108,7 +108,7 @@ final class TransparAI_Repair {
 
 	/**
 	 * Late `wp_update_attachment_metadata` filter: optimizers and media
-	 * replacers run through this — re-apply the labeling when files drifted.
+	 * replacers run through this, re-apply the labeling when files drifted.
 	 *
 	 * @param array|mixed $metadata      Attachment metadata.
 	 * @param int         $attachment_id Attachment ID.

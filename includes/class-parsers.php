@@ -827,7 +827,7 @@ final class TransparAI_Parsers {
 	 * Best-effort claim generator extraction from raw C2PA/JUMBF bytes.
 	 *
 	 * The manifest is CBOR; a full parser is out of scope. The generator name
-	 * follows the text key "claim_generator" — grab the printable run after it.
+	 * follows the text key "claim_generator", grab the printable run after it.
 	 */
 	public static function c2pa_claim_generator( string $payload ): string {
 		$pos = strpos( $payload, 'claim_generator' );

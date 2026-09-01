@@ -5,7 +5,7 @@
  * By default the AI labels stay in the database (reinstalling restores them)
  * and metadata already written into image files stays in the files. When the
  * "delete all plugin data" setting is enabled, every option, transient and
- * attachment meta this plugin created is removed — on every site of a
+ * attachment meta this plugin created is removed, on every site of a
  * multisite network.
  *
  * @package TransparAI
@@ -52,6 +52,7 @@ function transparai_uninstall_site(): void {
 		'_transparai_scanned',
 		'_transparai_unreadable',
 		'_transparai_fingerprint',
+		'_transparai_write_error',
 	);
 
 	foreach ( $meta_keys as $meta_key ) {

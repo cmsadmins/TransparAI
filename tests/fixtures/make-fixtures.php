@@ -3,7 +3,7 @@
  * Fixture generator: builds synthetic media files carrying real AI provenance
  * signatures (and negative probes) into tests/fixtures/generated/.
  *
- * Standalone script — no WordPress, no extensions beyond zlib. Run:
+ * Standalone script, no WordPress, no extensions beyond zlib. Run:
  *   php tests/fixtures/make-fixtures.php
  *
  * @package TransparAI
@@ -223,7 +223,7 @@ $write( 'sidecar.jpg.c2pa', c2pa_payload( 'c2patool/0.9' ) );
  * Negative fixtures (false-positive probes)
  * ------------------------------------------------------------------------- */
 
-// Spanish text containing "imagenes" in a COM segment — must NOT match ("Imagen" trap).
+// Spanish text containing "imagenes" in a COM segment, must NOT match ("Imagen" trap).
 $write( 'negative-imagenes.jpg', jpeg_add_segment( $base_jpeg, 0xFE, 'Todas las imagenes de la galeria fueron tomadas en Sevilla.' ) );
 
 // Camera EXIF-ish XMP (CreatorTool) without any AI declaration.

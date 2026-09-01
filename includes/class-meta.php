@@ -34,6 +34,7 @@ final class TransparAI_Meta {
 	public const KEY_SCANNED     = '_transparai_scanned';
 	public const KEY_UNREADABLE  = '_transparai_unreadable';
 	public const KEY_FINGERPRINT = '_transparai_fingerprint';
+	public const KEY_WRITE_ERROR = '_transparai_write_error';
 
 	/**
 	 * Register hooks.

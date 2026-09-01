@@ -64,6 +64,13 @@
 	margin-top: 6px;
 }
 
+.trai-write-error {
+	display: block;
+	margin-top: 6px;
+	font-size: 11px;
+	color: #b32d2e;
+}
+
 .trai-recheck-wrap {
 	display: block;
 	margin-top: 6px;
@@ -81,6 +88,38 @@
 
 .media-frame.mode-select .trai-bulk-button {
 	display: inline-block !important;
+}
+
+/* WP admin CSS forces .button { display: inline-block }, which beats the
+   user-agent [hidden] rule. Restore hidden semantics inside our screens. */
+.trai-settings [hidden] {
+	display: none !important;
+}
+
+.trai-recheck-result {
+	display: block;
+	margin-top: 4px;
+	font-size: 11px;
+	color: #50575e;
+}
+
+/* Non-blocking feedback toast (replaces native alert) */
+.trai-toast {
+	position: fixed;
+	right: 16px;
+	bottom: 16px;
+	z-index: 999999;
+	background: #1d2327;
+	color: #fff;
+	font-size: 13px;
+	padding: 10px 14px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	opacity: 1;
+	transition: opacity 0.4s ease;
+}
+
+.trai-toast--out {
+	opacity: 0;
 }
 
 /* Settings page: scan progress */

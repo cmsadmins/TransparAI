@@ -74,10 +74,16 @@ final class TransparAI_Media_Library {
 			$html .= '<span class="trai-detail">' . $detail . '</span>';
 		}
 
+		if ( '' !== (string) get_post_meta( $id, TransparAI_Meta::KEY_WRITE_ERROR, true ) ) {
+			$html .= '<span class="trai-write-error">'
+				. esc_html__( 'The file metadata could not be updated (file not writable). The label state in WordPress and the metadata inside the file may differ.', 'transparai' )
+				. '</span>';
+		}
+
 		if ( TransparAI_Meta::is_detected( $id ) ) {
 			$html .= '<span class="trai-review" data-id="' . esc_attr( (string) $id ) . '">'
 				. '<button type="button" class="button button-small trai-confirm">' . esc_html__( 'Confirm AI label', 'transparai' ) . '</button> '
-				. '<button type="button" class="button button-small trai-dismiss">' . esc_html__( 'Not AI — dismiss', 'transparai' ) . '</button>'
+				. '<button type="button" class="button button-small trai-dismiss">' . esc_html__( 'Not AI, dismiss', 'transparai' ) . '</button>'
 				. '</span>';
 		}
 
@@ -215,19 +221,28 @@ final class TransparAI_Media_Library {
 			array(
 				'nonce'     => wp_create_nonce( 'transparai_bulk' ),
 				'scanNonce' => wp_create_nonce( 'transparai_scan' ),
-				'labels'    => array(
-					'filterAll'      => __( 'AI status: all', 'transparai' ),
-					'filterOnly'     => __( 'Only AI-labeled', 'transparai' ),
-					'filterDetected' => __( 'Detected, needs review', 'transparai' ),
-					'filterNone'     => __( 'Without AI label', 'transparai' ),
-					'bulkOn'         => __( 'Mark as AI-generated', 'transparai' ),
-					'bulkOff'        => __( 'Remove AI label', 'transparai' ),
-					'selectFirst'    => __( 'Please select media first.', 'transparai' ),
-					'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
-					'recheckDone'    => __( 'Result', 'transparai' ),
-					'recheckClean'   => __( 'No AI provenance signals found in the file.', 'transparai' ),
-				),
+				'labels'    => self::js_labels(),
 			)
+		);
+	}
+
+	/**
+	 * Localized strings shared by every admin.js surface.
+	 *
+	 * @return array<string, string>
+	 */
+	private static function js_labels(): array {
+		return array(
+			'filterAll'      => __( 'AI status: all', 'transparai' ),
+			'filterOnly'     => __( 'Only AI-labeled', 'transparai' ),
+			'filterDetected' => __( 'Detected, needs review', 'transparai' ),
+			'filterNone'     => __( 'Without AI label', 'transparai' ),
+			'bulkOn'         => __( 'Mark as AI-generated', 'transparai' ),
+			'bulkOff'        => __( 'Remove AI label', 'transparai' ),
+			'selectFirst'    => __( 'Please select media first.', 'transparai' ),
+			'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
+			'recheckDone'    => __( 'Result', 'transparai' ),
+			'recheckClean'   => __( 'No AI provenance signals found in the file.', 'transparai' ),
 		);
 	}
 
@@ -296,11 +311,24 @@ final class TransparAI_Media_Library {
 	}
 
 	/**
-	 * List view CSS.
+	 * List view and attachment edit screen assets.
 	 */
 	public static function enqueue_list_assets( string $hook ): void {
-		if ( 'upload.php' === $hook ) {
+		$is_attachment_edit = 'post.php' === $hook && 'attachment' === get_post_type( absint( $_GET['post'] ?? 0 ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only screen detection.
+		if ( 'upload.php' === $hook || $is_attachment_edit ) {
 			wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
+		}
+		if ( $is_attachment_edit ) {
+			wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION, true );
+			wp_localize_script(
+				'transparai-admin',
+				'transparaiAdmin',
+				array(
+					'nonce'     => wp_create_nonce( 'transparai_bulk' ),
+					'scanNonce' => wp_create_nonce( 'transparai_scan' ),
+					'labels'    => self::js_labels(),
+				)
+			);
 		}
 	}
 

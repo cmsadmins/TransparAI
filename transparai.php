@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       TransparAI – AI Image Marker & Detector
+ * Plugin Name:       TransparAI
  * Plugin URI:        https://wordpress.org/plugins/transparai/
  * Description:       Label AI-generated media (EU AI Act, Art. 50): visible badge, machine-readable IPTC/XMP metadata written into the files, and automatic detection of AI images via C2PA, XMP/IPTC and generator signatures.
  * Version:           1.0.0
@@ -8,6 +8,7 @@
  * Tested up to:      7.1
  * Requires PHP:      8.1
  * Author:            Patrick Schlesinger
+ * Author URI:        https://www.cms-admins.de/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       transparai

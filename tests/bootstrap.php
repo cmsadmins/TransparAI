@@ -244,7 +244,7 @@ function trai_test_reset(): void {
 function trai_fixture( string $name ): string {
 	$path = __DIR__ . '/fixtures/generated/' . $name;
 	if ( ! file_exists( $path ) ) {
-		fwrite( STDERR, "Fixture missing: {$name} — run `php tests/fixtures/make-fixtures.php` first.\n" );
+		fwrite( STDERR, "Fixture missing: {$name}, run `php tests/fixtures/make-fixtures.php` first.\n" );
 		exit( 1 );
 	}
 	return $path;

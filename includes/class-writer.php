@@ -1,8 +1,8 @@
 <?php
 /**
  * Machine-readable labeling: writes the IPTC DigitalSourceType as XMP into
- * JPEG (APP1), PNG (iTXt) and WebP (RIFF) files — original plus every size
- * variant — and optionally mirrors it into IPTC-IIM (JPEG APP13).
+ * JPEG (APP1), PNG (iTXt) and WebP (RIFF) files, original plus every size
+ * variant, and optionally mirrors it into IPTC-IIM (JPEG APP13).
  *
  * Foreign metadata is preserved: when a file already carries an XMP packet,
  * the declaration is MERGED in as an own rdf:Description block tagged with
@@ -91,6 +91,15 @@ final class TransparAI_Writer {
 		}
 
 		TransparAI_Repair::remember( $attachment_id );
+
+		// A failed file write must never stay silent: for a compliance plugin,
+		// "label removed in the database but still present in the file" (or the
+		// other way round) is the worst state. Surface it on the attachment.
+		if ( $stats['failed'] > 0 ) {
+			update_post_meta( $attachment_id, TransparAI_Meta::KEY_WRITE_ERROR, (string) time() );
+		} else {
+			delete_post_meta( $attachment_id, TransparAI_Meta::KEY_WRITE_ERROR );
+		}
 
 		return $stats;
 	}
@@ -191,7 +200,7 @@ final class TransparAI_Writer {
 
 		$pos = strripos( $stripped, '</rdf:RDF>' );
 		if ( false === $pos ) {
-			// Packet without an rdf:RDF close is unusual — leave it alone and
+			// Packet without an rdf:RDF close is unusual, leave it alone and
 			// signal that a standalone packet cannot be merged.
 			return array(
 				'action' => 'keep',
@@ -367,7 +376,7 @@ final class TransparAI_Writer {
 
 	/**
 	 * Optionally mirror the declaration into a self-built APP13 (IPTC-IIM)
-	 * segment — only when the file has no foreign APP13 (corruption safety),
+	 * segment, only when the file has no foreign APP13 (corruption safety),
 	 * then perform the atomic write.
 	 *
 	 * @param string $path     Target path.

@@ -89,9 +89,9 @@ final class TransparAI_Settings {
 				'scanNonce' => wp_create_nonce( 'transparai_scan' ),
 				'labels'    => array(
 					/* translators: 1: processed count, 2: flagged count, 3: queued count. */
-					'scanProgress' => __( '%1$d scanned — %2$d auto-labeled, %3$d queued for review', 'transparai' ),
+					'scanProgress' => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review.', 'transparai' ),
 					'scanDone'     => __( 'Scan complete.', 'transparai' ),
-					'scanFailed'   => __( 'Scan request failed — you can restart to continue.', 'transparai' ),
+					'scanFailed'   => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
 				),
 			)
 		);
@@ -107,9 +107,14 @@ final class TransparAI_Settings {
 		$options = TransparAI_Options::all();
 		$stats   = TransparAI_Scanner::stats();
 		$report  = TransparAI_Repair::report();
+
+		if ( isset( $_GET['settings-updated'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only success notice after the Settings API redirect.
+			add_settings_error( 'transparai_messages', 'transparai_saved', __( 'Settings saved.', 'transparai' ), 'updated' );
+		}
+		settings_errors( 'transparai_messages' );
 		?>
 		<div class="wrap trai-settings">
-			<h1><?php esc_html_e( 'TransparAI – AI Image Marker & Detector', 'transparai' ); ?></h1>
+			<h1><?php esc_html_e( 'TransparAI', 'transparai' ); ?></h1>
 
 			<h2><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
 			<p>
@@ -117,7 +122,7 @@ final class TransparAI_Settings {
 				echo esc_html(
 					sprintf(
 						/* translators: 1: total media count, 2: labeled count, 3: pending review count, 4: scanned count. */
-						__( '%1$d media files — %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned.', 'transparai' ),
+						__( '%1$d media files: %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned.', 'transparai' ),
 						$stats['total'],
 						$stats['flagged'],
 						$stats['detected'],
@@ -149,7 +154,7 @@ final class TransparAI_Settings {
 					echo esc_html(
 						sprintf(
 							/* translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff. */
-							__( 'Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed — %4$s ago.', 'transparai' ),
+							__( 'Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago).', 'transparai' ),
 							(int) ( $report['last_checked'] ?? $report['checked'] ?? 0 ),
 							(int) ( $report['last_repaired'] ?? $report['repaired'] ?? 0 ),
 							(int) ( $report['last_failed'] ?? $report['failed'] ?? 0 ),
@@ -298,7 +303,7 @@ final class TransparAI_Settings {
 							<label><input type="checkbox" name="<?php self::name( 'write_xmp' ); ?>" value="1" <?php checked( $options['write_xmp'], '1' ); ?> />
 							<?php esc_html_e( 'Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG and WebP files (all size variants)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'write_iim' ); ?>" value="1" <?php checked( $options['write_iim'], '1' ); ?> />
-							<?php esc_html_e( 'Additionally mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)', 'transparai' ); ?></label>
+							<?php esc_html_e( 'Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)', 'transparai' ); ?></label>
 						</td>
 					</tr>
 					<tr>

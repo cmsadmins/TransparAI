@@ -31,8 +31,8 @@ msgstr "Steuert das Badge im Frontend, die maschinenlesbaren Datei-Metadaten und
 msgid "Confirm AI label"
 msgstr "KI-Kennzeichnung bestätigen"
 
-msgid "Not AI — dismiss"
-msgstr "Kein KI-Inhalt — verwerfen"
+msgid "Not AI, dismiss"
+msgstr "Kein KI-Inhalt, verwerfen"
 
 msgid "Re-check file metadata"
 msgstr "Datei-Metadaten erneut prüfen"
@@ -102,17 +102,14 @@ msgstr "Ungültiger Anhang."
 msgid "TransparAI"
 msgstr "TransparAI"
 
-msgid "TransparAI – AI Image Marker & Detector"
-msgstr "TransparAI – KI-Bilder kennzeichnen & erkennen"
-
 msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "Library status"
 msgstr "Mediathek-Status"
 
-msgid "%1$d media files — %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned."
-msgstr "%1$d Mediendateien — %2$d als KI gekennzeichnet, %3$d erkannt und in Prüfung, %4$d gescannt."
+msgid "%1$d media files: %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned."
+msgstr "%1$d Mediendateien: %2$d als KI gekennzeichnet, %3$d erkannt und in Prüfung, %4$d gescannt."
 
 msgid "Open review queue"
 msgstr "Prüfliste öffnen"
@@ -132,20 +129,20 @@ msgstr "Alles neu scannen"
 msgid "Pause"
 msgstr "Pausieren"
 
-msgid "%1$d scanned — %2$d auto-labeled, %3$d queued for review"
-msgstr "%1$d gescannt — %2$d automatisch gekennzeichnet, %3$d zur Prüfung vorgemerkt"
+msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review."
+msgstr "%1$d gescannt, %2$d automatisch gekennzeichnet, %3$d zur Prüfung vorgemerkt."
 
 msgid "Scan complete."
 msgstr "Scan abgeschlossen."
 
-msgid "Scan request failed — you can restart to continue."
-msgstr "Scan-Anfrage fehlgeschlagen — zum Fortsetzen neu starten."
+msgid "Scan request failed. You can restart to continue."
+msgstr "Scan-Anfrage fehlgeschlagen. Zum Fortsetzen neu starten."
 
 msgid "Metadata integrity (auto-repair)"
 msgstr "Metadaten-Integrität (Auto-Reparatur)"
 
-msgid "Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed — %4$s ago."
-msgstr "Letzter vollständiger Durchlauf: %1$d gekennzeichnete Dateien geprüft, %2$d repariert, %3$d fehlgeschlagen — vor %4$s."
+msgid "Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
+msgstr "Letzter vollständiger Durchlauf: %1$d gekennzeichnete Dateien geprüft, %2$d repariert, %3$d fehlgeschlagen (vor %4$s)."
 
 msgid "Visible badge"
 msgstr "Sichtbares Badge"
@@ -264,7 +261,7 @@ msgstr "In Dateien schreiben"
 msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG and WebP files (all size variants)"
 msgstr "IPTC DigitalSourceType als XMP in gekennzeichnete JPEG-, PNG- und WebP-Dateien schreiben (alle Größenvarianten)"
 
-msgid "Additionally mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
+msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
 msgstr "Zusätzlich in IPTC-IIM spiegeln (JPEG, nur wenn die Datei keinen fremden IPTC-Block hat)"
 
 msgid "Auto-repair"
@@ -281,3 +278,9 @@ msgstr "Datenentfernung"
 
 msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
 msgstr "Alle Plugin-Daten (Kennzeichnungen, Erkennungsergebnisse, Einstellungen) bei der Deinstallation löschen"
+
+msgid "The file metadata could not be updated (file not writable). The label state in WordPress and the metadata inside the file may differ."
+msgstr "Die Datei-Metadaten konnten nicht aktualisiert werden (Datei nicht beschreibbar). Der Kennzeichnungsstand in WordPress und die Metadaten in der Datei können abweichen."
+
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."

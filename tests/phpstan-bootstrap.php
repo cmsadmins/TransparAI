@@ -3,7 +3,7 @@
  * PHPStan bootstrap file.
  *
  * Defines plugin and WordPress runtime constants that PHPStan's static scan
- * cannot resolve from `define()` calls. Values are sentinels — only the symbol
+ * cannot resolve from `define()` calls. Values are sentinels, only the symbol
  * existence matters for analysis.
  *
  * @package TransparAI
