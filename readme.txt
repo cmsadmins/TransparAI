@@ -42,6 +42,18 @@ The plugin runs entirely on your server. No external requests, no accounts, no t
 
 One honest note: this plugin is a technical tool, not legal advice. Whether and how the EU AI Act obligations apply to your site remains your responsibility.
 
+== Installation ==
+
+1. Install the plugin from the WordPress plugin directory (Plugins, Add New, search for "TransparAI") or upload the ZIP, then activate it.
+2. Open **Media, TransparAI**. New uploads are checked automatically from now on.
+3. Click **Scan new/unscanned media** to go through your existing library. The scan runs in small batches with a progress bar; you can pause and resume at any time, and nothing leaves your server.
+4. Files that clearly declare an AI origin are labeled right away. Everything else with strong signals lands in the review queue: follow the **Open review queue** link (or filter the media library for "Detected, needs review") and confirm or dismiss each item, single or in bulk. A camera photo with Content Credentials will show up here on purpose; dismiss it once and it stays dismissed.
+5. Adjust the badge under **Visible badge**: overlay or caption line, position, size, style, optional generator name and the alt text note for screen readers.
+6. Labeled JPEG, PNG and WebP files get the IPTC digital source type written into the file itself, size variants included. You can verify it with any metadata inspector, for example `exiftool -XMP-iptcExt:DigitalSourceType image.jpg`.
+7. If your theme prints images without an attachment ID (ACF fields returned as URL, sliders, page builders) or uses CSS background images, enable the extra option under **Extras** so those get their badge too.
+
+That is the whole setup. Auto-repair runs on its own: when an image optimizer or a thumbnail regeneration strips the metadata, the hourly integrity sweep restores it.
+
 == Frequently Asked Questions ==
 
 = Can the plugin detect every AI image? =
@@ -75,6 +87,40 @@ Yes. The meta key `_transparai_ai` is registered for the REST API, WP-CLI comman
 = Where do I get help? =
 
 Post in the support forum here on wordpress.org, or write to transparai@cms-admins.de. The plugin is built and maintained by Patrick Schlesinger (cms-admins.de).
+
+== For developers ==
+
+Everything below is stable API surface; the prefixes are `transparai_` for hooks and options and `_transparai_` for attachment meta.
+
+**Attachment meta** (registered for the REST API, readable and writable with `upload_files` capability):
+
+* `_transparai_ai`: `'1'` when the attachment carries the confirmed AI label, absent otherwise. This is the single source of truth for badge and file metadata.
+* `_transparai_type`: `generated` or `composite` (AI-edited). Controls which digital source type is written.
+* `_transparai_source`: where the detection came from (`c2pa`, `xmp-dst`, `iim`, `png-chunk`, `exif`, `com`, `id3`, `sidecar`, `filename`, `context`).
+* `_transparai_generator`: detected generator name, for example `Midjourney` or `OpenAI`.
+* `_transparai_confidence`: `certain`, `likely` or `hint`.
+* `_transparai_detected`: `'1'` while an unconfirmed detection waits in the review queue. Kept strictly apart from the public label.
+
+**Label media from your own code** (an AI image generator plugin, an import script):
+
+`do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' );`
+
+This sets the confirmed label, records the generator name and, with file writing enabled, writes the metadata into the files. Existing labels are never overwritten.
+
+**Extend or veto detection:**
+
+`add_filter( 'transparai_signatures', function ( $signatures ) { $signatures[] = array( 'pattern' => '/my-generator/i', 'generator' => 'My Generator' ); return $signatures; } );`
+
+`transparai_detection_result` filters the final result per file (or `null`); return `null` to veto a detection, or return a result array to add your own. Both filters receive documented shapes, see the source of `TransparAI_Detector`.
+
+**WP-CLI** (`wp transparai <command>`):
+
+* `scan [--all] [--dry-run]`: scan the library; `--all` rescans everything, `--dry-run` only reports.
+* `flag <id>... [--source=<text>]` and `unflag <id>...`: set or remove labels in bulk.
+* `status [--status=flagged|detected|all] [--format=table|csv|json|ids|count]`: audit export, for example `wp transparai status --format=csv > ai-audit.csv`.
+* `write-meta [--dry-run] --yes` and `verify-meta [--repair]`: write and verify the in-file metadata.
+
+**Theme integration:** print attachment images through `wp_get_attachment_image()` (or markup carrying the `wp-image-{ID}` class) and the badge is rendered server-side and page-cache safe. For raw URL output and CSS backgrounds there is the optional script described above; it wraps matched images with the same markup (`span.trai-wrap` around the image plus `span.trai-badge`), so any CSS you write applies to both paths.
 
 == External services ==
 
