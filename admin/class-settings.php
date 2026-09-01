@@ -236,7 +236,7 @@ final class TransparAI_Settings {
 							<label><input type="checkbox" name="<?php self::name( 'badge_alt_append' ); ?>" value="1" <?php checked( $options['badge_alt_append'], '1' ); ?> />
 							<?php esc_html_e( 'Append the label to the image alt text (screen readers)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'background_badges' ); ?>" value="1" <?php checked( $options['background_badges'], '1' ); ?> />
-							<?php esc_html_e( 'Also label CSS background images (experimental, needs JavaScript)', 'transparai' ); ?></label>
+							<?php esc_html_e( 'Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)', 'transparai' ); ?></label>
 						</td>
 					</tr>
 				</table>

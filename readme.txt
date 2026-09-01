@@ -24,7 +24,7 @@ Uploads are checked as they come in. For everything already in your library ther
 
 **The visible badge**
 
-A configurable badge on labeled media in the front end. Overlay or a caption line, four positions, three sizes, dark, light, outline or icon-only. You can show the detected generator in the badge and add a note to the image alt text for screen readers. The badge is rendered server-side, so it survives page caching, and it works with the block editor (images, galleries, covers, featured images, video and audio), the classic editor, template images, text widgets and Elementor including Theme Builder templates. Labeling CSS background images is available as an option.
+A configurable badge on labeled media in the front end. Overlay or a caption line, four positions, three sizes, dark, light, outline or icon-only. You can show the detected generator in the badge and add a note to the image alt text for screen readers. The badge is rendered server-side, so it survives page caching, and it works with the block editor (images, galleries, covers, featured images, video and audio), the classic editor, template images, text widgets and Elementor including Theme Builder templates. An optional extra covers what server-side filters cannot see: images printed without an attachment ID (ACF fields returning a URL, sliders, page-builder templates) and CSS background images get their badge through a small script that matches them against the labeled files.
 
 **The machine-readable part**
 
@@ -58,7 +58,7 @@ Modern cameras embed C2PA Content Credentials into real photos. A C2PA manifest 
 
 = Which page builders and editors are supported? =
 
-The visible badge covers the block editor (image, gallery, cover, media-text, featured image, video and audio blocks), the classic editor, template images, text widgets and Elementor including Theme Builder templates. The machine-readable XMP labeling is independent of any builder and always works.
+The visible badge covers the block editor (image, gallery, cover, media-text, featured image, video and audio blocks), the classic editor, template images, text widgets and Elementor including Theme Builder templates. For images a theme prints without an attachment ID, for example ACF image fields returned as URL or array, enable the experimental option under Extras: a small script then matches those images (and CSS backgrounds) against your labeled files, size variants included. The machine-readable XMP labeling is independent of any builder and always works.
 
 = Does the plugin phone home? =
 

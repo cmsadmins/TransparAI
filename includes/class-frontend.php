@@ -115,10 +115,11 @@ final class TransparAI_Frontend {
 		wp_enqueue_script( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/js/front.js', array(), TRANSPARAI_VERSION, true );
 
 		$data = array(
-			'label'   => self::badge_label(),
-			'short'   => self::badge_short_label(),
-			'classes' => self::wrap_classes( 'trai-bg-host' ),
-			'bgMap'   => TransparAI_Options::enabled( 'background_badges' ) ? self::background_map() : array(),
+			'label'      => self::badge_label(),
+			'short'      => self::badge_short_label(),
+			'classesBg'  => self::wrap_classes( 'trai-bg-host' ),
+			'classesImg' => self::wrap_classes( 'trai-wrap' ),
+			'bgMap'      => TransparAI_Options::enabled( 'background_badges' ) ? self::background_map() : array(),
 		);
 		wp_localize_script( 'transparai-front', 'transparaiFront', $data );
 	}

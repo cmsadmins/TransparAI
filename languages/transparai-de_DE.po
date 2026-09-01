@@ -210,8 +210,8 @@ msgstr "Erkannten Generator im Badge anzeigen (z. B. „KI-generiert · Midjourn
 msgid "Append the label to the image alt text (screen readers)"
 msgstr "Kennzeichnung an den Alt-Text des Bildes anhängen (Screenreader)"
 
-msgid "Also label CSS background images (experimental, needs JavaScript)"
-msgstr "Auch CSS-Hintergrundbilder kennzeichnen (experimentell, benötigt JavaScript)"
+msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
+msgstr "Auch Bilder ohne Mediathek-Verknüpfung (ACF-Felder, Slider, Builder) und CSS-Hintergründe kennzeichnen (experimentell, benötigt JavaScript)"
 
 msgid "Automatic detection"
 msgstr "Automatische Erkennung"

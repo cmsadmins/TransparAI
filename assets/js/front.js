@@ -23,9 +23,11 @@
 		resizeTimer = setTimeout(scaleBadges, 150);
 	});
 
-	/* Optional: label CSS background images (hero sections, cover-style
-	   layouts). Matches inline background-image URLs and common builder
-	   containers against the upload paths of labeled attachments. */
+	/* Optional (one setting): label media the server-side filters cannot see.
+	   Covers two cases against the upload paths of labeled attachments:
+	   1. Plain <img> tags without a wp-image-{ID} class, as printed by ACF
+	      fields returning URL/array, sliders and page-builder templates.
+	   2. CSS background images (hero sections, cover-style layouts). */
 	var config = window.transparaiFront;
 	if (!config || !config.bgMap || !config.bgMap.length) {
 		return;
@@ -40,16 +42,58 @@
 		if (uploads !== -1) {
 			url = url.slice(uploads + '/uploads/'.length);
 		}
-		/* Strip size suffix (-300x200) and conversion suffix (.webp/.avif after original ext). */
+		/* Strip conversion suffix (.webp/.avif after the original extension),
+		   size suffix (-300x200) and the -scaled marker of large originals. */
 		url = url.replace(/(\.(?:jpe?g|png|gif))\.(?:webp|avif)$/i, '$1');
 		url = url.replace(/-\d+x\d+(\.[a-z0-9]+)$/i, '$1');
+		url = url.replace(/-scaled(\.[a-z0-9]+)$/i, '$1');
 		return url;
 	}
 
 	var flagged = {};
 	config.bgMap.forEach(function (path) {
-		flagged[path] = true;
+		flagged[normalizePath(path)] = true;
 	});
+
+	function makeBadge() {
+		var badge = document.createElement('span');
+		badge.className = 'trai-badge';
+		badge.setAttribute('role', 'note');
+		badge.setAttribute('data-trai-short', config.short);
+		badge.textContent = config.label;
+		return badge;
+	}
+
+	/* Plain <img> tags without an attachment class: wrap them with the same
+	   markup the server-side filters produce, so styling and the mini-badge
+	   logic apply unchanged. */
+	function labelImages() {
+		Array.prototype.forEach.call(document.images, function (img) {
+			if (img.getAttribute('data-trai-done')) {
+				return;
+			}
+			if (/(?:^|\s)wp-image-\d+(?:\s|$)/.test(img.className)) {
+				return; /* Handled server-side when labeled. */
+			}
+			if (img.closest('.trai-wrap, .trai-thumbwrap, .trai-avwrap, .trai-bg-host')) {
+				return;
+			}
+			var src = img.currentSrc || img.src || '';
+			if (!src || !flagged[normalizePath(src)]) {
+				return;
+			}
+			img.setAttribute('data-trai-done', '1');
+			var wrap = document.createElement('span');
+			wrap.className = config.classesImg;
+			var parent = img.parentNode;
+			if (!parent) {
+				return;
+			}
+			parent.insertBefore(wrap, img);
+			wrap.appendChild(img);
+			wrap.appendChild(makeBadge());
+		});
+	}
 
 	function extractUrl(styleValue) {
 		var match = /url\(\s*(['"]?)([^)'"]+)\1\s*\)/i.exec(styleValue);
@@ -79,25 +123,25 @@
 				return;
 			}
 			element.setAttribute('data-trai-bg', '1');
-			element.classList.add('trai-bg-host');
-			config.classes.split(' ').forEach(function (cls) {
+			config.classesBg.split(' ').forEach(function (cls) {
 				if (cls) {
 					element.classList.add(cls);
 				}
 			});
-			var badge = document.createElement('span');
-			badge.className = 'trai-badge';
-			badge.setAttribute('role', 'note');
-			badge.setAttribute('data-trai-short', config.short);
-			badge.textContent = config.label;
-			element.appendChild(badge);
+			element.appendChild(makeBadge());
 		});
 	}
 
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', labelBackgrounds);
-	} else {
+	function labelAll() {
+		labelImages();
 		labelBackgrounds();
+		scaleBadges();
 	}
-	window.addEventListener('load', labelBackgrounds);
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', labelAll);
+	} else {
+		labelAll();
+	}
+	window.addEventListener('load', labelAll);
 })();
