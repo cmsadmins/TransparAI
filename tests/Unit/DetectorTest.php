@@ -30,6 +30,7 @@ final class DetectorTest extends TestCase {
 			'xmp dst rdf:li form'      => array( 'xmp-li.jpg', 'xmp-dst', 'certain', 'generated' ),
 			'c2pa openai claim'        => array( 'c2pa-openai.png', 'c2pa', 'certain', 'generated' ),
 			'c2pa firefly claim jpeg'  => array( 'c2pa.jpg', 'c2pa', 'certain', 'generated' ),
+			'c2pa 2.x declared dst'    => array( 'c2pa-gemini.jpg', 'c2pa', 'certain', 'generated' ),
 			'c2pa camera only likely'  => array( 'c2pa-camera.png', 'c2pa', 'likely', 'generated' ),
 			'midjourney xmp signature' => array( 'midjourney.jpg', 'xmp', 'likely', 'generated' ),
 			'iim google credit'        => array( 'iim-google.jpg', 'iim', 'certain', 'generated' ),

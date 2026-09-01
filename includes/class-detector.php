@@ -234,8 +234,17 @@ final class TransparAI_Detector {
 			return $dst;
 		}
 
-		$has_c2pa = TransparAI_Parsers::webp_has_c2pa( $chunks );
-		$c2pa     = self::from_c2pa( $has_c2pa, '' );
+		$has_c2pa     = TransparAI_Parsers::webp_has_c2pa( $chunks );
+		$c2pa_payload = '';
+		if ( $has_c2pa ) {
+			foreach ( $chunks as $chunk ) {
+				if ( 'C2PA' === $chunk['fourcc'] ) {
+					$c2pa_payload = $chunk['data'];
+					break;
+				}
+			}
+		}
+		$c2pa = self::from_c2pa( $has_c2pa, $c2pa_payload );
 		if ( null !== $c2pa && 'certain' === $c2pa['confidence'] ) {
 			return $c2pa;
 		}
@@ -384,6 +393,16 @@ final class TransparAI_Detector {
 			return null;
 		}
 		$claim = '' !== $payload ? TransparAI_Parsers::c2pa_claim_generator( $payload ) : '';
+
+		// C2PA 2.x declares the digital source type inside the manifest's
+		// actions assertion. That is an explicit AI declaration: certain.
+		if ( '' !== $payload ) {
+			$declared = TransparAI_Parsers::c2pa_digital_source_type( $payload );
+			if ( '' !== $declared ) {
+				return self::result( $declared, 'c2pa', $claim, 'certain', 'C2PA manifest declares an AI digitalSourceType' . ( '' !== $claim ? ' (claim generator: ' . $claim . ')' : '' ) );
+			}
+		}
+
 		if ( '' !== $claim ) {
 			$lower = strtolower( $claim );
 			foreach ( self::AI_CLAIM_GENERATORS as $needle => $label ) {

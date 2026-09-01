@@ -102,6 +102,25 @@ function c2pa_payload( string $claim_generator ): string {
 	return $manifest;
 }
 
+/**
+ * C2PA 2.x shaped payload: claim_generator_info map whose "name" value is a
+ * CBOR text string (0x78 + length), plus the actions assertion declaring the
+ * digital source type, mirroring real Gemini output.
+ */
+function c2pa_payload_v2( string $name, bool $with_dst ): string {
+	$payload = "\x00\x00\x00\x28jumb\x00\x00\x00\x20jumdc2pa\x00\x11\x00\x10"
+		. 'c2pa.manifest'
+		. "\xA2\x74" . 'claim_generator_info'
+		. "\xA2dname\x78" . chr( strlen( $name ) ) . $name
+		. 'gversions' . "\x63" . '1.0';
+	if ( $with_dst ) {
+		$payload .= "\x00" . 'rcreated_assertions'
+			. "\x00" . 'c2pa.actions.v2'
+			. "\x00" . 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
+	}
+	return $payload . "\x00" . 'urn:c2pa:fixture';
+}
+
 /** Minimal APP13 payload (Photoshop IRB) with the given IIM datasets. */
 function app13_payload( string $iim ): string {
 	$resource = '8BIM' . "\x04\x04" . "\x00\x00" . pack( 'N', strlen( $iim ) ) . $iim;
@@ -194,6 +213,9 @@ $write(
 
 // JPEG: APP11 C2PA/JUMBF marker.
 $write( 'c2pa.jpg', jpeg_add_segment( $base_jpeg, 0xEB, 'JP' . c2pa_payload( 'Adobe_Firefly c2pa-rs/0.28' ) ) );
+
+// JPEG: C2PA 2.x manifest (claim_generator_info + declared source type), like Gemini.
+$write( 'c2pa-gemini.jpg', jpeg_add_segment( $base_jpeg, 0xEB, 'JP' . c2pa_payload_v2( 'Google C2PA Core Generator Library', true ) ) );
 
 // JPEG: COM segment naming ComfyUI (signature via comment block).
 $write( 'com-comfyui.jpg', jpeg_add_segment( $base_jpeg, 0xFE, 'Exported from ComfyUI workflow 42' ) );

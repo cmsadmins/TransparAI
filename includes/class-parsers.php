@@ -826,20 +826,78 @@ final class TransparAI_Parsers {
 	/**
 	 * Best-effort claim generator extraction from raw C2PA/JUMBF bytes.
 	 *
-	 * The manifest is CBOR; a full parser is out of scope. The generator name
-	 * follows the text key "claim_generator", grab the printable run after it.
+	 * A full CBOR parser is out of scope. Two shapes are handled:
+	 *  - C2PA 2.x: "claim_generator_info" is a CBOR map; the value of its
+	 *    "name" key is a CBOR text string (major type 3), read via its
+	 *    length prefix.
+	 *  - C2PA 1.x: "claim_generator" is followed by a plain text string;
+	 *    take the first printable run, skipping CBOR structure words.
 	 */
 	public static function c2pa_claim_generator( string $payload ): string {
 		$pos = strpos( $payload, 'claim_generator' );
 		if ( false === $pos ) {
 			return '';
 		}
-		$after = substr( $payload, $pos + strlen( 'claim_generator' ), 160 );
-		if ( preg_match( '/[\x20-\x7E]{3,80}/', $after, $match ) ) {
-			$candidate = trim( $match[0] );
-			$candidate = preg_replace( '/^[^A-Za-z0-9]+/', '', $candidate );
-			$candidate = preg_replace( '/[^A-Za-z0-9)\]]+$/', '', (string) $candidate );
-			return substr( (string) $candidate, 0, 80 );
+
+		$window   = substr( $payload, $pos, 400 );
+		$name_pos = strpos( $window, 'name' );
+		if ( false !== $name_pos ) {
+			$at = $name_pos + 4;
+			if ( isset( $window[ $at ] ) ) {
+				$byte   = ord( $window[ $at ] );
+				$length = 0;
+				$start  = 0;
+				if ( $byte >= 0x60 && $byte <= 0x77 ) {
+					$length = $byte - 0x60;
+					$start  = $at + 1;
+				} elseif ( 0x78 === $byte && isset( $window[ $at + 1 ] ) ) {
+					$length = ord( $window[ $at + 1 ] );
+					$start  = $at + 2;
+				} elseif ( 0x79 === $byte && strlen( $window ) >= $at + 3 ) {
+					$word   = unpack( 'n', substr( $window, $at + 1, 2 ) );
+					$length = $word[1];
+					$start  = $at + 3;
+				}
+				if ( $length >= 3 && $length <= 120 ) {
+					$candidate = substr( $window, $start, $length );
+					if ( preg_match( '/^[\x20-\x7E]+$/', $candidate ) ) {
+						return $candidate;
+					}
+				}
+			}
+		}
+
+		$after = substr( $payload, $pos + strlen( 'claim_generator' ), 200 );
+		if ( preg_match_all( '/[\x20-\x7E]{3,80}/', $after, $matches ) ) {
+			foreach ( $matches[0] as $run ) {
+				$run = (string) preg_replace( '/^[^A-Za-z0-9]+/', '', $run );
+				$run = (string) preg_replace( '/[^A-Za-z0-9)\]]+$/', '', $run );
+				if ( '' === $run || in_array( strtolower( $run ), array( 'info', 'name', 'dname', 'version', 'versions' ), true ) ) {
+					continue;
+				}
+				return substr( $run, 0, 80 );
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * IPTC DigitalSourceType terms declared inside raw C2PA manifest bytes.
+	 *
+	 * C2PA 2.x carries the source type in the c2pa.actions assertion as a
+	 * NewsCodes URI; matching is anchored on the vocabulary path so ordinary
+	 * words can never trigger it.
+	 *
+	 * @return string 'composite', 'generated' or '' (none declared).
+	 */
+	public static function c2pa_digital_source_type( string $payload ): string {
+		$lower = strtolower( $payload );
+		if ( str_contains( $lower, 'digitalsourcetype/compositewithtrainedalgorithmicmedia' ) ) {
+			return 'composite';
+		}
+		if ( str_contains( $lower, 'digitalsourcetype/trainedalgorithmicmedia' ) || str_contains( $lower, 'digitalsourcetype/compositesynthetic' ) ) {
+			return 'generated';
 		}
 		return '';
 	}

@@ -140,4 +140,13 @@ final class ParsersTest extends TestCase {
 		$this->assertStringContainsString( 'c2patool', TransparAI_Parsers::c2pa_claim_generator( $payload ) );
 		$this->assertSame( '', TransparAI_Parsers::c2pa_claim_generator( 'no key in here' ) );
 	}
+
+	public function test_c2pa_v2_claim_generator_info_and_declared_dst(): void {
+		$segments = TransparAI_Parsers::jpeg_segments( (string) file_get_contents( trai_fixture( 'c2pa-gemini.jpg' ) ) );
+		$this->assertNotNull( $segments );
+		$payload = TransparAI_Parsers::jpeg_app11_payload( $segments );
+		$this->assertSame( 'Google C2PA Core Generator Library', TransparAI_Parsers::c2pa_claim_generator( $payload ) );
+		$this->assertSame( 'generated', TransparAI_Parsers::c2pa_digital_source_type( $payload ) );
+		$this->assertSame( '', TransparAI_Parsers::c2pa_digital_source_type( 'plain composite text without the vocabulary path' ) );
+	}
 }
