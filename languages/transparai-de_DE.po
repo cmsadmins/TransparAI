@@ -1,0 +1,283 @@
+# German translation for TransparAI.
+# Copyright (C) 2026 Patrick Schlesinger
+# This file is distributed under the same license as the TransparAI plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: TransparAI 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai/\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: transparai\n"
+
+msgid "AI-generated"
+msgstr "KI-generiert"
+
+msgctxt "short badge label"
+msgid "AI"
+msgstr "KI"
+
+msgid "AI content"
+msgstr "KI-Inhalt"
+
+msgid "Media is AI-generated"
+msgstr "Medium ist KI-generiert"
+
+msgid "Controls the front-end badge, the machine-readable file metadata and the media library filter."
+msgstr "Steuert das Badge im Frontend, die maschinenlesbaren Datei-Metadaten und den Mediathek-Filter."
+
+msgid "Confirm AI label"
+msgstr "KI-Kennzeichnung bestätigen"
+
+msgid "Not AI — dismiss"
+msgstr "Kein KI-Inhalt — verwerfen"
+
+msgid "Re-check file metadata"
+msgstr "Datei-Metadaten erneut prüfen"
+
+msgid "certain"
+msgstr "sicher"
+
+msgid "likely"
+msgstr "wahrscheinlich"
+
+msgid "hint"
+msgstr "Hinweis"
+
+msgid "AI status: all"
+msgstr "KI-Status: alle"
+
+msgid "Only AI-labeled"
+msgstr "Nur KI-gekennzeichnet"
+
+msgid "Detected, needs review"
+msgstr "Erkannt, Prüfung ausstehend"
+
+msgid "Without AI label"
+msgstr "Ohne KI-Kennzeichnung"
+
+msgid "Mark as AI-generated"
+msgstr "Als KI-generiert markieren"
+
+msgid "Remove AI label"
+msgstr "KI-Kennzeichnung entfernen"
+
+msgid "Confirm detected AI label"
+msgstr "Erkannte KI-Kennzeichnung bestätigen"
+
+msgid "Dismiss detected AI label"
+msgstr "Erkannte KI-Kennzeichnung verwerfen"
+
+msgid "Please select media first."
+msgstr "Bitte zuerst Medien auswählen."
+
+msgid "Updating the AI label failed."
+msgstr "Aktualisierung der KI-Kennzeichnung fehlgeschlagen."
+
+msgid "Result"
+msgstr "Ergebnis"
+
+msgid "No AI provenance signals found in the file."
+msgstr "Keine KI-Herkunftssignale in der Datei gefunden."
+
+msgid "AI label updated for %d media file."
+msgid_plural "AI label updated for %d media files."
+msgstr[0] "KI-Kennzeichnung für %d Mediendatei aktualisiert."
+msgstr[1] "KI-Kennzeichnung für %d Mediendateien aktualisiert."
+
+msgid "AI"
+msgstr "KI"
+
+msgid "You are not allowed to do that."
+msgstr "Dazu bist du nicht berechtigt."
+
+msgid "Unknown action."
+msgstr "Unbekannte Aktion."
+
+msgid "Invalid attachment."
+msgstr "Ungültiger Anhang."
+
+msgid "TransparAI"
+msgstr "TransparAI"
+
+msgid "TransparAI – AI Image Marker & Detector"
+msgstr "TransparAI – KI-Bilder kennzeichnen & erkennen"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Library status"
+msgstr "Mediathek-Status"
+
+msgid "%1$d media files — %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned."
+msgstr "%1$d Mediendateien — %2$d als KI gekennzeichnet, %3$d erkannt und in Prüfung, %4$d gescannt."
+
+msgid "Open review queue"
+msgstr "Prüfliste öffnen"
+
+msgid "Scan existing library"
+msgstr "Bestehende Mediathek scannen"
+
+msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
+msgstr "Liest die Metadaten deiner vorhandenen Mediendateien (C2PA, XMP/IPTC, Generator-Signaturen) in kleinen Paketen. Nichts verlässt deinen Server."
+
+msgid "Scan new/unscanned media"
+msgstr "Neue/ungescannte Medien scannen"
+
+msgid "Rescan everything"
+msgstr "Alles neu scannen"
+
+msgid "Pause"
+msgstr "Pausieren"
+
+msgid "%1$d scanned — %2$d auto-labeled, %3$d queued for review"
+msgstr "%1$d gescannt — %2$d automatisch gekennzeichnet, %3$d zur Prüfung vorgemerkt"
+
+msgid "Scan complete."
+msgstr "Scan abgeschlossen."
+
+msgid "Scan request failed — you can restart to continue."
+msgstr "Scan-Anfrage fehlgeschlagen — zum Fortsetzen neu starten."
+
+msgid "Metadata integrity (auto-repair)"
+msgstr "Metadaten-Integrität (Auto-Reparatur)"
+
+msgid "Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed — %4$s ago."
+msgstr "Letzter vollständiger Durchlauf: %1$d gekennzeichnete Dateien geprüft, %2$d repariert, %3$d fehlgeschlagen — vor %4$s."
+
+msgid "Visible badge"
+msgstr "Sichtbares Badge"
+
+msgid "Show badge"
+msgstr "Badge anzeigen"
+
+msgid "Show a visible badge on labeled media in the front end"
+msgstr "Sichtbares Badge auf gekennzeichneten Medien im Frontend anzeigen"
+
+msgid "Badge text"
+msgstr "Badge-Text"
+
+msgid "Leave empty for the translated default label."
+msgstr "Leer lassen für die übersetzte Standard-Beschriftung."
+
+msgid "Appearance"
+msgstr "Darstellung"
+
+msgid "Overlay on the image"
+msgstr "Overlay auf dem Bild"
+
+msgid "Caption line below the image"
+msgstr "Textzeile unter dem Bild"
+
+msgid "Top left"
+msgstr "Oben links"
+
+msgid "Top right"
+msgstr "Oben rechts"
+
+msgid "Bottom left"
+msgstr "Unten links"
+
+msgid "Bottom right"
+msgstr "Unten rechts"
+
+msgid "Dark"
+msgstr "Dunkel"
+
+msgid "Light"
+msgstr "Hell"
+
+msgid "Outline"
+msgstr "Umriss"
+
+msgid "Icon only (short label)"
+msgstr "Nur Symbol (Kurzlabel)"
+
+msgid "Small"
+msgstr "Klein"
+
+msgid "Medium"
+msgstr "Mittel"
+
+msgid "Large"
+msgstr "Groß"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\")"
+msgstr "Erkannten Generator im Badge anzeigen (z. B. „KI-generiert · Midjourney“)"
+
+msgid "Append the label to the image alt text (screen readers)"
+msgstr "Kennzeichnung an den Alt-Text des Bildes anhängen (Screenreader)"
+
+msgid "Also label CSS background images (experimental, needs JavaScript)"
+msgstr "Auch CSS-Hintergrundbilder kennzeichnen (experimentell, benötigt JavaScript)"
+
+msgid "Automatic detection"
+msgstr "Automatische Erkennung"
+
+msgid "Detect on upload"
+msgstr "Beim Upload erkennen"
+
+msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
+msgstr "Neue Uploads auf KI-Herkunft prüfen (C2PA, XMP/IPTC, Generator-Signaturen)"
+
+msgid "Standard declarations"
+msgstr "Standard-Deklarationen"
+
+msgid "Label automatically"
+msgstr "Automatisch kennzeichnen"
+
+msgid "Put into review queue"
+msgstr "In die Prüfliste aufnehmen"
+
+msgid "Ignore"
+msgstr "Ignorieren"
+
+msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
+msgstr "Dateien, die ihre KI-Herkunft explizit deklarieren (IPTC DigitalSourceType, KI-Claim in C2PA, AIGC-Deklaration)."
+
+msgid "Generator signatures"
+msgstr "Generator-Signaturen"
+
+msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
+msgstr "Starke Signale ohne formale Deklaration (Stable-Diffusion-Parameter, ComfyUI-Workflows, Generator-Namen in EXIF/XMP, Kamera-geschriebenes C2PA)."
+
+msgid "More sources"
+msgstr "Weitere Quellen"
+
+msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
+msgstr "Auch Video- und Audio-Uploads scannen (MP4/MOV C2PA, MP3-AIGC-Deklarationen)"
+
+msgid "Use filename patterns as review hints (never labels automatically)"
+msgstr "Dateinamens-Muster als Prüfhinweise nutzen (kennzeichnet nie automatisch)"
+
+msgid "Machine-readable file metadata"
+msgstr "Maschinenlesbare Datei-Metadaten"
+
+msgid "Write into files"
+msgstr "In Dateien schreiben"
+
+msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG and WebP files (all size variants)"
+msgstr "IPTC DigitalSourceType als XMP in gekennzeichnete JPEG-, PNG- und WebP-Dateien schreiben (alle Größenvarianten)"
+
+msgid "Additionally mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
+msgstr "Zusätzlich in IPTC-IIM spiegeln (JPEG, nur wenn die Datei keinen fremden IPTC-Block hat)"
+
+msgid "Auto-repair"
+msgstr "Auto-Reparatur"
+
+msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
+msgstr "Metadaten wiederherstellen, wenn Bild-Optimierer oder Regenerierung sie entfernen (stündliche Integritätsprüfung)"
+
+msgid "Uninstall"
+msgstr "Deinstallation"
+
+msgid "Data removal"
+msgstr "Datenentfernung"
+
+msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
+msgstr "Alle Plugin-Daten (Kennzeichnungen, Erkennungsergebnisse, Einstellungen) bei der Deinstallation löschen"
