@@ -1,0 +1,129 @@
+/* The wrapper encloses exactly the media area (not the figcaption), so the
+   badge anchors to the image and never sits on top of the caption. */
+.trai-wrap {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.trai-thumbwrap {
+	position: relative;
+	display: block;
+}
+
+.trai-avwrap {
+	position: relative;
+	display: block;
+}
+
+.trai-avwrap figure {
+	position: relative;
+	margin-bottom: 0;
+}
+
+.trai-badge {
+	position: absolute;
+	z-index: 2;
+	background: rgba(20, 20, 20, 0.62);
+	color: #fff;
+	font-size: 11px;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	padding: 4px 7px;
+	border-radius: 4px;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+/* Positions */
+.trai-pos-bottom-right .trai-badge { right: 8px; bottom: 8px; }
+.trai-pos-bottom-left .trai-badge { left: 8px; bottom: 8px; }
+.trai-pos-top-right .trai-badge { right: 8px; top: 8px; }
+.trai-pos-top-left .trai-badge { left: 8px; top: 8px; }
+
+/* Sizes */
+.trai-size-small .trai-badge { font-size: 9px; padding: 3px 5px; }
+.trai-size-large .trai-badge { font-size: 13px; padding: 5px 9px; }
+
+/* Styles */
+.trai-style-light .trai-badge {
+	background: rgba(255, 255, 255, 0.82);
+	color: #1d2327;
+}
+
+.trai-style-outline .trai-badge {
+	background: transparent;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Icon-only: show just the short label, keep the full text for readers. */
+.trai-style-icon-only .trai-badge {
+	font-size: 0;
+	padding: 3px 5px;
+	pointer-events: auto;
+}
+
+.trai-style-icon-only .trai-badge::after {
+	content: attr(data-trai-short);
+	font-size: 10px;
+	line-height: 1;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+}
+
+/* Caption mode: static line below the media instead of an overlay. */
+.trai-mode-caption .trai-badge {
+	position: static;
+	display: block;
+	background: transparent;
+	color: inherit;
+	font-size: 12px;
+	line-height: 1.4;
+	padding: 2px 0 0;
+	opacity: 0.75;
+	white-space: normal;
+}
+
+/* Audio blocks always read better with the caption line. */
+.trai-avwrap .wp-block-audio + .trai-badge,
+.trai-avwrap audio + .trai-badge {
+	position: static;
+	display: block;
+	background: transparent;
+	color: inherit;
+	padding: 2px 0 0;
+	font-size: 12px;
+	opacity: 0.75;
+}
+
+/* Mini variant for small images: shows only the short label from the data
+   attribute. The full text stays in the DOM (screen readers) and appears as
+   a tooltip. Applied via JS based on the rendered image width. */
+.trai-badge--mini {
+	font-size: 0;
+	padding: 2px 4px;
+	border-radius: 3px;
+	pointer-events: auto;
+}
+
+.trai-pos-bottom-right .trai-badge--mini { right: 3px; bottom: 3px; }
+.trai-pos-bottom-left .trai-badge--mini { left: 3px; bottom: 3px; }
+.trai-pos-top-right .trai-badge--mini { right: 3px; top: 3px; }
+.trai-pos-top-left .trai-badge--mini { left: 3px; top: 3px; }
+
+.trai-badge--mini::after {
+	content: attr(data-trai-short);
+	font-size: 9px;
+	line-height: 1;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+}
+
+/* Background-image hosts (optional JS feature) */
+.trai-bg-host {
+	position: relative;
+}

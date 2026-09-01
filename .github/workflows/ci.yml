@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  phplint:
+    name: PHP Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          coverage: none
+          tools: composer
+      - run: composer install --no-progress --prefer-dist
+      - run: vendor/bin/parallel-lint --exclude vendor --exclude node_modules .
+
+  phpcs:
+    name: WordPress Coding Standards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          coverage: none
+          tools: composer
+      - run: composer install --no-progress --prefer-dist
+      - run: vendor/bin/phpcs -q --runtime-set ignore_warnings_on_exit 1
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          coverage: none
+          tools: composer
+      - run: composer install --no-progress --prefer-dist
+      - run: vendor/bin/phpstan analyse --memory-limit=2G
+
+  phpunit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.1", "8.2", "8.3", "8.4", "8.5"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer
+      - run: composer install --no-progress --prefer-dist --ignore-platform-req=php+
+      - run: php tests/fixtures/make-fixtures.php
+      - run: vendor/bin/phpunit --testsuite unit --no-coverage
+
+  plugin-check:
+    name: WordPress.org Plugin Check
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wordpress
+        ports: ["3306:3306"]
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: transparai
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mysqli
+          coverage: none
+          tools: wp-cli
+      - name: Set up WordPress
+        run: |
+          wp core download --version=latest --path=wp
+          wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=127.0.0.1 --path=wp --skip-check
+          wp core install --url=http://localhost:8080 --title=Test --admin_user=admin --admin_password=admin --admin_email=admin@example.com --skip-email --path=wp
+          mkdir -p wp/wp-content/plugins
+          cp -r transparai wp/wp-content/plugins/
+      - name: Install Plugin Check
+        run: wp plugin install plugin-check --activate --path=wp
+      - name: Run Plugin Check
+        run: wp plugin check transparai --severity=error --format=table --path=wp
+
+  security:
+    name: Composer Audit
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          coverage: none
+          tools: composer
+      - run: composer audit || true

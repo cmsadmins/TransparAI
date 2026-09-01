@@ -1,0 +1,66 @@
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          coverage: none
+          tools: composer, wp-cli
+
+      - name: Verify version match (tag = header = constant = stable tag)
+        run: |
+          TAG="${{ github.ref_name }}"
+          HEADER=$(grep -m1 -E "^[[:space:]]*\*?[[:space:]]*Version:" transparai.php | sed -E 's/.*Version:[[:space:]]*//' | tr -d '[:space:]')
+          CONST=$(grep -m1 -E "define\(\s*'TRANSPARAI_VERSION'" transparai.php | sed -E "s/.*TRANSPARAI_VERSION'[^,]*,\s*'([^']*)'.*/\\1/")
+          STABLE=$(grep -m1 -E "^Stable tag:" readme.txt | sed -E 's/^Stable tag:[[:space:]]*//' | tr -d '[:space:]')
+          echo "Tag: $TAG"
+          echo "Header: $HEADER"
+          echo "Constant: $CONST"
+          echo "Stable tag: $STABLE"
+          if [ "$TAG" != "$HEADER" ] || [ "$TAG" != "$CONST" ] || [ "$TAG" != "$STABLE" ]; then
+            echo "::error::Version mismatch."
+            exit 1
+          fi
+
+      - name: Install WP-CLI i18n command
+        run: composer global require wp-cli/i18n-command --no-interaction --no-progress
+
+      - name: Generate translation template
+        run: |
+          mkdir -p languages
+          wp i18n make-pot . languages/transparai.pot \
+            --slug=transparai \
+            --domain=transparai \
+            --exclude=node_modules,vendor,tests,docker,.github,.wordpress-org
+
+      - name: Deploy to WordPress.org SVN
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: transparai
+          VERSION: ${{ github.ref_name }}
+        with:
+          generate-zip: true
+
+      - name: Upload ZIP to GitHub Release
+        if: success()
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ github.workspace }}/transparai.zip
+          fail_on_unmatched_files: false
+          generate_release_notes: true

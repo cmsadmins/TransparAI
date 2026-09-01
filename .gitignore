@@ -1,0 +1,14 @@
+vendor/
+node_modules/
+.phpcs.cache
+.phpunit.result.cache
+coverage/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.zip
+*.tar.gz
+build/
+dist/
+tests/fixtures/generated/

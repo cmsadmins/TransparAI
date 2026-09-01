@@ -1,0 +1,251 @@
+<?php
+/**
+ * PHPUnit bootstrap: minimal WordPress stubs so the parser, detector and
+ * writer classes run without a WordPress install.
+ *
+ * @package TransparAI
+ */
+
+declare( strict_types = 1 );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+if ( ! defined( 'TRANSPARAI_VERSION' ) ) {
+	define( 'TRANSPARAI_VERSION', '1.0.0-test' );
+}
+if ( ! defined( 'TRANSPARAI_PLUGIN_DIR' ) ) {
+	define( 'TRANSPARAI_PLUGIN_DIR', dirname( __DIR__ ) . '/' );
+}
+if ( ! defined( 'TRANSPARAI_PLUGIN_URL' ) ) {
+	define( 'TRANSPARAI_PLUGIN_URL', 'https://example.test/wp-content/plugins/transparai/' );
+}
+if ( ! defined( 'TRANSPARAI_PLUGIN_FILE' ) ) {
+	define( 'TRANSPARAI_PLUGIN_FILE', dirname( __DIR__ ) . '/transparai.php' );
+}
+if ( ! defined( 'TRANSPARAI_PLUGIN_BASENAME' ) ) {
+	define( 'TRANSPARAI_PLUGIN_BASENAME', 'transparai/transparai.php' );
+}
+if ( ! defined( 'MINUTE_IN_SECONDS' ) ) {
+	define( 'MINUTE_IN_SECONDS', 60 );
+}
+if ( ! defined( 'HOUR_IN_SECONDS' ) ) {
+	define( 'HOUR_IN_SECONDS', 3600 );
+}
+if ( ! defined( 'DAY_IN_SECONDS' ) ) {
+	define( 'DAY_IN_SECONDS', 86400 );
+}
+
+global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients;
+$trai_test_options    = array();
+$trai_test_meta       = array();
+$trai_test_filters    = array();
+$trai_test_transients = array();
+
+if ( ! function_exists( 'get_option' ) ) {
+	function get_option( $name, $default = false ) {
+		global $trai_test_options;
+		return $trai_test_options[ $name ] ?? $default;
+	}
+}
+if ( ! function_exists( 'update_option' ) ) {
+	function update_option( $name, $value, $autoload = '' ) {
+		global $trai_test_options;
+		$trai_test_options[ $name ] = $value;
+		return true;
+	}
+}
+if ( ! function_exists( 'delete_option' ) ) {
+	function delete_option( $name ) {
+		global $trai_test_options;
+		unset( $trai_test_options[ $name ] );
+		return true;
+	}
+}
+if ( ! function_exists( 'get_transient' ) ) {
+	function get_transient( $name ) {
+		global $trai_test_transients;
+		return $trai_test_transients[ $name ] ?? false;
+	}
+}
+if ( ! function_exists( 'set_transient' ) ) {
+	function set_transient( $name, $value, $ttl = 0 ) {
+		global $trai_test_transients;
+		$trai_test_transients[ $name ] = $value;
+		return true;
+	}
+}
+if ( ! function_exists( 'delete_transient' ) ) {
+	function delete_transient( $name ) {
+		global $trai_test_transients;
+		unset( $trai_test_transients[ $name ] );
+		return true;
+	}
+}
+if ( ! function_exists( 'apply_filters' ) ) {
+	function apply_filters( $tag, $value ) {
+		$args = func_get_args();
+		array_shift( $args );
+		global $trai_test_filters;
+		if ( isset( $trai_test_filters[ $tag ] ) ) {
+			foreach ( $trai_test_filters[ $tag ] as $callback ) {
+				$args[0] = call_user_func_array( $callback, $args );
+			}
+		}
+		return $args[0];
+	}
+}
+if ( ! function_exists( 'add_filter' ) ) {
+	function add_filter( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+		global $trai_test_filters;
+		$trai_test_filters[ $tag ][] = $callback;
+		return true;
+	}
+}
+if ( ! function_exists( 'add_action' ) ) {
+	function add_action( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+		return true;
+	}
+}
+if ( ! function_exists( 'do_action' ) ) {
+	function do_action( $tag ) {
+		return null;
+	}
+}
+if ( ! function_exists( 'update_post_meta' ) ) {
+	function update_post_meta( $post_id, $key, $value ) {
+		global $trai_test_meta;
+		$trai_test_meta[ $post_id ][ $key ] = $value;
+		return true;
+	}
+}
+if ( ! function_exists( 'get_post_meta' ) ) {
+	function get_post_meta( $post_id, $key = '', $single = false ) {
+		global $trai_test_meta;
+		if ( ! isset( $trai_test_meta[ $post_id ][ $key ] ) ) {
+			return $single ? '' : array();
+		}
+		return $single ? $trai_test_meta[ $post_id ][ $key ] : array( $trai_test_meta[ $post_id ][ $key ] );
+	}
+}
+if ( ! function_exists( 'delete_post_meta' ) ) {
+	function delete_post_meta( $post_id, $key ) {
+		global $trai_test_meta;
+		unset( $trai_test_meta[ $post_id ][ $key ] );
+		return true;
+	}
+}
+if ( ! function_exists( 'get_post_type' ) ) {
+	function get_post_type( $post_id = 0 ) {
+		return 'attachment';
+	}
+}
+if ( ! function_exists( 'current_user_can' ) ) {
+	function current_user_can( $capability, ...$args ) {
+		return true;
+	}
+}
+if ( ! function_exists( 'get_attached_file' ) ) {
+	function get_attached_file( $post_id ) {
+		global $trai_test_meta;
+		return $trai_test_meta[ $post_id ]['_test_file'] ?? false;
+	}
+}
+if ( ! function_exists( 'wp_get_attachment_metadata' ) ) {
+	function wp_get_attachment_metadata( $post_id ) {
+		global $trai_test_meta;
+		return $trai_test_meta[ $post_id ]['_test_metadata'] ?? array();
+	}
+}
+if ( ! function_exists( 'wp_is_writable' ) ) {
+	function wp_is_writable( $path ) {
+		return is_writable( $path );
+	}
+}
+if ( ! function_exists( 'wp_delete_file' ) ) {
+	function wp_delete_file( $file ) {
+		if ( file_exists( $file ) ) {
+			unlink( $file );
+		}
+	}
+}
+if ( ! function_exists( 'sanitize_text_field' ) ) {
+	function sanitize_text_field( $value ) {
+		return is_string( $value ) ? trim( strip_tags( $value ) ) : '';
+	}
+}
+if ( ! function_exists( 'sanitize_textarea_field' ) ) {
+	function sanitize_textarea_field( $value ) {
+		return is_string( $value ) ? trim( strip_tags( $value ) ) : '';
+	}
+}
+if ( ! function_exists( 'sanitize_key' ) ) {
+	function sanitize_key( $value ) {
+		return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( (string) $value ) );
+	}
+}
+if ( ! function_exists( 'sanitize_html_class' ) ) {
+	function sanitize_html_class( $value ) {
+		return preg_replace( '/[^A-Za-z0-9_\-]/', '', (string) $value );
+	}
+}
+if ( ! function_exists( 'absint' ) ) {
+	function absint( $value ) {
+		return abs( (int) $value );
+	}
+}
+if ( ! function_exists( 'wp_unslash' ) ) {
+	function wp_unslash( $value ) {
+		return is_string( $value ) ? stripslashes( $value ) : $value;
+	}
+}
+if ( ! function_exists( '__' ) ) {
+	function __( $text, $domain = '' ) {
+		return $text;
+	}
+}
+if ( ! function_exists( '_x' ) ) {
+	function _x( $text, $context, $domain = '' ) {
+		return $text;
+	}
+}
+if ( ! function_exists( 'esc_attr' ) ) {
+	function esc_attr( $text ) {
+		return htmlspecialchars( (string) $text, ENT_QUOTES );
+	}
+}
+if ( ! function_exists( 'esc_html' ) ) {
+	function esc_html( $text ) {
+		return htmlspecialchars( (string) $text, ENT_QUOTES );
+	}
+}
+
+require_once dirname( __DIR__ ) . '/includes/class-options.php';
+require_once dirname( __DIR__ ) . '/includes/class-meta.php';
+require_once dirname( __DIR__ ) . '/includes/class-parsers.php';
+require_once dirname( __DIR__ ) . '/includes/class-detector.php';
+require_once dirname( __DIR__ ) . '/includes/class-repair.php';
+require_once dirname( __DIR__ ) . '/includes/class-writer.php';
+
+/**
+ * Reset all in-memory stores between tests.
+ */
+function trai_test_reset(): void {
+	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients;
+	$trai_test_options    = array();
+	$trai_test_meta       = array();
+	$trai_test_filters    = array();
+	$trai_test_transients = array();
+}
+
+/**
+ * Path to a generated fixture file.
+ */
+function trai_fixture( string $name ): string {
+	$path = __DIR__ . '/fixtures/generated/' . $name;
+	if ( ! file_exists( $path ) ) {
+		fwrite( STDERR, "Fixture missing: {$name} — run `php tests/fixtures/make-fixtures.php` first.\n" );
+		exit( 1 );
+	}
+	return $path;
+}

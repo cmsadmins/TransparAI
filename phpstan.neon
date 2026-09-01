@@ -1,0 +1,25 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 5
+    scanFiles:
+        - vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php
+        - vendor/php-stubs/wp-cli-stubs/wp-cli-commands-stubs.php
+    paths:
+        - transparai.php
+        - includes
+        - admin
+        - uninstall.php
+    bootstrapFiles:
+        - tests/phpstan-bootstrap.php
+    excludePaths:
+        - vendor
+        - tests/Unit
+        - node_modules
+    treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        # The wp-cli stubs ship no wp-cli/php-cli-tools classes; the progress
+        # bar object only needs tick()/finish() duck-typing.
+        - '#unknown class cli\\progress\\Bar#'
