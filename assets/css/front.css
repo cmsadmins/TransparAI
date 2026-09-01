@@ -8,6 +8,15 @@
 	vertical-align: top;
 }
 
+/* Themes only constrain images they know (wp-image-*). Plain images that the
+   optional script wraps (ACF url returns, sliders) may carry no max-width at
+   all and would overflow the layout, so the wrapper constrains its own child. */
+.trai-wrap > img,
+.trai-avwrap video {
+	max-width: 100%;
+	height: auto;
+}
+
 .trai-thumbwrap {
 	position: relative;
 	display: block;
