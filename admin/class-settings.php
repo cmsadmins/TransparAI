@@ -114,7 +114,10 @@ final class TransparAI_Settings {
 		settings_errors( 'transparai_messages' );
 		?>
 		<div class="wrap trai-settings">
-			<h1><?php esc_html_e( 'TransparAI', 'transparai' ); ?></h1>
+			<h1 class="trai-logo">
+				<?php echo self::logo_mark(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static inline SVG built from constants, no user input. ?>
+				<span class="trai-logo-text">Transpar<span class="trai-logo-ai">AI</span></span>
+			</h1>
 
 			<section class="trai-card">
 				<h2 class="trai-card-title"><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
@@ -345,6 +348,23 @@ final class TransparAI_Settings {
 			</form>
 		</div>
 		<?php
+	}
+
+	/**
+	 * The TransparAI mark as inline SVG: photo frame with mountains and sun,
+	 * the orange AI corner badge and the scan line underneath. Vector twin of
+	 * the wp.org icon so the brand is identical everywhere.
+	 */
+	private static function logo_mark(): string {
+		return '<svg class="trai-logo-mark" viewBox="0 0 49 46" width="42" height="39" role="img" aria-hidden="true" focusable="false">'
+			. '<rect x="3.2" y="4.2" width="41.6" height="31.6" fill="#fffffe" stroke="#1a1a1a" stroke-width="1.6"/>'
+			. '<circle cx="32.8" cy="14" r="3.4" fill="#a0a0a0"/>'
+			. '<path d="M4 35 L19.2 14 L28.8 35 Z" fill="#1a1a1a"/>'
+			. '<path d="M20 35 L31.2 19.4 L44 35 Z" fill="#3d3d3d"/>'
+			. '<rect x="2.4" y="41.4" width="43.2" height="2.2" fill="#ff6800"/>'
+			. '<rect x="32.3" y="31" width="16.3" height="9.6" rx="1.2" fill="#ff6800"/>'
+			. '<path d="M36.9 38.3 L38.85 33.3 L40.8 38.3 M37.6 36.6 h2.5 M43.7 33.3 v5" fill="none" stroke="#fffffe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'
+			. '</svg>';
 	}
 
 	/**

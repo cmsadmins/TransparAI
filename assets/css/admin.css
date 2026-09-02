@@ -26,6 +26,29 @@
 	--trai-danger-light: #b32d2e;
 }
 
+/* Logo header: mark + two-tone wordmark (brand pattern: first part dark on
+   the light admin ground, "AI" in the accent orange). Text stays real text. */
+.trai-settings .trai-logo {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 8px 0 16px;
+	padding: 0;
+	font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: #1d2327;
+}
+
+.trai-settings .trai-logo-mark {
+	flex: 0 0 auto;
+}
+
+.trai-settings .trai-logo-ai {
+	color: var(--trai-primary, #FF6800);
+}
+
 /* Settings page: white cards on the admin ground, one per section.
    8px spacing grid, 8px card radius (design system), no accent borders. */
 .trai-settings .trai-card {
