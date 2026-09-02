@@ -98,6 +98,19 @@ final class FrontendTest extends TestCase {
 		$this->assertSame( 1, substr_count( $out, 'trai-badge' ) );
 	}
 
+	public function test_cover_background_wrap_gets_fill_class(): void {
+		// Cover backgrounds are absolutely positioned; the wrapper must take
+		// over the full-bleed role, plain images must not get the class.
+		$this->seed_map( array() );
+		update_post_meta( 23, TransparAI_Meta::KEY_FLAG, '1' );
+
+		$cover = '<img class="wp-block-cover__image-background wp-image-23" src="/wp-content/uploads/2026/09/x.jpg">';
+		$this->assertStringContainsString( 'trai-wrap--fill', TransparAI_Frontend::wrap_images( $cover ) );
+
+		$plain = '<img class="wp-image-23" src="/wp-content/uploads/2026/09/x.jpg">';
+		$this->assertStringNotContainsString( 'trai-wrap--fill', TransparAI_Frontend::wrap_images( $plain ) );
+	}
+
 	public function test_wpb_image_filter_tags_classless_markup(): void {
 		global $trai_test_options;
 		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );

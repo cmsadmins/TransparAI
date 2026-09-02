@@ -8,6 +8,23 @@
 	vertical-align: top;
 }
 
+/* Inline images in running text sit on the baseline like a bare <img>
+   would; the top alignment is only right for figure-like containers. */
+p .trai-wrap {
+	vertical-align: baseline;
+}
+
+/* Full-bleed backgrounds (cover blocks): the wrapped image is positioned
+   absolutely against its nearest positioned ancestor, so the wrapper has
+   to span that ancestor itself instead of collapsing to a zero-size box. */
+.trai-wrap--fill {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
 /* Themes only constrain images they know (wp-image-*). Plain images that the
    optional script wraps (ACF url returns, sliders) may carry no max-width at
    all and would overflow the layout, so the wrapper constrains its own child. */
@@ -111,16 +128,18 @@
 	white-space: normal;
 }
 
-/* Audio blocks always read better with the caption line. */
-.trai-avwrap .wp-block-audio + .trai-badge,
-.trai-avwrap audio + .trai-badge {
+/* Video and audio always use the caption line: an overlay badge would sit
+   on the player surface and collide with the controls. */
+.trai-avwrap .trai-badge {
 	position: static;
 	display: block;
 	background: transparent;
 	color: inherit;
 	padding: 2px 0 0;
 	font-size: 12px;
+	line-height: 1.4;
 	opacity: 0.75;
+	white-space: normal;
 }
 
 /* Mini variant for small images: shows only the short label from the data

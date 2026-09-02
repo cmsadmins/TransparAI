@@ -4,6 +4,9 @@
 	/* Shrink badges on small images to the short label (tooltip keeps the text). */
 	function scaleBadges() {
 		document.querySelectorAll('.trai-mode-overlay .trai-badge').forEach(function (badge) {
+			if (badge.closest('.trai-avwrap')) {
+				return; /* AV badges are static caption lines, never minified. */
+			}
 			var img = badge.parentElement ? badge.parentElement.querySelector('img, video') : null;
 			var width = img ? img.clientWidth : 0;
 			if (!width) {

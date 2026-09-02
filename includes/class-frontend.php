@@ -203,7 +203,15 @@ final class TransparAI_Frontend {
 					$attachment_id = (int) $map[ $key ];
 				}
 
-				return '<span class="' . esc_attr( self::wrap_classes( 'trai-wrap' ) ) . '">' . $tag . self::badge_html( $attachment_id ) . '</span>';
+				$classes = self::wrap_classes( 'trai-wrap' );
+				if ( str_contains( $tag, 'wp-block-cover__image-background' ) ) {
+					// Cover backgrounds are absolutely positioned full-bleed
+					// images; the wrapper must take over that role or the
+					// image collapses to a zero-height box.
+					$classes .= ' trai-wrap--fill';
+				}
+
+				return '<span class="' . esc_attr( $classes ) . '">' . $tag . self::badge_html( $attachment_id ) . '</span>';
 			},
 			$content
 		);
