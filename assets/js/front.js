@@ -6,7 +6,13 @@
 		document.querySelectorAll('.trai-mode-overlay .trai-badge').forEach(function (badge) {
 			var img = badge.parentElement ? badge.parentElement.querySelector('img, video') : null;
 			var width = img ? img.clientWidth : 0;
-			var mini = width > 0 && width < 140;
+			if (!width) {
+				return; /* Not rendered yet (lazyload); the load handler re-runs this. */
+			}
+			badge.classList.remove('trai-badge--mini');
+			/* Mini when the image is tiny or the full label would outgrow it
+			   (scrollWidth measures the unclipped text). */
+			var mini = width < 140 || badge.scrollWidth + 16 > width;
 			badge.classList.toggle('trai-badge--mini', mini);
 			if (mini && !badge.title) {
 				badge.title = badge.textContent;
@@ -18,10 +24,19 @@
 	window.addEventListener('load', scaleBadges);
 
 	var resizeTimer;
-	window.addEventListener('resize', function () {
+	function scaleBadgesSoon() {
 		clearTimeout(resizeTimer);
 		resizeTimer = setTimeout(scaleBadges, 150);
-	});
+	}
+	window.addEventListener('resize', scaleBadgesSoon);
+
+	/* Lazyloaded images (slider data-src) get their size after the load event;
+	   capture their load to rescale the badge that sits on them. */
+	document.addEventListener('load', function (event) {
+		if (event.target && event.target.tagName === 'IMG' && event.target.closest('.trai-wrap')) {
+			scaleBadgesSoon();
+		}
+	}, true);
 
 	/* Optional (one setting): label media the server-side filters cannot see.
 	   Covers two cases against the upload paths of labeled attachments:

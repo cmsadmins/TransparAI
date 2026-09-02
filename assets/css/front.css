@@ -51,6 +51,15 @@
 	white-space: nowrap;
 }
 
+/* A long generator label must never grow wider than the media it sits on
+   (small carousel thumbnails); the script switches to the mini variant, this
+   is the hard limit for the no-JS case. */
+.trai-mode-overlay .trai-badge {
+	max-width: calc(100% - 16px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 /* Positions */
 .trai-pos-bottom-right .trai-badge { right: 8px; bottom: 8px; }
 .trai-pos-bottom-left .trai-badge { left: 8px; bottom: 8px; }
