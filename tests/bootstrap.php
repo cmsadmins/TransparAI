@@ -163,6 +163,21 @@ if ( ! function_exists( 'current_user_can' ) ) {
 		return true;
 	}
 }
+if ( ! function_exists( 'is_admin' ) ) {
+	function is_admin() {
+		return false;
+	}
+}
+if ( ! function_exists( 'is_feed' ) ) {
+	function is_feed() {
+		return false;
+	}
+}
+if ( ! function_exists( 'wp_doing_ajax' ) ) {
+	function wp_doing_ajax() {
+		return false;
+	}
+}
 if ( ! function_exists( 'get_attached_file' ) ) {
 	function get_attached_file( $post_id ) {
 		global $trai_test_meta;
@@ -244,6 +259,7 @@ require_once dirname( __DIR__ ) . '/includes/class-parsers.php';
 require_once dirname( __DIR__ ) . '/includes/class-detector.php';
 require_once dirname( __DIR__ ) . '/includes/class-repair.php';
 require_once dirname( __DIR__ ) . '/includes/class-writer.php';
+require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
 
 /**
  * Reset all in-memory stores between tests.

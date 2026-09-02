@@ -78,7 +78,7 @@
 			if (img.closest('.trai-wrap, .trai-thumbwrap, .trai-avwrap, .trai-bg-host')) {
 				return;
 			}
-			var src = img.currentSrc || img.src || '';
+			var src = img.currentSrc || img.src || img.getAttribute('data-src') || '';
 			if (!src || !flagged[normalizePath(src)]) {
 				return;
 			}
@@ -101,15 +101,20 @@
 	}
 
 	function labelBackgrounds() {
+		/* Inline styles, block covers, Elementor sections/containers (their
+		   backgrounds live in compiled CSS, hence getComputedStyle) and
+		   WPBakery rows/columns with design-options fills or parallax. */
 		var candidates = document.querySelectorAll(
-			'[style*="background-image"], .wp-block-cover, .elementor-section, .elementor-widget-wrap, .elementor-column-wrap'
+			'[style*="background-image"], .wp-block-cover, .elementor-section, .e-con, .elementor-widget-wrap, .elementor-column-wrap, .vc_row-has-fill, .vc_column-inner, [data-vc-parallax-image]'
 		);
 		candidates.forEach(function (element) {
 			if (element.getAttribute('data-trai-bg')) {
 				return;
 			}
-			var style = element.getAttribute('style') || '';
-			var url = extractUrl(style);
+			var url = element.getAttribute('data-vc-parallax-image') || '';
+			if (!url) {
+				url = extractUrl(element.getAttribute('style') || '');
+			}
 			if (!url) {
 				var computed = window.getComputedStyle(element).backgroundImage;
 				if (computed && computed !== 'none') {
