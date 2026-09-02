@@ -128,9 +128,9 @@ TransparAI processes media files locally on your server and stores its results i
 
 == Screenshots ==
 
-1. Media library grid with AI badges, filter, review states and bulk buttons
-2. Attachment details: checkbox, detection evidence and review actions
-3. Settings page with library scan and statistics
+1. Media library grid with AI badges, a review state and bulk labeling
+2. Attachment details: label checkbox, detection evidence and review actions
+3. Settings page with library statistics and the batched scan
 4. Front-end badge on a labeled image
 
 == Changelog ==
