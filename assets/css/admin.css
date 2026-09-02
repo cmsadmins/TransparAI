@@ -16,6 +16,7 @@
 #trai-filter,
 .trai-bulk-button {
 	--trai-primary: #FF6800;
+	--trai-primary-hover: #e05c00;
 	--trai-bg: #1a1a1a;
 	--trai-bg-elevated: #2d2d2d;
 	--trai-border-light: #e0e0e0;
@@ -23,6 +24,114 @@
 	--trai-text-light: #a0a0a0;
 	--trai-muted: #646970;
 	--trai-danger-light: #b32d2e;
+}
+
+/* Settings page: white cards on the admin ground, one per section.
+   8px spacing grid, 8px card radius (design system), no accent borders. */
+.trai-settings .trai-card {
+	box-sizing: border-box;
+	max-width: 880px;
+	margin: 16px 0;
+	padding: 8px 24px 24px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 8px;
+}
+
+.trai-settings .trai-card-title {
+	margin: 16px 0 8px;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+/* Library statistics: plain numbers, orange only where action is needed. */
+.trai-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 32px;
+	margin: 16px 0 8px;
+}
+
+.trai-stat-number {
+	display: block;
+	font-size: 28px;
+	font-weight: 300;
+	line-height: 1.2;
+	color: #1d2327;
+}
+
+.trai-stat--action .trai-stat-number {
+	color: var(--trai-primary, #FF6800);
+	font-weight: 600;
+}
+
+.trai-stat-label {
+	display: block;
+	font-size: 12px;
+	color: var(--trai-muted, #646970);
+}
+
+/* Plugin buttons: own class, WP core .button stays untouched.
+   Orange is the accent, focus and hover included. */
+.trai-btn {
+	display: inline-block;
+	padding: 8px 16px;
+	background: var(--trai-primary, #FF6800);
+	color: #fff;
+	border: 1px solid var(--trai-primary, #FF6800);
+	border-radius: 4px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.trai-btn:hover {
+	background: var(--trai-primary-hover, #e05c00);
+	border-color: var(--trai-primary-hover, #e05c00);
+	color: #fff;
+}
+
+.trai-btn:focus {
+	color: #fff;
+	outline: 2px solid var(--trai-primary, #FF6800);
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+.trai-btn:disabled {
+	opacity: 0.6;
+	cursor: default;
+}
+
+.trai-btn--ghost {
+	background: transparent;
+	color: #1d2327;
+	border-color: #c3c4c7;
+}
+
+.trai-btn--ghost:hover {
+	background: transparent;
+	color: var(--trai-primary, #FF6800);
+	border-color: var(--trai-primary, #FF6800);
+}
+
+.trai-btn--ghost:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 16px 0 8px;
+}
+
+.trai-report {
+	margin: 16px 0 0;
+	color: var(--trai-muted, #646970);
 }
 
 /* Grid view tile badges.

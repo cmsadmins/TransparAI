@@ -116,59 +116,67 @@ final class TransparAI_Settings {
 		<div class="wrap trai-settings">
 			<h1><?php esc_html_e( 'TransparAI', 'transparai' ); ?></h1>
 
-			<h2><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
-			<p>
-				<?php
-				echo esc_html(
-					sprintf(
-						/* translators: 1: total media count, 2: labeled count, 3: pending review count, 4: scanned count. */
-						__( '%1$d media files: %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned.', 'transparai' ),
-						$stats['total'],
-						$stats['flagged'],
-						$stats['detected'],
-						$stats['scanned']
-					)
-				);
-				?>
+			<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
+				<div class="trai-stats">
+					<div class="trai-stat">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Media files', 'transparai' ); ?></span>
+					</div>
+					<div class="trai-stat">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['flagged'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Labeled as AI', 'transparai' ); ?></span>
+					</div>
+					<div class="trai-stat<?php echo $stats['detected'] > 0 ? ' trai-stat--action' : ''; ?>">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['detected'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Waiting for review', 'transparai' ); ?></span>
+					</div>
+					<div class="trai-stat">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['scanned'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Scanned', 'transparai' ); ?></span>
+					</div>
+				</div>
 				<?php if ( $stats['detected'] > 0 ) : ?>
-					<a href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
+					<p><a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a></p>
 				<?php endif; ?>
-			</p>
+			</section>
 
-			<h2><?php esc_html_e( 'Scan existing library', 'transparai' ); ?></h2>
-			<p class="description"><?php esc_html_e( 'Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server.', 'transparai' ); ?></p>
-			<p>
-				<button type="button" class="button button-primary" id="trai-scan-start" data-mode="missing"><?php esc_html_e( 'Scan new/unscanned media', 'transparai' ); ?></button>
-				<button type="button" class="button" id="trai-scan-all" data-mode="all"><?php esc_html_e( 'Rescan everything', 'transparai' ); ?></button>
-				<button type="button" class="button" id="trai-scan-stop" hidden><?php esc_html_e( 'Pause', 'transparai' ); ?></button>
-			</p>
-			<div id="trai-scan-progress" hidden>
-				<div class="trai-progress"><div class="trai-progress-bar" style="width:0"></div></div>
-				<p class="trai-progress-text"></p>
-			</div>
-
-			<?php if ( array() !== $report && isset( $report['completed_at'] ) ) : ?>
-				<h2><?php esc_html_e( 'Metadata integrity (auto-repair)', 'transparai' ); ?></h2>
-				<p>
-					<?php
-					echo esc_html(
-						sprintf(
-							/* translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff. */
-							__( 'Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago).', 'transparai' ),
-							(int) ( $report['last_checked'] ?? $report['checked'] ?? 0 ),
-							(int) ( $report['last_repaired'] ?? $report['repaired'] ?? 0 ),
-							(int) ( $report['last_failed'] ?? $report['failed'] ?? 0 ),
-							human_time_diff( (int) $report['completed_at'] )
-						)
-					);
-					?>
+			<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Scan existing library', 'transparai' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server.', 'transparai' ); ?></p>
+				<p class="trai-actions">
+					<button type="button" class="trai-btn" id="trai-scan-start" data-mode="missing"><?php esc_html_e( 'Scan new/unscanned media', 'transparai' ); ?></button>
+					<button type="button" class="trai-btn trai-btn--ghost" id="trai-scan-all" data-mode="all"><?php esc_html_e( 'Rescan everything', 'transparai' ); ?></button>
+					<button type="button" class="trai-btn trai-btn--ghost" id="trai-scan-stop" hidden><?php esc_html_e( 'Pause', 'transparai' ); ?></button>
 				</p>
-			<?php endif; ?>
+				<div id="trai-scan-progress" hidden>
+					<div class="trai-progress"><div class="trai-progress-bar" style="width:0"></div></div>
+					<p class="trai-progress-text"></p>
+				</div>
+
+				<?php if ( array() !== $report && isset( $report['completed_at'] ) ) : ?>
+					<p class="trai-report">
+						<?php
+						echo esc_html(
+							sprintf(
+								/* translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff. */
+								__( 'Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago).', 'transparai' ),
+								(int) ( $report['last_checked'] ?? $report['checked'] ?? 0 ),
+								(int) ( $report['last_repaired'] ?? $report['repaired'] ?? 0 ),
+								(int) ( $report['last_failed'] ?? $report['failed'] ?? 0 ),
+								human_time_diff( (int) $report['completed_at'] )
+							)
+						);
+						?>
+					</p>
+				<?php endif; ?>
+			</section>
 
 			<form method="post" action="options.php">
 				<?php settings_fields( 'transparai' ); ?>
 
-				<h2><?php esc_html_e( 'Visible badge', 'transparai' ); ?></h2>
+				<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Visible badge', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Show badge', 'transparai' ); ?></th>
@@ -240,8 +248,10 @@ final class TransparAI_Settings {
 						</td>
 					</tr>
 				</table>
+				</section>
 
-				<h2><?php esc_html_e( 'Automatic detection', 'transparai' ); ?></h2>
+				<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Automatic detection', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Detect on upload', 'transparai' ); ?></th>
@@ -294,8 +304,10 @@ final class TransparAI_Settings {
 						</td>
 					</tr>
 				</table>
+				</section>
 
-				<h2><?php esc_html_e( 'Machine-readable file metadata', 'transparai' ); ?></h2>
+				<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Machine-readable file metadata', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Write into files', 'transparai' ); ?></th>
@@ -314,8 +326,10 @@ final class TransparAI_Settings {
 						</td>
 					</tr>
 				</table>
+				</section>
 
-				<h2><?php esc_html_e( 'Uninstall', 'transparai' ); ?></h2>
+				<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Uninstall', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Data removal', 'transparai' ); ?></th>
@@ -325,8 +339,9 @@ final class TransparAI_Settings {
 						</td>
 					</tr>
 				</table>
+				</section>
 
-				<?php submit_button(); ?>
+				<p class="submit"><button type="submit" class="trai-btn"><?php esc_html_e( 'Save changes', 'transparai' ); ?></button></p>
 			</form>
 		</div>
 		<?php

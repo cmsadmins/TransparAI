@@ -27,7 +27,7 @@ function transparai_uninstall_site(): void {
 	wp_clear_scheduled_hook( 'transparai_verify_markings' );
 
 	delete_transient( 'transparai_stats' );
-	delete_transient( 'transparai_bg_map' );
+	delete_transient( 'transparai_url_map' );
 
 	if ( ! $purge ) {
 		return;

@@ -108,8 +108,20 @@ msgstr "Einstellungen"
 msgid "Library status"
 msgstr "Mediathek-Status"
 
-msgid "%1$d media files: %2$d labeled as AI, %3$d detected and waiting for review, %4$d scanned."
-msgstr "%1$d Mediendateien: %2$d als KI gekennzeichnet, %3$d erkannt und in Prüfung, %4$d gescannt."
+msgid "Media files"
+msgstr "Mediendateien"
+
+msgid "Labeled as AI"
+msgstr "Als KI gekennzeichnet"
+
+msgid "Waiting for review"
+msgstr "Warten auf Prüfung"
+
+msgid "Scanned"
+msgstr "Gescannt"
+
+msgid "Save changes"
+msgstr "Änderungen speichern"
 
 msgid "Open review queue"
 msgstr "Prüfliste öffnen"
@@ -138,11 +150,8 @@ msgstr "Scan abgeschlossen."
 msgid "Scan request failed. You can restart to continue."
 msgstr "Scan-Anfrage fehlgeschlagen. Zum Fortsetzen neu starten."
 
-msgid "Metadata integrity (auto-repair)"
-msgstr "Metadaten-Integrität (Auto-Reparatur)"
-
-msgid "Last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
-msgstr "Letzter vollständiger Durchlauf: %1$d gekennzeichnete Dateien geprüft, %2$d repariert, %3$d fehlgeschlagen (vor %4$s)."
+msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
+msgstr "Auto-Reparatur, letzter vollständiger Durchlauf: %1$d gekennzeichnete Dateien geprüft, %2$d repariert, %3$d fehlgeschlagen (vor %4$s)."
 
 msgid "Visible badge"
 msgstr "Sichtbares Badge"
