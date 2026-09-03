@@ -4,6 +4,13 @@
 
 Initial release.
 
+- Schema.org JSON-LD per page: `ImageObject`/`VideoObject`/`AudioObject` with the IPTC `digitalSourceType` (and the generator as `creator`) for every labeled medium rendered on the page, so search engines read the declaration straight from the markup.
+- Optional site-wide disclosure note at the end of pages containing labeled media, and a per-post "This content is AI-generated" checkbox that puts a configurable note ahead of AI-written content.
+- XMP writing extended to AVIF (top-level XMP uuid box, exiftool-verified), size variants and auto-repair included; video/audio containers stay read-only on purpose.
+- Page caches (WP Rocket, LiteSpeed, W3 Total Cache, WP Super Cache, WP Fastest Cache, SiteGround Optimizer, Cache Enabler, Breeze, Nginx Helper, Hummingbird) are purged when a label changes, so cached pages never serve an outdated badge state.
+- WooCommerce validated end to end: shop loop, product gallery with thumbnails and lightbox copies, negative probes stay clean.
+- WPML/Polylang support via wpml-config.xml (badge and notice texts, content flag copied to translations).
+
 - Automatic AI detection: C2PA/Content Credentials (JPEG APP11/JUMBF, PNG caBX, WebP, MP4/MOV uuid boxes, `.c2pa` sidecars), IPTC digital source type in XMP (element, attribute and rdf list forms) and IPTC-IIM, PNG generator chunks (A1111 `parameters`, ComfyUI `prompt`/`workflow`, NovelAI, InvokeAI, SwarmUI, Fooocus), EXIF/XMP generator signatures with word-boundary matching, JPEG COM segments, MP3 ID3v2 "aigc" declarations.
 - Camera rule: C2PA presence alone never auto-labels, since Leica, Sony and Nikon embed Content Credentials in real photos.
 - Confidence levels (certain, likely, hint) with configurable behavior per level, a review queue with confirm and dismiss (single and bulk), stored evidence per detection.

@@ -24,11 +24,13 @@ Uploads are checked as they come in; for everything older there is a batched sca
 
 **The visible badge**
 
-A configurable badge on labeled media in the front end. Overlay or a caption line, four positions, three sizes, dark, light, outline or icon-only, optional generator name, optional alt text note for screen readers. The badge is rendered server-side, so it survives page caching, and it works with the block editor (images, galleries, covers, featured images, inline images in text, video and audio), the classic editor, template images, text widgets, Elementor free and Pro including Theme Builder, and WPBakery Page Builder, each image module tested one by one. An optional extra covers what server-side filters cannot see: images printed without an attachment ID (ACF fields returning a URL, sliders) and CSS background images get their badge through a small script that matches them against the labeled files, late-loading galleries and AJAX grids included.
+A configurable badge on labeled media in the front end. Overlay or a caption line, four positions, three sizes, dark, light, outline or icon-only, optional generator name, optional alt text note for screen readers. The badge is rendered server-side, so it survives page caching, and it works with the block editor (images, galleries, covers, featured images, inline images in text, video and audio), the classic editor, template images, text widgets, WooCommerce product and shop pages including the gallery lightbox, Elementor free and Pro including Theme Builder, and WPBakery Page Builder, each image module tested one by one. An optional extra covers what server-side filters cannot see: images printed without an attachment ID (ACF fields returning a URL, sliders) and CSS background images get their badge through a small script that matches them against the labeled files, late-loading galleries and AJAX grids included.
+
+Two optional disclosure layers round it off: a short site-wide note at the end of every page that contains labeled media, and a per-post checkbox in the editor that puts a configurable "created with the help of AI" line ahead of AI-written content. When a label changes, TransparAI also tells the common page-cache plugins (WP Rocket, LiteSpeed, W3 Total Cache, WP Super Cache and others) to refresh, so cached pages never keep an outdated badge state.
 
 **The machine-readable part**
 
-For labeled files TransparAI writes the IPTC digital source type (trainedAlgorithmicMedia, or compositeWithTrainedAlgorithmicMedia for AI-edited media) as XMP into JPEG, PNG and WebP, including every size variant WordPress generated. Google reads this field and can show an AI notice in image search.
+For labeled files TransparAI writes the IPTC digital source type (trainedAlgorithmicMedia, or compositeWithTrainedAlgorithmicMedia for AI-edited media) as XMP into JPEG, PNG, WebP and AVIF, including every size variant WordPress generated. Google reads this field and can show an AI notice in image search. On top of the in-file metadata, each page carries Schema.org JSON-LD (`ImageObject`/`VideoObject` with `digitalSourceType`) for its labeled media, so search engines get the declaration without opening a single file.
 
 Your existing metadata is safe: an existing XMP packet is merged, not replaced, and unlabeling removes exactly what this plugin wrote. Writes are atomic and validated first, so a failed write cannot corrupt an image. And because image optimizers and thumbnail regeneration tend to strip metadata, TransparAI fingerprints every labeled file and restores missing declarations in an hourly integrity sweep.
 
@@ -58,7 +60,11 @@ No, and no plugin can. Detection relies on metadata that generators embed. Image
 
 = Does the plugin change my image files? =
 
-Only when a file is labeled and the metadata option is enabled. The plugin then writes a small XMP block into the JPEG, PNG or WebP file and its size variants. The image pixels are untouched. Files are replaced atomically and validated first. Unlabeling removes exactly the metadata this plugin wrote; foreign metadata is never touched.
+Only when a file is labeled and the metadata option is enabled. The plugin then writes a small XMP block into the JPEG, PNG, WebP or AVIF file and its size variants. The image pixels are untouched. Files are replaced atomically and validated first. Unlabeling removes exactly the metadata this plugin wrote; foreign metadata is never touched.
+
+= Can I also label AI-written text? =
+
+Yes. Every post and page has a "This content is AI-generated" checkbox in the editor sidebar; marked content gets a short configurable note ahead of it. There is also an optional site-wide note at the end of pages that contain labeled media.
 
 = Why was a real camera photo put into the review queue? =
 

@@ -123,6 +123,39 @@ msgstr "Gescannt"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
+msgid "Page notice"
+msgstr "Seiten-Hinweis"
+
+msgid "Add a short note at the end of pages that contain labeled media"
+msgstr "Kurzen Hinweis am Ende von Seiten mit gekennzeichneten Medien anzeigen"
+
+msgid "This page contains AI-generated media."
+msgstr "Diese Seite enthält KI-generierte Medien."
+
+msgid "AI-generated text"
+msgstr "KI-generierter Text"
+
+msgid "Content note"
+msgstr "Inhalts-Hinweis"
+
+msgid "This text was created with the help of AI."
+msgstr "Dieser Text wurde mit Hilfe von KI erstellt."
+
+msgid "Shown ahead of posts you mark with the \"This content is AI-generated\" checkbox in the editor sidebar."
+msgstr "Erscheint vor Beiträgen, die du im Editor mit der Checkbox \"Dieser Inhalt ist KI-generiert\" markierst."
+
+msgid "This content is AI-generated"
+msgstr "Dieser Inhalt ist KI-generiert"
+
+msgid "Shows a short note ahead of the content. The wording can be changed in the TransparAI settings."
+msgstr "Zeigt einen kurzen Hinweis vor dem Inhalt. Die Formulierung lässt sich in den TransparAI-Einstellungen ändern."
+
+msgid "Structured data"
+msgstr "Strukturierte Daten"
+
+msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
+msgstr "Schema.org-JSON-LD mit dem IPTC Digital Source Type für die gekennzeichneten Medien jeder Seite ausgeben (Suchmaschinen lesen es, ohne die Dateien zu öffnen)"
+
 msgid "Open review queue"
 msgstr "Prüfliste öffnen"
 
@@ -267,8 +300,8 @@ msgstr "Maschinenlesbare Datei-Metadaten"
 msgid "Write into files"
 msgstr "In Dateien schreiben"
 
-msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG and WebP files (all size variants)"
-msgstr "IPTC DigitalSourceType als XMP in gekennzeichnete JPEG-, PNG- und WebP-Dateien schreiben (alle Größenvarianten)"
+msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
+msgstr "IPTC DigitalSourceType als XMP in gekennzeichnete JPEG-, PNG-, WebP- und AVIF-Dateien schreiben (alle Größenvarianten)"
 
 msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
 msgstr "Zusätzlich in IPTC-IIM spiegeln (JPEG, nur wenn die Datei keinen fremden IPTC-Block hat)"
