@@ -37,6 +37,9 @@ final class TransparAI_Options {
 			'badge_show_source'   => '0',            // Append detected generator name to the badge.
 			'badge_alt_append'    => '0',            // Append note to image alt text.
 			'background_badges'   => '0',            // Experimental: label CSS background images via JS map.
+			'page_notice'         => '0',            // Site-wide footer note on pages containing labeled media.
+			'page_notice_text'    => '',             // Empty = translated default.
+			'content_notice_text' => '',             // Note above posts marked as AI-written; empty = translated default.
 
 			// Automatic detection.
 			'autodetect'          => '1',
@@ -49,6 +52,7 @@ final class TransparAI_Options {
 			'write_xmp'           => '1',
 			'write_iim'           => '1',            // Mirror into IPTC-IIM (JPEG, only when safe).
 			'auto_repair'         => '1',            // Re-write metadata stripped by optimizers.
+			'schema_output'       => '1',            // JSON-LD digitalSourceType for labeled media in the page.
 
 			// Housekeeping.
 			'delete_on_uninstall' => '0',
@@ -110,12 +114,14 @@ final class TransparAI_Options {
 			'badge_show_source',
 			'badge_alt_append',
 			'background_badges',
+			'page_notice',
 			'autodetect',
 			'filename_hints',
 			'detect_av',
 			'write_xmp',
 			'write_iim',
 			'auto_repair',
+			'schema_output',
 			'delete_on_uninstall',
 		);
 
@@ -130,9 +136,9 @@ final class TransparAI_Options {
 				$clean[ $key ] = in_array( $value, $enums[ $key ], true ) ? $value : $default;
 				continue;
 			}
-			if ( 'badge_text' === $key ) {
+			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text' ), true ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_text_field( wp_unslash( (string) $raw[ $key ] ) ) : '';
-				$clean[ $key ] = mb_substr( $value, 0, 100 );
+				$clean[ $key ] = mb_substr( $value, 0, 'badge_text' === $key ? 100 : 300 );
 				continue;
 			}
 			$clean[ $key ] = $default;

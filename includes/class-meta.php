@@ -35,12 +35,15 @@ final class TransparAI_Meta {
 	public const KEY_UNREADABLE  = '_transparai_unreadable';
 	public const KEY_FINGERPRINT = '_transparai_fingerprint';
 	public const KEY_WRITE_ERROR = '_transparai_write_error';
+	public const KEY_CONTENT_AI  = '_transparai_content_ai';
 
 	/**
 	 * Register hooks.
 	 */
 	public static function init(): void {
-		add_action( 'init', array( self::class, 'register_meta' ) );
+		// Priority 20: the content flag registers for every public post type,
+		// so custom post types (usually registered at 10) must exist first.
+		add_action( 'init', array( self::class, 'register_meta' ), 20 );
 	}
 
 	/**
@@ -74,6 +77,27 @@ final class TransparAI_Meta {
 					'sanitize_callback' => 'sanitize_text_field',
 					'auth_callback'     => static function (): bool {
 						return current_user_can( 'upload_files' );
+					},
+				)
+			);
+		}
+
+		// Per-post "content is AI-written" flag (the editor checkbox).
+		foreach ( get_post_types( array( 'public' => true ) ) as $post_type ) {
+			if ( 'attachment' === $post_type ) {
+				continue;
+			}
+			register_post_meta(
+				$post_type,
+				self::KEY_CONTENT_AI,
+				array(
+					'type'              => 'string',
+					'single'            => true,
+					'default'           => '',
+					'show_in_rest'      => true,
+					'sanitize_callback' => array( self::class, 'sanitize_flag' ),
+					'auth_callback'     => static function ( $allowed, $meta_key, $post_id ): bool {
+						return current_user_can( 'edit_post', (int) $post_id );
 					},
 				)
 			);

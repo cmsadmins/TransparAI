@@ -169,3 +169,22 @@ p .trai-wrap {
 .trai-bg-host {
 	position: relative;
 }
+
+/* Site-wide footer note (optional) and the note ahead of AI-written posts.
+   Neutral like the badges: inherits the theme, just quieter and smaller. */
+.trai-page-notice {
+	margin: 16px auto 8px;
+	padding: 0 16px;
+	max-width: 1200px;
+	font-size: 12px;
+	line-height: 1.5;
+	opacity: 0.7;
+	text-align: center;
+}
+
+.trai-content-notice {
+	margin: 0 0 1em;
+	font-size: 0.85em;
+	line-height: 1.5;
+	opacity: 0.75;
+}

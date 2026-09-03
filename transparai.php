@@ -46,6 +46,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-media-library.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-settings.php';
+	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-content-label.php';
 }
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -89,6 +90,7 @@ if ( ! class_exists( 'TransparAI' ) ) {
 			if ( is_admin() ) {
 				TransparAI_Media_Library::init();
 				TransparAI_Settings::init();
+				TransparAI_Content_Label::init();
 			}
 
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {

@@ -250,6 +250,27 @@ final class TransparAI_Settings {
 							<?php esc_html_e( 'Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)', 'transparai' ); ?></label>
 						</td>
 					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Page notice', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'page_notice' ); ?>" value="1" <?php checked( $options['page_notice'], '1' ); ?> />
+							<?php esc_html_e( 'Add a short note at the end of pages that contain labeled media', 'transparai' ); ?></label>
+							<p><input type="text" class="regular-text" name="<?php self::name( 'page_notice_text' ); ?>" value="<?php echo esc_attr( $options['page_notice_text'] ); ?>" placeholder="<?php esc_attr_e( 'This page contains AI-generated media.', 'transparai' ); ?>" /></p>
+						</td>
+					</tr>
+				</table>
+				</section>
+
+				<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'AI-generated text', 'transparai' ); ?></h2>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><label for="trai-content-notice"><?php esc_html_e( 'Content note', 'transparai' ); ?></label></th>
+						<td>
+							<input type="text" id="trai-content-notice" class="regular-text" name="<?php self::name( 'content_notice_text' ); ?>" value="<?php echo esc_attr( $options['content_notice_text'] ); ?>" placeholder="<?php esc_attr_e( 'This text was created with the help of AI.', 'transparai' ); ?>" />
+							<p class="description"><?php esc_html_e( 'Shown ahead of posts you mark with the "This content is AI-generated" checkbox in the editor sidebar.', 'transparai' ); ?></p>
+						</td>
+					</tr>
 				</table>
 				</section>
 
@@ -316,7 +337,7 @@ final class TransparAI_Settings {
 						<th scope="row"><?php esc_html_e( 'Write into files', 'transparai' ); ?></th>
 						<td>
 							<label><input type="checkbox" name="<?php self::name( 'write_xmp' ); ?>" value="1" <?php checked( $options['write_xmp'], '1' ); ?> />
-							<?php esc_html_e( 'Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG and WebP files (all size variants)', 'transparai' ); ?></label><br />
+							<?php esc_html_e( 'Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'write_iim' ); ?>" value="1" <?php checked( $options['write_iim'], '1' ); ?> />
 							<?php esc_html_e( 'Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)', 'transparai' ); ?></label>
 						</td>
@@ -326,6 +347,13 @@ final class TransparAI_Settings {
 						<td>
 							<label><input type="checkbox" name="<?php self::name( 'auto_repair' ); ?>" value="1" <?php checked( $options['auto_repair'], '1' ); ?> />
 							<?php esc_html_e( 'Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)', 'transparai' ); ?></label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Structured data', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'schema_output' ); ?>" value="1" <?php checked( $options['schema_output'], '1' ); ?> />
+							<?php esc_html_e( 'Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)', 'transparai' ); ?></label>
 						</td>
 					</tr>
 				</table>

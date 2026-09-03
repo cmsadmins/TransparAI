@@ -1,0 +1,12 @@
+<wpml-config>
+	<admin-texts>
+		<key name="transparai_settings">
+			<key name="badge_text" />
+			<key name="page_notice_text" />
+			<key name="content_notice_text" />
+		</key>
+	</admin-texts>
+	<custom-fields>
+		<custom-field action="copy">_transparai_content_ai</custom-field>
+	</custom-fields>
+</wpml-config>

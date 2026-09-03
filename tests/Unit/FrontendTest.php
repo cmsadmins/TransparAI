@@ -111,6 +111,67 @@ final class FrontendTest extends TestCase {
 		$this->assertStringNotContainsString( 'trai-wrap--fill', TransparAI_Frontend::wrap_images( $plain ) );
 	}
 
+	/**
+	 * Reset the per-request collector between tests (private static state).
+	 */
+	private function reset_rendered(): void {
+		$prop = new ReflectionProperty( TransparAI_Frontend::class, 'rendered_ids' );
+		$prop->setAccessible( true );
+		$prop->setValue( null, array() );
+	}
+
+	public function test_footer_schema_and_page_notice(): void {
+		global $trai_test_options, $trai_test_meta, $trai_test_current_post;
+		$this->reset_rendered();
+		$trai_test_options['transparai_settings'] = array(
+			'badge_enabled' => '1',
+			'schema_output' => '1',
+			'page_notice'   => '1',
+		);
+
+		$this->seed_map( array( '2026/09/ai.jpg' => 77 ) );
+		$trai_test_meta[77]['_test_url']              = 'https://example.test/wp-content/uploads/2026/09/ai.jpg';
+		$trai_test_meta[77]['_transparai_generator']  = 'Midjourney';
+		$trai_test_meta[77]['_transparai_type']       = 'generated';
+
+		// Nothing rendered yet: footer must stay empty.
+		ob_start();
+		TransparAI_Frontend::print_footer_output();
+		$this->assertSame( '', ob_get_clean() );
+
+		TransparAI_Frontend::wrap_images( '<img src="/wp-content/uploads/2026/09/ai.jpg">' );
+
+		ob_start();
+		TransparAI_Frontend::print_footer_output();
+		$out = (string) ob_get_clean();
+
+		$this->assertStringContainsString( 'application/ld+json', $out );
+		$this->assertStringContainsString( 'trai-page-notice', $out );
+		preg_match( '#<script type="application/ld\+json">(.*?)</script>#s', $out, $matches );
+		$data = json_decode( $matches[1], true );
+		$this->assertIsArray( $data );
+		$this->assertSame( 'ImageObject', $data['@graph'][0]['@type'] );
+		$this->assertSame(
+			'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
+			$data['@graph'][0]['digitalSourceType']
+		);
+		$this->assertSame( 'Midjourney', $data['@graph'][0]['creator']['name'] );
+		$this->reset_rendered();
+	}
+
+	public function test_content_notice_prepends_for_marked_posts(): void {
+		global $trai_test_options, $trai_test_current_post;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );
+		$trai_test_current_post                   = 321;
+
+		$this->assertSame( '<p>Text</p>', TransparAI_Frontend::filter_content_notice( '<p>Text</p>' ), 'Unmarked post stays untouched' );
+
+		update_post_meta( 321, TransparAI_Meta::KEY_CONTENT_AI, '1' );
+		$out = TransparAI_Frontend::filter_content_notice( '<p>Text</p>' );
+		$this->assertStringContainsString( 'trai-content-notice', $out );
+		$this->assertStringEndsWith( '<p>Text</p>', $out );
+	}
+
 	public function test_wpb_image_filter_tags_classless_markup(): void {
 		global $trai_test_options;
 		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );

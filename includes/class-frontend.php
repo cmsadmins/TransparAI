@@ -30,10 +30,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class TransparAI_Frontend {
 
 	/**
+	 * Labeled attachment IDs rendered during this request, for the JSON-LD
+	 * block and the optional page notice in the footer.
+	 *
+	 * @var array<int, true>
+	 */
+	private static array $rendered_ids = array();
+
+	/**
 	 * Register hooks.
 	 */
 	public static function init(): void {
 		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue' ) );
+		add_action( 'wp_footer', array( self::class, 'print_footer_output' ) );
+
+		// AI-written content note, ahead of the image filters.
+		add_filter( 'the_content', array( self::class, 'filter_content_notice' ), 5 );
 
 		add_filter( 'render_block', array( self::class, 'filter_block' ), 20, 2 );
 		add_filter( 'the_content', array( self::class, 'filter_content' ), 20 );
@@ -203,6 +215,8 @@ final class TransparAI_Frontend {
 					$attachment_id = (int) $map[ $key ];
 				}
 
+				self::collect( $attachment_id );
+
 				$classes = self::wrap_classes( 'trai-wrap' );
 				if ( str_contains( $tag, 'wp-block-cover__image-background' ) ) {
 					// Cover backgrounds are absolutely positioned full-bleed
@@ -276,6 +290,7 @@ final class TransparAI_Frontend {
 			if ( $attachment_id && TransparAI_Meta::is_flagged( $attachment_id ) && ! str_contains( $content, 'trai-badge' ) ) {
 				$close = strripos( $content, '</figure>' );
 				if ( false !== $close ) {
+					self::collect( $attachment_id );
 					$badge   = self::badge_html( $attachment_id );
 					$content = substr( $content, 0, $close ) . $badge . substr( $content, $close );
 					$content = (string) preg_replace(
@@ -309,6 +324,7 @@ final class TransparAI_Frontend {
 		if ( ! $thumbnail_id || ! TransparAI_Meta::is_flagged( $thumbnail_id ) || str_contains( $html, 'trai-badge' ) ) {
 			return $html;
 		}
+		self::collect( $thumbnail_id );
 		return '<span class="' . esc_attr( self::wrap_classes( 'trai-thumbwrap' ) ) . '">' . $html . self::badge_html( $thumbnail_id ) . '</span>';
 	}
 
@@ -327,6 +343,7 @@ final class TransparAI_Frontend {
 		if ( ! TransparAI_Meta::is_flagged( $attachment_id ) || str_contains( $html, 'trai-badge' ) ) {
 			return $html;
 		}
+		self::collect( $attachment_id );
 		return '<span class="' . esc_attr( self::wrap_classes( 'trai-wrap' ) ) . '">' . $html . self::badge_html( $attachment_id ) . '</span>';
 	}
 
@@ -483,7 +500,97 @@ final class TransparAI_Frontend {
 	}
 
 	/**
-	 * Flush the URL map when a label changes.
+	 * Remember a labeled attachment rendered in this request.
+	 */
+	private static function collect( int $attachment_id ): void {
+		self::$rendered_ids[ $attachment_id ] = true;
+	}
+
+	/**
+	 * Footer output: JSON-LD for the labeled media of this page and the
+	 * optional site-wide notice. Both are server-rendered (page-cache safe)
+	 * and only appear when labeled media was actually rendered.
+	 */
+	public static function print_footer_output(): void {
+		if ( array() === self::$rendered_ids || ! self::should_filter() ) {
+			return;
+		}
+
+		if ( TransparAI_Options::enabled( 'schema_output' ) ) {
+			$graph = array();
+			foreach ( array_keys( self::$rendered_ids ) as $attachment_id ) {
+				$url = wp_get_attachment_url( $attachment_id );
+				if ( ! $url ) {
+					continue;
+				}
+				$mime = (string) get_post_mime_type( $attachment_id );
+				$type = 'ImageObject';
+				if ( str_starts_with( $mime, 'video/' ) ) {
+					$type = 'VideoObject';
+				} elseif ( str_starts_with( $mime, 'audio/' ) ) {
+					$type = 'AudioObject';
+				}
+				$dst  = 'composite' === TransparAI_Meta::get_type( $attachment_id )
+					? 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia'
+					: 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
+				$node = array(
+					'@type'             => $type,
+					'contentUrl'        => $url,
+					'digitalSourceType' => $dst,
+				);
+				$generator = TransparAI_Meta::get_generator( $attachment_id );
+				if ( '' !== $generator ) {
+					$node['creator'] = array(
+						'@type' => 'SoftwareApplication',
+						'name'  => $generator,
+					);
+				}
+				$graph[] = $node;
+			}
+			if ( array() !== $graph ) {
+				$data = array(
+					'@context' => 'https://schema.org',
+					'@graph'   => $graph,
+				);
+				echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES ) . '</script>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode output inside a JSON script tag.
+			}
+		}
+
+		if ( TransparAI_Options::enabled( 'page_notice' ) ) {
+			$text = TransparAI_Options::get( 'page_notice_text' );
+			if ( '' === $text ) {
+				$text = __( 'This page contains AI-generated media.', 'transparai' );
+			}
+			echo '<p class="trai-page-notice">' . esc_html( $text ) . '</p>' . "\n";
+		}
+	}
+
+	/**
+	 * Note above content the author marked as AI-written (per-post checkbox).
+	 *
+	 * @param string|mixed $content Content HTML.
+	 * @return string|mixed
+	 */
+	public static function filter_content_notice( $content ) {
+		if ( ! is_string( $content ) || ! self::should_filter() ) {
+			return $content;
+		}
+		if ( ! is_singular() || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+		if ( '1' !== get_post_meta( (int) get_the_ID(), TransparAI_Meta::KEY_CONTENT_AI, true ) ) {
+			return $content;
+		}
+		$text = TransparAI_Options::get( 'content_notice_text' );
+		if ( '' === $text ) {
+			$text = __( 'This text was created with the help of AI.', 'transparai' );
+		}
+		return '<p class="trai-content-notice">' . esc_html( $text ) . '</p>' . $content;
+	}
+
+	/**
+	 * Flush the URL map and page caches when a label changes: cached pages
+	 * would otherwise keep serving the old badge state.
 	 *
 	 * @param int|int[] $meta_id   Meta ID(s).
 	 * @param int       $object_id Post ID.
@@ -493,6 +600,52 @@ final class TransparAI_Frontend {
 		if ( TransparAI_Meta::KEY_FLAG === $meta_key ) {
 			delete_transient( 'transparai_url_map' );
 			delete_transient( 'transparai_stats' );
+			self::purge_page_caches();
+		}
+	}
+
+	/**
+	 * Ask the common page-cache plugins to drop their caches. Silent no-ops
+	 * when a plugin is absent; runs at most once per request (bulk actions).
+	 */
+	public static function purge_page_caches(): void {
+		static $purged = false;
+		if ( $purged ) {
+			return;
+		}
+		$purged = true;
+
+		if ( function_exists( 'rocket_clean_domain' ) ) {
+			rocket_clean_domain(); // WP Rocket.
+		}
+		if ( has_action( 'litespeed_purge_all' ) ) {
+			do_action( 'litespeed_purge_all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- LiteSpeed Cache's own purge hook.
+		}
+		if ( function_exists( 'w3tc_flush_posts' ) ) {
+			w3tc_flush_posts(); // W3 Total Cache.
+		} elseif ( function_exists( 'w3tc_flush_all' ) ) {
+			w3tc_flush_all();
+		}
+		if ( function_exists( 'wp_cache_clear_cache' ) ) {
+			wp_cache_clear_cache(); // WP Super Cache.
+		}
+		if ( function_exists( 'wpfc_clear_all_cache' ) ) {
+			wpfc_clear_all_cache(); // WP Fastest Cache.
+		}
+		if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+			sg_cachepress_purge_cache(); // SiteGround Optimizer.
+		}
+		if ( has_action( 'cache_enabler_clear_complete_cache' ) ) {
+			do_action( 'cache_enabler_clear_complete_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Cache Enabler's own purge hook.
+		}
+		if ( has_action( 'breeze_clear_all_cache' ) ) {
+			do_action( 'breeze_clear_all_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Breeze's own purge hook.
+		}
+		if ( has_action( 'rt_nginx_helper_purge_all' ) ) {
+			do_action( 'rt_nginx_helper_purge_all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Nginx Helper's own purge hook.
+		}
+		if ( has_action( 'wphb_clear_page_cache' ) ) {
+			do_action( 'wphb_clear_page_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Hummingbird's own purge hook.
 		}
 	}
 }

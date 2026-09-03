@@ -168,6 +168,44 @@ if ( ! function_exists( 'is_admin' ) ) {
 		return false;
 	}
 }
+if ( ! function_exists( 'is_singular' ) ) {
+	function is_singular() {
+		return true;
+	}
+}
+if ( ! function_exists( 'in_the_loop' ) ) {
+	function in_the_loop() {
+		return true;
+	}
+}
+if ( ! function_exists( 'is_main_query' ) ) {
+	function is_main_query() {
+		return true;
+	}
+}
+if ( ! function_exists( 'get_the_ID' ) ) {
+	function get_the_ID() {
+		global $trai_test_current_post;
+		return (int) ( $trai_test_current_post ?? 0 );
+	}
+}
+if ( ! function_exists( 'has_action' ) ) {
+	function has_action( $tag ) {
+		return false;
+	}
+}
+if ( ! function_exists( 'get_post_mime_type' ) ) {
+	function get_post_mime_type( $post_id = 0 ) {
+		global $trai_test_meta;
+		return $trai_test_meta[ $post_id ]['_test_mime'] ?? 'image/jpeg';
+	}
+}
+if ( ! function_exists( 'wp_get_attachment_url' ) ) {
+	function wp_get_attachment_url( $post_id ) {
+		global $trai_test_meta;
+		return $trai_test_meta[ $post_id ]['_test_url'] ?? false;
+	}
+}
 if ( ! function_exists( 'is_feed' ) ) {
 	function is_feed() {
 		return false;
@@ -240,6 +278,11 @@ if ( ! function_exists( '__' ) ) {
 if ( ! function_exists( '_x' ) ) {
 	function _x( $text, $context, $domain = '' ) {
 		return $text;
+	}
+}
+if ( ! function_exists( 'wp_json_encode' ) ) {
+	function wp_json_encode( $value, $flags = 0 ) {
+		return json_encode( $value, $flags );
 	}
 }
 if ( ! function_exists( 'esc_attr' ) ) {
