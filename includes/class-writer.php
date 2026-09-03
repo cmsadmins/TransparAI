@@ -245,6 +245,11 @@ final class TransparAI_Writer {
 			return '';
 		}
 		$format = TransparAI_Parsers::sniff( $head );
+		if ( 'bmff' === $format ) {
+			// Only AVIF images; video/audio containers stay read-only.
+			$brand = substr( $head, 8, 4 );
+			return in_array( $brand, array( 'avif', 'avis' ), true ) ? 'avif' : '';
+		}
 		return in_array( $format, array( 'jpeg', 'png', 'webp' ), true ) ? $format : '';
 	}
 
@@ -267,6 +272,8 @@ final class TransparAI_Writer {
 			case 'webp':
 				$chunks = TransparAI_Parsers::webp_chunks( $data );
 				return null === $chunks ? null : TransparAI_Parsers::webp_xmp( $chunks );
+			case 'avif':
+				return TransparAI_Parsers::bmff_xmp( $data );
 		}
 		return null;
 	}
@@ -288,6 +295,8 @@ final class TransparAI_Writer {
 				return self::png_write( $path, $data, $type );
 			case 'webp':
 				return self::webp_write( $path, $data, $type );
+			case 'avif':
+				return self::avif_write( $path, $data, $type );
 		}
 		return false;
 	}
@@ -309,6 +318,8 @@ final class TransparAI_Writer {
 				return self::png_remove( $path, $data );
 			case 'webp':
 				return self::webp_remove( $path, $data );
+			case 'avif':
+				return self::avif_remove( $path, $data );
 		}
 		return false;
 	}
@@ -673,6 +684,110 @@ final class TransparAI_Writer {
 		return self::atomic_write( $path, TransparAI_Parsers::webp_build( $final ), 'webp' );
 	}
 
+	/* --- AVIF (ISO-BMFF) ------------------------------------------------ */
+
+	private static function avif_write( string $path, string $data, string $type ): bool {
+		$existing = TransparAI_Parsers::bmff_xmp( $data );
+		if ( null !== $existing ) {
+			$merge = self::merge_packet( $existing, $type );
+			if ( 'keep' === $merge['action'] ) {
+				return true;
+			}
+			$stripped = self::bmff_remove_xmp_box( $data );
+			if ( null === $stripped ) {
+				return false;
+			}
+			return self::atomic_write( $path, $stripped . self::bmff_xmp_box( $merge['xmp'] ), 'avif' );
+		}
+		return self::atomic_write( $path, $data . self::bmff_xmp_box( self::full_packet( $type ) ), 'avif' );
+	}
+
+	private static function avif_remove( string $path, string $data ): bool {
+		$xmp = TransparAI_Parsers::bmff_xmp( $data );
+		if ( null === $xmp ) {
+			return true;
+		}
+		if ( self::is_own_packet( $xmp ) ) {
+			$stripped = self::bmff_remove_xmp_box( $data );
+			return null === $stripped ? false : self::atomic_write( $path, $stripped, 'avif' );
+		}
+		$cleaned = self::strip_own_block( $xmp );
+		if ( $cleaned === $xmp ) {
+			return true; // Foreign XMP without our block: leave it alone.
+		}
+		$stripped = self::bmff_remove_xmp_box( $data );
+		if ( null === $stripped ) {
+			return false;
+		}
+		return self::atomic_write( $path, $stripped . self::bmff_xmp_box( $cleaned ), 'avif' );
+	}
+
+	/**
+	 * Build a top-level XMP uuid box (the standard XMP carrier in ISO-BMFF).
+	 */
+	private static function bmff_xmp_box( string $xmp ): string {
+		$payload = TransparAI_Parsers::XMP_BMFF_UUID . $xmp;
+		return pack( 'N', 8 + strlen( $payload ) ) . 'uuid' . $payload;
+	}
+
+	/**
+	 * Top-level box list of an ISO-BMFF file, or null when the structure is
+	 * broken (a box overruns the file or carries a garbage type).
+	 *
+	 * @return array<int, array{offset:int, size:int, head:int, type:string}>|null
+	 */
+	private static function bmff_boxes( string $data ): ?array {
+		$boxes  = array();
+		$offset = 0;
+		$length = strlen( $data );
+
+		while ( $offset + 8 <= $length ) {
+			$size = unpack( 'N', substr( $data, $offset, 4 ) );
+			$size = $size[1];
+			$type = substr( $data, $offset + 4, 4 );
+			$head = 8;
+			if ( 1 === $size ) {
+				if ( $offset + 16 > $length ) {
+					return null;
+				}
+				$parts = unpack( 'Nhigh/Nlow', substr( $data, $offset + 8, 8 ) );
+				$size  = ( $parts['high'] * 4294967296 ) + $parts['low'];
+				$head  = 16;
+			} elseif ( 0 === $size ) {
+				$size = $length - $offset;
+			}
+			if ( $size < $head || $offset + $size > $length || ! preg_match( '/^[\x20-\x7E]{4}$/', $type ) ) {
+				return null;
+			}
+			$boxes[] = array(
+				'offset' => $offset,
+				'size'   => $size,
+				'head'   => $head,
+				'type'   => $type,
+			);
+			$offset += $size;
+		}
+
+		return $offset === $length ? $boxes : null;
+	}
+
+	/**
+	 * Remove the top-level XMP uuid box, keeping everything else byte-identical.
+	 */
+	private static function bmff_remove_xmp_box( string $data ): ?string {
+		$boxes = self::bmff_boxes( $data );
+		if ( null === $boxes ) {
+			return null;
+		}
+		foreach ( $boxes as $box ) {
+			if ( 'uuid' === $box['type'] && $box['size'] >= $box['head'] + 16
+				&& TransparAI_Parsers::XMP_BMFF_UUID === substr( $data, $box['offset'] + $box['head'], 16 ) ) {
+				return substr( $data, 0, $box['offset'] ) . substr( $data, $box['offset'] + $box['size'] );
+			}
+		}
+		return $data;
+	}
+
 	/**
 	 * Ensure a correct VP8X chunk exists and its XMP flag matches reality.
 	 *
@@ -748,6 +863,11 @@ final class TransparAI_Writer {
 					return false;
 				}
 				break;
+			case 'avif':
+				if ( null === self::bmff_boxes( $data ) || 'ftyp' !== substr( $data, 4, 4 ) ) {
+					return false;
+				}
+				break;
 			default:
 				return false;
 		}
@@ -758,8 +878,10 @@ final class TransparAI_Writer {
 			wp_delete_file( $tmp );
 			return false;
 		}
+		// getimagesize() has no AVIF support on older PHP builds; AVIF is
+		// validated structurally above instead.
 		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- validation only; failure path is handled.
-		if ( function_exists( 'getimagesize' ) && false === @getimagesize( $tmp ) ) {
+		if ( 'avif' !== $format && function_exists( 'getimagesize' ) && false === @getimagesize( $tmp ) ) {
 			wp_delete_file( $tmp );
 			return false;
 		}

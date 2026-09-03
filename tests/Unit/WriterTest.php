@@ -47,7 +47,27 @@ final class WriterTest extends TestCase {
 			'jpeg' => array( 'base.jpg', 'jpeg', 'jpg' ),
 			'png'  => array( 'base.png', 'png', 'png' ),
 			'webp' => array( 'base.webp', 'webp', 'webp' ),
+			'avif' => array( 'base.avif', 'avif', 'avif' ),
 		);
+	}
+
+	public function test_avif_merge_preserves_foreign_xmp(): void {
+		$path = $this->temp_copy( 'foreign-xmp.avif', 'avif' );
+
+		$this->assertTrue( TransparAI_Writer::write_file( $path, 'avif', 'generated' ) );
+		$this->assertTrue( TransparAI_Writer::file_is_marked( $path ) );
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- test fixture.
+		$xmp = TransparAI_Parsers::bmff_xmp( (string) file_get_contents( $path ) );
+		$this->assertNotNull( $xmp );
+		$this->assertStringContainsString( 'Darktable 5.2', $xmp, 'Foreign creator tool must survive the merge' );
+
+		$this->assertTrue( TransparAI_Writer::remove_file( $path, 'avif' ) );
+		$this->assertFalse( TransparAI_Writer::file_is_marked( $path ) );
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- test fixture.
+		$xmp = TransparAI_Parsers::bmff_xmp( (string) file_get_contents( $path ) );
+		$this->assertNotNull( $xmp, 'Foreign XMP box must remain after removing our block' );
+		$this->assertStringContainsString( 'Darktable 5.2', $xmp );
 	}
 
 	/**
@@ -60,7 +80,7 @@ final class WriterTest extends TestCase {
 
 		$this->assertTrue( TransparAI_Writer::write_file( $path, $format, 'generated' ) );
 		$this->assertTrue( TransparAI_Writer::file_is_marked( $path ), "Mark missing after write ({$format})" );
-		$this->assertNotFalse( getimagesize( $path ), "File corrupt after write ({$format})" );
+		$this->assert_file_intact( $path, $format, "after write ({$format})" );
 
 		// Writing twice must be a no-op that keeps the file valid.
 		$this->assertTrue( TransparAI_Writer::write_file( $path, $format, 'generated' ) );
@@ -68,7 +88,23 @@ final class WriterTest extends TestCase {
 
 		$this->assertTrue( TransparAI_Writer::remove_file( $path, $format ) );
 		$this->assertFalse( TransparAI_Writer::file_is_marked( $path ), "Mark still present after remove ({$format})" );
-		$this->assertNotFalse( getimagesize( $path ), "File corrupt after remove ({$format})" );
+		$this->assert_file_intact( $path, $format, "after remove ({$format})" );
+	}
+
+	/**
+	 * Structural validity: getimagesize() for the classic formats; AVIF is a
+	 * structural BMFF shell in the fixtures (getimagesize has no AVIF support
+	 * on older PHP anyway), so it is validated by re-sniffing the box chain.
+	 */
+	private function assert_file_intact( string $path, string $format, string $context ): void {
+		if ( 'avif' === $format ) {
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- test fixture.
+			$data = (string) file_get_contents( $path );
+			$this->assertSame( 'ftyp', substr( $data, 4, 4 ), "Broken BMFF {$context}" );
+			$this->assertSame( 'bmff', TransparAI_Parsers::sniff( substr( $data, 0, 64 ) ), "Unsniffable {$context}" );
+			return;
+		}
+		$this->assertNotFalse( getimagesize( $path ), "File corrupt {$context}" );
 	}
 
 	public function test_composite_type_writes_composite_uri(): void {

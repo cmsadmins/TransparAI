@@ -230,6 +230,23 @@ $uuid_body = $c2pa_uuid . c2pa_payload( 'GoogleAI Veo/3' );
 $uuid_box  = pack( 'N', 8 + strlen( $uuid_body ) ) . 'uuid' . $uuid_body;
 $write( 'c2pa.mp4', $ftyp . $uuid_box . pack( 'N', 8 ) . 'mdat' );
 
+// AVIF: minimal ISO-BMFF shell (ftyp avif + free box) for the writer tests.
+$write( 'base.avif', pack( 'N', 24 ) . 'ftypavif' . pack( 'N', 0 ) . 'avifmif1' . pack( 'N', 16 ) . 'free' . str_repeat( "\x00", 8 ) );
+
+// AVIF: same shell with a foreign XMP uuid box (creator tool only).
+$xmp_uuid = "\xbe\x7a\xcf\xcb\x97\xa9\x42\xe8\x9c\x71\x99\x94\x91\xe3\xaf\xac";
+$foreign  = '<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>'
+	. '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
+	. '<rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmp:CreatorTool="Darktable 5.2"/>'
+	. '</rdf:RDF></x:xmpmeta><?xpacket end="w"?>';
+$fbody = $xmp_uuid . $foreign;
+$write(
+	'foreign-xmp.avif',
+	pack( 'N', 24 ) . 'ftypavif' . pack( 'N', 0 ) . 'avifmif1'
+	. pack( 'N', 8 + strlen( $fbody ) ) . 'uuid' . $fbody
+	. pack( 'N', 16 ) . 'free' . str_repeat( "\x00", 8 )
+);
+
 // MP3: ID3v2.3 with a TXXX "aigc" frame (GB 45438).
 $txxx_data  = "\x00" . "aigc\x00" . '{"label":"1"}';
 $txxx_frame = 'TXXX' . pack( 'N', strlen( $txxx_data ) ) . "\x00\x00" . $txxx_data;
