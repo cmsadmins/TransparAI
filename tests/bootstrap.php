@@ -201,6 +201,12 @@ if ( ! function_exists( 'get_post_mime_type' ) ) {
 		return $trai_test_meta[ $post_id ]['_test_mime'] ?? 'image/jpeg';
 	}
 }
+if ( ! function_exists( 'get_post_field' ) ) {
+	function get_post_field( $field, $post_id ) {
+		global $trai_test_meta;
+		return $trai_test_meta[ $post_id ][ '_test_' . $field ] ?? '';
+	}
+}
 if ( ! function_exists( 'wp_get_attachment_url' ) ) {
 	function wp_get_attachment_url( $post_id ) {
 		global $trai_test_meta;

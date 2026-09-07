@@ -37,6 +37,7 @@ final class TransparAI_Options {
 			'badge_position'      => 'bottom-right', /* top-left | top-right | bottom-left | bottom-right. */
 			'badge_style'         => 'dark', /* dark | light | outline | icon-only. */
 			'badge_size'          => 'medium', /* small | medium | large. */
+			'badge_from_date'     => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
 			'badge_show_source'   => '0', /* Append detected generator name to the badge. */
 			'badge_alt_append'    => '0', /* Append note to image alt text. */
 			'badge_guard'         => '1', /* JS: move badges that a theme overlay covers. */
@@ -145,6 +146,13 @@ final class TransparAI_Options {
 			if ( isset( $enums[ $key ] ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_key( (string) $raw[ $key ] ) : $default;
 				$clean[ $key ] = in_array( $value, $enums[ $key ], true ) ? $value : $default;
+				continue;
+			}
+			if ( 'badge_from_date' === $key ) {
+				$value         = isset( $raw[ $key ] ) ? trim( (string) $raw[ $key ] ) : '';
+				$valid         = 1 === preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', $value, $m )
+					&& checkdate( (int) $m[2], (int) $m[3], (int) $m[1] );
+				$clean[ $key ] = $valid ? $value : '';
 				continue;
 			}
 			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text' ), true ) ) {

@@ -81,6 +81,12 @@ final class TransparAI_Frontend {
 		add_action( 'added_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
 		add_action( 'updated_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
 		add_action( 'deleted_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
+
+		/*
+		 * Saved settings change which media get badged (start date) and how
+		 * badges render; the URL map and cached pages are stale either way.
+		 */
+		add_action( 'update_option_' . TransparAI_Options::OPTION, array( self::class, 'flush_caches' ) );
 	}
 
 	/**
@@ -112,6 +118,20 @@ final class TransparAI_Frontend {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Whether an attachment gets the visible front-end badge: labeled, and
+	 * uploaded on or after the optional start date. Media uploaded before the
+	 * date stay labeled in the admin only. `post_date` (site timezone) against
+	 * the Y-m-d setting compares correctly as plain strings.
+	 */
+	private static function is_badged( int $attachment_id ): bool {
+		if ( ! TransparAI_Meta::is_flagged( $attachment_id ) ) {
+			return false;
+		}
+		$from = TransparAI_Options::get( 'badge_from_date' );
+		return '' === $from || (string) get_post_field( 'post_date', $attachment_id ) >= $from;
 	}
 
 	/**
@@ -256,7 +276,7 @@ final class TransparAI_Frontend {
 
 				if ( preg_match( '/\bwp-image-(\d+)\b/', $tag, $class_match ) ) {
 					$attachment_id = (int) $class_match[1];
-					if ( ! TransparAI_Meta::is_flagged( $attachment_id ) ) {
+					if ( ! self::is_badged( $attachment_id ) ) {
 						return $tag;
 					}
 				} else {
@@ -344,7 +364,7 @@ final class TransparAI_Frontend {
 		$name = (string) ( $block['blockName'] ?? '' );
 		if ( 'core/video' === $name || 'core/audio' === $name ) {
 			$attachment_id = isset( $block['attrs']['id'] ) ? (int) $block['attrs']['id'] : 0;
-			if ( $attachment_id && TransparAI_Meta::is_flagged( $attachment_id ) && ! str_contains( $content, 'trai-badge' ) ) {
+			if ( $attachment_id && self::is_badged( $attachment_id ) && ! str_contains( $content, 'trai-badge' ) ) {
 				$close = strripos( $content, '</figure>' );
 				if ( false !== $close ) {
 					self::collect( $attachment_id );
@@ -378,7 +398,7 @@ final class TransparAI_Frontend {
 			return $html;
 		}
 		$thumbnail_id = (int) $thumbnail_id;
-		if ( ! $thumbnail_id || ! TransparAI_Meta::is_flagged( $thumbnail_id ) || str_contains( $html, 'trai-badge' ) ) {
+		if ( ! $thumbnail_id || ! self::is_badged( $thumbnail_id ) || str_contains( $html, 'trai-badge' ) ) {
 			return $html;
 		}
 		self::collect( $thumbnail_id );
@@ -397,7 +417,7 @@ final class TransparAI_Frontend {
 			return $html;
 		}
 		$attachment_id = (int) $attachment_id;
-		if ( ! TransparAI_Meta::is_flagged( $attachment_id ) || str_contains( $html, 'trai-badge' ) ) {
+		if ( ! self::is_badged( $attachment_id ) || str_contains( $html, 'trai-badge' ) ) {
 			return $html;
 		}
 		self::collect( $attachment_id );
@@ -430,7 +450,7 @@ final class TransparAI_Frontend {
 		if ( ! TransparAI_Options::enabled( 'badge_alt_append' ) ) {
 			return $attr;
 		}
-		if ( ! TransparAI_Meta::is_flagged( (int) $attachment->ID ) ) {
+		if ( ! self::is_badged( (int) $attachment->ID ) ) {
 			return $attr;
 		}
 		$suffix = self::badge_label();
@@ -483,8 +503,12 @@ final class TransparAI_Frontend {
 			)
 		);
 
-		$map = array();
+		$from = TransparAI_Options::get( 'badge_from_date' );
+		$map  = array();
 		foreach ( $query->posts as $attachment_id ) {
+			if ( '' !== $from && (string) get_post_field( 'post_date', (int) $attachment_id ) < $from ) {
+				continue;
+			}
 			$relative = (string) get_post_meta( (int) $attachment_id, '_wp_attached_file', true );
 			if ( '' === $relative ) {
 				continue;
@@ -665,6 +689,16 @@ final class TransparAI_Frontend {
 			 */
 			self::purge_page_caches();
 		}
+	}
+
+	/**
+	 * Drop the URL map and page caches after the settings were saved: the
+	 * badge start date changes which media the map contains, every other
+	 * badge setting changes the cached markup.
+	 */
+	public static function flush_caches(): void {
+		delete_transient( 'transparai_url_map' );
+		self::purge_page_caches();
 	}
 
 	/**

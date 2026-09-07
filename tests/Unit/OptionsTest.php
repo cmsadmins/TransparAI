@@ -62,6 +62,15 @@ final class OptionsTest extends TestCase {
 		$this->assertArrayNotHasKey( 'unknown_key', $clean, 'Unknown keys are dropped' );
 	}
 
+	public function test_badge_from_date_accepts_only_valid_dates(): void {
+		$this->assertSame( '2026-09-01', TransparAI_Options::sanitize( array( 'badge_from_date' => '2026-09-01' ) )['badge_from_date'] );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_from_date' => '' ) )['badge_from_date'] );
+		$this->assertSame( '', TransparAI_Options::sanitize( array() )['badge_from_date'] );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_from_date' => '01.09.2026' ) )['badge_from_date'], 'Non-ISO format is rejected' );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_from_date' => '2026-13-01' ) )['badge_from_date'], 'Impossible date is rejected' );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_from_date' => '2026-09-01<script>' ) )['badge_from_date'] );
+	}
+
 	public function test_get_survives_foreign_value_types(): void {
 		global $trai_test_options;
 		// WP-CLI, migrations and other plugins can write non-strings.

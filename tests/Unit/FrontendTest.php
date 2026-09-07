@@ -66,6 +66,27 @@ final class FrontendTest extends TestCase {
 		$this->assertSame( 1, substr_count( $out, 'trai-badge' ) );
 	}
 
+	public function test_badge_from_date_gates_older_uploads(): void {
+		global $trai_test_options, $trai_test_meta;
+		$trai_test_options['transparai_settings'] = array( 'badge_from_date' => '2026-06-01' );
+		$this->seed_map( array() );
+
+		update_post_meta( 60, TransparAI_Meta::KEY_FLAG, '1' );
+		update_post_meta( 61, TransparAI_Meta::KEY_FLAG, '1' );
+		$trai_test_meta[60]['_test_post_date'] = '2026-05-31 23:59:59';
+		$trai_test_meta[61]['_test_post_date'] = '2026-06-01 00:00:00';
+
+		$old = '<img class="wp-image-60" src="/wp-content/uploads/2026/05/old.jpg">';
+		$new = '<img class="wp-image-61" src="/wp-content/uploads/2026/06/new.jpg">';
+
+		$this->assertStringNotContainsString( 'trai-badge', TransparAI_Frontend::wrap_images( $old ), 'Uploaded before the start date: admin label only' );
+		$this->assertSame( 1, substr_count( TransparAI_Frontend::wrap_images( $new ), 'trai-badge' ) );
+
+		// Empty date restores the previous behavior: everything labeled is badged.
+		$trai_test_options['transparai_settings'] = array();
+		$this->assertSame( 1, substr_count( TransparAI_Frontend::wrap_images( $old ), 'trai-badge' ) );
+	}
+
 	public function test_unflagged_class_wins_over_map(): void {
 		// The attachment id in the class is authoritative; a map entry for the
 		// same path must not overrule an unflagged id.

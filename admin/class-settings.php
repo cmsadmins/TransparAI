@@ -192,6 +192,13 @@ final class TransparAI_Settings {
 						</td>
 					</tr>
 					<tr>
+						<th scope="row"><label for="trai-badge-from"><?php esc_html_e( 'Start date', 'transparai' ); ?></label></th>
+						<td>
+							<input type="date" id="trai-badge-from" name="<?php self::name( 'badge_from_date' ); ?>" value="<?php echo esc_attr( $options['badge_from_date'] ); ?>" />
+							<p class="description"><?php esc_html_e( 'Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media.', 'transparai' ); ?></p>
+						</td>
+					</tr>
+					<tr>
 						<th scope="row"><label for="trai-badge-text"><?php esc_html_e( 'Badge text', 'transparai' ); ?></label></th>
 						<td>
 							<input type="text" id="trai-badge-text" class="regular-text" name="<?php self::name( 'badge_text' ); ?>" value="<?php echo esc_attr( $options['badge_text'] ); ?>" placeholder="<?php esc_attr_e( 'AI-generated', 'transparai' ); ?>" />

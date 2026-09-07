@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Optional badge start date: only media uploaded on or after the configured date get the visible front-end badge, so the labeling can be introduced on an existing site without retroactively badging older content. Earlier media stay labeled in the admin only; the machine-readable file metadata is unaffected. Empty (the default) badges all labeled media as before.
 - Overlay guard for the visible badge: the front-end script now checks the real paint order at each badge (hit test, no z-index guessing) and, only when a theme layer actually covers it, raises the badge, moves it to a free corner or, as the last resort, shows it as a caption line below the image. On by default, can be turned off under Visible badge.
 - Badge stacking level raised from a fixed `z-index: 2` to the CSS custom property `--trai-badge-z` (default `30`): above typical theme chrome, still far below lightbox and modal layers, tunable globally or per container.
 - Per-image badge override: a "Badge position" select in the attachment details (four corners, caption line below the image, or hide the visible badge for this image). Hiding never touches the in-file metadata or the JSON-LD output. Stored as `_transparai_badge_pos`, REST-registered, page caches are purged on change.
