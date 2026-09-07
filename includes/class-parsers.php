@@ -8,7 +8,10 @@
  * Detection never runs regexes over raw file bytes; it extracts real metadata
  * blocks first and matches on those.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -175,18 +178,6 @@ final class TransparAI_Parsers {
 		foreach ( $segments as $segment ) {
 			if ( 0xE1 === $segment['marker'] && str_starts_with( $segment['payload'], self::XMP_HEADER_JPEG ) ) {
 				return substr( $segment['payload'], strlen( self::XMP_HEADER_JPEG ) );
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Extract the raw EXIF block from JPEG segments (APP1 with Exif header).
-	 */
-	public static function jpeg_exif_raw( array $segments ): ?string {
-		foreach ( $segments as $segment ) {
-			if ( 0xE1 === $segment['marker'] && str_starts_with( $segment['payload'], self::EXIF_HEADER ) ) {
-				return substr( $segment['payload'], strlen( self::EXIF_HEADER ) );
 			}
 		}
 		return null;
@@ -584,7 +575,7 @@ final class TransparAI_Parsers {
 			return null;
 		}
 
-		$flags = 0x04; // XMP present.
+		$flags = 0x04; /* XMP present. */
 		if ( $icc ) {
 			$flags |= 0x20;
 		}
@@ -617,45 +608,19 @@ final class TransparAI_Parsers {
 	 * @return array{c2pa:bool, xmp:bool}
 	 */
 	public static function bmff_scan( string $data ): array {
-		$found  = array(
+		$found = array(
 			'c2pa' => false,
 			'xmp'  => false,
 		);
-		$offset = 0;
-		$length = strlen( $data );
 
-		while ( $offset + 8 <= $length ) {
-			$size = unpack( 'N', substr( $data, $offset, 4 ) );
-			$size = $size[1];
-			$type = substr( $data, $offset + 4, 4 );
-			$head = 8;
-
-			if ( 1 === $size ) {
-				if ( $offset + 16 > $length ) {
-					break;
-				}
-				$parts = unpack( 'Nhigh/Nlow', substr( $data, $offset + 8, 8 ) );
-				$size  = ( $parts['high'] * 4294967296 ) + $parts['low'];
-				$head  = 16;
-			} elseif ( 0 === $size ) {
-				$size = $length - $offset;
+		foreach ( (array) self::bmff_boxes( $data, true ) as $box ) {
+			$uuid = self::bmff_box_uuid( $data, $box );
+			if ( self::C2PA_BMFF_UUID === $uuid ) {
+				$found['c2pa'] = true;
 			}
-
-			if ( $size < $head || ! preg_match( '/^[\x20-\x7E]{4}$/', $type ) ) {
-				break;
+			if ( self::XMP_BMFF_UUID === $uuid ) {
+				$found['xmp'] = true;
 			}
-
-			if ( 'uuid' === $type && $offset + $head + 16 <= $length ) {
-				$uuid = substr( $data, $offset + $head, 16 );
-				if ( self::C2PA_BMFF_UUID === $uuid ) {
-					$found['c2pa'] = true;
-				}
-				if ( self::XMP_BMFF_UUID === $uuid ) {
-					$found['xmp'] = true;
-				}
-			}
-
-			$offset += $size;
 		}
 
 		return $found;
@@ -665,6 +630,34 @@ final class TransparAI_Parsers {
 	 * The XMP payload of a BMFF XMP uuid box, if fully inside the data.
 	 */
 	public static function bmff_xmp( string $data ): ?string {
+		$length = strlen( $data );
+
+		foreach ( (array) self::bmff_boxes( $data, true ) as $box ) {
+			if ( self::XMP_BMFF_UUID !== self::bmff_box_uuid( $data, $box ) || $box['offset'] + $box['size'] > $length ) {
+				continue;
+			}
+			return substr( $data, $box['offset'] + $box['head'] + 16, $box['size'] - $box['head'] - 16 );
+		}
+
+		return null;
+	}
+
+	/**
+	 * Top-level boxes of an ISO-BMFF container (MP4, MOV, AVIF, HEIF).
+	 *
+	 * The one place that knows the box header layout: a 32-bit size, a 4-byte
+	 * type, the size==1 escape into a 64-bit size and the size==0 "runs to the
+	 * end" form. Detection reads a truncated head and tolerates the tail;
+	 * writing needs the whole file to add up exactly, hence the switch.
+	 *
+	 * @param string $data                Raw bytes.
+	 * @param bool   $tolerate_truncation Stop at the first box that does not fit
+	 *                                    instead of rejecting the structure.
+	 * @return array<int, array{offset:int, size:int, head:int, type:string}>|null
+	 *         Null when the structure is broken and truncation is not tolerated.
+	 */
+	public static function bmff_boxes( string $data, bool $tolerate_truncation = false ): ?array {
+		$boxes  = array();
 		$offset = 0;
 		$length = strlen( $data );
 
@@ -673,9 +666,10 @@ final class TransparAI_Parsers {
 			$size = $size[1];
 			$type = substr( $data, $offset + 4, 4 );
 			$head = 8;
+
 			if ( 1 === $size ) {
 				if ( $offset + 16 > $length ) {
-					break;
+					return $tolerate_truncation ? $boxes : null;
 				}
 				$parts = unpack( 'Nhigh/Nlow', substr( $data, $offset + 8, 8 ) );
 				$size  = ( $parts['high'] * 4294967296 ) + $parts['low'];
@@ -683,19 +677,41 @@ final class TransparAI_Parsers {
 			} elseif ( 0 === $size ) {
 				$size = $length - $offset;
 			}
+
 			if ( $size < $head || ! preg_match( '/^[\x20-\x7E]{4}$/', $type ) ) {
-				break;
+				return $tolerate_truncation ? $boxes : null;
 			}
-			if ( 'uuid' === $type && $offset + $head + 16 <= $length ) {
-				$uuid = substr( $data, $offset + $head, 16 );
-				if ( self::XMP_BMFF_UUID === $uuid && $offset + $size <= $length ) {
-					return substr( $data, $offset + $head + 16, $size - $head - 16 );
-				}
+			if ( ! $tolerate_truncation && $offset + $size > $length ) {
+				return null;
 			}
+
+			$boxes[] = array(
+				'offset' => $offset,
+				'size'   => $size,
+				'head'   => $head,
+				'type'   => $type,
+			);
 			$offset += $size;
 		}
 
-		return null;
+		if ( ! $tolerate_truncation && $offset !== $length ) {
+			return null;
+		}
+
+		return $boxes;
+	}
+
+	/**
+	 * The 16-byte uuid of a uuid box, or '' for any other or truncated box.
+	 *
+	 * @param string                                                $data Raw bytes.
+	 * @param array{offset:int, size:int, head:int, type:string} $box  Box entry.
+	 */
+	private static function bmff_box_uuid( string $data, array $box ): string {
+		if ( 'uuid' !== $box['type'] || $box['offset'] + $box['head'] + 16 > strlen( $data ) ) {
+			return '';
+		}
+		return substr( $data, $box['offset'] + $box['head'], 16 );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -787,7 +803,7 @@ final class TransparAI_Parsers {
 	public static function xmp_digital_source_types( string $xmp ): array {
 		$values = array();
 
-		// Element form: <prefix:DigitalSourceType>VALUE</...>, possibly wrapping rdf:li items.
+		/* Element form: <prefix:DigitalSourceType>VALUE</...>, possibly wrapping rdf:li items. */
 		if ( preg_match_all( '#<[A-Za-z0-9_.-]+:DigitalSourceType\b[^>]*>(.*?)</[A-Za-z0-9_.-]+:DigitalSourceType>#s', $xmp, $matches ) ) {
 			foreach ( $matches[1] as $inner ) {
 				if ( preg_match_all( '#<rdf:li[^>]*>(.*?)</rdf:li>#s', $inner, $items ) ) {
@@ -800,7 +816,7 @@ final class TransparAI_Parsers {
 			}
 		}
 
-		// Attribute form: prefix:DigitalSourceType="VALUE".
+		/* Attribute form: prefix:DigitalSourceType="VALUE". */
 		if ( preg_match_all( '#[A-Za-z0-9_.-]+:DigitalSourceType\s*=\s*"([^"]*)"#', $xmp, $matches ) ) {
 			foreach ( $matches[1] as $value ) {
 				$values[] = $value;
@@ -887,25 +903,26 @@ final class TransparAI_Parsers {
 	 *
 	 * C2PA 2.x carries the source type in the c2pa.actions assertion as a
 	 * NewsCodes URI; matching is anchored on the vocabulary path so ordinary
-	 * words can never trigger it.
+	 * words can never trigger it. What a term means is the detector's call,
+	 * which keeps one vocabulary table for the XMP and the C2PA path alike.
 	 *
-	 * @return string 'composite', 'generated' or '' (none declared).
+	 * @return string[] Lowercase terms in the order they appear, without duplicates.
 	 */
-	public static function c2pa_digital_source_type( string $payload ): string {
-		$lower = strtolower( $payload );
-		if ( str_contains( $lower, 'digitalsourcetype/compositewithtrainedalgorithmicmedia' ) ) {
-			return 'composite';
+	public static function c2pa_digital_source_types( string $payload ): array {
+		if ( ! preg_match_all( '#digitalsourcetype/([a-z0-9]+)#', strtolower( $payload ), $matches ) ) {
+			return array();
 		}
-		if ( str_contains( $lower, 'digitalsourcetype/trainedalgorithmicmedia' ) || str_contains( $lower, 'digitalsourcetype/compositesynthetic' ) ) {
-			return 'generated';
-		}
-		return '';
+		return array_values( array_unique( $matches[1] ) );
 	}
 
 	/**
-	 * zlib inflate with a size guard.
+	 * zlib inflate with a size guard, null on anything unusable.
+	 *
+	 * Also used by the writer for compressed PNG iTXt payloads: a build
+	 * without zlib must degrade to "cannot read it" everywhere, never call an
+	 * undefined function.
 	 */
-	private static function inflate( string $data ): ?string {
+	public static function inflate( string $data ): ?string {
 		if ( ! function_exists( 'gzuncompress' ) ) {
 			return null;
 		}

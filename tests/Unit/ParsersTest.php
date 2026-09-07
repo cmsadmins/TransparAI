@@ -146,7 +146,12 @@ final class ParsersTest extends TestCase {
 		$this->assertNotNull( $segments );
 		$payload = TransparAI_Parsers::jpeg_app11_payload( $segments );
 		$this->assertSame( 'Google C2PA Core Generator Library', TransparAI_Parsers::c2pa_claim_generator( $payload ) );
-		$this->assertSame( 'generated', TransparAI_Parsers::c2pa_digital_source_type( $payload ) );
-		$this->assertSame( '', TransparAI_Parsers::c2pa_digital_source_type( 'plain composite text without the vocabulary path' ) );
+		$this->assertSame( array( 'trainedalgorithmicmedia' ), TransparAI_Parsers::c2pa_digital_source_types( $payload ) );
+		$this->assertSame( array(), TransparAI_Parsers::c2pa_digital_source_types( 'plain composite text without the vocabulary path' ) );
+		$this->assertSame(
+			array( 'compositesynthetic' ),
+			TransparAI_Parsers::c2pa_digital_source_types( 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeSynthetic' ),
+			'The term is returned verbatim; the detector maps it to the composite type'
+		);
 	}
 }

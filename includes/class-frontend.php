@@ -15,7 +15,10 @@
  * Every path shares one wrapper and a per-image guard, so media is never
  * badged twice.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -44,31 +47,37 @@ final class TransparAI_Frontend {
 		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue' ) );
 		add_action( 'wp_footer', array( self::class, 'print_footer_output' ) );
 
-		// AI-written content note, ahead of the image filters.
+		/* AI-written content note, ahead of the image filters. */
 		add_filter( 'the_content', array( self::class, 'filter_content_notice' ), 5 );
 
 		add_filter( 'render_block', array( self::class, 'filter_block' ), 20, 2 );
 		add_filter( 'the_content', array( self::class, 'filter_content' ), 20 );
 		add_filter( 'widget_text_content', array( self::class, 'filter_content' ), 20 );
-		// Fires for all Elementor-rendered output, including Theme Builder
-		// templates. Without Elementor the filter simply never runs.
+		/*
+		 * Fires for all Elementor-rendered output, including Theme Builder
+		 * templates. Without Elementor the filter simply never runs.
+		 */
 		add_filter( 'elementor/frontend/the_content', array( self::class, 'filter_content' ), 20 );
 
 		add_filter( 'post_thumbnail_html', array( self::class, 'filter_thumbnail' ), 20, 3 );
 		add_filter( 'wp_get_attachment_image', array( self::class, 'filter_attachment_image' ), 20, 2 );
 		add_filter( 'wp_get_attachment_image_attributes', array( self::class, 'filter_image_attributes' ), 20, 2 );
 
-		// WPBakery builds some image tags by hand (custom sizes, galleries);
-		// its helper hands us the attachment id to tag them for the class path.
-		// Without WPBakery the filter simply never runs.
+		/*
+		 * WPBakery builds some image tags by hand (custom sizes, galleries);
+		 * its helper hands us the attachment id to tag them for the class path.
+		 * Without WPBakery the filter simply never runs.
+		 */
 		add_filter( 'vc_wpb_getimagesize', array( self::class, 'filter_wpb_image' ), 20, 2 );
 
-		// Elementor custom-size images are resized to hash-suffixed files and
-		// carry no attachment class; this widget filter hands us the settings
-		// with the id. Without Elementor the filter simply never runs.
+		/*
+		 * Elementor custom-size images are resized to hash-suffixed files and
+		 * carry no attachment class; this widget filter hands us the settings
+		 * with the id. Without Elementor the filter simply never runs.
+		 */
 		add_filter( 'elementor/image_size/get_attachment_image_html', array( self::class, 'filter_elementor_image' ), 20, 4 );
 
-		// Invalidate the URL map when labels change.
+		/* Invalidate the URL map when labels change. */
 		add_action( 'added_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
 		add_action( 'updated_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
 		add_action( 'deleted_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
@@ -86,12 +95,12 @@ final class TransparAI_Frontend {
 			return false;
 		}
 
-		// Elementor preview iframe and static render mode.
+		/* Elementor preview iframe and static render mode. */
 		if ( isset( $_GET['elementor-preview'] ) || isset( $_GET['render_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only detection of a builder editing context.
 			return false;
 		}
 
-		// WPBakery front-end editor (official helpers, raw params as fallback).
+		/* WPBakery front-end editor (official helpers, raw params as fallback). */
 		if ( function_exists( 'vc_is_inline' ) && vc_is_inline() ) {
 			return false;
 		}
@@ -135,19 +144,64 @@ final class TransparAI_Frontend {
 				$label .= ' · ' . $generator;
 			}
 		}
-		return '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( self::badge_short_label() ) . '">'
+		$html = '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( self::badge_short_label() ) . '">'
 			. esc_html( $label ) . '</span>';
+
+		/**
+		 * Filters the badge markup of one attachment.
+		 *
+		 * @param string $html          Badge HTML.
+		 * @param int    $attachment_id Attachment ID.
+		 */
+		return (string) apply_filters( 'transparai_badge_html', $html, $attachment_id );
 	}
 
 	/**
-	 * Wrapper CSS classes from the badge settings.
+	 * Wrapper CSS classes from the badge settings, honoring the per-image
+	 * override where the attachment is known (0 = shared JS labeling template).
 	 */
-	private static function wrap_classes( string $base ): string {
-		return $base
-			. ' trai-pos-' . sanitize_html_class( TransparAI_Options::get( 'badge_position' ) )
+	private static function wrap_classes( string $base, int $attachment_id = 0 ): string {
+		$override = $attachment_id > 0 ? TransparAI_Meta::get_badge_position( $attachment_id ) : '';
+		$position = in_array( $override, array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ), true )
+			? $override
+			: TransparAI_Options::get( 'badge_position' );
+
+		$classes = $base
+			. ' trai-pos-' . sanitize_html_class( $position )
 			. ' trai-size-' . sanitize_html_class( TransparAI_Options::get( 'badge_size' ) )
 			. ' trai-style-' . sanitize_html_class( TransparAI_Options::get( 'badge_style' ) )
 			. ' trai-mode-' . sanitize_html_class( TransparAI_Options::get( 'badge_mode' ) );
+
+		if ( 'below' === $override ) {
+			$classes .= ' trai-badge-below';
+		} elseif ( 'hidden' === $override ) {
+			$classes .= ' trai-badge-hidden';
+		}
+		if ( '' !== $override ) {
+			/* An editor picked this placement; the overlay guard keeps off. */
+			$classes .= ' trai-badge-manual';
+		}
+
+		/**
+		 * Filters the wrapper CSS classes of one badge.
+		 *
+		 * @param string $classes       Space-separated class list.
+		 * @param int    $attachment_id Attachment ID (0 for the shared JS labeling template).
+		 */
+		return (string) apply_filters( 'transparai_badge_wrap_classes', $classes, $attachment_id );
+	}
+
+	/**
+	 * Wrap a media tag together with its badge. The single place that builds
+	 * the wrapper element, so escaping and badge placement cannot drift apart
+	 * between the content, featured image and template image paths.
+	 *
+	 * @param string $classes       Wrapper classes (already assembled).
+	 * @param string $html          The media HTML to wrap.
+	 * @param int    $attachment_id Attachment ID.
+	 */
+	private static function wrap_media( string $classes, string $html, int $attachment_id ): string {
+		return '<span class="' . esc_attr( $classes ) . '">' . $html . self::badge_html( $attachment_id ) . '</span>';
 	}
 
 	/**
@@ -163,6 +217,7 @@ final class TransparAI_Frontend {
 		$data = array(
 			'label'      => self::badge_label(),
 			'short'      => self::badge_short_label(),
+			'guard'      => TransparAI_Options::enabled( 'badge_guard' ) ? '1' : '',
 			'classesBg'  => self::wrap_classes( 'trai-bg-host' ),
 			'classesImg' => self::wrap_classes( 'trai-wrap' ),
 			'bgMap'      => TransparAI_Options::enabled( 'background_badges' ) ? self::background_map() : array(),
@@ -217,15 +272,17 @@ final class TransparAI_Frontend {
 
 				self::collect( $attachment_id );
 
-				$classes = self::wrap_classes( 'trai-wrap' );
+				$classes = self::wrap_classes( 'trai-wrap', $attachment_id );
 				if ( str_contains( $tag, 'wp-block-cover__image-background' ) ) {
-					// Cover backgrounds are absolutely positioned full-bleed
-					// images; the wrapper must take over that role or the
-					// image collapses to a zero-height box.
+					/*
+					 * Cover backgrounds are absolutely positioned full-bleed
+					 * images; the wrapper must take over that role or the
+					 * image collapses to a zero-height box.
+					 */
 					$classes .= ' trai-wrap--fill';
 				}
 
-				return '<span class="' . esc_attr( $classes ) . '">' . $tag . self::badge_html( $attachment_id ) . '</span>';
+				return self::wrap_media( $classes, $tag, $attachment_id );
 			},
 			$content
 		);
@@ -247,7 +304,7 @@ final class TransparAI_Frontend {
 		if ( false !== $uploads_pos ) {
 			$path = substr( $url, $uploads_pos + 9 );
 		} elseif ( ! str_contains( $url, '//' ) && ! str_starts_with( $url, '/' ) ) {
-			$path = $url; // Already upload-relative (map building).
+			$path = $url; /* Already upload-relative (map building). */
 		} else {
 			return '';
 		}
@@ -299,7 +356,7 @@ final class TransparAI_Frontend {
 						$content,
 						1
 					);
-					$content = '<span class="' . esc_attr( self::wrap_classes( 'trai-avwrap' ) ) . '">' . $content . '</span>';
+					$content = '<span class="' . esc_attr( self::wrap_classes( 'trai-avwrap', $attachment_id ) ) . '">' . $content . '</span>';
 				}
 			}
 			return $content;
@@ -325,7 +382,7 @@ final class TransparAI_Frontend {
 			return $html;
 		}
 		self::collect( $thumbnail_id );
-		return '<span class="' . esc_attr( self::wrap_classes( 'trai-thumbwrap' ) ) . '">' . $html . self::badge_html( $thumbnail_id ) . '</span>';
+		return self::wrap_media( self::wrap_classes( 'trai-thumbwrap', $thumbnail_id ), $html, $thumbnail_id );
 	}
 
 	/**
@@ -344,7 +401,7 @@ final class TransparAI_Frontend {
 			return $html;
 		}
 		self::collect( $attachment_id );
-		return '<span class="' . esc_attr( self::wrap_classes( 'trai-wrap' ) ) . '">' . $html . self::badge_html( $attachment_id ) . '</span>';
+		return self::wrap_media( self::wrap_classes( 'trai-wrap', $attachment_id ), $html, $attachment_id );
 	}
 
 	/**
@@ -530,10 +587,10 @@ final class TransparAI_Frontend {
 				} elseif ( str_starts_with( $mime, 'audio/' ) ) {
 					$type = 'AudioObject';
 				}
-				$dst  = 'composite' === TransparAI_Meta::get_type( $attachment_id )
+				$dst       = 'composite' === TransparAI_Meta::get_type( $attachment_id )
 					? 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia'
 					: 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
-				$node = array(
+				$node      = array(
 					'@type'             => $type,
 					'contentUrl'        => $url,
 					'digitalSourceType' => $dst,
@@ -601,6 +658,12 @@ final class TransparAI_Frontend {
 			delete_transient( 'transparai_url_map' );
 			delete_transient( 'transparai_stats' );
 			self::purge_page_caches();
+		} elseif ( TransparAI_Meta::KEY_BADGE_POS === $meta_key ) {
+			/*
+			 * The URL map only tracks flag state; a position override just
+			 * changes rendered markup, so cached pages are all that go stale.
+			 */
+			self::purge_page_caches();
 		}
 	}
 
@@ -616,24 +679,24 @@ final class TransparAI_Frontend {
 		$purged = true;
 
 		if ( function_exists( 'rocket_clean_domain' ) ) {
-			rocket_clean_domain(); // WP Rocket.
+			rocket_clean_domain(); /* WP Rocket. */
 		}
 		if ( has_action( 'litespeed_purge_all' ) ) {
 			do_action( 'litespeed_purge_all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- LiteSpeed Cache's own purge hook.
 		}
 		if ( function_exists( 'w3tc_flush_posts' ) ) {
-			w3tc_flush_posts(); // W3 Total Cache.
+			w3tc_flush_posts(); /* W3 Total Cache. */
 		} elseif ( function_exists( 'w3tc_flush_all' ) ) {
 			w3tc_flush_all();
 		}
 		if ( function_exists( 'wp_cache_clear_cache' ) ) {
-			wp_cache_clear_cache(); // WP Super Cache.
+			wp_cache_clear_cache(); /* WP Super Cache. */
 		}
 		if ( function_exists( 'wpfc_clear_all_cache' ) ) {
-			wpfc_clear_all_cache(); // WP Fastest Cache.
+			wpfc_clear_all_cache(); /* WP Fastest Cache. */
 		}
 		if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
-			sg_cachepress_purge_cache(); // SiteGround Optimizer.
+			sg_cachepress_purge_cache(); /* SiteGround Optimizer. */
 		}
 		if ( has_action( 'cache_enabler_clear_complete_cache' ) ) {
 			do_action( 'cache_enabler_clear_complete_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Cache Enabler's own purge hook.

@@ -4,7 +4,10 @@
  * badges, filters (grid + list, incl. the review queue), bulk actions and
  * notices.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -96,6 +99,32 @@ final class TransparAI_Media_Library {
 			'html'  => $html,
 			'helps' => esc_html__( 'Controls the front-end badge, the machine-readable file metadata and the media library filter.', 'transparai' ),
 		);
+
+		if ( TransparAI_Meta::is_flagged( $id ) ) {
+			$current = TransparAI_Meta::get_badge_position( $id );
+			$choices = array(
+				''             => __( 'Default (site setting)', 'transparai' ),
+				'top-left'     => __( 'Top left', 'transparai' ),
+				'top-right'    => __( 'Top right', 'transparai' ),
+				'bottom-left'  => __( 'Bottom left', 'transparai' ),
+				'bottom-right' => __( 'Bottom right', 'transparai' ),
+				'below'        => __( 'Caption line below the image', 'transparai' ),
+				'hidden'       => __( 'Hide the visible badge on this image', 'transparai' ),
+			);
+			$select  = '<select name="attachments[' . $id . '][transparai_badge_pos]">';
+			foreach ( $choices as $value => $label ) {
+				$select .= '<option value="' . esc_attr( $value ) . '"' . selected( $current, $value, false ) . '>' . esc_html( $label ) . '</option>';
+			}
+			$select .= '</select>';
+
+			$fields['transparai_badge_pos'] = array(
+				'label' => __( 'Badge position', 'transparai' ),
+				'input' => 'html',
+				'html'  => $select,
+				'helps' => esc_html__( 'Overrides this image only. Use it if a theme overlay covers the badge here.', 'transparai' ),
+			);
+		}
+
 		return $fields;
 	}
 
@@ -152,6 +181,14 @@ final class TransparAI_Media_Library {
 		} elseif ( TransparAI_Meta::is_flagged( $id ) ) {
 			TransparAI_Meta::unflag( $id );
 		}
+		if ( isset( $attachment['transparai_badge_pos'] ) ) {
+			$position = TransparAI_Meta::sanitize_badge_pos( $attachment['transparai_badge_pos'] );
+			if ( '' === $position ) {
+				delete_post_meta( $id, TransparAI_Meta::KEY_BADGE_POS );
+			} else {
+				update_post_meta( $id, TransparAI_Meta::KEY_BADGE_POS, $position );
+			}
+		}
 		return $post;
 	}
 
@@ -207,7 +244,7 @@ final class TransparAI_Media_Library {
 	public static function enqueue_media_assets(): void {
 		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
 
-		// The short tile label ("AI"/"KI") is locale-dependent, so it is inlined.
+		/* The short tile label ("AI"/"KI") is locale-dependent, so it is inlined. */
 		wp_add_inline_style(
 			'transparai-admin',
 			'.attachment.trai-flag .thumbnail::after{content:"' . esc_attr( TransparAI_Frontend::badge_short_label() ) . '";}'
@@ -215,12 +252,20 @@ final class TransparAI_Media_Library {
 		);
 
 		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'media-views' ), TRANSPARAI_VERSION, true );
+		self::localize_admin();
+	}
+
+	/**
+	 * Nonces and strings for admin.js. Both surfaces that load the script
+	 * (media modal/grid and the attachment edit screen) hand it the same data.
+	 */
+	private static function localize_admin(): void {
 		wp_localize_script(
 			'transparai-admin',
 			'transparaiAdmin',
 			array(
 				'nonce'     => wp_create_nonce( 'transparai_bulk' ),
-				'scanNonce' => wp_create_nonce( 'transparai_scan' ),
+				'scanNonce' => wp_create_nonce( TransparAI_Scanner::NONCE ),
 				'labels'    => self::js_labels(),
 			)
 		);
@@ -320,15 +365,7 @@ final class TransparAI_Media_Library {
 		}
 		if ( $is_attachment_edit ) {
 			wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION, true );
-			wp_localize_script(
-				'transparai-admin',
-				'transparaiAdmin',
-				array(
-					'nonce'     => wp_create_nonce( 'transparai_bulk' ),
-					'scanNonce' => wp_create_nonce( 'transparai_scan' ),
-					'labels'    => self::js_labels(),
-				)
-			);
+			self::localize_admin();
 		}
 	}
 

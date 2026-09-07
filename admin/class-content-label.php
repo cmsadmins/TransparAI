@@ -6,7 +6,10 @@
  *
  * Works in the block editor as a regular meta box, no build step needed.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -81,7 +84,8 @@ final class TransparAI_Content_Label {
 			return;
 		}
 
-		if ( isset( $_POST['transparai_content_ai'] ) && '1' === $_POST['transparai_content_ai'] ) {
+		$flag = TransparAI_Meta::sanitize_flag( isset( $_POST['transparai_content_ai'] ) ? wp_unslash( $_POST['transparai_content_ai'] ) : '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitize_flag() normalizes the value to '1' or ''.
+		if ( '1' === $flag ) {
 			update_post_meta( $post_id, TransparAI_Meta::KEY_CONTENT_AI, '1' );
 		} else {
 			delete_post_meta( $post_id, TransparAI_Meta::KEY_CONTENT_AI );

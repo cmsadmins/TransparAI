@@ -16,7 +16,10 @@
  * bytes, and generator names use word boundaries, both measures prevent the
  * false positives observed in competing implementations.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -330,11 +333,27 @@ final class TransparAI_Detector {
 		if ( null === $xmp || '' === $xmp ) {
 			return null;
 		}
-		$terms = TransparAI_Parsers::xmp_digital_source_types( $xmp );
+		$known = self::known_dst_term( TransparAI_Parsers::xmp_digital_source_types( $xmp ) );
+		if ( null === $known ) {
+			return null;
+		}
+		list( $type, $confidence, $term ) = $known;
+		return self::result( $type, 'xmp-dst', self::generator_from_blocks( array( 'xmp' => $xmp ) ), $confidence, 'XMP DigitalSourceType: ' . $term );
+	}
+
+	/**
+	 * First term of the IPTC vocabulary in a list, with its classification.
+	 *
+	 * The single place that turns a DigitalSourceType term into a content type
+	 * and a confidence, no matter which container declared it.
+	 *
+	 * @param string[] $terms Lowercase vocabulary terms.
+	 * @return array{0:string, 1:string, 2:string}|null type, confidence, term.
+	 */
+	private static function known_dst_term( array $terms ): ?array {
 		foreach ( $terms as $term ) {
 			if ( isset( self::DST_TERMS[ $term ] ) ) {
-				list( $type, $confidence ) = self::DST_TERMS[ $term ];
-				return self::result( $type, 'xmp-dst', self::generator_from_blocks( array( 'xmp' => $xmp ) ), $confidence, 'XMP DigitalSourceType: ' . $term );
+				return array( self::DST_TERMS[ $term ][0], self::DST_TERMS[ $term ][1], $term );
 			}
 		}
 		return null;
@@ -366,14 +385,24 @@ final class TransparAI_Detector {
 
 		$instructions = isset( $iptc['2#040'][0] ) ? (string) $iptc['2#040'][0] : '';
 		if ( '' !== $instructions ) {
-			foreach ( self::DST_TERMS as $term => $meta ) {
+			/*
+			 * Free text, so the terms overlap as substrings:
+			 * compositeWithTrainedAlgorithmicMedia contains
+			 * trainedAlgorithmicMedia, which in turn contains
+			 * algorithmicMedia. Matching the longest term first is what makes
+			 * the result independent of the table's order.
+			 */
+			$terms = array_keys( self::DST_TERMS );
+			usort(
+				$terms,
+				static function ( string $a, string $b ): int {
+					return strlen( $b ) <=> strlen( $a );
+				}
+			);
+			foreach ( $terms as $term ) {
 				if ( false !== stripos( $instructions, $term ) ) {
-					// Longest terms first would be ideal; compositewith… contains trainedalgorithmicmedia,
-					// so check the composite term explicitly.
-					if ( false !== stripos( $instructions, 'compositewithtrainedalgorithmicmedia' ) ) {
-						return self::result( 'composite', 'iim', '', 'certain', 'IPTC-IIM SpecialInstructions dST token' );
-					}
-					return self::result( $meta[0], 'iim', '', $meta[1], 'IPTC-IIM SpecialInstructions dST token: ' . $term );
+					list( $type, $confidence ) = self::DST_TERMS[ $term ];
+					return self::result( $type, 'iim', '', $confidence, 'IPTC-IIM SpecialInstructions dST token: ' . $term );
 				}
 			}
 		}
@@ -394,12 +423,17 @@ final class TransparAI_Detector {
 		}
 		$claim = '' !== $payload ? TransparAI_Parsers::c2pa_claim_generator( $payload ) : '';
 
-		// C2PA 2.x declares the digital source type inside the manifest's
-		// actions assertion. That is an explicit AI declaration: certain.
+		/*
+		 * C2PA 2.x declares the digital source type inside the manifest's
+		 * actions assertion. An explicit declaration outranks the camera rule,
+		 * and the vocabulary table decides what the term is worth, exactly as
+		 * on the XMP path.
+		 */
 		if ( '' !== $payload ) {
-			$declared = TransparAI_Parsers::c2pa_digital_source_type( $payload );
-			if ( '' !== $declared ) {
-				return self::result( $declared, 'c2pa', $claim, 'certain', 'C2PA manifest declares an AI digitalSourceType' . ( '' !== $claim ? ' (claim generator: ' . $claim . ')' : '' ) );
+			$declared = self::known_dst_term( TransparAI_Parsers::c2pa_digital_source_types( $payload ) );
+			if ( null !== $declared ) {
+				list( $type, $confidence, $term ) = $declared;
+				return self::result( $type, 'c2pa', $claim, $confidence, 'C2PA manifest declares DigitalSourceType: ' . $term . ( '' !== $claim ? ' (claim generator: ' . $claim . ')' : '' ) );
 			}
 		}
 

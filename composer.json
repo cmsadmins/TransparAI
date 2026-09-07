@@ -1,6 +1,13 @@
 {
-	"name": "reportedip/transparai",
+	"name": "contexlabs/transparai",
 	"description": "TransparAI - AI Image Marker & Detector for WordPress",
+	"authors": [
+		{
+			"name": "Patrick Schlesinger",
+			"email": "transparai@cms-admins.de",
+			"homepage": "https://www.cms-admins.de/"
+		}
+	],
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"require": {

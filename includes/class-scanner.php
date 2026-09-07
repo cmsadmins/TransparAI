@@ -9,7 +9,10 @@
  * existing label is never overwritten and a dismissed detection stays
  * dismissed.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -24,7 +27,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class TransparAI_Scanner {
 
 	private const BATCH_SIZE  = 20;
-	private const TIME_BUDGET = 10.0; // Seconds per AJAX batch request.
+	private const TIME_BUDGET = 10.0; /* Seconds per AJAX batch request. */
+
+	/** Nonce action of both scan endpoints; the admin scripts create it under this name. */
+	public const NONCE = 'transparai_scan';
 
 	/**
 	 * Register hooks.
@@ -113,9 +119,39 @@ final class TransparAI_Scanner {
 	 * @return string flagged|queued|skipped.
 	 */
 	public static function apply_result( int $attachment_id, array $result ): string {
-		// Manual decisions win: existing label or dismissed detection stay untouched.
+		$status = self::planned_status( $attachment_id, $result );
+
+		if ( 'flagged' === $status ) {
+			TransparAI_Meta::store_result( $attachment_id, $result );
+			TransparAI_Meta::flag( $attachment_id, 'auto' );
+			return 'flagged';
+		}
+		if ( 'queued' === $status ) {
+			TransparAI_Meta::queue( $attachment_id, $result );
+			return 'queued';
+		}
+
+		/* Already labeled by hand: keep the decision, refresh the evidence. */
 		if ( TransparAI_Meta::is_flagged( $attachment_id ) ) {
 			TransparAI_Meta::store_result( $attachment_id, $result );
+		}
+		return 'skipped';
+	}
+
+	/**
+	 * What a detection result would do, without touching the database.
+	 *
+	 * The single place that holds the flag/queue/skip policy: apply_result()
+	 * acts on it and the CLI dry run previews it, so a preview can never
+	 * promise something a real scan would not do.
+	 *
+	 * @param int                  $attachment_id Attachment ID.
+	 * @param array<string, mixed> $result        Detector result.
+	 * @return string flagged|queued|skipped.
+	 */
+	public static function planned_status( int $attachment_id, array $result ): string {
+		/* Manual decisions win: existing label or dismissed detection stay untouched. */
+		if ( TransparAI_Meta::is_flagged( $attachment_id ) ) {
 			return 'skipped';
 		}
 		if ( '1' === get_post_meta( $attachment_id, TransparAI_Meta::KEY_DISMISSED, true ) ) {
@@ -130,15 +166,38 @@ final class TransparAI_Scanner {
 		if ( 'off' === $mode ) {
 			return 'skipped';
 		}
+		return 'flag' === $mode ? 'flagged' : 'queued';
+	}
 
-		if ( 'flag' === $mode ) {
-			TransparAI_Meta::store_result( $attachment_id, $result );
-			TransparAI_Meta::flag( $attachment_id, 'auto' );
-			return 'flagged';
-		}
+	/**
+	 * Empty tally for a scan run.
+	 *
+	 * @return array<string, int>
+	 */
+	public static function empty_stats(): array {
+		return array(
+			'processed'  => 0,
+			'flagged'    => 0,
+			'queued'     => 0,
+			'skipped'    => 0,
+			'clean'      => 0,
+			'unreadable' => 0,
+		);
+	}
 
-		TransparAI_Meta::queue( $attachment_id, $result );
-		return 'queued';
+	/**
+	 * Count one scan status into a tally. Shared by the admin batch and the
+	 * CLI so a status cannot land in different buckets depending on the caller.
+	 *
+	 * @param array<string, int> $stats  Current tally.
+	 * @param string             $status Status from scan_attachment().
+	 * @return array<string, int>
+	 */
+	public static function tally( array $stats, string $status ): array {
+		++$stats['processed'];
+		$bucket = isset( $stats[ $status ] ) && 'processed' !== $status ? $status : 'clean';
+		++$stats[ $bucket ];
+		return $stats;
 	}
 
 	/**
@@ -148,7 +207,7 @@ final class TransparAI_Scanner {
 	 * Response: processed, flagged, queued, clean, unreadable, offset, remaining.
 	 */
 	public static function ajax_scan_batch(): void {
-		check_ajax_referer( 'transparai_scan' );
+		check_ajax_referer( self::NONCE );
 		if ( ! current_user_can( 'upload_files' ) ) {
 			wp_send_json_error( array( 'message' => __( 'You are not allowed to do that.', 'transparai' ) ), 403 );
 		}
@@ -169,7 +228,7 @@ final class TransparAI_Scanner {
 			'update_post_term_cache' => false,
 		);
 		if ( 'missing' === $mode ) {
-			$args['offset']     = 0; // Scanned items drop out of the query themselves.
+			$args['offset']     = 0; /* Scanned items drop out of the query themselves. */
 			$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- bounded batch query (20 rows) in an explicit admin scan.
 				array(
 					'key'     => TransparAI_Meta::KEY_SCANNED,
@@ -179,33 +238,14 @@ final class TransparAI_Scanner {
 		}
 
 		$query = new WP_Query( $args );
-		$stats = array(
-			'processed'  => 0,
-			'flagged'    => 0,
-			'queued'     => 0,
-			'clean'      => 0,
-			'unreadable' => 0,
-		);
+		$stats = self::empty_stats();
 
 		$started = microtime( true );
 		foreach ( $query->posts as $attachment_id ) {
-			$scan = self::scan_attachment( (int) $attachment_id );
-			++$stats['processed'];
-			switch ( $scan['status'] ) {
-				case 'flagged':
-					++$stats['flagged'];
-					break;
-				case 'queued':
-					++$stats['queued'];
-					break;
-				case 'unreadable':
-					++$stats['unreadable'];
-					break;
-				default:
-					++$stats['clean'];
-			}
+			$scan  = self::scan_attachment( (int) $attachment_id );
+			$stats = self::tally( $stats, $scan['status'] );
 			if ( microtime( true ) - $started > self::TIME_BUDGET ) {
-				break; // Partial batch: the client continues with the returned offset.
+				break; /* Partial batch: the client continues with the returned offset. */
 			}
 		}
 
@@ -230,7 +270,7 @@ final class TransparAI_Scanner {
 	 * AJAX: re-check a single attachment (button in the attachment details).
 	 */
 	public static function ajax_recheck(): void {
-		check_ajax_referer( 'transparai_scan' );
+		check_ajax_referer( self::NONCE );
 		if ( ! current_user_can( 'upload_files' ) ) {
 			wp_send_json_error( array( 'message' => __( 'You are not allowed to do that.', 'transparai' ) ), 403 );
 		}
@@ -239,7 +279,7 @@ final class TransparAI_Scanner {
 			wp_send_json_error( array( 'message' => __( 'Invalid attachment.', 'transparai' ) ), 400 );
 		}
 
-		// A re-check is an explicit user request: lift a previous dismissal.
+		/* A re-check is an explicit user request: lift a previous dismissal. */
 		delete_post_meta( $attachment_id, TransparAI_Meta::KEY_DISMISSED );
 
 		$scan   = self::scan_attachment( $attachment_id );
@@ -290,9 +330,9 @@ final class TransparAI_Scanner {
 			'flagged'  => $count_query( array( 'meta_query' => TransparAI_Meta::meta_query( '1' ) ) ),
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin statistics, cached for 60 s.
 			'detected' => $count_query( array( 'meta_query' => TransparAI_Meta::meta_query( 'detected' ) ) ),
-			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin statistics, cached for 60 s.
 			'scanned'  => $count_query(
 				array(
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin statistics, cached for 60 s.
 					'meta_query' => array(
 						array(
 							'key'     => TransparAI_Meta::KEY_SCANNED,

@@ -10,7 +10,10 @@
  *  2. An hourly cron sweep over labeled attachments (batch with cursor)
  *     that catches rewrites which never touch attachment metadata.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -70,6 +73,10 @@ final class TransparAI_Repair {
 	 * @return array<string, array{size:int, mtime:int}>
 	 */
 	private static function fingerprint( int $attachment_id ): array {
+		// An optimizer may have rewritten the files earlier in this same
+		// request; without this, filesize/filemtime can serve stale values
+		// from PHP's stat cache and a change goes unnoticed.
+		clearstatcache();
 		$fingerprint = array();
 		foreach ( TransparAI_Writer::attachment_files( $attachment_id ) as $path ) {
 			// phpcs:disable WordPress.PHP.NoSilencedErrors.Discouraged -- files may vanish mid-loop; a zero entry is fine.
@@ -188,7 +195,7 @@ final class TransparAI_Repair {
 					}
 				}
 				if ( ! $needs_repair ) {
-					self::remember( $attachment_id ); // Files changed but marks survived.
+					self::remember( $attachment_id ); /* Files changed but marks survived. */
 				}
 			}
 
@@ -205,7 +212,7 @@ final class TransparAI_Repair {
 		$processed = count( $query->posts );
 		$total     = (int) $query->found_posts;
 		if ( $cursor + $processed >= $total || 0 === $processed ) {
-			update_option( self::OPT_CURSOR, 0, false ); // Sweep complete: start over next hour.
+			update_option( self::OPT_CURSOR, 0, false ); /* Sweep complete: start over next hour. */
 			$report['completed_at'] = time();
 		} else {
 			update_option( self::OPT_CURSOR, $cursor + $processed, false );
@@ -213,7 +220,7 @@ final class TransparAI_Repair {
 		$report['updated_at'] = time();
 		update_option( self::OPT_REPORT, $report, false );
 
-		// Reset counters once a full sweep finished, so the report shows the last complete pass.
+		/* Reset counters once a full sweep finished, so the report shows the last complete pass. */
 		if ( isset( $report['completed_at'] ) && $report['completed_at'] === $report['updated_at'] ) {
 			update_option(
 				self::OPT_REPORT,

@@ -4,7 +4,10 @@
  * file metadata options, library scan with progress, statistics and the
  * auto-repair report.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -86,10 +89,10 @@ final class TransparAI_Settings {
 			'transparaiAdmin',
 			array(
 				'nonce'     => wp_create_nonce( 'transparai_bulk' ),
-				'scanNonce' => wp_create_nonce( 'transparai_scan' ),
+				'scanNonce' => wp_create_nonce( TransparAI_Scanner::NONCE ),
 				'labels'    => array(
-					/* translators: 1: processed count, 2: flagged count, 3: queued count. */
-					'scanProgress' => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review.', 'transparai' ),
+					/* translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count. */
+					'scanProgress' => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
 					'scanDone'     => __( 'Scan complete.', 'transparai' ),
 					'scanFailed'   => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
 				),
@@ -246,6 +249,8 @@ final class TransparAI_Settings {
 							<?php esc_html_e( 'Show the detected generator in the badge (e.g. "AI-generated · Midjourney")', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'badge_alt_append' ); ?>" value="1" <?php checked( $options['badge_alt_append'], '1' ); ?> />
 							<?php esc_html_e( 'Append the label to the image alt text (screen readers)', 'transparai' ); ?></label><br />
+							<label><input type="checkbox" name="<?php self::name( 'badge_guard' ); ?>" value="1" <?php checked( $options['badge_guard'], '1' ); ?> />
+							<?php esc_html_e( 'Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'background_badges' ); ?>" value="1" <?php checked( $options['background_badges'], '1' ); ?> />
 							<?php esc_html_e( 'Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)', 'transparai' ); ?></label>
 						</td>

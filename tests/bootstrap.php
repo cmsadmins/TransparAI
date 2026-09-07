@@ -160,7 +160,8 @@ if ( ! function_exists( 'get_post_type' ) ) {
 }
 if ( ! function_exists( 'current_user_can' ) ) {
 	function current_user_can( $capability, ...$args ) {
-		return true;
+		global $trai_test_can;
+		return $trai_test_can ?? true;
 	}
 }
 if ( ! function_exists( 'is_admin' ) ) {
@@ -296,10 +297,22 @@ if ( ! function_exists( 'esc_html' ) ) {
 	}
 }
 
+if ( ! class_exists( 'WP_Post' ) ) {
+	/**
+	 * Minimal stand-in for the core post object.
+	 */
+	class WP_Post { // phpcs:ignore Generic.Classes.OpeningBraceSameLine.ContentAfterBrace
+		/** @var int */
+		public $ID = 0;
+	}
+}
+
 require_once dirname( __DIR__ ) . '/includes/class-options.php';
 require_once dirname( __DIR__ ) . '/includes/class-meta.php';
 require_once dirname( __DIR__ ) . '/includes/class-parsers.php';
 require_once dirname( __DIR__ ) . '/includes/class-detector.php';
+require_once dirname( __DIR__ ) . '/includes/class-scanner.php';
+require_once dirname( __DIR__ ) . '/includes/class-integrations.php';
 require_once dirname( __DIR__ ) . '/includes/class-repair.php';
 require_once dirname( __DIR__ ) . '/includes/class-writer.php';
 require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
@@ -308,11 +321,15 @@ require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
  * Reset all in-memory stores between tests.
  */
 function trai_test_reset(): void {
-	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients;
-	$trai_test_options    = array();
-	$trai_test_meta       = array();
-	$trai_test_filters    = array();
-	$trai_test_transients = array();
+	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post;
+	$trai_test_options      = array();
+	$trai_test_meta         = array();
+	$trai_test_filters      = array();
+	$trai_test_transients   = array();
+	$trai_test_can          = true;
+	$trai_test_current_post = 0;
+	$_GET                   = array();
+	$_REQUEST               = array();
 }
 
 /**

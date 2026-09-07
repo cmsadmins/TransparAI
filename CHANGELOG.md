@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+- Overlay guard for the visible badge: the front-end script now checks the real paint order at each badge (hit test, no z-index guessing) and, only when a theme layer actually covers it, raises the badge, moves it to a free corner or, as the last resort, shows it as a caption line below the image. On by default, can be turned off under Visible badge.
+- Badge stacking level raised from a fixed `z-index: 2` to the CSS custom property `--trai-badge-z` (default `30`): above typical theme chrome, still far below lightbox and modal layers, tunable globally or per container.
+- Per-image badge override: a "Badge position" select in the attachment details (four corners, caption line below the image, or hide the visible badge for this image). Hiding never touches the in-file metadata or the JSON-LD output. Stored as `_transparai_badge_pos`, REST-registered, page caches are purged on change.
+- CSS utility classes `trai-badge-top-left`, `trai-badge-top-right`, `trai-badge-bottom-left`, `trai-badge-bottom-right`, `trai-badge-below` and `trai-badge-hidden`: put one on any container (every builder allows custom classes) to reposition or hide the badges inside it. Manual placements are exempt from the overlay guard, and `trai-badge-manual` opts a subtree out of the guard without changing the position.
+- New filters `transparai_badge_html` and `transparai_badge_wrap_classes` for customizing the badge markup and wrapper classes per attachment.
+- Fixed: with the icon-only style, a caption line showed the full label and the abbreviation next to each other ("AI-generated" plus "AI"). The abbreviation exists for overlay badges that have to fit on the media and is now left out wherever the badge is a caption line, which includes video and audio badges.
+- Fixed: with the outline style, a caption line kept the light border and the dark glow meant for sitting on top of an image, which showed up as a stray box around the text on the page background.
+- Fixed: a C2PA manifest declaring the legacy term compositeSynthetic was treated as fully generated instead of composite, so the wrong DigitalSourceType was written into the file. Both the XMP and the C2PA path now read one vocabulary table, and the IPTC-IIM path matches the longest term first, which removes an ordering trap between the overlapping terms.
+- Fixed: media the scan deliberately leaves alone (labeled by hand, previously dismissed, or a confidence level switched off) was counted as "clean" in the scan summaries of the admin and WP-CLI. Both now report it as skipped, from one shared tally.
+- Fixed: `wp transparai scan --dry-run` predicted its own outcome instead of asking the scanner, so with a non-default confidence setting or on a partly labeled library the preview did not match the real run. It now uses the same decision, and reports unreadable files as unreadable rather than clean.
+- Fixed: reading a compressed PNG iTXt block during a write called zlib without checking it exists, which is a fatal error on a PHP build without zlib. The read path had that guard, and both now share one implementation.
+- Hardened: the temporary file of an atomic write carries a unique name, so a repair sweep and an editor action touching the same file at the same moment cannot meet on one temp path.
+- Fixed: a setting stored as something other than a string, as WP-CLI, a migration or another plugin can leave it, ended the page in a fatal error while the footer was being written, which cut off everything after the structured data. Settings are now read defensively.
+- Fixed: `wp transparai status --format=ids` printed "Array" once per row instead of the attachment IDs, which made it useless for piping into another command. It now prints the plain ID list.
+
 ## 1.0.0
 
 Initial release.

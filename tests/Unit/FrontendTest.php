@@ -116,7 +116,10 @@ final class FrontendTest extends TestCase {
 	 */
 	private function reset_rendered(): void {
 		$prop = new ReflectionProperty( TransparAI_Frontend::class, 'rendered_ids' );
-		$prop->setAccessible( true );
+		if ( PHP_VERSION_ID < 80100 ) {
+			// No effect since 8.1, deprecated (= test error) since 8.5.
+			$prop->setAccessible( true );
+		}
 		$prop->setValue( null, array() );
 	}
 
@@ -170,6 +173,123 @@ final class FrontendTest extends TestCase {
 		$out = TransparAI_Frontend::filter_content_notice( '<p>Text</p>' );
 		$this->assertStringContainsString( 'trai-content-notice', $out );
 		$this->assertStringEndsWith( '<p>Text</p>', $out );
+	}
+
+	public function test_image_attributes_injection_and_alt_append(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array(
+			'badge_enabled'    => '1',
+			'badge_alt_append' => '1',
+		);
+		update_post_meta( 90, TransparAI_Meta::KEY_FLAG, '1' );
+
+		$attachment     = new WP_Post();
+		$attachment->ID = 90;
+
+		$attr = TransparAI_Frontend::filter_image_attributes(
+			array(
+				'class' => 'attachment-large size-large',
+				'alt'   => 'A house',
+			),
+			$attachment
+		);
+		$this->assertStringContainsString( 'wp-image-90', $attr['class'] );
+		$this->assertStringContainsString( '(AI-generated)', $attr['alt'] );
+
+		// Existing wp-image class is left alone; alt is not doubled.
+		$attr = TransparAI_Frontend::filter_image_attributes( $attr, $attachment );
+		$this->assertSame( 1, substr_count( $attr['class'], 'wp-image-90' ) );
+		$this->assertSame( 1, substr_count( $attr['alt'], 'AI-generated' ) );
+	}
+
+	public function test_video_block_gets_caption_wrap(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );
+		update_post_meta( 91, TransparAI_Meta::KEY_FLAG, '1' );
+
+		$html = '<figure class="wp-block-video"><video src="/v.mp4"></video></figure>';
+		$out  = TransparAI_Frontend::filter_block( $html, array( 'blockName' => 'core/video', 'attrs' => array( 'id' => 91 ) ) );
+
+		$this->assertStringContainsString( 'trai-avwrap', $out );
+		$this->assertSame( 1, substr_count( $out, 'trai-badge' ) );
+
+		// Unflagged id: untouched.
+		$clean = TransparAI_Frontend::filter_block( $html, array( 'blockName' => 'core/video', 'attrs' => array( 'id' => 92 ) ) );
+		$this->assertSame( $html, $clean );
+	}
+
+	public function test_builder_editor_guards_disable_wrapping(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );
+		$this->seed_map( array( '2026/09/ai.jpg' => 77 ) );
+		$html = '<img src="/wp-content/uploads/2026/09/ai.jpg">';
+
+		$_GET['elementor-preview'] = '27';
+		$this->assertSame( $html, TransparAI_Frontend::filter_content( $html ), 'No badges inside the Elementor preview' );
+		unset( $_GET['elementor-preview'] );
+
+		$_REQUEST['vc_editable'] = 'true';
+		$this->assertSame( $html, TransparAI_Frontend::filter_content( $html ), 'No badges inside the WPBakery editor' );
+		unset( $_REQUEST['vc_editable'] );
+
+		$this->assertStringContainsString( 'trai-badge', TransparAI_Frontend::filter_content( $html ) );
+	}
+
+	public function test_badge_labels_use_custom_text(): void {
+		global $trai_test_options;
+		$this->assertSame( 'AI-generated', TransparAI_Frontend::badge_label() );
+		$trai_test_options['transparai_settings'] = array( 'badge_text' => 'Machine made' );
+		$this->assertSame( 'Machine made', TransparAI_Frontend::badge_label() );
+		$this->assertSame( 'AI', TransparAI_Frontend::badge_short_label() );
+	}
+
+	public function test_per_image_override_changes_position_class(): void {
+		$this->seed_map( array() );
+		update_post_meta( 77, TransparAI_Meta::KEY_FLAG, '1' );
+		update_post_meta( 77, TransparAI_Meta::KEY_BADGE_POS, 'top-left' );
+
+		$out = TransparAI_Frontend::wrap_images( '<img class="wp-image-77" src="/wp-content/uploads/2026/09/ai.jpg">' );
+
+		$this->assertStringContainsString( 'trai-pos-top-left', $out );
+		$this->assertStringContainsString( 'trai-badge-manual', $out, 'Manual overrides carry the marker that keeps the overlay guard off' );
+		$this->assertStringNotContainsString( 'trai-pos-bottom-right', $out );
+	}
+
+	public function test_per_image_override_below_and_hidden_keep_markup(): void {
+		$this->seed_map( array() );
+		update_post_meta( 41, TransparAI_Meta::KEY_FLAG, '1' );
+		$html = '<img class="wp-image-41" src="/wp-content/uploads/2026/09/b.jpg">';
+
+		update_post_meta( 41, TransparAI_Meta::KEY_BADGE_POS, 'below' );
+		$this->assertStringContainsString( 'trai-badge-below', TransparAI_Frontend::wrap_images( $html ) );
+
+		update_post_meta( 41, TransparAI_Meta::KEY_BADGE_POS, 'hidden' );
+		$hidden = TransparAI_Frontend::wrap_images( $html );
+		$this->assertStringContainsString( 'trai-badge-hidden', $hidden );
+		$this->assertStringContainsString( 'class="trai-badge"', $hidden, 'Hidden is CSS-only; the markup stays for schema output' );
+	}
+
+	public function test_badge_output_filters_apply(): void {
+		$this->seed_map( array() );
+		update_post_meta( 42, TransparAI_Meta::KEY_FLAG, '1' );
+
+		add_filter(
+			'transparai_badge_html',
+			static function ( string $html, int $attachment_id ): string {
+				return $html . '<!--badge-' . $attachment_id . '-->';
+			}
+		);
+		add_filter(
+			'transparai_badge_wrap_classes',
+			static function ( string $classes ): string {
+				return $classes . ' custom-class';
+			}
+		);
+
+		$out = TransparAI_Frontend::wrap_images( '<img class="wp-image-42" src="/wp-content/uploads/2026/09/f.jpg">' );
+
+		$this->assertStringContainsString( '<!--badge-42-->', $out );
+		$this->assertStringContainsString( 'custom-class', $out );
 	}
 
 	public function test_wpb_image_filter_tags_classless_markup(): void {

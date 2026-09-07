@@ -12,7 +12,10 @@
  * Public API for any other producer:
  *  do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' );
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );

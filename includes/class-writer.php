@@ -10,7 +10,10 @@
  * wrote and nothing else. All writes are atomic (temp file, structural
  * validation, rename).
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -92,9 +95,11 @@ final class TransparAI_Writer {
 
 		TransparAI_Repair::remember( $attachment_id );
 
-		// A failed file write must never stay silent: for a compliance plugin,
-		// "label removed in the database but still present in the file" (or the
-		// other way round) is the worst state. Surface it on the attachment.
+		/*
+		 * A failed file write must never stay silent: for a compliance plugin,
+		 * "label removed in the database but still present in the file" (or the
+		 * other way round) is the worst state. Surface it on the attachment.
+		 */
 		if ( $stats['failed'] > 0 ) {
 			update_post_meta( $attachment_id, TransparAI_Meta::KEY_WRITE_ERROR, (string) time() );
 		} else {
@@ -140,7 +145,7 @@ final class TransparAI_Writer {
 	public static function file_is_marked( string $path ): bool {
 		$format = self::writable_format( $path );
 		if ( '' === $format ) {
-			return true; // Unsupported formats are never "missing" their mark.
+			return true; /* Unsupported formats are never "missing" their mark. */
 		}
 		$xmp = self::extract_xmp( $path, $format );
 		if ( null === $xmp ) {
@@ -195,13 +200,15 @@ final class TransparAI_Writer {
 			);
 		}
 
-		// Already injected with the other type? Replace our block.
+		/* Already injected with the other type? Replace our block. */
 		$stripped = self::strip_own_block( $xmp );
 
 		$pos = strripos( $stripped, '</rdf:RDF>' );
 		if ( false === $pos ) {
-			// Packet without an rdf:RDF close is unusual, leave it alone and
-			// signal that a standalone packet cannot be merged.
+			/*
+			 * Packet without an rdf:RDF close is unusual, leave it alone and
+			 * signal that a standalone packet cannot be merged.
+			 */
 			return array(
 				'action' => 'keep',
 				'xmp'    => $xmp,
@@ -246,7 +253,7 @@ final class TransparAI_Writer {
 		}
 		$format = TransparAI_Parsers::sniff( $head );
 		if ( 'bmff' === $format ) {
-			// Only AVIF images; video/audio containers stay read-only.
+			/* Only AVIF images; video/audio containers stay read-only. */
 			$brand = substr( $head, 8, 4 );
 			return in_array( $brand, array( 'avif', 'avis' ), true ) ? 'avif' : '';
 		}
@@ -368,21 +375,39 @@ final class TransparAI_Writer {
 			'payload' => $payload,
 		);
 
-		$out      = array();
-		$inserted = false;
-		foreach ( $segments as $segment ) {
-			$is_app = is_int( $segment['marker'] ) && $segment['marker'] >= 0xE0 && $segment['marker'] <= 0xEF;
-			if ( ! $inserted && ! $is_app && 0xD8 !== $segment['marker'] ) {
-				$out[]    = $app1;
-				$inserted = true;
-			}
-			$out[] = $segment;
-		}
-		if ( ! $inserted ) {
+		$out = self::jpeg_insert_app( $segments, $app1 );
+		if ( null === $out ) {
 			return false;
 		}
 
 		return self::jpeg_maybe_add_iim( $path, TransparAI_Parsers::jpeg_build( $out ), $out, $type, true );
+	}
+
+	/**
+	 * Place a new APP segment behind the existing APP block.
+	 *
+	 * An APP segment has to sit after SOI and after the APP segments already
+	 * present, but before the first non-APP segment; the first such segment is
+	 * the insertion point.
+	 *
+	 * @param array<int, array<string, mixed>> $segments Segment list.
+	 * @param array<string, mixed>             $segment  Segment to insert.
+	 * @return array<int, array<string, mixed>>|null Null when the file offers no insertion point.
+	 */
+	private static function jpeg_insert_app( array $segments, array $segment ): ?array {
+		$out      = array();
+		$inserted = false;
+
+		foreach ( $segments as $existing ) {
+			$is_app = is_int( $existing['marker'] ) && $existing['marker'] >= 0xE0 && $existing['marker'] <= 0xEF;
+			if ( ! $inserted && ! $is_app && 0xD8 !== $existing['marker'] ) {
+				$out[]    = $segment;
+				$inserted = true;
+			}
+			$out[] = $existing;
+		}
+
+		return $inserted ? $out : null;
 	}
 
 	/**
@@ -399,21 +424,15 @@ final class TransparAI_Writer {
 	private static function jpeg_maybe_add_iim( string $path, string $data, array $segments, string $type, bool $dirty ): bool {
 		if ( TransparAI_Options::enabled( 'write_iim' ) && ! TransparAI_Parsers::jpeg_has_app13( $segments ) ) {
 			$app13 = self::build_app13( $type );
-			$out   = array();
-			$done  = false;
-			foreach ( $segments as $segment ) {
-				$is_app = is_int( $segment['marker'] ) && $segment['marker'] >= 0xE0 && $segment['marker'] <= 0xEF;
-				if ( ! $done && ! $is_app && 0xD8 !== $segment['marker'] ) {
-					$out[] = array(
-						'marker'  => 0xED,
-						'bytes'   => $app13,
-						'payload' => substr( $app13, 4 ),
-					);
-					$done  = true;
-				}
-				$out[] = $segment;
-			}
-			if ( $done ) {
+			$out   = self::jpeg_insert_app(
+				$segments,
+				array(
+					'marker'  => 0xED,
+					'bytes'   => $app13,
+					'payload' => substr( $app13, 4 ),
+				)
+			);
+			if ( null !== $out ) {
 				$data  = TransparAI_Parsers::jpeg_build( $out );
 				$dirty = true;
 			}
@@ -432,9 +451,9 @@ final class TransparAI_Writer {
 		$token = 'DigitalSourceType='
 			. ( 'composite' === $type ? 'compositeWithTrainedAlgorithmicMedia' : 'trainedAlgorithmicMedia' );
 
-		$iim  = "\x1C\x01\x5A" . pack( 'n', 3 ) . "\x1B\x25\x47";     // 1:90 coded character set = UTF-8.
-		$iim .= "\x1C\x02\x00" . pack( 'n', 2 ) . "\x00\x04";          // 2:0 record version 4.
-		$iim .= "\x1C\x02\x28" . pack( 'n', strlen( $token ) ) . $token; // 2:40 special instructions.
+		$iim  = "\x1C\x01\x5A" . pack( 'n', 3 ) . "\x1B\x25\x47"; /* 1:90 coded character set = UTF-8. */
+		$iim .= "\x1C\x02\x00" . pack( 'n', 2 ) . "\x00\x04"; /* 2:0 record version 4. */
+		$iim .= "\x1C\x02\x28" . pack( 'n', strlen( $token ) ) . $token; /* 2:40 special instructions. */
 
 		$resource = "8BIM\x04\x04\x00\x00" . pack( 'N', strlen( $iim ) ) . $iim;
 		if ( strlen( $iim ) % 2 ) {
@@ -469,7 +488,7 @@ final class TransparAI_Writer {
 				$xmp = substr( $segment['payload'], strlen( TransparAI_Parsers::XMP_HEADER_JPEG ) );
 				if ( self::is_own_packet( $xmp ) ) {
 					$dirty = true;
-					continue; // Drop our standalone packet.
+					continue; /* Drop our standalone packet. */
 				}
 				$stripped = self::strip_own_block( $xmp );
 				if ( $stripped !== $xmp ) {
@@ -483,7 +502,7 @@ final class TransparAI_Writer {
 			}
 			if ( 0xED === $segment['marker'] && self::is_own_app13( $segment['payload'] ) ) {
 				$dirty = true;
-				continue; // Drop our own IIM segment.
+				continue; /* Drop our own IIM segment. */
 			}
 			$out[] = $segment;
 		}
@@ -592,12 +611,10 @@ final class TransparAI_Writer {
 		}
 		$text = substr( $rest, $trans_end + 1 );
 		if ( 1 === $comp_flag ) {
-			// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- corrupt chunk data must not raise a warning.
-			$inflated = @gzuncompress( $text, 1048576 );
-			if ( false === $inflated ) {
+			$text = TransparAI_Parsers::inflate( $text );
+			if ( null === $text ) {
 				return null;
 			}
-			$text = $inflated;
 		}
 		return $text;
 	}
@@ -713,7 +730,7 @@ final class TransparAI_Writer {
 		}
 		$cleaned = self::strip_own_block( $xmp );
 		if ( $cleaned === $xmp ) {
-			return true; // Foreign XMP without our block: leave it alone.
+			return true; /* Foreign XMP without our block: leave it alone. */
 		}
 		$stripped = self::bmff_remove_xmp_box( $data );
 		if ( null === $stripped ) {
@@ -731,51 +748,10 @@ final class TransparAI_Writer {
 	}
 
 	/**
-	 * Top-level box list of an ISO-BMFF file, or null when the structure is
-	 * broken (a box overruns the file or carries a garbage type).
-	 *
-	 * @return array<int, array{offset:int, size:int, head:int, type:string}>|null
-	 */
-	private static function bmff_boxes( string $data ): ?array {
-		$boxes  = array();
-		$offset = 0;
-		$length = strlen( $data );
-
-		while ( $offset + 8 <= $length ) {
-			$size = unpack( 'N', substr( $data, $offset, 4 ) );
-			$size = $size[1];
-			$type = substr( $data, $offset + 4, 4 );
-			$head = 8;
-			if ( 1 === $size ) {
-				if ( $offset + 16 > $length ) {
-					return null;
-				}
-				$parts = unpack( 'Nhigh/Nlow', substr( $data, $offset + 8, 8 ) );
-				$size  = ( $parts['high'] * 4294967296 ) + $parts['low'];
-				$head  = 16;
-			} elseif ( 0 === $size ) {
-				$size = $length - $offset;
-			}
-			if ( $size < $head || $offset + $size > $length || ! preg_match( '/^[\x20-\x7E]{4}$/', $type ) ) {
-				return null;
-			}
-			$boxes[] = array(
-				'offset' => $offset,
-				'size'   => $size,
-				'head'   => $head,
-				'type'   => $type,
-			);
-			$offset += $size;
-		}
-
-		return $offset === $length ? $boxes : null;
-	}
-
-	/**
 	 * Remove the top-level XMP uuid box, keeping everything else byte-identical.
 	 */
 	private static function bmff_remove_xmp_box( string $data ): ?string {
-		$boxes = self::bmff_boxes( $data );
+		$boxes = TransparAI_Parsers::bmff_boxes( $data );
 		if ( null === $boxes ) {
 			return null;
 		}
@@ -864,7 +840,7 @@ final class TransparAI_Writer {
 				}
 				break;
 			case 'avif':
-				if ( null === self::bmff_boxes( $data ) || 'ftyp' !== substr( $data, 4, 4 ) ) {
+				if ( null === TransparAI_Parsers::bmff_boxes( $data ) || 'ftyp' !== substr( $data, 4, 4 ) ) {
 					return false;
 				}
 				break;
@@ -872,21 +848,30 @@ final class TransparAI_Writer {
 				return false;
 		}
 
-		$tmp = $path . '.transparai-tmp';
+		/*
+		 * Unique per write: a repair sweep and an editor action can touch the
+		 * same file at the same moment, and two writers sharing one temp path
+		 * would hand each other half a file.
+		 */
+		$tmp = $path . '.transparai-' . uniqid( '', true ) . '.tmp';
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- atomic replace of a local media file; WP_Filesystem cannot guarantee atomicity.
 		if ( file_put_contents( $tmp, $data ) !== strlen( $data ) ) {
 			wp_delete_file( $tmp );
 			return false;
 		}
-		// getimagesize() has no AVIF support on older PHP builds; AVIF is
-		// validated structurally above instead.
+		/*
+		 * getimagesize() has no AVIF support on older PHP builds; AVIF is
+		 * validated structurally above instead.
+		 */
 		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- validation only; failure path is handled.
 		if ( 'avif' !== $format && function_exists( 'getimagesize' ) && false === @getimagesize( $tmp ) ) {
 			wp_delete_file( $tmp );
 			return false;
 		}
-		// rename() on purpose: the replacement must be atomic so a concurrent
-		// request can never read a half-written image file.
+		/*
+		 * rename() on purpose: the replacement must be atomic so a concurrent
+		 * request can never read a half-written image file.
+		 */
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.rename_rename, WordPress.PHP.NoSilencedErrors.Discouraged -- see above; failure path handled.
 		if ( ! @rename( $tmp, $path ) ) {
 			wp_delete_file( $tmp );

@@ -1,3 +1,7 @@
+/*!
+ * TransparAI front-end badge styles.
+ * Copyright (c) 2026 Patrick Schlesinger. License: GPL-2.0-or-later.
+ */
 /* The wrapper encloses exactly the media area (not the figcaption), so the
    badge anchors to the image and never sits on top of the caption. */
 .trai-wrap {
@@ -54,7 +58,11 @@ p .trai-wrap {
    but is never loaded remotely (no external requests). */
 .trai-badge {
 	position: absolute;
-	z-index: 2;
+	/* Above typical theme chrome (hover overlays, gallery zoom icons, sale
+	   badges: 1-10), far below modal/lightbox layers (999+), so a badge never
+	   shines through an opened lightbox. The custom property inherits, so
+	   themes can tune it globally or per container without new CSS rules. */
+	z-index: var(--trai-badge-z, 30);
 	background: rgba(0, 0, 0, 0.7);
 	color: #fff;
 	font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -115,8 +123,15 @@ p .trai-wrap {
 	letter-spacing: 0.03em;
 }
 
-/* Caption mode: static line below the media instead of an overlay. */
-.trai-mode-caption .trai-badge {
+/* Caption mode: static line below the media instead of an overlay. Video and
+   audio always use it (an overlay badge would collide with the player
+   controls), and trai-badge-below forces it for everything inside a container
+   (utility class), for one image (attachment override) or as the overlay
+   guard's last resort. The max-width/overflow resets undo the
+   trai-mode-overlay ellipsis rules when only the badge is converted. */
+.trai-mode-caption .trai-badge,
+.trai-avwrap .trai-badge,
+.trai-badge-below .trai-badge {
 	position: static;
 	display: block;
 	background: transparent;
@@ -126,20 +141,14 @@ p .trai-wrap {
 	padding: 2px 0 0;
 	opacity: 0.75;
 	white-space: normal;
-}
-
-/* Video and audio always use the caption line: an overlay badge would sit
-   on the player surface and collide with the controls. */
-.trai-avwrap .trai-badge {
-	position: static;
-	display: block;
-	background: transparent;
-	color: inherit;
-	padding: 2px 0 0;
-	font-size: 12px;
-	line-height: 1.4;
-	opacity: 0.75;
-	white-space: normal;
+	max-width: none;
+	overflow: visible;
+	text-overflow: clip;
+	/* Decoration the styles add for sitting on top of an image: a light
+	   outline and a dark glow are meant to survive any photo underneath, but
+	   on the page background they turn into a stray box around theme text. */
+	border: 0;
+	text-shadow: none;
 }
 
 /* Mini variant for small images: shows only the short label from the data
@@ -163,6 +172,45 @@ p .trai-wrap {
 	line-height: 1;
 	font-weight: 600;
 	letter-spacing: 0.03em;
+}
+
+/* The short label exists because an overlay badge has to fit on the media. A
+   caption line has the room for the real text, which the rules above make
+   visible again, so the appended abbreviation would double it ("AI-generated"
+   plus "AI"). Declared after both ::after rules to win in every combination of
+   caption context and badge style. */
+.trai-mode-caption .trai-badge::after,
+.trai-avwrap .trai-badge::after,
+.trai-badge-below .trai-badge::after {
+	content: none;
+}
+
+/* Manual badge placement: one of these classes on ANY container (every
+   builder allows custom classes) repositions the badges inside it. Declared
+   after the trai-pos-* rules on purpose: equal specificity, the later
+   declaration wins; the mini variants must in turn follow the normal ones. */
+.trai-badge-top-left .trai-badge { top: 8px; left: 8px; right: auto; bottom: auto; }
+.trai-badge-top-right .trai-badge { top: 8px; right: 8px; left: auto; bottom: auto; }
+.trai-badge-bottom-left .trai-badge { bottom: 8px; left: 8px; right: auto; top: auto; }
+.trai-badge-bottom-right .trai-badge { bottom: 8px; right: 8px; left: auto; top: auto; }
+.trai-badge-top-left .trai-badge--mini { top: 3px; left: 3px; right: auto; bottom: auto; }
+.trai-badge-top-right .trai-badge--mini { top: 3px; right: 3px; left: auto; bottom: auto; }
+.trai-badge-bottom-left .trai-badge--mini { bottom: 3px; left: 3px; right: auto; top: auto; }
+.trai-badge-bottom-right .trai-badge--mini { bottom: 3px; right: 3px; left: auto; top: auto; }
+
+/* Hide the visible badge (container utility or per-image override). File
+   metadata, JSON-LD and the page notice stay untouched. The !important
+   settles the display tie against the caption ruleset above regardless of
+   source order. */
+.trai-badge-hidden .trai-badge {
+	display: none !important;
+}
+
+/* Overlay guard rung 1: applied by front.js only after a hit test proved the
+   badge is covered. max() keeps a site-tuned --trai-badge-z above 99 intact;
+   browsers without max() ignore the rule and the guard moves on to rung 2. */
+.trai-badge--raised {
+	z-index: max(var(--trai-badge-z, 30), 99);
 }
 
 /* Background-image hosts (optional JS feature) */

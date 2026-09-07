@@ -1,3 +1,7 @@
+/*!
+ * TransparAI admin script.
+ * Copyright (c) 2026 Patrick Schlesinger. License: GPL-2.0-or-later.
+ */
 (function () {
 	'use strict';
 
@@ -33,7 +37,7 @@
 		var progressBar = progressWrap.querySelector('.trai-progress-bar');
 		var progressText = progressWrap.querySelector('.trai-progress-text');
 		var running = false;
-		var totals = { processed: 0, flagged: 0, queued: 0 };
+		var totals = { processed: 0, flagged: 0, queued: 0, skipped: 0 };
 
 		var renderProgress = function (remaining) {
 			var done = totals.processed;
@@ -43,7 +47,8 @@
 			progressText.textContent = labels.scanProgress
 				.replace('%1$d', String(done))
 				.replace('%2$d', String(totals.flagged))
-				.replace('%3$d', String(totals.queued));
+				.replace('%3$d', String(totals.queued))
+				.replace('%4$d', String(totals.skipped));
 		};
 
 		var step = function (mode, offset) {
@@ -66,6 +71,7 @@
 				totals.processed += data.processed;
 				totals.flagged += data.flagged;
 				totals.queued += data.queued;
+				totals.skipped += data.skipped;
 				renderProgress(data.remaining);
 				if (data.remaining > 0 && data.processed > 0) {
 					step(mode, data.offset);
@@ -87,7 +93,7 @@
 				return;
 			}
 			running = true;
-			totals = { processed: 0, flagged: 0, queued: 0 };
+			totals = { processed: 0, flagged: 0, queued: 0, skipped: 0 };
 			progressWrap.hidden = false;
 			scanStop.hidden = false;
 			progressBar.style.width = '0';
@@ -123,13 +129,7 @@
 				/* Sync the checkbox: a later save of any other modal field would
 				   otherwise re-submit the stale unchecked state and unflag. */
 				jQuery('input[name="attachments[' + id + '][transparai_ai]"]').prop('checked', op === 'confirm');
-				if (window.wp && wp.media && wp.media.attachment(id)) {
-					wp.media.attachment(id).set('traiDetected', false);
-					if (op === 'confirm') {
-						wp.media.attachment(id).set('traiFlag', true);
-					}
-					toggleTile(id);
-				}
+				setTileState(id, op === 'confirm', false);
 			} else {
 				notify(labels.updateFailed);
 			}
@@ -165,12 +165,8 @@
 			if (data.status === 'flagged') {
 				jQuery('input[name="attachments[' + id + '][transparai_ai]"]').prop('checked', true);
 			}
-			if (window.wp && wp.media && wp.media.attachment(id)) {
-				if (data.status === 'flagged' || data.status === 'queued') {
-					wp.media.attachment(id).set('traiFlag', data.status === 'flagged');
-					wp.media.attachment(id).set('traiDetected', data.status === 'queued');
-					toggleTile(id);
-				}
+			if (data.status === 'flagged' || data.status === 'queued') {
+				setTileState(id, data.status === 'flagged', data.status === 'queued');
 			}
 		}).fail(function () {
 			button.prop('disabled', false);
@@ -192,6 +188,18 @@
 		tile.toggleClass('trai-detected', !model.get('traiFlag') && !!model.get('traiDetected'));
 	}
 
+	/* Model and tile always move together: every path that changes a label
+	   goes through here, so the grid can never show a state the model has
+	   already left behind. */
+	function setTileState(id, flagged, detected) {
+		if (!window.wp || !wp.media || !wp.media.attachment(id)) {
+			return;
+		}
+		wp.media.attachment(id).set('traiFlag', flagged);
+		wp.media.attachment(id).set('traiDetected', detected);
+		toggleTile(parseInt(id, 10));
+	}
+
 	if (!window.wp || !wp.media || !wp.media.view) {
 		return;
 	}
@@ -210,12 +218,10 @@
 	jQuery(document).on('change', 'input[name$="[transparai_ai]"]', function () {
 		var match = this.name.match(/\[(\d+)\]/);
 		var on = jQuery(this).is(':checked');
-		if (match && wp.media.attachment(match[1])) {
-			wp.media.attachment(match[1]).set('traiFlag', on);
-			if (on) {
-				wp.media.attachment(match[1]).set('traiDetected', false);
-			}
-			toggleTile(parseInt(match[1], 10));
+		if (match) {
+			var model = wp.media.attachment(match[1]);
+			/* Unchecking only drops the label; a pending detection, if any, stays. */
+			setTileState(match[1], on, on ? false : !!(model && model.get('traiDetected')));
 		}
 	});
 
@@ -261,9 +267,7 @@
 				}, function (resp) {
 					if (resp && resp.success) {
 						selection.each(function (model) {
-							model.set('traiFlag', op === 'flag');
-							model.set('traiDetected', false);
-							toggleTile(model.id);
+							setTileState(model.id, op === 'flag', false);
 						});
 					} else {
 						notify(labels.updateFailed);

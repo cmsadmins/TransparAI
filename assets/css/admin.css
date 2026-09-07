@@ -1,3 +1,7 @@
+/*!
+ * TransparAI admin styles.
+ * Copyright (c) 2026 Patrick Schlesinger. License: GPL-2.0-or-later.
+ */
 /* CMS-ADMINS design system tokens, scoped to this plugin's own roots.
    Rules (see workspace CLAUDE.md, "CMS-ADMINS Design System"): never :root,
    never override WP core classes, every var() carries a fallback, orange

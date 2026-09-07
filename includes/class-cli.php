@@ -3,7 +3,10 @@
  * WP-CLI commands: bulk-scan, label, audit-export and metadata verification,
  * built for agencies and large libraries.
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -76,48 +79,56 @@ final class TransparAI_CLI {
 		}
 
 		$progress = \WP_CLI\Utils\make_progress_bar( 'Scanning media', $total );
-		$stats    = array(
-			'flagged'    => 0,
-			'queued'     => 0,
-			'clean'      => 0,
-			'unreadable' => 0,
-		);
+		$stats    = TransparAI_Scanner::empty_stats();
 
 		foreach ( $ids as $id ) {
-			$id = (int) $id;
-			if ( $dry_run ) {
-				$file   = get_attached_file( $id );
-				$result = $file && file_exists( $file ) ? TransparAI_Detector::detect_file( $file ) : null;
-				if ( null !== $result ) {
-					$label = '' !== $result['generator'] ? $result['generator'] : $result['source'];
-					WP_CLI::log( sprintf( '#%d would be %s: %s (%s)', $id, 'certain' === $result['confidence'] ? 'flagged' : 'queued', $label, $result['evidence'] ) );
-					++$stats[ 'certain' === $result['confidence'] ? 'flagged' : 'queued' ];
-				} else {
-					++$stats['clean'];
-				}
-			} else {
-				$scan = TransparAI_Scanner::scan_attachment( $id );
-				if ( isset( $stats[ $scan['status'] ] ) ) {
-					++$stats[ $scan['status'] ];
-				} else {
-					++$stats['clean'];
-				}
-			}
+			$id     = (int) $id;
+			$status = $dry_run ? self::preview_attachment( $id ) : TransparAI_Scanner::scan_attachment( $id )['status'];
+			$stats  = TransparAI_Scanner::tally( $stats, $status );
 			$progress->tick();
 		}
 		$progress->finish();
 
 		WP_CLI::success(
 			sprintf(
-				'%d scanned: %d flagged, %d queued for review, %d clean, %d unreadable.%s',
+				'%d scanned: %d flagged, %d queued for review, %d skipped, %d clean, %d unreadable.%s',
 				$total,
 				$stats['flagged'],
 				$stats['queued'],
+				$stats['skipped'],
 				$stats['clean'],
 				$stats['unreadable'],
 				$dry_run ? ' (dry run, nothing changed)' : ''
 			)
 		);
+	}
+
+	/**
+	 * Report what a scan would do to one attachment, changing nothing.
+	 *
+	 * Mirrors TransparAI_Scanner::scan_attachment() without its writes and
+	 * asks the scanner itself what it would decide, so the preview cannot
+	 * drift away from the real run.
+	 *
+	 * @param int $id Attachment ID.
+	 * @return string flagged|queued|skipped|clean|unreadable.
+	 */
+	private static function preview_attachment( int $id ): string {
+		$file = get_attached_file( $id );
+		if ( ! $file || ! file_exists( $file ) || ! is_readable( $file ) ) {
+			WP_CLI::log( sprintf( '#%d unreadable, would be skipped.', $id ) );
+			return 'unreadable';
+		}
+
+		$result = TransparAI_Detector::detect_file( $file );
+		if ( null === $result || empty( $result['is_ai'] ) ) {
+			return 'clean';
+		}
+
+		$status = TransparAI_Scanner::planned_status( $id, $result );
+		$label  = '' !== $result['generator'] ? $result['generator'] : $result['source'];
+		WP_CLI::log( sprintf( '#%d would be %s: %s (%s)', $id, $status, $label, $result['evidence'] ) );
+		return $status;
 	}
 
 	/**
@@ -198,20 +209,7 @@ final class TransparAI_CLI {
 		$status = isset( $assoc_args['status'] ) ? sanitize_key( (string) $assoc_args['status'] ) : 'flagged';
 		$format = isset( $assoc_args['format'] ) ? sanitize_key( (string) $assoc_args['format'] ) : 'table';
 
-		$meta_query = TransparAI_Meta::meta_query( 'detected' === $status ? 'detected' : '1' );
-		if ( 'all' === $status ) {
-			$meta_query = array(
-				'relation' => 'OR',
-				array(
-					'key'   => TransparAI_Meta::KEY_FLAG,
-					'value' => '1',
-				),
-				array(
-					'key'   => TransparAI_Meta::KEY_DETECTED,
-					'value' => '1',
-				),
-			);
-		}
+		$meta_query = TransparAI_Meta::meta_query( in_array( $status, array( 'detected', 'all' ), true ) ? $status : '1' );
 
 		$ids = ( new WP_Query(
 			array(
@@ -239,6 +237,13 @@ final class TransparAI_CLI {
 				'confidence' => (string) get_post_meta( $id, TransparAI_Meta::KEY_CONFIDENCE, true ),
 				'marked_by'  => (string) get_post_meta( $id, TransparAI_Meta::KEY_MARKED_BY, true ),
 			);
+		}
+
+		if ( 'ids' === $format ) {
+			// The ids format prints the items themselves, so it needs the bare
+			// list; handing it the full rows would print "Array" per entry.
+			WP_CLI::log( implode( ' ', wp_list_pluck( $rows, 'ID' ) ) );
+			return;
 		}
 
 		\WP_CLI\Utils\format_items( $format, $rows, array( 'ID', 'file', 'status', 'type', 'source', 'generator', 'confidence', 'marked_by' ) );
@@ -325,7 +330,7 @@ final class TransparAI_CLI {
 					if ( 0 === $stats['failed'] ) {
 						++$repaired;
 					}
-					break; // sync_attachment covered all files of this attachment.
+					break; /* sync_attachment covered all files of this attachment. */
 				}
 			}
 		}

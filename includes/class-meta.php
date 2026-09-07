@@ -8,7 +8,10 @@
  *  - `_transparai_dismissed` reviewer rejected the auto-detection ('1' or absent)
  * plus descriptive keys (type, source, generator, confidence, evidence).
  *
- * @package TransparAI
+ * @package   TransparAI
+ * @author    Patrick Schlesinger
+ * @copyright 2026 Patrick Schlesinger
+ * @license   GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 declare( strict_types = 1 );
@@ -35,14 +38,17 @@ final class TransparAI_Meta {
 	public const KEY_UNREADABLE  = '_transparai_unreadable';
 	public const KEY_FINGERPRINT = '_transparai_fingerprint';
 	public const KEY_WRITE_ERROR = '_transparai_write_error';
+	public const KEY_BADGE_POS   = '_transparai_badge_pos';
 	public const KEY_CONTENT_AI  = '_transparai_content_ai';
 
 	/**
 	 * Register hooks.
 	 */
 	public static function init(): void {
-		// Priority 20: the content flag registers for every public post type,
-		// so custom post types (usually registered at 10) must exist first.
+		/*
+		 * Priority 20: the content flag registers for every public post type,
+		 * so custom post types (usually registered at 10) must exist first.
+		 */
 		add_action( 'init', array( self::class, 'register_meta' ), 20 );
 	}
 
@@ -82,7 +88,22 @@ final class TransparAI_Meta {
 			);
 		}
 
-		// Per-post "content is AI-written" flag (the editor checkbox).
+		register_post_meta(
+			'attachment',
+			self::KEY_BADGE_POS,
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'default'           => '',
+				'show_in_rest'      => true,
+				'sanitize_callback' => array( self::class, 'sanitize_badge_pos' ),
+				'auth_callback'     => static function (): bool {
+					return current_user_can( 'upload_files' );
+				},
+			)
+		);
+
+		/* Per-post "content is AI-written" flag (the editor checkbox). */
 		foreach ( get_post_types( array( 'public' => true ) ) as $post_type ) {
 			if ( 'attachment' === $post_type ) {
 				continue;
@@ -125,6 +146,24 @@ final class TransparAI_Meta {
 	 */
 	public static function is_detected( int $attachment_id ): bool {
 		return '1' === get_post_meta( $attachment_id, self::KEY_DETECTED, true );
+	}
+
+	/**
+	 * Normalize a per-image badge position override to a known value or ''.
+	 *
+	 * @param mixed $value Raw value.
+	 */
+	public static function sanitize_badge_pos( $value ): string {
+		$value   = sanitize_key( (string) $value );
+		$allowed = array( 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'below', 'hidden' );
+		return in_array( $value, $allowed, true ) ? $value : '';
+	}
+
+	/**
+	 * Per-image badge position override ('' = use the site setting).
+	 */
+	public static function get_badge_position( int $attachment_id ): string {
+		return self::sanitize_badge_pos( get_post_meta( $attachment_id, self::KEY_BADGE_POS, true ) );
 	}
 
 	/**
@@ -208,10 +247,24 @@ final class TransparAI_Meta {
 	/**
 	 * Meta query fragment for the media library filters.
 	 *
-	 * @param string $value '1' flagged, '0' unflagged, 'detected' pending review.
+	 * @param string $value '1' flagged, '0' unflagged, 'detected' pending review,
+	 *                      'all' flagged or pending.
 	 * @return array<int|string, mixed>|null
 	 */
 	public static function meta_query( string $value ): ?array {
+		if ( 'all' === $value ) {
+			return array(
+				'relation' => 'OR',
+				array(
+					'key'   => self::KEY_FLAG,
+					'value' => '1',
+				),
+				array(
+					'key'   => self::KEY_DETECTED,
+					'value' => '1',
+				),
+			);
+		}
 		if ( '1' === $value ) {
 			return array(
 				array(

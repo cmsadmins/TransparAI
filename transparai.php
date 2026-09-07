@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       TransparAI
  * Plugin URI:        https://wordpress.org/plugins/transparai/
- * Description:       Label AI-generated media (EU AI Act, Art. 50): visible badge, machine-readable IPTC/XMP metadata written into the files, and automatic detection of AI images via C2PA, XMP/IPTC and generator signatures.
+ * Description:       Detect and label AI-generated images: automatic C2PA and IPTC detection, visible AI badge, machine-readable EU AI Act (Art. 50) disclosure.
  * Version:           1.0.0
  * Requires at least: 6.2
  * Tested up to:      7.1
@@ -60,26 +60,9 @@ if ( ! class_exists( 'TransparAI' ) ) {
 	final class TransparAI {
 
 		/**
-		 * Singleton instance.
-		 *
-		 * @var self|null
+		 * Register all component hooks (plugins_loaded callback).
 		 */
-		private static ?self $instance = null;
-
-		/**
-		 * Get (or create) the singleton instance.
-		 */
-		public static function get_instance(): self {
-			if ( null === self::$instance ) {
-				self::$instance = new self();
-			}
-			return self::$instance;
-		}
-
-		/**
-		 * Register all component hooks.
-		 */
-		private function __construct() {
+		public static function boot(): void {
 			TransparAI_Meta::init();
 			TransparAI_Scanner::init();
 			TransparAI_Writer::init();
@@ -96,13 +79,6 @@ if ( ! class_exists( 'TransparAI' ) ) {
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				TransparAI_CLI::register();
 			}
-		}
-
-		/**
-		 * plugins_loaded callback.
-		 */
-		public static function boot(): void {
-			self::get_instance();
 		}
 
 		/**
