@@ -130,10 +130,90 @@
 				   otherwise re-submit the stale unchecked state and unflag. */
 				jQuery('input[name="attachments[' + id + '][transparai_ai]"]').prop('checked', op === 'confirm');
 				setTileState(id, op === 'confirm', false);
+				if (resp.data && resp.data.writeErrors > 0) {
+					notify(labels.writeFailed);
+				}
 			} else {
 				notify(labels.updateFailed);
 			}
 		}).fail(function () {
+			notify(labels.updateFailed);
+		});
+	});
+
+	jQuery(document).on('click', '.trai-delivery', function () {
+		var button = jQuery(this);
+		var out = button.closest('.trai-delivery-wrap').find('.trai-delivery-result');
+		button.prop('disabled', true);
+		out.text('');
+		jQuery.post(ajaxurl, {
+			action: 'transparai_delivery',
+			_wpnonce: transparaiAdmin.nonce,
+			attachment: parseInt(button.data('id'), 10)
+		}, function (resp) {
+			button.prop('disabled', false);
+			if (!resp || !resp.success) {
+				notify(labels.updateFailed);
+				return;
+			}
+			out.text(resp.data.label).attr('title', resp.data.message || '');
+		}).fail(function () {
+			button.prop('disabled', false);
+			notify(labels.updateFailed);
+		});
+	});
+
+	jQuery(document).on('click', '#trai-delivery-sample', function () {
+		var button = jQuery(this);
+		var out = button.closest('.trai-actions').find('.trai-delivery-result');
+		button.prop('disabled', true);
+		out.text('');
+		jQuery.post(ajaxurl, {
+			action: 'transparai_delivery',
+			_wpnonce: transparaiAdmin.nonce,
+			sample: 5
+		}, function (resp) {
+			button.prop('disabled', false);
+			if (!resp || !resp.success) {
+				notify(labels.updateFailed);
+				return;
+			}
+			out.text(
+				labels.deliverySample
+					.replace('%1$d', resp.data.checked)
+					.replace('%2$d', resp.data.intact)
+					.replace('%3$d', resp.data.stripped)
+					.replace('%4$d', resp.data.other)
+			);
+		}).fail(function () {
+			button.prop('disabled', false);
+			notify(labels.updateFailed);
+		});
+	});
+
+	jQuery(document).on('click', '.trai-inspect', function () {
+		var button = jQuery(this);
+		var out = button.closest('.trai-inspect-wrap').find('.trai-inspect-out');
+		if (!out.prop('hidden')) {
+			out.prop('hidden', true).empty();
+			button.text(labels.inspectShow);
+			return;
+		}
+		button.prop('disabled', true);
+		jQuery.post(ajaxurl, {
+			action: 'transparai_inspect',
+			_wpnonce: transparaiAdmin.nonce,
+			attachment: parseInt(button.data('id'), 10)
+		}, function (resp) {
+			button.prop('disabled', false);
+			if (!resp || !resp.success) {
+				notify(labels.updateFailed);
+				return;
+			}
+			out.html(resp.data.html).prop('hidden', false);
+			button.text(labels.inspectHide);
+		}).fail(function () {
+			button.prop('disabled', false);
 			notify(labels.updateFailed);
 		});
 	});

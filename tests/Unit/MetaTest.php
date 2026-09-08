@@ -116,6 +116,50 @@ final class MetaTest extends TestCase {
 		$this->assertSame( '', TransparAI_Meta::sanitize_badge_pos( null ) );
 	}
 
+	public function test_history_records_the_review_lifecycle(): void {
+		global $trai_test_user;
+		$trai_test_user = 7;
+
+		TransparAI_Meta::queue( 70, array( 'source' => 'c2pa', 'confidence' => 'likely' ) );
+		TransparAI_Meta::confirm( 70 );
+		TransparAI_Meta::unflag( 70 );
+
+		$events = array_column( TransparAI_Meta::history( 70 ), 'e' );
+		$this->assertSame( array( 'queued', 'confirmed', 'unflagged' ), $events );
+
+		$last = TransparAI_Meta::last_change( 70 );
+		$this->assertSame( 'unflagged', $last['e'] );
+		$this->assertSame( 7, $last['u'], 'The editor who made the change is recorded' );
+	}
+
+	public function test_history_keeps_only_the_last_ten_events(): void {
+		for ( $i = 0; $i < 14; $i++ ) {
+			TransparAI_Meta::record( 71, 'repaired', 'sweep' );
+		}
+
+		$this->assertCount( 10, TransparAI_Meta::history( 71 ) );
+	}
+
+	public function test_history_survives_a_corrupted_meta_value(): void {
+		update_post_meta( 72, TransparAI_Meta::KEY_HISTORY, 'not json' );
+		$this->assertSame( array(), TransparAI_Meta::history( 72 ) );
+
+		TransparAI_Meta::record( 72, 'flagged', 'manual' );
+		$this->assertCount( 1, TransparAI_Meta::history( 72 ) );
+	}
+
+	public function test_audit_row_carries_the_last_change(): void {
+		TransparAI_Meta::queue( 73, array( 'source' => 'png-chunk', 'generator' => 'ComfyUI', 'confidence' => 'certain' ) );
+		TransparAI_Meta::confirm( 73 );
+
+		$row = TransparAI_Meta::audit_row( 73 );
+		$this->assertSame( array_keys( $row ), TransparAI_Meta::audit_columns(), 'Row keys and export columns stay in sync' );
+		$this->assertSame( 'flagged', $row['status'] );
+		$this->assertSame( 'ComfyUI', $row['generator'] );
+		$this->assertSame( 'confirmed', $row['last_event'] );
+		$this->assertNotSame( '', $row['last_event_at'] );
+	}
+
 	public function test_get_badge_position_revalidates_stored_values(): void {
 		$this->assertSame( '', TransparAI_Meta::get_badge_position( 60 ) );
 

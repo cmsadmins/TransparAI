@@ -139,6 +139,46 @@ final class TransparAI_Writer {
 	}
 
 	/**
+	 * What is actually inside the files of one attachment, for the inspection
+	 * panel in the media library: one row per file plus the raw XMP packet of
+	 * the main file. Reading only, nothing is written or repaired here.
+	 *
+	 * @return array{files: array<int, array{name:string, format:string, marked:bool|null, size:int}>, xmp: string, terms: array<int, string>}
+	 */
+	public static function inspect( int $attachment_id ): array {
+		$main  = (string) get_attached_file( $attachment_id );
+		$files = array();
+
+		foreach ( self::attachment_files( $attachment_id ) as $path ) {
+			$format  = self::writable_format( $path );
+			$files[] = array(
+				'name'   => basename( $path ),
+				'format' => $format,
+				/* null: a format this plugin cannot write, so "missing" says nothing. */
+				'marked' => '' === $format ? null : self::file_is_marked( $path ),
+				'size'   => (int) @filesize( $path ), // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a file that vanished mid-read is reported as zero.
+			);
+		}
+
+		$xmp    = '';
+		$terms  = array();
+		$format = '' === $main ? '' : self::writable_format( $main );
+		if ( '' !== $format ) {
+			$packet = self::extract_xmp( $main, $format );
+			if ( null !== $packet ) {
+				$xmp   = $packet;
+				$terms = TransparAI_Parsers::xmp_digital_source_types( $packet );
+			}
+		}
+
+		return array(
+			'files' => $files,
+			'xmp'   => $xmp,
+			'terms' => $terms,
+		);
+	}
+
+	/**
 	 * Whether a single file currently declares an AI DigitalSourceType.
 	 * Used by the integrity verification (auto-repair).
 	 */
@@ -269,6 +309,19 @@ final class TransparAI_Writer {
 		if ( false === $data ) {
 			return null;
 		}
+		return self::xmp_from_data( $data, $format );
+	}
+
+	/**
+	 * The XMP packet inside raw container bytes.
+	 *
+	 * Same reading as extract_xmp(), but for bytes that never touched the disk:
+	 * the delivery check compares what a visitor receives with the file we wrote.
+	 *
+	 * @param string $data   Raw file bytes.
+	 * @param string $format jpeg|png|webp|avif.
+	 */
+	public static function xmp_from_data( string $data, string $format ): ?string {
 		switch ( $format ) {
 			case 'jpeg':
 				$segments = TransparAI_Parsers::jpeg_segments( $data );

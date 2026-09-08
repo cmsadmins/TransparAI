@@ -3,7 +3,7 @@
  * Plugin Name:       TransparAI: AI Image Detection & EU AI Act Labeling
  * Plugin URI:        https://wordpress.org/plugins/transparai/
  * Description:       Detect AI images from C2PA Content Credentials and IPTC metadata, label them with a visible AI badge and a machine-readable EU AI Act disclosure.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Patrick Schlesinger
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.0.0' );
+defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.0.1' );
 defined( 'TRANSPARAI_PLUGIN_FILE' ) || define( 'TRANSPARAI_PLUGIN_FILE', __FILE__ );
 defined( 'TRANSPARAI_PLUGIN_DIR' ) || define( 'TRANSPARAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'TRANSPARAI_PLUGIN_URL' ) || define( 'TRANSPARAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -39,6 +39,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-detector.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-writer.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-scanner.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-repair.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-delivery.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-frontend.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 
@@ -66,6 +67,10 @@ if ( ! class_exists( 'TransparAI' ) ) {
 			TransparAI_Scanner::init();
 			TransparAI_Writer::init();
 			TransparAI_Repair::init();
+
+			if ( is_admin() ) {
+				TransparAI_Delivery::init();
+			}
 			TransparAI_Frontend::init();
 			TransparAI_Integrations::init();
 

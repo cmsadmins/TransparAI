@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.0.1 (2026-09-08)
+
+- Fixed: the hourly integrity sweep was scheduled from the activation hook alone, and that hook fires
+  once for a network-wide activation. Every site created in the network afterwards kept no schedule at
+  all, so an AI declaration stripped by an image optimizer was never repaired there and nothing said
+  so. `TransparAI_Repair::init()` now schedules the sweep itself; the call is idempotent and also
+  recovers sites whose cron entry was lost in a migration or a restored backup.
+- Per-file history in `_transparai_history`: label, review decision, repair and failed write are
+  recorded with time, event, editor and source, capped at the last ten events per file. Read it with
+  `TransparAI_Meta::history()` and `TransparAI_Meta::last_change()`.
+- Audit export as CSV from the plugin page (`admin-post.php?action=transparai_export`), built from
+  `TransparAI_Meta::audit_rows()`, the same rows `wp transparai status` prints. Both now carry the
+  last event, its time and the user behind it.
+- File inspection in the attachment details ("Show file metadata"): every size with its state, the
+  declared digital source type, the full detection evidence, the history and the raw XMP packet of
+  the main file, read live from disk through the new `TransparAI_Writer::inspect()`.
+- Optional delivery check (`TransparAI_Delivery`, setting `delivery_check`, off by default): fetches
+  one image over its own public URL and compares the delivered bytes with the file on disk, which is
+  the only way to see that an optimizing CDN re-encodes images and drops the declaration on the way
+  out. Runs on click or through `wp transparai verify-delivery [<id>...] [--sample=<n>]`, never on a
+  schedule, and refuses any URL whose host is not this site. The readme sections External services
+  and Privacy describe it, since the previous wording promised no HTTP request at all.
+- Translations shipped for German, French, Spanish, Italian and Dutch (`.po`, `.mo` and `.l10n.php`);
+  `.distignore` no longer excludes the compiled catalogs from the release ZIP.
+- Fixed before release, found in browser testing: `delivery_check` was missing from the boolean list
+  in `TransparAI_Options::sanitize()`, so the setting could not be switched on at all; a test now
+  walks the defaults so the next on/off setting cannot be forgotten the same way.
+- Fixed before release: `wp transparai verify-delivery` reported success even when every request had
+  failed. Intact, stripped and not-comparable results are counted apart, in the CLI and in the sample
+  summary on the plugin page.
+- Confirming a detection whose file cannot be written now says so immediately instead of at the next
+  page load.
+- Fixed before release: the catalog build matched translations by their position in the `.pot`, and
+  regenerating that file after adding a string shifted every entry behind it, so a handful of strings
+  carried the neighbouring translation in all five languages. Matching happens by msgid now, and the
+  catalogs are verified against the source strings (placeholders and length) before they ship.
+
 ## 1.0.0 (2026-09-08)
 
 Initial release. The list below is the complete feature set as shipped; entries marked Fixed or

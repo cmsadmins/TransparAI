@@ -14,6 +14,8 @@
 .trai-review,
 .trai-recheck-wrap,
 .trai-recheck-result,
+.trai-inspect-wrap,
+.trai-delivery-wrap,
 .trai-write-error,
 .attachment.trai-flag,
 .attachment.trai-detected,
@@ -27,6 +29,7 @@
 	--trai-text: #e5e5e5;
 	--trai-text-light: #a0a0a0;
 	--trai-muted: #646970;
+	--trai-text-dark: #1a1a1a;
 	--trai-danger-light: #b32d2e;
 }
 
@@ -293,6 +296,159 @@
 	margin-top: 4px;
 	font-size: 11px;
 	color: var(--trai-muted, #646970);
+}
+
+/* Delivery check: what the visitor actually receives. */
+.trai-delivery-wrap {
+	display: block;
+	margin-top: 4px;
+}
+
+.trai-delivery-wrap .trai-delivery:hover,
+.trai-delivery-wrap .trai-delivery:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-delivery-result {
+	display: block;
+	margin-top: 2px;
+	font-size: 11px;
+	color: var(--trai-muted, #646970);
+}
+
+/* Inspection panel: what is actually inside the files. Corporate look, the
+   accent colour marks the section titles and nothing else. */
+.trai-inspect-wrap {
+	display: block;
+	margin-top: 6px;
+}
+
+.trai-inspect-wrap .trai-inspect:hover,
+.trai-inspect-wrap .trai-inspect:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-inspect-out {
+	margin-top: 8px;
+	border: 1px solid var(--trai-border-light, #e0e0e0);
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+	font-size: 12px;
+	line-height: 1.55;
+	overflow: hidden;
+}
+
+.trai-inspect-section {
+	padding: 12px 16px;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-inspect-section:first-child {
+	border-top: 0;
+}
+
+.trai-inspect-out h4 {
+	margin: 0 0 6px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-inspect-out p {
+	margin: 0;
+	color: var(--trai-text-dark, #1a1a1a);
+}
+
+.trai-inspect-out ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.trai-inspect-files li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	padding: 3px 0;
+}
+
+.trai-inspect-files code,
+.trai-inspect-term {
+	padding: 1px 6px;
+	border-radius: 3px;
+	background: #f2f2f2;
+	font-size: 11px;
+	color: var(--trai-text-dark, #1a1a1a);
+}
+
+.trai-inspect-state {
+	padding: 1px 8px;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.trai-inspect-state--ok {
+	background: rgba(34, 197, 94, 0.15);
+	color: #15803d;
+}
+
+.trai-inspect-state--missing {
+	background: rgba(239, 68, 68, 0.15);
+	color: var(--trai-danger-light, #b32d2e);
+}
+
+.trai-inspect-state--na {
+	background: rgba(234, 179, 8, 0.15);
+	color: #8a6100;
+}
+
+.trai-inspect-history li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 8px;
+	padding: 3px 0;
+}
+
+.trai-inspect-time {
+	min-width: 130px;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 11px;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-inspect-event {
+	padding: 1px 8px;
+	border-radius: 3px;
+	background: rgba(255, 104, 0, 0.12);
+	font-size: 11px;
+	font-weight: 600;
+	color: #a34400;
+}
+
+.trai-inspect-who {
+	font-size: 11px;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-inspect-xmp {
+	max-height: 220px;
+	margin: 0;
+	padding: 10px 12px;
+	border-radius: 5px;
+	background: var(--trai-bg, #1a1a1a);
+	color: var(--trai-text, #e5e5e5);
+	overflow: auto;
+	white-space: pre-wrap;
+	word-break: break-all;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 11px;
+	line-height: 1.5;
 }
 
 /* Non-blocking feedback toast (replaces native alert) */

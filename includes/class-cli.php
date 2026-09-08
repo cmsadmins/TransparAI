@@ -209,35 +209,7 @@ final class TransparAI_CLI {
 		$status = isset( $assoc_args['status'] ) ? sanitize_key( (string) $assoc_args['status'] ) : 'flagged';
 		$format = isset( $assoc_args['format'] ) ? sanitize_key( (string) $assoc_args['format'] ) : 'table';
 
-		$meta_query = TransparAI_Meta::meta_query( in_array( $status, array( 'detected', 'all' ), true ) ? $status : '1' );
-
-		$ids = ( new WP_Query(
-			array(
-				'post_type'              => 'attachment',
-				'post_status'            => 'inherit',
-				'fields'                 => 'ids',
-				'posts_per_page'         => -1,
-				'no_found_rows'          => true,
-				'update_post_term_cache' => false,
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- explicit CLI audit export.
-				'meta_query'             => $meta_query,
-			)
-		) )->posts;
-
-		$rows = array();
-		foreach ( $ids as $id ) {
-			$id     = (int) $id;
-			$rows[] = array(
-				'ID'         => $id,
-				'file'       => (string) get_post_meta( $id, '_wp_attached_file', true ),
-				'status'     => TransparAI_Meta::is_flagged( $id ) ? 'flagged' : 'detected',
-				'type'       => TransparAI_Meta::get_type( $id ),
-				'source'     => (string) get_post_meta( $id, TransparAI_Meta::KEY_SOURCE, true ),
-				'generator'  => TransparAI_Meta::get_generator( $id ),
-				'confidence' => (string) get_post_meta( $id, TransparAI_Meta::KEY_CONFIDENCE, true ),
-				'marked_by'  => (string) get_post_meta( $id, TransparAI_Meta::KEY_MARKED_BY, true ),
-			);
-		}
+		$rows = TransparAI_Meta::audit_rows( $status );
 
 		if ( 'ids' === $format ) {
 			// The ids format prints the items themselves, so it needs the bare
@@ -246,7 +218,7 @@ final class TransparAI_CLI {
 			return;
 		}
 
-		\WP_CLI\Utils\format_items( $format, $rows, array( 'ID', 'file', 'status', 'type', 'source', 'generator', 'confidence', 'marked_by' ) );
+		\WP_CLI\Utils\format_items( $format, $rows, TransparAI_Meta::audit_columns() );
 	}
 
 	/**
@@ -340,6 +312,83 @@ final class TransparAI_CLI {
 			return;
 		}
 		WP_CLI::success( sprintf( '%d file(s) missing their mark%s.', $missing, $repair ? ', ' . $repaired . ' attachment(s) repaired' : ' (re-run with --repair to fix)' ) );
+	}
+
+	/**
+	 * Check whether the in-file declaration survives delivery to a visitor.
+	 *
+	 * Fetches the given images over their own public URLs and compares the
+	 * delivered bytes with the files on disk. Requires the delivery check to be
+	 * enabled in the settings; nothing but this site is ever requested.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [<id>...]
+	 * : Attachment IDs. Without any, a random sample of labeled images is used.
+	 *
+	 * [--sample=<n>]
+	 * : How many labeled images to sample when no IDs are given. Default 5.
+	 *
+	 * @subcommand verify-delivery
+	 *
+	 * @param array $args       Attachment IDs.
+	 * @param array $assoc_args Flags.
+	 */
+	public function verify_delivery( array $args, array $assoc_args ): void {
+		if ( ! TransparAI_Delivery::enabled() ) {
+			WP_CLI::error( 'The delivery check is switched off. Enable it under Media, TransparAI first.' );
+		}
+
+		if ( array() === $args ) {
+			$sample  = isset( $assoc_args['sample'] ) ? (int) $assoc_args['sample'] : 5;
+			$summary = TransparAI_Delivery::check_sample( $sample );
+			WP_CLI::success(
+				sprintf(
+					'%d checked: %d delivered with the declaration, %d without, %d not comparable.',
+					$summary['checked'],
+					$summary['intact'],
+					$summary['stripped'],
+					$summary['other']
+				)
+			);
+			return;
+		}
+
+		$intact   = 0;
+		$stripped = 0;
+		$other    = 0;
+		foreach ( $args as $id ) {
+			$id     = (int) $id;
+			$result = TransparAI_Delivery::check( $id );
+			TransparAI_Delivery::remember( $id, $result['verdict'] );
+
+			if ( TransparAI_Delivery::VERDICT_INTACT === $result['verdict'] ) {
+				++$intact;
+			} elseif ( TransparAI_Delivery::VERDICT_STRIPPED === $result['verdict'] ) {
+				++$stripped;
+			} else {
+				++$other;
+			}
+			WP_CLI::log( sprintf( '#%d %s: %s', $id, $result['verdict'], $result['message'] ) );
+		}
+
+		if ( $stripped > 0 ) {
+			WP_CLI::warning( sprintf( '%d file(s) reach visitors without their declaration.', $stripped ) );
+			return;
+		}
+
+		/* Never report success for files that could not be compared at all: an
+			unreachable URL says nothing about the declaration, and claiming it
+			does would hide exactly the problem this command exists to find. */
+		if ( 0 === $intact ) {
+			WP_CLI::warning( sprintf( 'Nothing could be compared (%d file(s) unreachable, served elsewhere or unmarked).', $other ) );
+			return;
+		}
+		if ( $other > 0 ) {
+			WP_CLI::success( sprintf( '%d file(s) keep their declaration; %d could not be compared.', $intact, $other ) );
+			return;
+		}
+		WP_CLI::success( 'Every checked file keeps its declaration on the way out.' );
 	}
 
 	/**

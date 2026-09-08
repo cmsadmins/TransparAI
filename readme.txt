@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, c2pa, content credentials, ai detection, ai label
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -46,9 +46,11 @@ Your existing metadata is safe: an existing XMP packet is merged, not replaced, 
 
 **For larger setups**
 
-WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp transparai status --format=csv` for a full audit export, `wp transparai verify-meta --repair` to check and fix the in-file metadata. Other plugins can label media through `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )`, the detection rules are extensible via filters, translation setups are covered by a bundled WPML configuration, and uninstalling cleans up across every site of a multisite network when you ask it to.
+Every label, review decision and repair is recorded per file with its time and the editor who made it, and the whole library can be exported as a CSV audit list straight from the plugin page, so the question "who declared this image AI-generated, and when" has an answer months later. WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp transparai status --format=csv` for the same export on the command line, `wp transparai verify-meta --repair` to check and fix the in-file metadata. Other plugins can label media through `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )`, the detection rules are extensible via filters, translation setups are covered by a bundled WPML configuration, and uninstalling cleans up across every site of a multisite network when you ask it to.
 
-The plugin runs entirely on your server. No external requests, no accounts, no telemetry. Please also read the Disclaimer section below.
+The plugin runs entirely on your server. No accounts, no telemetry, and no request to anyone else: the only HTTP request it can make is the optional delivery check, which asks your own site for one image to see whether your CDN strips the declaration on the way out. Please also read the Disclaimer section below.
+
+The interface is available in English, German, French, Spanish, Italian and Dutch.
 
 Contact: TransparAI@cms-admins.de
 
@@ -84,6 +86,14 @@ No. TransparAI is a technical tool, not legal advice, and using it creates no gu
 = Does the plugin change my image files? =
 
 Only when a file is labeled and the metadata option is enabled. The plugin then writes a small XMP block into the JPEG, PNG, WebP or AVIF file and its size variants. The image pixels are untouched. Files are replaced atomically and validated first. Unlabeling removes exactly the metadata this plugin wrote; foreign metadata is never touched.
+
+= Where can I see what was written into a file? =
+
+Open the attachment details and click "Show file metadata". It lists every file of that attachment with its state (declaration present, missing, or a format that cannot carry one), the digital source type currently declared, the detection evidence in full, the recorded history and the raw XMP packet of the main file. Nothing is written while you look; it is a read of the files as they are on disk right now.
+
+= Does the marking survive my CDN? =
+
+Not always, and that is worth checking. Image optimizers at the edge, Cloudflare Polish and Jetpack Photon among them, re-encode images while delivering them and drop every metadata block in the process. The file on your server stays perfect while visitors and search engines receive a bare image, and nothing in WordPress shows it. Enable the delivery check in the settings, then press "Check delivery" on a labeled image: the plugin fetches that image from your own public URL and tells you whether the declaration arrived. If it did not, the fix is in your CDN configuration (keep metadata, or exclude labeled images from re-encoding), not in this plugin.
 
 = Can I also label AI-written text? =
 
@@ -129,6 +139,8 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_generator`: detected generator name, for example `Midjourney` or `OpenAI`.
 * `_transparai_confidence`: `certain`, `likely` or `hint`.
 * `_transparai_detected`: `'1'` while an unconfirmed detection waits in the review queue. Kept strictly apart from the public label.
+* `_transparai_history`: JSON list of the last ten events for this file, oldest first. Each entry is `{"t":unix time,"e":event,"u":user ID,"s":source}`, with the events `flagged`, `confirmed`, `unflagged`, `queued`, `dismissed`, `repaired` and `write-failed`. Written by `TransparAI_Meta::record()`, read with `TransparAI_Meta::history()` and `TransparAI_Meta::last_change()`; `TransparAI_Meta::audit_rows()` returns the rows behind both the CSV export and `wp transparai status`.
+* `_transparai_delivery`: result of the last delivery check as `{"t":unix time,"verdict":verdict}`, with `intact`, `stripped`, `unreachable`, `unmarked` or `foreign-host`. Only written when the check is enabled and someone runs it; read it with `TransparAI_Delivery::last_result()`.
 * `_transparai_badge_pos`: badge placement for this one image, overriding the site setting. `top-left`, `top-right`, `bottom-left`, `bottom-right`, `below` (caption line under the image) or `hidden`. Absent means the site setting applies.
 
 **Label media from your own code** (an AI image generator plugin, an import script):
@@ -162,16 +174,19 @@ The first six switch the guard off by themselves, since a placement you chose sh
 * `flag <id>... [--source=<text>]` and `unflag <id>...`: set or remove labels in bulk.
 * `status [--status=flagged|detected|all] [--format=table|csv|json|ids|count]`: audit export, for example `wp transparai status --format=csv > ai-audit.csv`.
 * `write-meta [--dry-run] --yes` and `verify-meta [--repair]`: write and verify the in-file metadata.
+* `verify-delivery [<id>...] [--sample=<n>]`: fetch labeled images over their own public URL and report whether the declaration survives delivery. Needs the delivery check enabled in the settings.
 
 **Theme integration:** print attachment images through `wp_get_attachment_image()` (or markup carrying the `wp-image-{ID}` class) and the badge is rendered server-side and page-cache safe. For raw URL output and CSS backgrounds there is the optional script described above; it wraps matched images with the same markup (`span.trai-wrap` around the image plus `span.trai-badge`), so any CSS you write applies to both paths.
 
 == External services ==
 
-None. The plugin makes no requests to external services.
+None. The plugin makes no requests to external services, and it never sends your media or any data about your site anywhere.
+
+The optional delivery check is the only feature that makes an HTTP request at all, and it requests your own site: when you switch it on in the settings and then press "Check delivery", the plugin downloads one image from your own public URL and compares the bytes with the file on disk. That is how an optimizing CDN or image proxy that quietly re-encodes your images and drops the AI declaration becomes visible. The check is off by default, it never runs on its own, and it stops before requesting anything if the image is served from a different host than your site.
 
 == Privacy ==
 
-TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). It does not collect, transmit or share any data, and it sets no cookies.
+TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The optional delivery check, when you enable it and press the button, requests one image from your own site to see what visitors receive; nothing is sent to a third party. The per-file history records the WordPress user ID of whoever labeled, confirmed or dismissed a file, so a site can show who made a disclosure decision; it holds the last ten events per file and is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
 
 == Disclaimer ==
 
@@ -188,11 +203,19 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 == Screenshots ==
 
 1. Media library grid with AI badges, a review state and bulk labeling
-2. Attachment details: label checkbox, detection evidence and review actions
-3. Settings page with library statistics and the batched scan
+2. Attachment details: label checkbox, detection evidence, review actions and the file inspection with its raw XMP packet
+3. Settings page with library statistics, the batched scan and the audit export
 4. Front-end badge on a labeled image
 
 == Changelog ==
+
+= 1.0.1 =
+* Fixed: the hourly integrity sweep was only scheduled by the activation hook, which fires once for a network-wide activation. Every site created in the network afterwards silently kept no schedule at all, so stripped AI declarations were never repaired there. The schedule is now set up on load and covers new sites, restored backups and cron entries lost in a migration.
+* Per-file history: every label, review decision, repair and failed write is recorded with its time and the editor who made it (the last ten events per file), so a disclosure decision can still be explained months later.
+* Audit export as CSV directly from the plugin page, with the detection source, confidence and last change of every labeled and pending file. Same rows as `wp transparai status`, which now carries the last-change columns too.
+* File inspection in the attachment details: "Show file metadata" lists every size with its state (declaration present, missing, or a format that cannot carry one), the declared digital source type, the detection evidence in full and the raw XMP packet.
+* Optional delivery check: an optimizing CDN or image proxy can re-encode images while serving them and drop the declaration, which is invisible from the admin because the file on disk stays correct. The check fetches one image over its own public URL and compares the delivered bytes with the file. It is off by default, runs only on click or through `wp transparai verify-delivery`, and never requests media served from another host.
+* Translations shipped for German, French, Spanish, Italian and Dutch.
 
 = 1.0.0 =
 * Automatic AI detection: C2PA Content Credentials (JPEG, PNG, WebP, MP4 and MOV, .c2pa sidecars), the IPTC digital source type in XMP and IPTC-IIM, PNG generator chunks, EXIF and XMP generator signatures, JPEG comment markers, ID3 declarations in MP3.
@@ -210,6 +233,9 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 * No external requests of any kind.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Fixes a silent failure of the auto-repair on multisite networks, adds a per-file history with CSV audit export, file inspection in the attachment details, an optional delivery check and five translations.
 
 = 1.0.0 =
 Initial release.

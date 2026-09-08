@@ -30,7 +30,49 @@ final class TransparAI_Settings {
 		add_action( 'admin_menu', array( self::class, 'add_page' ) );
 		add_action( 'admin_init', array( self::class, 'register' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
+		add_action( 'admin_post_transparai_export', array( self::class, 'export_csv' ) );
 		add_filter( 'plugin_action_links_' . TRANSPARAI_PLUGIN_BASENAME, array( self::class, 'action_links' ) );
+	}
+
+	/**
+	 * Stream the audit export as CSV.
+	 *
+	 * Same rows as `wp transparai status --format=csv`, for everyone who does
+	 * not have shell access to the site.
+	 */
+	public static function export_csv(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You are not allowed to export this.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_export' );
+
+		$status = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : 'all';
+		if ( ! in_array( $status, array( 'flagged', 'detected', 'all' ), true ) ) {
+			$status = 'all';
+		}
+
+		$rows    = TransparAI_Meta::audit_rows( $status );
+		$columns = TransparAI_Meta::audit_columns();
+
+		nocache_headers();
+		header( 'Content-Type: text/csv; charset=utf-8' );
+		header( 'Content-Disposition: attachment; filename=transparai-audit-' . gmdate( 'Y-m-d' ) . '.csv' );
+
+		$out = fopen( 'php://output', 'w' );
+		if ( false === $out ) {
+			wp_die( esc_html__( 'The export could not be started.', 'transparai' ) );
+		}
+
+		fputcsv( $out, $columns );
+		foreach ( $rows as $row ) {
+			$line = array();
+			foreach ( $columns as $column ) {
+				$line[] = (string) ( $row[ $column ] ?? '' );
+			}
+			fputcsv( $out, $line );
+		}
+		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- php://output stream for the CSV download, WP_Filesystem cannot stream a response.
+		exit;
 	}
 
 
@@ -93,9 +135,12 @@ final class TransparAI_Settings {
 				'scanNonce' => wp_create_nonce( TransparAI_Scanner::NONCE ),
 				'labels'    => array(
 					/* translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count. */
-					'scanProgress' => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
-					'scanDone'     => __( 'Scan complete.', 'transparai' ),
-					'scanFailed'   => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
+					'scanProgress'   => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
+					'scanDone'       => __( 'Scan complete.', 'transparai' ),
+					'scanFailed'     => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
+					'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
+					/* translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared. */
+					'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable.', 'transparai' ),
 				),
 			)
 		);
@@ -143,9 +188,13 @@ final class TransparAI_Settings {
 						<span class="trai-stat-label"><?php esc_html_e( 'Scanned', 'transparai' ); ?></span>
 					</div>
 				</div>
-				<?php if ( $stats['detected'] > 0 ) : ?>
-					<p><a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a></p>
-				<?php endif; ?>
+				<p class="trai-actions">
+					<?php if ( $stats['detected'] > 0 ) : ?>
+						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
+					<?php endif; ?>
+					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
+				</p>
+				<p class="description"><?php esc_html_e( 'The export lists every labeled and pending file with its detection source, confidence and the last recorded change.', 'transparai' ); ?></p>
 			</section>
 
 			<section class="trai-card">
@@ -371,6 +420,20 @@ final class TransparAI_Settings {
 						<td>
 							<label><input type="checkbox" name="<?php self::name( 'auto_repair' ); ?>" value="1" <?php checked( $options['auto_repair'], '1' ); ?> />
 							<?php esc_html_e( 'Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)', 'transparai' ); ?></label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Delivery check', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'delivery_check' ); ?>" value="1" <?php checked( $options['delivery_check'], '1' ); ?> />
+							<?php esc_html_e( 'Allow checking whether the declaration survives delivery', 'transparai' ); ?></label>
+							<p class="description"><?php esc_html_e( 'Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button.', 'transparai' ); ?></p>
+							<?php if ( '1' === $options['delivery_check'] ) : ?>
+								<p class="trai-actions">
+									<button type="button" class="trai-btn trai-btn--ghost" id="trai-delivery-sample"><?php esc_html_e( 'Check a sample of five files', 'transparai' ); ?></button>
+									<span class="trai-delivery-result"></span>
+								</p>
+							<?php endif; ?>
 						</td>
 					</tr>
 					<tr>
