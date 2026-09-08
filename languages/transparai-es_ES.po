@@ -80,7 +80,7 @@ msgid "Check delivery"
 msgstr "Comprobar la entrega"
 
 #: admin/class-media-library.php:110
-#: admin/class-media-library.php:402
+#: admin/class-media-library.php:432
 msgid "Show file metadata"
 msgstr "Mostrar los metadatos del archivo"
 
@@ -154,7 +154,7 @@ msgid "hint"
 msgstr "indicio"
 
 #: admin/class-media-library.php:263
-#: admin/class-media-library.php:284
+#: admin/class-media-library.php:304
 #: includes/class-delivery.php:66
 #: includes/class-scanner.php:229
 #: includes/class-scanner.php:292
@@ -165,527 +165,531 @@ msgstr "No tienes permiso para hacer eso."
 msgid "Unknown action."
 msgstr "Acción desconocida."
 
-#: admin/class-media-library.php:289
+#: admin/class-media-library.php:309
 #: includes/class-delivery.php:73
 #: includes/class-scanner.php:296
 msgid "Invalid attachment."
 msgstr "Adjunto no válido."
 
-#: admin/class-media-library.php:302
+#: admin/class-media-library.php:322
 msgid "Files"
 msgstr "Archivos"
 
-#: admin/class-media-library.php:305
+#: admin/class-media-library.php:325
 msgid "format cannot carry the declaration"
 msgstr "el formato no puede llevar la declaración"
 
-#: admin/class-media-library.php:307
+#: admin/class-media-library.php:328
 msgid "declaration present"
 msgstr "declaración presente"
 
-#: admin/class-media-library.php:309
+#: admin/class-media-library.php:331
 msgid "declaration missing"
 msgstr "declaración ausente"
 
-#: admin/class-media-library.php:314
+#: admin/class-media-library.php:338
 msgid "No readable file found for this attachment."
 msgstr "No se ha encontrado ningún archivo legible para este adjunto."
 
-#: admin/class-media-library.php:318
+#: admin/class-media-library.php:342
 msgid "Digital source type in the main file"
 msgstr "Digital source type en el archivo principal"
 
-#: admin/class-media-library.php:319
+#: admin/class-media-library.php:344
 msgid "None declared."
 msgstr "Sin declaración."
 
-#: admin/class-media-library.php:323
+#: admin/class-media-library.php:352
 msgid "Detection evidence"
 msgstr "Indicios de la detección"
 
-#: admin/class-media-library.php:329
+#: admin/class-media-library.php:358
 msgid "History"
 msgstr "Historial"
 
-#: admin/class-media-library.php:332
+#: admin/class-media-library.php:361
 msgid "system"
 msgstr "sistema"
 
-#: admin/class-media-library.php:342
+#: admin/class-media-library.php:371
 msgid "XMP packet of the main file"
 msgstr "Paquete XMP del archivo principal"
 
-#: admin/class-media-library.php:344
+#: admin/class-media-library.php:373
 msgid "This file carries no XMP block."
 msgstr "Este archivo no contiene ningún bloque XMP."
 
-#: admin/class-media-library.php:392
-#: admin/class-media-library.php:450
+#: admin/class-media-library.php:422
+#: admin/class-media-library.php:481
 msgid "AI status: all"
 msgstr "Estado de IA: todos"
 
-#: admin/class-media-library.php:393
-#: admin/class-media-library.php:451
+#: admin/class-media-library.php:423
+#: admin/class-media-library.php:482
 msgid "Only AI-labeled"
 msgstr "Solo los marcados como IA"
 
-#: admin/class-media-library.php:394
-#: admin/class-media-library.php:437
-#: admin/class-media-library.php:452
+#: admin/class-media-library.php:424
+#: admin/class-media-library.php:468
+#: admin/class-media-library.php:483
 msgid "Detected, needs review"
 msgstr "Detectado, pendiente de revisión"
 
-#: admin/class-media-library.php:395
-#: admin/class-media-library.php:453
+#: admin/class-media-library.php:425
+#: admin/class-media-library.php:484
 msgid "Without AI label"
 msgstr "Sin etiqueta de IA"
 
-#: admin/class-media-library.php:396
-#: admin/class-media-library.php:494
+#: admin/class-media-library.php:426
+#: admin/class-media-library.php:525
 msgid "Mark as AI-generated"
 msgstr "Marcar como generado por IA"
 
-#: admin/class-media-library.php:397
-#: admin/class-media-library.php:495
+#: admin/class-media-library.php:427
+#: admin/class-media-library.php:526
 msgid "Remove AI label"
 msgstr "Quitar la etiqueta de IA"
 
-#: admin/class-media-library.php:398
+#: admin/class-media-library.php:428
 msgid "Please select media first."
 msgstr "Selecciona primero algún medio."
 
-#: admin/class-media-library.php:399
+#: admin/class-media-library.php:429
 #: admin/class-settings.php:141
 msgid "Updating the AI label failed."
 msgstr "No se ha podido actualizar la etiqueta de IA."
 
-#: admin/class-media-library.php:400
+#: admin/class-media-library.php:430
 msgid "Result"
 msgstr "Resultado"
 
-#: admin/class-media-library.php:401
+#: admin/class-media-library.php:431
 msgid "No AI provenance signals found in the file."
 msgstr "No se han encontrado señales de procedencia de IA en el archivo."
 
-#: admin/class-media-library.php:403
-msgid "Hide file metadata"
-msgstr "Ocultar los metadatos del archivo"
+#: admin/class-media-library.php:433
+msgid "The label was set, but the metadata could not be written into the file. Check the write permissions of the uploads directory."
+msgstr "La etiqueta se ha guardado, pero los metadatos no se han podido escribir en el archivo. Revisa los permisos de escritura del directorio de subidas."
 
-#. translators: 1: number of files checked, 2: intact count, 3: stripped count.
-#: admin/class-media-library.php:405
-#: admin/class-settings.php:143
-#, php-format
-msgid "%1$d checked: %2$d delivered with the declaration, %3$d without."
+#: admin/class-media-library.php:434
+msgid "Hide file metadata"
 msgstr "%1$d comprobados: %2$d entregados con la declaración, %3$d sin ella."
 
-#: admin/class-media-library.php:416
+#. translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared.
+#: admin/class-media-library.php:436
+#: admin/class-settings.php:143
+#, php-format
+msgid "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable."
+msgstr "%1$d comprobados: %2$d entregados con la declaración, %3$d sin ella, %4$d no comparables."
+
+#: admin/class-media-library.php:447
 msgid "AI"
 msgstr ""
 
-#: admin/class-media-library.php:496
+#: admin/class-media-library.php:527
 msgid "Confirm detected AI label"
-msgstr "Confirmar la etiqueta de IA detectada"
-
-#: admin/class-media-library.php:497
-msgid "Dismiss detected AI label"
 msgstr "Descartar la etiqueta de IA detectada"
 
+#: admin/class-media-library.php:528
+msgid "Dismiss detected AI label"
+msgstr "Etiqueta de IA actualizada en %d archivo de medios."
+
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:536
+#: admin/class-media-library.php:567
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] "Etiqueta de IA actualizada en %d archivo de medios."
-msgstr[1] "Etiqueta de IA actualizada en %d archivos de medios."
+msgstr[0] "No tienes permiso para exportar esto."
+msgstr[1] "No tienes permiso para exportar esto."
 
 #: admin/class-settings.php:45
 msgid "You are not allowed to export this."
-msgstr "No tienes permiso para exportar esto."
+msgstr "No se ha podido iniciar la exportación."
 
 #: admin/class-settings.php:63
 msgid "The export could not be started."
-msgstr "No se ha podido iniciar la exportación."
+msgstr "Ajustes"
 
 #: admin/class-settings.php:88
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "%1$d analizados, %2$d etiquetados automáticamente, %3$d pendientes de revisión, %4$d omitidos (ya decididos)."
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count.
 #: admin/class-settings.php:138
 #, php-format
 msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
-msgstr "%1$d analizados, %2$d etiquetados automáticamente, %3$d pendientes de revisión, %4$d omitidos (ya decididos)."
+msgstr "Análisis completado."
 
 #: admin/class-settings.php:139
 msgid "Scan complete."
-msgstr "Análisis completado."
+msgstr "La petición de análisis ha fallado. Puedes reiniciarlo para continuar."
 
 #: admin/class-settings.php:140
 msgid "Scan request failed. You can restart to continue."
-msgstr "La petición de análisis ha fallado. Puedes reiniciarlo para continuar."
+msgstr "Ajustes guardados."
 
 #: admin/class-settings.php:161
 msgid "Settings saved."
-msgstr "Ajustes guardados."
+msgstr "Estado de la biblioteca"
 
 #: admin/class-settings.php:172
 msgid "Library status"
-msgstr "Estado de la biblioteca"
+msgstr "Archivos de medios"
 
 #: admin/class-settings.php:176
 msgid "Media files"
-msgstr "Archivos de medios"
+msgstr "Etiquetados como IA"
 
 #: admin/class-settings.php:180
 msgid "Labeled as AI"
-msgstr "Etiquetados como IA"
+msgstr "Pendientes de revisión"
 
 #: admin/class-settings.php:184
 msgid "Waiting for review"
-msgstr "Pendientes de revisión"
+msgstr "Analizados"
 
 #: admin/class-settings.php:188
 msgid "Scanned"
-msgstr "Analizados"
+msgstr "Abrir la cola de revisión"
 
 #: admin/class-settings.php:193
 msgid "Open review queue"
-msgstr "Abrir la cola de revisión"
+msgstr "Exportar la auditoría en CSV"
 
 #: admin/class-settings.php:195
 msgid "Export audit CSV"
-msgstr "Exportar la auditoría en CSV"
+msgstr "La exportación incluye cada archivo etiquetado o pendiente con su origen de detección, su nivel de confianza y el último cambio registrado."
 
 #: admin/class-settings.php:197
 msgid "The export lists every labeled and pending file with its detection source, confidence and the last recorded change."
-msgstr "La exportación incluye cada archivo etiquetado o pendiente con su origen de detección, su nivel de confianza y el último cambio registrado."
+msgstr "Analizar la biblioteca existente"
 
 #: admin/class-settings.php:201
 msgid "Scan existing library"
-msgstr "Analizar la biblioteca existente"
+msgstr "Lee los metadatos de tus archivos de medios existentes (C2PA, XMP/IPTC, firmas de generadores) en lotes pequeños. Nada sale de tu servidor."
 
 #: admin/class-settings.php:202
 msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
-msgstr "Lee los metadatos de tus archivos de medios existentes (C2PA, XMP/IPTC, firmas de generadores) en lotes pequeños. Nada sale de tu servidor."
+msgstr "Analizar los medios nuevos o sin analizar"
 
 #: admin/class-settings.php:204
 msgid "Scan new/unscanned media"
-msgstr "Analizar los medios nuevos o sin analizar"
+msgstr "Volver a analizar todo"
 
 #: admin/class-settings.php:205
 msgid "Rescan everything"
-msgstr "Volver a analizar todo"
+msgstr "Pausar"
 
 #: admin/class-settings.php:206
 msgid "Pause"
-msgstr "Pausar"
+msgstr "Reparación automática, último ciclo completo: %1$d archivos etiquetados comprobados, %2$d reparados, %3$d fallidos (hace %4$s)."
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff.
 #: admin/class-settings.php:219
 #, php-format
 msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
-msgstr "Reparación automática, último ciclo completo: %1$d archivos etiquetados comprobados, %2$d reparados, %3$d fallidos (hace %4$s)."
+msgstr "Insignia visible"
 
 #: admin/class-settings.php:235
 msgid "Visible badge"
-msgstr "Insignia visible"
+msgstr "Mostrar la insignia"
 
 #: admin/class-settings.php:238
 msgid "Show badge"
-msgstr "Mostrar la insignia"
+msgstr "Mostrar una insignia visible en los medios etiquetados de la parte pública"
 
 #: admin/class-settings.php:241
 msgid "Show a visible badge on labeled media in the front end"
-msgstr "Mostrar una insignia visible en los medios etiquetados de la parte pública"
+msgstr "Fecha de inicio"
 
 #: admin/class-settings.php:245
 msgid "Start date"
-msgstr "Fecha de inicio"
+msgstr "Solo los medios subidos a partir de esta fecha reciben la insignia pública; los anteriores siguen etiquetados solo en la administración. Déjalo vacío para mostrar la insignia en todos los medios etiquetados."
 
 #: admin/class-settings.php:248
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
-msgstr "Solo los medios subidos a partir de esta fecha reciben la insignia pública; los anteriores siguen etiquetados solo en la administración. Déjalo vacío para mostrar la insignia en todos los medios etiquetados."
+msgstr "Texto de la insignia"
 
 #: admin/class-settings.php:252
 msgid "Badge text"
-msgstr "Texto de la insignia"
+msgstr "Generado por IA"
 
 #: admin/class-settings.php:254
 #: includes/class-frontend.php:148
 #: includes/class-frontend.php:153
 msgid "AI-generated"
-msgstr "Generado por IA"
+msgstr "Déjalo vacío para usar el texto traducido por defecto."
 
 #: admin/class-settings.php:256
 msgid "Leave empty for the translated default label."
-msgstr "Déjalo vacío para usar el texto traducido por defecto."
+msgstr "Marcadores: %1$s (generador detectado o introducido) y %2$s (título del sitio), por ejemplo %3$s. Las imágenes sin generador conocido usan el texto por defecto."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template.
 #: admin/class-settings.php:260
 #, php-format
 msgid "Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label."
-msgstr "Marcadores: %1$s (generador detectado o introducido) y %2$s (título del sitio), por ejemplo %3$s. Las imágenes sin generador conocido usan el texto por defecto."
+msgstr "Aspecto"
 
 #: admin/class-settings.php:270
 msgid "Appearance"
-msgstr "Aspecto"
+msgstr "Superpuesta a la imagen"
 
 #: admin/class-settings.php:277
 msgid "Overlay on the image"
-msgstr "Superpuesta a la imagen"
+msgstr "Oscura"
 
 #: admin/class-settings.php:295
 msgid "Dark"
-msgstr "Oscura"
+msgstr "Clara"
 
 #: admin/class-settings.php:296
 msgid "Light"
-msgstr "Clara"
+msgstr "Contorno"
 
 #: admin/class-settings.php:297
 msgid "Outline"
-msgstr "Contorno"
+msgstr "Solo icono (texto corto)"
 
 #: admin/class-settings.php:298
 msgid "Icon only (short label)"
-msgstr "Solo icono (texto corto)"
+msgstr "Pequeña"
 
 #: admin/class-settings.php:305
 msgid "Small"
-msgstr "Pequeña"
+msgstr "Mediana"
 
 #: admin/class-settings.php:306
 msgid "Medium"
-msgstr "Mediana"
+msgstr "Grande"
 
 #: admin/class-settings.php:307
 msgid "Large"
-msgstr "Grande"
+msgstr "Extras"
 
 #: admin/class-settings.php:314
 msgid "Extras"
-msgstr "Extras"
+msgstr "Mostrar el generador detectado en la insignia (por ejemplo «Generado por IA · Midjourney»; se ignora si el texto de la insignia contiene {generator})"
 
 #: admin/class-settings.php:317
 msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
-msgstr "Mostrar el generador detectado en la insignia (por ejemplo «Generado por IA · Midjourney»; se ignora si el texto de la insignia contiene {generator})"
+msgstr "Añadir la etiqueta al texto alternativo de la imagen (lectores de pantalla)"
 
 #: admin/class-settings.php:319
 msgid "Append the label to the image alt text (screen readers)"
-msgstr "Añadir la etiqueta al texto alternativo de la imagen (lectores de pantalla)"
+msgstr "Mover automáticamente la insignia a otra esquina, o debajo de la imagen, cuando una capa del tema la tape (recomendado, necesita JavaScript)"
 
 #: admin/class-settings.php:321
 msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
-msgstr "Mover automáticamente la insignia a otra esquina, o debajo de la imagen, cuando una capa del tema la tape (recomendado, necesita JavaScript)"
+msgstr "Etiquetar también las imágenes mostradas sin ID de adjunto (campos ACF, carruseles, maquetadores) y los fondos CSS (experimental, necesita JavaScript)"
 
 #: admin/class-settings.php:323
 msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
-msgstr "Etiquetar también las imágenes mostradas sin ID de adjunto (campos ACF, carruseles, maquetadores) y los fondos CSS (experimental, necesita JavaScript)"
+msgstr "Aviso de página"
 
 #: admin/class-settings.php:327
 msgid "Page notice"
-msgstr "Aviso de página"
+msgstr "Añadir un aviso breve al final de las páginas que contienen medios etiquetados"
 
 #: admin/class-settings.php:330
 msgid "Add a short note at the end of pages that contain labeled media"
-msgstr "Añadir un aviso breve al final de las páginas que contienen medios etiquetados"
+msgstr "Esta página contiene medios generados por IA."
 
 #: admin/class-settings.php:331
 #: includes/class-frontend.php:657
 msgid "This page contains AI-generated media."
-msgstr "Esta página contiene medios generados por IA."
+msgstr "Texto generado por IA"
 
 #: admin/class-settings.php:338
 msgid "AI-generated text"
-msgstr "Texto generado por IA"
+msgstr "Aviso de contenido"
 
 #: admin/class-settings.php:341
 msgid "Content note"
-msgstr "Aviso de contenido"
+msgstr "Este texto se ha creado con ayuda de IA."
 
 #: admin/class-settings.php:343
 #: includes/class-frontend.php:681
 msgid "This text was created with the help of AI."
-msgstr "Este texto se ha creado con ayuda de IA."
+msgstr "Se muestra delante de las entradas que marcas con la casilla «Este contenido está generado por IA» en la barra lateral del editor."
 
 #: admin/class-settings.php:344
 msgid "Shown ahead of posts you mark with the \"This content is AI-generated\" checkbox in the editor sidebar."
-msgstr "Se muestra delante de las entradas que marcas con la casilla «Este contenido está generado por IA» en la barra lateral del editor."
+msgstr "Detección automática"
 
 #: admin/class-settings.php:351
 msgid "Automatic detection"
-msgstr "Detección automática"
+msgstr "Detectar al subir"
 
 #: admin/class-settings.php:354
 msgid "Detect on upload"
-msgstr "Detectar al subir"
+msgstr "Inspeccionar las subidas nuevas en busca de procedencia de IA (C2PA, XMP/IPTC, firmas de generadores)"
 
 #: admin/class-settings.php:357
 msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
-msgstr "Inspeccionar las subidas nuevas en busca de procedencia de IA (C2PA, XMP/IPTC, firmas de generadores)"
+msgstr "Declaraciones formales"
 
 #: admin/class-settings.php:361
 msgid "Standard declarations"
-msgstr "Declaraciones formales"
+msgstr "Etiquetar automáticamente"
 
 #: admin/class-settings.php:368
 #: admin/class-settings.php:385
 msgid "Label automatically"
-msgstr "Etiquetar automáticamente"
+msgstr "Poner en la cola de revisión"
 
 #: admin/class-settings.php:369
 #: admin/class-settings.php:386
 msgid "Put into review queue"
-msgstr "Poner en la cola de revisión"
+msgstr "Ignorar"
 
 #: admin/class-settings.php:370
 #: admin/class-settings.php:387
 msgid "Ignore"
-msgstr "Ignorar"
+msgstr "Archivos que declaran explícitamente un origen de IA (IPTC DigitalSourceType, declaración de IA en C2PA, declaración AIGC)."
 
 #: admin/class-settings.php:374
 msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
-msgstr "Archivos que declaran explícitamente un origen de IA (IPTC DigitalSourceType, declaración de IA en C2PA, declaración AIGC)."
+msgstr "Firmas de generadores"
 
 #: admin/class-settings.php:378
 msgid "Generator signatures"
-msgstr "Firmas de generadores"
+msgstr "Señales fuertes sin declaración formal (parámetros de Stable Diffusion, flujos de ComfyUI, nombres de generadores en EXIF/XMP, C2PA escrito por una cámara)."
 
 #: admin/class-settings.php:391
 msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
-msgstr "Señales fuertes sin declaración formal (parámetros de Stable Diffusion, flujos de ComfyUI, nombres de generadores en EXIF/XMP, C2PA escrito por una cámara)."
+msgstr "Más fuentes"
 
 #: admin/class-settings.php:395
 msgid "More sources"
-msgstr "Más fuentes"
+msgstr "Analizar también las subidas de vídeo y audio (C2PA en MP4/MOV, declaraciones AIGC en MP3)"
 
 #: admin/class-settings.php:398
 msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
-msgstr "Analizar también las subidas de vídeo y audio (C2PA en MP4/MOV, declaraciones AIGC en MP3)"
+msgstr "Usar los patrones del nombre de archivo como indicios para la revisión (nunca etiqueta automáticamente)"
 
 #: admin/class-settings.php:400
 msgid "Use filename patterns as review hints (never labels automatically)"
-msgstr "Usar los patrones del nombre de archivo como indicios para la revisión (nunca etiqueta automáticamente)"
+msgstr "Metadatos legibles por máquina en los archivos"
 
 #: admin/class-settings.php:407
 msgid "Machine-readable file metadata"
-msgstr "Metadatos legibles por máquina en los archivos"
+msgstr "Escribir en los archivos"
 
 #: admin/class-settings.php:410
 msgid "Write into files"
-msgstr "Escribir en los archivos"
+msgstr "Escribir el IPTC DigitalSourceType como XMP en los archivos JPEG, PNG, WebP y AVIF etiquetados (todos los tamaños generados)"
 
 #: admin/class-settings.php:413
 msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
-msgstr "Escribir el IPTC DigitalSourceType como XMP en los archivos JPEG, PNG, WebP y AVIF etiquetados (todos los tamaños generados)"
+msgstr "Reflejarlo también en IPTC-IIM (JPEG, solo cuando el archivo no tiene otro bloque IPTC)"
 
 #: admin/class-settings.php:415
 msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
-msgstr "Reflejarlo también en IPTC-IIM (JPEG, solo cuando el archivo no tiene otro bloque IPTC)"
+msgstr "Reparación automática"
 
 #: admin/class-settings.php:419
 msgid "Auto-repair"
-msgstr "Reparación automática"
+msgstr "Restaurar los metadatos cuando los optimizadores de imágenes o la regeneración de tamaños los eliminan (ciclo de integridad cada hora)"
 
 #: admin/class-settings.php:422
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
-msgstr "Restaurar los metadatos cuando los optimizadores de imágenes o la regeneración de tamaños los eliminan (ciclo de integridad cada hora)"
+msgstr "Comprobación de la entrega"
 
 #: admin/class-settings.php:426
 msgid "Delivery check"
-msgstr "Comprobación de la entrega"
+msgstr "Permitir comprobar si la declaración sobrevive a la entrega"
 
 #: admin/class-settings.php:429
 msgid "Allow checking whether the declaration survives delivery"
-msgstr "Permitir comprobar si la declaración sobrevive a la entrega"
+msgstr "Añade un botón aquí y en los detalles del adjunto. Al pulsarlo, el plugin descarga la imagen desde su propia URL pública y compara los bytes entregados con el archivo del disco, que es la única forma de notar que un CDN de optimización recodifica tus imágenes y elimina la declaración por el camino. La petición va a tu propio sitio y a ningún otro, y solo ocurre cuando pulsas el botón."
 
 #: admin/class-settings.php:430
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
-msgstr "Añade un botón aquí y en los detalles del adjunto. Al pulsarlo, el plugin descarga la imagen desde su propia URL pública y compara los bytes entregados con el archivo del disco, que es la única forma de notar que un CDN de optimización recodifica tus imágenes y elimina la declaración por el camino. La petición va a tu propio sitio y a ningún otro, y solo ocurre cuando pulsas el botón."
+msgstr "Comprobar una muestra de cinco archivos"
 
 #: admin/class-settings.php:433
 msgid "Check a sample of five files"
-msgstr "Comprobar una muestra de cinco archivos"
+msgstr "Datos estructurados"
 
 #: admin/class-settings.php:440
 msgid "Structured data"
-msgstr "Datos estructurados"
+msgstr "Añadir JSON-LD de Schema.org con el digital source type de IPTC para los medios etiquetados de cada página (los buscadores lo leen sin abrir los archivos)"
 
 #: admin/class-settings.php:443
 msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
-msgstr "Añadir JSON-LD de Schema.org con el digital source type de IPTC para los medios etiquetados de cada página (los buscadores lo leen sin abrir los archivos)"
+msgstr "Desinstalación"
 
 #: admin/class-settings.php:450
 msgid "Uninstall"
-msgstr "Desinstalación"
+msgstr "Eliminación de datos"
 
 #: admin/class-settings.php:453
 msgid "Data removal"
-msgstr "Eliminación de datos"
+msgstr "Borrar todos los datos del plugin (etiquetas, resultados de detección, ajustes) al desinstalarlo"
 
 #: admin/class-settings.php:456
 msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
-msgstr "Borrar todos los datos del plugin (etiquetas, resultados de detección, ajustes) al desinstalarlo"
+msgstr "Guardar los cambios"
 
 #: admin/class-settings.php:462
 msgid "Save changes"
-msgstr "Guardar los cambios"
+msgstr "Enlaces de TransparAI"
 
 #: admin/class-settings.php:467
 msgid "TransparAI links"
-msgstr "Enlaces de TransparAI"
+msgstr "Foro de soporte"
 
 #: admin/class-settings.php:470
 msgid "Support forum"
-msgstr "Foro de soporte"
+msgstr "La comprobación de la entrega está desactivada."
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr "La comprobación de la entrega está desactivada."
+msgstr "Este adjunto no tiene ningún archivo."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr "Este adjunto no tiene ningún archivo."
+msgstr "El archivo se sirve desde otro host, así que no se comprueba."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr "El archivo se sirve desde otro host, así que no se comprueba."
+msgstr "El archivo del disco no lleva ninguna declaración de IA, así que no hay nada que comparar."
 
 #: includes/class-delivery.php:113
 msgid "The file on disk carries no AI declaration, so there is nothing to compare."
-msgstr "El archivo del disco no lleva ninguna declaración de IA, así que no hay nada que comparar."
+msgstr "No se ha podido descargar la imagen desde su URL pública."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr "No se ha podido descargar la imagen desde su URL pública."
+msgstr "La respuesta no era una imagen legible."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr "La respuesta no era una imagen legible."
+msgstr "La declaración está presente en el archivo entregado."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr "La declaración está presente en el archivo entregado."
+msgstr "El archivo entregado no lleva ninguna declaración. Algo entre WordPress y el visitante recodifica la imagen, normalmente un CDN de optimización o un proxy."
 
 #: includes/class-delivery.php:151
 msgid "The delivered file carries no declaration. Something between WordPress and the visitor re-encodes the image, usually an optimizing CDN or a proxy."
-msgstr "El archivo entregado no lleva ninguna declaración. Algo entre WordPress y el visitante recodifica la imagen, normalmente un CDN de optimización o un proxy."
+msgstr "Entregado con la declaración intacta"
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr "Entregado con la declaración intacta"
+msgstr "Entregado sin la declaración"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr "Entregado sin la declaración"
+msgstr "Nada que comprobar"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr "Nada que comprobar"
+msgstr "Servido desde otro host"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr "Servido desde otro host"
+msgstr "No se ha podido descargar"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"

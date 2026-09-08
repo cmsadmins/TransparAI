@@ -130,6 +130,9 @@
 				   otherwise re-submit the stale unchecked state and unflag. */
 				jQuery('input[name="attachments[' + id + '][transparai_ai]"]').prop('checked', op === 'confirm');
 				setTileState(id, op === 'confirm', false);
+				if (resp.data && resp.data.writeErrors > 0) {
+					notify(labels.writeFailed);
+				}
 			} else {
 				notify(labels.updateFailed);
 			}
@@ -180,6 +183,7 @@
 					.replace('%1$d', resp.data.checked)
 					.replace('%2$d', resp.data.intact)
 					.replace('%3$d', resp.data.stripped)
+					.replace('%4$d', resp.data.other)
 			);
 		}).fail(function () {
 			button.prop('disabled', false);

@@ -134,6 +134,7 @@ final class TransparAI_Options {
 			'write_xmp',
 			'write_iim',
 			'auto_repair',
+			'delivery_check',
 			'schema_output',
 			'delete_on_uninstall',
 		);

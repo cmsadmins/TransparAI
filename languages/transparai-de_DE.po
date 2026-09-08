@@ -80,7 +80,7 @@ msgid "Check delivery"
 msgstr "Auslieferung prüfen"
 
 #: admin/class-media-library.php:110
-#: admin/class-media-library.php:402
+#: admin/class-media-library.php:432
 msgid "Show file metadata"
 msgstr "Dateimetadaten anzeigen"
 
@@ -154,7 +154,7 @@ msgid "hint"
 msgstr "Hinweis"
 
 #: admin/class-media-library.php:263
-#: admin/class-media-library.php:284
+#: admin/class-media-library.php:304
 #: includes/class-delivery.php:66
 #: includes/class-scanner.php:229
 #: includes/class-scanner.php:292
@@ -165,142 +165,146 @@ msgstr "Dazu bist du nicht berechtigt."
 msgid "Unknown action."
 msgstr "Unbekannte Aktion."
 
-#: admin/class-media-library.php:289
+#: admin/class-media-library.php:309
 #: includes/class-delivery.php:73
 #: includes/class-scanner.php:296
 msgid "Invalid attachment."
 msgstr "Ungültiger Anhang."
 
-#: admin/class-media-library.php:302
+#: admin/class-media-library.php:322
 msgid "Files"
 msgstr "Dateien"
 
-#: admin/class-media-library.php:305
+#: admin/class-media-library.php:325
 msgid "format cannot carry the declaration"
 msgstr "Format kann die Angabe nicht tragen"
 
-#: admin/class-media-library.php:307
+#: admin/class-media-library.php:328
 msgid "declaration present"
 msgstr "Angabe vorhanden"
 
-#: admin/class-media-library.php:309
+#: admin/class-media-library.php:331
 msgid "declaration missing"
 msgstr "Angabe fehlt"
 
-#: admin/class-media-library.php:314
+#: admin/class-media-library.php:338
 msgid "No readable file found for this attachment."
 msgstr "Für diesen Anhang wurde keine lesbare Datei gefunden."
 
-#: admin/class-media-library.php:318
+#: admin/class-media-library.php:342
 msgid "Digital source type in the main file"
 msgstr "Digital Source Type in der Hauptdatei"
 
-#: admin/class-media-library.php:319
+#: admin/class-media-library.php:344
 msgid "None declared."
 msgstr "Keine Angabe vorhanden."
 
-#: admin/class-media-library.php:323
+#: admin/class-media-library.php:352
 msgid "Detection evidence"
 msgstr "Nachweis der Erkennung"
 
-#: admin/class-media-library.php:329
+#: admin/class-media-library.php:358
 msgid "History"
 msgstr "Verlauf"
 
-#: admin/class-media-library.php:332
+#: admin/class-media-library.php:361
 msgid "system"
 msgstr "System"
 
-#: admin/class-media-library.php:342
+#: admin/class-media-library.php:371
 msgid "XMP packet of the main file"
 msgstr "XMP-Paket der Hauptdatei"
 
-#: admin/class-media-library.php:344
+#: admin/class-media-library.php:373
 msgid "This file carries no XMP block."
 msgstr "Diese Datei enthält keinen XMP-Block."
 
-#: admin/class-media-library.php:392
-#: admin/class-media-library.php:450
+#: admin/class-media-library.php:422
+#: admin/class-media-library.php:481
 msgid "AI status: all"
 msgstr "KI-Status: alle"
 
-#: admin/class-media-library.php:393
-#: admin/class-media-library.php:451
+#: admin/class-media-library.php:423
+#: admin/class-media-library.php:482
 msgid "Only AI-labeled"
 msgstr "Nur KI-gekennzeichnet"
 
-#: admin/class-media-library.php:394
-#: admin/class-media-library.php:437
-#: admin/class-media-library.php:452
+#: admin/class-media-library.php:424
+#: admin/class-media-library.php:468
+#: admin/class-media-library.php:483
 msgid "Detected, needs review"
 msgstr "Erkannt, Prüfung ausstehend"
 
-#: admin/class-media-library.php:395
-#: admin/class-media-library.php:453
+#: admin/class-media-library.php:425
+#: admin/class-media-library.php:484
 msgid "Without AI label"
 msgstr "Ohne KI-Kennzeichnung"
 
-#: admin/class-media-library.php:396
-#: admin/class-media-library.php:494
+#: admin/class-media-library.php:426
+#: admin/class-media-library.php:525
 msgid "Mark as AI-generated"
 msgstr "Als KI-generiert markieren"
 
-#: admin/class-media-library.php:397
-#: admin/class-media-library.php:495
+#: admin/class-media-library.php:427
+#: admin/class-media-library.php:526
 msgid "Remove AI label"
 msgstr "KI-Kennzeichnung entfernen"
 
-#: admin/class-media-library.php:398
+#: admin/class-media-library.php:428
 msgid "Please select media first."
 msgstr "Bitte zuerst Medien auswählen."
 
-#: admin/class-media-library.php:399
+#: admin/class-media-library.php:429
 #: admin/class-settings.php:141
 msgid "Updating the AI label failed."
 msgstr "Aktualisierung der KI-Kennzeichnung fehlgeschlagen."
 
-#: admin/class-media-library.php:400
+#: admin/class-media-library.php:430
 msgid "Result"
 msgstr "Ergebnis"
 
-#: admin/class-media-library.php:401
+#: admin/class-media-library.php:431
 msgid "No AI provenance signals found in the file."
 msgstr "Keine KI-Herkunftssignale in der Datei gefunden."
 
-#: admin/class-media-library.php:403
-msgid "Hide file metadata"
-msgstr "Dateimetadaten ausblenden"
+#: admin/class-media-library.php:433
+msgid "The label was set, but the metadata could not be written into the file. Check the write permissions of the uploads directory."
+msgstr "Die Kennzeichnung wurde gesetzt, die Metadaten konnten aber nicht in die Datei geschrieben werden. Prüfen Sie die Schreibrechte des Upload-Verzeichnisses."
 
-#. translators: 1: number of files checked, 2: intact count, 3: stripped count.
-#: admin/class-media-library.php:405
-#: admin/class-settings.php:143
-#, php-format
-msgid "%1$d checked: %2$d delivered with the declaration, %3$d without."
+#: admin/class-media-library.php:434
+msgid "Hide file metadata"
 msgstr "%1$d geprüft: %2$d mit Angabe ausgeliefert, %3$d ohne."
 
-#: admin/class-media-library.php:416
+#. translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared.
+#: admin/class-media-library.php:436
+#: admin/class-settings.php:143
+#, php-format
+msgid "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable."
+msgstr "%1$d geprüft: %2$d mit Angabe ausgeliefert, %3$d ohne, %4$d nicht vergleichbar."
+
+#: admin/class-media-library.php:447
 msgid "AI"
 msgstr "KI"
 
-#: admin/class-media-library.php:496
+#: admin/class-media-library.php:527
 msgid "Confirm detected AI label"
 msgstr "Erkannte KI-Kennzeichnung bestätigen"
 
-#: admin/class-media-library.php:497
+#: admin/class-media-library.php:528
 msgid "Dismiss detected AI label"
 msgstr "Erkannte KI-Kennzeichnung verwerfen"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:536
+#: admin/class-media-library.php:567
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] "KI-Kennzeichnung für %d Mediendatei aktualisiert."
-msgstr[1] "KI-Kennzeichnung für %d Mediendateien aktualisiert."
+msgstr[0] "Sie dürfen diesen Export nicht abrufen."
+msgstr[1] "Sie dürfen diesen Export nicht abrufen."
 
 #: admin/class-settings.php:45
 msgid "You are not allowed to export this."
-msgstr "Sie dürfen diesen Export nicht abrufen."
+msgstr "Der Export konnte nicht gestartet werden."
 
 #: admin/class-settings.php:63
 msgid "The export could not be started."
@@ -350,11 +354,11 @@ msgstr "Gescannt"
 
 #: admin/class-settings.php:193
 msgid "Open review queue"
-msgstr "Prüfliste öffnen"
+msgstr "Audit-CSV exportieren"
 
 #: admin/class-settings.php:195
 msgid "Export audit CSV"
-msgstr "Audit-CSV exportieren"
+msgstr "Der Export enthält jede gekennzeichnete und jede zur Prüfung vorgemerkte Datei mit Erkennungsquelle, Konfidenz und der zuletzt erfassten Änderung."
 
 #: admin/class-settings.php:197
 msgid "The export lists every labeled and pending file with its detection source, confidence and the last recorded change."
@@ -396,11 +400,11 @@ msgstr "Badge anzeigen"
 
 #: admin/class-settings.php:241
 msgid "Show a visible badge on labeled media in the front end"
-msgstr "Sichtbares Badge auf gekennzeichneten Medien im Frontend anzeigen"
+msgstr "Startdatum"
 
 #: admin/class-settings.php:245
 msgid "Start date"
-msgstr "Startdatum"
+msgstr "Nur Medien, die an oder nach diesem Tag hochgeladen wurden, erhalten das Badge im Frontend; ältere Medien bleiben nur im Backend gekennzeichnet. Leer lassen, um alle gekennzeichneten Medien mit Badge zu zeigen."
 
 #: admin/class-settings.php:248
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
@@ -472,7 +476,7 @@ msgstr "Erkannten Generator im Badge anzeigen (z. B. „KI-generiert · Midjourn
 
 #: admin/class-settings.php:319
 msgid "Append the label to the image alt text (screen readers)"
-msgstr "Kennzeichnung an den Alt-Text des Bildes anhängen (Screenreader)"
+msgstr "Ein Badge automatisch in eine andere Ecke oder unter das Bild verschieben, wenn eine Theme-Ebene es verdeckt (empfohlen, benötigt JavaScript)"
 
 #: admin/class-settings.php:321
 msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
@@ -589,19 +593,19 @@ msgstr "Auto-Reparatur"
 
 #: admin/class-settings.php:422
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
-msgstr "Metadaten wiederherstellen, wenn Bild-Optimierer oder Regenerierung sie entfernen (stündliche Integritätsprüfung)"
+msgstr "Auslieferungsprüfung"
 
 #: admin/class-settings.php:426
 msgid "Delivery check"
-msgstr "Auslieferungsprüfung"
+msgstr "Prüfung erlauben, ob die Angabe die Auslieferung übersteht"
 
 #: admin/class-settings.php:429
 msgid "Allow checking whether the declaration survives delivery"
-msgstr "Prüfung erlauben, ob die Angabe die Auslieferung übersteht"
+msgstr "Fügt hier und in den Anhang-Details eine Schaltfläche hinzu. Auf Klick lädt das Plugin das Bild über seine eigene öffentliche URL und vergleicht die ausgelieferten Bytes mit der Datei auf der Festplatte. Nur so fällt auf, dass ein optimierendes CDN Ihre Bilder neu kodiert und die Angabe dabei entfernt. Die Anfrage geht ausschließlich an Ihre eigene Website und nur, wenn Sie die Schaltfläche drücken."
 
 #: admin/class-settings.php:430
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
-msgstr "Fügt hier und in den Anhang-Details eine Schaltfläche hinzu. Auf Klick lädt das Plugin das Bild über seine eigene öffentliche URL und vergleicht die ausgelieferten Bytes mit der Datei auf der Festplatte. Nur so fällt auf, dass ein optimierendes CDN Ihre Bilder neu kodiert und die Angabe dabei entfernt. Die Anfrage geht ausschließlich an Ihre eigene Website und nur, wenn Sie die Schaltfläche drücken."
+msgstr "Stichprobe mit fünf Dateien prüfen"
 
 #: admin/class-settings.php:433
 msgid "Check a sample of five files"
@@ -629,63 +633,63 @@ msgstr "Alle Plugin-Daten (Kennzeichnungen, Erkennungsergebnisse, Einstellungen)
 
 #: admin/class-settings.php:462
 msgid "Save changes"
-msgstr "Änderungen speichern"
+msgstr "TransparAI-Links"
 
 #: admin/class-settings.php:467
 msgid "TransparAI links"
-msgstr "TransparAI-Links"
+msgstr "Support-Forum"
 
 #: admin/class-settings.php:470
 msgid "Support forum"
-msgstr "Support-Forum"
+msgstr "Die Auslieferungsprüfung ist ausgeschaltet."
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr "Die Auslieferungsprüfung ist ausgeschaltet."
+msgstr "Zu diesem Anhang gibt es keine Datei."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr "Zu diesem Anhang gibt es keine Datei."
+msgstr "Die Datei wird von einem anderen Host ausgeliefert und deshalb nicht geprüft."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr "Die Datei wird von einem anderen Host ausgeliefert und deshalb nicht geprüft."
+msgstr "Die Datei auf der Festplatte trägt keine KI-Angabe, es gibt also nichts zu vergleichen."
 
 #: includes/class-delivery.php:113
 msgid "The file on disk carries no AI declaration, so there is nothing to compare."
-msgstr "Die Datei auf der Festplatte trägt keine KI-Angabe, es gibt also nichts zu vergleichen."
+msgstr "Das Bild konnte über seine öffentliche URL nicht geladen werden."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr "Das Bild konnte über seine öffentliche URL nicht geladen werden."
+msgstr "Die Antwort war kein lesbares Bild."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr "Die Antwort war kein lesbares Bild."
+msgstr "Die Angabe ist in der ausgelieferten Datei enthalten."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr "Die Angabe ist in der ausgelieferten Datei enthalten."
+msgstr "Die ausgelieferte Datei enthält keine Angabe. Etwas zwischen WordPress und dem Besucher kodiert das Bild neu, meist ein optimierendes CDN oder ein Proxy."
 
 #: includes/class-delivery.php:151
 msgid "The delivered file carries no declaration. Something between WordPress and the visitor re-encodes the image, usually an optimizing CDN or a proxy."
-msgstr "Die ausgelieferte Datei enthält keine Angabe. Etwas zwischen WordPress und dem Besucher kodiert das Bild neu, meist ein optimierendes CDN oder ein Proxy."
+msgstr "Mit erhaltener Angabe ausgeliefert"
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr "Mit erhaltener Angabe ausgeliefert"
+msgstr "Ohne Angabe ausgeliefert"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr "Ohne Angabe ausgeliefert"
+msgstr "Nichts zu prüfen"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr "Nichts zu prüfen"
+msgstr "Von einem anderen Host ausgeliefert"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr "Von einem anderen Host ausgeliefert"
+msgstr "Konnte nicht geladen werden"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"

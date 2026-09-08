@@ -139,8 +139,8 @@ final class TransparAI_Settings {
 					'scanDone'       => __( 'Scan complete.', 'transparai' ),
 					'scanFailed'     => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
 					'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
-					/* translators: 1: number of files checked, 2: intact count, 3: stripped count. */
-					'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without.', 'transparai' ),
+					/* translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared. */
+					'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable.', 'transparai' ),
 				),
 			)
 		);

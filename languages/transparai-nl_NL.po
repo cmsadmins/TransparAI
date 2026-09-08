@@ -80,7 +80,7 @@ msgid "Check delivery"
 msgstr "Levering controleren"
 
 #: admin/class-media-library.php:110
-#: admin/class-media-library.php:402
+#: admin/class-media-library.php:432
 msgid "Show file metadata"
 msgstr "Bestandsmetadata tonen"
 
@@ -154,7 +154,7 @@ msgid "hint"
 msgstr "aanwijzing"
 
 #: admin/class-media-library.php:263
-#: admin/class-media-library.php:284
+#: admin/class-media-library.php:304
 #: includes/class-delivery.php:66
 #: includes/class-scanner.php:229
 #: includes/class-scanner.php:292
@@ -165,527 +165,531 @@ msgstr "Je hebt geen rechten om dit te doen."
 msgid "Unknown action."
 msgstr "Onbekende actie."
 
-#: admin/class-media-library.php:289
+#: admin/class-media-library.php:309
 #: includes/class-delivery.php:73
 #: includes/class-scanner.php:296
 msgid "Invalid attachment."
 msgstr "Ongeldige bijlage."
 
-#: admin/class-media-library.php:302
+#: admin/class-media-library.php:322
 msgid "Files"
 msgstr "Bestanden"
 
-#: admin/class-media-library.php:305
+#: admin/class-media-library.php:325
 msgid "format cannot carry the declaration"
 msgstr "dit formaat kan de vermelding niet dragen"
 
-#: admin/class-media-library.php:307
+#: admin/class-media-library.php:328
 msgid "declaration present"
 msgstr "vermelding aanwezig"
 
-#: admin/class-media-library.php:309
+#: admin/class-media-library.php:331
 msgid "declaration missing"
 msgstr "vermelding ontbreekt"
 
-#: admin/class-media-library.php:314
+#: admin/class-media-library.php:338
 msgid "No readable file found for this attachment."
 msgstr "Geen leesbaar bestand gevonden voor deze bijlage."
 
-#: admin/class-media-library.php:318
+#: admin/class-media-library.php:342
 msgid "Digital source type in the main file"
 msgstr "Digital source type in het hoofdbestand"
 
-#: admin/class-media-library.php:319
+#: admin/class-media-library.php:344
 msgid "None declared."
 msgstr "Geen vermelding."
 
-#: admin/class-media-library.php:323
+#: admin/class-media-library.php:352
 msgid "Detection evidence"
 msgstr "Aanwijzingen van de detectie"
 
-#: admin/class-media-library.php:329
+#: admin/class-media-library.php:358
 msgid "History"
 msgstr "Geschiedenis"
 
-#: admin/class-media-library.php:332
+#: admin/class-media-library.php:361
 msgid "system"
 msgstr "systeem"
 
-#: admin/class-media-library.php:342
+#: admin/class-media-library.php:371
 msgid "XMP packet of the main file"
 msgstr "XMP-pakket van het hoofdbestand"
 
-#: admin/class-media-library.php:344
+#: admin/class-media-library.php:373
 msgid "This file carries no XMP block."
 msgstr "Dit bestand bevat geen XMP-blok."
 
-#: admin/class-media-library.php:392
-#: admin/class-media-library.php:450
+#: admin/class-media-library.php:422
+#: admin/class-media-library.php:481
 msgid "AI status: all"
 msgstr "AI-status: alle"
 
-#: admin/class-media-library.php:393
-#: admin/class-media-library.php:451
+#: admin/class-media-library.php:423
+#: admin/class-media-library.php:482
 msgid "Only AI-labeled"
 msgstr "Alleen met AI-markering"
 
-#: admin/class-media-library.php:394
-#: admin/class-media-library.php:437
-#: admin/class-media-library.php:452
+#: admin/class-media-library.php:424
+#: admin/class-media-library.php:468
+#: admin/class-media-library.php:483
 msgid "Detected, needs review"
 msgstr "Gevonden, controle nodig"
 
-#: admin/class-media-library.php:395
-#: admin/class-media-library.php:453
+#: admin/class-media-library.php:425
+#: admin/class-media-library.php:484
 msgid "Without AI label"
 msgstr "Zonder AI-markering"
 
-#: admin/class-media-library.php:396
-#: admin/class-media-library.php:494
+#: admin/class-media-library.php:426
+#: admin/class-media-library.php:525
 msgid "Mark as AI-generated"
 msgstr "Markeren als door AI gemaakt"
 
-#: admin/class-media-library.php:397
-#: admin/class-media-library.php:495
+#: admin/class-media-library.php:427
+#: admin/class-media-library.php:526
 msgid "Remove AI label"
 msgstr "AI-markering verwijderen"
 
-#: admin/class-media-library.php:398
+#: admin/class-media-library.php:428
 msgid "Please select media first."
 msgstr "Selecteer eerst media."
 
-#: admin/class-media-library.php:399
+#: admin/class-media-library.php:429
 #: admin/class-settings.php:141
 msgid "Updating the AI label failed."
 msgstr "Het bijwerken van de AI-markering is mislukt."
 
-#: admin/class-media-library.php:400
+#: admin/class-media-library.php:430
 msgid "Result"
 msgstr "Resultaat"
 
-#: admin/class-media-library.php:401
+#: admin/class-media-library.php:431
 msgid "No AI provenance signals found in the file."
 msgstr "Geen AI-herkomstsignalen in het bestand gevonden."
 
-#: admin/class-media-library.php:403
-msgid "Hide file metadata"
-msgstr "Bestandsmetadata verbergen"
+#: admin/class-media-library.php:433
+msgid "The label was set, but the metadata could not be written into the file. Check the write permissions of the uploads directory."
+msgstr "De markering is gezet, maar de metadata konden niet in het bestand worden geschreven. Controleer de schrijfrechten van de uploadmap."
 
-#. translators: 1: number of files checked, 2: intact count, 3: stripped count.
-#: admin/class-media-library.php:405
-#: admin/class-settings.php:143
-#, php-format
-msgid "%1$d checked: %2$d delivered with the declaration, %3$d without."
+#: admin/class-media-library.php:434
+msgid "Hide file metadata"
 msgstr "%1$d gecontroleerd: %2$d geleverd met de vermelding, %3$d zonder."
 
-#: admin/class-media-library.php:416
+#. translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared.
+#: admin/class-media-library.php:436
+#: admin/class-settings.php:143
+#, php-format
+msgid "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable."
+msgstr "%1$d gecontroleerd: %2$d geleverd met de vermelding, %3$d zonder, %4$d niet vergelijkbaar."
+
+#: admin/class-media-library.php:447
 msgid "AI"
 msgstr ""
 
-#: admin/class-media-library.php:496
+#: admin/class-media-library.php:527
 msgid "Confirm detected AI label"
-msgstr "Gevonden AI-markering bevestigen"
-
-#: admin/class-media-library.php:497
-msgid "Dismiss detected AI label"
 msgstr "Gevonden AI-markering verwerpen"
 
+#: admin/class-media-library.php:528
+msgid "Dismiss detected AI label"
+msgstr "AI-markering bijgewerkt voor %d mediabestand."
+
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:536
+#: admin/class-media-library.php:567
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] "AI-markering bijgewerkt voor %d mediabestand."
-msgstr[1] "AI-markering bijgewerkt voor %d mediabestanden."
+msgstr[0] "Je hebt geen rechten om dit te exporteren."
+msgstr[1] "Je hebt geen rechten om dit te exporteren."
 
 #: admin/class-settings.php:45
 msgid "You are not allowed to export this."
-msgstr "Je hebt geen rechten om dit te exporteren."
+msgstr "De export kon niet worden gestart."
 
 #: admin/class-settings.php:63
 msgid "The export could not be started."
-msgstr "De export kon niet worden gestart."
+msgstr "Instellingen"
 
 #: admin/class-settings.php:88
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "%1$d gescand, %2$d automatisch gemarkeerd, %3$d in de controlewachtrij, %4$d overgeslagen (al beslist)."
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count.
 #: admin/class-settings.php:138
 #, php-format
 msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
-msgstr "%1$d gescand, %2$d automatisch gemarkeerd, %3$d in de controlewachtrij, %4$d overgeslagen (al beslist)."
+msgstr "Scan voltooid."
 
 #: admin/class-settings.php:139
 msgid "Scan complete."
-msgstr "Scan voltooid."
+msgstr "De scanaanvraag is mislukt. Je kunt opnieuw starten om verder te gaan."
 
 #: admin/class-settings.php:140
 msgid "Scan request failed. You can restart to continue."
-msgstr "De scanaanvraag is mislukt. Je kunt opnieuw starten om verder te gaan."
+msgstr "Instellingen opgeslagen."
 
 #: admin/class-settings.php:161
 msgid "Settings saved."
-msgstr "Instellingen opgeslagen."
+msgstr "Status van de bibliotheek"
 
 #: admin/class-settings.php:172
 msgid "Library status"
-msgstr "Status van de bibliotheek"
+msgstr "Mediabestanden"
 
 #: admin/class-settings.php:176
 msgid "Media files"
-msgstr "Mediabestanden"
+msgstr "Gemarkeerd als AI"
 
 #: admin/class-settings.php:180
 msgid "Labeled as AI"
-msgstr "Gemarkeerd als AI"
+msgstr "Wacht op controle"
 
 #: admin/class-settings.php:184
 msgid "Waiting for review"
-msgstr "Wacht op controle"
+msgstr "Gescand"
 
 #: admin/class-settings.php:188
 msgid "Scanned"
-msgstr "Gescand"
+msgstr "Controlewachtrij openen"
 
 #: admin/class-settings.php:193
 msgid "Open review queue"
-msgstr "Controlewachtrij openen"
+msgstr "Audit-CSV exporteren"
 
 #: admin/class-settings.php:195
 msgid "Export audit CSV"
-msgstr "Audit-CSV exporteren"
+msgstr "De export bevat elk gemarkeerd en elk te controleren bestand met de detectiebron, de zekerheid en de laatst vastgelegde wijziging."
 
 #: admin/class-settings.php:197
 msgid "The export lists every labeled and pending file with its detection source, confidence and the last recorded change."
-msgstr "De export bevat elk gemarkeerd en elk te controleren bestand met de detectiebron, de zekerheid en de laatst vastgelegde wijziging."
+msgstr "Bestaande bibliotheek scannen"
 
 #: admin/class-settings.php:201
 msgid "Scan existing library"
-msgstr "Bestaande bibliotheek scannen"
+msgstr "Leest de metadata van je bestaande mediabestanden (C2PA, XMP/IPTC, generatorhandtekeningen) in kleine porties. Er verlaat niets je server."
 
 #: admin/class-settings.php:202
 msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
-msgstr "Leest de metadata van je bestaande mediabestanden (C2PA, XMP/IPTC, generatorhandtekeningen) in kleine porties. Er verlaat niets je server."
+msgstr "Nieuwe of ongescande media scannen"
 
 #: admin/class-settings.php:204
 msgid "Scan new/unscanned media"
-msgstr "Nieuwe of ongescande media scannen"
+msgstr "Alles opnieuw scannen"
 
 #: admin/class-settings.php:205
 msgid "Rescan everything"
-msgstr "Alles opnieuw scannen"
+msgstr "Pauzeren"
 
 #: admin/class-settings.php:206
 msgid "Pause"
-msgstr "Pauzeren"
+msgstr "Automatisch herstel, laatste volledige ronde: %1$d gemarkeerde bestanden gecontroleerd, %2$d hersteld, %3$d mislukt (%4$s geleden)."
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff.
 #: admin/class-settings.php:219
 #, php-format
 msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
-msgstr "Automatisch herstel, laatste volledige ronde: %1$d gemarkeerde bestanden gecontroleerd, %2$d hersteld, %3$d mislukt (%4$s geleden)."
+msgstr "Zichtbare badge"
 
 #: admin/class-settings.php:235
 msgid "Visible badge"
-msgstr "Zichtbare badge"
+msgstr "Badge tonen"
 
 #: admin/class-settings.php:238
 msgid "Show badge"
-msgstr "Badge tonen"
+msgstr "Een zichtbare badge tonen op gemarkeerde media aan de voorkant"
 
 #: admin/class-settings.php:241
 msgid "Show a visible badge on labeled media in the front end"
-msgstr "Een zichtbare badge tonen op gemarkeerde media aan de voorkant"
+msgstr "Startdatum"
 
 #: admin/class-settings.php:245
 msgid "Start date"
-msgstr "Startdatum"
+msgstr "Alleen media die op of na deze datum zijn geüpload krijgen de badge aan de voorkant; oudere media blijven alleen in het beheer gemarkeerd. Leeg laten om alle gemarkeerde media een badge te geven."
 
 #: admin/class-settings.php:248
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
-msgstr "Alleen media die op of na deze datum zijn geüpload krijgen de badge aan de voorkant; oudere media blijven alleen in het beheer gemarkeerd. Leeg laten om alle gemarkeerde media een badge te geven."
+msgstr "Tekst van de badge"
 
 #: admin/class-settings.php:252
 msgid "Badge text"
-msgstr "Tekst van de badge"
+msgstr "Door AI gemaakt"
 
 #: admin/class-settings.php:254
 #: includes/class-frontend.php:148
 #: includes/class-frontend.php:153
 msgid "AI-generated"
-msgstr "Door AI gemaakt"
+msgstr "Leeg laten voor de vertaalde standaardtekst."
 
 #: admin/class-settings.php:256
 msgid "Leave empty for the translated default label."
-msgstr "Leeg laten voor de vertaalde standaardtekst."
+msgstr "Plaatsaanduidingen: %1$s (gevonden of ingevulde generator) en %2$s (sitetitel), bijvoorbeeld %3$s. Afbeeldingen zonder bekende generator vallen terug op de standaardtekst."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template.
 #: admin/class-settings.php:260
 #, php-format
 msgid "Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label."
-msgstr "Plaatsaanduidingen: %1$s (gevonden of ingevulde generator) en %2$s (sitetitel), bijvoorbeeld %3$s. Afbeeldingen zonder bekende generator vallen terug op de standaardtekst."
+msgstr "Weergave"
 
 #: admin/class-settings.php:270
 msgid "Appearance"
-msgstr "Weergave"
+msgstr "Over de afbeelding heen"
 
 #: admin/class-settings.php:277
 msgid "Overlay on the image"
-msgstr "Over de afbeelding heen"
+msgstr "Donker"
 
 #: admin/class-settings.php:295
 msgid "Dark"
-msgstr "Donker"
+msgstr "Licht"
 
 #: admin/class-settings.php:296
 msgid "Light"
-msgstr "Licht"
+msgstr "Omlijnd"
 
 #: admin/class-settings.php:297
 msgid "Outline"
-msgstr "Omlijnd"
+msgstr "Alleen pictogram (korte tekst)"
 
 #: admin/class-settings.php:298
 msgid "Icon only (short label)"
-msgstr "Alleen pictogram (korte tekst)"
+msgstr "Klein"
 
 #: admin/class-settings.php:305
 msgid "Small"
-msgstr "Klein"
+msgstr "Middel"
 
 #: admin/class-settings.php:306
 msgid "Medium"
-msgstr "Middel"
+msgstr "Groot"
 
 #: admin/class-settings.php:307
 msgid "Large"
-msgstr "Groot"
+msgstr "Extra's"
 
 #: admin/class-settings.php:314
 msgid "Extras"
-msgstr "Extra's"
+msgstr "De gevonden generator in de badge tonen (bijvoorbeeld «Door AI gemaakt · Midjourney»; wordt genegeerd als de badgetekst {generator} bevat)"
 
 #: admin/class-settings.php:317
 msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
-msgstr "De gevonden generator in de badge tonen (bijvoorbeeld «Door AI gemaakt · Midjourney»; wordt genegeerd als de badgetekst {generator} bevat)"
+msgstr "De markering aan de alt-tekst van de afbeelding toevoegen (schermlezers)"
 
 #: admin/class-settings.php:319
 msgid "Append the label to the image alt text (screen readers)"
-msgstr "De markering aan de alt-tekst van de afbeelding toevoegen (schermlezers)"
+msgstr "Een badge automatisch naar een andere hoek of onder de afbeelding verplaatsen wanneer een laag van het thema hem bedekt (aanbevolen, vereist JavaScript)"
 
 #: admin/class-settings.php:321
 msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
-msgstr "Een badge automatisch naar een andere hoek of onder de afbeelding verplaatsen wanneer een laag van het thema hem bedekt (aanbevolen, vereist JavaScript)"
+msgstr "Ook afbeeldingen zonder bijlage-ID (ACF-velden, sliders, builders) en CSS-achtergronden markeren (experimenteel, vereist JavaScript)"
 
 #: admin/class-settings.php:323
 msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
-msgstr "Ook afbeeldingen zonder bijlage-ID (ACF-velden, sliders, builders) en CSS-achtergronden markeren (experimenteel, vereist JavaScript)"
+msgstr "Paginavermelding"
 
 #: admin/class-settings.php:327
 msgid "Page notice"
-msgstr "Paginavermelding"
+msgstr "Een korte vermelding onderaan pagina's met gemarkeerde media toevoegen"
 
 #: admin/class-settings.php:330
 msgid "Add a short note at the end of pages that contain labeled media"
-msgstr "Een korte vermelding onderaan pagina's met gemarkeerde media toevoegen"
+msgstr "Deze pagina bevat door AI gemaakte media."
 
 #: admin/class-settings.php:331
 #: includes/class-frontend.php:657
 msgid "This page contains AI-generated media."
-msgstr "Deze pagina bevat door AI gemaakte media."
+msgstr "Door AI geschreven tekst"
 
 #: admin/class-settings.php:338
 msgid "AI-generated text"
-msgstr "Door AI geschreven tekst"
+msgstr "Inhoudsvermelding"
 
 #: admin/class-settings.php:341
 msgid "Content note"
-msgstr "Inhoudsvermelding"
+msgstr "Deze tekst is met hulp van AI gemaakt."
 
 #: admin/class-settings.php:343
 #: includes/class-frontend.php:681
 msgid "This text was created with the help of AI."
-msgstr "Deze tekst is met hulp van AI gemaakt."
+msgstr "Wordt getoond boven berichten die je met het vinkje «Deze inhoud is door AI gemaakt» in de editor markeert."
 
 #: admin/class-settings.php:344
 msgid "Shown ahead of posts you mark with the \"This content is AI-generated\" checkbox in the editor sidebar."
-msgstr "Wordt getoond boven berichten die je met het vinkje «Deze inhoud is door AI gemaakt» in de editor markeert."
+msgstr "Automatische detectie"
 
 #: admin/class-settings.php:351
 msgid "Automatic detection"
-msgstr "Automatische detectie"
+msgstr "Detecteren bij uploaden"
 
 #: admin/class-settings.php:354
 msgid "Detect on upload"
-msgstr "Detecteren bij uploaden"
+msgstr "Nieuwe uploads onderzoeken op AI-herkomst (C2PA, XMP/IPTC, generatorhandtekeningen)"
 
 #: admin/class-settings.php:357
 msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
-msgstr "Nieuwe uploads onderzoeken op AI-herkomst (C2PA, XMP/IPTC, generatorhandtekeningen)"
+msgstr "Formele vermeldingen"
 
 #: admin/class-settings.php:361
 msgid "Standard declarations"
-msgstr "Formele vermeldingen"
+msgstr "Automatisch markeren"
 
 #: admin/class-settings.php:368
 #: admin/class-settings.php:385
 msgid "Label automatically"
-msgstr "Automatisch markeren"
+msgstr "In de controlewachtrij zetten"
 
 #: admin/class-settings.php:369
 #: admin/class-settings.php:386
 msgid "Put into review queue"
-msgstr "In de controlewachtrij zetten"
+msgstr "Negeren"
 
 #: admin/class-settings.php:370
 #: admin/class-settings.php:387
 msgid "Ignore"
-msgstr "Negeren"
+msgstr "Bestanden die hun AI-herkomst uitdrukkelijk vermelden (IPTC DigitalSourceType, AI-claim in C2PA, AIGC-vermelding)."
 
 #: admin/class-settings.php:374
 msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
-msgstr "Bestanden die hun AI-herkomst uitdrukkelijk vermelden (IPTC DigitalSourceType, AI-claim in C2PA, AIGC-vermelding)."
+msgstr "Generatorhandtekeningen"
 
 #: admin/class-settings.php:378
 msgid "Generator signatures"
-msgstr "Generatorhandtekeningen"
+msgstr "Sterke signalen zonder formele vermelding (Stable Diffusion-parameters, ComfyUI-workflows, generatornamen in EXIF/XMP, door een camera geschreven C2PA)."
 
 #: admin/class-settings.php:391
 msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
-msgstr "Sterke signalen zonder formele vermelding (Stable Diffusion-parameters, ComfyUI-workflows, generatornamen in EXIF/XMP, door een camera geschreven C2PA)."
+msgstr "Meer bronnen"
 
 #: admin/class-settings.php:395
 msgid "More sources"
-msgstr "Meer bronnen"
+msgstr "Ook video- en audio-uploads scannen (C2PA in MP4/MOV, AIGC-vermeldingen in MP3)"
 
 #: admin/class-settings.php:398
 msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
-msgstr "Ook video- en audio-uploads scannen (C2PA in MP4/MOV, AIGC-vermeldingen in MP3)"
+msgstr "Bestandsnaampatronen als aanwijzing voor controle gebruiken (markeert nooit automatisch)"
 
 #: admin/class-settings.php:400
 msgid "Use filename patterns as review hints (never labels automatically)"
-msgstr "Bestandsnaampatronen als aanwijzing voor controle gebruiken (markeert nooit automatisch)"
+msgstr "Machineleesbare metadata in de bestanden"
 
 #: admin/class-settings.php:407
 msgid "Machine-readable file metadata"
-msgstr "Machineleesbare metadata in de bestanden"
+msgstr "In bestanden schrijven"
 
 #: admin/class-settings.php:410
 msgid "Write into files"
-msgstr "In bestanden schrijven"
+msgstr "Het IPTC DigitalSourceType als XMP in gemarkeerde JPEG-, PNG-, WebP- en AVIF-bestanden schrijven (alle gegenereerde formaten)"
 
 #: admin/class-settings.php:413
 msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
-msgstr "Het IPTC DigitalSourceType als XMP in gemarkeerde JPEG-, PNG-, WebP- en AVIF-bestanden schrijven (alle gegenereerde formaten)"
+msgstr "Het ook in IPTC-IIM spiegelen (JPEG, alleen wanneer het bestand geen ander IPTC-blok heeft)"
 
 #: admin/class-settings.php:415
 msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
-msgstr "Het ook in IPTC-IIM spiegelen (JPEG, alleen wanneer het bestand geen ander IPTC-blok heeft)"
+msgstr "Automatisch herstel"
 
 #: admin/class-settings.php:419
 msgid "Auto-repair"
-msgstr "Automatisch herstel"
+msgstr "De metadata herstellen wanneer afbeeldingsoptimalisatie of het opnieuw genereren van formaten ze verwijdert (elk uur een integriteitsronde)"
 
 #: admin/class-settings.php:422
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
-msgstr "De metadata herstellen wanneer afbeeldingsoptimalisatie of het opnieuw genereren van formaten ze verwijdert (elk uur een integriteitsronde)"
+msgstr "Leveringscontrole"
 
 #: admin/class-settings.php:426
 msgid "Delivery check"
-msgstr "Leveringscontrole"
+msgstr "Toestaan te controleren of de vermelding de levering overleeft"
 
 #: admin/class-settings.php:429
 msgid "Allow checking whether the declaration survives delivery"
-msgstr "Toestaan te controleren of de vermelding de levering overleeft"
+msgstr "Voegt hier en in de details van de bijlage een knop toe. Bij een klik haalt de plugin de afbeelding op via haar eigen openbare URL en vergelijkt de geleverde bytes met het bestand op schijf. Alleen zo merk je dat een optimaliserend CDN je afbeeldingen opnieuw codeert en de vermelding onderweg verwijdert. Het verzoek gaat naar je eigen site en nergens anders heen, en alleen wanneer je op de knop drukt."
 
 #: admin/class-settings.php:430
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
-msgstr "Voegt hier en in de details van de bijlage een knop toe. Bij een klik haalt de plugin de afbeelding op via haar eigen openbare URL en vergelijkt de geleverde bytes met het bestand op schijf. Alleen zo merk je dat een optimaliserend CDN je afbeeldingen opnieuw codeert en de vermelding onderweg verwijdert. Het verzoek gaat naar je eigen site en nergens anders heen, en alleen wanneer je op de knop drukt."
+msgstr "Een steekproef van vijf bestanden controleren"
 
 #: admin/class-settings.php:433
 msgid "Check a sample of five files"
-msgstr "Een steekproef van vijf bestanden controleren"
+msgstr "Gestructureerde gegevens"
 
 #: admin/class-settings.php:440
 msgid "Structured data"
-msgstr "Gestructureerde gegevens"
+msgstr "Schema.org JSON-LD met het IPTC digital source type toevoegen voor de gemarkeerde media van elke pagina (zoekmachines lezen het zonder de bestanden te openen)"
 
 #: admin/class-settings.php:443
 msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
-msgstr "Schema.org JSON-LD met het IPTC digital source type toevoegen voor de gemarkeerde media van elke pagina (zoekmachines lezen het zonder de bestanden te openen)"
+msgstr "Verwijderen"
 
 #: admin/class-settings.php:450
 msgid "Uninstall"
-msgstr "Verwijderen"
+msgstr "Gegevens wissen"
 
 #: admin/class-settings.php:453
 msgid "Data removal"
-msgstr "Gegevens wissen"
+msgstr "Alle plugingegevens (markeringen, detectieresultaten, instellingen) verwijderen bij het deïnstalleren"
 
 #: admin/class-settings.php:456
 msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
-msgstr "Alle plugingegevens (markeringen, detectieresultaten, instellingen) verwijderen bij het deïnstalleren"
+msgstr "Wijzigingen opslaan"
 
 #: admin/class-settings.php:462
 msgid "Save changes"
-msgstr "Wijzigingen opslaan"
+msgstr "TransparAI-links"
 
 #: admin/class-settings.php:467
 msgid "TransparAI links"
-msgstr "TransparAI-links"
+msgstr "Supportforum"
 
 #: admin/class-settings.php:470
 msgid "Support forum"
-msgstr "Supportforum"
+msgstr "De leveringscontrole staat uit."
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr "De leveringscontrole staat uit."
+msgstr "Deze bijlage heeft geen bestand."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr "Deze bijlage heeft geen bestand."
+msgstr "Het bestand wordt door een andere host geleverd en wordt daarom niet gecontroleerd."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr "Het bestand wordt door een andere host geleverd en wordt daarom niet gecontroleerd."
+msgstr "Het bestand op schijf draagt geen AI-vermelding, er valt dus niets te vergelijken."
 
 #: includes/class-delivery.php:113
 msgid "The file on disk carries no AI declaration, so there is nothing to compare."
-msgstr "Het bestand op schijf draagt geen AI-vermelding, er valt dus niets te vergelijken."
+msgstr "De afbeelding kon niet via haar openbare URL worden opgehaald."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr "De afbeelding kon niet via haar openbare URL worden opgehaald."
+msgstr "Het antwoord was geen leesbare afbeelding."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr "Het antwoord was geen leesbare afbeelding."
+msgstr "De vermelding staat in het geleverde bestand."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr "De vermelding staat in het geleverde bestand."
+msgstr "Het geleverde bestand draagt geen vermelding. Iets tussen WordPress en de bezoeker codeert de afbeelding opnieuw, meestal een optimaliserend CDN of een proxy."
 
 #: includes/class-delivery.php:151
 msgid "The delivered file carries no declaration. Something between WordPress and the visitor re-encodes the image, usually an optimizing CDN or a proxy."
-msgstr "Het geleverde bestand draagt geen vermelding. Iets tussen WordPress en de bezoeker codeert de afbeelding opnieuw, meestal een optimaliserend CDN of een proxy."
+msgstr "Geleverd met de vermelding intact"
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr "Geleverd met de vermelding intact"
+msgstr "Geleverd zonder de vermelding"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr "Geleverd zonder de vermelding"
+msgstr "Niets te controleren"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr "Niets te controleren"
+msgstr "Door een andere host geleverd"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr "Door een andere host geleverd"
+msgstr "Kon niet worden opgehaald"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"

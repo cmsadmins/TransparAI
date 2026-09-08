@@ -36,6 +36,34 @@ final class OptionsTest extends TestCase {
 		$this->assertSame( '0', $clean['page_notice'], 'Missing boolean falls back to off' );
 	}
 
+	/**
+	 * Every on/off setting must be listed as a boolean in sanitize(), otherwise
+	 * saving it silently keeps the default and the checkbox never sticks. That
+	 * is invisible in the code and only shows up when someone uses the screen,
+	 * so the check runs over the defaults instead of a hand-written list.
+	 */
+	public function test_every_on_off_default_is_saved_as_a_boolean(): void {
+		$switches = array_keys(
+			array_filter(
+				TransparAI_Options::defaults(),
+				static function ( $value, $key ): bool {
+					return in_array( $value, array( '0', '1' ), true ) && 'badge_from_date' !== $key;
+				},
+				ARRAY_FILTER_USE_BOTH
+			)
+		);
+
+		$raw = array();
+		foreach ( $switches as $key ) {
+			$raw[ $key ] = '1';
+		}
+		$clean = TransparAI_Options::sanitize( $raw );
+
+		foreach ( $switches as $key ) {
+			$this->assertSame( '1', $clean[ $key ], sprintf( 'Setting "%s" is not handled as a boolean in sanitize()', $key ) );
+		}
+	}
+
 	public function test_enums_fall_back_to_default_on_invalid_value(): void {
 		$clean = TransparAI_Options::sanitize(
 			array(

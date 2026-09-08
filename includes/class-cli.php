@@ -354,20 +354,38 @@ final class TransparAI_CLI {
 			return;
 		}
 
+		$intact   = 0;
 		$stripped = 0;
+		$other    = 0;
 		foreach ( $args as $id ) {
 			$id     = (int) $id;
 			$result = TransparAI_Delivery::check( $id );
 			TransparAI_Delivery::remember( $id, $result['verdict'] );
 
-			if ( TransparAI_Delivery::VERDICT_STRIPPED === $result['verdict'] ) {
+			if ( TransparAI_Delivery::VERDICT_INTACT === $result['verdict'] ) {
+				++$intact;
+			} elseif ( TransparAI_Delivery::VERDICT_STRIPPED === $result['verdict'] ) {
 				++$stripped;
+			} else {
+				++$other;
 			}
 			WP_CLI::log( sprintf( '#%d %s: %s', $id, $result['verdict'], $result['message'] ) );
 		}
 
 		if ( $stripped > 0 ) {
 			WP_CLI::warning( sprintf( '%d file(s) reach visitors without their declaration.', $stripped ) );
+			return;
+		}
+
+		/* Never report success for files that could not be compared at all: an
+			unreachable URL says nothing about the declaration, and claiming it
+			does would hide exactly the problem this command exists to find. */
+		if ( 0 === $intact ) {
+			WP_CLI::warning( sprintf( 'Nothing could be compared (%d file(s) unreachable, served elsewhere or unmarked).', $other ) );
+			return;
+		}
+		if ( $other > 0 ) {
+			WP_CLI::success( sprintf( '%d file(s) keep their declaration; %d could not be compared.', $intact, $other ) );
 			return;
 		}
 		WP_CLI::success( 'Every checked file keeps its declaration on the way out.' );
