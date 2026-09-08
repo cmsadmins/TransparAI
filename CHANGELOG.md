@@ -24,6 +24,14 @@
   and Privacy describe it, since the previous wording promised no HTTP request at all.
 - Translations shipped for German, French, Spanish, Italian and Dutch (`.po`, `.mo` and `.l10n.php`);
   `.distignore` no longer excludes the compiled catalogs from the release ZIP.
+- Fixed before release, found in browser testing: `delivery_check` was missing from the boolean list
+  in `TransparAI_Options::sanitize()`, so the setting could not be switched on at all; a test now
+  walks the defaults so the next on/off setting cannot be forgotten the same way.
+- Fixed before release: `wp transparai verify-delivery` reported success even when every request had
+  failed. Intact, stripped and not-comparable results are counted apart, in the CLI and in the sample
+  summary on the plugin page.
+- Confirming a detection whose file cannot be written now says so immediately instead of at the next
+  page load.
 
 ## 1.0.0 (2026-09-08)
 
