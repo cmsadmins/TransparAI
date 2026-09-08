@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       TransparAI
+ * Plugin Name:       TransparAI: AI Image Detection & EU AI Act Labeling
  * Plugin URI:        https://wordpress.org/plugins/transparai/
- * Description:       Detect and label AI-generated images: automatic C2PA and IPTC detection, visible AI badge, machine-readable EU AI Act (Art. 50) disclosure.
+ * Description:       Detect AI images from C2PA Content Credentials and IPTC metadata, label them with a visible AI badge and a machine-readable EU AI Act disclosure.
  * Version:           1.0.0
  * Requires at least: 6.2
  * Requires PHP:      7.4

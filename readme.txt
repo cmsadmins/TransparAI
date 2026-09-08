@@ -1,6 +1,6 @@
-=== TransparAI ===
+=== TransparAI: AI Image Detection & EU AI Act Labeling ===
 Contributors: contexlabs
-Tags: ai, eu ai act, c2pa, ai detection, content credentials
+Tags: eu ai act, c2pa, content credentials, ai detection, ai label
 Requires at least: 6.2
 Tested up to: 7.1
 Stable tag: 1.0.0
@@ -8,7 +8,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Detect and label AI-generated images: automatic C2PA and IPTC detection, visible AI badge, machine-readable EU AI Act (Art. 50) disclosure.
+Detect AI images from C2PA Content Credentials and IPTC metadata, label them with a visible AI badge and a machine-readable EU AI Act disclosure.
 
 == Description ==
 
@@ -18,10 +18,11 @@ TransparAI finds AI-generated images in your WordPress media library, labels the
 
 Most AI generators leave traces in the files they produce, and TransparAI reads all of the common ones:
 
-* C2PA manifests (Content Credentials) as embedded by OpenAI (ChatGPT and DALL-E), Adobe Firefly, Google Gemini and Bing Image Creator
+* C2PA manifests (Content Credentials) as embedded by OpenAI (ChatGPT, DALL-E and GPT-Image), Adobe Firefly, Google Gemini (Nano Banana output included) and Bing Image Creator
 * The IPTC digital source type in XMP metadata, the marking Midjourney and a growing number of tools write
 * Generation parameters in PNG text chunks from Stable Diffusion (AUTOMATIC1111), ComfyUI, NovelAI and InvokeAI
-* EXIF and XMP generator signatures, JPEG comment markers, C2PA declarations in MP4 video and AI declarations in MP3 audio (ID3)
+* EXIF and XMP generator signatures for Flux (Black Forest Labs), Leonardo.Ai, Ideogram, Recraft, Seedream and Photoshop Generative Fill
+* JPEG comment markers, C2PA declarations in MP4 video and AI declarations in MP3 audio (ID3)
 
 Detection parses the actual file containers (JPEG segments, PNG chunks, RIFF, MP4 boxes, ID3 frames) and matches only inside real metadata blocks. It never runs a blind text search over raw file bytes, so a Spanish caption containing the word "imagenes" will not trigger anything. One catch many tools get wrong: cameras from Leica, Sony and Nikon also embed Content Credentials into real photos, so a C2PA manifest alone never auto-labels anything here.
 
@@ -67,6 +68,10 @@ Everything else runs on its own: labeled files get the IPTC digital source type 
 = Can the plugin detect every AI image? =
 
 No, and no plugin can. Detection relies on metadata that generators embed. Images whose metadata was stripped (social media re-uploads, screenshots, clipboard pastes) carry no signals. Invisible pixel watermarks such as Google SynthID can only be verified by the vendor's own service; TransparAI does not pretend otherwise. Detected metadata is an indication, not cryptographic proof. That is exactly why the review queue exists.
+
+= Which AI image generators are recognized? =
+
+Anything that leaves a standard marking in the file. In practice that covers ChatGPT and DALL-E, GPT-Image, Google Gemini including Nano Banana output, Adobe Firefly and Photoshop Generative Fill, Bing Image Creator, Midjourney, Stable Diffusion (AUTOMATIC1111, ComfyUI, InvokeAI, SwarmUI, Fooocus), NovelAI, Flux by Black Forest Labs, Leonardo.Ai, Ideogram, Recraft and Seedream, plus every tool that writes a C2PA manifest or the IPTC digital source type, which is the direction the whole industry is moving in. New signatures can be added with a filter, no code fork needed. TransparAI is an independent plugin and is not affiliated with any of these vendors.
 
 = Does the plugin make my site compliant with the EU AI Act? =
 
@@ -190,7 +195,19 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 == Changelog ==
 
 = 1.0.0 =
-* Initial release: automatic AI detection (C2PA, XMP/IPTC DigitalSourceType, PNG generator chunks, EXIF/XMP signatures, MP4 and MP3 declarations), batched library scan with review queue, visible badge (overlay or caption, positions, styles, Elementor support), XMP/IIM writing for JPEG, PNG and WebP incl. all size variants, metadata auto-repair after optimizers, WP-CLI commands, integrations for on-site AI generators.
+* Automatic AI detection: C2PA Content Credentials (JPEG, PNG, WebP, MP4 and MOV, .c2pa sidecars), the IPTC digital source type in XMP and IPTC-IIM, PNG generator chunks, EXIF and XMP generator signatures, JPEG comment markers, ID3 declarations in MP3.
+* Camera rule: a C2PA manifest alone never auto-labels, since Leica, Sony and Nikon put Content Credentials into real photos.
+* Confidence levels with a review queue, single and bulk confirm or dismiss, stored evidence per file, plus a batched and pausable scan of the whole library.
+* Visible badge: overlay or caption line, four positions, three sizes, dark, light, outline and icon-only, optional generator name, optional badge start date, per-image override and CSS utility classes for themes. Rendered server-side, so it survives page caching.
+* Overlay guard: badges that a theme layer actually covers are raised, moved or turned into a caption line, based on the real paint order rather than z-index guessing.
+* Machine-readable labeling: the IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF including every size variant, merging instead of replacing existing metadata, atomic and validated writes, optional IPTC-IIM mirror.
+* Schema.org JSON-LD (ImageObject, VideoObject, AudioObject with digitalSourceType) for the labeled media on each page, an optional site-wide disclosure note and a per-post label for AI-written text.
+* Auto-repair: file fingerprints and an hourly sweep restore AI declarations that image optimizers or thumbnail regeneration stripped.
+* Editor and builder coverage: block editor, classic editor, template images, text widgets, WooCommerce incl. gallery lightbox, Elementor free and Pro incl. Theme Builder, WPBakery Page Builder.
+* Page caches are purged when a label changes (WP Rocket, LiteSpeed, W3 Total Cache, WP Super Cache, WP Fastest Cache, SiteGround Optimizer, Cache Enabler, Breeze, Nginx Helper, Hummingbird).
+* WP-CLI: scan, flag, unflag, status with CSV and JSON export, write-meta, verify-meta with repair.
+* Integrations for on-site generators (AI Engine, AI Power, Elementor AI, WordPress AI), a public transparai_mark_ai action, detection filters, WPML and Polylang configuration.
+* No external requests of any kind.
 
 == Upgrade Notice ==
 

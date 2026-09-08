@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.0.0 (2026-09-08)
+
+Initial release. The list below is the complete feature set as shipped; entries marked Fixed or
+Hardened come from the pre-release hardening pass and never affected a published version.
 
 - Fixed: an AI declaration was missed when WordPress' big-image scaling re-encoded the upload into the "-scaled" attached file (which drops all metadata) or an image optimizer such as Imagify stripped it. The scan now falls back to the untouched pre-scale original next to the scaled file, where the declaration survives; the evidence names the original file when it was the source.
 - Long overlay badge labels (a generator name like "Google C2PA Core Generator Library") are now capped at 16em with an ellipsis even on large images; hovering or tapping the media expands the badge to the full label.
@@ -19,10 +22,6 @@
 - Hardened: the temporary file of an atomic write carries a unique name, so a repair sweep and an editor action touching the same file at the same moment cannot meet on one temp path.
 - Fixed: a setting stored as something other than a string, as WP-CLI, a migration or another plugin can leave it, ended the page in a fatal error while the footer was being written, which cut off everything after the structured data. Settings are now read defensively.
 - Fixed: `wp transparai status --format=ids` printed "Array" once per row instead of the attachment IDs, which made it useless for piping into another command. It now prints the plain ID list.
-
-## 1.0.0
-
-Initial release.
 
 - Schema.org JSON-LD per page: `ImageObject`/`VideoObject`/`AudioObject` with the IPTC `digitalSourceType` (and the generator as `creator`) for every labeled medium rendered on the page, so search engines read the declaration straight from the markup.
 - Optional site-wide disclosure note at the end of pages containing labeled media, and a per-post "This content is AI-generated" checkbox that puts a configurable note ahead of AI-written content.
