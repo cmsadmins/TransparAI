@@ -179,6 +179,12 @@ $write( 'xmp-dst.png', png_add_chunk( $base_png, 'iTXt', itxt_xmp( xmp_packet( '
 // PNG: C2PA caBX with an OpenAI claim generator -> certain.
 $write( 'c2pa-openai.png', png_add_chunk( $base_png, 'caBX', c2pa_payload( 'OpenAI-API c2pa-rs/0.31.3' ) ) );
 
+// PNG: Microsoft's GenAI claim generator (Bing Image Creator, Designer, Copilot) -> certain.
+$write( 'c2pa-microsoft.png', png_add_chunk( $base_png, 'caBX', c2pa_payload( 'Microsoft Responsible AI Image Provenance' ) ) );
+
+// PNG: a plain editor whose name merely contains "Designer" -> likely, never certain.
+$write( 'c2pa-affinity.png', png_add_chunk( $base_png, 'caBX', c2pa_payload( 'Affinity Designer 2.4' ) ) );
+
 // PNG: camera-written C2PA (Leica) -> likely only.
 $write( 'c2pa-camera.png', png_add_chunk( $base_png, 'caBX', c2pa_payload( 'Leica_Camera_AG FOTOS/2.1' ) ) );
 

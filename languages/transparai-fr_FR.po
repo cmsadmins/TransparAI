@@ -701,3 +701,15 @@ msgctxt "short badge label"
 msgid "AI"
 msgstr "IA"
 
+
+#: admin/class-media-library.php
+msgid "This attachment is labeled as AI-generated, so every file below should carry the declaration."
+msgstr "Ce fichier joint est étiqueté comme généré par IA, chaque fichier ci-dessous devrait donc porter la déclaration."
+
+#: admin/class-media-library.php
+msgid "This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below."
+msgstr "Ce fichier joint n'est pas étiqueté comme généré par IA. Rien n'est écrit dans ses fichiers et aucune déclaration n'est attendue ci-dessous."
+
+#: admin/class-media-library.php
+msgid "no declaration"
+msgstr "aucune déclaration"

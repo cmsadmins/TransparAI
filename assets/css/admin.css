@@ -348,6 +348,10 @@
 	border-top: 0;
 }
 
+.trai-inspect-out p.trai-inspect-lead {
+	color: var(--trai-muted, #646970);
+}
+
 .trai-inspect-out h4 {
 	margin: 0 0 6px;
 	font-size: 11px;

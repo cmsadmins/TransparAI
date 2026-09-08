@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI: AI Image Detection & EU AI Act Labeling 1.0.1\n"
+"Project-Id-Version: TransparAI: AI Image Detection & EU AI Act Labeling 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-08T08:10:12+00:00\n"
+"POT-Creation-Date: 2026-09-08T21:51:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: transparai\n"
@@ -78,7 +78,7 @@ msgid "Check delivery"
 msgstr ""
 
 #: admin/class-media-library.php:110
-#: admin/class-media-library.php:432
+#: admin/class-media-library.php:452
 msgid "Show file metadata"
 msgstr ""
 
@@ -95,27 +95,27 @@ msgid "Default (site setting)"
 msgstr ""
 
 #: admin/class-media-library.php:123
-#: admin/class-settings.php:285
+#: admin/class-settings.php:269
 msgid "Top left"
 msgstr ""
 
 #: admin/class-media-library.php:124
-#: admin/class-settings.php:286
+#: admin/class-settings.php:270
 msgid "Top right"
 msgstr ""
 
 #: admin/class-media-library.php:125
-#: admin/class-settings.php:287
+#: admin/class-settings.php:271
 msgid "Bottom left"
 msgstr ""
 
 #: admin/class-media-library.php:126
-#: admin/class-settings.php:288
+#: admin/class-settings.php:272
 msgid "Bottom right"
 msgstr ""
 
 #: admin/class-media-library.php:127
-#: admin/class-settings.php:278
+#: admin/class-settings.php:262
 msgid "Caption line below the image"
 msgstr ""
 
@@ -169,131 +169,155 @@ msgstr ""
 msgid "Invalid attachment."
 msgstr ""
 
-#: admin/class-media-library.php:322
+#: admin/class-media-library.php:331
+msgid "This attachment is labeled as AI-generated, so every file below should carry the declaration."
+msgstr ""
+
+#: admin/class-media-library.php:332
+msgid "This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below."
+msgstr ""
+
+#: admin/class-media-library.php:336
 msgid "Files"
 msgstr ""
 
-#: admin/class-media-library.php:325
+#: admin/class-media-library.php:339
 msgid "format cannot carry the declaration"
 msgstr ""
 
-#: admin/class-media-library.php:328
+#: admin/class-media-library.php:342
 msgid "declaration present"
 msgstr ""
 
-#: admin/class-media-library.php:331
+#: admin/class-media-library.php:345
 msgid "declaration missing"
 msgstr ""
 
-#: admin/class-media-library.php:338
+#: admin/class-media-library.php:348
+msgid "no declaration"
+msgstr ""
+
+#: admin/class-media-library.php:355
 msgid "No readable file found for this attachment."
 msgstr ""
 
-#: admin/class-media-library.php:342
+#: admin/class-media-library.php:359
 msgid "Digital source type in the main file"
 msgstr ""
 
-#: admin/class-media-library.php:344
+#: admin/class-media-library.php:361
 msgid "None declared."
 msgstr ""
 
-#: admin/class-media-library.php:352
+#: admin/class-media-library.php:369
 msgid "Detection evidence"
 msgstr ""
 
-#: admin/class-media-library.php:358
+#: admin/class-media-library.php:375
 msgid "History"
 msgstr ""
 
-#: admin/class-media-library.php:361
+#: admin/class-media-library.php:378
 msgid "system"
 msgstr ""
 
-#: admin/class-media-library.php:371
+#: admin/class-media-library.php:388
 msgid "XMP packet of the main file"
 msgstr ""
 
-#: admin/class-media-library.php:373
+#: admin/class-media-library.php:390
 msgid "This file carries no XMP block."
 msgstr ""
 
-#: admin/class-media-library.php:422
-#: admin/class-media-library.php:481
+#: admin/class-media-library.php:442
+#: admin/class-media-library.php:505
 msgid "AI status: all"
 msgstr ""
 
-#: admin/class-media-library.php:423
-#: admin/class-media-library.php:482
+#: admin/class-media-library.php:443
+#: admin/class-media-library.php:506
 msgid "Only AI-labeled"
 msgstr ""
 
-#: admin/class-media-library.php:424
-#: admin/class-media-library.php:468
-#: admin/class-media-library.php:483
+#: admin/class-media-library.php:444
+#: admin/class-media-library.php:492
+#: admin/class-media-library.php:507
 msgid "Detected, needs review"
 msgstr ""
 
-#: admin/class-media-library.php:425
-#: admin/class-media-library.php:484
+#: admin/class-media-library.php:445
+#: admin/class-media-library.php:508
 msgid "Without AI label"
 msgstr ""
 
-#: admin/class-media-library.php:426
-#: admin/class-media-library.php:525
+#: admin/class-media-library.php:446
+#: admin/class-media-library.php:549
 msgid "Mark as AI-generated"
 msgstr ""
 
-#: admin/class-media-library.php:427
-#: admin/class-media-library.php:526
+#: admin/class-media-library.php:447
+#: admin/class-media-library.php:550
 msgid "Remove AI label"
 msgstr ""
 
-#: admin/class-media-library.php:428
+#: admin/class-media-library.php:448
 msgid "Please select media first."
 msgstr ""
 
-#: admin/class-media-library.php:429
-#: admin/class-settings.php:141
+#: admin/class-media-library.php:449
 msgid "Updating the AI label failed."
 msgstr ""
 
-#: admin/class-media-library.php:430
+#: admin/class-media-library.php:450
 msgid "Result"
 msgstr ""
 
-#: admin/class-media-library.php:431
+#: admin/class-media-library.php:451
 msgid "No AI provenance signals found in the file."
 msgstr ""
 
-#: admin/class-media-library.php:433
+#: admin/class-media-library.php:453
 msgid "The label was set, but the metadata could not be written into the file. Check the write permissions of the uploads directory."
 msgstr ""
 
-#: admin/class-media-library.php:434
+#: admin/class-media-library.php:454
 msgid "Hide file metadata"
 msgstr ""
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared.
-#: admin/class-media-library.php:436
-#: admin/class-settings.php:143
+#: admin/class-media-library.php:456
 #, php-format
 msgid "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable."
 msgstr ""
 
-#: admin/class-media-library.php:447
+#. translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count.
+#: admin/class-media-library.php:458
+#, php-format
+msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
+msgstr ""
+
+#: admin/class-media-library.php:459
+msgid "Scan complete."
+msgstr ""
+
+#: admin/class-media-library.php:460
+msgid "Scan request failed. You can restart to continue."
+msgstr ""
+
+#: admin/class-media-library.php:471
 msgid "AI"
 msgstr ""
 
-#: admin/class-media-library.php:527
+#: admin/class-media-library.php:551
 msgid "Confirm detected AI label"
 msgstr ""
 
-#: admin/class-media-library.php:528
+#: admin/class-media-library.php:552
 msgid "Dismiss detected AI label"
 msgstr ""
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:567
+#: admin/class-media-library.php:591
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -312,332 +336,318 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#. translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count.
-#: admin/class-settings.php:138
-#, php-format
-msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
-msgstr ""
-
-#: admin/class-settings.php:139
-msgid "Scan complete."
-msgstr ""
-
-#: admin/class-settings.php:140
-msgid "Scan request failed. You can restart to continue."
-msgstr ""
-
-#: admin/class-settings.php:161
+#: admin/class-settings.php:145
 msgid "Settings saved."
 msgstr ""
 
-#: admin/class-settings.php:172
+#: admin/class-settings.php:156
 msgid "Library status"
 msgstr ""
 
-#: admin/class-settings.php:176
+#: admin/class-settings.php:160
 msgid "Media files"
 msgstr ""
 
-#: admin/class-settings.php:180
+#: admin/class-settings.php:164
 msgid "Labeled as AI"
 msgstr ""
 
-#: admin/class-settings.php:184
+#: admin/class-settings.php:168
 msgid "Waiting for review"
 msgstr ""
 
-#: admin/class-settings.php:188
+#: admin/class-settings.php:172
 msgid "Scanned"
 msgstr ""
 
-#: admin/class-settings.php:193
+#: admin/class-settings.php:177
 msgid "Open review queue"
 msgstr ""
 
-#: admin/class-settings.php:195
+#: admin/class-settings.php:179
 msgid "Export audit CSV"
 msgstr ""
 
-#: admin/class-settings.php:197
+#: admin/class-settings.php:181
 msgid "The export lists every labeled and pending file with its detection source, confidence and the last recorded change."
 msgstr ""
 
-#: admin/class-settings.php:201
+#: admin/class-settings.php:185
 msgid "Scan existing library"
 msgstr ""
 
-#: admin/class-settings.php:202
+#: admin/class-settings.php:186
 msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
 msgstr ""
 
-#: admin/class-settings.php:204
+#: admin/class-settings.php:188
 msgid "Scan new/unscanned media"
 msgstr ""
 
-#: admin/class-settings.php:205
+#: admin/class-settings.php:189
 msgid "Rescan everything"
 msgstr ""
 
-#: admin/class-settings.php:206
+#: admin/class-settings.php:190
 msgid "Pause"
 msgstr ""
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff.
-#: admin/class-settings.php:219
+#: admin/class-settings.php:203
 #, php-format
 msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
 msgstr ""
 
-#: admin/class-settings.php:235
+#: admin/class-settings.php:219
 msgid "Visible badge"
 msgstr ""
 
-#: admin/class-settings.php:238
+#: admin/class-settings.php:222
 msgid "Show badge"
 msgstr ""
 
-#: admin/class-settings.php:241
+#: admin/class-settings.php:225
 msgid "Show a visible badge on labeled media in the front end"
 msgstr ""
 
-#: admin/class-settings.php:245
+#: admin/class-settings.php:229
 msgid "Start date"
 msgstr ""
 
-#: admin/class-settings.php:248
+#: admin/class-settings.php:232
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
 msgstr ""
 
-#: admin/class-settings.php:252
+#: admin/class-settings.php:236
 msgid "Badge text"
 msgstr ""
 
-#: admin/class-settings.php:254
+#: admin/class-settings.php:238
 #: includes/class-frontend.php:148
 #: includes/class-frontend.php:153
 msgid "AI-generated"
 msgstr ""
 
-#: admin/class-settings.php:256
+#: admin/class-settings.php:240
 msgid "Leave empty for the translated default label."
 msgstr ""
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template.
-#: admin/class-settings.php:260
+#: admin/class-settings.php:244
 #, php-format
 msgid "Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label."
 msgstr ""
 
-#: admin/class-settings.php:270
+#: admin/class-settings.php:254
 msgid "Appearance"
 msgstr ""
 
-#: admin/class-settings.php:277
+#: admin/class-settings.php:261
 msgid "Overlay on the image"
 msgstr ""
 
-#: admin/class-settings.php:295
+#: admin/class-settings.php:279
 msgid "Dark"
 msgstr ""
 
-#: admin/class-settings.php:296
+#: admin/class-settings.php:280
 msgid "Light"
 msgstr ""
 
-#: admin/class-settings.php:297
+#: admin/class-settings.php:281
 msgid "Outline"
 msgstr ""
 
-#: admin/class-settings.php:298
+#: admin/class-settings.php:282
 msgid "Icon only (short label)"
 msgstr ""
 
-#: admin/class-settings.php:305
+#: admin/class-settings.php:289
 msgid "Small"
 msgstr ""
 
-#: admin/class-settings.php:306
+#: admin/class-settings.php:290
 msgid "Medium"
 msgstr ""
 
-#: admin/class-settings.php:307
+#: admin/class-settings.php:291
 msgid "Large"
 msgstr ""
 
-#: admin/class-settings.php:314
+#: admin/class-settings.php:298
 msgid "Extras"
 msgstr ""
 
-#: admin/class-settings.php:317
+#: admin/class-settings.php:301
 msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
 msgstr ""
 
-#: admin/class-settings.php:319
+#: admin/class-settings.php:303
 msgid "Append the label to the image alt text (screen readers)"
 msgstr ""
 
-#: admin/class-settings.php:321
+#: admin/class-settings.php:305
 msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
 msgstr ""
 
-#: admin/class-settings.php:323
+#: admin/class-settings.php:307
 msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
 msgstr ""
 
-#: admin/class-settings.php:327
+#: admin/class-settings.php:311
 msgid "Page notice"
 msgstr ""
 
-#: admin/class-settings.php:330
+#: admin/class-settings.php:314
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 
-#: admin/class-settings.php:331
+#: admin/class-settings.php:315
 #: includes/class-frontend.php:657
 msgid "This page contains AI-generated media."
 msgstr ""
 
-#: admin/class-settings.php:338
+#: admin/class-settings.php:322
 msgid "AI-generated text"
 msgstr ""
 
-#: admin/class-settings.php:341
+#: admin/class-settings.php:325
 msgid "Content note"
 msgstr ""
 
-#: admin/class-settings.php:343
+#: admin/class-settings.php:327
 #: includes/class-frontend.php:681
 msgid "This text was created with the help of AI."
 msgstr ""
 
-#: admin/class-settings.php:344
+#: admin/class-settings.php:328
 msgid "Shown ahead of posts you mark with the \"This content is AI-generated\" checkbox in the editor sidebar."
 msgstr ""
 
-#: admin/class-settings.php:351
+#: admin/class-settings.php:335
 msgid "Automatic detection"
 msgstr ""
 
-#: admin/class-settings.php:354
+#: admin/class-settings.php:338
 msgid "Detect on upload"
 msgstr ""
 
-#: admin/class-settings.php:357
+#: admin/class-settings.php:341
 msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
 
-#: admin/class-settings.php:361
+#: admin/class-settings.php:345
 msgid "Standard declarations"
 msgstr ""
 
-#: admin/class-settings.php:368
-#: admin/class-settings.php:385
+#: admin/class-settings.php:352
+#: admin/class-settings.php:369
 msgid "Label automatically"
 msgstr ""
 
-#: admin/class-settings.php:369
-#: admin/class-settings.php:386
+#: admin/class-settings.php:353
+#: admin/class-settings.php:370
 msgid "Put into review queue"
 msgstr ""
 
-#: admin/class-settings.php:370
-#: admin/class-settings.php:387
+#: admin/class-settings.php:354
+#: admin/class-settings.php:371
 msgid "Ignore"
 msgstr ""
 
-#: admin/class-settings.php:374
+#: admin/class-settings.php:358
 msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
 msgstr ""
 
-#: admin/class-settings.php:378
+#: admin/class-settings.php:362
 msgid "Generator signatures"
 msgstr ""
 
-#: admin/class-settings.php:391
+#: admin/class-settings.php:375
 msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr ""
 
-#: admin/class-settings.php:395
+#: admin/class-settings.php:379
 msgid "More sources"
 msgstr ""
 
-#: admin/class-settings.php:398
+#: admin/class-settings.php:382
 msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
 
-#: admin/class-settings.php:400
+#: admin/class-settings.php:384
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
 
-#: admin/class-settings.php:407
+#: admin/class-settings.php:391
 msgid "Machine-readable file metadata"
 msgstr ""
 
-#: admin/class-settings.php:410
+#: admin/class-settings.php:394
 msgid "Write into files"
 msgstr ""
 
-#: admin/class-settings.php:413
+#: admin/class-settings.php:397
 msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
 msgstr ""
 
-#: admin/class-settings.php:415
+#: admin/class-settings.php:399
 msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
 msgstr ""
 
-#: admin/class-settings.php:419
+#: admin/class-settings.php:403
 msgid "Auto-repair"
 msgstr ""
 
-#: admin/class-settings.php:422
+#: admin/class-settings.php:406
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
 msgstr ""
 
-#: admin/class-settings.php:426
+#: admin/class-settings.php:410
 msgid "Delivery check"
 msgstr ""
 
-#: admin/class-settings.php:429
+#: admin/class-settings.php:413
 msgid "Allow checking whether the declaration survives delivery"
 msgstr ""
 
-#: admin/class-settings.php:430
+#: admin/class-settings.php:414
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
 msgstr ""
 
-#: admin/class-settings.php:433
+#: admin/class-settings.php:417
 msgid "Check a sample of five files"
 msgstr ""
 
-#: admin/class-settings.php:440
+#: admin/class-settings.php:424
 msgid "Structured data"
 msgstr ""
 
-#: admin/class-settings.php:443
+#: admin/class-settings.php:427
 msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
 msgstr ""
 
-#: admin/class-settings.php:450
+#: admin/class-settings.php:434
 msgid "Uninstall"
 msgstr ""
 
-#: admin/class-settings.php:453
+#: admin/class-settings.php:437
 msgid "Data removal"
 msgstr ""
 
-#: admin/class-settings.php:456
+#: admin/class-settings.php:440
 msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
 msgstr ""
 
-#: admin/class-settings.php:462
+#: admin/class-settings.php:446
 msgid "Save changes"
 msgstr ""
 
-#: admin/class-settings.php:467
+#: admin/class-settings.php:451
 msgid "TransparAI links"
 msgstr ""
 
-#: admin/class-settings.php:470
+#: admin/class-settings.php:454
 msgid "Support forum"
 msgstr ""
 

@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.0.2 (2026-09-08)
+
+- Fixed: the library scan stopped after its first batch on sites where another plugin or the theme
+  calls `wp_enqueue_media()` on the plugin page. Both admin surfaces localize the same script handle
+  and object name, and `wp_localize_script()` replaces a registered object instead of merging into
+  it, so the media-library set overwrote the settings set and `labels.scanProgress` was gone. The
+  progress callback then died on its first `.replace()` and never requested the next batch, without
+  a visible error. There is one shared label set now, and `AdminLabelsTest` fails if a string
+  `admin.js` uses is missing from it.
+- Fixed: PNG files were only searched for metadata within the first 512 KB. PNG allows metadata
+  chunks after the image data, so a generated 4K image carried its declaration outside that window
+  and stayed undetected. Chunks are read from disk now, seeking over the image data, which also
+  keeps the memory cost independent of the file size (a 42 MB PNG parses in 2 MB).
+- Fixed: Microsoft signs images from Bing Image Creator, Designer and Copilot with the claim
+  generator `Microsoft Responsible AI Provenance`, which no rule matched, so certain AI images only
+  reached the review queue. Conversely `designer` matched any editor carrying that word, Affinity
+  Designer included. Both replaced by exact needles.
+- The file inspection panel now says whether the attachment is labeled at all. A file without a
+  declaration was reported as "declaration missing" even when nothing was supposed to be written
+  into it, which read like a defect instead of the normal state.
+
 ## 1.0.1 (2026-09-08)
 
 - Fixed: the hourly integrity sweep was scheduled from the activation hook alone, and that hook fires

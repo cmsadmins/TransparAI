@@ -316,8 +316,22 @@ final class TransparAI_Media_Library {
 	 * Escaped markup of the inspection panel.
 	 */
 	private static function inspect_html( int $attachment_id ): string {
-		$data = TransparAI_Writer::inspect( $attachment_id );
-		$html = '';
+		$data    = TransparAI_Writer::inspect( $attachment_id );
+		$flagged = TransparAI_Meta::is_flagged( $attachment_id );
+		$html    = '';
+
+		/*
+		 * A file only "misses" the declaration once the attachment is labeled.
+		 * Without the label there is nothing to write, so the same finding is
+		 * the normal state and must not read like a defect.
+		 */
+		$html .= '<div class="trai-inspect-section"><p class="trai-inspect-lead">'
+			. esc_html(
+				$flagged
+					? __( 'This attachment is labeled as AI-generated, so every file below should carry the declaration.', 'transparai' )
+					: __( 'This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below.', 'transparai' )
+			)
+			. '</p></div>';
 
 		$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Files', 'transparai' ) . '</h4><ul class="trai-inspect-files">';
 		foreach ( $data['files'] as $file ) {
@@ -327,9 +341,12 @@ final class TransparAI_Media_Library {
 			} elseif ( $file['marked'] ) {
 				$state = __( 'declaration present', 'transparai' );
 				$tone  = 'ok';
-			} else {
+			} elseif ( $flagged ) {
 				$state = __( 'declaration missing', 'transparai' );
 				$tone  = 'missing';
+			} else {
+				$state = __( 'no declaration', 'transparai' );
+				$tone  = 'na';
 			}
 			$html .= '<li><code>' . esc_html( $file['name'] ) . '</code>'
 				. '<span class="trai-inspect-state trai-inspect-state--' . esc_attr( $tone ) . '">' . esc_html( $state ) . '</span></li>';
@@ -397,10 +414,13 @@ final class TransparAI_Media_Library {
 	}
 
 	/**
-	 * Nonces and strings for admin.js. Both surfaces that load the script
-	 * (media modal/grid and the attachment edit screen) hand it the same data.
+	 * Nonces and strings for admin.js. Every surface that loads the script
+	 * (media modal/grid, the attachment edit screen and the settings page)
+	 * hands it the same data: wp_localize_script() replaces a previously
+	 * registered object instead of merging into it, so two different label
+	 * sets on the same handle would leave one surface with missing strings.
 	 */
-	private static function localize_admin(): void {
+	public static function localize_admin(): void {
 		wp_localize_script(
 			'transparai-admin',
 			'transparaiAdmin',
@@ -434,6 +454,10 @@ final class TransparAI_Media_Library {
 			'inspectHide'    => __( 'Hide file metadata', 'transparai' ),
 			/* translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared. */
 			'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable.', 'transparai' ),
+			/* translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count. */
+			'scanProgress'   => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
+			'scanDone'       => __( 'Scan complete.', 'transparai' ),
+			'scanFailed'     => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
 		);
 	}
 

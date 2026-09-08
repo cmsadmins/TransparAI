@@ -29,6 +29,8 @@ final class TransparAI_Parsers {
 	public const EXIF_HEADER     = "Exif\x00\x00";
 	public const PSIR_HEADER     = "Photoshop 3.0\x00";
 
+	public const PNG_SIGNATURE = "\x89PNG\r\n\x1a\n";
+
 	public const C2PA_BMFF_UUID = "\xd8\xfe\xc3\xd6\x1b\x0e\x48\x3c\x92\x97\x58\x28\x87\x7e\xc4\x81";
 	public const XMP_BMFF_UUID  = "\xbe\x7a\xcf\xcb\x97\xa9\x42\xe8\x9c\x71\x99\x94\x91\xe3\xaf\xac";
 
@@ -36,6 +38,13 @@ final class TransparAI_Parsers {
 	 * Number of bytes read from the head (and, for WebP, the tail) of a file.
 	 */
 	public const READ_BYTES = 524288;
+
+	/**
+	 * Largest single metadata chunk buffered while scanning a file from disk.
+	 * Real XMP and C2PA blocks stay far below this; anything bigger is payload
+	 * the detector has no use for and would only cost memory.
+	 */
+	public const MAX_CHUNK_BYTES = 8388608;
 
 	/**
 	 * Read up to READ_BYTES from the start of a file.
@@ -293,6 +302,71 @@ final class TransparAI_Parsers {
 			}
 		}
 
+		return $chunks;
+	}
+
+	/**
+	 * PNG metadata chunks read straight from disk, skipping the image data.
+	 *
+	 * PNG puts no limit on where metadata may sit, and a generated 4K image
+	 * easily pushes its declaration past the first READ_BYTES, so a head-only
+	 * parse misses the declaration in exactly the large files that carry one.
+	 * Seeking over IDAT keeps the memory cost independent of the file size.
+	 *
+	 * IDAT chunks are left out of the result: the list describes a file's
+	 * metadata and must never be handed to png_build().
+	 *
+	 * @param string $path Absolute file path.
+	 * @return array<int, array{type:string, data:string}>|null Null when the file is unreadable or not a PNG.
+	 */
+	public static function png_metadata_chunks( string $path ): ?array {
+		$handle = @fopen( $path, 'rb' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen, WordPress.PHP.NoSilencedErrors.Discouraged -- local media file; an unreadable path is reported as null.
+		if ( false === $handle ) {
+			return null;
+		}
+
+		if ( self::PNG_SIGNATURE !== (string) fread( $handle, 8 ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- local media file, not a remote request.
+			fclose( $handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- local media file, not a remote request.
+			return null;
+		}
+
+		$chunks = array();
+		while ( true ) {
+			$header = (string) fread( $handle, 8 ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- local media file, not a remote request.
+			if ( 8 !== strlen( $header ) ) {
+				break;
+			}
+			$size = unpack( 'N', substr( $header, 0, 4 ) );
+			$size = $size[1];
+			$type = substr( $header, 4, 4 );
+			if ( ! preg_match( '/^[A-Za-z]{4}$/', $type ) ) {
+				break;
+			}
+
+			/* Image data and oversized chunks are skipped, never buffered. */
+			if ( 'IDAT' === $type || $size > self::MAX_CHUNK_BYTES ) {
+				if ( -1 === fseek( $handle, $size + 4, SEEK_CUR ) ) {
+					break;
+				}
+				continue;
+			}
+
+			$data = 0 === $size ? '' : (string) fread( $handle, $size ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- local media file, not a remote request.
+			if ( strlen( $data ) < $size ) {
+				break;
+			}
+			fread( $handle, 4 ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread -- CRC, not validated.
+
+			$chunks[] = array(
+				'type' => $type,
+				'data' => $data,
+			);
+			if ( 'IEND' === $type ) {
+				break;
+			}
+		}
+
+		fclose( $handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- local media file, not a remote request.
 		return $chunks;
 	}
 
