@@ -14,6 +14,7 @@
 .trai-review,
 .trai-recheck-wrap,
 .trai-recheck-result,
+.trai-inspect-wrap,
 .trai-write-error,
 .attachment.trai-flag,
 .attachment.trai-detected,
@@ -292,6 +293,62 @@
 	display: block;
 	margin-top: 4px;
 	font-size: 11px;
+	color: var(--trai-muted, #646970);
+}
+
+/* Inspection panel: what is actually inside the files. */
+.trai-inspect-wrap {
+	display: block;
+	margin-top: 4px;
+}
+
+.trai-inspect-wrap .trai-inspect:hover,
+.trai-inspect-wrap .trai-inspect:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-inspect-out {
+	margin-top: 6px;
+	padding: 8px 10px;
+	border: 1px solid var(--trai-border-light, #e0e0e0);
+	background: #fff;
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+.trai-inspect-out h4 {
+	margin: 8px 0 2px;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-inspect-out h4:first-child {
+	margin-top: 0;
+}
+
+.trai-inspect-out ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.trai-inspect-out li {
+	margin: 0 0 2px;
+}
+
+.trai-inspect-files span {
+	color: var(--trai-muted, #646970);
+}
+
+.trai-inspect-xmp {
+	max-height: 220px;
+	margin: 0;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-break: break-all;
+	font-size: 10px;
 	color: var(--trai-muted, #646970);
 }
 

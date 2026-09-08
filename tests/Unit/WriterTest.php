@@ -51,6 +51,30 @@ final class WriterTest extends TestCase {
 		);
 	}
 
+	public function test_inspect_reports_the_state_of_every_file(): void {
+		global $trai_test_meta;
+
+		$main  = $this->temp_copy( 'base.jpg', 'jpg' );
+		$extra = $this->temp_copy( 'base.png', 'png' );
+
+		$trai_test_meta[80]['_test_file']     = $main;
+		$trai_test_meta[80]['_test_metadata'] = array(
+			'sizes' => array( 'medium' => array( 'file' => basename( $extra ) ) ),
+		);
+
+		$before = TransparAI_Writer::inspect( 80 );
+		$this->assertCount( 2, $before['files'] );
+		$this->assertSame( array(), $before['terms'], 'A plain photo declares nothing' );
+		$this->assertFalse( $before['files'][0]['marked'] );
+
+		TransparAI_Writer::write_file( $main, 'jpeg', 'generated' );
+
+		$after = TransparAI_Writer::inspect( 80 );
+		$this->assertTrue( $after['files'][0]['marked'] );
+		$this->assertContains( 'trainedalgorithmicmedia', $after['terms'] );
+		$this->assertStringContainsString( 'DigitalSourceType', $after['xmp'] );
+	}
+
 	public function test_avif_merge_preserves_foreign_xmp(): void {
 		$path = $this->temp_copy( 'foreign-xmp.avif', 'avif' );
 

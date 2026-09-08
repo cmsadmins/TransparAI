@@ -85,6 +85,10 @@ No. TransparAI is a technical tool, not legal advice, and using it creates no gu
 
 Only when a file is labeled and the metadata option is enabled. The plugin then writes a small XMP block into the JPEG, PNG, WebP or AVIF file and its size variants. The image pixels are untouched. Files are replaced atomically and validated first. Unlabeling removes exactly the metadata this plugin wrote; foreign metadata is never touched.
 
+= Where can I see what was written into a file? =
+
+Open the attachment details and click "Show file metadata". It lists every file of that attachment with its state (declaration present, missing, or a format that cannot carry one), the digital source type currently declared, the detection evidence in full, the recorded history and the raw XMP packet of the main file. Nothing is written while you look; it is a read of the files as they are on disk right now.
+
 = Can I also label AI-written text? =
 
 Yes. Every post and page has a "This content is AI-generated" checkbox in the editor sidebar; marked content gets a short configurable note ahead of it. There is also an optional site-wide note at the end of pages that contain labeled media.

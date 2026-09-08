@@ -31,6 +31,7 @@ final class TransparAI_Media_Library {
 		add_filter( 'wp_prepare_attachment_for_js', array( self::class, 'prepare_js' ), 10, 2 );
 		add_filter( 'ajax_query_attachments_args', array( self::class, 'ajax_filter' ) );
 		add_action( 'wp_ajax_transparai_bulk', array( self::class, 'ajax_bulk' ) );
+		add_action( 'wp_ajax_transparai_inspect', array( self::class, 'ajax_inspect' ) );
 		add_action( 'wp_enqueue_media', array( self::class, 'enqueue_media_assets' ) );
 
 		add_filter( 'manage_media_columns', array( self::class, 'media_column' ) );
@@ -92,6 +93,9 @@ final class TransparAI_Media_Library {
 
 		$html .= '<span class="trai-recheck-wrap"><button type="button" class="button-link trai-recheck" data-id="' . esc_attr( (string) $id ) . '">'
 			. esc_html__( 'Re-check file metadata', 'transparai' ) . '</button></span>';
+
+		$html .= '<span class="trai-inspect-wrap"><button type="button" class="button-link trai-inspect" data-id="' . esc_attr( (string) $id ) . '">'
+			. esc_html__( 'Show file metadata', 'transparai' ) . '</button><div class="trai-inspect-out" hidden></div></span>';
 
 		$fields['transparai_ai'] = array(
 			'label' => __( 'AI content', 'transparai' ),
@@ -255,6 +259,85 @@ final class TransparAI_Media_Library {
 	}
 
 	/**
+	 * What the plugin knows about one file, as HTML for the details panel.
+	 *
+	 * The label state in WordPress and the declaration inside the file can drift
+	 * apart (an optimizer stripped it, a format cannot carry it, a write failed),
+	 * and until now nothing in the admin showed which of the two you were looking
+	 * at. This reads the files and says it plainly.
+	 */
+	public static function ajax_inspect(): void {
+		check_ajax_referer( 'transparai_bulk' );
+		if ( ! current_user_can( 'upload_files' ) ) {
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to do that.', 'transparai' ) ), 403 );
+		}
+
+		$attachment_id = isset( $_POST['attachment'] ) ? absint( wp_unslash( $_POST['attachment'] ) ) : 0;
+		if ( ! $attachment_id || 'attachment' !== get_post_type( $attachment_id ) || ! current_user_can( 'edit_post', $attachment_id ) ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid attachment.', 'transparai' ) ), 400 );
+		}
+
+		wp_send_json_success( array( 'html' => self::inspect_html( $attachment_id ) ) );
+	}
+
+	/**
+	 * Escaped markup of the inspection panel.
+	 */
+	private static function inspect_html( int $attachment_id ): string {
+		$data = TransparAI_Writer::inspect( $attachment_id );
+		$html = '';
+
+		$html .= '<h4>' . esc_html__( 'Files', 'transparai' ) . '</h4><ul class="trai-inspect-files">';
+		foreach ( $data['files'] as $file ) {
+			if ( null === $file['marked'] ) {
+				$state = __( 'format cannot carry the declaration', 'transparai' );
+			} elseif ( $file['marked'] ) {
+				$state = __( 'declaration present', 'transparai' );
+			} else {
+				$state = __( 'declaration missing', 'transparai' );
+			}
+			$html .= '<li><code>' . esc_html( $file['name'] ) . '</code> <span>' . esc_html( $state ) . '</span></li>';
+		}
+		if ( array() === $data['files'] ) {
+			$html .= '<li>' . esc_html__( 'No readable file found for this attachment.', 'transparai' ) . '</li>';
+		}
+		$html .= '</ul>';
+
+		$html .= '<h4>' . esc_html__( 'Digital source type in the main file', 'transparai' ) . '</h4>';
+		$html .= '<p>' . ( array() === $data['terms'] ? esc_html__( 'None declared.', 'transparai' ) : esc_html( implode( ', ', $data['terms'] ) ) ) . '</p>';
+
+		$evidence = (string) get_post_meta( $attachment_id, TransparAI_Meta::KEY_EVIDENCE, true );
+		if ( '' !== $evidence ) {
+			$html .= '<h4>' . esc_html__( 'Detection evidence', 'transparai' ) . '</h4>';
+			$html .= '<p>' . esc_html( $evidence ) . '</p>';
+		}
+
+		$history = TransparAI_Meta::history( $attachment_id );
+		if ( array() !== $history ) {
+			$html .= '<h4>' . esc_html__( 'History', 'transparai' ) . '</h4><ul class="trai-inspect-history">';
+			foreach ( array_reverse( $history ) as $entry ) {
+				$when = 0 === $entry['t'] ? '' : gmdate( 'Y-m-d H:i', $entry['t'] ) . ' UTC';
+				$who  = 0 === $entry['u'] ? __( 'system', 'transparai' ) : ( get_userdata( $entry['u'] )->display_name ?? '#' . $entry['u'] );
+				$line = '' === $entry['s']
+					? sprintf( '%1$s: %2$s (%3$s)', $when, $entry['e'], $who )
+					/* translators: 1: date, 2: event name, 3: source, 4: user name. */
+					: sprintf( '%1$s: %2$s, %3$s (%4$s)', $when, $entry['e'], $entry['s'], $who );
+				$html .= '<li>' . esc_html( $line ) . '</li>';
+			}
+			$html .= '</ul>';
+		}
+
+		$html .= '<h4>' . esc_html__( 'XMP packet of the main file', 'transparai' ) . '</h4>';
+		if ( '' === $data['xmp'] ) {
+			$html .= '<p>' . esc_html__( 'This file carries no XMP block.', 'transparai' ) . '</p>';
+		} else {
+			$html .= '<pre class="trai-inspect-xmp">' . esc_html( mb_substr( $data['xmp'], 0, 4000 ) ) . '</pre>';
+		}
+
+		return $html;
+	}
+
+	/**
 	 * Assets + inline data for the media modal / grid.
 	 */
 	public static function enqueue_media_assets(): void {
@@ -304,6 +387,8 @@ final class TransparAI_Media_Library {
 			'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
 			'recheckDone'    => __( 'Result', 'transparai' ),
 			'recheckClean'   => __( 'No AI provenance signals found in the file.', 'transparai' ),
+			'inspectShow'    => __( 'Show file metadata', 'transparai' ),
+			'inspectHide'    => __( 'Hide file metadata', 'transparai' ),
 		);
 	}
 

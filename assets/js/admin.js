@@ -138,6 +138,33 @@
 		});
 	});
 
+	jQuery(document).on('click', '.trai-inspect', function () {
+		var button = jQuery(this);
+		var out = button.closest('.trai-inspect-wrap').find('.trai-inspect-out');
+		if (!out.prop('hidden')) {
+			out.prop('hidden', true).empty();
+			button.text(labels.inspectShow);
+			return;
+		}
+		button.prop('disabled', true);
+		jQuery.post(ajaxurl, {
+			action: 'transparai_inspect',
+			_wpnonce: transparaiAdmin.nonce,
+			attachment: parseInt(button.data('id'), 10)
+		}, function (resp) {
+			button.prop('disabled', false);
+			if (!resp || !resp.success) {
+				notify(labels.updateFailed);
+				return;
+			}
+			out.html(resp.data.html).prop('hidden', false);
+			button.text(labels.inspectHide);
+		}).fail(function () {
+			button.prop('disabled', false);
+			notify(labels.updateFailed);
+		});
+	});
+
 	jQuery(document).on('click', '.trai-recheck', function () {
 		var button = jQuery(this);
 		var id = parseInt(button.data('id'), 10);
