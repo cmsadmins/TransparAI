@@ -273,7 +273,7 @@ msgstr "Die Kennzeichnung wurde gesetzt, die Metadaten konnten aber nicht in die
 
 #: admin/class-media-library.php:434
 msgid "Hide file metadata"
-msgstr "%1$d geprüft: %2$d mit Angabe ausgeliefert, %3$d ohne."
+msgstr "Dateimetadaten ausblenden"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared.
 #: admin/class-media-library.php:436
@@ -299,12 +299,12 @@ msgstr "Erkannte KI-Kennzeichnung verwerfen"
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] "Sie dürfen diesen Export nicht abrufen."
-msgstr[1] "Sie dürfen diesen Export nicht abrufen."
+msgstr[0] "KI-Kennzeichnung für %d Mediendatei aktualisiert."
+msgstr[1] "KI-Kennzeichnung für %d Mediendateien aktualisiert."
 
 #: admin/class-settings.php:45
 msgid "You are not allowed to export this."
-msgstr "Der Export konnte nicht gestartet werden."
+msgstr "Sie dürfen diesen Export nicht abrufen."
 
 #: admin/class-settings.php:63
 msgid "The export could not be started."
@@ -318,7 +318,7 @@ msgstr "Einstellungen"
 #: admin/class-settings.php:138
 #, php-format
 msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
-msgstr ""
+msgstr "%1$d gescannt, %2$d automatisch gekennzeichnet, %3$d zur Prüfung vorgemerkt, %4$d übersprungen (bereits entschieden)."
 
 #: admin/class-settings.php:139
 msgid "Scan complete."
@@ -354,11 +354,11 @@ msgstr "Gescannt"
 
 #: admin/class-settings.php:193
 msgid "Open review queue"
-msgstr "Audit-CSV exportieren"
+msgstr "Prüfliste öffnen"
 
 #: admin/class-settings.php:195
 msgid "Export audit CSV"
-msgstr "Der Export enthält jede gekennzeichnete und jede zur Prüfung vorgemerkte Datei mit Erkennungsquelle, Konfidenz und der zuletzt erfassten Änderung."
+msgstr "Audit-CSV exportieren"
 
 #: admin/class-settings.php:197
 msgid "The export lists every labeled and pending file with its detection source, confidence and the last recorded change."
@@ -400,11 +400,11 @@ msgstr "Badge anzeigen"
 
 #: admin/class-settings.php:241
 msgid "Show a visible badge on labeled media in the front end"
-msgstr "Startdatum"
+msgstr "Sichtbares Badge auf gekennzeichneten Medien im Frontend anzeigen"
 
 #: admin/class-settings.php:245
 msgid "Start date"
-msgstr "Nur Medien, die an oder nach diesem Tag hochgeladen wurden, erhalten das Badge im Frontend; ältere Medien bleiben nur im Backend gekennzeichnet. Leer lassen, um alle gekennzeichneten Medien mit Badge zu zeigen."
+msgstr "Startdatum"
 
 #: admin/class-settings.php:248
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
@@ -476,7 +476,7 @@ msgstr "Erkannten Generator im Badge anzeigen (z. B. „KI-generiert · Midjourn
 
 #: admin/class-settings.php:319
 msgid "Append the label to the image alt text (screen readers)"
-msgstr "Ein Badge automatisch in eine andere Ecke oder unter das Bild verschieben, wenn eine Theme-Ebene es verdeckt (empfohlen, benötigt JavaScript)"
+msgstr "Kennzeichnung an den Alt-Text des Bildes anhängen (Screenreader)"
 
 #: admin/class-settings.php:321
 msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
@@ -593,19 +593,19 @@ msgstr "Auto-Reparatur"
 
 #: admin/class-settings.php:422
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
-msgstr "Auslieferungsprüfung"
+msgstr "Metadaten wiederherstellen, wenn Bild-Optimierer oder Regenerierung sie entfernen (stündliche Integritätsprüfung)"
 
 #: admin/class-settings.php:426
 msgid "Delivery check"
-msgstr "Prüfung erlauben, ob die Angabe die Auslieferung übersteht"
+msgstr "Auslieferungsprüfung"
 
 #: admin/class-settings.php:429
 msgid "Allow checking whether the declaration survives delivery"
-msgstr "Fügt hier und in den Anhang-Details eine Schaltfläche hinzu. Auf Klick lädt das Plugin das Bild über seine eigene öffentliche URL und vergleicht die ausgelieferten Bytes mit der Datei auf der Festplatte. Nur so fällt auf, dass ein optimierendes CDN Ihre Bilder neu kodiert und die Angabe dabei entfernt. Die Anfrage geht ausschließlich an Ihre eigene Website und nur, wenn Sie die Schaltfläche drücken."
+msgstr "Prüfung erlauben, ob die Angabe die Auslieferung übersteht"
 
 #: admin/class-settings.php:430
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
-msgstr "Stichprobe mit fünf Dateien prüfen"
+msgstr "Fügt hier und in den Anhang-Details eine Schaltfläche hinzu. Auf Klick lädt das Plugin das Bild über seine eigene öffentliche URL und vergleicht die ausgelieferten Bytes mit der Datei auf der Festplatte. Nur so fällt auf, dass ein optimierendes CDN Ihre Bilder neu kodiert und die Angabe dabei entfernt. Die Anfrage geht ausschließlich an Ihre eigene Website und nur, wenn Sie die Schaltfläche drücken."
 
 #: admin/class-settings.php:433
 msgid "Check a sample of five files"
@@ -633,63 +633,63 @@ msgstr "Alle Plugin-Daten (Kennzeichnungen, Erkennungsergebnisse, Einstellungen)
 
 #: admin/class-settings.php:462
 msgid "Save changes"
-msgstr "TransparAI-Links"
+msgstr "Änderungen speichern"
 
 #: admin/class-settings.php:467
 msgid "TransparAI links"
-msgstr "Support-Forum"
+msgstr "TransparAI-Links"
 
 #: admin/class-settings.php:470
 msgid "Support forum"
-msgstr "Die Auslieferungsprüfung ist ausgeschaltet."
+msgstr "Support-Forum"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr "Zu diesem Anhang gibt es keine Datei."
+msgstr "Die Auslieferungsprüfung ist ausgeschaltet."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr "Die Datei wird von einem anderen Host ausgeliefert und deshalb nicht geprüft."
+msgstr "Zu diesem Anhang gibt es keine Datei."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr "Die Datei auf der Festplatte trägt keine KI-Angabe, es gibt also nichts zu vergleichen."
+msgstr "Die Datei wird von einem anderen Host ausgeliefert und deshalb nicht geprüft."
 
 #: includes/class-delivery.php:113
 msgid "The file on disk carries no AI declaration, so there is nothing to compare."
-msgstr "Das Bild konnte über seine öffentliche URL nicht geladen werden."
+msgstr "Die Datei auf der Festplatte trägt keine KI-Angabe, es gibt also nichts zu vergleichen."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr "Die Antwort war kein lesbares Bild."
+msgstr "Das Bild konnte über seine öffentliche URL nicht geladen werden."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr "Die Angabe ist in der ausgelieferten Datei enthalten."
+msgstr "Die Antwort war kein lesbares Bild."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr "Die ausgelieferte Datei enthält keine Angabe. Etwas zwischen WordPress und dem Besucher kodiert das Bild neu, meist ein optimierendes CDN oder ein Proxy."
+msgstr "Die Angabe ist in der ausgelieferten Datei enthalten."
 
 #: includes/class-delivery.php:151
 msgid "The delivered file carries no declaration. Something between WordPress and the visitor re-encodes the image, usually an optimizing CDN or a proxy."
-msgstr "Mit erhaltener Angabe ausgeliefert"
+msgstr "Die ausgelieferte Datei enthält keine Angabe. Etwas zwischen WordPress und dem Besucher kodiert das Bild neu, meist ein optimierendes CDN oder ein Proxy."
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr "Ohne Angabe ausgeliefert"
+msgstr "Mit erhaltener Angabe ausgeliefert"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr "Nichts zu prüfen"
+msgstr "Ohne Angabe ausgeliefert"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr "Von einem anderen Host ausgeliefert"
+msgstr "Nichts zu prüfen"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr "Konnte nicht geladen werden"
+msgstr "Von einem anderen Host ausgeliefert"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"

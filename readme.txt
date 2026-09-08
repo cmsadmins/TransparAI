@@ -140,6 +140,7 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_confidence`: `certain`, `likely` or `hint`.
 * `_transparai_detected`: `'1'` while an unconfirmed detection waits in the review queue. Kept strictly apart from the public label.
 * `_transparai_history`: JSON list of the last ten events for this file, oldest first. Each entry is `{"t":unix time,"e":event,"u":user ID,"s":source}`, with the events `flagged`, `confirmed`, `unflagged`, `queued`, `dismissed`, `repaired` and `write-failed`. Written by `TransparAI_Meta::record()`, read with `TransparAI_Meta::history()` and `TransparAI_Meta::last_change()`; `TransparAI_Meta::audit_rows()` returns the rows behind both the CSV export and `wp transparai status`.
+* `_transparai_delivery`: result of the last delivery check as `{"t":unix time,"verdict":verdict}`, with `intact`, `stripped`, `unreachable`, `unmarked` or `foreign-host`. Only written when the check is enabled and someone runs it; read it with `TransparAI_Delivery::last_result()`.
 * `_transparai_badge_pos`: badge placement for this one image, overriding the site setting. `top-left`, `top-right`, `bottom-left`, `bottom-right`, `below` (caption line under the image) or `hidden`. Absent means the site setting applies.
 
 **Label media from your own code** (an AI image generator plugin, an import script):
@@ -202,8 +203,8 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 == Screenshots ==
 
 1. Media library grid with AI badges, a review state and bulk labeling
-2. Attachment details: label checkbox, detection evidence and review actions
-3. Settings page with library statistics and the batched scan
+2. Attachment details: label checkbox, detection evidence, review actions and the file inspection with its raw XMP packet
+3. Settings page with library statistics, the batched scan and the audit export
 4. Front-end badge on a labeled image
 
 == Changelog ==
