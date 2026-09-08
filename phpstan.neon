@@ -3,6 +3,11 @@ includes:
 
 parameters:
     level: 5
+    # Analyse against PHP 8 even though the plugin supports 7.4: the
+    # str_contains family is used deliberately and polyfilled by WordPress
+    # since 5.9. Real 7.4 compatibility is checked by PHPCompatibilityWP
+    # (phpcs testVersion 7.4-) and by parallel-lint on the 7.4 matrix leg.
+    phpVersion: 80000
     scanFiles:
         - vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php
         - vendor/php-stubs/wp-cli-stubs/wp-cli-commands-stubs.php
