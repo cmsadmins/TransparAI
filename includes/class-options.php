@@ -57,6 +57,7 @@ final class TransparAI_Options {
 			'write_xmp'           => '1',
 			'write_iim'           => '1', /* Mirror into IPTC-IIM (JPEG, only when safe). */
 			'auto_repair'         => '1', /* Re-write metadata stripped by optimizers. */
+			'delivery_check'      => '0', /* Opt-in: fetch our own image URL to see whether the declaration survives delivery. */
 			'schema_output'       => '1', /* JSON-LD digitalSourceType for labeled media in the page. */
 
 			/* Housekeeping. */

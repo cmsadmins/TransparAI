@@ -315,6 +315,65 @@ final class TransparAI_CLI {
 	}
 
 	/**
+	 * Check whether the in-file declaration survives delivery to a visitor.
+	 *
+	 * Fetches the given images over their own public URLs and compares the
+	 * delivered bytes with the files on disk. Requires the delivery check to be
+	 * enabled in the settings; nothing but this site is ever requested.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [<id>...]
+	 * : Attachment IDs. Without any, a random sample of labeled images is used.
+	 *
+	 * [--sample=<n>]
+	 * : How many labeled images to sample when no IDs are given. Default 5.
+	 *
+	 * @subcommand verify-delivery
+	 *
+	 * @param array $args       Attachment IDs.
+	 * @param array $assoc_args Flags.
+	 */
+	public function verify_delivery( array $args, array $assoc_args ): void {
+		if ( ! TransparAI_Delivery::enabled() ) {
+			WP_CLI::error( 'The delivery check is switched off. Enable it under Media, TransparAI first.' );
+		}
+
+		if ( array() === $args ) {
+			$sample  = isset( $assoc_args['sample'] ) ? (int) $assoc_args['sample'] : 5;
+			$summary = TransparAI_Delivery::check_sample( $sample );
+			WP_CLI::success(
+				sprintf(
+					'%d checked: %d delivered with the declaration, %d without, %d not comparable.',
+					$summary['checked'],
+					$summary['intact'],
+					$summary['stripped'],
+					$summary['other']
+				)
+			);
+			return;
+		}
+
+		$stripped = 0;
+		foreach ( $args as $id ) {
+			$id     = (int) $id;
+			$result = TransparAI_Delivery::check( $id );
+			TransparAI_Delivery::remember( $id, $result['verdict'] );
+
+			if ( TransparAI_Delivery::VERDICT_STRIPPED === $result['verdict'] ) {
+				++$stripped;
+			}
+			WP_CLI::log( sprintf( '#%d %s: %s', $id, $result['verdict'], $result['message'] ) );
+		}
+
+		if ( $stripped > 0 ) {
+			WP_CLI::warning( sprintf( '%d file(s) reach visitors without their declaration.', $stripped ) );
+			return;
+		}
+		WP_CLI::success( 'Every checked file keeps its declaration on the way out.' );
+	}
+
+	/**
 	 * IDs of all labeled attachments.
 	 *
 	 * @return int[]

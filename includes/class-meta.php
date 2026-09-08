@@ -41,6 +41,7 @@ final class TransparAI_Meta {
 	public const KEY_BADGE_POS   = '_transparai_badge_pos';
 	public const KEY_CONTENT_AI  = '_transparai_content_ai';
 	public const KEY_HISTORY     = '_transparai_history';
+	public const KEY_DELIVERY    = '_transparai_delivery';
 
 	/**
 	 * Events kept per attachment. Ten covers the whole life of a normal file

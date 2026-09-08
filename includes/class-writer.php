@@ -309,6 +309,19 @@ final class TransparAI_Writer {
 		if ( false === $data ) {
 			return null;
 		}
+		return self::xmp_from_data( $data, $format );
+	}
+
+	/**
+	 * The XMP packet inside raw container bytes.
+	 *
+	 * Same reading as extract_xmp(), but for bytes that never touched the disk:
+	 * the delivery check compares what a visitor receives with the file we wrote.
+	 *
+	 * @param string $data   Raw file bytes.
+	 * @param string $format jpeg|png|webp|avif.
+	 */
+	public static function xmp_from_data( string $data, string $format ): ?string {
 		switch ( $format ) {
 			case 'jpeg':
 				$segments = TransparAI_Parsers::jpeg_segments( $data );

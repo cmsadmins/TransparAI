@@ -94,6 +94,18 @@ final class TransparAI_Media_Library {
 		$html .= '<span class="trai-recheck-wrap"><button type="button" class="button-link trai-recheck" data-id="' . esc_attr( (string) $id ) . '">'
 			. esc_html__( 'Re-check file metadata', 'transparai' ) . '</button></span>';
 
+		if ( TransparAI_Delivery::enabled() && TransparAI_Meta::is_flagged( $id ) ) {
+			$last  = TransparAI_Delivery::last_result( $id );
+			$html .= '<span class="trai-delivery-wrap"><button type="button" class="button-link trai-delivery" data-id="' . esc_attr( (string) $id ) . '">'
+				. esc_html__( 'Check delivery', 'transparai' ) . '</button>';
+			if ( null !== $last ) {
+				$html .= '<span class="trai-delivery-result">' . esc_html( TransparAI_Delivery::verdict_label( $last['verdict'] ) ) . '</span>';
+			} else {
+				$html .= '<span class="trai-delivery-result"></span>';
+			}
+			$html .= '</span>';
+		}
+
 		$html .= '<span class="trai-inspect-wrap"><button type="button" class="button-link trai-inspect" data-id="' . esc_attr( (string) $id ) . '">'
 			. esc_html__( 'Show file metadata', 'transparai' ) . '</button><div class="trai-inspect-out" hidden></div></span>';
 
@@ -389,6 +401,8 @@ final class TransparAI_Media_Library {
 			'recheckClean'   => __( 'No AI provenance signals found in the file.', 'transparai' ),
 			'inspectShow'    => __( 'Show file metadata', 'transparai' ),
 			'inspectHide'    => __( 'Hide file metadata', 'transparai' ),
+			/* translators: 1: number of files checked, 2: intact count, 3: stripped count. */
+			'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without.', 'transparai' ),
 		);
 	}
 

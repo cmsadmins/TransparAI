@@ -48,7 +48,7 @@ Your existing metadata is safe: an existing XMP packet is merged, not replaced, 
 
 Every label, review decision and repair is recorded per file with its time and the editor who made it, and the whole library can be exported as a CSV audit list straight from the plugin page, so the question "who declared this image AI-generated, and when" has an answer months later. WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp transparai status --format=csv` for the same export on the command line, `wp transparai verify-meta --repair` to check and fix the in-file metadata. Other plugins can label media through `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )`, the detection rules are extensible via filters, translation setups are covered by a bundled WPML configuration, and uninstalling cleans up across every site of a multisite network when you ask it to.
 
-The plugin runs entirely on your server. No external requests, no accounts, no telemetry. Please also read the Disclaimer section below.
+The plugin runs entirely on your server. No accounts, no telemetry, and no request to anyone else: the only HTTP request it can make is the optional delivery check, which asks your own site for one image to see whether your CDN strips the declaration on the way out. Please also read the Disclaimer section below.
 
 Contact: TransparAI@cms-admins.de
 
@@ -88,6 +88,10 @@ Only when a file is labeled and the metadata option is enabled. The plugin then 
 = Where can I see what was written into a file? =
 
 Open the attachment details and click "Show file metadata". It lists every file of that attachment with its state (declaration present, missing, or a format that cannot carry one), the digital source type currently declared, the detection evidence in full, the recorded history and the raw XMP packet of the main file. Nothing is written while you look; it is a read of the files as they are on disk right now.
+
+= Does the marking survive my CDN? =
+
+Not always, and that is worth checking. Image optimizers at the edge, Cloudflare Polish and Jetpack Photon among them, re-encode images while delivering them and drop every metadata block in the process. The file on your server stays perfect while visitors and search engines receive a bare image, and nothing in WordPress shows it. Enable the delivery check in the settings, then press "Check delivery" on a labeled image: the plugin fetches that image from your own public URL and tells you whether the declaration arrived. If it did not, the fix is in your CDN configuration (keep metadata, or exclude labeled images from re-encoding), not in this plugin.
 
 = Can I also label AI-written text? =
 
@@ -167,16 +171,19 @@ The first six switch the guard off by themselves, since a placement you chose sh
 * `flag <id>... [--source=<text>]` and `unflag <id>...`: set or remove labels in bulk.
 * `status [--status=flagged|detected|all] [--format=table|csv|json|ids|count]`: audit export, for example `wp transparai status --format=csv > ai-audit.csv`.
 * `write-meta [--dry-run] --yes` and `verify-meta [--repair]`: write and verify the in-file metadata.
+* `verify-delivery [<id>...] [--sample=<n>]`: fetch labeled images over their own public URL and report whether the declaration survives delivery. Needs the delivery check enabled in the settings.
 
 **Theme integration:** print attachment images through `wp_get_attachment_image()` (or markup carrying the `wp-image-{ID}` class) and the badge is rendered server-side and page-cache safe. For raw URL output and CSS backgrounds there is the optional script described above; it wraps matched images with the same markup (`span.trai-wrap` around the image plus `span.trai-badge`), so any CSS you write applies to both paths.
 
 == External services ==
 
-None. The plugin makes no requests to external services.
+None. The plugin makes no requests to external services, and it never sends your media or any data about your site anywhere.
+
+The optional delivery check is the only feature that makes an HTTP request at all, and it requests your own site: when you switch it on in the settings and then press "Check delivery", the plugin downloads one image from your own public URL and compares the bytes with the file on disk. That is how an optimizing CDN or image proxy that quietly re-encodes your images and drops the AI declaration becomes visible. The check is off by default, it never runs on its own, and it stops before requesting anything if the image is served from a different host than your site.
 
 == Privacy ==
 
-TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The per-file history records the WordPress user ID of whoever labeled, confirmed or dismissed a file, so a site can show who made a disclosure decision; it holds the last ten events per file and is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
+TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The optional delivery check, when you enable it and press the button, requests one image from your own site to see what visitors receive; nothing is sent to a third party. The per-file history records the WordPress user ID of whoever labeled, confirmed or dismissed a file, so a site can show who made a disclosure decision; it holds the last ten events per file and is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
 
 == Disclaimer ==
 

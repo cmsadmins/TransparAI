@@ -15,6 +15,7 @@
 .trai-recheck-wrap,
 .trai-recheck-result,
 .trai-inspect-wrap,
+.trai-delivery-wrap,
 .trai-write-error,
 .attachment.trai-flag,
 .attachment.trai-detected,
@@ -292,6 +293,24 @@
 .trai-recheck-result {
 	display: block;
 	margin-top: 4px;
+	font-size: 11px;
+	color: var(--trai-muted, #646970);
+}
+
+/* Delivery check: what the visitor actually receives. */
+.trai-delivery-wrap {
+	display: block;
+	margin-top: 4px;
+}
+
+.trai-delivery-wrap .trai-delivery:hover,
+.trai-delivery-wrap .trai-delivery:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-delivery-result {
+	display: block;
+	margin-top: 2px;
 	font-size: 11px;
 	color: var(--trai-muted, #646970);
 }

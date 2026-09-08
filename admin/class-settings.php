@@ -135,9 +135,12 @@ final class TransparAI_Settings {
 				'scanNonce' => wp_create_nonce( TransparAI_Scanner::NONCE ),
 				'labels'    => array(
 					/* translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count. */
-					'scanProgress' => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
-					'scanDone'     => __( 'Scan complete.', 'transparai' ),
-					'scanFailed'   => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
+					'scanProgress'   => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
+					'scanDone'       => __( 'Scan complete.', 'transparai' ),
+					'scanFailed'     => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
+					'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
+					/* translators: 1: number of files checked, 2: intact count, 3: stripped count. */
+					'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without.', 'transparai' ),
 				),
 			)
 		);
@@ -417,6 +420,20 @@ final class TransparAI_Settings {
 						<td>
 							<label><input type="checkbox" name="<?php self::name( 'auto_repair' ); ?>" value="1" <?php checked( $options['auto_repair'], '1' ); ?> />
 							<?php esc_html_e( 'Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)', 'transparai' ); ?></label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Delivery check', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'delivery_check' ); ?>" value="1" <?php checked( $options['delivery_check'], '1' ); ?> />
+							<?php esc_html_e( 'Allow checking whether the declaration survives delivery', 'transparai' ); ?></label>
+							<p class="description"><?php esc_html_e( 'Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button.', 'transparai' ); ?></p>
+							<?php if ( '1' === $options['delivery_check'] ) : ?>
+								<p class="trai-actions">
+									<button type="button" class="trai-btn trai-btn--ghost" id="trai-delivery-sample"><?php esc_html_e( 'Check a sample of five files', 'transparai' ); ?></button>
+									<span class="trai-delivery-result"></span>
+								</p>
+							<?php endif; ?>
 						</td>
 					</tr>
 					<tr>
