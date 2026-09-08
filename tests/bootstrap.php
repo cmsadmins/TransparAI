@@ -54,7 +54,8 @@ if ( ! function_exists( 'str_ends_with' ) ) {
 	}
 }
 
-global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients;
+global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_cron;
+$trai_test_cron       = array();
 $trai_test_options    = array();
 $trai_test_meta       = array();
 $trai_test_filters    = array();
@@ -128,6 +129,26 @@ if ( ! function_exists( 'add_action' ) ) {
 if ( ! function_exists( 'do_action' ) ) {
 	function do_action( $tag ) {
 		return null;
+	}
+}
+if ( ! function_exists( 'wp_next_scheduled' ) ) {
+	function wp_next_scheduled( $hook ) {
+		global $trai_test_cron;
+		return $trai_test_cron[ $hook ] ?? false;
+	}
+}
+if ( ! function_exists( 'wp_schedule_event' ) ) {
+	function wp_schedule_event( $timestamp, $recurrence, $hook ) {
+		global $trai_test_cron;
+		$trai_test_cron[ $hook ] = $timestamp;
+		return true;
+	}
+}
+if ( ! function_exists( 'wp_unschedule_event' ) ) {
+	function wp_unschedule_event( $timestamp, $hook ) {
+		global $trai_test_cron;
+		unset( $trai_test_cron[ $hook ] );
+		return true;
 	}
 }
 if ( ! function_exists( 'update_post_meta' ) ) {
@@ -343,7 +364,8 @@ require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
  * Reset all in-memory stores between tests.
  */
 function trai_test_reset(): void {
-	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post;
+	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron;
+	$trai_test_cron         = array();
 	$trai_test_options      = array();
 	$trai_test_meta         = array();
 	$trai_test_filters      = array();

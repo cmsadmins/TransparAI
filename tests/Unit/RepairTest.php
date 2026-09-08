@@ -71,4 +71,18 @@ final class RepairTest extends TestCase {
 		// The variant lives in the same directory as the main file.
 		$this->assertTrue( TransparAI_Repair::files_changed( 61 ) );
 	}
+
+	public function test_init_schedules_the_sweep_once(): void {
+		global $trai_test_cron;
+
+		TransparAI_Repair::init();
+		$first = $trai_test_cron[ TransparAI_Repair::CRON_HOOK ] ?? null;
+		$this->assertNotNull( $first, 'A site that never ran the activation hook still gets the sweep' );
+
+		TransparAI_Repair::init();
+		$this->assertSame( $first, $trai_test_cron[ TransparAI_Repair::CRON_HOOK ], 'Scheduling stays idempotent' );
+
+		TransparAI_Repair::unschedule();
+		$this->assertArrayNotHasKey( TransparAI_Repair::CRON_HOOK, $trai_test_cron );
+	}
 }

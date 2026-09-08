@@ -39,6 +39,13 @@ final class TransparAI_Repair {
 		add_filter( 'wp_update_attachment_metadata', array( self::class, 'on_metadata_update' ), PHP_INT_MAX - 10, 2 );
 		add_filter( 'wp_generate_attachment_metadata', array( self::class, 'on_metadata_generate' ), 20, 2 );
 		add_action( self::CRON_HOOK, array( self::class, 'verify_batch' ) );
+
+		/* The activation hook fires once per network-wide activation, so a site
+		   created afterwards would never get the sweep, and its labeled files
+		   would silently stay unrepaired. Scheduling here instead covers those
+		   sites, restored backups and cron entries lost to a migration alike;
+		   the call is idempotent and costs one cached option read. */
+		self::schedule();
 	}
 
 	/**
