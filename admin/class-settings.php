@@ -127,23 +127,7 @@ final class TransparAI_Settings {
 		}
 		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
 		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION, true );
-		wp_localize_script(
-			'transparai-admin',
-			'transparaiAdmin',
-			array(
-				'nonce'     => wp_create_nonce( 'transparai_bulk' ),
-				'scanNonce' => wp_create_nonce( TransparAI_Scanner::NONCE ),
-				'labels'    => array(
-					/* translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count. */
-					'scanProgress'   => __( '%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided).', 'transparai' ),
-					'scanDone'       => __( 'Scan complete.', 'transparai' ),
-					'scanFailed'     => __( 'Scan request failed. You can restart to continue.', 'transparai' ),
-					'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
-					/* translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared. */
-					'deliverySample' => __( '%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable.', 'transparai' ),
-				),
-			)
-		);
+		TransparAI_Media_Library::localize_admin();
 	}
 
 	/**

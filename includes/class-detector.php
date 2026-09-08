@@ -46,24 +46,31 @@ final class TransparAI_Detector {
 	 * and camera vendors, their manifests do not prove AI origin.
 	 */
 	private const AI_CLAIM_GENERATORS = array(
-		'openai'     => 'OpenAI',
-		'dall-e'     => 'DALL-E',
-		'dall·e'     => 'DALL-E',
-		'gpt-image'  => 'OpenAI GPT-Image',
-		'chatgpt'    => 'ChatGPT',
-		'firefly'    => 'Adobe Firefly',
-		'gemini'     => 'Google Gemini',
-		'imagen'     => 'Google Imagen',
-		'google ai'  => 'Google AI',
-		'googleai'   => 'Google AI',
-		'stability'  => 'Stability AI',
-		'midjourney' => 'Midjourney',
-		'designer'   => 'Microsoft Designer',
-		'leonardo'   => 'Leonardo.Ai',
-		'ideogram'   => 'Ideogram',
-		'recraft'    => 'Recraft',
-		'krea'       => 'Krea AI',
-		'seedream'   => 'Seedream',
+		'openai'                   => 'OpenAI',
+		'dall-e'                   => 'DALL-E',
+		'dall·e'                   => 'DALL-E',
+		'gpt-image'                => 'OpenAI GPT-Image',
+		'chatgpt'                  => 'ChatGPT',
+		'firefly'                  => 'Adobe Firefly',
+		'gemini'                   => 'Google Gemini',
+		'imagen'                   => 'Google Imagen',
+		'google ai'                => 'Google AI',
+		'googleai'                 => 'Google AI',
+		'stability'                => 'Stability AI',
+		'midjourney'               => 'Midjourney',
+		/*
+		 * Microsoft signs everything from Bing Image Creator, Designer and
+		 * Copilot with this claim generator, never a camera capture. The
+		 * product name alone would be too broad: "designer" also matches
+		 * Affinity Designer and other plain editors.
+		 */
+		'microsoft designer'       => 'Microsoft Designer',
+		'microsoft responsible ai' => 'Microsoft (Bing Image Creator, Designer, Copilot)',
+		'leonardo'                 => 'Leonardo.Ai',
+		'ideogram'                 => 'Ideogram',
+		'recraft'                  => 'Recraft',
+		'krea'                     => 'Krea AI',
+		'seedream'                 => 'Seedream',
 	);
 
 	/**
@@ -87,7 +94,7 @@ final class TransparAI_Detector {
 				$result = self::detect_jpeg( $path, $head );
 				break;
 			case 'png':
-				$result = self::detect_png( $head );
+				$result = self::detect_png( $path );
 				break;
 			case 'webp':
 				$result = self::detect_webp( $path, $head );
@@ -173,9 +180,13 @@ final class TransparAI_Detector {
 
 	/**
 	 * PNG: XMP (iTXt), C2PA (caBX), generator text chunks.
+	 *
+	 * Read from disk rather than from the head buffer: PNG puts no limit on
+	 * where metadata sits, and a generated 4K image easily pushes its
+	 * declaration past the first READ_BYTES.
 	 */
-	private static function detect_png( string $head ): ?array {
-		$chunks = TransparAI_Parsers::png_chunks( $head );
+	private static function detect_png( string $path ): ?array {
+		$chunks = TransparAI_Parsers::png_metadata_chunks( $path );
 		if ( null === $chunks ) {
 			return null;
 		}

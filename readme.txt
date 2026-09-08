@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, c2pa, content credentials, ai detection, ai label
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -209,6 +209,12 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 
 == Changelog ==
 
+= 1.0.2 =
+* Fixed: scanning the existing library stopped after the first batch on some sites. The progress bar simply stayed where it was and reported no error, which looked like a scan still running. Sites whose theme or another plugin loads the media library on the plugin page were affected. The scan runs to the end again.
+* Fixed: PNG files were only searched for metadata inside their first 512 KB. PNG allows metadata to sit after the image data, so large generated images carried their declaration outside that window and were reported as clean. The whole file is read now, and the memory it takes no longer grows with the file size.
+* Fixed: images from Bing Image Creator, Microsoft Designer and Copilot were only queued for review instead of being labeled, because Microsoft signs them with a claim generator that no rule matched. In return, an editor whose name merely contains "Designer", Affinity Designer for one, no longer counts as proof of AI origin.
+* The file inspection now says whether the attachment is labeled at all, so a file that is not supposed to carry a declaration is no longer listed as if something were missing from it.
+
 = 1.0.1 =
 * Fixed: the hourly integrity sweep was only scheduled by the activation hook, which fires once for a network-wide activation. Every site created in the network afterwards silently kept no schedule at all, so stripped AI declarations were never repaired there. The schedule is now set up on load and covers new sites, restored backups and cron entries lost in a migration.
 * Per-file history: every label, review decision, repair and failed write is recorded with its time and the editor who made it (the last ten events per file), so a disclosure decision can still be explained months later.
@@ -233,6 +239,9 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 * No external requests of any kind.
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+Fixes a library scan that stopped after its first batch, detection of large PNG files whose metadata sits after the image data, and the labeling of images from Bing Image Creator, Microsoft Designer and Copilot.
 
 = 1.0.1 =
 Fixes a silent failure of the auto-repair on multisite networks, adds a per-file history with CSV audit export, file inspection in the attachment details, an optional delivery check and five translations.
