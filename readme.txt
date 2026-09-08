@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, c2pa, content credentials, ai detection, ai label
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -49,6 +49,8 @@ Your existing metadata is safe: an existing XMP packet is merged, not replaced, 
 Every label, review decision and repair is recorded per file with its time and the editor who made it, and the whole library can be exported as a CSV audit list straight from the plugin page, so the question "who declared this image AI-generated, and when" has an answer months later. WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp transparai status --format=csv` for the same export on the command line, `wp transparai verify-meta --repair` to check and fix the in-file metadata. Other plugins can label media through `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )`, the detection rules are extensible via filters, translation setups are covered by a bundled WPML configuration, and uninstalling cleans up across every site of a multisite network when you ask it to.
 
 The plugin runs entirely on your server. No accounts, no telemetry, and no request to anyone else: the only HTTP request it can make is the optional delivery check, which asks your own site for one image to see whether your CDN strips the declaration on the way out. Please also read the Disclaimer section below.
+
+The interface is available in English, German, French, Spanish, Italian and Dutch.
 
 Contact: TransparAI@cms-admins.de
 
@@ -206,6 +208,14 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed: the hourly integrity sweep was only scheduled by the activation hook, which fires once for a network-wide activation. Every site created in the network afterwards silently kept no schedule at all, so stripped AI declarations were never repaired there. The schedule is now set up on load and covers new sites, restored backups and cron entries lost in a migration.
+* Per-file history: every label, review decision, repair and failed write is recorded with its time and the editor who made it (the last ten events per file), so a disclosure decision can still be explained months later.
+* Audit export as CSV directly from the plugin page, with the detection source, confidence and last change of every labeled and pending file. Same rows as `wp transparai status`, which now carries the last-change columns too.
+* File inspection in the attachment details: "Show file metadata" lists every size with its state (declaration present, missing, or a format that cannot carry one), the declared digital source type, the detection evidence in full and the raw XMP packet.
+* Optional delivery check: an optimizing CDN or image proxy can re-encode images while serving them and drop the declaration, which is invisible from the admin because the file on disk stays correct. The check fetches one image over its own public URL and compares the delivered bytes with the file. It is off by default, runs only on click or through `wp transparai verify-delivery`, and never requests media served from another host.
+* Translations shipped for German, French, Spanish, Italian and Dutch.
+
 = 1.0.0 =
 * Automatic AI detection: C2PA Content Credentials (JPEG, PNG, WebP, MP4 and MOV, .c2pa sidecars), the IPTC digital source type in XMP and IPTC-IIM, PNG generator chunks, EXIF and XMP generator signatures, JPEG comment markers, ID3 declarations in MP3.
 * Camera rule: a C2PA manifest alone never auto-labels, since Leica, Sony and Nikon put Content Credentials into real photos.
@@ -222,6 +232,9 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 * No external requests of any kind.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Fixes a silent failure of the auto-repair on multisite networks, adds a per-file history with CSV audit export, file inspection in the attachment details, an optional delivery check and five translations.
 
 = 1.0.0 =
 Initial release.
