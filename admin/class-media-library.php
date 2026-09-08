@@ -123,6 +123,14 @@ final class TransparAI_Media_Library {
 				'html'  => $select,
 				'helps' => esc_html__( 'Overrides this image only. Use it if a theme overlay covers the badge here.', 'transparai' ),
 			);
+
+			$fields['transparai_generator'] = array(
+				'label' => __( 'AI generator', 'transparai' ),
+				'input' => 'html',
+				'html'  => '<input type="text" class="widefat" name="attachments[' . $id . '][transparai_generator]" value="'
+					. esc_attr( TransparAI_Meta::get_generator( $id ) ) . '" />',
+				'helps' => esc_html__( 'Name of the AI tool, e.g. "Midjourney". Shown by the badge source option and the {generator} placeholder.', 'transparai' ),
+			);
 		}
 
 		return $fields;
@@ -187,6 +195,14 @@ final class TransparAI_Media_Library {
 				delete_post_meta( $id, TransparAI_Meta::KEY_BADGE_POS );
 			} else {
 				update_post_meta( $id, TransparAI_Meta::KEY_BADGE_POS, $position );
+			}
+		}
+		if ( isset( $attachment['transparai_generator'] ) ) {
+			$generator = sanitize_text_field( wp_unslash( (string) $attachment['transparai_generator'] ) );
+			if ( '' === $generator ) {
+				delete_post_meta( $id, TransparAI_Meta::KEY_GENERATOR );
+			} else {
+				update_post_meta( $id, TransparAI_Meta::KEY_GENERATOR, $generator );
 			}
 		}
 		return $post;

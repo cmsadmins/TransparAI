@@ -95,6 +95,23 @@ final class TransparAI_Scanner {
 		delete_post_meta( $attachment_id, TransparAI_Meta::KEY_UNREADABLE );
 
 		$result = TransparAI_Detector::detect_file( $file );
+
+		/*
+		 * WordPress' big-image scaling re-encodes large uploads into the
+		 * "-scaled" attached file, which drops all metadata, and image
+		 * optimizers strip it from the attached file too. The untouched
+		 * pre-scale original next to it still carries the declaration.
+		 */
+		if ( null === $result ) {
+			$original = wp_get_original_image_path( $attachment_id );
+			if ( is_string( $original ) && $original !== $file && is_readable( $original ) ) {
+				$result = TransparAI_Detector::detect_file( $original );
+				if ( null !== $result ) {
+					$result['evidence'] = mb_substr( $result['evidence'] . ' [from the pre-scale original ' . wp_basename( $original ) . ']', 0, 500 );
+				}
+			}
+		}
+
 		update_post_meta( $attachment_id, TransparAI_Meta::KEY_SCANNED, (string) time() );
 
 		if ( null === $result || empty( $result['is_ai'] ) ) {

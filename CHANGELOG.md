@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fixed: an AI declaration was missed when WordPress' big-image scaling re-encoded the upload into the "-scaled" attached file (which drops all metadata) or an image optimizer such as Imagify stripped it. The scan now falls back to the untouched pre-scale original next to the scaled file, where the declaration survives; the evidence names the original file when it was the source.
+- Long overlay badge labels (a generator name like "Google C2PA Core Generator Library") are now capped at 16em with an ellipsis even on large images; hovering or tapping the media expands the badge to the full label.
 - Optional badge start date: only media uploaded on or after the configured date get the visible front-end badge, so the labeling can be introduced on an existing site without retroactively badging older content. Earlier media stay labeled in the admin only; the machine-readable file metadata is unaffected. Empty (the default) badges all labeled media as before.
 - Overlay guard for the visible badge: the front-end script now checks the real paint order at each badge (hit test, no z-index guessing) and, only when a theme layer actually covers it, raises the badge, moves it to a free corner or, as the last resort, shows it as a caption line below the image. On by default, can be turned off under Visible badge.
 - Badge stacking level raised from a fixed `z-index: 2` to the CSS custom property `--trai-badge-z` (default `30`): above typical theme chrome, still far below lightbox and modal layers, tunable globally or per container.

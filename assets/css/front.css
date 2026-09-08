@@ -78,11 +78,30 @@ p .trai-wrap {
 
 /* A long generator label must never grow wider than the media it sits on
    (small carousel thumbnails); the script switches to the mini variant, this
-   is the hard limit for the no-JS case. */
+   is the hard limit for the no-JS case. On top of that, generator names can
+   get very long ("Google C2PA Core Generator Library"), so even on large
+   images the overlay badge is capped at 16em (em: scales with the size
+   setting) and ellipsized; hovering (or tapping, which triggers :hover on
+   mobile browsers) the media expands it to the full label. The plain
+   calc() line is the fallback for browsers without min(). */
 .trai-mode-overlay .trai-badge {
 	max-width: calc(100% - 16px);
+	max-width: min(calc(100% - 16px), 16em);
 	overflow: hidden;
 	text-overflow: ellipsis;
+	transition: max-width 0.2s ease;
+}
+
+.trai-wrap:hover .trai-badge,
+.trai-thumbwrap:hover .trai-badge,
+.trai-bg-host:hover .trai-badge {
+	max-width: calc(100% - 16px);
+}
+
+/* The script sets a title on badges whose text is clipped (mini or
+   ellipsized); those need to be hoverable for the tooltip to appear. */
+.trai-badge[title] {
+	pointer-events: auto;
 }
 
 /* Positions */

@@ -135,14 +135,26 @@ final class TransparAI_Frontend {
 	}
 
 	/**
-	 * Localized badge label (full variant).
+	 * Localized badge label (full variant). A custom label may contain the
+	 * placeholders {generator} and {site}; when {generator} is used but the
+	 * attachment has no known generator (or none is in scope, ID 0), the
+	 * translated default label is shown instead of a broken template.
+	 *
+	 * @param int $attachment_id Attachment ID (0 = shared JS labeling template).
 	 */
-	public static function badge_label(): string {
+	public static function badge_label( int $attachment_id = 0 ): string {
 		$custom = TransparAI_Options::get( 'badge_text' );
-		if ( '' !== $custom ) {
-			return $custom;
+		if ( '' === $custom ) {
+			return __( 'AI-generated', 'transparai' );
 		}
-		return __( 'AI-generated', 'transparai' );
+		if ( str_contains( $custom, '{generator}' ) ) {
+			$generator = $attachment_id > 0 ? TransparAI_Meta::get_generator( $attachment_id ) : '';
+			if ( '' === $generator ) {
+				return __( 'AI-generated', 'transparai' );
+			}
+			$custom = str_replace( '{generator}', $generator, $custom );
+		}
+		return str_replace( '{site}', get_bloginfo( 'name' ), $custom );
 	}
 
 	/**
@@ -157,8 +169,9 @@ final class TransparAI_Frontend {
 	 * The badge element for an attachment.
 	 */
 	private static function badge_html( int $attachment_id ): string {
-		$label = self::badge_label();
-		if ( TransparAI_Options::enabled( 'badge_show_source' ) ) {
+		$label = self::badge_label( $attachment_id );
+		if ( TransparAI_Options::enabled( 'badge_show_source' )
+			&& ! str_contains( TransparAI_Options::get( 'badge_text' ), '{generator}' ) ) {
 			$generator = TransparAI_Meta::get_generator( $attachment_id );
 			if ( '' !== $generator ) {
 				$label .= ' · ' . $generator;
@@ -235,6 +248,7 @@ final class TransparAI_Frontend {
 		wp_enqueue_script( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/js/front.js', array(), TRANSPARAI_VERSION, true );
 
 		$data = array(
+			/* Background badges carry no attachment ID, so {generator} templates fall back to the default label here. */
 			'label'      => self::badge_label(),
 			'short'      => self::badge_short_label(),
 			'guard'      => TransparAI_Options::enabled( 'badge_guard' ) ? '1' : '',
@@ -453,7 +467,7 @@ final class TransparAI_Frontend {
 		if ( ! self::is_badged( (int) $attachment->ID ) ) {
 			return $attr;
 		}
-		$suffix = self::badge_label();
+		$suffix = self::badge_label( (int) $attachment->ID );
 		$alt    = isset( $attr['alt'] ) ? (string) $attr['alt'] : '';
 		if ( '' === $alt ) {
 			$attr['alt'] = $suffix;

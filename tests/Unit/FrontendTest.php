@@ -264,6 +264,45 @@ final class FrontendTest extends TestCase {
 		$this->assertSame( 'AI', TransparAI_Frontend::badge_short_label() );
 	}
 
+	public function test_badge_label_replaces_placeholders(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_text' => '{generator} prompted by {site}' );
+		update_post_meta( 91, TransparAI_Meta::KEY_GENERATOR, 'Nano Banana Pro' );
+
+		$this->assertSame( 'Nano Banana Pro prompted by Test Site', TransparAI_Frontend::badge_label( 91 ) );
+	}
+
+	public function test_badge_label_falls_back_without_generator(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_text' => '{generator} prompted by {site}' );
+
+		$this->assertSame( 'AI-generated', TransparAI_Frontend::badge_label( 92 ), 'No generator meta: default label' );
+		$this->assertSame( 'AI-generated', TransparAI_Frontend::badge_label(), 'No attachment in scope (JS template): default label' );
+	}
+
+	public function test_badge_label_site_only_template_works_without_id(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_text' => 'AI image via {site}' );
+
+		$this->assertSame( 'AI image via Test Site', TransparAI_Frontend::badge_label() );
+	}
+
+	public function test_generator_template_suppresses_show_source_append(): void {
+		global $trai_test_options;
+		$this->seed_map( array() );
+		update_post_meta( 93, TransparAI_Meta::KEY_FLAG, '1' );
+		update_post_meta( 93, TransparAI_Meta::KEY_GENERATOR, 'Midjourney' );
+		$trai_test_options['transparai_settings'] = array(
+			'badge_text'        => 'Made with {generator}',
+			'badge_show_source' => '1',
+		);
+
+		$out = TransparAI_Frontend::wrap_images( '<img class="wp-image-93" src="/wp-content/uploads/2026/09/g.jpg">' );
+
+		$this->assertSame( 1, substr_count( $out, 'Midjourney' ), 'Generator must not be appended a second time' );
+		$this->assertStringContainsString( 'Made with Midjourney', $out );
+	}
+
 	public function test_per_image_override_changes_position_class(): void {
 		$this->seed_map( array() );
 		update_post_meta( 77, TransparAI_Meta::KEY_FLAG, '1' );

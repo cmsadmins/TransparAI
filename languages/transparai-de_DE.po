@@ -201,6 +201,17 @@ msgstr "Badge-Text"
 msgid "Leave empty for the translated default label."
 msgstr "Leer lassen für die übersetzte Standard-Beschriftung."
 
+#. translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template.
+#, php-format
+msgid "Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label."
+msgstr "Platzhalter: %1$s (erkannter oder manuell gesetzter Generator) und %2$s (Website-Titel), z. B. %3$s. Bilder ohne bekannten Generator erhalten die Standard-Beschriftung."
+
+msgid "AI generator"
+msgstr "KI-Generator"
+
+msgid "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option and the {generator} placeholder."
+msgstr "Name des KI-Tools, z. B. „Midjourney“. Wird von der Generator-Option des Badges und vom Platzhalter {generator} verwendet."
+
 msgid "Appearance"
 msgstr "Darstellung"
 
@@ -246,8 +257,8 @@ msgstr "Groß"
 msgid "Extras"
 msgstr "Extras"
 
-msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\")"
-msgstr "Erkannten Generator im Badge anzeigen (z. B. „KI-generiert · Midjourney“)"
+msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
+msgstr "Erkannten Generator im Badge anzeigen (z. B. „KI-generiert · Midjourney“; ohne Wirkung, wenn der Badge-Text {generator} enthält)"
 
 msgid "Append the label to the image alt text (screen readers)"
 msgstr "Kennzeichnung an den Alt-Text des Bildes anhängen (Screenreader)"

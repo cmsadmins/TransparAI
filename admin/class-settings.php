@@ -33,6 +33,7 @@ final class TransparAI_Settings {
 		add_filter( 'plugin_action_links_' . TRANSPARAI_PLUGIN_BASENAME, array( self::class, 'action_links' ) );
 	}
 
+
 	/**
 	 * Settings link on the plugins screen.
 	 *
@@ -202,7 +203,18 @@ final class TransparAI_Settings {
 						<th scope="row"><label for="trai-badge-text"><?php esc_html_e( 'Badge text', 'transparai' ); ?></label></th>
 						<td>
 							<input type="text" id="trai-badge-text" class="regular-text" name="<?php self::name( 'badge_text' ); ?>" value="<?php echo esc_attr( $options['badge_text'] ); ?>" placeholder="<?php esc_attr_e( 'AI-generated', 'transparai' ); ?>" />
-							<p class="description"><?php esc_html_e( 'Leave empty for the translated default label.', 'transparai' ); ?></p>
+							<p class="description">
+								<?php esc_html_e( 'Leave empty for the translated default label.', 'transparai' ); ?>
+								<?php
+								printf(
+									/* translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template. */
+									esc_html__( 'Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label.', 'transparai' ),
+									'<code>{generator}</code>',
+									'<code>{site}</code>',
+									'<code>' . esc_html( '{generator} prompted by {site}' ) . '</code>'
+								);
+								?>
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -253,7 +265,7 @@ final class TransparAI_Settings {
 						<th scope="row"><?php esc_html_e( 'Extras', 'transparai' ); ?></th>
 						<td>
 							<label><input type="checkbox" name="<?php self::name( 'badge_show_source' ); ?>" value="1" <?php checked( $options['badge_show_source'], '1' ); ?> />
-							<?php esc_html_e( 'Show the detected generator in the badge (e.g. "AI-generated · Midjourney")', 'transparai' ); ?></label><br />
+							<?php esc_html_e( 'Show the detected generator in the badge (e.g. "AI-generated · Midjourney"; ignored when the badge text contains {generator})', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'badge_alt_append' ); ?>" value="1" <?php checked( $options['badge_alt_append'], '1' ); ?> />
 							<?php esc_html_e( 'Append the label to the image alt text (screen readers)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'badge_guard' ); ?>" value="1" <?php checked( $options['badge_guard'], '1' ); ?> />
@@ -386,6 +398,15 @@ final class TransparAI_Settings {
 
 				<p class="submit"><button type="submit" class="trai-btn"><?php esc_html_e( 'Save changes', 'transparai' ); ?></button></p>
 			</form>
+
+			<footer class="trai-footer">
+				<span class="trai-footer-brand">Transpar<span class="trai-logo-ai">AI</span> <?php echo esc_html( TRANSPARAI_VERSION ); ?></span>
+				<nav class="trai-footer-links" aria-label="<?php esc_attr_e( 'TransparAI links', 'transparai' ); ?>">
+					<a href="https://www.cms-admins.de/" target="_blank" rel="noopener">cms-admins.de</a>
+					<a href="mailto:TransparAI@cms-admins.de">TransparAI@cms-admins.de</a>
+					<a href="https://wordpress.org/support/plugin/transparai/" target="_blank" rel="noopener"><?php esc_html_e( 'Support forum', 'transparai' ); ?></a>
+				</nav>
+			</footer>
 		</div>
 		<?php
 	}

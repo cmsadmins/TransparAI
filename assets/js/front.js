@@ -17,11 +17,13 @@
 				return; /* Not rendered yet (lazyload); the load handler re-runs this. */
 			}
 			badge.classList.remove('trai-badge--mini');
-			/* Mini when the image is tiny or the full label would outgrow it
-			   (scrollWidth measures the unclipped text). */
-			var mini = width < 140 || badge.scrollWidth + 16 > width;
+			/* Mini only on genuinely small images. A label that merely outgrows
+			   the media stays visible and is ellipsized by the CSS cap instead:
+			   long templates ("{generator} prompted by {site}") would otherwise
+			   collapse every badge to the bare short label. */
+			var mini = width < 140;
 			badge.classList.toggle('trai-badge--mini', mini);
-			if (mini && !badge.title) {
+			if (!badge.title && (mini || badge.scrollWidth > badge.clientWidth)) {
 				badge.title = badge.textContent;
 			}
 		});

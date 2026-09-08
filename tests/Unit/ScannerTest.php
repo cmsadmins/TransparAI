@@ -78,6 +78,22 @@ final class ScannerTest extends TestCase {
 		$this->assertFalse( TransparAI_Meta::is_flagged( 21 ) );
 	}
 
+	public function test_scan_falls_back_to_the_pre_scale_original(): void {
+		global $trai_test_meta;
+		// Attached "-scaled" file was re-encoded/optimized and carries nothing;
+		// the untouched pre-scale original still declares its AI origin.
+		$trai_test_meta[30]['_test_file']          = trai_fixture( 'base.jpg' );
+		$trai_test_meta[30]['_test_original_path'] = trai_fixture( 'c2pa-gemini.jpg' );
+
+		$scan = TransparAI_Scanner::scan_attachment( 30 );
+		$this->assertSame( 'flagged', $scan['status'] );
+		$this->assertStringContainsString( 'pre-scale original', $scan['result']['evidence'] );
+
+		// Without an original the attached file's result stands.
+		$trai_test_meta[31]['_test_file'] = trai_fixture( 'base.jpg' );
+		$this->assertSame( 'clean', TransparAI_Scanner::scan_attachment( 31 )['status'] );
+	}
+
 	public function test_scan_attachment_missing_file_is_unreadable(): void {
 		global $trai_test_meta;
 		$trai_test_meta[22]['_test_file'] = '/nonexistent/nowhere.jpg';

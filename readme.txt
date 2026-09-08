@@ -49,6 +49,8 @@ WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp t
 
 The plugin runs entirely on your server. No external requests, no accounts, no telemetry. Please also read the Disclaimer section below.
 
+Contact: TransparAI@cms-admins.de
+
 == Installation ==
 
 1. Install the plugin from the WordPress plugin directory (Plugins, Add New, search for "TransparAI") or upload the ZIP, then activate it.
@@ -108,7 +110,7 @@ Yes. The meta key `_transparai_ai` is registered for the REST API, WP-CLI comman
 
 = Where do I get help? =
 
-Post in the support forum here on wordpress.org, or write to transparai@cms-admins.de. The plugin is built and maintained by Patrick Schlesinger (cms-admins.de).
+Post in the support forum here on wordpress.org, or write to TransparAI@cms-admins.de. The plugin is built and maintained by Patrick Schlesinger (cms-admins.de).
 
 == For developers ==
 
