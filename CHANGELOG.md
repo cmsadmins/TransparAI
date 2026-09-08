@@ -32,6 +32,10 @@
   summary on the plugin page.
 - Confirming a detection whose file cannot be written now says so immediately instead of at the next
   page load.
+- Fixed before release: the catalog build matched translations by their position in the `.pot`, and
+  regenerating that file after adding a string shifted every entry behind it, so a handful of strings
+  carried the neighbouring translation in all five languages. Matching happens by msgid now, and the
+  catalogs are verified against the source strings (placeholders and length) before they ship.
 
 ## 1.0.0 (2026-09-08)
 
