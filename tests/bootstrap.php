@@ -54,8 +54,9 @@ if ( ! function_exists( 'str_ends_with' ) ) {
 	}
 }
 
-global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_cron;
+global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_cron, $trai_test_user;
 $trai_test_cron       = array();
+$trai_test_user       = 0;
 $trai_test_options    = array();
 $trai_test_meta       = array();
 $trai_test_filters    = array();
@@ -129,6 +130,12 @@ if ( ! function_exists( 'add_action' ) ) {
 if ( ! function_exists( 'do_action' ) ) {
 	function do_action( $tag ) {
 		return null;
+	}
+}
+if ( ! function_exists( 'get_current_user_id' ) ) {
+	function get_current_user_id() {
+		global $trai_test_user;
+		return (int) ( $trai_test_user ?? 0 );
 	}
 }
 if ( ! function_exists( 'wp_next_scheduled' ) ) {
@@ -364,8 +371,9 @@ require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
  * Reset all in-memory stores between tests.
  */
 function trai_test_reset(): void {
-	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron;
+	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user;
 	$trai_test_cron         = array();
+	$trai_test_user         = 0;
 	$trai_test_options      = array();
 	$trai_test_meta         = array();
 	$trai_test_filters      = array();

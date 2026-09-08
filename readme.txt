@@ -46,7 +46,7 @@ Your existing metadata is safe: an existing XMP packet is merged, not replaced, 
 
 **For larger setups**
 
-WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp transparai status --format=csv` for a full audit export, `wp transparai verify-meta --repair` to check and fix the in-file metadata. Other plugins can label media through `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )`, the detection rules are extensible via filters, translation setups are covered by a bundled WPML configuration, and uninstalling cleans up across every site of a multisite network when you ask it to.
+Every label, review decision and repair is recorded per file with its time and the editor who made it, and the whole library can be exported as a CSV audit list straight from the plugin page, so the question "who declared this image AI-generated, and when" has an answer months later. WP-CLI commands for scanning, labeling and auditing: `wp transparai scan`, `wp transparai status --format=csv` for the same export on the command line, `wp transparai verify-meta --repair` to check and fix the in-file metadata. Other plugins can label media through `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )`, the detection rules are extensible via filters, translation setups are covered by a bundled WPML configuration, and uninstalling cleans up across every site of a multisite network when you ask it to.
 
 The plugin runs entirely on your server. No external requests, no accounts, no telemetry. Please also read the Disclaimer section below.
 
@@ -129,6 +129,7 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_generator`: detected generator name, for example `Midjourney` or `OpenAI`.
 * `_transparai_confidence`: `certain`, `likely` or `hint`.
 * `_transparai_detected`: `'1'` while an unconfirmed detection waits in the review queue. Kept strictly apart from the public label.
+* `_transparai_history`: JSON list of the last ten events for this file, oldest first. Each entry is `{"t":unix time,"e":event,"u":user ID,"s":source}`, with the events `flagged`, `confirmed`, `unflagged`, `queued`, `dismissed`, `repaired` and `write-failed`. Written by `TransparAI_Meta::record()`, read with `TransparAI_Meta::history()` and `TransparAI_Meta::last_change()`; `TransparAI_Meta::audit_rows()` returns the rows behind both the CSV export and `wp transparai status`.
 * `_transparai_badge_pos`: badge placement for this one image, overriding the site setting. `top-left`, `top-right`, `bottom-left`, `bottom-right`, `below` (caption line under the image) or `hidden`. Absent means the site setting applies.
 
 **Label media from your own code** (an AI image generator plugin, an import script):
@@ -171,7 +172,7 @@ None. The plugin makes no requests to external services.
 
 == Privacy ==
 
-TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). It does not collect, transmit or share any data, and it sets no cookies.
+TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The per-file history records the WordPress user ID of whoever labeled, confirmed or dismissed a file, so a site can show who made a disclosure decision; it holds the last ten events per file and is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
 
 == Disclaimer ==
 

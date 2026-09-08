@@ -30,7 +30,49 @@ final class TransparAI_Settings {
 		add_action( 'admin_menu', array( self::class, 'add_page' ) );
 		add_action( 'admin_init', array( self::class, 'register' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
+		add_action( 'admin_post_transparai_export', array( self::class, 'export_csv' ) );
 		add_filter( 'plugin_action_links_' . TRANSPARAI_PLUGIN_BASENAME, array( self::class, 'action_links' ) );
+	}
+
+	/**
+	 * Stream the audit export as CSV.
+	 *
+	 * Same rows as `wp transparai status --format=csv`, for everyone who does
+	 * not have shell access to the site.
+	 */
+	public static function export_csv(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You are not allowed to export this.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_export' );
+
+		$status = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : 'all';
+		if ( ! in_array( $status, array( 'flagged', 'detected', 'all' ), true ) ) {
+			$status = 'all';
+		}
+
+		$rows    = TransparAI_Meta::audit_rows( $status );
+		$columns = TransparAI_Meta::audit_columns();
+
+		nocache_headers();
+		header( 'Content-Type: text/csv; charset=utf-8' );
+		header( 'Content-Disposition: attachment; filename=transparai-audit-' . gmdate( 'Y-m-d' ) . '.csv' );
+
+		$out = fopen( 'php://output', 'w' );
+		if ( false === $out ) {
+			wp_die( esc_html__( 'The export could not be started.', 'transparai' ) );
+		}
+
+		fputcsv( $out, $columns );
+		foreach ( $rows as $row ) {
+			$line = array();
+			foreach ( $columns as $column ) {
+				$line[] = (string) ( $row[ $column ] ?? '' );
+			}
+			fputcsv( $out, $line );
+		}
+		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- php://output stream for the CSV download, WP_Filesystem cannot stream a response.
+		exit;
 	}
 
 
@@ -143,9 +185,13 @@ final class TransparAI_Settings {
 						<span class="trai-stat-label"><?php esc_html_e( 'Scanned', 'transparai' ); ?></span>
 					</div>
 				</div>
-				<?php if ( $stats['detected'] > 0 ) : ?>
-					<p><a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a></p>
-				<?php endif; ?>
+				<p class="trai-actions">
+					<?php if ( $stats['detected'] > 0 ) : ?>
+						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
+					<?php endif; ?>
+					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
+				</p>
+				<p class="description"><?php esc_html_e( 'The export lists every labeled and pending file with its detection source, confidence and the last recorded change.', 'transparai' ); ?></p>
 			</section>
 
 			<section class="trai-card">

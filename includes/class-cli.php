@@ -209,35 +209,7 @@ final class TransparAI_CLI {
 		$status = isset( $assoc_args['status'] ) ? sanitize_key( (string) $assoc_args['status'] ) : 'flagged';
 		$format = isset( $assoc_args['format'] ) ? sanitize_key( (string) $assoc_args['format'] ) : 'table';
 
-		$meta_query = TransparAI_Meta::meta_query( in_array( $status, array( 'detected', 'all' ), true ) ? $status : '1' );
-
-		$ids = ( new WP_Query(
-			array(
-				'post_type'              => 'attachment',
-				'post_status'            => 'inherit',
-				'fields'                 => 'ids',
-				'posts_per_page'         => -1,
-				'no_found_rows'          => true,
-				'update_post_term_cache' => false,
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- explicit CLI audit export.
-				'meta_query'             => $meta_query,
-			)
-		) )->posts;
-
-		$rows = array();
-		foreach ( $ids as $id ) {
-			$id     = (int) $id;
-			$rows[] = array(
-				'ID'         => $id,
-				'file'       => (string) get_post_meta( $id, '_wp_attached_file', true ),
-				'status'     => TransparAI_Meta::is_flagged( $id ) ? 'flagged' : 'detected',
-				'type'       => TransparAI_Meta::get_type( $id ),
-				'source'     => (string) get_post_meta( $id, TransparAI_Meta::KEY_SOURCE, true ),
-				'generator'  => TransparAI_Meta::get_generator( $id ),
-				'confidence' => (string) get_post_meta( $id, TransparAI_Meta::KEY_CONFIDENCE, true ),
-				'marked_by'  => (string) get_post_meta( $id, TransparAI_Meta::KEY_MARKED_BY, true ),
-			);
-		}
+		$rows = TransparAI_Meta::audit_rows( $status );
 
 		if ( 'ids' === $format ) {
 			// The ids format prints the items themselves, so it needs the bare
@@ -246,7 +218,7 @@ final class TransparAI_CLI {
 			return;
 		}
 
-		\WP_CLI\Utils\format_items( $format, $rows, array( 'ID', 'file', 'status', 'type', 'source', 'generator', 'confidence', 'marked_by' ) );
+		\WP_CLI\Utils\format_items( $format, $rows, TransparAI_Meta::audit_columns() );
 	}
 
 	/**
