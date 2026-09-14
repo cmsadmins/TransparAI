@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- WooCommerce (`TransparAI_WooCommerce`, no-op without the plugin): `woocommerce_available_variation`
+  hands the label state of the variation image to front.js (`TransparAI_Frontend::public_label()`),
+  which listens to `found_variation`/`reset_data` instead of watching `src`; an explicit null for
+  variations without an own image removes the parent's badge. Lightbox clones (PhotoSwipe
+  `.pswp__zoom-wrap`, core `.wp-lightbox-overlay`) get a badge layer from a page-built map keyed by
+  normalized upload path. `woocommerce_email_header`/`_footer` mute all badge output, the product
+  summary prints the text note at priority 45 and marks it placed so the description tab does not
+  repeat it. HPOS compatibility declared via `FeaturesUtil`.
 - Non-AI declaration per attachment (`_transparai_human` = `digitalCapture` | `digitalCreation`):
   `mark_human()` clears label and detection, `flag()` clears the declaration, the scanner's
   `planned_status()` returns `skipped` for declared media. Writer: `write_type()`/`expected_token()`

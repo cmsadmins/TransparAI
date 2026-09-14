@@ -97,6 +97,9 @@ final class TransparAI_Frontend {
 		if ( is_admin() || is_feed() || wp_doing_ajax() || ! TransparAI_Options::enabled( 'badge_enabled' ) ) {
 			return false;
 		}
+		if ( class_exists( 'TransparAI_WooCommerce' ) && TransparAI_WooCommerce::is_muted() ) {
+			return false; /* WooCommerce e-mail templates. */
+		}
 
 		/* Elementor preview iframe and static render mode. */
 		if ( isset( $_GET['elementor-preview'] ) || isset( $_GET['render_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only detection of a builder editing context.
@@ -154,6 +157,28 @@ final class TransparAI_Frontend {
 			return false;
 		}
 		return '' !== $kind;
+	}
+
+	/**
+	 * Everything a script needs to draw the badge of one attachment itself:
+	 * WooCommerce variation swaps and lightbox clones happen after the
+	 * server-side markup was printed. Null when nothing is shown.
+	 *
+	 * @return array{kind:string, label:string, short:string, classes:string, path:string, human:bool}|null
+	 */
+	public static function public_label( int $attachment_id ): ?array {
+		if ( ! self::should_filter() || ! self::renders_badge( $attachment_id ) ) {
+			return null;
+		}
+		$human = 'human' === self::label_kind( $attachment_id );
+		return array(
+			'kind'    => $human ? 'human' : 'ai',
+			'label'   => $human ? self::human_badge_label() : self::badge_label( $attachment_id ),
+			'short'   => $human ? self::human_short_label() : self::badge_short_label(),
+			'classes' => self::wrap_classes( 'trai-wrap', $attachment_id ),
+			'path'    => self::normalize_upload_path( (string) get_post_meta( $attachment_id, '_wp_attached_file', true ) ),
+			'human'   => $human,
+		);
 	}
 
 	/**

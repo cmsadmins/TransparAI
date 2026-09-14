@@ -539,6 +539,7 @@ require_once dirname( __DIR__ ) . '/includes/class-repair.php';
 require_once dirname( __DIR__ ) . '/includes/class-writer.php';
 require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
 require_once dirname( __DIR__ ) . '/includes/class-notice.php';
+require_once dirname( __DIR__ ) . '/includes/class-woocommerce.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 
 /**

@@ -434,6 +434,172 @@
 	}
 	window.addEventListener('load', labelAll);
 
+	/* =====================================================================
+	 * Badges the server could not print: lightbox clones and WooCommerce
+	 * variation swaps. Both work from a map of what the page already shows,
+	 * keyed by the normalized upload path, plus the variation data
+	 * WooCommerce hands over on found_variation.
+	 * =================================================================== */
+
+	var known = {};
+
+	function rememberPageBadges() {
+		document.querySelectorAll('.trai-wrap > img, .trai-thumbwrap > img').forEach(function (img) {
+			var wrap = img.parentNode;
+			var badge = wrap.querySelector('.trai-badge');
+			var src = img.currentSrc || img.src || img.getAttribute('data-src') || '';
+			if (!badge || !src) {
+				return;
+			}
+			var key = normalizePath(src);
+			if (!known[key]) {
+				known[key] = {
+					classes: wrap.className.replace(/\btrai-thumbwrap\b/, 'trai-wrap').replace(/\btrai-wrap--fill\b/, '').replace(/\btrai-lightbox\b/, ''),
+					label: badge.textContent,
+					short: badge.getAttribute('data-trai-short') || config.short,
+					human: badge.classList.contains('trai-badge--human')
+				};
+			}
+		});
+	}
+
+	function badgeFor(entry) {
+		var badge = makeBadge();
+		badge.textContent = entry.label;
+		badge.setAttribute('data-trai-short', entry.short || config.short);
+		if (entry.human) {
+			badge.classList.add('trai-badge--human');
+		}
+		return badge;
+	}
+
+	/* Zoom and lightbox layers clone the image outside its wrapper; put a
+	   badge layer over the clone. No entry: make sure no stale layer stays. */
+	function decorateLightbox(img, host) {
+		var old = host.querySelector('.trai-lightbox');
+		if (old) {
+			old.parentNode.removeChild(old);
+		}
+		var src = img.currentSrc || img.src || '';
+		var entry = src ? known[normalizePath(src)] : null;
+		if (!entry) {
+			return;
+		}
+		var layer = document.createElement('span');
+		layer.className = entry.classes + ' trai-lightbox trai-badge-manual';
+		layer.appendChild(badgeFor(entry));
+		host.appendChild(layer);
+	}
+
+	var lightboxHosts = '.pswp__zoom-wrap, .wp-lightbox-overlay .lightbox-image-container';
+
+	function watchLightboxes() {
+		if (!('MutationObserver' in window)) {
+			return;
+		}
+		var containers = document.querySelectorAll('.pswp, .wp-lightbox-overlay');
+		if (!containers.length) {
+			return;
+		}
+		var handle = function (img) {
+			var host = img.closest(lightboxHosts);
+			if (!host) {
+				return;
+			}
+			if (img.complete && img.currentSrc) {
+				decorateLightbox(img, host);
+			}
+			img.addEventListener('load', function () {
+				decorateLightbox(img, host);
+			});
+		};
+		var observer = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				if (mutation.type === 'attributes' && mutation.target.tagName === 'IMG') {
+					handle(mutation.target);
+				}
+				Array.prototype.forEach.call(mutation.addedNodes || [], function (node) {
+					if (node.nodeType !== 1) {
+						return;
+					}
+					if (node.tagName === 'IMG') {
+						handle(node);
+					} else if (node.querySelectorAll) {
+						Array.prototype.forEach.call(node.querySelectorAll('img'), handle);
+					}
+				});
+			});
+		});
+		Array.prototype.forEach.call(containers, function (container) {
+			observer.observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+		});
+	}
+
+	/* WooCommerce rewrites src on the existing gallery image when a
+	   variation is chosen. Listening to its own events (not to src) also
+	   covers the AJAX mode and stays quiet under lazy-loading plugins. */
+	function setGalleryBadge(img, entry) {
+		var wrap = img.parentNode && img.parentNode.classList && img.parentNode.classList.contains('trai-wrap') ? img.parentNode : null;
+		if (wrap) {
+			var oldBadge = wrap.querySelector('.trai-badge');
+			if (oldBadge) {
+				oldBadge.parentNode.removeChild(oldBadge);
+			}
+		}
+		if (!entry) {
+			return;
+		}
+		if (!wrap) {
+			wrap = document.createElement('span');
+			img.parentNode.insertBefore(wrap, img);
+			wrap.appendChild(img);
+		}
+		wrap.className = entry.classes;
+		wrap.appendChild(badgeFor(entry));
+		scaleBadgesSoon();
+	}
+
+	function watchVariations() {
+		if (!window.jQuery) {
+			return;
+		}
+		window.jQuery('form.variations_form').each(function () {
+			var form = this;
+			var scope = form.closest('.product') || document;
+			var galleryImage = scope.querySelector('.woocommerce-product-gallery__image .wp-post-image, .woocommerce-product-gallery__image--placeholder .wp-post-image');
+			if (!galleryImage || galleryImage.getAttribute('data-trai-woo')) {
+				return;
+			}
+			galleryImage.setAttribute('data-trai-woo', '1');
+			var original = known[normalizePath(galleryImage.currentSrc || galleryImage.src || '')] || null;
+			window.jQuery(form).on('found_variation', function (event, variation) {
+				var entry = variation && variation.transparai ? variation.transparai : null;
+				if (entry && entry.path) {
+					known[entry.path] = entry; /* Lightbox of the variation image. */
+				}
+				window.requestAnimationFrame(function () {
+					setGalleryBadge(galleryImage, entry);
+				});
+			});
+			window.jQuery(form).on('reset_data', function () {
+				window.requestAnimationFrame(function () {
+					setGalleryBadge(galleryImage, original);
+				});
+			});
+		});
+	}
+
+	function initLate() {
+		rememberPageBadges();
+		watchLightboxes();
+		watchVariations();
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initLate);
+	} else {
+		initLate();
+	}
+
 	/* Widgets that build their media late (lazy background galleries, AJAX
 	   grids) appear after the load event. Re-run on DOM changes, debounced;
 	   the done-guards make repeat runs cheap no-ops. */

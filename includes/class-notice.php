@@ -27,6 +27,20 @@ final class TransparAI_Notice {
 	public const MARKER = 'trai-notice';
 
 	/**
+	 * Posts whose note a template already printed in this request.
+	 *
+	 * @var array<int, true>
+	 */
+	private static array $placed = array();
+
+	/**
+	 * Tell the automatic note that a template printed the note itself.
+	 */
+	public static function mark_placed( int $post_id ): void {
+		self::$placed[ $post_id ] = true;
+	}
+
+	/**
 	 * Register hooks.
 	 */
 	public static function init(): void {
@@ -175,7 +189,10 @@ final class TransparAI_Notice {
 			return $content;
 		}
 		$post_id = (int) get_the_ID();
-		$text    = self::text( $post_id );
+		if ( isset( self::$placed[ $post_id ] ) ) {
+			return $content;
+		}
+		$text = self::text( $post_id );
 		if ( '' === $text ) {
 			return $content;
 		}

@@ -84,6 +84,19 @@ p .trai-wrap {
    setting) and ellipsized; hovering (or tapping, which triggers :hover on
    mobile browsers) the media expands it to the full label. The plain
    calc() line is the fallback for browsers without min(). */
+/* Badge layer for lightbox clones (WooCommerce PhotoSwipe, core lightbox):
+   an absolutely positioned wrapper over the cloned image, so the usual
+   position and style classes apply without touching the lightbox layout. */
+.trai-wrap.trai-lightbox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
+	--trai-badge-z: 2000;
+}
+
 /* Declared not AI: same placement, inverted tone, so it never reads as the AI badge. */
 .trai-badge.trai-badge--human {
 	background: rgba(255, 255, 255, 0.85);
