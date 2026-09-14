@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- Chatbot disclosure (`TransparAI_Chatbot`, `data/chatbots.json` with 44 vendors and their staffing):
+  options `chatbot_answer`, `chatbot_staffing`, `chatbot_notice_text`, `chatbot_output`; the notice is on
+  only with answer yes and staffing ai|mixed. Detection without any HTTP request: active plugin
+  directories plus class checks, theme files and snippet options (1 MB cap each), the scripts
+  `wp_scripts()` registered on a front-end page (hourly, kept 30 days), and a client report from an
+  administrator's browser (`wp_ajax_transparai_chatbot_seen`, nonce, ids validated against the bundled
+  list). Output: `mwai_chatbot_params` prepends the notice to AI Engine's first message idempotently,
+  `chatbot.js` places a fixed note next to the detected launcher (MutationObserver, 30-second stop),
+  or a server-rendered footer line. `transparai_chatbot_vendors` and `transparai_chatbot_notice` filters.
 - Setup (`TransparAI_Setup`, admin only): activation sets a 30-second transient, `admin_init`
   redirects to the settings page once, guarded against AJAX, network admin, missing capability,
   `activate-multi` and a finished setup. The card renders inside the settings page: step 1 triggers the

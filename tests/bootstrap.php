@@ -511,6 +511,22 @@ if ( ! function_exists( 'wp_localize_script' ) ) {
 	}
 }
 
+if ( ! function_exists( 'is_multisite' ) ) {
+	function is_multisite() {
+		return false;
+	}
+}
+if ( ! function_exists( 'get_stylesheet_directory' ) ) {
+	function get_stylesheet_directory() {
+		global $trai_test_theme_dir;
+		return (string) ( $trai_test_theme_dir ?? '' );
+	}
+}
+if ( ! function_exists( 'get_template_directory' ) ) {
+	function get_template_directory() {
+		return get_stylesheet_directory();
+	}
+}
 if ( ! function_exists( 'is_network_admin' ) ) {
 	function is_network_admin() {
 		return false;
@@ -627,6 +643,7 @@ require_once dirname( __DIR__ ) . '/includes/class-notice.php';
 require_once dirname( __DIR__ ) . '/includes/class-woocommerce.php';
 require_once dirname( __DIR__ ) . '/includes/class-rest.php';
 require_once dirname( __DIR__ ) . '/admin/class-setup.php';
+require_once dirname( __DIR__ ) . '/includes/class-chatbot.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 
 /**

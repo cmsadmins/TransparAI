@@ -44,6 +44,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-frontend.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-notice.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-woocommerce.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-rest.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-chatbot.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 
 if ( is_admin() ) {
@@ -79,6 +80,7 @@ if ( ! class_exists( 'TransparAI' ) ) {
 			TransparAI_Notice::init();
 			TransparAI_WooCommerce::init();
 			TransparAI_REST::init();
+			TransparAI_Chatbot::init();
 			TransparAI_Integrations::init();
 
 			if ( is_admin() ) {

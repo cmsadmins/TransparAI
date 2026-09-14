@@ -55,6 +55,12 @@ final class TransparAI_Options {
 			'content_excerpt_notice'  => '0', /* Also append a plain-text line to excerpts (archives, teasers). */
 			'feed_notice'             => '0', /* Plain-text note in RSS/Atom items plus dc:description. */
 
+			/* Chatbot disclosure: the operator's answer leads, detection only informs it. */
+			'chatbot_answer'          => 'unknown', /* unknown | yes | no: does the site run a chat? */
+			'chatbot_staffing'        => 'mixed', /* ai | human | mixed: who answers in it. */
+			'chatbot_notice_text'     => '', /* Empty = translated default. */
+			'chatbot_output'          => 'badge', /* chat (first bot message, AI Engine) | badge (next to the widget) | footer. */
+
 			/* Automatic detection. */
 			'autodetect'              => '1',
 			'mode_certain'            => 'flag', /* flag | queue | off. */
@@ -133,6 +139,9 @@ final class TransparAI_Options {
 
 			'content_notice_position' => array( 'before', 'after' ),
 			'content_default_level'   => array_merge( array( '' ), TransparAI_Meta::CONTENT_LEVELS ),
+			'chatbot_answer'          => array( 'unknown', 'yes', 'no' ),
+			'chatbot_staffing'        => array( 'ai', 'human', 'mixed' ),
+			'chatbot_output'          => array( 'chat', 'badge', 'footer' ),
 		);
 		$booleans = array(
 			'badge_enabled',
@@ -175,7 +184,7 @@ final class TransparAI_Options {
 				$clean[ $key ] = $valid ? $value : '';
 				continue;
 			}
-			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text' ), true ) ) {
+			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text', 'chatbot_notice_text' ), true ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_text_field( (string) $raw[ $key ] ) : '';
 				$clean[ $key ] = mb_substr( $value, 0, in_array( $key, array( 'badge_text', 'content_responsible', 'human_badge_text' ), true ) ? 100 : 300 );
 				continue;

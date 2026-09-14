@@ -534,6 +534,15 @@
 	color: #50575e;
 }
 
+/* Chatbot findings. */
+.trai-findings {
+	margin: 0;
+}
+
+.trai-findings li {
+	margin: 0 0 4px;
+}
+
 /* Setup card. */
 .trai-setup-steps {
 	list-style: none;

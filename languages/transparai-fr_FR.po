@@ -1101,3 +1101,88 @@ msgstr "réglages des fichiers"
 #: admin/class-setup.php:368
 msgid "Not now"
 msgstr "Pas maintenant"
+
+#: admin/class-settings.php:475
+msgid "Chatbot disclosure"
+msgstr "Mention pour le chatbot"
+
+#: admin/class-settings.php:476
+msgid "Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false \"this is an AI\" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server."
+msgstr "Les visiteurs doivent savoir quand ils parlent à un système d’IA, au plus tard au début de la conversation. Votre réponse décide ; ce que l’extension trouve sur le site ne fait qu’informer, car la plupart des widgets de chat sont des chats en direct où une personne répond, et un faux « ceci est une IA » tromperait les visiteurs. La détection est locale : extensions actives, extraits du thème, scripts enregistrés par une page et ce que votre propre navigateur a vu en tant qu’administrateur. Aucune requête ne quitte le serveur."
+
+#: admin/class-settings.php:480
+msgid "Found on this site"
+msgstr "Trouvé sur ce site"
+
+#: admin/class-settings.php:483
+msgid "No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here."
+msgstr "Aucun widget de chat ou chatbot connu trouvé pour l’instant. Ouvrez quelques pages de votre site en étant connecté ; la vérification s’exécute dans votre navigateur et se signale ici."
+
+#: admin/class-settings.php:488
+msgid "a bot answers"
+msgstr "un bot répond"
+
+#: admin/class-settings.php:489
+msgid "people answer"
+msgstr "des personnes répondent"
+
+#: admin/class-settings.php:490
+msgid "live chat with optional bot"
+msgstr "chat en direct avec bot optionnel"
+
+#: admin/class-settings.php:491
+msgid "staffing unknown"
+msgstr "personnel inconnu"
+
+#: admin/class-settings.php:502
+msgid "Does this site run a chat?"
+msgstr "Ce site utilise-t-il un chat ?"
+
+#: admin/class-settings.php:509
+msgid "Not decided yet"
+msgstr "Pas encore décidé"
+
+#: admin/class-settings.php:510
+msgid "Yes"
+msgstr "Oui"
+
+#: admin/class-settings.php:511
+msgid "No"
+msgstr "Non"
+
+#: admin/class-settings.php:518
+msgid "An AI answers"
+msgstr "Une IA répond"
+
+#: admin/class-settings.php:519
+msgid "People answer, an AI sometimes"
+msgstr "Des personnes répondent, parfois une IA"
+
+#: admin/class-settings.php:520
+msgid "Only people answer"
+msgstr "Seules des personnes répondent"
+
+#: admin/class-settings.php:524
+msgid "The notice appears only with \"Yes\" and an AI that answers at least sometimes."
+msgstr "La mention n’apparaît qu’avec « Oui » et une IA qui répond au moins parfois."
+
+#: admin/class-settings.php:528
+msgid "Notice"
+msgstr "Mention"
+
+#: admin/class-settings.php:530
+#: includes/class-chatbot.php:111
+msgid "You are chatting with an AI system."
+msgstr "Vous discutez avec un système d’IA."
+
+#: admin/class-settings.php:536
+msgid "As the first message of the bot (AI Engine; otherwise next to the widget)"
+msgstr "Comme premier message du bot (AI Engine ; sinon à côté du widget)"
+
+#: admin/class-settings.php:537
+msgid "Next to the chat widget"
+msgstr "À côté du widget de chat"
+
+#: admin/class-settings.php:538
+msgid "As a line at the end of every page"
+msgstr "Comme ligne à la fin de chaque page"

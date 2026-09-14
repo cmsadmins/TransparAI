@@ -46,6 +46,10 @@ Not every declaration says "AI". Any media file can be declared as a camera phot
 
 Every post, page and public custom post type carries an AI level for its text: not classified, no AI used, AI-assisted, AI-generated, or AI-generated and reviewed by a person. The level is set in the document sidebar of the block editor (a meta box in the classic editor), in Quick Edit straight from the post list, or for many posts at once with Bulk Edit; the list gets a sortable column and a filter. AI levels put a configurable note ahead of or after the content, and the "AI notice" block or the `[transparai_notice]` shortcode place that same note wherever you want it instead, without ever duplicating it. For reviewed texts the plugin records who reviewed the post and when, together with a fingerprint of the text and the images in it, so a later change to either shows up as "changed since review" instead of hiding behind an old approval. The note can also be appended to excerpts and to RSS feed items, where a machine-readable `dc:description` element carries it as well, and each AI-written post gets its own Schema.org node with the IPTC digital source type, the same convention the images use.
 
+**Chatbot disclosure**
+
+Visitors must be told when they talk to an AI system, at the latest when the conversation starts. TransparAI puts that notice into the first message of the bot for AI Engine, next to the chat launcher for every other widget, or as a line at the end of each page. Your answer decides whether the notice appears at all, and who answers in the chat: most chat widgets are live chats where a person replies, and a false "this is an AI" would mislead visitors, so detection never switches anything on by itself. What it does is tell you what it found: chat plugins by their directory, widget snippets in the theme and in the usual snippet options, the scripts a page registers, and, when you browse your site as an administrator, the widgets your own browser saw. The bundled list knows more than 40 vendors together with who typically answers in them. No request leaves the server, not even to the site itself.
+
 **Machine-readable AI labeling in the files**
 
 For labeled files TransparAI writes the IPTC digital source type (trainedAlgorithmicMedia, or compositeWithTrainedAlgorithmicMedia for AI-edited media) as XMP metadata into JPEG, PNG, WebP and AVIF, including every size variant WordPress generated. Google reads this field and can show an AI notice in image search. Each page additionally carries Schema.org JSON-LD (ImageObject and VideoObject with digitalSourceType) for its labeled media, so search engines get the AI declaration without opening a single file. The nodes carry the digital source type twice on purpose: as the Schema.org enumeration value the property is defined with, and as the IPTC vocabulary URI in a typed property, so both kinds of consumer read it.
@@ -102,6 +106,10 @@ Open the attachment details and click "Show file metadata". It lists every file 
 = Does the marking survive my CDN? =
 
 Not always, and that is worth checking. Image optimizers at the edge, Cloudflare Polish and Jetpack Photon among them, re-encode images while delivering them and drop every metadata block in the process. The file on your server stays perfect while visitors and search engines receive a bare image, and nothing in WordPress shows it. Enable the delivery check in the settings, then press "Check delivery" on a labeled image: the plugin fetches that image from your own public URL and tells you whether the declaration arrived. If it did not, the fix is in your CDN configuration (keep metadata, or exclude labeled images from re-encoding), not in this plugin.
+
+= Does the plugin detect my chatbot? =
+
+It recognizes more than 40 chat and chatbot vendors by their plugin directory, their script hosts, their JavaScript globals and their widget markup, entirely locally. The finding shows on the settings page with a hint whether a bot or people usually answer there. You decide whether the notice appears; the plugin never switches it on from a finding alone, because a live chat with a person behind it is not an AI system.
 
 = Can I also label AI-written text? =
 
@@ -238,6 +246,7 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 == Changelog ==
 
 = Unreleased =
+* Chatbot disclosure: the notice visitors need before they talk to an AI system, as the first message of the bot (AI Engine), next to the chat launcher, or as a footer line. Local detection of more than 40 chat vendors (plugins, theme snippets, registered scripts, the administrator's own browser) with a staffing hint per vendor; the site operator's answer decides, detection never switches the notice on.
 * First-run setup on the settings page: three steps that each write something real (library scan, badge look with live preview, file writing), a journal that can undo every step, per-user "Not now", and an activation redirect that respects bulk activations, AJAX and network admin.
 * REST API under transparai/v1: paginated audit rows, per-file detail with history and file state, every label and declaration action, a re-check, and the audit report. Authenticated only, with the capability checked on the object.
 * Audit trail: fifty events per file, each with the state it replaced, the trigger and the editor's name; a site log for settings changes, scans, sweeps and bulk actions. The CSV export carries the history, a byte-order mark and a formula guard; the new print view adds a document hash over the facts, the guidance basis and the stated limitations. Exports are paginated, so large libraries no longer run one unbounded query.

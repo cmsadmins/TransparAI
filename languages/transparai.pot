@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-14T05:55:30+00:00\n"
+"POT-Creation-Date: 2026-09-14T06:02:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: transparai\n"
@@ -231,6 +231,7 @@ msgstr ""
 #: admin/class-media-library.php:288
 #: admin/class-media-library.php:329
 #: admin/class-setup.php:194
+#: includes/class-chatbot.php:357
 #: includes/class-delivery.php:66
 #: includes/class-scanner.php:233
 #: includes/class-scanner.php:309
@@ -734,133 +735,218 @@ msgid "Add the note to RSS feed items (content, summary and a machine-readable d
 msgstr ""
 
 #: admin/class-settings.php:475
-msgid "Automatic detection"
+msgid "Chatbot disclosure"
 msgstr ""
 
-#: admin/class-settings.php:478
-msgid "Detect on upload"
+#: admin/class-settings.php:476
+msgid "Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false \"this is an AI\" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
 
-#: admin/class-settings.php:481
-msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
+#: admin/class-settings.php:480
+msgid "Found on this site"
 msgstr ""
 
-#: admin/class-settings.php:485
-msgid "Standard declarations"
+#: admin/class-settings.php:483
+msgid "No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here."
 msgstr ""
 
-#: admin/class-settings.php:492
-#: admin/class-settings.php:509
-msgid "Label automatically"
+#: admin/class-settings.php:488
+msgid "a bot answers"
 msgstr ""
 
-#: admin/class-settings.php:493
-#: admin/class-settings.php:510
-msgid "Put into review queue"
+#: admin/class-settings.php:489
+msgid "people answer"
 msgstr ""
 
-#: admin/class-settings.php:494
-#: admin/class-settings.php:511
-msgid "Ignore"
+#: admin/class-settings.php:490
+msgid "live chat with optional bot"
 msgstr ""
 
-#: admin/class-settings.php:498
-msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
+#: admin/class-settings.php:491
+msgid "staffing unknown"
 msgstr ""
 
 #: admin/class-settings.php:502
-msgid "Generator signatures"
+msgid "Does this site run a chat?"
 msgstr ""
 
-#: admin/class-settings.php:515
-msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
+#: admin/class-settings.php:509
+msgid "Not decided yet"
+msgstr ""
+
+#: admin/class-settings.php:510
+msgid "Yes"
+msgstr ""
+
+#: admin/class-settings.php:511
+msgid "No"
+msgstr ""
+
+#: admin/class-settings.php:518
+msgid "An AI answers"
 msgstr ""
 
 #: admin/class-settings.php:519
-msgid "More sources"
+msgid "People answer, an AI sometimes"
 msgstr ""
 
-#: admin/class-settings.php:522
-msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
+#: admin/class-settings.php:520
+msgid "Only people answer"
 msgstr ""
 
 #: admin/class-settings.php:524
-msgid "Use filename patterns as review hints (never labels automatically)"
+msgid "The notice appears only with \"Yes\" and an AI that answers at least sometimes."
 msgstr ""
 
-#: admin/class-settings.php:531
-msgid "Machine-readable file metadata"
+#: admin/class-settings.php:528
+msgid "Notice"
 msgstr ""
 
-#: admin/class-settings.php:534
-msgid "Write into files"
+#: admin/class-settings.php:530
+#: includes/class-chatbot.php:111
+msgid "You are chatting with an AI system."
+msgstr ""
+
+#: admin/class-settings.php:536
+msgid "As the first message of the bot (AI Engine; otherwise next to the widget)"
 msgstr ""
 
 #: admin/class-settings.php:537
-msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
+msgid "Next to the chat widget"
 msgstr ""
 
-#: admin/class-settings.php:539
-msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
-msgstr ""
-
-#: admin/class-settings.php:541
-msgid "Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote"
-msgstr ""
-
-#: admin/class-settings.php:545
-msgid "Auto-repair"
+#: admin/class-settings.php:538
+msgid "As a line at the end of every page"
 msgstr ""
 
 #: admin/class-settings.php:548
-msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
+msgid "Automatic detection"
 msgstr ""
 
-#: admin/class-settings.php:552
-msgid "Delivery check"
+#: admin/class-settings.php:551
+msgid "Detect on upload"
 msgstr ""
 
-#: admin/class-settings.php:555
-msgid "Allow checking whether the declaration survives delivery"
+#: admin/class-settings.php:554
+msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
 
-#: admin/class-settings.php:556
-msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
+#: admin/class-settings.php:558
+msgid "Standard declarations"
 msgstr ""
 
-#: admin/class-settings.php:559
-msgid "Check a sample of five files"
+#: admin/class-settings.php:565
+#: admin/class-settings.php:582
+msgid "Label automatically"
 msgstr ""
 
 #: admin/class-settings.php:566
-msgid "Structured data"
+#: admin/class-settings.php:583
+msgid "Put into review queue"
 msgstr ""
 
-#: admin/class-settings.php:569
-msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
+#: admin/class-settings.php:567
+#: admin/class-settings.php:584
+msgid "Ignore"
 msgstr ""
 
-#: admin/class-settings.php:576
-msgid "Uninstall"
+#: admin/class-settings.php:571
+msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
 msgstr ""
 
-#: admin/class-settings.php:579
-msgid "Data removal"
-msgstr ""
-
-#: admin/class-settings.php:582
-msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
+#: admin/class-settings.php:575
+msgid "Generator signatures"
 msgstr ""
 
 #: admin/class-settings.php:588
+msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
+msgstr ""
+
+#: admin/class-settings.php:592
+msgid "More sources"
+msgstr ""
+
+#: admin/class-settings.php:595
+msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
+msgstr ""
+
+#: admin/class-settings.php:597
+msgid "Use filename patterns as review hints (never labels automatically)"
+msgstr ""
+
+#: admin/class-settings.php:604
+msgid "Machine-readable file metadata"
+msgstr ""
+
+#: admin/class-settings.php:607
+msgid "Write into files"
+msgstr ""
+
+#: admin/class-settings.php:610
+msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
+msgstr ""
+
+#: admin/class-settings.php:612
+msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
+msgstr ""
+
+#: admin/class-settings.php:614
+msgid "Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote"
+msgstr ""
+
+#: admin/class-settings.php:618
+msgid "Auto-repair"
+msgstr ""
+
+#: admin/class-settings.php:621
+msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
+msgstr ""
+
+#: admin/class-settings.php:625
+msgid "Delivery check"
+msgstr ""
+
+#: admin/class-settings.php:628
+msgid "Allow checking whether the declaration survives delivery"
+msgstr ""
+
+#: admin/class-settings.php:629
+msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
+msgstr ""
+
+#: admin/class-settings.php:632
+msgid "Check a sample of five files"
+msgstr ""
+
+#: admin/class-settings.php:639
+msgid "Structured data"
+msgstr ""
+
+#: admin/class-settings.php:642
+msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
+msgstr ""
+
+#: admin/class-settings.php:649
+msgid "Uninstall"
+msgstr ""
+
+#: admin/class-settings.php:652
+msgid "Data removal"
+msgstr ""
+
+#: admin/class-settings.php:655
+msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
+msgstr ""
+
+#: admin/class-settings.php:661
 msgid "Save changes"
 msgstr ""
 
-#: admin/class-settings.php:593
+#: admin/class-settings.php:666
 msgid "TransparAI links"
 msgstr ""
 
-#: admin/class-settings.php:596
+#: admin/class-settings.php:669
 msgid "Support forum"
 msgstr ""
 

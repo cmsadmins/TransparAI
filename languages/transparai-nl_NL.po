@@ -1101,3 +1101,88 @@ msgstr "bestandsinstellingen"
 #: admin/class-setup.php:368
 msgid "Not now"
 msgstr "Nu niet"
+
+#: admin/class-settings.php:475
+msgid "Chatbot disclosure"
+msgstr "Chatbotmelding"
+
+#: admin/class-settings.php:476
+msgid "Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false \"this is an AI\" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server."
+msgstr "Bezoekers moeten weten wanneer ze met een AI-systeem praten, uiterlijk bij het begin van het gesprek. Jouw antwoord beslist; wat de plugin op de site vindt, is alleen informatie, want de meeste chatwidgets zijn livechats waarin een mens antwoordt, en een onjuiste „dit is een AI“ zou bezoekers misleiden. De detectie is lokaal: actieve plugins, themafragmenten, de scripts die een pagina registreert en wat je eigen browser als beheerder heeft gezien. Geen enkel verzoek verlaat de server."
+
+#: admin/class-settings.php:480
+msgid "Found on this site"
+msgstr "Gevonden op deze site"
+
+#: admin/class-settings.php:483
+msgid "No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here."
+msgstr "Tot nu toe geen bekende chat- of chatbotwidget gevonden. Open een paar pagina’s van je site terwijl je bent ingelogd; de controle draait in je browser en meldt zich hier."
+
+#: admin/class-settings.php:488
+msgid "a bot answers"
+msgstr "een bot antwoordt"
+
+#: admin/class-settings.php:489
+msgid "people answer"
+msgstr "mensen antwoorden"
+
+#: admin/class-settings.php:490
+msgid "live chat with optional bot"
+msgstr "livechat met optionele bot"
+
+#: admin/class-settings.php:491
+msgid "staffing unknown"
+msgstr "bemensing onbekend"
+
+#: admin/class-settings.php:502
+msgid "Does this site run a chat?"
+msgstr "Draait er een chat op deze site?"
+
+#: admin/class-settings.php:509
+msgid "Not decided yet"
+msgstr "Nog niet besloten"
+
+#: admin/class-settings.php:510
+msgid "Yes"
+msgstr "Ja"
+
+#: admin/class-settings.php:511
+msgid "No"
+msgstr "Nee"
+
+#: admin/class-settings.php:518
+msgid "An AI answers"
+msgstr "Een AI antwoordt"
+
+#: admin/class-settings.php:519
+msgid "People answer, an AI sometimes"
+msgstr "Mensen antwoorden, soms een AI"
+
+#: admin/class-settings.php:520
+msgid "Only people answer"
+msgstr "Alleen mensen antwoorden"
+
+#: admin/class-settings.php:524
+msgid "The notice appears only with \"Yes\" and an AI that answers at least sometimes."
+msgstr "De melding verschijnt alleen bij „Ja“ en een AI die minstens soms antwoordt."
+
+#: admin/class-settings.php:528
+msgid "Notice"
+msgstr "Melding"
+
+#: admin/class-settings.php:530
+#: includes/class-chatbot.php:111
+msgid "You are chatting with an AI system."
+msgstr "Je chat met een AI-systeem."
+
+#: admin/class-settings.php:536
+msgid "As the first message of the bot (AI Engine; otherwise next to the widget)"
+msgstr "Als eerste bericht van de bot (AI Engine; anders naast de widget)"
+
+#: admin/class-settings.php:537
+msgid "Next to the chat widget"
+msgstr "Naast de chatwidget"
+
+#: admin/class-settings.php:538
+msgid "As a line at the end of every page"
+msgstr "Als regel aan het einde van elke pagina"

@@ -472,6 +472,79 @@ th{background:#f6f7f7;}
 				</section>
 
 				<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Chatbot disclosure', 'transparai' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false "this is an AI" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server.', 'transparai' ); ?></p>
+				<?php $findings = TransparAI_Chatbot::findings(); ?>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Found on this site', 'transparai' ); ?></th>
+						<td>
+							<?php if ( array() === $findings ) : ?>
+								<p><?php esc_html_e( 'No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here.', 'transparai' ); ?></p>
+							<?php else : ?>
+								<ul class="trai-findings">
+									<?php
+									$staffing_labels = array(
+										'ai'      => __( 'a bot answers', 'transparai' ),
+										'human'   => __( 'people answer', 'transparai' ),
+										'mixed'   => __( 'live chat with optional bot', 'transparai' ),
+										'unknown' => __( 'staffing unknown', 'transparai' ),
+									);
+									foreach ( $findings as $finding ) :
+										?>
+										<li><strong><?php echo esc_html( $finding['name'] ); ?></strong> (<?php echo esc_html( $staffing_labels[ $finding['staffing'] ] ?? $finding['staffing'] ); ?>), <?php echo esc_html( $finding['evidence'] ); ?></li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Does this site run a chat?', 'transparai' ); ?></th>
+						<td>
+							<?php
+							self::select(
+								'chatbot_answer',
+								$options['chatbot_answer'],
+								array(
+									'unknown' => __( 'Not decided yet', 'transparai' ),
+									'yes'     => __( 'Yes', 'transparai' ),
+									'no'      => __( 'No', 'transparai' ),
+								)
+							);
+							self::select(
+								'chatbot_staffing',
+								$options['chatbot_staffing'],
+								array(
+									'ai'    => __( 'An AI answers', 'transparai' ),
+									'mixed' => __( 'People answer, an AI sometimes', 'transparai' ),
+									'human' => __( 'Only people answer', 'transparai' ),
+								)
+							);
+							?>
+							<p class="description"><?php esc_html_e( 'The notice appears only with "Yes" and an AI that answers at least sometimes.', 'transparai' ); ?></p>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="trai-chatbot-text"><?php esc_html_e( 'Notice', 'transparai' ); ?></label></th>
+						<td>
+							<input type="text" id="trai-chatbot-text" class="regular-text" name="<?php self::name( 'chatbot_notice_text' ); ?>" value="<?php echo esc_attr( $options['chatbot_notice_text'] ); ?>" placeholder="<?php esc_attr_e( 'You are chatting with an AI system.', 'transparai' ); ?>" />
+							<?php
+							self::select(
+								'chatbot_output',
+								$options['chatbot_output'],
+								array(
+									'chat'   => __( 'As the first message of the bot (AI Engine; otherwise next to the widget)', 'transparai' ),
+									'badge'  => __( 'Next to the chat widget', 'transparai' ),
+									'footer' => __( 'As a line at the end of every page', 'transparai' ),
+								)
+							);
+							?>
+						</td>
+					</tr>
+				</table>
+				</section>
+
+				<section class="trai-card">
 				<h2 class="trai-card-title"><?php esc_html_e( 'Automatic detection', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>

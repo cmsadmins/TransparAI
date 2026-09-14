@@ -97,6 +97,27 @@ p .trai-wrap {
 	--trai-badge-z: 2000;
 }
 
+/* Chatbot notice placed next to the chat launcher by chatbot.js. Neutral,
+   fixed, above typical widget layers; the script sets bottom and right. */
+.trai-chat-notice {
+	position: fixed;
+	right: 8px;
+	bottom: 88px;
+	z-index: 2147483000;
+	max-width: 260px;
+	padding: 6px 10px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	font-size: 12px;
+	line-height: 1.4;
+	pointer-events: none;
+}
+
+.trai-chat-notice[hidden] {
+	display: none;
+}
+
 /* Declared not AI: same placement, inverted tone, so it never reads as the AI badge. */
 .trai-badge.trai-badge--human {
 	background: rgba(255, 255, 255, 0.85);
