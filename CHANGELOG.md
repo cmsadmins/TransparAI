@@ -1,5 +1,74 @@
 # Changelog
 
+## 1.0.3 (2026-09-14)
+
+- Chatbot disclosure (`TransparAI_Chatbot`, `data/chatbots.json` with 44 vendors and their staffing):
+  options `chatbot_answer`, `chatbot_staffing`, `chatbot_notice_text`, `chatbot_output`; the notice is on
+  only with answer yes and staffing ai|mixed. Detection without any HTTP request: active plugin
+  directories plus class checks, theme files and snippet options (1 MB cap each), the scripts
+  `wp_scripts()` registered on a front-end page (hourly, kept 30 days), and a client report from an
+  administrator's browser (`wp_ajax_transparai_chatbot_seen`, nonce, ids validated against the bundled
+  list). Output: `mwai_chatbot_params` prepends the notice to AI Engine's first message idempotently,
+  `chatbot.js` places a fixed note next to the detected launcher (MutationObserver, 30-second stop),
+  or a server-rendered footer line. `transparai_chatbot_vendors` and `transparai_chatbot_notice` filters.
+- Setup (`TransparAI_Setup`, admin only): activation sets a 30-second transient, `admin_init`
+  redirects to the settings page once, guarded against AJAX, network admin, missing capability,
+  `activate-multi` and a finished setup. The card renders inside the settings page: step 1 triggers the
+  existing scan loop, steps 2 and 3 post through `admin_post_transparai_setup` and only ever touch
+  their own keys (`STEP_KEYS`); each apply snapshots the previous values into
+  `transparai_setup_journal` (cap 20) and `undo()` restores exactly that snapshot. Finish sets
+  `transparai_setup_done`, "Not now" is user meta. Front-end styles are loaded on the settings page
+  for the live badge preview.
+- REST API `transparai/v1` (`TransparAI_REST`): `GET /media` (paginated, status enum), `GET|POST
+  /media/{id}` (detail with history and file state; actions flag|unflag|confirm|dismiss|human_*),
+  `POST /media/{id}/scan`, `GET /report`. Args declared with enum/minimum/maximum so the server
+  validates before the handler; route gate `upload_files`, per-object `edit_post` in the permission
+  callback; report needs `manage_options`. No public route.
+- History: `HISTORY_LIMIT` 50, entries carry `p` (state before: ai|detected|dismissed|human) and `n`
+  (display name, survives user deletion); `record()` takes the previous state, every mutator passes
+  it. `history_text()` renders one line per file for exports. Site log option `transparai_log`
+  (cap 200): settings-saved (changed keys), scan-started/finished, sweep-finished, bulk-*.
+- Report: `TransparAI_Meta::report()` is the canonical record (counts, items with history,
+  `guidance_basis`, `limitations`, `truncated` at 5000, `document_hash` = sha256 over the sorted
+  facts without timestamps). `audit_rows()` pages through 200-row queries instead of
+  `posts_per_page => -1`. CSV export: BOM, `;`, formula guard, history column; new print view
+  (`admin_post_transparai_print`) with hash, basis, limitations and print-to-PDF.
+- WooCommerce (`TransparAI_WooCommerce`, no-op without the plugin): `woocommerce_available_variation`
+  hands the label state of the variation image to front.js (`TransparAI_Frontend::public_label()`),
+  which listens to `found_variation`/`reset_data` instead of watching `src`; an explicit null for
+  variations without an own image removes the parent's badge. Lightbox clones (PhotoSwipe
+  `.pswp__zoom-wrap`, core `.wp-lightbox-overlay`) get a badge layer from a page-built map keyed by
+  normalized upload path. `woocommerce_email_header`/`_footer` mute all badge output, the product
+  summary prints the text note at priority 45 and marks it placed so the description tab does not
+  repeat it. HPOS compatibility declared via `FeaturesUtil`.
+- Non-AI declaration per attachment (`_transparai_human` = `digitalCapture` | `digitalCreation`):
+  `mark_human()` clears label and detection, `flag()` clears the declaration, the scanner's
+  `planned_status()` returns `skipped` for declared media. Writer: `write_type()`/`expected_token()`
+  decide what a file should carry; a declaration is only written into files without a foreign
+  source type (`has_foreign_dst()`), `file_is_marked()` takes the expected token, the repair sweep
+  covers declared media via the new `labeled` meta query and accepts any declaration for them.
+  Front end: structured data always, `trai-badge--human` only with `human_badge`. Media library:
+  select in the attachment field, grid and list filter `human`, three native bulk actions,
+  `wp transparai human`, `status --status=human`.
+- AI-written text: the per-post checkbox became a disclosure level (`none`, `assisted`, `generated`,
+  `generated_reviewed`), stored in the same meta key; the old `'1'` reads as `generated`. Block
+  editor panel over the entity store (saves with the post, lands in revisions), classic meta box
+  hidden there via `__back_compat_meta_box`, Quick Edit with a data marker in the list column so a
+  Quick Edit save never resets the level, Bulk Edit through the core `bulk_edit_posts` hook (offered
+  from WordPress 6.3, where that hook exists), sortable column via a LEFT JOIN, list filter.
+- Review stamp (`_transparai_content_review`): reviewer, date and a sha256 over title, content,
+  featured image and embedded attachments with their AI label, set through the meta hooks so every
+  save path is covered. `is_review_current()` compares it and the list says "changed since review".
+- `TransparAI_Notice` is the single render path for the note: automatic note at `the_content` 30
+  with the full guard stack, `[transparai_notice]` shortcode, server-rendered `transparai/notice`
+  block (block.json, hand-written ES5 editor script, no build step), excerpt and feed variants
+  (`the_content_feed`, `the_excerpt_rss`, `rss2_item` with `dc:description`). Placing the block or
+  shortcode switches the automatic note off (`has_block()` plus rendered marker).
+- JSON-LD: `Article`/`WebPage` node for AI-written posts, stable `@id` on every node, and the source
+  type as both the Schema.org enumeration and the IPTC URI in `additionalProperty`; printed with
+  `wp_print_inline_script_tag()` and the HEX flags. Footer output no longer depends on the badge
+  switch for the text node.
+
 ## 1.0.2 (2026-09-08)
 
 - Fixed: the library scan stopped after its first batch on sites where another plugin or the theme

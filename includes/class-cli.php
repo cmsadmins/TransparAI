@@ -57,7 +57,6 @@ final class TransparAI_CLI {
 			'fields'                 => 'ids',
 			'orderby'                => 'ID',
 			'order'                  => 'ASC',
-			'posts_per_page'         => -1,
 			'no_found_rows'          => true,
 			'update_post_term_cache' => false,
 		);
@@ -71,7 +70,7 @@ final class TransparAI_CLI {
 			);
 		}
 
-		$ids   = ( new WP_Query( $query_args ) )->posts;
+		$ids   = $this->all_ids( $query_args );
 		$total = count( $ids );
 		if ( 0 === $total ) {
 			WP_CLI::success( 'Nothing to scan.' );
@@ -188,12 +187,60 @@ final class TransparAI_CLI {
 	}
 
 	/**
+	 * Declare attachments as not AI-made (camera photo or human digital work), or withdraw that.
+	 *
+	 * The declaration removes any AI label, keeps the scanner from re-queuing the
+	 * file, and (with file writing enabled) writes digitalCapture or
+	 * digitalCreation into files that carry no other digital source type.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <id>...
+	 * : One or more attachment IDs.
+	 *
+	 * [--type=<type>]
+	 * : capture (default) for a camera photo, creation for human digital work.
+	 *
+	 * [--remove]
+	 * : Withdraw the declaration instead.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai human 12 13 --type=capture
+	 *
+	 * @param array $args       Attachment IDs.
+	 * @param array $assoc_args Flags.
+	 */
+	public function human( array $args, array $assoc_args ): void {
+		$type   = isset( $assoc_args['type'] ) ? sanitize_key( (string) $assoc_args['type'] ) : 'capture';
+		$remove = ! empty( $assoc_args['remove'] );
+		if ( ! $remove && '' === TransparAI_Meta::sanitize_human( $type ) ) {
+			WP_CLI::error( 'Unknown --type, use capture or creation.' );
+		}
+		$count = 0;
+		foreach ( $args as $id ) {
+			$id = absint( $id );
+			if ( ! $id || 'attachment' !== get_post_type( $id ) ) {
+				WP_CLI::warning( sprintf( '#%s is not an attachment, skipped.', $id ) );
+				continue;
+			}
+			if ( $remove ) {
+				TransparAI_Meta::unmark_human( $id );
+			} else {
+				TransparAI_Meta::mark_human( $id, $type, 'cli' );
+			}
+			++$count;
+		}
+		WP_CLI::success( sprintf( $remove ? '%d declaration(s) removed.' : '%d attachment(s) declared as not AI-made.', $count ) );
+	}
+
+	/**
 	 * List labeled or detected attachments (audit export).
 	 *
 	 * ## OPTIONS
 	 *
 	 * [--status=<status>]
-	 * : flagged (default), detected, or all.
+	 * : flagged (default), detected, human, or all.
 	 *
 	 * [--format=<format>]
 	 * : table (default), csv, json, ids or count.
@@ -397,20 +444,41 @@ final class TransparAI_CLI {
 	 * @return int[]
 	 */
 	private function flagged_ids(): array {
-		return array_map(
-			'intval',
-			( new WP_Query(
-				array(
-					'post_type'              => 'attachment',
-					'post_status'            => 'inherit',
-					'fields'                 => 'ids',
-					'posts_per_page'         => -1,
-					'no_found_rows'          => true,
-					'update_post_term_cache' => false,
-					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- explicit CLI bulk operation.
-					'meta_query'             => TransparAI_Meta::meta_query( '1' ),
-				)
-			) )->posts
+		return $this->all_ids(
+			array(
+				'post_type'              => 'attachment',
+				'post_status'            => 'inherit',
+				'fields'                 => 'ids',
+				'orderby'                => 'ID',
+				'order'                  => 'ASC',
+				'no_found_rows'          => true,
+				'update_post_term_cache' => false,
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- explicit CLI bulk operation.
+				'meta_query'             => TransparAI_Meta::meta_query( '1' ),
+			)
 		);
+	}
+
+	/**
+	 * All matching attachment IDs, fetched in pages of 500 so a large
+	 * library never becomes one unbounded query.
+	 *
+	 * @param array<string, mixed> $args WP_Query arguments without pagination.
+	 * @return int[]
+	 */
+	private function all_ids( array $args ): array {
+		$ids  = array();
+		$page = 1;
+		do {
+			$args['posts_per_page'] = 500; // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- page size of a CLI walk, looped until exhausted.
+			$args['paged']          = $page;
+			$batch                  = ( new WP_Query( $args ) )->posts;
+			foreach ( $batch as $id ) {
+				$ids[] = (int) $id;
+			}
+			$fetched = count( $batch );
+			++$page;
+		} while ( 500 === $fetched );
+		return $ids;
 	}
 }

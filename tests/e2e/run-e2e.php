@@ -231,7 +231,8 @@ if ( preg_match( '#<script type="application/ld\+json">(.*?)</script>#s', $html,
 trai_e2e_check( $schema_ok, 'schema JSON-LD parses and carries dST + generator' );
 
 $post_html = trai_e2e_fetch( get_permalink( (int) $post_id ) );
-trai_e2e_check( str_contains( $post_html, 'trai-content-notice' ), 'AI-written post shows the content note' );
+trai_e2e_check( str_contains( $post_html, 'class="trai-notice trai-notice--block' ), 'AI-written post shows the content note' );
+trai_e2e_check( str_contains( $post_html, '"@type":"Article"' ) && str_contains( $post_html, 'IPTC:DigitalSourceType' ), 'AI-written post carries its own JSON-LD node with both vocabularies' );
 
 $clean_html = trai_e2e_fetch( home_url( '/?p=999999&nonexist=1' ) );
 trai_e2e_check( ! str_contains( $clean_html, 'trai-page-notice' ), 'pages without labeled media get no page notice' );

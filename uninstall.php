@@ -39,6 +39,10 @@ function transparai_uninstall_site(): void {
 	delete_option( 'transparai_settings' );
 	delete_option( 'transparai_verify_cursor' );
 	delete_option( 'transparai_repair_report' );
+	delete_option( 'transparai_log' );
+	delete_option( 'transparai_setup_done' );
+	delete_option( 'transparai_setup_journal' );
+	delete_metadata( 'user', 0, 'transparai_setup_skipped', '', true );
 
 	global $wpdb;
 
@@ -58,8 +62,11 @@ function transparai_uninstall_site(): void {
 		'_transparai_write_error',
 		'_transparai_badge_pos',
 		'_transparai_content_ai',
+		'_transparai_content_responsible',
+		'_transparai_content_review',
 		'_transparai_history',
 		'_transparai_delivery',
+		'_transparai_human',
 	);
 
 	foreach ( $meta_keys as $meta_key ) {

@@ -102,11 +102,31 @@
 		};
 
 		scanStart.addEventListener('click', function () { begin('missing'); });
+		/* Setup card: same scan, the progress shows in the scan card below. */
+		jQuery(document).on('click', '.trai-setup-scan', function () {
+			begin('missing');
+			var card = document.getElementById('trai-scan-progress');
+			if (card && card.scrollIntoView) {
+				card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		});
 		scanAll.addEventListener('click', function () { begin('all'); });
 		scanStop.addEventListener('click', function () {
 			running = false;
 			scanStop.hidden = true;
 		});
+	}
+
+	/* Setup card: live preview of the badge look. */
+	var preview = document.getElementById('trai-setup-preview');
+	if (preview) {
+		var previewForm = preview.closest('form');
+		var setClass = function (prefix, value) {
+			preview.className = preview.className.replace(new RegExp('\\b' + prefix + '[a-z-]+'), prefix + value);
+		};
+		jQuery(previewForm).on('change', 'input[name="badge_style"]', function () { setClass('trai-style-', this.value); });
+		jQuery(previewForm).on('change', 'select[name="badge_position"]', function () { setClass('trai-pos-', this.value); });
+		jQuery(previewForm).on('change', 'select[name="badge_mode"]', function () { setClass('trai-mode-', this.value); });
 	}
 
 	/* =====================================================================
@@ -266,6 +286,7 @@
 		}
 		tile.toggleClass('trai-flag', !!model.get('traiFlag'));
 		tile.toggleClass('trai-detected', !model.get('traiFlag') && !!model.get('traiDetected'));
+		tile.toggleClass('trai-human', !model.get('traiFlag') && !!model.get('traiHuman'));
 	}
 
 	/* Model and tile always move together: every path that changes a label
@@ -291,6 +312,7 @@
 		var result = origRender.apply(this, arguments);
 		this.$el.toggleClass('trai-flag', !!this.model.get('traiFlag'));
 		this.$el.toggleClass('trai-detected', !this.model.get('traiFlag') && !!this.model.get('traiDetected'));
+		this.$el.toggleClass('trai-human', !this.model.get('traiFlag') && !!this.model.get('traiHuman'));
 		return result;
 	};
 
@@ -313,6 +335,7 @@
 				all: { text: labels.filterAll, props: { transparai_filter: null }, priority: 10 },
 				only: { text: labels.filterOnly, props: { transparai_filter: '1' }, priority: 20 },
 				review: { text: labels.filterDetected, props: { transparai_filter: 'detected' }, priority: 30 },
+				human: { text: labels.filterHuman, props: { transparai_filter: 'human' }, priority: 35 },
 				none: { text: labels.filterNone, props: { transparai_filter: '0' }, priority: 40 }
 			};
 		}

@@ -174,6 +174,10 @@ final class TransparAI_Scanner {
 		if ( '1' === get_post_meta( $attachment_id, TransparAI_Meta::KEY_DISMISSED, true ) ) {
 			return 'skipped';
 		}
+		/* An explicit "not AI" declaration beats every automatic finding. */
+		if ( TransparAI_Meta::is_human( $attachment_id ) ) {
+			return 'skipped';
+		}
 
 		$confidence = (string) ( $result['confidence'] ?? 'likely' );
 		$mode       = 'hint' === $confidence
@@ -256,6 +260,15 @@ final class TransparAI_Scanner {
 
 		$query = new WP_Query( $args );
 		$stats = self::empty_stats();
+		if ( 0 === $offset ) {
+			TransparAI_Meta::log_site(
+				'scan-started',
+				array(
+					'mode'  => $mode,
+					'total' => (int) $query->found_posts,
+				)
+			);
+		}
 
 		$started = microtime( true );
 		foreach ( $query->posts as $attachment_id ) {
@@ -271,6 +284,10 @@ final class TransparAI_Scanner {
 		$remaining   = 'missing' === $mode
 			? max( 0, $total - $stats['processed'] )
 			: max( 0, $total - $next_offset );
+
+		if ( 0 === $remaining ) {
+			TransparAI_Meta::log_site( 'scan-finished', array( 'mode' => $mode ) );
+		}
 
 		wp_send_json_success(
 			array_merge(

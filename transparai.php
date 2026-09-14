@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       TransparAI: AI Image Detection & EU AI Act Labeling
+ * Plugin Name:       TransparAI: AI Image Detection, EU AI Act Labeling & SEO
  * Plugin URI:        https://wordpress.org/plugins/transparai/
  * Description:       Detect AI images from C2PA Content Credentials and IPTC metadata, label them with a visible AI badge and a machine-readable EU AI Act disclosure.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Patrick Schlesinger
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.0.2' );
+defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.0.3' );
 defined( 'TRANSPARAI_PLUGIN_FILE' ) || define( 'TRANSPARAI_PLUGIN_FILE', __FILE__ );
 defined( 'TRANSPARAI_PLUGIN_DIR' ) || define( 'TRANSPARAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'TRANSPARAI_PLUGIN_URL' ) || define( 'TRANSPARAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -41,12 +41,17 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-scanner.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-repair.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-delivery.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-frontend.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-notice.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-woocommerce.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-rest.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-chatbot.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 
 if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-media-library.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-settings.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-content-label.php';
+	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-setup.php';
 }
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -72,12 +77,17 @@ if ( ! class_exists( 'TransparAI' ) ) {
 				TransparAI_Delivery::init();
 			}
 			TransparAI_Frontend::init();
+			TransparAI_Notice::init();
+			TransparAI_WooCommerce::init();
+			TransparAI_REST::init();
+			TransparAI_Chatbot::init();
 			TransparAI_Integrations::init();
 
 			if ( is_admin() ) {
 				TransparAI_Media_Library::init();
 				TransparAI_Settings::init();
 				TransparAI_Content_Label::init();
+				TransparAI_Setup::init();
 			}
 
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -90,6 +100,9 @@ if ( ! class_exists( 'TransparAI' ) ) {
 		 */
 		public static function activate(): void {
 			TransparAI_Repair::schedule();
+			if ( class_exists( 'TransparAI_Setup' ) ) {
+				TransparAI_Setup::flag_redirect();
+			}
 		}
 
 		/**

@@ -131,7 +131,7 @@ final class TransparAI_Repair {
 	 * @return array|mixed
 	 */
 	public static function on_metadata_update( $metadata, int $attachment_id ) {
-		if ( self::active() && TransparAI_Meta::is_flagged( $attachment_id ) && self::files_changed( $attachment_id ) ) {
+		if ( self::active() && '' !== TransparAI_Writer::expected_token( $attachment_id ) && self::files_changed( $attachment_id ) ) {
 			TransparAI_Writer::sync_attachment( $attachment_id );
 		}
 		return $metadata;
@@ -146,7 +146,7 @@ final class TransparAI_Repair {
 	 * @return array|mixed
 	 */
 	public static function on_metadata_generate( $metadata, int $attachment_id ) {
-		if ( self::active() && TransparAI_Meta::is_flagged( $attachment_id ) ) {
+		if ( self::active() && '' !== TransparAI_Writer::expected_token( $attachment_id ) ) {
 			TransparAI_Writer::sync_attachment( $attachment_id );
 		}
 		return $metadata;
@@ -174,7 +174,7 @@ final class TransparAI_Repair {
 				'no_found_rows'          => false,
 				'update_post_term_cache' => false,
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- bounded hourly cron batch (25 rows).
-				'meta_query'             => TransparAI_Meta::meta_query( '1' ),
+				'meta_query'             => TransparAI_Meta::meta_query( 'labeled' ),
 			)
 		);
 
@@ -196,9 +196,15 @@ final class TransparAI_Repair {
 			++$report['checked'];
 
 			$needs_repair = false;
-			if ( self::files_changed( $attachment_id ) ) {
+			$token        = TransparAI_Writer::expected_token( $attachment_id );
+			/*
+			 * A non-AI declaration is never written over a foreign source
+			 * type, so for those files any declaration counts as present.
+			 */
+			$expect = TransparAI_Meta::is_flagged( $attachment_id ) ? $token : '';
+			if ( '' !== $token && self::files_changed( $attachment_id ) ) {
 				foreach ( TransparAI_Writer::attachment_files( $attachment_id ) as $path ) {
-					if ( ! TransparAI_Writer::file_is_marked( $path ) ) {
+					if ( ! TransparAI_Writer::file_is_marked( $path, $expect ) ) {
 						$needs_repair = true;
 						break;
 					}
@@ -225,6 +231,14 @@ final class TransparAI_Repair {
 		if ( $cursor + $processed >= $total || 0 === $processed ) {
 			update_option( self::OPT_CURSOR, 0, false ); /* Sweep complete: start over next hour. */
 			$report['completed_at'] = time();
+			TransparAI_Meta::log_site(
+				'sweep-finished',
+				array(
+					'checked'  => (int) $report['checked'],
+					'repaired' => (int) $report['repaired'],
+					'failed'   => (int) $report['failed'],
+				)
+			);
 		} else {
 			update_option( self::OPT_CURSOR, $cursor + $processed, false );
 		}

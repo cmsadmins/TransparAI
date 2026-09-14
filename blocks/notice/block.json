@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "transparai/notice",
+	"title": "AI notice",
+	"category": "text",
+	"icon": "info-outline",
+	"description": "Places the AI disclosure note of this post where you want it. Renders only when the post has an AI level.",
+	"keywords": [ "ai", "disclosure", "transparency", "eu ai act" ],
+	"textdomain": "transparai",
+	"attributes": {
+		"variant": { "type": "string", "default": "block", "enum": [ "block", "inline" ] },
+		"text": { "type": "string", "default": "" }
+	},
+	"usesContext": [ "postId" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "file:./editor.js"
+}

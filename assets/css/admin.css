@@ -208,7 +208,8 @@
    so every offset/size must be set explicitly or the badge fills the tile.
    The "content" property is locale-dependent and inlined via wp_add_inline_style. */
 .attachment.trai-flag .thumbnail::after,
-.attachment.trai-detected .thumbnail::after {
+.attachment.trai-detected .thumbnail::after,
+.attachment.trai-human .thumbnail::after {
 	position: absolute;
 	top: 4px;
 	right: 4px;
@@ -227,6 +228,14 @@
 	border-radius: 50%;
 	pointer-events: none;
 	z-index: 5;
+}
+
+/* Declared not AI: quiet, light chip. */
+.attachment.trai-human .thumbnail::after {
+	background: rgba(255, 255, 255, 0.92);
+	color: #1a1a1a;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
 }
 
 /* Review state: action needed, so it gets the accent color. */
@@ -248,6 +257,17 @@
 
 .trai-list-badge--review {
 	background: var(--trai-primary, #FF6800);
+}
+
+.trai-list-badge--human {
+	background: #fff;
+	color: #1a1a1a;
+	border: 1px solid #c3c4c7;
+}
+
+.trai-human-wrap {
+	display: block;
+	margin-top: 6px;
 }
 
 .trai-list-generator {
@@ -512,4 +532,90 @@
 .trai-progress-text {
 	margin: 4px 0 0;
 	color: #50575e;
+}
+
+/* Chatbot findings. */
+.trai-findings {
+	margin: 0;
+}
+
+.trai-findings li {
+	margin: 0 0 4px;
+}
+
+/* Setup card. */
+.trai-setup-steps {
+	list-style: none;
+	margin: 16px 0 0;
+	padding: 0;
+	display: grid;
+	gap: 16px;
+}
+
+.trai-setup-step {
+	padding: 16px;
+	border: 1px solid var(--trai-border-light, #e0e0e0);
+	background: #fff;
+}
+
+.trai-setup-step h3 {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.trai-setup-preview-wrap {
+	margin: 0 0 12px;
+}
+
+#trai-setup-preview {
+	display: inline-block;
+	position: relative;
+}
+
+.trai-setup-sample {
+	display: block;
+	width: 240px;
+	height: 150px;
+	background: linear-gradient(135deg, #d9d9d9, #8a8a8a);
+}
+
+.trai-setup-choice {
+	margin-right: 12px;
+}
+
+.trai-setup-inline {
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.trai-setup-done {
+	margin-left: 8px;
+	color: var(--trai-primary, #FF6800);
+	font-weight: 600;
+}
+
+/* Post list: AI text level chip and the Quick Edit field. */
+.trai-level-chip {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 2px 6px;
+	border: 1px solid var(--trai-border-light, #e0e0e0);
+	border-radius: 3px;
+	color: #50575e;
+	background: #fff;
+}
+
+.trai-level-chip--ai {
+	color: var(--trai-primary, #FF6800);
+	border-color: var(--trai-primary, #FF6800);
+}
+
+.trai-level-chip--none {
+	border-color: transparent;
+	color: #a7aaad;
+}
+
+.trai-inline-edit select {
+	max-width: 100%;
 }
