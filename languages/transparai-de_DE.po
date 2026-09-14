@@ -973,3 +973,46 @@ msgstr "Auch digitalCapture oder digitalCreation in Medien schreiben, die du als
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Mensch"
+
+#. translators: %s: previous declaration state (ai, detected, human, dismissed).
+#: admin/class-media-library.php:417
+#, php-format
+msgid "from %s"
+msgstr "vorher %s"
+
+#: admin/class-settings.php:114
+#: admin/class-settings.php:128
+msgid "audit report"
+msgstr "Prüfbericht"
+
+#: admin/class-settings.php:129
+msgid "items"
+msgstr "Einträge"
+
+#: admin/class-settings.php:131
+msgid "Document hash"
+msgstr "Dokument-Hash"
+
+#: admin/class-settings.php:132
+msgid "sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash."
+msgstr "sha256 über die Fakten unten ohne Zeitstempel: zwei Berichte einer unveränderten Site tragen denselben Hash."
+
+#: admin/class-settings.php:133
+msgid "Basis"
+msgstr "Grundlage"
+
+#: admin/class-settings.php:134
+msgid "Limitations"
+msgstr "Grenzen"
+
+#: admin/class-settings.php:141
+msgid "Print or save as PDF"
+msgstr "Drucken oder als PDF speichern"
+
+#: admin/class-settings.php:266
+msgid "Print view"
+msgstr "Druckansicht"
+
+#: admin/class-settings.php:268
+msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
+msgstr "Der Export listet jede gekennzeichnete, deklarierte und ausstehende Datei mit Erkennungsquelle, Konfidenz, vollständiger Historie und der Person hinter jeder Änderung. Die Druckansicht ergänzt einen Dokument-Hash über die Fakten, die Grundlage und die genannten Grenzen; derselbe Datensatz ist unter /wp-json/transparai/v1/report abrufbar."

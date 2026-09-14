@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- REST API `transparai/v1` (`TransparAI_REST`): `GET /media` (paginated, status enum), `GET|POST
+  /media/{id}` (detail with history and file state; actions flag|unflag|confirm|dismiss|human_*),
+  `POST /media/{id}/scan`, `GET /report`. Args declared with enum/minimum/maximum so the server
+  validates before the handler; route gate `upload_files`, per-object `edit_post` in the permission
+  callback; report needs `manage_options`. No public route.
+- History: `HISTORY_LIMIT` 50, entries carry `p` (state before: ai|detected|dismissed|human) and `n`
+  (display name, survives user deletion); `record()` takes the previous state, every mutator passes
+  it. `history_text()` renders one line per file for exports. Site log option `transparai_log`
+  (cap 200): settings-saved (changed keys), scan-started/finished, sweep-finished, bulk-*.
+- Report: `TransparAI_Meta::report()` is the canonical record (counts, items with history,
+  `guidance_basis`, `limitations`, `truncated` at 5000, `document_hash` = sha256 over the sorted
+  facts without timestamps). `audit_rows()` pages through 200-row queries instead of
+  `posts_per_page => -1`. CSV export: BOM, `;`, formula guard, history column; new print view
+  (`admin_post_transparai_print`) with hash, basis, limitations and print-to-PDF.
 - WooCommerce (`TransparAI_WooCommerce`, no-op without the plugin): `woocommerce_available_variation`
   hands the label state of the variation image to front.js (`TransparAI_Frontend::public_label()`),
   which listens to `found_variation`/`reset_data` instead of watching `src`; an explicit null for

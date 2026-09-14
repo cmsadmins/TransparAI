@@ -403,9 +403,22 @@ final class TransparAI_Media_Library {
 		if ( array() !== $history ) {
 			$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'History', 'transparai' ) . '</h4><ul class="trai-inspect-history">';
 			foreach ( array_reverse( $history ) as $entry ) {
-				$when  = 0 === $entry['t'] ? '' : gmdate( 'Y-m-d H:i', $entry['t'] ) . ' UTC';
-				$who   = 0 === $entry['u'] ? __( 'system', 'transparai' ) : ( get_userdata( $entry['u'] )->display_name ?? '#' . $entry['u'] );
-				$event = '' === $entry['s'] ? $entry['e'] : $entry['e'] . ', ' . $entry['s'];
+				$when = 0 === $entry['t'] ? '' : gmdate( 'Y-m-d H:i', $entry['t'] ) . ' UTC';
+				if ( 0 === $entry['u'] ) {
+					$who = __( 'system', 'transparai' );
+				} elseif ( '' !== $entry['n'] ) {
+					$who = $entry['n'];
+				} else {
+					$who = get_userdata( $entry['u'] )->display_name ?? '#' . $entry['u'];
+				}
+				$detail = array_filter(
+					array(
+						/* translators: %s: previous declaration state (ai, detected, human, dismissed). */
+						'' === $entry['p'] ? '' : sprintf( __( 'from %s', 'transparai' ), $entry['p'] ),
+						$entry['s'],
+					)
+				);
+				$event  = array() === $detail ? $entry['e'] : $entry['e'] . ' (' . implode( ', ', $detail ) . ')';
 
 				$html .= '<li><span class="trai-inspect-time">' . esc_html( $when ) . '</span>'
 					. '<span class="trai-inspect-event">' . esc_html( $event ) . '</span>'

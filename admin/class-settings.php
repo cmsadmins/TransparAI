@@ -31,6 +31,7 @@ final class TransparAI_Settings {
 		add_action( 'admin_init', array( self::class, 'register' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
 		add_action( 'admin_post_transparai_export', array( self::class, 'export_csv' ) );
+		add_action( 'admin_post_transparai_print', array( self::class, 'print_view' ) );
 		add_filter( 'plugin_action_links_' . TRANSPARAI_PLUGIN_BASENAME, array( self::class, 'action_links' ) );
 	}
 
@@ -47,12 +48,12 @@ final class TransparAI_Settings {
 		check_admin_referer( 'transparai_export' );
 
 		$status = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : 'all';
-		if ( ! in_array( $status, array( 'flagged', 'detected', 'all' ), true ) ) {
+		if ( ! in_array( $status, array( 'flagged', 'detected', 'human', 'labeled', 'all' ), true ) ) {
 			$status = 'all';
 		}
 
-		$rows    = TransparAI_Meta::audit_rows( $status );
-		$columns = TransparAI_Meta::audit_columns();
+		$report  = TransparAI_Meta::report( $status );
+		$columns = array_merge( TransparAI_Meta::audit_columns(), array( 'history' ) );
 
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );
@@ -63,15 +64,100 @@ final class TransparAI_Settings {
 			wp_die( esc_html__( 'The export could not be started.', 'transparai' ) );
 		}
 
-		fputcsv( $out, $columns );
-		foreach ( $rows as $row ) {
+		/* BOM so spreadsheets read UTF-8, semicolons for the locales that expect them. */
+		fwrite( $out, "\xEF\xBB\xBF" ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- php://output stream for the CSV download.
+		fputcsv( $out, $columns, ';' );
+		foreach ( $report['items'] as $row ) {
 			$line = array();
 			foreach ( $columns as $column ) {
-				$line[] = (string) ( $row[ $column ] ?? '' );
+				$line[] = self::csv_cell( (string) ( $row[ $column ] ?? '' ) );
 			}
-			fputcsv( $out, $line );
+			fputcsv( $out, $line, ';' );
 		}
 		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- php://output stream for the CSV download, WP_Filesystem cannot stream a response.
+		exit;
+	}
+
+	/**
+	 * A cell that cannot become a formula when the file is opened in a
+	 * spreadsheet (CSV injection: a file name starting with "=" or "@").
+	 */
+	private static function csv_cell( string $value ): string {
+		return 1 === preg_match( '/^[=+\-@\t\r]/', ltrim( $value ) ) ? "'" . $value : $value;
+	}
+
+	/**
+	 * Print view of the audit report: one self-contained page with the
+	 * document hash, the guidance basis and the stated limitations, meant
+	 * for the browser's print-to-PDF. No PDF library, nothing to maintain.
+	 */
+	public static function print_view(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You are not allowed to export this.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_print' );
+
+		$status = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : 'all';
+		if ( ! in_array( $status, array( 'flagged', 'detected', 'human', 'labeled', 'all' ), true ) ) {
+			$status = 'all';
+		}
+		$report  = TransparAI_Meta::report( $status );
+		$columns = array_merge( TransparAI_Meta::audit_columns(), array( 'history' ) );
+
+		nocache_headers();
+		header( 'Content-Type: text/html; charset=utf-8' );
+		?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="utf-8" />
+<title><?php echo esc_html( sprintf( 'TransparAI %s', __( 'audit report', 'transparai' ) ) ); ?></title>
+<style>
+body{font:13px/1.5 'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;margin:32px;}
+h1{font-size:20px;margin:0 0 4px;}h1 span{color:#FF6800;}
+table{border-collapse:collapse;width:100%;margin-top:16px;font-size:11px;}
+th,td{border:1px solid #e0e0e0;padding:4px 6px;text-align:left;vertical-align:top;word-break:break-word;}
+th{background:#f6f7f7;}
+.meta{margin:12px 0;padding:8px 12px;background:#f6f7f7;}
+.meta code{word-break:break-all;}
+.no-print{margin:12px 0;}
+@media print{.no-print{display:none;}body{margin:12mm;}}
+</style>
+</head>
+<body>
+<h1>Transpar<span>AI</span> <?php esc_html_e( 'audit report', 'transparai' ); ?></h1>
+<p><?php echo esc_html( $report['site'] ); ?>, <?php echo esc_html( $report['generated_at'] ); ?>, <?php echo esc_html( sprintf( '%d %s', count( $report['items'] ), __( 'items', 'transparai' ) ) ); ?><?php echo $report['truncated'] ? ' (' . esc_html( $report['truncated_note'] ) . ')' : ''; ?></p>
+<div class="meta">
+<p><strong><?php esc_html_e( 'Document hash', 'transparai' ); ?>:</strong> <code><?php echo esc_html( $report['document_hash'] ); ?></code><br />
+		<?php esc_html_e( 'sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash.', 'transparai' ); ?></p>
+<p><strong><?php esc_html_e( 'Basis', 'transparai' ); ?>:</strong> <?php echo esc_html( $report['guidance_basis'] ); ?></p>
+<p><strong><?php esc_html_e( 'Limitations', 'transparai' ); ?>:</strong></p>
+<ul>
+		<?php
+		foreach ( $report['limitations'] as $limitation ) :
+			?>
+	<li><?php echo esc_html( $limitation ); ?></li><?php endforeach; ?></ul>
+</div>
+<p class="no-print"><button type="button" onclick="window.print()"><?php esc_html_e( 'Print or save as PDF', 'transparai' ); ?></button></p>
+<table>
+<thead><tr>
+		<?php
+		foreach ( $columns as $column ) :
+			?>
+	<th><?php echo esc_html( $column ); ?></th><?php endforeach; ?></tr></thead>
+<tbody>
+		<?php foreach ( $report['items'] as $row ) : ?>
+<tr>
+			<?php
+			foreach ( $columns as $column ) :
+				?>
+	<td><?php echo esc_html( (string) ( $row[ $column ] ?? '' ) ); ?></td><?php endforeach; ?></tr>
+		<?php endforeach; ?>
+</tbody>
+</table>
+</body>
+</html>
+		<?php
 		exit;
 	}
 
@@ -177,8 +263,9 @@ final class TransparAI_Settings {
 						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
 					<?php endif; ?>
 					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
+						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Print view', 'transparai' ); ?></a>
 				</p>
-				<p class="description"><?php esc_html_e( 'The export lists every labeled and pending file with its detection source, confidence and the last recorded change.', 'transparai' ); ?></p>
+				<p class="description"><?php esc_html_e( 'The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report.', 'transparai' ); ?></p>
 			</section>
 
 			<section class="trai-card">

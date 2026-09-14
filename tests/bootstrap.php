@@ -511,6 +511,68 @@ if ( ! function_exists( 'wp_localize_script' ) ) {
 	}
 }
 
+if ( ! function_exists( 'register_rest_route' ) ) {
+	function register_rest_route( $ns, $route, $args = array() ) {
+		global $trai_test_routes;
+		$trai_test_routes[ $ns . $route ] = $args;
+		return true;
+	}
+}
+if ( ! function_exists( 'get_userdata' ) ) {
+	function get_userdata( $id ) {
+		return false;
+	}
+}
+if ( ! class_exists( 'WP_Query' ) ) {
+	/**
+	 * Minimal query stand-in: serves the ids from $trai_test_query_posts,
+	 * honoring posts_per_page/paged/offset so pagination code can be tested.
+	 */
+	class WP_Query { // phpcs:ignore Generic.Classes.OpeningBraceSameLine.ContentAfterBrace
+		/** @var array<int, int> */
+		public $posts = array();
+		/** @var int */
+		public $found_posts = 0;
+		public function __construct( $args = array() ) {
+			global $trai_test_query_posts, $trai_test_query_args;
+			$trai_test_query_args[] = $args;
+			$all                    = array_values( (array) ( $trai_test_query_posts ?? array() ) );
+			$per                    = (int) ( $args['posts_per_page'] ?? -1 );
+			$offset                 = isset( $args['offset'] ) ? (int) $args['offset'] : ( max( 1, (int) ( $args['paged'] ?? 1 ) ) - 1 ) * max( 1, $per );
+			$this->found_posts      = count( $all );
+			$this->posts            = $per < 0 ? $all : array_slice( $all, $offset, $per );
+		}
+	}
+}
+if ( ! class_exists( 'WP_REST_Request' ) ) {
+	/**
+	 * Array-like request stand-in.
+	 */
+	class WP_REST_Request implements ArrayAccess { // phpcs:ignore Generic.Classes.OpeningBraceSameLine.ContentAfterBrace
+		/** @var array<string, mixed> */
+		private $params;
+		public function __construct( array $params = array() ) {
+			$this->params = $params;
+		}
+		#[\ReturnTypeWillChange]
+		public function offsetExists( $key ) {
+			return isset( $this->params[ $key ] );
+		}
+		#[\ReturnTypeWillChange]
+		public function offsetGet( $key ) {
+			return $this->params[ $key ] ?? null;
+		}
+		#[\ReturnTypeWillChange]
+		public function offsetSet( $key, $value ) {
+			$this->params[ $key ] = $value;
+		}
+		#[\ReturnTypeWillChange]
+		public function offsetUnset( $key ) {
+			unset( $this->params[ $key ] );
+		}
+	}
+}
+
 if ( ! class_exists( 'WP_Post' ) ) {
 	/**
 	 * Minimal stand-in for the core post object.
@@ -540,13 +602,17 @@ require_once dirname( __DIR__ ) . '/includes/class-writer.php';
 require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
 require_once dirname( __DIR__ ) . '/includes/class-notice.php';
 require_once dirname( __DIR__ ) . '/includes/class-woocommerce.php';
+require_once dirname( __DIR__ ) . '/includes/class-rest.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 
 /**
  * Reset all in-memory stores between tests.
  */
 function trai_test_reset(): void {
-	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http, $trai_test_user_name, $trai_test_posts, $trai_test_blocks;
+	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http, $trai_test_user_name, $trai_test_posts, $trai_test_blocks, $trai_test_query_posts, $trai_test_query_args, $trai_test_routes;
+	$trai_test_query_posts  = array();
+	$trai_test_query_args   = array();
+	$trai_test_routes       = array();
 	$trai_test_user_name    = '';
 	$trai_test_posts        = array();
 	$trai_test_blocks       = array();

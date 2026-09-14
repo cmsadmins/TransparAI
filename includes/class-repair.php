@@ -231,6 +231,14 @@ final class TransparAI_Repair {
 		if ( $cursor + $processed >= $total || 0 === $processed ) {
 			update_option( self::OPT_CURSOR, 0, false ); /* Sweep complete: start over next hour. */
 			$report['completed_at'] = time();
+			TransparAI_Meta::log_site(
+				'sweep-finished',
+				array(
+					'checked'  => (int) $report['checked'],
+					'repaired' => (int) $report['repaired'],
+					'failed'   => (int) $report['failed'],
+				)
+			);
 		} else {
 			update_option( self::OPT_CURSOR, $cursor + $processed, false );
 		}

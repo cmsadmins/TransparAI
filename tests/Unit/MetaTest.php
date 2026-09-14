@@ -132,12 +132,12 @@ final class MetaTest extends TestCase {
 		$this->assertSame( 7, $last['u'], 'The editor who made the change is recorded' );
 	}
 
-	public function test_history_keeps_only_the_last_ten_events(): void {
-		for ( $i = 0; $i < 14; $i++ ) {
+	public function test_history_keeps_only_the_last_fifty_events(): void {
+		for ( $i = 0; $i < 54; $i++ ) {
 			TransparAI_Meta::record( 71, 'repaired', 'sweep' );
 		}
 
-		$this->assertCount( 10, TransparAI_Meta::history( 71 ) );
+		$this->assertCount( 50, TransparAI_Meta::history( 71 ) );
 	}
 
 	public function test_history_survives_a_corrupted_meta_value(): void {

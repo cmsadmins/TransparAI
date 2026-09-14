@@ -39,6 +39,7 @@ function transparai_uninstall_site(): void {
 	delete_option( 'transparai_settings' );
 	delete_option( 'transparai_verify_cursor' );
 	delete_option( 'transparai_repair_report' );
+	delete_option( 'transparai_log' );
 
 	global $wpdb;
 

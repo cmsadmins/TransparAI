@@ -973,3 +973,46 @@ msgstr "Ook digitalCapture of digitalCreation schrijven in media die je als niet
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Mens"
+
+#. translators: %s: previous declaration state (ai, detected, human, dismissed).
+#: admin/class-media-library.php:417
+#, php-format
+msgid "from %s"
+msgstr "eerder %s"
+
+#: admin/class-settings.php:114
+#: admin/class-settings.php:128
+msgid "audit report"
+msgstr "auditrapport"
+
+#: admin/class-settings.php:129
+msgid "items"
+msgstr "items"
+
+#: admin/class-settings.php:131
+msgid "Document hash"
+msgstr "Documenthash"
+
+#: admin/class-settings.php:132
+msgid "sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash."
+msgstr "sha256 over de onderstaande feiten zonder tijdstempels: twee rapporten van een ongewijzigde site dragen dezelfde hash."
+
+#: admin/class-settings.php:133
+msgid "Basis"
+msgstr "Grondslag"
+
+#: admin/class-settings.php:134
+msgid "Limitations"
+msgstr "Beperkingen"
+
+#: admin/class-settings.php:141
+msgid "Print or save as PDF"
+msgstr "Afdrukken of opslaan als PDF"
+
+#: admin/class-settings.php:266
+msgid "Print view"
+msgstr "Afdrukweergave"
+
+#: admin/class-settings.php:268
+msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
+msgstr "De export toont elk gelabeld, gedeclareerd en openstaand bestand met detectiebron, betrouwbaarheid, volledige geschiedenis en de persoon achter elke wijziging. De afdrukweergave voegt een documenthash over de feiten, de grondslag en de genoemde beperkingen toe; hetzelfde record is beschikbaar op /wp-json/transparai/v1/report."

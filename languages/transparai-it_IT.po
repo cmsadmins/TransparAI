@@ -973,3 +973,46 @@ msgstr "Scrivi anche digitalCapture o digitalCreation nei media dichiarati non I
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Umano"
+
+#. translators: %s: previous declaration state (ai, detected, human, dismissed).
+#: admin/class-media-library.php:417
+#, php-format
+msgid "from %s"
+msgstr "prima %s"
+
+#: admin/class-settings.php:114
+#: admin/class-settings.php:128
+msgid "audit report"
+msgstr "rapporto di audit"
+
+#: admin/class-settings.php:129
+msgid "items"
+msgstr "voci"
+
+#: admin/class-settings.php:131
+msgid "Document hash"
+msgstr "Hash del documento"
+
+#: admin/class-settings.php:132
+msgid "sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash."
+msgstr "sha256 dei fatti sottostanti senza marche temporali: due rapporti di un sito invariato hanno lo stesso hash."
+
+#: admin/class-settings.php:133
+msgid "Basis"
+msgstr "Base"
+
+#: admin/class-settings.php:134
+msgid "Limitations"
+msgstr "Limiti"
+
+#: admin/class-settings.php:141
+msgid "Print or save as PDF"
+msgstr "Stampa o salva come PDF"
+
+#: admin/class-settings.php:266
+msgid "Print view"
+msgstr "Vista di stampa"
+
+#: admin/class-settings.php:268
+msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
+msgstr "L’esportazione elenca ogni file etichettato, dichiarato o in attesa con fonte di rilevamento, confidenza, cronologia completa e la persona dietro ogni modifica. La vista di stampa aggiunge un hash del documento sui fatti, la base e i limiti indicati; lo stesso record è disponibile su /wp-json/transparai/v1/report."
