@@ -41,6 +41,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-scanner.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-repair.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-delivery.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-frontend.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-notice.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 
 if ( is_admin() ) {
@@ -72,6 +73,7 @@ if ( ! class_exists( 'TransparAI' ) ) {
 				TransparAI_Delivery::init();
 			}
 			TransparAI_Frontend::init();
+			TransparAI_Notice::init();
 			TransparAI_Integrations::init();
 
 			if ( is_admin() ) {

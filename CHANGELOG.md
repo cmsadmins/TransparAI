@@ -1,5 +1,26 @@
 # Changelog
 
+## Unreleased
+
+- AI-written text: the per-post checkbox became a disclosure level (`none`, `assisted`, `generated`,
+  `generated_reviewed`), stored in the same meta key; the old `'1'` reads as `generated`. Block
+  editor panel over the entity store (saves with the post, lands in revisions), classic meta box
+  hidden there via `__back_compat_meta_box`, Quick Edit with a data marker in the list column so a
+  Quick Edit save never resets the level, Bulk Edit through the core `bulk_edit_posts` hook (offered
+  from WordPress 6.3, where that hook exists), sortable column via a LEFT JOIN, list filter.
+- Review stamp (`_transparai_content_review`): reviewer, date and a sha256 over title, content,
+  featured image and embedded attachments with their AI label, set through the meta hooks so every
+  save path is covered. `is_review_current()` compares it and the list says "changed since review".
+- `TransparAI_Notice` is the single render path for the note: automatic note at `the_content` 30
+  with the full guard stack, `[transparai_notice]` shortcode, server-rendered `transparai/notice`
+  block (block.json, hand-written ES5 editor script, no build step), excerpt and feed variants
+  (`the_content_feed`, `the_excerpt_rss`, `rss2_item` with `dc:description`). Placing the block or
+  shortcode switches the automatic note off (`has_block()` plus rendered marker).
+- JSON-LD: `Article`/`WebPage` node for AI-written posts, stable `@id` on every node, and the source
+  type as both the Schema.org enumeration and the IPTC URI in `additionalProperty`; printed with
+  `wp_print_inline_script_tag()` and the HEX flags. Footer output no longer depends on the badge
+  switch for the text node.
+
 ## 1.0.2 (2026-09-08)
 
 - Fixed: the library scan stopped after its first batch on sites where another plugin or the theme

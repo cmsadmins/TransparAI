@@ -175,25 +175,14 @@ final class FrontendTest extends TestCase {
 		$data = json_decode( $matches[1], true );
 		$this->assertIsArray( $data );
 		$this->assertSame( 'ImageObject', $data['@graph'][0]['@type'] );
+		$this->assertSame( 'https://schema.org/TrainedAlgorithmicMediaDigitalSource', $data['@graph'][0]['digitalSourceType'] );
 		$this->assertSame(
 			'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia',
-			$data['@graph'][0]['digitalSourceType']
+			$data['@graph'][0]['additionalProperty']['value']
 		);
+		$this->assertSame( 'https://example.test/wp-content/uploads/2026/09/ai.jpg#transparai', $data['@graph'][0]['@id'] );
 		$this->assertSame( 'Midjourney', $data['@graph'][0]['creator']['name'] );
 		$this->reset_rendered();
-	}
-
-	public function test_content_notice_prepends_for_marked_posts(): void {
-		global $trai_test_options, $trai_test_current_post;
-		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );
-		$trai_test_current_post                   = 321;
-
-		$this->assertSame( '<p>Text</p>', TransparAI_Frontend::filter_content_notice( '<p>Text</p>' ), 'Unmarked post stays untouched' );
-
-		update_post_meta( 321, TransparAI_Meta::KEY_CONTENT_AI, '1' );
-		$out = TransparAI_Frontend::filter_content_notice( '<p>Text</p>' );
-		$this->assertStringContainsString( 'trai-content-notice', $out );
-		$this->assertStringEndsWith( '<p>Text</p>', $out );
 	}
 
 	public function test_image_attributes_injection_and_alt_append(): void {

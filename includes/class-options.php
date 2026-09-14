@@ -31,37 +31,44 @@ final class TransparAI_Options {
 	public static function defaults(): array {
 		return array(
 			/* Visible badge. */
-			'badge_enabled'       => '1',
-			'badge_mode'          => 'overlay', /* overlay | caption. */
-			'badge_text'          => '', /* Empty = translated default label. */
-			'badge_position'      => 'bottom-right', /* top-left | top-right | bottom-left | bottom-right. */
-			'badge_style'         => 'dark', /* dark | light | outline | icon-only. */
-			'badge_size'          => 'medium', /* small | medium | large. */
-			'badge_from_date'     => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
-			'badge_show_source'   => '0', /* Append detected generator name to the badge. */
-			'badge_alt_append'    => '0', /* Append note to image alt text. */
-			'badge_guard'         => '1', /* JS: move badges that a theme overlay covers. */
-			'background_badges'   => '0', /* Experimental: label CSS background images via JS map. */
-			'page_notice'         => '0', /* Site-wide footer note on pages containing labeled media. */
-			'page_notice_text'    => '', /* Empty = translated default. */
-			'content_notice_text' => '', /* Note above posts marked as AI-written; empty = translated default. */
+			'badge_enabled'           => '1',
+			'badge_mode'              => 'overlay', /* overlay | caption. */
+			'badge_text'              => '', /* Empty = translated default label. */
+			'badge_position'          => 'bottom-right', /* top-left | top-right | bottom-left | bottom-right. */
+			'badge_style'             => 'dark', /* dark | light | outline | icon-only. */
+			'badge_size'              => 'medium', /* small | medium | large. */
+			'badge_from_date'         => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
+			'badge_show_source'       => '0', /* Append detected generator name to the badge. */
+			'badge_alt_append'        => '0', /* Append note to image alt text. */
+			'badge_guard'             => '1', /* JS: move badges that a theme overlay covers. */
+			'background_badges'       => '0', /* Experimental: label CSS background images via JS map. */
+			'page_notice'             => '0', /* Site-wide footer note on pages containing labeled media. */
+			'page_notice_text'        => '', /* Empty = translated default. */
+			/* AI-written text: per-post disclosure levels. */
+			'content_notice_text'     => '', /* Custom note for all AI levels; empty = translated default per level. */
+			'content_notice_position' => 'before', /* before | after the content. */
+			'content_default_level'   => '', /* Preselected level for new posts only; '' = none. */
+			'content_responsible'     => '', /* Default name of the person responsible for reviewed texts. */
+			'content_show_reviewer'   => '0', /* Append "reviewed by {name} on {date}" to the note. */
+			'content_excerpt_notice'  => '0', /* Also append a plain-text line to excerpts (archives, teasers). */
+			'feed_notice'             => '0', /* Plain-text note in RSS/Atom items plus dc:description. */
 
 			/* Automatic detection. */
-			'autodetect'          => '1',
-			'mode_certain'        => 'flag', /* flag | queue | off. */
-			'mode_likely'         => 'queue', /* flag | queue | off. */
-			'filename_hints'      => '0', /* Tier 3: filename patterns (suggestions only). */
-			'detect_av'           => '1', /* Also scan video/audio uploads. */
+			'autodetect'              => '1',
+			'mode_certain'            => 'flag', /* flag | queue | off. */
+			'mode_likely'             => 'queue', /* flag | queue | off. */
+			'filename_hints'          => '0', /* Tier 3: filename patterns (suggestions only). */
+			'detect_av'               => '1', /* Also scan video/audio uploads. */
 
 			/* Machine-readable file metadata. */
-			'write_xmp'           => '1',
-			'write_iim'           => '1', /* Mirror into IPTC-IIM (JPEG, only when safe). */
-			'auto_repair'         => '1', /* Re-write metadata stripped by optimizers. */
-			'delivery_check'      => '0', /* Opt-in: fetch our own image URL to see whether the declaration survives delivery. */
-			'schema_output'       => '1', /* JSON-LD digitalSourceType for labeled media in the page. */
+			'write_xmp'               => '1',
+			'write_iim'               => '1', /* Mirror into IPTC-IIM (JPEG, only when safe). */
+			'auto_repair'             => '1', /* Re-write metadata stripped by optimizers. */
+			'delivery_check'          => '0', /* Opt-in: fetch our own image URL to see whether the declaration survives delivery. */
+			'schema_output'           => '1', /* JSON-LD digitalSourceType for labeled media in the page. */
 
 			/* Housekeeping. */
-			'delete_on_uninstall' => '0',
+			'delete_on_uninstall'     => '0',
 		);
 	}
 
@@ -114,12 +121,15 @@ final class TransparAI_Options {
 
 		$defaults = self::defaults();
 		$enums    = array(
-			'badge_mode'     => array( 'overlay', 'caption' ),
-			'badge_position' => array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ),
-			'badge_style'    => array( 'dark', 'light', 'outline', 'icon-only' ),
-			'badge_size'     => array( 'small', 'medium', 'large' ),
-			'mode_certain'   => array( 'flag', 'queue', 'off' ),
-			'mode_likely'    => array( 'flag', 'queue', 'off' ),
+			'badge_mode'              => array( 'overlay', 'caption' ),
+			'badge_position'          => array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ),
+			'badge_style'             => array( 'dark', 'light', 'outline', 'icon-only' ),
+			'badge_size'              => array( 'small', 'medium', 'large' ),
+			'mode_certain'            => array( 'flag', 'queue', 'off' ),
+			'mode_likely'             => array( 'flag', 'queue', 'off' ),
+
+			'content_notice_position' => array( 'before', 'after' ),
+			'content_default_level'   => array_merge( array( '' ), TransparAI_Meta::CONTENT_LEVELS ),
 		);
 		$booleans = array(
 			'badge_enabled',
@@ -128,6 +138,9 @@ final class TransparAI_Options {
 			'badge_guard',
 			'background_badges',
 			'page_notice',
+			'content_show_reviewer',
+			'content_excerpt_notice',
+			'feed_notice',
 			'autodetect',
 			'filename_hints',
 			'detect_av',
@@ -157,9 +170,9 @@ final class TransparAI_Options {
 				$clean[ $key ] = $valid ? $value : '';
 				continue;
 			}
-			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text' ), true ) ) {
+			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible' ), true ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_text_field( (string) $raw[ $key ] ) : '';
-				$clean[ $key ] = mb_substr( $value, 0, 'badge_text' === $key ? 100 : 300 );
+				$clean[ $key ] = mb_substr( $value, 0, in_array( $key, array( 'badge_text', 'content_responsible' ), true ) ? 100 : 300 );
 				continue;
 			}
 			$clean[ $key ] = $default;

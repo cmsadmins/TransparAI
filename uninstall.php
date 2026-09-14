@@ -58,6 +58,8 @@ function transparai_uninstall_site(): void {
 		'_transparai_write_error',
 		'_transparai_badge_pos',
 		'_transparai_content_ai',
+		'_transparai_content_responsible',
+		'_transparai_content_review',
 		'_transparai_history',
 		'_transparai_delivery',
 	);

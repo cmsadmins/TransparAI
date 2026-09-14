@@ -401,6 +401,116 @@ if ( ! function_exists( 'esc_html' ) ) {
 	}
 }
 
+if ( ! function_exists( 'current_time' ) ) {
+	function current_time( $type, $gmt = 0 ) {
+		return 'timestamp' === $type ? time() : gmdate( $type );
+	}
+}
+if ( ! class_exists( 'WP_User' ) ) {
+	class WP_User { // phpcs:ignore Generic.Classes.OpeningBraceSameLine.ContentAfterBrace
+		/** @var int */
+		public $ID = 0;
+		/** @var string */
+		public $display_name = '';
+	}
+}
+if ( ! function_exists( 'wp_get_current_user' ) ) {
+	function wp_get_current_user() {
+		global $trai_test_user, $trai_test_user_name;
+		$user               = new WP_User();
+		$user->ID           = (int) ( $trai_test_user ?? 0 );
+		$user->display_name = (string) ( $trai_test_user_name ?? '' );
+		return $user;
+	}
+}
+if ( ! function_exists( 'get_post' ) ) {
+	function get_post( $post_id = 0 ) {
+		global $trai_test_posts;
+		return $trai_test_posts[ (int) $post_id ] ?? null;
+	}
+}
+if ( ! function_exists( 'get_post_thumbnail_id' ) ) {
+	function get_post_thumbnail_id( $post_id = 0 ) {
+		global $trai_test_meta;
+		return (int) ( $trai_test_meta[ $post_id ]['_thumbnail_id'] ?? 0 );
+	}
+}
+if ( ! function_exists( 'get_permalink' ) ) {
+	function get_permalink( $post_id = 0 ) {
+		return 'https://example.test/?p=' . (int) $post_id;
+	}
+}
+if ( ! function_exists( 'get_the_title' ) ) {
+	function get_the_title( $post_id = 0 ) {
+		$post = get_post( $post_id );
+		return $post instanceof WP_Post ? $post->post_title : '';
+	}
+}
+if ( ! function_exists( 'get_queried_object_id' ) ) {
+	function get_queried_object_id() {
+		return get_the_ID();
+	}
+}
+if ( ! function_exists( 'doing_filter' ) ) {
+	function doing_filter( $tag = null ) {
+		return false;
+	}
+}
+if ( ! function_exists( 'has_block' ) ) {
+	function has_block( $block, $post = null ) {
+		global $trai_test_blocks;
+		return in_array( $block, $trai_test_blocks[ (int) $post ] ?? array(), true );
+	}
+}
+if ( ! function_exists( 'add_shortcode' ) ) {
+	function add_shortcode( $tag, $callback ) {
+		return true;
+	}
+}
+if ( ! function_exists( 'shortcode_atts' ) ) {
+	function shortcode_atts( $pairs, $atts, $shortcode = '' ) {
+		$out = array();
+		foreach ( $pairs as $name => $default ) {
+			$out[ $name ] = array_key_exists( $name, $atts ) ? $atts[ $name ] : $default;
+		}
+		return $out;
+	}
+}
+if ( ! function_exists( 'register_block_type' ) ) {
+	function register_block_type( $type, $args = array() ) {
+		return true;
+	}
+}
+if ( ! function_exists( 'get_block_wrapper_attributes' ) ) {
+	function get_block_wrapper_attributes( $extra = array() ) {
+		return 'class="wp-block-transparai-notice"';
+	}
+}
+if ( ! function_exists( 'esc_xml' ) ) {
+	function esc_xml( $text ) {
+		return htmlspecialchars( (string) $text, ENT_QUOTES | ENT_XML1 );
+	}
+}
+if ( ! function_exists( 'esc_html__' ) ) {
+	function esc_html__( $text, $domain = '' ) {
+		return htmlspecialchars( (string) $text, ENT_QUOTES );
+	}
+}
+if ( ! function_exists( 'wp_print_inline_script_tag' ) ) {
+	function wp_print_inline_script_tag( $data, $attributes = array() ) {
+		$attr = '';
+		foreach ( $attributes as $name => $value ) {
+			$attr .= ' ' . $name . '="' . esc_attr( $value ) . '"';
+		}
+		echo '<script' . $attr . '>' . "\n" . $data . "\n" . '</script>' . "\n";
+	}
+}
+if ( ! function_exists( 'wp_localize_script' ) ) {
+	function wp_localize_script( $handle, $name, $data ) {
+		return true;
+	}
+}
+
 if ( ! class_exists( 'WP_Post' ) ) {
 	/**
 	 * Minimal stand-in for the core post object.
@@ -408,6 +518,14 @@ if ( ! class_exists( 'WP_Post' ) ) {
 	class WP_Post { // phpcs:ignore Generic.Classes.OpeningBraceSameLine.ContentAfterBrace
 		/** @var int */
 		public $ID = 0;
+		/** @var string */
+		public $post_title = '';
+		/** @var string */
+		public $post_content = '';
+		/** @var string */
+		public $post_status = 'publish';
+		/** @var string */
+		public $post_type = 'post';
 	}
 }
 
@@ -420,13 +538,17 @@ require_once dirname( __DIR__ ) . '/includes/class-integrations.php';
 require_once dirname( __DIR__ ) . '/includes/class-repair.php';
 require_once dirname( __DIR__ ) . '/includes/class-writer.php';
 require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
+require_once dirname( __DIR__ ) . '/includes/class-notice.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 
 /**
  * Reset all in-memory stores between tests.
  */
 function trai_test_reset(): void {
-	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http;
+	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http, $trai_test_user_name, $trai_test_posts, $trai_test_blocks;
+	$trai_test_user_name    = '';
+	$trai_test_posts        = array();
+	$trai_test_blocks       = array();
 	$trai_test_http         = null;
 	$trai_test_cron         = array();
 	$trai_test_user         = 0;

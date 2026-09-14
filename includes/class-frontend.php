@@ -47,9 +47,6 @@ final class TransparAI_Frontend {
 		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue' ) );
 		add_action( 'wp_footer', array( self::class, 'print_footer_output' ) );
 
-		/* AI-written content note, ahead of the image filters. */
-		add_filter( 'the_content', array( self::class, 'filter_content_notice' ), 5 );
-
 		add_filter( 'render_block', array( self::class, 'filter_block' ), 20, 2 );
 		add_filter( 'the_content', array( self::class, 'filter_content' ), 20 );
 		add_filter( 'widget_text_content', array( self::class, 'filter_content' ), 20 );
@@ -607,13 +604,14 @@ final class TransparAI_Frontend {
 	 * and only appear when labeled media was actually rendered.
 	 */
 	public static function print_footer_output(): void {
-		if ( array() === self::$rendered_ids || ! self::should_filter() ) {
+		if ( is_admin() || is_feed() || wp_doing_ajax() ) {
 			return;
 		}
+		$badged = array() !== self::$rendered_ids && self::should_filter();
 
 		if ( TransparAI_Options::enabled( 'schema_output' ) ) {
 			$graph = array();
-			foreach ( array_keys( self::$rendered_ids ) as $attachment_id ) {
+			foreach ( $badged ? array_keys( self::$rendered_ids ) : array() as $attachment_id ) {
 				$url = wp_get_attachment_url( $attachment_id );
 				if ( ! $url ) {
 					continue;
@@ -625,13 +623,14 @@ final class TransparAI_Frontend {
 				} elseif ( str_starts_with( $mime, 'audio/' ) ) {
 					$type = 'AudioObject';
 				}
-				$dst       = 'composite' === TransparAI_Meta::get_type( $attachment_id )
-					? 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia'
-					: 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
-				$node      = array(
-					'@type'             => $type,
-					'contentUrl'        => $url,
-					'digitalSourceType' => $dst,
+				$token     = 'composite' === TransparAI_Meta::get_type( $attachment_id ) ? TransparAI_Meta::DST_COMPOSITE : TransparAI_Meta::DST_TRAINED;
+				$node      = array_merge(
+					array(
+						'@type'      => $type,
+						'@id'        => $url . '#transparai',
+						'contentUrl' => $url,
+					),
+					TransparAI_Meta::dst_schema( $token )
 				);
 				$generator = TransparAI_Meta::get_generator( $attachment_id );
 				if ( '' !== $generator ) {
@@ -642,45 +641,33 @@ final class TransparAI_Frontend {
 				}
 				$graph[] = $node;
 			}
+
+			/* The page's own text, declared by its author: independent of any badge. */
+			if ( is_singular() ) {
+				$article = TransparAI_Notice::schema_node( (int) get_queried_object_id() );
+				if ( null !== $article ) {
+					$graph[] = $article;
+				}
+			}
+
 			if ( array() !== $graph ) {
 				$data = array(
 					'@context' => 'https://schema.org',
 					'@graph'   => $graph,
 				);
-				echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES ) . '</script>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode output inside a JSON script tag.
+				/* HEX flags make a "</script>" inside a file name harmless. */
+				$json = wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT );
+				wp_print_inline_script_tag( (string) $json, array( 'type' => 'application/ld+json' ) );
 			}
 		}
 
-		if ( TransparAI_Options::enabled( 'page_notice' ) ) {
+		if ( $badged && TransparAI_Options::enabled( 'page_notice' ) ) {
 			$text = TransparAI_Options::get( 'page_notice_text' );
 			if ( '' === $text ) {
 				$text = __( 'This page contains AI-generated media.', 'transparai' );
 			}
 			echo '<p class="trai-page-notice">' . esc_html( $text ) . '</p>' . "\n";
 		}
-	}
-
-	/**
-	 * Note above content the author marked as AI-written (per-post checkbox).
-	 *
-	 * @param string|mixed $content Content HTML.
-	 * @return string|mixed
-	 */
-	public static function filter_content_notice( $content ) {
-		if ( ! is_string( $content ) || ! self::should_filter() ) {
-			return $content;
-		}
-		if ( ! is_singular() || ! in_the_loop() || ! is_main_query() ) {
-			return $content;
-		}
-		if ( '1' !== get_post_meta( (int) get_the_ID(), TransparAI_Meta::KEY_CONTENT_AI, true ) ) {
-			return $content;
-		}
-		$text = TransparAI_Options::get( 'content_notice_text' );
-		if ( '' === $text ) {
-			$text = __( 'This text was created with the help of AI.', 'transparai' );
-		}
-		return '<p class="trai-content-notice">' . esc_html( $text ) . '</p>' . $content;
 	}
 
 	/**

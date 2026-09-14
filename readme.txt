@@ -36,11 +36,15 @@ A configurable badge marks labeled media in the front end. Overlay or a caption 
 
 Themes love to stack their own layers over images (hover effects, gradient scrims, zoom icons). TransparAI checks the real paint order: a badge that is actually covered is raised, moved to a free corner or, as the last resort, turned into a caption line below the image, automatically. Every single image can also get its own badge position, a caption line or no visible badge at all, straight from its attachment details, and documented CSS utility classes give theme builders the same control per container. An optional extra labels images printed without an attachment ID (ACF fields returning a URL, sliders) and CSS background images through a small script, late-loading galleries and AJAX grids included.
 
-Two optional disclosure layers round it off: a short site-wide note at the end of every page that contains labeled media, and a per-post checkbox that puts a configurable "created with the help of AI" line ahead of AI-written content. When a label changes, TransparAI tells the common page-cache plugins (WP Rocket, LiteSpeed Cache, W3 Total Cache, WP Super Cache and others) to refresh, so cached pages never keep an outdated badge state.
+Two optional disclosure layers round it off: a short site-wide note at the end of every page that contains labeled media, and the per-post AI level for written text described below. When a label changes, TransparAI tells the common page-cache plugins (WP Rocket, LiteSpeed Cache, W3 Total Cache, WP Super Cache and others) to refresh, so cached pages never keep an outdated badge state.
+
+**AI-written text: disclosure levels per post**
+
+Every post, page and public custom post type carries an AI level for its text: not classified, no AI used, AI-assisted, AI-generated, or AI-generated and reviewed by a person. The level is set in the document sidebar of the block editor (a meta box in the classic editor), in Quick Edit straight from the post list, or for many posts at once with Bulk Edit; the list gets a sortable column and a filter. AI levels put a configurable note ahead of or after the content, and the "AI notice" block or the `[transparai_notice]` shortcode place that same note wherever you want it instead, without ever duplicating it. For reviewed texts the plugin records who reviewed the post and when, together with a fingerprint of the text and the images in it, so a later change to either shows up as "changed since review" instead of hiding behind an old approval. The note can also be appended to excerpts and to RSS feed items, where a machine-readable `dc:description` element carries it as well, and each AI-written post gets its own Schema.org node with the IPTC digital source type, the same convention the images use.
 
 **Machine-readable AI labeling in the files**
 
-For labeled files TransparAI writes the IPTC digital source type (trainedAlgorithmicMedia, or compositeWithTrainedAlgorithmicMedia for AI-edited media) as XMP metadata into JPEG, PNG, WebP and AVIF, including every size variant WordPress generated. Google reads this field and can show an AI notice in image search. Each page additionally carries Schema.org JSON-LD (ImageObject and VideoObject with digitalSourceType) for its labeled media, so search engines get the AI declaration without opening a single file.
+For labeled files TransparAI writes the IPTC digital source type (trainedAlgorithmicMedia, or compositeWithTrainedAlgorithmicMedia for AI-edited media) as XMP metadata into JPEG, PNG, WebP and AVIF, including every size variant WordPress generated. Google reads this field and can show an AI notice in image search. Each page additionally carries Schema.org JSON-LD (ImageObject and VideoObject with digitalSourceType) for its labeled media, so search engines get the AI declaration without opening a single file. The nodes carry the digital source type twice on purpose: as the Schema.org enumeration value the property is defined with, and as the IPTC vocabulary URI in a typed property, so both kinds of consumer read it.
 
 Your existing metadata is safe: an existing XMP packet is merged, not replaced, and unlabeling removes exactly what this plugin wrote. Writes are atomic and validated first, so a failed write cannot corrupt an image. And because image optimizers and thumbnail regeneration tend to strip metadata, TransparAI fingerprints every labeled file and restores missing AI declarations in an hourly integrity sweep.
 
@@ -97,7 +101,7 @@ Not always, and that is worth checking. Image optimizers at the edge, Cloudflare
 
 = Can I also label AI-written text? =
 
-Yes. Every post and page has a "This content is AI-generated" checkbox in the editor sidebar; marked content gets a short configurable note ahead of it. There is also an optional site-wide note at the end of pages that contain labeled media.
+Yes. Every post and page has an AI level in the editor sidebar (no AI used, AI-assisted, AI-generated, AI-generated and reviewed), also available in Quick Edit and Bulk Edit of the post list. AI levels show a configurable note ahead of or after the content; the "AI notice" block and the `[transparai_notice]` shortcode place it by hand instead. Reviewed texts record the reviewer, the date and a fingerprint of the content, so a later edit is visible as "changed since review". Optionally the note goes into excerpts and RSS feed items too. There is also an optional site-wide note at the end of pages that contain labeled media.
 
 = Why was a real camera photo put into the review queue? =
 
@@ -143,6 +147,16 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_delivery`: result of the last delivery check as `{"t":unix time,"verdict":verdict}`, with `intact`, `stripped`, `unreachable`, `unmarked` or `foreign-host`. Only written when the check is enabled and someone runs it; read it with `TransparAI_Delivery::last_result()`.
 * `_transparai_badge_pos`: badge placement for this one image, overriding the site setting. `top-left`, `top-right`, `bottom-left`, `bottom-right`, `below` (caption line under the image) or `hidden`. Absent means the site setting applies.
 
+**Post meta** (registered for the REST API on every public post type except attachments, writable with `edit_post`):
+
+* `_transparai_content_ai`: the AI level of the text, `none`, `assisted`, `generated` or `generated_reviewed`; absent means not classified. The 1.0.x checkbox value `'1'` is still read as `generated`.
+* `_transparai_content_responsible`: name of the person responsible for a reviewed text (optional, falls back to the site default).
+* `_transparai_content_review`: JSON stamp written by the plugin when a post reaches the reviewed level: `{"by":display name,"by_id":user ID,"on":Y-m-d,"responsible":name,"hash":sha256}`. The hash covers title, content, featured image and every embedded attachment together with its AI label; `TransparAI_Meta::is_review_current()` tells whether it still matches. Readable in the editor, never writable through REST, and stripped down to the date for readers without `edit_post`.
+
+**Shortcode and block for the text note:**
+
+`[transparai_notice]` renders the note of the current post (`type="content"`, the default), `[transparai_notice type="media" id="123"]` the badge label of one labeled attachment. `style="inline"` gives a `span` inside running text instead of a `div`, `text="..."` overrides the wording, `id` picks another post. Both the shortcode and the "AI notice" block render only what is declared: a post without AI level or an unlabeled attachment produces nothing. When either is placed, the automatic note steps back. Filters: `transparai_notice_text` (`$text, $post_id, $level`) and `transparai_notice_html` (`$html, $args`).
+
 **Label media from your own code** (an AI image generator plugin, an import script):
 
 `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' );`
@@ -186,7 +200,7 @@ The optional delivery check is the only feature that makes an HTTP request at al
 
 == Privacy ==
 
-TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The optional delivery check, when you enable it and press the button, requests one image from your own site to see what visitors receive; nothing is sent to a third party. The per-file history records the WordPress user ID of whoever labeled, confirmed or dismissed a file, so a site can show who made a disclosure decision; it holds the last ten events per file and is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
+TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The optional delivery check, when you enable it and press the button, requests one image from your own site to see what visitors receive; nothing is sent to a third party. The per-file history records the WordPress user ID of whoever labeled, confirmed or dismissed a file, so a site can show who made a disclosure decision; it holds the last ten events per file. A post marked as reviewed stores the reviewer's display name and user ID and, only when you enable it, shows the name in the public note. All of it is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
 
 == Disclaimer ==
 
@@ -208,6 +222,13 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 4. Front-end badge on a labeled image
 
 == Changelog ==
+
+= Unreleased =
+* AI-written text now has a level per post instead of a checkbox: no AI used, AI-assisted, AI-generated, or AI-generated and reviewed by a person. Set in the block editor sidebar, the classic meta box, Quick Edit or Bulk Edit; the post list gets a sortable column and a filter. Existing checkbox values keep working as "AI-generated".
+* Reviewed texts record the reviewer, the date and a fingerprint of the text and its images, so an edit after the review is shown as "changed since review" instead of hiding behind an old approval.
+* New "AI notice" block and `[transparai_notice]` shortcode to place the note by hand; the automatic note then steps back. Both render only what is declared.
+* The note can be appended to excerpts and to RSS feed items, including a machine-readable dc:description element. Off by default.
+* Schema.org: AI-written posts get their own node with the IPTC digital source type, and every node now carries the source type both as the Schema.org enumeration and as the IPTC vocabulary URI.
 
 = 1.0.2 =
 * Fixed: scanning the existing library stopped after the first batch on some sites. The progress bar simply stayed where it was and reported no error, which looked like a scan still running. Sites whose theme or another plugin loads the media library on the plugin page were affected. The scan runs to the end again.

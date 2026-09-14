@@ -43,6 +43,28 @@ final class TransparAI_Meta {
 	public const KEY_HISTORY     = '_transparai_history';
 	public const KEY_DELIVERY    = '_transparai_delivery';
 
+	/* Post-level (not attachment) disclosure of AI-written text. */
+	public const KEY_CONTENT_RESPONSIBLE = '_transparai_content_responsible';
+	public const KEY_CONTENT_REVIEW      = '_transparai_content_review';
+
+	/**
+	 * Disclosure levels of a post's text. `''` (never classified) is kept apart
+	 * from `none`: "nobody looked" and "a person declared no AI was used" are
+	 * two different statements, and an audit asks for the second one.
+	 */
+	public const LEVEL_NONE     = 'none';
+	public const LEVEL_ASSISTED = 'assisted';
+	public const LEVEL_GEN      = 'generated';
+	public const LEVEL_REVIEWED = 'generated_reviewed';
+	public const CONTENT_LEVELS = array( self::LEVEL_NONE, self::LEVEL_ASSISTED, self::LEVEL_GEN, self::LEVEL_REVIEWED );
+
+	/* IPTC digital source type vocabulary, one set for files, JSON-LD and text. */
+	public const DST_TRAINED   = 'trainedAlgorithmicMedia';
+	public const DST_COMPOSITE = 'compositeWithTrainedAlgorithmicMedia';
+	public const DST_CAPTURE   = 'digitalCapture';
+	public const DST_CREATION  = 'digitalCreation';
+	public const DST_CV_BASE   = 'http://cv.iptc.org/newscodes/digitalsourcetype/';
+
 	/**
 	 * Events kept per attachment. Ten covers the whole life of a normal file
 	 * (detected, reviewed, labeled, a few repairs) and keeps the meta row small
@@ -59,6 +81,14 @@ final class TransparAI_Meta {
 		 * so custom post types (usually registered at 10) must exist first.
 		 */
 		add_action( 'init', array( self::class, 'register_meta' ), 20 );
+
+		/*
+		 * The review stamp hangs on the meta hooks, not on a save handler: the
+		 * classic meta box, the block editor (REST) and a script all end up here,
+		 * so the date and reviewer are set no matter which door the level came in.
+		 */
+		add_action( 'added_post_meta', array( self::class, 'on_content_level_change' ), 10, 4 );
+		add_action( 'updated_post_meta', array( self::class, 'on_content_level_change' ), 10, 4 );
 	}
 
 	/**
@@ -112,7 +142,10 @@ final class TransparAI_Meta {
 			)
 		);
 
-		/* Per-post "content is AI-written" flag (the editor checkbox). */
+		/* Per-post disclosure of AI-written text (level, responsible person, review stamp). */
+		$edit_post = static function ( $allowed, $meta_key, $post_id ): bool {
+			return current_user_can( 'edit_post', (int) $post_id );
+		};
 		foreach ( get_post_types( array( 'public' => true ) ) as $post_type ) {
 			if ( 'attachment' === $post_type ) {
 				continue;
@@ -125,13 +158,202 @@ final class TransparAI_Meta {
 					'single'            => true,
 					'default'           => '',
 					'show_in_rest'      => true,
-					'sanitize_callback' => array( self::class, 'sanitize_flag' ),
-					'auth_callback'     => static function ( $allowed, $meta_key, $post_id ): bool {
-						return current_user_can( 'edit_post', (int) $post_id );
-					},
+					'sanitize_callback' => array( self::class, 'sanitize_content_level' ),
+					'auth_callback'     => $edit_post,
 				)
 			);
+			register_post_meta(
+				$post_type,
+				self::KEY_CONTENT_RESPONSIBLE,
+				array(
+					'type'              => 'string',
+					'single'            => true,
+					'default'           => '',
+					'show_in_rest'      => true,
+					'sanitize_callback' => 'sanitize_text_field',
+					'auth_callback'     => $edit_post,
+				)
+			);
+			/*
+			 * The stamp is readable in the editor (so the panel can say "reviewed
+			 * by X on Y") but never writable through REST: it is set by the plugin
+			 * when the level changes, and a stamp anyone can type is no evidence.
+			 */
+			register_post_meta(
+				$post_type,
+				self::KEY_CONTENT_REVIEW,
+				array(
+					'type'              => 'string',
+					'single'            => true,
+					'default'           => '',
+					'show_in_rest'      => true,
+					'sanitize_callback' => 'sanitize_text_field',
+					'auth_callback'     => '__return_false',
+				)
+			);
+			add_filter( 'rest_prepare_' . $post_type, array( self::class, 'filter_rest_review' ), 10, 2 );
 		}
+	}
+
+	/**
+	 * Strip the reviewer's identity from public REST responses. `auth_callback`
+	 * only guards writes; without this, every anonymous /wp-json/wp/v2/posts
+	 * request would list who reviewed what.
+	 *
+	 * @param WP_REST_Response $response Response.
+	 * @param WP_Post          $post     Post.
+	 * @return WP_REST_Response
+	 */
+	public static function filter_rest_review( $response, $post ) {
+		if ( ! isset( $response->data['meta'][ self::KEY_CONTENT_REVIEW ] ) || current_user_can( 'edit_post', (int) $post->ID ) ) {
+			return $response;
+		}
+		$stamp = self::content_review( (int) $post->ID );
+		$response->data['meta'][ self::KEY_CONTENT_REVIEW ] = null === $stamp ? '' : (string) wp_json_encode( array( 'on' => $stamp['on'] ) );
+		return $response;
+	}
+
+	/**
+	 * Normalize a text disclosure level. The 1.0.x checkbox stored '1', which
+	 * reads as `generated`; anything unknown is '' (never classified).
+	 *
+	 * @param mixed $value Raw value.
+	 */
+	public static function sanitize_content_level( $value ): string {
+		if ( '1' === $value || 1 === $value || true === $value ) {
+			return self::LEVEL_GEN;
+		}
+		$value = is_string( $value ) ? sanitize_key( $value ) : '';
+		return in_array( $value, self::CONTENT_LEVELS, true ) ? $value : '';
+	}
+
+	/**
+	 * Disclosure level of a post ('' when never classified).
+	 */
+	public static function get_content_level( int $post_id ): string {
+		return self::sanitize_content_level( get_post_meta( $post_id, self::KEY_CONTENT_AI, true ) );
+	}
+
+	/**
+	 * Whether a level means AI took part in the text.
+	 */
+	public static function level_is_ai( string $level ): bool {
+		return in_array( $level, array( self::LEVEL_ASSISTED, self::LEVEL_GEN, self::LEVEL_REVIEWED ), true );
+	}
+
+	/**
+	 * Set the disclosure level of a post. '' removes the classification; the
+	 * review stamp is kept on purpose (documented facts are never destroyed).
+	 */
+	public static function set_content_level( int $post_id, string $level ): void {
+		$level = self::sanitize_content_level( $level );
+		if ( '' === $level ) {
+			delete_post_meta( $post_id, self::KEY_CONTENT_AI );
+			return;
+		}
+		update_post_meta( $post_id, self::KEY_CONTENT_AI, $level );
+	}
+
+	/**
+	 * Stamp the review when a post reaches the reviewed level (meta hook).
+	 *
+	 * @param int    $meta_id  Meta ID.
+	 * @param int    $post_id  Post ID.
+	 * @param string $meta_key Meta key.
+	 * @param mixed  $value    New value.
+	 */
+	public static function on_content_level_change( $meta_id, $post_id, $meta_key, $value ): void {
+		if ( self::KEY_CONTENT_AI !== $meta_key || self::LEVEL_REVIEWED !== self::sanitize_content_level( $value ) ) {
+			return;
+		}
+		$post_id = (int) $post_id;
+		$user    = wp_get_current_user();
+		$stamp   = array(
+			'by'          => $user instanceof WP_User ? (string) $user->display_name : '',
+			'by_id'       => get_current_user_id(),
+			/* Site-local date: a UTC stamp shows yesterday's date after local midnight. */
+			'on'          => (string) current_time( 'Y-m-d' ),
+			'responsible' => (string) get_post_meta( $post_id, self::KEY_CONTENT_RESPONSIBLE, true ),
+			'hash'        => self::content_hash( $post_id ),
+		);
+		if ( '' === $stamp['responsible'] ) {
+			$stamp['responsible'] = TransparAI_Options::get( 'content_responsible' );
+		}
+		update_post_meta( $post_id, self::KEY_CONTENT_REVIEW, (string) wp_json_encode( $stamp ) );
+	}
+
+	/**
+	 * The review stamp of a post, or null.
+	 *
+	 * @return array{by:string, by_id:int, on:string, responsible:string, hash:string}|null
+	 */
+	public static function content_review( int $post_id ): ?array {
+		$stamp = json_decode( (string) get_post_meta( $post_id, self::KEY_CONTENT_REVIEW, true ), true );
+		if ( ! is_array( $stamp ) || empty( $stamp['on'] ) ) {
+			return null;
+		}
+		return array(
+			'by'          => (string) ( $stamp['by'] ?? '' ),
+			'by_id'       => (int) ( $stamp['by_id'] ?? 0 ),
+			'on'          => (string) $stamp['on'],
+			'responsible' => (string) ( $stamp['responsible'] ?? '' ),
+			'hash'        => (string) ( $stamp['hash'] ?? '' ),
+		);
+	}
+
+	/**
+	 * Fingerprint of what a reviewer signed off: title, text, featured image
+	 * and every embedded attachment together with its AI label. Swapping an
+	 * image for an AI one after the review changes the hash, so the approval
+	 * visibly expires instead of covering content nobody looked at.
+	 */
+	public static function content_hash( int $post_id ): string {
+		$post = get_post( $post_id );
+		if ( ! $post instanceof WP_Post ) {
+			return '';
+		}
+		$content = (string) $post->post_content;
+		$media   = array();
+		if ( preg_match_all( '/wp-image-(\d+)/', $content, $m ) ) {
+			foreach ( array_unique( array_map( 'intval', $m[1] ) ) as $id ) {
+				$media[ $id ] = self::is_flagged( $id ) ? '1' : '';
+			}
+		}
+		ksort( $media );
+		$data = array(
+			'title'   => (string) $post->post_title,
+			'content' => $content,
+			'thumb'   => (int) get_post_thumbnail_id( $post_id ),
+			'media'   => $media,
+		);
+		return hash( 'sha256', (string) wp_json_encode( $data ) );
+	}
+
+	/**
+	 * Whether the review stamp still matches the post as it is now.
+	 */
+	public static function is_review_current( int $post_id ): bool {
+		$stamp = self::content_review( $post_id );
+		return null !== $stamp && '' !== $stamp['hash'] && hash_equals( $stamp['hash'], self::content_hash( $post_id ) );
+	}
+
+	/**
+	 * Schema.org properties for one IPTC digital source type token: the
+	 * schema.org enumeration value `digitalSourceType` expects, plus the IPTC
+	 * vocabulary URI as a typed property, so both kinds of consumer are served.
+	 *
+	 * @param string $token trainedAlgorithmicMedia|compositeWithTrainedAlgorithmicMedia|digitalCapture|digitalCreation.
+	 * @return array<string, mixed>
+	 */
+	public static function dst_schema( string $token ): array {
+		return array(
+			'digitalSourceType'  => 'https://schema.org/' . ucfirst( $token ) . 'DigitalSource',
+			'additionalProperty' => array(
+				'@type'      => 'PropertyValue',
+				'propertyID' => 'IPTC:DigitalSourceType',
+				'value'      => self::DST_CV_BASE . $token,
+			),
+		);
 	}
 
 	/**
