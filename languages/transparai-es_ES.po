@@ -1016,3 +1016,88 @@ msgstr "Vista de impresión"
 #: admin/class-settings.php:268
 msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
 msgstr "La exportación lista cada archivo etiquetado, declarado o pendiente con su fuente de detección, confianza, historial completo y la persona detrás de cada cambio. La vista de impresión añade un hash del documento sobre los hechos, la base y las limitaciones indicadas; el mismo registro está disponible en /wp-json/transparai/v1/report."
+
+#: admin/class-settings.php:272
+msgid "Open setup"
+msgstr "Abrir la configuración"
+
+#: admin/class-setup.php:243
+msgid "Setup in three steps"
+msgstr "Configuración en tres pasos"
+
+#: admin/class-setup.php:244
+msgid "Each step writes something real and can be taken back with the undo button. Nothing is labeled without your review, and no request leaves your server."
+msgstr "Cada paso escribe algo real y puede deshacerse con el botón de deshacer. Nada se etiqueta sin tu revisión y ninguna petición sale de tu servidor."
+
+#: admin/class-setup.php:248
+msgid "1. Scan the existing library"
+msgstr "1. Escanear la biblioteca existente"
+
+#. translators: 1: number of media files, 2: number already scanned.
+#: admin/class-setup.php:254
+#, php-format
+msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
+msgstr "%1$d archivos de medios, %2$d de ellos escaneados. Las declaraciones claras se etiquetan, las señales fuertes esperan en la cola de revisión."
+
+#: admin/class-setup.php:261
+msgid "Scan now"
+msgstr "Escanear ahora"
+
+#: admin/class-setup.php:265
+msgid "2. Choose the badge look"
+msgstr "2. Elegir el aspecto de la insignia"
+
+#: admin/class-setup.php:307
+msgid "Save badge look"
+msgstr "Guardar aspecto de la insignia"
+
+#: admin/class-setup.php:311
+#: admin/class-setup.php:331
+msgid "Saved."
+msgstr "Guardado."
+
+#: admin/class-setup.php:317
+msgid "3. Decide about the files"
+msgstr "3. Decidir sobre los archivos"
+
+#: admin/class-setup.php:322
+msgid "Write the machine-readable declaration into labeled image files (XMP, all sizes; merged into existing metadata, removable)"
+msgstr "Escribir la declaración legible por máquinas en los archivos de imagen etiquetados (XMP, todos los tamaños; fusionada con los metadatos existentes, reversible)"
+
+#: admin/class-setup.php:323
+msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
+msgstr "Reflejarla también en IPTC-IIM en los JPEG sin otro bloque IPTC"
+
+#: admin/class-setup.php:324
+msgid "Also write digitalCapture or digitalCreation for media declared as not AI-made"
+msgstr "Escribir también digitalCapture o digitalCreation en los medios declarados sin IA"
+
+#: admin/class-setup.php:325
+msgid "Restore declarations that image optimizers strip (hourly sweep)"
+msgstr "Restaurar las declaraciones que eliminan los optimizadores de imágenes (barrido cada hora)"
+
+#: admin/class-setup.php:327
+msgid "Save file settings"
+msgstr "Guardar ajustes de archivos"
+
+#: admin/class-setup.php:342
+msgid "Finish setup"
+msgstr "Terminar la configuración"
+
+#. translators: %s: name of the setup step (badge or writing).
+#: admin/class-setup.php:355
+#, php-format
+msgid "Undo last step (%s)"
+msgstr "Deshacer el último paso (%s)"
+
+#: admin/class-setup.php:356
+msgid "badge look"
+msgstr "aspecto de la insignia"
+
+#: admin/class-setup.php:356
+msgid "file settings"
+msgstr "ajustes de archivos"
+
+#: admin/class-setup.php:368
+msgid "Not now"
+msgstr "Ahora no"

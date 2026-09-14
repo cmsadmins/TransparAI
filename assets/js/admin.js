@@ -102,11 +102,31 @@
 		};
 
 		scanStart.addEventListener('click', function () { begin('missing'); });
+		/* Setup card: same scan, the progress shows in the scan card below. */
+		jQuery(document).on('click', '.trai-setup-scan', function () {
+			begin('missing');
+			var card = document.getElementById('trai-scan-progress');
+			if (card && card.scrollIntoView) {
+				card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		});
 		scanAll.addEventListener('click', function () { begin('all'); });
 		scanStop.addEventListener('click', function () {
 			running = false;
 			scanStop.hidden = true;
 		});
+	}
+
+	/* Setup card: live preview of the badge look. */
+	var preview = document.getElementById('trai-setup-preview');
+	if (preview) {
+		var previewForm = preview.closest('form');
+		var setClass = function (prefix, value) {
+			preview.className = preview.className.replace(new RegExp('\\b' + prefix + '[a-z-]+'), prefix + value);
+		};
+		jQuery(previewForm).on('change', 'input[name="badge_style"]', function () { setClass('trai-style-', this.value); });
+		jQuery(previewForm).on('change', 'select[name="badge_position"]', function () { setClass('trai-pos-', this.value); });
+		jQuery(previewForm).on('change', 'select[name="badge_mode"]', function () { setClass('trai-mode-', this.value); });
 	}
 
 	/* =====================================================================

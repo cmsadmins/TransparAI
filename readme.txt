@@ -64,9 +64,9 @@ Contact: TransparAI@cms-admins.de
 
 == Installation ==
 
-1. Install the plugin from the WordPress plugin directory (Plugins, Add New, search for "TransparAI") or upload the ZIP, then activate it.
-2. Open **Media, TransparAI**. New uploads are checked automatically from now on.
-3. Click **Scan new/unscanned media** to go through your existing library in small batches, pausable at any time.
+1. Install the plugin from the WordPress plugin directory (Plugins, Add New, search for "TransparAI") or upload the ZIP, then activate it. The activation opens **Media, TransparAI** with a three-step setup: scan the library, choose the badge look with a live preview, decide whether declarations are written into the files. Every step can be undone, and "Not now" hides the card for you until you open it again.
+2. New uploads are checked automatically from now on.
+3. Click **Scan new/unscanned media** (or "Scan now" in the setup) to go through your existing library in small batches, pausable at any time.
 4. Clear declarations are labeled right away; strong signals land in the review queue. Follow the **Open review queue** link and confirm or dismiss each item, single or in bulk. A camera photo with Content Credentials shows up here on purpose; dismiss it once and it stays dismissed. Media you have already decided on yourself is reported as skipped in the scan summary and is never overruled.
 5. Adjust the badge under **Visible badge**, and if your theme prints images without an attachment ID (ACF URL fields, sliders) or uses CSS backgrounds, enable the extra option under **Extras**.
 6. Single image sitting awkwardly? Open its attachment details and pick a **Badge position** there: another corner, a caption line below the image, or no visible badge for that one image.
@@ -238,6 +238,7 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 == Changelog ==
 
 = Unreleased =
+* First-run setup on the settings page: three steps that each write something real (library scan, badge look with live preview, file writing), a journal that can undo every step, per-user "Not now", and an activation redirect that respects bulk activations, AJAX and network admin.
 * REST API under transparai/v1: paginated audit rows, per-file detail with history and file state, every label and declaration action, a re-check, and the audit report. Authenticated only, with the capability checked on the object.
 * Audit trail: fifty events per file, each with the state it replaced, the trigger and the editor's name; a site log for settings changes, scans, sweeps and bulk actions. The CSV export carries the history, a byte-order mark and a formula guard; the new print view adds a document hash over the facts, the guidance basis and the stated limitations. Exports are paginated, so large libraries no longer run one unbounded query.
 * WooCommerce: the badge follows variation swaps through WooCommerce's own found_variation and reset_data events, is re-created inside the zoom and PhotoSwipe lightbox and the core image lightbox, is suppressed in WooCommerce e-mails, and the product summary shows the text disclosure note for AI-written product descriptions. HPOS compatibility declared.

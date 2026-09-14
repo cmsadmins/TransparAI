@@ -1016,3 +1016,88 @@ msgstr "Afdrukweergave"
 #: admin/class-settings.php:268
 msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
 msgstr "De export toont elk gelabeld, gedeclareerd en openstaand bestand met detectiebron, betrouwbaarheid, volledige geschiedenis en de persoon achter elke wijziging. De afdrukweergave voegt een documenthash over de feiten, de grondslag en de genoemde beperkingen toe; hetzelfde record is beschikbaar op /wp-json/transparai/v1/report."
+
+#: admin/class-settings.php:272
+msgid "Open setup"
+msgstr "Installatie openen"
+
+#: admin/class-setup.php:243
+msgid "Setup in three steps"
+msgstr "Installatie in drie stappen"
+
+#: admin/class-setup.php:244
+msgid "Each step writes something real and can be taken back with the undo button. Nothing is labeled without your review, and no request leaves your server."
+msgstr "Elke stap schrijft iets echts en kan met de knop Ongedaan maken worden teruggedraaid. Niets wordt gelabeld zonder jouw beoordeling en geen enkel verzoek verlaat je server."
+
+#: admin/class-setup.php:248
+msgid "1. Scan the existing library"
+msgstr "1. Bestaande mediabibliotheek scannen"
+
+#. translators: 1: number of media files, 2: number already scanned.
+#: admin/class-setup.php:254
+#, php-format
+msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
+msgstr "%1$d mediabestanden, waarvan %2$d gescand. Duidelijke declaraties worden gelabeld, sterke signalen wachten in de beoordelingswachtrij."
+
+#: admin/class-setup.php:261
+msgid "Scan now"
+msgstr "Nu scannen"
+
+#: admin/class-setup.php:265
+msgid "2. Choose the badge look"
+msgstr "2. Uiterlijk van de badge kiezen"
+
+#: admin/class-setup.php:307
+msgid "Save badge look"
+msgstr "Badge-uiterlijk opslaan"
+
+#: admin/class-setup.php:311
+#: admin/class-setup.php:331
+msgid "Saved."
+msgstr "Opgeslagen."
+
+#: admin/class-setup.php:317
+msgid "3. Decide about the files"
+msgstr "3. Beslissen over de bestanden"
+
+#: admin/class-setup.php:322
+msgid "Write the machine-readable declaration into labeled image files (XMP, all sizes; merged into existing metadata, removable)"
+msgstr "De machineleesbare declaratie in gelabelde afbeeldingsbestanden schrijven (XMP, alle formaten; samengevoegd met bestaande metadata, verwijderbaar)"
+
+#: admin/class-setup.php:323
+msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
+msgstr "Ook spiegelen naar IPTC-IIM voor JPEG-bestanden zonder ander IPTC-blok"
+
+#: admin/class-setup.php:324
+msgid "Also write digitalCapture or digitalCreation for media declared as not AI-made"
+msgstr "Ook digitalCapture of digitalCreation schrijven voor media die als niet door AI gemaakt zijn gedeclareerd"
+
+#: admin/class-setup.php:325
+msgid "Restore declarations that image optimizers strip (hourly sweep)"
+msgstr "Declaraties herstellen die afbeeldingsoptimalisatie verwijdert (uurlijkse controle)"
+
+#: admin/class-setup.php:327
+msgid "Save file settings"
+msgstr "Bestandsinstellingen opslaan"
+
+#: admin/class-setup.php:342
+msgid "Finish setup"
+msgstr "Installatie afronden"
+
+#. translators: %s: name of the setup step (badge or writing).
+#: admin/class-setup.php:355
+#, php-format
+msgid "Undo last step (%s)"
+msgstr "Laatste stap ongedaan maken (%s)"
+
+#: admin/class-setup.php:356
+msgid "badge look"
+msgstr "badge-uiterlijk"
+
+#: admin/class-setup.php:356
+msgid "file settings"
+msgstr "bestandsinstellingen"
+
+#: admin/class-setup.php:368
+msgid "Not now"
+msgstr "Nu niet"

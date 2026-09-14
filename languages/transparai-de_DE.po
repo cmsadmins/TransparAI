@@ -1016,3 +1016,88 @@ msgstr "Druckansicht"
 #: admin/class-settings.php:268
 msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
 msgstr "Der Export listet jede gekennzeichnete, deklarierte und ausstehende Datei mit Erkennungsquelle, Konfidenz, vollständiger Historie und der Person hinter jeder Änderung. Die Druckansicht ergänzt einen Dokument-Hash über die Fakten, die Grundlage und die genannten Grenzen; derselbe Datensatz ist unter /wp-json/transparai/v1/report abrufbar."
+
+#: admin/class-settings.php:272
+msgid "Open setup"
+msgstr "Einrichtung öffnen"
+
+#: admin/class-setup.php:243
+msgid "Setup in three steps"
+msgstr "Einrichtung in drei Schritten"
+
+#: admin/class-setup.php:244
+msgid "Each step writes something real and can be taken back with the undo button. Nothing is labeled without your review, and no request leaves your server."
+msgstr "Jeder Schritt schreibt etwas Reales und lässt sich mit dem Rückgängig-Knopf zurücknehmen. Nichts wird ohne deine Prüfung gekennzeichnet, und keine Anfrage verlässt deinen Server."
+
+#: admin/class-setup.php:248
+msgid "1. Scan the existing library"
+msgstr "1. Bestehende Mediathek scannen"
+
+#. translators: 1: number of media files, 2: number already scanned.
+#: admin/class-setup.php:254
+#, php-format
+msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
+msgstr "%1$d Mediendateien, davon %2$d gescannt. Eindeutige Deklarationen werden gekennzeichnet, starke Signale warten in der Prüfliste."
+
+#: admin/class-setup.php:261
+msgid "Scan now"
+msgstr "Jetzt scannen"
+
+#: admin/class-setup.php:265
+msgid "2. Choose the badge look"
+msgstr "2. Aussehen des Badges wählen"
+
+#: admin/class-setup.php:307
+msgid "Save badge look"
+msgstr "Badge-Aussehen speichern"
+
+#: admin/class-setup.php:311
+#: admin/class-setup.php:331
+msgid "Saved."
+msgstr "Gespeichert."
+
+#: admin/class-setup.php:317
+msgid "3. Decide about the files"
+msgstr "3. Über die Dateien entscheiden"
+
+#: admin/class-setup.php:322
+msgid "Write the machine-readable declaration into labeled image files (XMP, all sizes; merged into existing metadata, removable)"
+msgstr "Die maschinenlesbare Deklaration in gekennzeichnete Bilddateien schreiben (XMP, alle Größen; in vorhandene Metadaten eingefügt, entfernbar)"
+
+#: admin/class-setup.php:323
+msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
+msgstr "Zusätzlich in IPTC-IIM spiegeln, bei JPEG-Dateien ohne anderen IPTC-Block"
+
+#: admin/class-setup.php:324
+msgid "Also write digitalCapture or digitalCreation for media declared as not AI-made"
+msgstr "Auch digitalCapture oder digitalCreation für als nicht KI-erzeugt deklarierte Medien schreiben"
+
+#: admin/class-setup.php:325
+msgid "Restore declarations that image optimizers strip (hourly sweep)"
+msgstr "Deklarationen wiederherstellen, die Bildoptimierer entfernen (stündlicher Durchlauf)"
+
+#: admin/class-setup.php:327
+msgid "Save file settings"
+msgstr "Datei-Einstellungen speichern"
+
+#: admin/class-setup.php:342
+msgid "Finish setup"
+msgstr "Einrichtung abschließen"
+
+#. translators: %s: name of the setup step (badge or writing).
+#: admin/class-setup.php:355
+#, php-format
+msgid "Undo last step (%s)"
+msgstr "Letzten Schritt rückgängig machen (%s)"
+
+#: admin/class-setup.php:356
+msgid "badge look"
+msgstr "Badge-Aussehen"
+
+#: admin/class-setup.php:356
+msgid "file settings"
+msgstr "Datei-Einstellungen"
+
+#: admin/class-setup.php:368
+msgid "Not now"
+msgstr "Jetzt nicht"

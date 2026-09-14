@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Setup (`TransparAI_Setup`, admin only): activation sets a 30-second transient, `admin_init`
+  redirects to the settings page once, guarded against AJAX, network admin, missing capability,
+  `activate-multi` and a finished setup. The card renders inside the settings page: step 1 triggers the
+  existing scan loop, steps 2 and 3 post through `admin_post_transparai_setup` and only ever touch
+  their own keys (`STEP_KEYS`); each apply snapshots the previous values into
+  `transparai_setup_journal` (cap 20) and `undo()` restores exactly that snapshot. Finish sets
+  `transparai_setup_done`, "Not now" is user meta. Front-end styles are loaded on the settings page
+  for the live badge preview.
 - REST API `transparai/v1` (`TransparAI_REST`): `GET /media` (paginated, status enum), `GET|POST
   /media/{id}` (detail with history and file state; actions flag|unflag|confirm|dismiss|human_*),
   `POST /media/{id}/scan`, `GET /report`. Args declared with enum/minimum/maximum so the server

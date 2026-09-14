@@ -50,6 +50,7 @@ if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-media-library.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-settings.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-content-label.php';
+	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-setup.php';
 }
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -84,6 +85,7 @@ if ( ! class_exists( 'TransparAI' ) ) {
 				TransparAI_Media_Library::init();
 				TransparAI_Settings::init();
 				TransparAI_Content_Label::init();
+				TransparAI_Setup::init();
 			}
 
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -96,6 +98,9 @@ if ( ! class_exists( 'TransparAI' ) ) {
 		 */
 		public static function activate(): void {
 			TransparAI_Repair::schedule();
+			if ( class_exists( 'TransparAI_Setup' ) ) {
+				TransparAI_Setup::flag_redirect();
+			}
 		}
 
 		/**

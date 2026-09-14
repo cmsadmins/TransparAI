@@ -511,6 +511,29 @@ if ( ! function_exists( 'wp_localize_script' ) ) {
 	}
 }
 
+if ( ! function_exists( 'is_network_admin' ) ) {
+	function is_network_admin() {
+		return false;
+	}
+}
+if ( ! function_exists( 'get_user_meta' ) ) {
+	function get_user_meta( $user_id, $key = '', $single = false ) {
+		global $trai_test_user_meta;
+		return $trai_test_user_meta[ $user_id ][ $key ] ?? '';
+	}
+}
+if ( ! function_exists( 'update_user_meta' ) ) {
+	function update_user_meta( $user_id, $key, $value ) {
+		global $trai_test_user_meta;
+		$trai_test_user_meta[ $user_id ][ $key ] = $value;
+		return true;
+	}
+}
+if ( ! function_exists( 'admin_url' ) ) {
+	function admin_url( $path = '' ) {
+		return 'https://example.test/wp-admin/' . $path;
+	}
+}
 if ( ! function_exists( 'register_rest_route' ) ) {
 	function register_rest_route( $ns, $route, $args = array() ) {
 		global $trai_test_routes;
@@ -603,6 +626,7 @@ require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
 require_once dirname( __DIR__ ) . '/includes/class-notice.php';
 require_once dirname( __DIR__ ) . '/includes/class-woocommerce.php';
 require_once dirname( __DIR__ ) . '/includes/class-rest.php';
+require_once dirname( __DIR__ ) . '/admin/class-setup.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 
 /**
@@ -610,6 +634,8 @@ require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
  */
 function trai_test_reset(): void {
 	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http, $trai_test_user_name, $trai_test_posts, $trai_test_blocks, $trai_test_query_posts, $trai_test_query_args, $trai_test_routes;
+	global $trai_test_user_meta;
+	$trai_test_user_meta    = array();
 	$trai_test_query_posts  = array();
 	$trai_test_query_args   = array();
 	$trai_test_routes       = array();

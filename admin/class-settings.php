@@ -212,6 +212,8 @@ th{background:#f6f7f7;}
 			return;
 		}
 		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
+		/* The setup card previews the badge with the real front-end styles. */
+		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
 		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION, true );
 		TransparAI_Media_Library::localize_admin();
 	}
@@ -237,6 +239,8 @@ th{background:#f6f7f7;}
 				<?php echo self::logo_mark(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static inline SVG built from constants, no user input. ?>
 				<span class="trai-logo-text">Transpar<span class="trai-logo-ai">AI</span></span>
 			</h1>
+
+			<?php TransparAI_Setup::render_card(); ?>
 
 			<section class="trai-card">
 				<h2 class="trai-card-title"><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
@@ -264,6 +268,9 @@ th{background:#f6f7f7;}
 					<?php endif; ?>
 					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
 						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Print view', 'transparai' ); ?></a>
+						<?php if ( ! TransparAI_Setup::visible() ) : ?>
+							<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( TransparAI_Setup::url() ); ?>"><?php esc_html_e( 'Open setup', 'transparai' ); ?></a>
+						<?php endif; ?>
 				</p>
 				<p class="description"><?php esc_html_e( 'The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report.', 'transparai' ); ?></p>
 			</section>
