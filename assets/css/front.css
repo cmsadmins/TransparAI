@@ -84,6 +84,13 @@ p .trai-wrap {
    setting) and ellipsized; hovering (or tapping, which triggers :hover on
    mobile browsers) the media expands it to the full label. The plain
    calc() line is the fallback for browsers without min(). */
+/* Declared not AI: same placement, inverted tone, so it never reads as the AI badge. */
+.trai-badge.trai-badge--human {
+	background: rgba(255, 255, 255, 0.85);
+	color: #111;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
 .trai-mode-overlay .trai-badge {
 	max-width: calc(100% - 16px);
 	max-width: min(calc(100% - 16px), 16em);

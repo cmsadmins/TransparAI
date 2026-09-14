@@ -62,6 +62,7 @@ function transparai_uninstall_site(): void {
 		'_transparai_content_review',
 		'_transparai_history',
 		'_transparai_delivery',
+		'_transparai_human',
 	);
 
 	foreach ( $meta_keys as $meta_key ) {

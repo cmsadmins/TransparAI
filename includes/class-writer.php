@@ -27,9 +27,57 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class TransparAI_Writer {
 
-	private const DST_URI_GENERATED = 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
-	private const DST_URI_COMPOSITE = 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia';
-	private const MARKER_ABOUT      = 'urn:transparai:dst';
+	private const MARKER_ABOUT = 'urn:transparai:dst';
+
+	/**
+	 * IPTC token for a write type: the label types `generated` and
+	 * `composite`, or a non-AI token passed through as is.
+	 */
+	private static function dst_token( string $type ): string {
+		switch ( $type ) {
+			case 'composite':
+				return TransparAI_Meta::DST_COMPOSITE;
+			case TransparAI_Meta::DST_CAPTURE:
+			case TransparAI_Meta::DST_CREATION:
+				return $type;
+			default:
+				return TransparAI_Meta::DST_TRAINED;
+		}
+	}
+
+	/**
+	 * Every token this plugin can write, lowercased for parser comparisons.
+	 *
+	 * @return string[]
+	 */
+	private static function known_terms(): array {
+		return array_map(
+			'strtolower',
+			array( TransparAI_Meta::DST_TRAINED, TransparAI_Meta::DST_COMPOSITE, TransparAI_Meta::DST_CAPTURE, TransparAI_Meta::DST_CREATION )
+		);
+	}
+
+	/**
+	 * What the files of an attachment should declare: the AI label type
+	 * (`generated`, `composite`), a non-AI token, or '' for nothing.
+	 */
+	public static function write_type( int $attachment_id ): string {
+		if ( TransparAI_Meta::is_flagged( $attachment_id ) ) {
+			return TransparAI_Meta::get_type( $attachment_id );
+		}
+		if ( TransparAI_Options::enabled( 'write_human' ) ) {
+			return TransparAI_Meta::human_type( $attachment_id );
+		}
+		return '';
+	}
+
+	/**
+	 * The IPTC token the files of an attachment should carry, or ''.
+	 */
+	public static function expected_token( int $attachment_id ): string {
+		$type = self::write_type( $attachment_id );
+		return '' === $type ? '' : self::dst_token( $type );
+	}
 
 	/**
 	 * Register hooks: keep files in sync with the flag meta.
@@ -48,7 +96,7 @@ final class TransparAI_Writer {
 	 * @param string    $meta_key  Meta key.
 	 */
 	public static function on_meta_change( $meta_id, $object_id, $meta_key ): void {
-		if ( TransparAI_Meta::KEY_FLAG === $meta_key ) {
+		if ( TransparAI_Meta::KEY_FLAG === $meta_key || TransparAI_Meta::KEY_HUMAN === $meta_key ) {
 			self::sync_attachment( (int) $object_id );
 		}
 	}
@@ -70,8 +118,8 @@ final class TransparAI_Writer {
 			return $stats;
 		}
 
-		$flagged = TransparAI_Meta::is_flagged( $attachment_id );
-		$type    = TransparAI_Meta::get_type( $attachment_id );
+		$type  = self::write_type( $attachment_id );
+		$human = '' !== $type && ! TransparAI_Meta::is_flagged( $attachment_id );
 
 		foreach ( self::attachment_files( $attachment_id ) as $path ) {
 			$format = self::writable_format( $path );
@@ -79,15 +127,24 @@ final class TransparAI_Writer {
 				++$stats['skipped'];
 				continue;
 			}
+			/*
+			 * A non-AI declaration is only written into files that say nothing
+			 * yet: a camera's own digitalCapture, or any foreign source type,
+			 * is the photographer's statement and stays untouched.
+			 */
+			if ( $human && self::has_foreign_dst( $path, $format ) ) {
+				++$stats['skipped'];
+				continue;
+			}
 			if ( ! wp_is_writable( $path ) ) {
 				++$stats['failed'];
 				continue;
 			}
-			$ok = $flagged
+			$ok = '' !== $type
 				? self::write_file( $path, $format, $type )
 				: self::remove_file( $path, $format );
 			if ( $ok ) {
-				++$stats[ $flagged ? 'written' : 'removed' ];
+				++$stats[ '' !== $type ? 'written' : 'removed' ];
 			} else {
 				++$stats['failed'];
 			}
@@ -179,10 +236,14 @@ final class TransparAI_Writer {
 	}
 
 	/**
-	 * Whether a single file currently declares an AI DigitalSourceType.
-	 * Used by the integrity verification (auto-repair).
+	 * Whether a single file currently declares a DigitalSourceType: the
+	 * given token, or (without one) any token this plugin writes. Used by
+	 * the integrity verification (auto-repair).
+	 *
+	 * @param string $path  File path.
+	 * @param string $token IPTC token to look for, '' for any known one.
 	 */
-	public static function file_is_marked( string $path ): bool {
+	public static function file_is_marked( string $path, string $token = '' ): bool {
 		$format = self::writable_format( $path );
 		if ( '' === $format ) {
 			return true; /* Unsupported formats are never "missing" their mark. */
@@ -192,8 +253,21 @@ final class TransparAI_Writer {
 			return false;
 		}
 		$terms = TransparAI_Parsers::xmp_digital_source_types( $xmp );
-		return in_array( 'trainedalgorithmicmedia', $terms, true )
-			|| in_array( 'compositewithtrainedalgorithmicmedia', $terms, true );
+		if ( '' !== $token ) {
+			return in_array( strtolower( $token ), $terms, true );
+		}
+		return array() !== array_intersect( $terms, self::known_terms() );
+	}
+
+	/**
+	 * Whether a file declares a digital source type that is not ours.
+	 */
+	private static function has_foreign_dst( string $path, string $format ): bool {
+		$xmp = self::extract_xmp( $path, $format );
+		if ( null === $xmp ) {
+			return false;
+		}
+		return array() !== TransparAI_Parsers::xmp_digital_source_types( self::strip_own_block( $xmp ) );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -204,7 +278,7 @@ final class TransparAI_Writer {
 	 * The rdf:Description block this plugin injects (identifiable marker).
 	 */
 	private static function description_block( string $type ): string {
-		$uri = 'composite' === $type ? self::DST_URI_COMPOSITE : self::DST_URI_GENERATED;
+		$uri = TransparAI_Meta::DST_CV_BASE . self::dst_token( $type );
 		return '<rdf:Description rdf:about="' . self::MARKER_ABOUT . '"'
 			. ' xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">'
 			. '<Iptc4xmpExt:DigitalSourceType>' . $uri . '</Iptc4xmpExt:DigitalSourceType>'
@@ -231,9 +305,8 @@ final class TransparAI_Writer {
 	 * @return array{action:string, xmp:string} action: keep|replace.
 	 */
 	private static function merge_packet( string $xmp, string $type ): array {
-		$terms   = TransparAI_Parsers::xmp_digital_source_types( $xmp );
-		$ai_term = 'composite' === $type ? 'compositewithtrainedalgorithmicmedia' : 'trainedalgorithmicmedia';
-		if ( in_array( $ai_term, $terms, true ) ) {
+		$terms = TransparAI_Parsers::xmp_digital_source_types( $xmp );
+		if ( in_array( strtolower( self::dst_token( $type ) ), $terms, true ) ) {
 			return array(
 				'action' => 'keep',
 				'xmp'    => $xmp,
@@ -501,8 +574,7 @@ final class TransparAI_Writer {
 	 * Build a minimal APP13 segment (Photoshop IRB, IPTC-IIM 1:90, 2:0, 2:40).
 	 */
 	private static function build_app13( string $type ): string {
-		$token = 'DigitalSourceType='
-			. ( 'composite' === $type ? 'compositeWithTrainedAlgorithmicMedia' : 'trainedAlgorithmicMedia' );
+		$token = 'DigitalSourceType=' . self::dst_token( $type );
 
 		$iim  = "\x1C\x01\x5A" . pack( 'n', 3 ) . "\x1B\x25\x47"; /* 1:90 coded character set = UTF-8. */
 		$iim .= "\x1C\x02\x00" . pack( 'n', 2 ) . "\x00\x04"; /* 2:0 record version 4. */
@@ -524,8 +596,12 @@ final class TransparAI_Writer {
 		if ( ! str_starts_with( $payload, TransparAI_Parsers::PSIR_HEADER ) ) {
 			return false;
 		}
-		return str_contains( $payload, 'DigitalSourceType=trainedAlgorithmicMedia' )
-			|| str_contains( $payload, 'DigitalSourceType=compositeWithTrainedAlgorithmicMedia' );
+		foreach ( array( TransparAI_Meta::DST_TRAINED, TransparAI_Meta::DST_COMPOSITE, TransparAI_Meta::DST_CAPTURE, TransparAI_Meta::DST_CREATION ) as $token ) {
+			if ( str_contains( $payload, 'DigitalSourceType=' . $token ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private static function jpeg_remove( string $path, string $data ): bool {

@@ -188,12 +188,60 @@ final class TransparAI_CLI {
 	}
 
 	/**
+	 * Declare attachments as not AI-made (camera photo or human digital work), or withdraw that.
+	 *
+	 * The declaration removes any AI label, keeps the scanner from re-queuing the
+	 * file, and (with file writing enabled) writes digitalCapture or
+	 * digitalCreation into files that carry no other digital source type.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <id>...
+	 * : One or more attachment IDs.
+	 *
+	 * [--type=<type>]
+	 * : capture (default) for a camera photo, creation for human digital work.
+	 *
+	 * [--remove]
+	 * : Withdraw the declaration instead.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai human 12 13 --type=capture
+	 *
+	 * @param array $args       Attachment IDs.
+	 * @param array $assoc_args Flags.
+	 */
+	public function human( array $args, array $assoc_args ): void {
+		$type   = isset( $assoc_args['type'] ) ? sanitize_key( (string) $assoc_args['type'] ) : 'capture';
+		$remove = ! empty( $assoc_args['remove'] );
+		if ( ! $remove && '' === TransparAI_Meta::sanitize_human( $type ) ) {
+			WP_CLI::error( 'Unknown --type, use capture or creation.' );
+		}
+		$count = 0;
+		foreach ( $args as $id ) {
+			$id = absint( $id );
+			if ( ! $id || 'attachment' !== get_post_type( $id ) ) {
+				WP_CLI::warning( sprintf( '#%s is not an attachment, skipped.', $id ) );
+				continue;
+			}
+			if ( $remove ) {
+				TransparAI_Meta::unmark_human( $id );
+			} else {
+				TransparAI_Meta::mark_human( $id, $type, 'cli' );
+			}
+			++$count;
+		}
+		WP_CLI::success( sprintf( $remove ? '%d declaration(s) removed.' : '%d attachment(s) declared as not AI-made.', $count ) );
+	}
+
+	/**
 	 * List labeled or detected attachments (audit export).
 	 *
 	 * ## OPTIONS
 	 *
 	 * [--status=<status>]
-	 * : flagged (default), detected, or all.
+	 * : flagged (default), detected, human, or all.
 	 *
 	 * [--format=<format>]
 	 * : table (default), csv, json, ids or count.

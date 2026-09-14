@@ -78,6 +78,20 @@ final class TransparAI_Media_Library {
 			$html .= '<span class="trai-detail">' . $detail . '</span>';
 		}
 
+		/* The opposite statement: a camera photo or human work, written into the file too. */
+		$human   = TransparAI_Meta::human_type( $id );
+		$choices = array(
+			''                            => __( 'no declaration', 'transparai' ),
+			TransparAI_Meta::DST_CAPTURE  => __( 'camera photo (digitalCapture)', 'transparai' ),
+			TransparAI_Meta::DST_CREATION => __( 'human digital work (digitalCreation)', 'transparai' ),
+		);
+		$html   .= '<span class="trai-human-wrap"><label>' . esc_html__( 'Not AI:', 'transparai' )
+			. ' <select name="attachments[' . $id . '][transparai_human]">';
+		foreach ( $choices as $value => $label ) {
+			$html .= '<option value="' . esc_attr( $value ) . '"' . selected( $human, $value, false ) . '>' . esc_html( $label ) . '</option>';
+		}
+		$html .= '</select></label></span>';
+
 		if ( '' !== (string) get_post_meta( $id, TransparAI_Meta::KEY_WRITE_ERROR, true ) ) {
 			$html .= '<span class="trai-write-error">'
 				. esc_html__( 'The file metadata could not be updated (file not writable). The label state in WordPress and the metadata inside the file may differ.', 'transparai' )
@@ -202,8 +216,18 @@ final class TransparAI_Media_Library {
 			if ( ! TransparAI_Meta::is_flagged( $id ) ) {
 				TransparAI_Meta::flag( $id, 'manual' );
 			}
-		} elseif ( TransparAI_Meta::is_flagged( $id ) ) {
-			TransparAI_Meta::unflag( $id );
+		} else {
+			if ( TransparAI_Meta::is_flagged( $id ) ) {
+				TransparAI_Meta::unflag( $id );
+			}
+			if ( isset( $attachment['transparai_human'] ) ) {
+				$human = TransparAI_Meta::sanitize_human( wp_unslash( (string) $attachment['transparai_human'] ) );
+				if ( '' === $human ) {
+					TransparAI_Meta::unmark_human( $id );
+				} elseif ( $human !== TransparAI_Meta::human_type( $id ) ) {
+					TransparAI_Meta::mark_human( $id, $human, 'manual' );
+				}
+			}
 		}
 		if ( isset( $attachment['transparai_badge_pos'] ) ) {
 			$position = TransparAI_Meta::sanitize_badge_pos( $attachment['transparai_badge_pos'] );
@@ -234,6 +258,7 @@ final class TransparAI_Media_Library {
 	public static function prepare_js( array $response, WP_Post $attachment ): array {
 		$response['traiFlag']     = TransparAI_Meta::is_flagged( (int) $attachment->ID );
 		$response['traiDetected'] = TransparAI_Meta::is_detected( (int) $attachment->ID );
+		$response['traiHuman']    = TransparAI_Meta::is_human( (int) $attachment->ID );
 		return $response;
 	}
 
@@ -264,7 +289,7 @@ final class TransparAI_Media_Library {
 		}
 		$ids    = isset( $_POST['ids'] ) ? array_map( 'intval', (array) wp_unslash( $_POST['ids'] ) ) : array();
 		$action = isset( $_POST['op'] ) ? sanitize_key( wp_unslash( (string) $_POST['op'] ) ) : '';
-		if ( ! in_array( $action, array( 'flag', 'unflag', 'confirm', 'dismiss' ), true ) ) {
+		if ( ! in_array( $action, array( 'flag', 'unflag', 'confirm', 'dismiss', 'human_capture', 'human_creation', 'human_remove' ), true ) ) {
 			wp_send_json_error( array( 'message' => __( 'Unknown action.', 'transparai' ) ), 400 );
 		}
 		$count = TransparAI_Meta::bulk_apply( $ids, $action );
@@ -317,7 +342,8 @@ final class TransparAI_Media_Library {
 	 */
 	private static function inspect_html( int $attachment_id ): string {
 		$data    = TransparAI_Writer::inspect( $attachment_id );
-		$flagged = TransparAI_Meta::is_flagged( $attachment_id );
+		$flagged = '' !== TransparAI_Writer::expected_token( $attachment_id );
+		$human   = TransparAI_Meta::human_type( $attachment_id );
 		$html    = '';
 
 		/*
@@ -327,9 +353,12 @@ final class TransparAI_Media_Library {
 		 */
 		$html .= '<div class="trai-inspect-section"><p class="trai-inspect-lead">'
 			. esc_html(
-				$flagged
-					? __( 'This attachment is labeled as AI-generated, so every file below should carry the declaration.', 'transparai' )
-					: __( 'This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below.', 'transparai' )
+				'' !== $human
+					/* translators: %s: IPTC digital source type token. */
+					? sprintf( __( 'This attachment is declared as not AI-made (%s). The declaration is written into files that carry no other digital source type.', 'transparai' ), $human )
+					: ( $flagged
+						? __( 'This attachment is labeled as AI-generated, so every file below should carry the declaration.', 'transparai' )
+						: __( 'This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below.', 'transparai' ) )
 			)
 			. '</p></div>';
 
@@ -407,6 +436,7 @@ final class TransparAI_Media_Library {
 			'transparai-admin',
 			'.attachment.trai-flag .thumbnail::after{content:"' . esc_attr( TransparAI_Frontend::badge_short_label() ) . '";}'
 			. '.attachment.trai-detected .thumbnail::after{content:"' . esc_attr( TransparAI_Frontend::badge_short_label() ) . '?";}'
+			. '.attachment.trai-human .thumbnail::after{content:"' . esc_attr( TransparAI_Frontend::human_short_label() ) . '";}'
 		);
 
 		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'media-views' ), TRANSPARAI_VERSION, true );
@@ -443,6 +473,7 @@ final class TransparAI_Media_Library {
 			'filterOnly'     => __( 'Only AI-labeled', 'transparai' ),
 			'filterDetected' => __( 'Detected, needs review', 'transparai' ),
 			'filterNone'     => __( 'Without AI label', 'transparai' ),
+			'filterHuman'    => __( 'Declared not AI (camera, human work)', 'transparai' ),
 			'bulkOn'         => __( 'Mark as AI-generated', 'transparai' ),
 			'bulkOff'        => __( 'Remove AI label', 'transparai' ),
 			'selectFirst'    => __( 'Please select media first.', 'transparai' ),
@@ -490,6 +521,8 @@ final class TransparAI_Media_Library {
 			}
 		} elseif ( TransparAI_Meta::is_detected( $id ) ) {
 			echo '<span class="trai-list-badge trai-list-badge--review" title="' . esc_attr__( 'Detected, needs review', 'transparai' ) . '">' . esc_html( TransparAI_Frontend::badge_short_label() ) . '?</span>';
+		} elseif ( TransparAI_Meta::is_human( $id ) ) {
+			echo '<span class="trai-list-badge trai-list-badge--human" title="' . esc_attr( TransparAI_Meta::human_type( $id ) ) . '">' . esc_html( TransparAI_Frontend::human_short_label() ) . '</span>';
 		}
 	}
 
@@ -505,6 +538,7 @@ final class TransparAI_Media_Library {
 			. '<option value=""' . selected( $value, '', false ) . '>' . esc_html__( 'AI status: all', 'transparai' ) . '</option>'
 			. '<option value="1"' . selected( $value, '1', false ) . '>' . esc_html__( 'Only AI-labeled', 'transparai' ) . '</option>'
 			. '<option value="detected"' . selected( $value, 'detected', false ) . '>' . esc_html__( 'Detected, needs review', 'transparai' ) . '</option>'
+			. '<option value="human"' . selected( $value, 'human', false ) . '>' . esc_html__( 'Declared not AI (camera, human work)', 'transparai' ) . '</option>'
 			. '<option value="0"' . selected( $value, '0', false ) . '>' . esc_html__( 'Without AI label', 'transparai' ) . '</option>'
 			. '</select>';
 	}
@@ -550,6 +584,9 @@ final class TransparAI_Media_Library {
 		$actions['transparai_unflag']  = __( 'Remove AI label', 'transparai' );
 		$actions['transparai_confirm'] = __( 'Confirm detected AI label', 'transparai' );
 		$actions['transparai_dismiss'] = __( 'Dismiss detected AI label', 'transparai' );
+		$actions['transparai_capture'] = __( 'Declare as camera photo (not AI)', 'transparai' );
+		$actions['transparai_human']   = __( 'Declare as human work (not AI)', 'transparai' );
+		$actions['transparai_unhuman'] = __( 'Remove "not AI" declaration', 'transparai' );
 		return $actions;
 	}
 
@@ -566,6 +603,9 @@ final class TransparAI_Media_Library {
 			'transparai_unflag'  => 'unflag',
 			'transparai_confirm' => 'confirm',
 			'transparai_dismiss' => 'dismiss',
+			'transparai_capture' => 'human_capture',
+			'transparai_human'   => 'human_creation',
+			'transparai_unhuman' => 'human_remove',
 		);
 		if ( ! isset( $map[ $action ] ) ) {
 			return $redirect;

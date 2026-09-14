@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- Non-AI declaration per attachment (`_transparai_human` = `digitalCapture` | `digitalCreation`):
+  `mark_human()` clears label and detection, `flag()` clears the declaration, the scanner's
+  `planned_status()` returns `skipped` for declared media. Writer: `write_type()`/`expected_token()`
+  decide what a file should carry; a declaration is only written into files without a foreign
+  source type (`has_foreign_dst()`), `file_is_marked()` takes the expected token, the repair sweep
+  covers declared media via the new `labeled` meta query and accepts any declaration for them.
+  Front end: structured data always, `trai-badge--human` only with `human_badge`. Media library:
+  select in the attachment field, grid and list filter `human`, three native bulk actions,
+  `wp transparai human`, `status --status=human`.
 - AI-written text: the per-post checkbox became a disclosure level (`none`, `assisted`, `generated`,
   `generated_reviewed`), stored in the same meta key; the old `'1'` reads as `generated`. Block
   editor panel over the entity store (saves with the post, lands in revisions), classic meta box

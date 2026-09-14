@@ -44,6 +44,8 @@ final class TransparAI_Options {
 			'background_badges'       => '0', /* Experimental: label CSS background images via JS map. */
 			'page_notice'             => '0', /* Site-wide footer note on pages containing labeled media. */
 			'page_notice_text'        => '', /* Empty = translated default. */
+			'human_badge'             => '0', /* Visible badge on media declared as not AI-made. */
+			'human_badge_text'        => '', /* Empty = translated default "Human made". */
 			/* AI-written text: per-post disclosure levels. */
 			'content_notice_text'     => '', /* Custom note for all AI levels; empty = translated default per level. */
 			'content_notice_position' => 'before', /* before | after the content. */
@@ -63,6 +65,7 @@ final class TransparAI_Options {
 			/* Machine-readable file metadata. */
 			'write_xmp'               => '1',
 			'write_iim'               => '1', /* Mirror into IPTC-IIM (JPEG, only when safe). */
+			'write_human'             => '1', /* Also write digitalCapture/digitalCreation for declared non-AI media (never over a foreign declaration). */
 			'auto_repair'             => '1', /* Re-write metadata stripped by optimizers. */
 			'delivery_check'          => '0', /* Opt-in: fetch our own image URL to see whether the declaration survives delivery. */
 			'schema_output'           => '1', /* JSON-LD digitalSourceType for labeled media in the page. */
@@ -138,6 +141,8 @@ final class TransparAI_Options {
 			'badge_guard',
 			'background_badges',
 			'page_notice',
+			'human_badge',
+			'write_human',
 			'content_show_reviewer',
 			'content_excerpt_notice',
 			'feed_notice',
@@ -170,9 +175,9 @@ final class TransparAI_Options {
 				$clean[ $key ] = $valid ? $value : '';
 				continue;
 			}
-			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible' ), true ) ) {
+			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text' ), true ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_text_field( (string) $raw[ $key ] ) : '';
-				$clean[ $key ] = mb_substr( $value, 0, in_array( $key, array( 'badge_text', 'content_responsible' ), true ) ? 100 : 300 );
+				$clean[ $key ] = mb_substr( $value, 0, in_array( $key, array( 'badge_text', 'content_responsible', 'human_badge_text' ), true ) ? 100 : 300 );
 				continue;
 			}
 			$clean[ $key ] = $default;

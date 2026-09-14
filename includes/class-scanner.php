@@ -174,6 +174,10 @@ final class TransparAI_Scanner {
 		if ( '1' === get_post_meta( $attachment_id, TransparAI_Meta::KEY_DISMISSED, true ) ) {
 			return 'skipped';
 		}
+		/* An explicit "not AI" declaration beats every automatic finding. */
+		if ( TransparAI_Meta::is_human( $attachment_id ) ) {
+			return 'skipped';
+		}
 
 		$confidence = (string) ( $result['confidence'] ?? 'likely' );
 		$mode       = 'hint' === $confidence

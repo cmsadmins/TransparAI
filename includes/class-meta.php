@@ -42,6 +42,8 @@ final class TransparAI_Meta {
 	public const KEY_CONTENT_AI  = '_transparai_content_ai';
 	public const KEY_HISTORY     = '_transparai_history';
 	public const KEY_DELIVERY    = '_transparai_delivery';
+	/* Active non-AI declaration: digitalCapture (camera photo) or digitalCreation (human digital work). */
+	public const KEY_HUMAN = '_transparai_human';
 
 	/* Post-level (not attachment) disclosure of AI-written text. */
 	public const KEY_CONTENT_RESPONSIBLE = '_transparai_content_responsible';
@@ -126,6 +128,21 @@ final class TransparAI_Meta {
 				)
 			);
 		}
+
+		register_post_meta(
+			'attachment',
+			self::KEY_HUMAN,
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'default'           => '',
+				'show_in_rest'      => true,
+				'sanitize_callback' => array( self::class, 'sanitize_human' ),
+				'auth_callback'     => static function (): bool {
+					return current_user_can( 'upload_files' );
+				},
+			)
+		);
 
 		register_post_meta(
 			'attachment',
@@ -380,6 +397,69 @@ final class TransparAI_Meta {
 	}
 
 	/**
+	 * Normalize a non-AI declaration to its IPTC token or ''. Accepts the
+	 * short forms `capture` and `creation` as well.
+	 *
+	 * @param mixed $value Raw value.
+	 */
+	public static function sanitize_human( $value ): string {
+		$value = is_string( $value ) ? strtolower( trim( $value ) ) : '';
+		if ( in_array( $value, array( 'capture', strtolower( self::DST_CAPTURE ) ), true ) ) {
+			return self::DST_CAPTURE;
+		}
+		if ( in_array( $value, array( 'creation', strtolower( self::DST_CREATION ) ), true ) ) {
+			return self::DST_CREATION;
+		}
+		return '';
+	}
+
+	/**
+	 * The attachment's non-AI declaration token, or '' when none was made.
+	 */
+	public static function human_type( int $attachment_id ): string {
+		return self::sanitize_human( get_post_meta( $attachment_id, self::KEY_HUMAN, true ) );
+	}
+
+	/**
+	 * Whether the attachment was actively declared as not AI-made.
+	 */
+	public static function is_human( int $attachment_id ): bool {
+		return '' !== self::human_type( $attachment_id );
+	}
+
+	/**
+	 * Declare an attachment as a camera photo or human digital work. The
+	 * opposite of the AI label, so the label and any pending detection go;
+	 * the scanner treats the declaration like a dismissed detection.
+	 *
+	 * @param int    $attachment_id Attachment ID.
+	 * @param string $type          capture|creation or the IPTC token.
+	 * @param string $marked_by     manual|cli|rest|bulk.
+	 */
+	public static function mark_human( int $attachment_id, string $type, string $marked_by = 'manual' ): void {
+		$token = self::sanitize_human( $type );
+		if ( '' === $token ) {
+			return;
+		}
+		delete_post_meta( $attachment_id, self::KEY_FLAG );
+		delete_post_meta( $attachment_id, self::KEY_DETECTED );
+		update_post_meta( $attachment_id, self::KEY_HUMAN, $token );
+		update_post_meta( $attachment_id, self::KEY_MARKED_BY, sanitize_key( $marked_by ) );
+		self::record( $attachment_id, 'human-' . ( self::DST_CAPTURE === $token ? 'capture' : 'creation' ), $marked_by );
+	}
+
+	/**
+	 * Withdraw a non-AI declaration.
+	 */
+	public static function unmark_human( int $attachment_id ): void {
+		if ( ! self::is_human( $attachment_id ) ) {
+			return;
+		}
+		delete_post_meta( $attachment_id, self::KEY_HUMAN );
+		self::record( $attachment_id, 'human-removed' );
+	}
+
+	/**
 	 * Normalize a per-image badge position override to a known value or ''.
 	 *
 	 * @param mixed $value Raw value.
@@ -421,6 +501,8 @@ final class TransparAI_Meta {
 	 *                              reviewer approved a queued detection, 'confirmed'.
 	 */
 	public static function flag( int $attachment_id, string $marked_by = 'manual', string $event = 'flagged' ): void {
+		/* An AI label and a "not AI" declaration cannot both stand. */
+		delete_post_meta( $attachment_id, self::KEY_HUMAN );
 		update_post_meta( $attachment_id, self::KEY_FLAG, '1' );
 		update_post_meta( $attachment_id, self::KEY_MARKED_BY, sanitize_key( $marked_by ) );
 		delete_post_meta( $attachment_id, self::KEY_DETECTED );
@@ -567,11 +649,11 @@ final class TransparAI_Meta {
 	 * the admin and for `wp transparai status`. One source, so the audit trail
 	 * a client receives cannot differ between the two ways of asking for it.
 	 *
-	 * @param string $status flagged|detected|all.
+	 * @param string $status flagged|detected|human|all.
 	 * @return array<int, array<string, string|int>>
 	 */
 	public static function audit_rows( string $status = 'flagged' ): array {
-		$meta_query = self::meta_query( in_array( $status, array( 'detected', 'all' ), true ) ? $status : '1' );
+		$meta_query = self::meta_query( in_array( $status, array( 'detected', 'human', 'all' ), true ) ? $status : '1' );
 
 		$ids = ( new WP_Query(
 			array(
@@ -605,8 +687,8 @@ final class TransparAI_Meta {
 		return array(
 			'ID'              => $attachment_id,
 			'file'            => (string) get_post_meta( $attachment_id, '_wp_attached_file', true ),
-			'status'          => self::is_flagged( $attachment_id ) ? 'flagged' : 'detected',
-			'type'            => self::get_type( $attachment_id ),
+			'status'          => self::is_flagged( $attachment_id ) ? 'flagged' : ( self::is_human( $attachment_id ) ? 'human' : 'detected' ),
+			'type'            => self::is_human( $attachment_id ) ? self::human_type( $attachment_id ) : self::get_type( $attachment_id ),
 			'source'          => (string) get_post_meta( $attachment_id, self::KEY_SOURCE, true ),
 			'generator'       => self::get_generator( $attachment_id ),
 			'confidence'      => (string) get_post_meta( $attachment_id, self::KEY_CONFIDENCE, true ),
@@ -635,6 +717,35 @@ final class TransparAI_Meta {
 				array(
 					'key'   => self::KEY_DETECTED,
 					'value' => '1',
+				),
+				array(
+					'key'     => self::KEY_HUMAN,
+					'value'   => '',
+					'compare' => '!=',
+				),
+			);
+		}
+		if ( 'human' === $value ) {
+			return array(
+				array(
+					'key'     => self::KEY_HUMAN,
+					'value'   => '',
+					'compare' => '!=',
+				),
+			);
+		}
+		if ( 'labeled' === $value ) {
+			/* Everything that carries an in-file declaration: AI label or non-AI declaration. */
+			return array(
+				'relation' => 'OR',
+				array(
+					'key'   => self::KEY_FLAG,
+					'value' => '1',
+				),
+				array(
+					'key'     => self::KEY_HUMAN,
+					'value'   => '',
+					'compare' => '!=',
 				),
 			);
 		}
@@ -682,7 +793,7 @@ final class TransparAI_Meta {
 	 * Apply a bulk action to a list of attachment IDs.
 	 *
 	 * @param int[]  $ids    Attachment IDs.
-	 * @param string $action flag|unflag|confirm|dismiss.
+	 * @param string $action flag|unflag|confirm|dismiss|human_capture|human_creation|human_remove.
 	 * @return int Number of updated attachments.
 	 */
 	public static function bulk_apply( array $ids, string $action ): int {
@@ -704,6 +815,15 @@ final class TransparAI_Meta {
 					break;
 				case 'dismiss':
 					self::dismiss( $id );
+					break;
+				case 'human_capture':
+					self::mark_human( $id, 'capture', 'bulk' );
+					break;
+				case 'human_creation':
+					self::mark_human( $id, 'creation', 'bulk' );
+					break;
+				case 'human_remove':
+					self::unmark_human( $id );
 					break;
 				default:
 					continue 2;

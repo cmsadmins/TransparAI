@@ -915,3 +915,61 @@ msgstr "transparencia"
 msgctxt "block keyword"
 msgid "eu ai act"
 msgstr "ai act"
+
+#: admin/class-media-library.php:85
+msgid "camera photo (digitalCapture)"
+msgstr "foto de cámara (digitalCapture)"
+
+#: admin/class-media-library.php:86
+msgid "human digital work (digitalCreation)"
+msgstr "obra digital humana (digitalCreation)"
+
+#: admin/class-media-library.php:88
+msgid "Not AI:"
+msgstr "Sin IA:"
+
+#. translators: %s: IPTC digital source type token.
+#: admin/class-media-library.php:358
+#, php-format
+msgid "This attachment is declared as not AI-made (%s). The declaration is written into files that carry no other digital source type."
+msgstr "Este adjunto está declarado como no creado por IA (%s). La declaración se escribe en los archivos que no llevan otro digital source type."
+
+#: admin/class-media-library.php:476
+#: admin/class-media-library.php:541
+msgid "Declared not AI (camera, human work)"
+msgstr "Declarado sin IA (cámara, obra humana)"
+
+#: admin/class-media-library.php:587
+msgid "Declare as camera photo (not AI)"
+msgstr "Declarar como foto de cámara (sin IA)"
+
+#: admin/class-media-library.php:588
+msgid "Declare as human work (not AI)"
+msgstr "Declarar como obra humana (sin IA)"
+
+#: admin/class-media-library.php:589
+msgid "Remove \"not AI\" declaration"
+msgstr "Quitar la declaración «sin IA»"
+
+#: admin/class-settings.php:311
+msgid "Not AI"
+msgstr "Sin IA"
+
+#: admin/class-settings.php:314
+msgid "Also show a badge on media declared as camera photo or human work (the structured data carries the declaration either way)"
+msgstr "Mostrar también una insignia en los medios declarados como foto de cámara u obra humana (los datos estructurados llevan la declaración de todos modos)"
+
+#: admin/class-settings.php:315
+#: includes/class-frontend.php:164
+msgid "Human made"
+msgstr "Hecho por personas"
+
+#: admin/class-settings.php:447
+msgid "Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote"
+msgstr "Escribir también digitalCapture o digitalCreation en los medios declarados sin IA, pero nunca sobre una declaración que otra herramienta o una cámara ya escribió"
+
+#. translators: very short label for media declared as not AI-made, shown on small thumbnails.
+#: includes/class-frontend.php:172
+msgctxt "short human badge label"
+msgid "Human"
+msgstr "Humano"

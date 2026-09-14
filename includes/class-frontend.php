@@ -132,6 +132,47 @@ final class TransparAI_Frontend {
 	}
 
 	/**
+	 * What an attachment shows in the front end: 'ai' (labeled and within
+	 * the badge start date), 'human' (declared not AI), or '' for nothing.
+	 */
+	private static function label_kind( int $attachment_id ): string {
+		if ( self::is_badged( $attachment_id ) ) {
+			return 'ai';
+		}
+		return TransparAI_Meta::is_human( $attachment_id ) ? 'human' : '';
+	}
+
+	/**
+	 * Whether an attachment gets a visible badge. A non-AI declaration is
+	 * collected for the structured data either way; its badge is opt-in,
+	 * since "Human made" on every photo is visual noise.
+	 */
+	private static function renders_badge( int $attachment_id ): bool {
+		$kind = self::label_kind( $attachment_id );
+		if ( 'human' === $kind && ! TransparAI_Options::enabled( 'human_badge' ) ) {
+			self::collect( $attachment_id );
+			return false;
+		}
+		return '' !== $kind;
+	}
+
+	/**
+	 * Localized label of the "not AI" badge.
+	 */
+	public static function human_badge_label(): string {
+		$custom = TransparAI_Options::get( 'human_badge_text' );
+		return '' === $custom ? __( 'Human made', 'transparai' ) : $custom;
+	}
+
+	/**
+	 * Short "not AI" label for tiles and small images.
+	 */
+	public static function human_short_label(): string {
+		/* translators: very short label for media declared as not AI-made, shown on small thumbnails. */
+		return _x( 'Human', 'short human badge label', 'transparai' );
+	}
+
+	/**
 	 * Localized badge label (full variant). A custom label may contain the
 	 * placeholders {generator} and {site}; when {generator} is used but the
 	 * attachment has no known generator (or none is in scope, ID 0), the
@@ -166,6 +207,11 @@ final class TransparAI_Frontend {
 	 * The badge element for an attachment.
 	 */
 	private static function badge_html( int $attachment_id ): string {
+		if ( TransparAI_Meta::is_human( $attachment_id ) && ! TransparAI_Meta::is_flagged( $attachment_id ) ) {
+			$html = '<span class="trai-badge trai-badge--human" role="note" data-trai-short="' . esc_attr( self::human_short_label() ) . '">'
+				. esc_html( self::human_badge_label() ) . '</span>';
+			return (string) apply_filters( 'transparai_badge_html', $html, $attachment_id );
+		}
 		$label = self::badge_label( $attachment_id );
 		if ( TransparAI_Options::enabled( 'badge_show_source' )
 			&& ! str_contains( TransparAI_Options::get( 'badge_text' ), '{generator}' ) ) {
@@ -287,7 +333,7 @@ final class TransparAI_Frontend {
 
 				if ( preg_match( '/\bwp-image-(\d+)\b/', $tag, $class_match ) ) {
 					$attachment_id = (int) $class_match[1];
-					if ( ! self::is_badged( $attachment_id ) ) {
+					if ( ! self::renders_badge( $attachment_id ) ) {
 						return $tag;
 					}
 				} else {
@@ -375,7 +421,7 @@ final class TransparAI_Frontend {
 		$name = (string) ( $block['blockName'] ?? '' );
 		if ( 'core/video' === $name || 'core/audio' === $name ) {
 			$attachment_id = isset( $block['attrs']['id'] ) ? (int) $block['attrs']['id'] : 0;
-			if ( $attachment_id && self::is_badged( $attachment_id ) && ! str_contains( $content, 'trai-badge' ) ) {
+			if ( $attachment_id && self::renders_badge( $attachment_id ) && ! str_contains( $content, 'trai-badge' ) ) {
 				$close = strripos( $content, '</figure>' );
 				if ( false !== $close ) {
 					self::collect( $attachment_id );
@@ -409,7 +455,7 @@ final class TransparAI_Frontend {
 			return $html;
 		}
 		$thumbnail_id = (int) $thumbnail_id;
-		if ( ! $thumbnail_id || ! self::is_badged( $thumbnail_id ) || str_contains( $html, 'trai-badge' ) ) {
+		if ( ! $thumbnail_id || ! self::renders_badge( $thumbnail_id ) || str_contains( $html, 'trai-badge' ) ) {
 			return $html;
 		}
 		self::collect( $thumbnail_id );
@@ -428,7 +474,7 @@ final class TransparAI_Frontend {
 			return $html;
 		}
 		$attachment_id = (int) $attachment_id;
-		if ( ! self::is_badged( $attachment_id ) || str_contains( $html, 'trai-badge' ) ) {
+		if ( ! self::renders_badge( $attachment_id ) || str_contains( $html, 'trai-badge' ) ) {
 			return $html;
 		}
 		self::collect( $attachment_id );
@@ -623,7 +669,10 @@ final class TransparAI_Frontend {
 				} elseif ( str_starts_with( $mime, 'audio/' ) ) {
 					$type = 'AudioObject';
 				}
-				$token     = 'composite' === TransparAI_Meta::get_type( $attachment_id ) ? TransparAI_Meta::DST_COMPOSITE : TransparAI_Meta::DST_TRAINED;
+				$human     = TransparAI_Meta::is_flagged( $attachment_id ) ? '' : TransparAI_Meta::human_type( $attachment_id );
+				$token     = '' !== $human
+					? $human
+					: ( 'composite' === TransparAI_Meta::get_type( $attachment_id ) ? TransparAI_Meta::DST_COMPOSITE : TransparAI_Meta::DST_TRAINED );
 				$node      = array_merge(
 					array(
 						'@type'      => $type,
@@ -632,7 +681,7 @@ final class TransparAI_Frontend {
 					),
 					TransparAI_Meta::dst_schema( $token )
 				);
-				$generator = TransparAI_Meta::get_generator( $attachment_id );
+				$generator = '' !== $human ? '' : TransparAI_Meta::get_generator( $attachment_id );
 				if ( '' !== $generator ) {
 					$node['creator'] = array(
 						'@type' => 'SoftwareApplication',
@@ -683,7 +732,7 @@ final class TransparAI_Frontend {
 			delete_transient( 'transparai_url_map' );
 			delete_transient( 'transparai_stats' );
 			self::purge_page_caches();
-		} elseif ( TransparAI_Meta::KEY_BADGE_POS === $meta_key ) {
+		} elseif ( TransparAI_Meta::KEY_BADGE_POS === $meta_key || TransparAI_Meta::KEY_HUMAN === $meta_key ) {
 			/*
 			 * The URL map only tracks flag state; a position override just
 			 * changes rendered markup, so cached pages are all that go stale.

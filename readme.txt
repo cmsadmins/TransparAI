@@ -38,6 +38,10 @@ Themes love to stack their own layers over images (hover effects, gradient scrim
 
 Two optional disclosure layers round it off: a short site-wide note at the end of every page that contains labeled media, and the per-post AI level for written text described below. When a label changes, TransparAI tells the common page-cache plugins (WP Rocket, LiteSpeed Cache, W3 Total Cache, WP Super Cache and others) to refresh, so cached pages never keep an outdated badge state.
 
+**The opposite statement: camera photos and human work**
+
+Not every declaration says "AI". Any media file can be declared as a camera photo (digitalCapture) or as human digital work (digitalCreation), from its attachment details, in bulk from the media library list, or with `wp transparai human`. The declaration ends any AI label or pending detection, the scanner never re-queues the file, the page's structured data carries the source type just like it does for AI media, and the same IPTC token is written into the file, but only into files that carry no other digital source type: a camera's own declaration or a photographer's metadata stays untouched. A visible "Human made" badge is available as an option and off by default, since a label on every photo is noise.
+
 **AI-written text: disclosure levels per post**
 
 Every post, page and public custom post type carries an AI level for its text: not classified, no AI used, AI-assisted, AI-generated, or AI-generated and reviewed by a person. The level is set in the document sidebar of the block editor (a meta box in the classic editor), in Quick Edit straight from the post list, or for many posts at once with Bulk Edit; the list gets a sortable column and a filter. AI levels put a configurable note ahead of or after the content, and the "AI notice" block or the `[transparai_notice]` shortcode place that same note wherever you want it instead, without ever duplicating it. For reviewed texts the plugin records who reviewed the post and when, together with a fingerprint of the text and the images in it, so a later change to either shows up as "changed since review" instead of hiding behind an old approval. The note can also be appended to excerpts and to RSS feed items, where a machine-readable `dc:description` element carries it as well, and each AI-written post gets its own Schema.org node with the IPTC digital source type, the same convention the images use.
@@ -145,6 +149,7 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_detected`: `'1'` while an unconfirmed detection waits in the review queue. Kept strictly apart from the public label.
 * `_transparai_history`: JSON list of the last ten events for this file, oldest first. Each entry is `{"t":unix time,"e":event,"u":user ID,"s":source}`, with the events `flagged`, `confirmed`, `unflagged`, `queued`, `dismissed`, `repaired` and `write-failed`. Written by `TransparAI_Meta::record()`, read with `TransparAI_Meta::history()` and `TransparAI_Meta::last_change()`; `TransparAI_Meta::audit_rows()` returns the rows behind both the CSV export and `wp transparai status`.
 * `_transparai_delivery`: result of the last delivery check as `{"t":unix time,"verdict":verdict}`, with `intact`, `stripped`, `unreachable`, `unmarked` or `foreign-host`. Only written when the check is enabled and someone runs it; read it with `TransparAI_Delivery::last_result()`.
+* `_transparai_human`: `digitalCapture` or `digitalCreation` when the attachment was declared as not AI-made; absent otherwise. Mutually exclusive with `_transparai_ai`: setting one removes the other. Written through `TransparAI_Meta::mark_human()` and `unmark_human()`, or the bulk actions `human_capture`, `human_creation` and `human_remove`.
 * `_transparai_badge_pos`: badge placement for this one image, overriding the site setting. `top-left`, `top-right`, `bottom-left`, `bottom-right`, `below` (caption line under the image) or `hidden`. Absent means the site setting applies.
 
 **Post meta** (registered for the REST API on every public post type except attachments, writable with `edit_post`):
@@ -186,7 +191,8 @@ The first six switch the guard off by themselves, since a placement you chose sh
 
 * `scan [--all] [--dry-run]`: scan the library; `--all` rescans everything, `--dry-run` only reports.
 * `flag <id>... [--source=<text>]` and `unflag <id>...`: set or remove labels in bulk.
-* `status [--status=flagged|detected|all] [--format=table|csv|json|ids|count]`: audit export, for example `wp transparai status --format=csv > ai-audit.csv`.
+* `human <id>... [--type=capture|creation] [--remove]`: declare media as camera photo or human work, or withdraw that.
+* `status [--status=flagged|detected|human|all] [--format=table|csv|json|ids|count]`: audit export, for example `wp transparai status --format=csv > ai-audit.csv`.
 * `write-meta [--dry-run] --yes` and `verify-meta [--repair]`: write and verify the in-file metadata.
 * `verify-delivery [<id>...] [--sample=<n>]`: fetch labeled images over their own public URL and report whether the declaration survives delivery. Needs the delivery check enabled in the settings.
 
@@ -224,6 +230,7 @@ You use this plugin at your own risk. To the extent permitted by law, the author
 == Changelog ==
 
 = Unreleased =
+* Media can be declared as camera photo or human digital work (IPTC digitalCapture and digitalCreation): from the attachment details, in bulk, or with `wp transparai human`. The declaration ends any AI label, keeps the scanner from re-queuing the file, appears in the structured data, and is written into files that carry no other digital source type. Optional "Human made" badge, off by default.
 * AI-written text now has a level per post instead of a checkbox: no AI used, AI-assisted, AI-generated, or AI-generated and reviewed by a person. Set in the block editor sidebar, the classic meta box, Quick Edit or Bulk Edit; the post list gets a sortable column and a filter. Existing checkbox values keep working as "AI-generated".
 * Reviewed texts record the reviewer, the date and a fingerprint of the text and its images, so an edit after the review is shown as "changed since review" instead of hiding behind an old approval.
 * New "AI notice" block and `[transparai_notice]` shortcode to place the note by hand; the automatic note then steps back. Both render only what is declared.

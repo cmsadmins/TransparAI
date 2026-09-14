@@ -208,7 +208,8 @@
    so every offset/size must be set explicitly or the badge fills the tile.
    The "content" property is locale-dependent and inlined via wp_add_inline_style. */
 .attachment.trai-flag .thumbnail::after,
-.attachment.trai-detected .thumbnail::after {
+.attachment.trai-detected .thumbnail::after,
+.attachment.trai-human .thumbnail::after {
 	position: absolute;
 	top: 4px;
 	right: 4px;
@@ -227,6 +228,14 @@
 	border-radius: 50%;
 	pointer-events: none;
 	z-index: 5;
+}
+
+/* Declared not AI: quiet, light chip. */
+.attachment.trai-human .thumbnail::after {
+	background: rgba(255, 255, 255, 0.92);
+	color: #1a1a1a;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
 }
 
 /* Review state: action needed, so it gets the accent color. */
@@ -248,6 +257,17 @@
 
 .trai-list-badge--review {
 	background: var(--trai-primary, #FF6800);
+}
+
+.trai-list-badge--human {
+	background: #fff;
+	color: #1a1a1a;
+	border: 1px solid #c3c4c7;
+}
+
+.trai-human-wrap {
+	display: block;
+	margin-top: 6px;
 }
 
 .trai-list-generator {

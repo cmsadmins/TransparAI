@@ -308,6 +308,14 @@ final class TransparAI_Settings {
 						</td>
 					</tr>
 					<tr>
+						<th scope="row"><?php esc_html_e( 'Not AI', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'human_badge' ); ?>" value="1" <?php checked( $options['human_badge'], '1' ); ?> />
+							<?php esc_html_e( 'Also show a badge on media declared as camera photo or human work (the structured data carries the declaration either way)', 'transparai' ); ?></label>
+							<p><input type="text" class="regular-text" name="<?php self::name( 'human_badge_text' ); ?>" value="<?php echo esc_attr( $options['human_badge_text'] ); ?>" placeholder="<?php esc_attr_e( 'Human made', 'transparai' ); ?>" /></p>
+						</td>
+					</tr>
+					<tr>
 						<th scope="row"><?php esc_html_e( 'Page notice', 'transparai' ); ?></th>
 						<td>
 							<label><input type="checkbox" name="<?php self::name( 'page_notice' ); ?>" value="1" <?php checked( $options['page_notice'], '1' ); ?> />
@@ -434,7 +442,9 @@ final class TransparAI_Settings {
 							<label><input type="checkbox" name="<?php self::name( 'write_xmp' ); ?>" value="1" <?php checked( $options['write_xmp'], '1' ); ?> />
 							<?php esc_html_e( 'Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'write_iim' ); ?>" value="1" <?php checked( $options['write_iim'], '1' ); ?> />
-							<?php esc_html_e( 'Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)', 'transparai' ); ?></label>
+							<?php esc_html_e( 'Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)', 'transparai' ); ?></label><br />
+							<label><input type="checkbox" name="<?php self::name( 'write_human' ); ?>" value="1" <?php checked( $options['write_human'], '1' ); ?> />
+							<?php esc_html_e( 'Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote', 'transparai' ); ?></label>
 						</td>
 					</tr>
 					<tr>
