@@ -26,3 +26,5 @@ jobs:
           SLUG: transparai
           ASSETS_DIR: .wordpress-org
           README_NAME: readme.txt
+          # The tag deploy generates the .pot on the runner, so trunk always differs from the repo there.
+          IGNORE_OTHER_FILES: true
