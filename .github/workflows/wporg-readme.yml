@@ -1,0 +1,28 @@
+name: Update readme and assets on WordPress.org
+
+# Readme wording and directory assets change more often than the code. This
+# pushes readme.txt (trunk and the stable tag) and .wordpress-org/ to SVN
+# without a release, so a directory fix never needs a version bump.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "readme.txt"
+      - ".wordpress-org/**"
+  workflow_dispatch:
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Push readme and assets to WordPress.org
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: transparai
+          ASSETS_DIR: .wordpress-org
+          README_NAME: readme.txt

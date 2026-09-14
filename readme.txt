@@ -132,97 +132,30 @@ Yes. The meta key `_transparai_ai` is registered for the REST API, WP-CLI comman
 Post in the support forum here on wordpress.org, or write to TransparAI@cms-admins.de. The plugin is built and maintained by Patrick Schlesinger (cms-admins.de).
 
 == For developers ==
+Everything below is stable API surface; hooks and options use the `transparai_` prefix, meta keys `_transparai_`. The full developer reference with every shape and example lives in the GitHub README: https://github.com/cmsadmins/TransparAI
 
-Everything below is stable API surface; the prefixes are `transparai_` for hooks and options and `_transparai_` for attachment meta.
+**Attachment meta** (REST-exposed, `upload_files`): `_transparai_ai` (`'1'` = confirmed AI label), `_transparai_type` (`generated`|`composite`), `_transparai_source`, `_transparai_generator`, `_transparai_confidence`, `_transparai_detected` (pending review), `_transparai_human` (`digitalCapture`|`digitalCreation`, mutually exclusive with the label), `_transparai_badge_pos`, `_transparai_history` (last fifty events with time, trigger, previous state and editor name), `_transparai_delivery`.
 
-**Attachment meta** (registered for the REST API, readable and writable with `upload_files` capability):
+**Post meta** (REST-exposed, `edit_post`): `_transparai_content_ai` (`none`|`assisted`|`generated`|`generated_reviewed`), `_transparai_content_responsible`, `_transparai_content_review` (plugin-written stamp with reviewer, date and content fingerprint; never writable through REST).
 
-* `_transparai_ai`: `'1'` when the attachment carries the confirmed AI label, absent otherwise. This is the single source of truth for badge and file metadata.
-* `_transparai_type`: `generated` or `composite` (AI-edited). Controls which digital source type is written.
-* `_transparai_source`: where the detection came from (`c2pa`, `xmp-dst`, `iim`, `png-chunk`, `exif`, `com`, `id3`, `sidecar`, `filename`, `context`).
-* `_transparai_generator`: detected generator name, for example `Midjourney` or `OpenAI`.
-* `_transparai_confidence`: `certain`, `likely` or `hint`.
-* `_transparai_detected`: `'1'` while an unconfirmed detection waits in the review queue. Kept strictly apart from the public label.
-* `_transparai_history`: JSON list of the last fifty events for this file, oldest first. Each entry is `{"t":unix time,"e":event,"u":user ID,"s":trigger,"p":previous state,"n":display name}`, with the events `flagged`, `confirmed`, `unflagged`, `queued`, `dismissed`, `repaired`, `write-failed`, `human-capture`, `human-creation`, `human-removed` and `delivery-*`; the previous state is `ai`, `detected`, `dismissed`, `human` or empty. Written by `TransparAI_Meta::record()`, read with `TransparAI_Meta::history()` and `TransparAI_Meta::last_change()`; `TransparAI_Meta::audit_rows()` returns the rows behind both the CSV export and `wp transparai status`.
-* `_transparai_delivery`: result of the last delivery check as `{"t":unix time,"verdict":verdict}`, with `intact`, `stripped`, `unreachable`, `unmarked` or `foreign-host`. Only written when the check is enabled and someone runs it; read it with `TransparAI_Delivery::last_result()`.
-* `_transparai_human`: `digitalCapture` or `digitalCreation` when the attachment was declared as not AI-made; absent otherwise. Mutually exclusive with `_transparai_ai`: setting one removes the other. Written through `TransparAI_Meta::mark_human()` and `unmark_human()`, or the bulk actions `human_capture`, `human_creation` and `human_remove`.
-* `_transparai_badge_pos`: badge placement for this one image, overriding the site setting. `top-left`, `top-right`, `bottom-left`, `bottom-right`, `below` (caption line under the image) or `hidden`. Absent means the site setting applies.
+**Hooks:** `do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' )` labels media from your code; filters `transparai_signatures`, `transparai_detection_result`, `transparai_badge_html`, `transparai_badge_wrap_classes`, `transparai_notice_text`, `transparai_notice_html`, `transparai_chatbot_vendors`, `transparai_chatbot_notice`.
 
-**Post meta** (registered for the REST API on every public post type except attachments, writable with `edit_post`):
+**Shortcode and block:** `[transparai_notice type="content|media" style="block|inline" text="" id=""]` and the "AI notice" block render only what is declared; a placed note silences the automatic one.
 
-* `_transparai_content_ai`: the AI level of the text, `none`, `assisted`, `generated` or `generated_reviewed`; absent means not classified. The 1.0.x checkbox value `'1'` is still read as `generated`.
-* `_transparai_content_responsible`: name of the person responsible for a reviewed text (optional, falls back to the site default).
-* `_transparai_content_review`: JSON stamp written by the plugin when a post reaches the reviewed level: `{"by":display name,"by_id":user ID,"on":Y-m-d,"responsible":name,"hash":sha256}`. The hash covers title, content, featured image and every embedded attachment together with its AI label; `TransparAI_Meta::is_review_current()` tells whether it still matches. Readable in the editor, never writable through REST, and stripped down to the date for readers without `edit_post`.
+**REST API** (`/wp-json/transparai/v1/`, authenticated, `upload_files`, writes need `edit_post`, the report `manage_options`): `GET /media`, `GET|POST /media/{id}` (`action=flag|unflag|confirm|dismiss|human_capture|human_creation|human_remove`), `POST /media/{id}/scan`, `GET /report` with `document_hash`.
 
-**Shortcode and block for the text note:**
+**WP-CLI** (`wp transparai`): `scan [--all] [--dry-run]`, `flag`, `unflag`, `human [--type=capture|creation] [--remove]`, `status [--status=...] [--format=csv|json|...]`, `write-meta --yes`, `verify-meta [--repair]`, `verify-delivery`.
 
-`[transparai_notice]` renders the note of the current post (`type="content"`, the default), `[transparai_notice type="media" id="123"]` the badge label of one labeled attachment. `style="inline"` gives a `span` inside running text instead of a `div`, `text="..."` overrides the wording, `id` picks another post. Both the shortcode and the "AI notice" block render only what is declared: a post without AI level or an unlabeled attachment produces nothing. When either is placed, the automatic note steps back. Filters: `transparai_notice_text` (`$text, $post_id, $level`) and `transparai_notice_html` (`$html, $args`).
-
-**REST API** (`/wp-json/transparai/v1/`, authenticated users with `upload_files`, writes additionally need `edit_post` on the attachment, the report needs `manage_options`; nothing is public):
-
-* `GET /media?status=flagged|detected|human|labeled|all&page=1&per_page=20`: paginated audit rows.
-* `GET /media/{id}`: the row plus history, what the files carry and the expected digital source type.
-* `POST /media/{id}` with `action=flag|unflag|confirm|dismiss|human_capture|human_creation|human_remove` and optional `generator`, `type=generated|composite`.
-* `POST /media/{id}/scan`: re-check the file.
-* `GET /report?status=all`: the canonical audit record with counts, items, history, guidance basis, limitations and `document_hash` (sha256 over the facts without timestamps).
-
-**Label media from your own code** (an AI image generator plugin, an import script):
-
-`do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' );`
-
-This sets the confirmed label, records the generator name and, with file writing enabled, writes the metadata into the files. Existing labels are never overwritten.
-
-**Extend or veto detection:**
-
-`add_filter( 'transparai_signatures', function ( $signatures ) { $signatures[] = array( 'pattern' => '/my-generator/i', 'generator' => 'My Generator' ); return $signatures; } );`
-
-`transparai_detection_result` filters the final result per file (or `null`); return `null` to veto a detection, or return a result array to add your own. Both filters receive documented shapes, see the source of `TransparAI_Detector`.
-
-**Customize the badge output:**
-
-`transparai_badge_html` filters the badge element per attachment (`$html, $attachment_id`); `transparai_badge_wrap_classes` filters the wrapper class list (`$classes, $attachment_id`, `0` for the shared template of the optional script).
-
-**Place badges from your theme or builder.** Put one of these classes on any container and it applies to every badge inside it, which works in every builder because they all allow custom classes:
-
-* `trai-badge-top-left`, `trai-badge-top-right`, `trai-badge-bottom-left`, `trai-badge-bottom-right`: move the badges to that corner.
-* `trai-badge-below`: show them as a caption line under the media instead of on it.
-* `trai-badge-hidden`: no visible badge inside this container. File metadata and structured data stay untouched.
-* `trai-badge-manual`: keep the position as configured and switch the automatic overlay guard off for this subtree.
-
-The first six switch the guard off by themselves, since a placement you chose should not be second-guessed. The stacking level of all badges is the CSS custom property `--trai-badge-z` (default `30`, raised to `99` only where the guard found a real overlap); it inherits, so a theme can tune it globally or per container with a single declaration and without touching the stylesheet. The markup is one wrapper `span` carrying the state classes plus `span.trai-badge` directly after the media element.
-
-**WP-CLI** (`wp transparai <command>`):
-
-* `scan [--all] [--dry-run]`: scan the library; `--all` rescans everything, `--dry-run` only reports.
-* `flag <id>... [--source=<text>]` and `unflag <id>...`: set or remove labels in bulk.
-* `human <id>... [--type=capture|creation] [--remove]`: declare media as camera photo or human work, or withdraw that.
-* `status [--status=flagged|detected|human|all] [--format=table|csv|json|ids|count]`: audit export, for example `wp transparai status --format=csv > ai-audit.csv`.
-* `write-meta [--dry-run] --yes` and `verify-meta [--repair]`: write and verify the in-file metadata.
-* `verify-delivery [<id>...] [--sample=<n>]`: fetch labeled images over their own public URL and report whether the declaration survives delivery. Needs the delivery check enabled in the settings.
-
-**Theme integration:** print attachment images through `wp_get_attachment_image()` (or markup carrying the `wp-image-{ID}` class) and the badge is rendered server-side and page-cache safe. For raw URL output and CSS backgrounds there is the optional script described above; it wraps matched images with the same markup (`span.trai-wrap` around the image plus `span.trai-badge`), so any CSS you write applies to both paths.
+**Theme control:** container classes `trai-badge-top-left`, `trai-badge-top-right`, `trai-badge-bottom-left`, `trai-badge-bottom-right`, `trai-badge-below`, `trai-badge-hidden`, `trai-badge-manual`; stacking via the CSS custom property `--trai-badge-z`. Images printed through `wp_get_attachment_image()` or with a `wp-image-{ID}` class are badged server-side and page-cache safe.
 
 == External services ==
-
-None. The plugin makes no requests to external services, and it never sends your media or any data about your site anywhere.
-
-The optional delivery check is the only feature that makes an HTTP request at all, and it requests your own site: when you switch it on in the settings and then press "Check delivery", the plugin downloads one image from your own public URL and compares the bytes with the file on disk. That is how an optimizing CDN or image proxy that quietly re-encodes your images and drops the AI declaration becomes visible. The check is off by default, it never runs on its own, and it stops before requesting anything if the image is served from a different host than your site.
+None. The plugin makes no request to any external service and never sends media or site data anywhere. The only HTTP request it can make is the optional delivery check, which fetches one image from your own site to see whether a CDN strips the declaration; it is off by default, runs only on click, and stops if the image is served from another host.
 
 == Privacy ==
-
-TransparAI processes media files locally on your server and stores its results in the WordPress database (attachment meta and one settings option). The optional delivery check, when you enable it and press the button, requests one image from your own site to see what visitors receive; nothing is sent to a third party. The per-file history records the WordPress user ID and display name of whoever labeled, confirmed, declared or dismissed a file, so a site can show who made a disclosure decision even after an account was deleted; it holds the last fifty events per file. A site log of the last 200 administrative events (settings saved, scans, sweeps, bulk actions) is stored in one option. A post marked as reviewed stores the reviewer's display name and user ID and, only when you enable it, shows the name in the public note. All of it is removed with everything else when you uninstall with data removal enabled. It does not collect, transmit or share any data, and it sets no cookies.
+TransparAI processes media files locally on your server and stores its results in the WordPress database (post meta and a few options). The per-file history records the user ID and display name of whoever labeled, confirmed, declared or dismissed a file (last fifty events), a site log keeps the last 200 administrative events, and a post marked as reviewed stores the reviewer's name and user ID, which is shown publicly only when you enable it. Everything is removed on uninstall with data removal enabled. The plugin collects, transmits and shares nothing and sets no cookies.
 
 == Disclaimer ==
-
-TransparAI is a technical tool, not legal advice, and it is provided "as is", without warranty of any kind, to the extent permitted by applicable law (see sections 11 and 12 of the GNU General Public License, version 2).
-
-In particular, the author makes no representation, warranty or guarantee:
-
-* that using this plugin makes your site compliant with the EU AI Act, the Digital Services Act or any other law, regulation or standard. Legal obligations depend on your specific situation and remain solely your responsibility as the site operator; consult a qualified professional for legal questions.
-* that AI-generated media is detected completely or correctly. Detection is based on metadata embedded by generators; files whose metadata was stripped carry no detectable signals, and detected metadata is an indication, not proof.
-* that any function of the plugin (detection, badges, metadata writing, repair, integrations) operates without errors or interruption in every environment.
-
-You use this plugin at your own risk. To the extent permitted by law, the author accepts no liability for damages arising from the use of, or inability to use, this software, including but not limited to lost data, lost profits or claims by third parties.
+TransparAI is a technical tool, not legal advice, and is provided "as is" without warranty of any kind, to the extent permitted by law (GNU GPL v2, sections 11 and 12). The author makes no representation that using it makes your site compliant with the EU AI Act, the Digital Services Act or any other law; legal obligations depend on your situation and remain your responsibility as the site operator. Detection is based on metadata embedded by generators: stripped files carry no signals, and detected metadata is an indication, not proof. No function is guaranteed to run without error in every environment. You use this plugin at your own risk; to the extent permitted by law, the author accepts no liability for damages arising from its use.
 
 == Screenshots ==
 
