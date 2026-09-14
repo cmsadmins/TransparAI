@@ -18,7 +18,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: transparai.php
-msgid "TransparAI: AI Image Detection & EU AI Act Labeling"
+msgid "TransparAI: AI Image Detection, EU AI Act Labeling & SEO"
 msgstr ""
 
 #. Plugin URI of the plugin

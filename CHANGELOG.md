@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.3 (2026-09-14)
 
 - Chatbot disclosure (`TransparAI_Chatbot`, `data/chatbots.json` with 44 vendors and their staffing):
   options `chatbot_answer`, `chatbot_staffing`, `chatbot_notice_text`, `chatbot_output`; the notice is on
