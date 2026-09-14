@@ -39,7 +39,7 @@ final class TransparAI_WooCommerce {
 	 */
 	public static function init(): void {
 		add_action( 'before_woocommerce_init', array( self::class, 'declare_compatibility' ) );
-		add_filter( 'woocommerce_available_variation', array( self::class, 'variation_data' ), 10, 3 );
+		add_filter( 'woocommerce_available_variation', array( self::class, 'variation_data' ) );
 
 		/*
 		 * E-mail clients drop or misplace positioned overlays, so a badge
@@ -70,12 +70,10 @@ final class TransparAI_WooCommerce {
 	 * Null is meaningful: a variation without its own image must not keep
 	 * the parent image's badge.
 	 *
-	 * @param array<string, mixed>|mixed $data      Variation data.
-	 * @param WC_Product|mixed           $product   Parent product.
-	 * @param WC_Product|mixed           $variation Variation.
+	 * @param array<string, mixed>|mixed $data Variation data (product and variation objects are not needed).
 	 * @return array<string, mixed>|mixed
 	 */
-	public static function variation_data( $data, $product = null, $variation = null ) {
+	public static function variation_data( $data ) {
 		if ( ! is_array( $data ) ) {
 			return $data;
 		}
