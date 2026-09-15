@@ -30,6 +30,8 @@ msgid ""
 "Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track "
 "EU AI Act readiness with a score, self-assessment and compliance report."
 msgstr ""
+"Detekce obrázků AI přes C2PA a IPTC, označování obsahu AI a chatbotů, "
+"připravenost na EU AI Act se skóre, sebehodnocením a zprávou o souladu."
 
 #. Author of the plugin
 #: transparai.php
@@ -43,15 +45,15 @@ msgstr "https://www.cms-admins.de/"
 
 #: admin/class-content-label.php:74 admin/class-content-label.php:166
 msgid "TransparAI"
-msgstr ""
+msgstr "TransparAI"
 
 #: admin/class-content-label.php:100 admin/class-content-label.php:167
 msgid "AI in this text"
-msgstr ""
+msgstr "AI v tomto textu"
 
 #: admin/class-content-label.php:108 admin/class-content-label.php:168
 msgid "Responsible person"
-msgstr ""
+msgstr "Odpovědná osoba"
 
 #. translators: 1: reviewer name, 2: review date.
 #. translators: 1: name of the reviewer, 2: review date.
@@ -59,86 +61,92 @@ msgstr ""
 #: includes/class-notice.php:115
 #, php-format
 msgid "Reviewed by %1$s on %2$s."
-msgstr ""
+msgstr "Zkontrolováno uživatelem %1$s dne %2$s."
 
 #: admin/class-content-label.php:123
 msgid ""
 "The text or its images changed since; save with the reviewed level again "
 "after checking."
 msgstr ""
+"Text nebo jeho obrázky se od té doby změnily; po kontrole jej znovu uložte s"
+" úrovní pro zkontrolovaný obsah."
 
 #: admin/class-content-label.php:128
 msgid ""
 "AI levels show a note on the post. The wording, position, excerpt and feed "
 "options are in the TransparAI settings."
 msgstr ""
+"Úrovně AI zobrazí u příspěvku poznámku. Znění, pozici a volby pro stručné "
+"výpisy a kanály najdete v nastavení TransparAI."
 
 #: admin/class-content-label.php:172
 msgid ""
 "AI levels show a note on the post. Wording and placement are set in the "
 "TransparAI settings."
 msgstr ""
+"Úrovně AI zobrazí u příspěvku poznámku. Znění a umístění se nastavují v "
+"nastavení TransparAI."
 
 #: admin/class-content-label.php:243 admin/class-content-label.php:376
 #: admin/class-content-label.php:406
 msgid "AI text"
-msgstr ""
+msgstr "Text AI"
 
 #: admin/class-content-label.php:269
 msgid "changed since review"
-msgstr ""
+msgstr "změněno od kontroly"
 
 #: admin/class-content-label.php:314
 msgid "All AI levels"
-msgstr ""
+msgstr "Všechny úrovně AI"
 
 #: admin/class-content-label.php:315 admin/class-dashboard.php:789
 msgid "Any AI involvement"
-msgstr ""
+msgstr "Jakékoli zapojení AI"
 
 #: admin/class-content-label.php:316 admin/class-dashboard.php:793
 #: includes/class-notice.php:151
 msgid "Not classified"
-msgstr ""
+msgstr "Nezařazeno"
 
 #: admin/class-content-label.php:408
 msgid "&mdash; No change &mdash;"
-msgstr ""
+msgstr "&mdash; Beze změny &mdash;"
 
 #: admin/class-content-label.php:409
 msgid "Remove classification"
-msgstr ""
+msgstr "Odebrat zařazení"
 
 #: admin/class-dashboard.php:50 admin/class-dashboard.php:373
 #: admin/class-dashboard.php:934
 msgid "Dashboard"
-msgstr ""
+msgstr "Nástěnka"
 
 #: admin/class-dashboard.php:51
 msgid "Assessment"
-msgstr ""
+msgstr "Sebehodnocení"
 
 #: admin/class-dashboard.php:52 admin/class-dashboard.php:1033
 msgid "AI Systems"
-msgstr ""
+msgstr "Systémy AI"
 
 #: admin/class-dashboard.php:53 admin/class-dashboard.php:1032
 msgid "AI Content"
-msgstr ""
+msgstr "Obsah AI"
 
 #: admin/class-dashboard.php:54 admin/class-dashboard.php:1031
 msgid "AI Images"
-msgstr ""
+msgstr "Obrázky AI"
 
 #: admin/class-dashboard.php:59 admin/class-dashboard.php:410
 #: admin/class-settings.php:178
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 #: admin/class-dashboard.php:107 admin/class-setup.php:324
 #: admin/class-setup.php:344
 msgid "Saved."
-msgstr ""
+msgstr "Uloženo."
 
 #: admin/class-dashboard.php:118
 msgid ""
@@ -151,57 +159,77 @@ msgid ""
 " provided without warranty of any kind, and the author accepts no liability "
 "for its use or for decisions based on it."
 msgstr ""
+"TransparAI je technický nástroj, nikoli právní poradenství. Pomáhá vám "
+"detekovat, označovat a dokumentovat použití AI na tomto webu; nedokáže vám "
+"říci, zda váš web splňuje EU AI Act nebo jakýkoli jiný právní předpis. Skóre"
+" připravenosti, sebehodnocení a každé upozornění odrážejí vlastní kontroly "
+"pluginu a vaše odpovědi, nic víc. Právní povinnosti závisejí na vaší situaci"
+" a zůstávají vaší odpovědností; pro právní posouzení se obraťte na advokáta."
+" Plugin je poskytován bez jakékoli záruky a autor nenese žádnou odpovědnost "
+"za jeho použití ani za rozhodnutí na něm založená."
 
 #: admin/class-dashboard.php:133
 msgid "Please read before you rely on anything here."
-msgstr ""
+msgstr "Přečtěte si to dříve, než se na cokoli zde budete spoléhat."
 
 #: admin/class-dashboard.php:137
 msgid "I understand: no legal advice, no liability"
-msgstr ""
+msgstr "Rozumím: žádné právní poradenství, žádná odpovědnost"
 
 #: admin/class-dashboard.php:145 admin/class-settings.php:132
 msgid "Not legal advice, no liability"
-msgstr ""
+msgstr "Není právní poradenství, žádná odpovědnost"
 
 #: admin/class-dashboard.php:156 admin/class-dashboard.php:507
 #: admin/class-dashboard.php:577 admin/class-dashboard.php:726
 msgid "You are not allowed to do this."
-msgstr ""
+msgstr "Nemáte oprávnění provést tuto akci."
 
 #: admin/class-dashboard.php:170
 msgid ""
 "Scan the media library, then confirm or dismiss what lands in the review "
 "queue. Labeled files get the visible badge and the machine-readable marking."
 msgstr ""
+"Prohledejte knihovnu médií a pak potvrďte nebo zamítněte, co se objeví ve "
+"frontě ke kontrole. Označené soubory dostanou viditelný odznak a strojově "
+"čitelné označení."
 
 #: admin/class-dashboard.php:171
 msgid ""
 "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, "
 "Bulk Edit) so the visitor note appears."
 msgstr ""
+"Nastavte příspěvkům a stránkám napsaným AI jejich úroveň AI (postranní panel"
+" editoru, Rychlé úpravy, Hromadné úpravy), aby se návštěvníkům zobrazila "
+"poznámka."
 
 #: admin/class-dashboard.php:172
 msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
 msgstr ""
+"Odpovězte, zda web provozuje chat a kdo v něm odpovídá; upozornění na "
+"chatbota se řídí vaší odpovědí."
 
 #: admin/class-dashboard.php:173
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
 msgstr ""
+"Projděte systémy AI, které plugin našel mezi vašimi pluginy, deklarujte "
+"další a rozhodněte, o kterých budou návštěvníci informováni."
 
 #: admin/class-dashboard.php:174
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
 msgstr ""
+"Odpovězte na šest otázek sebehodnocení, zaškrtněte kontrolní seznam podle "
+"článku 4 a pak si pro své záznamy vyexportujte zprávu o souladu."
 
 #: admin/class-dashboard.php:178
 msgid "How TransparAI works"
-msgstr ""
+msgstr "Jak TransparAI funguje"
 
 #: admin/class-dashboard.php:179
 msgid ""
@@ -212,133 +240,145 @@ msgid ""
 "what you decided. Work through the steps in this order; the readiness score "
 "above follows along."
 msgstr ""
+"EU AI Act požaduje na webu tři věci: návštěvníci musí vědět, kdy komunikují "
+"s AI, média vygenerovaná AI musí nést strojově čitelné označení a text "
+"vygenerovaný AI o věcech veřejného zájmu musí být jako takový zveřejněn. "
+"Tento plugin pokrývá technickou stránku všech tří bodů a dokumentuje, jak "
+"jste se rozhodli. Projděte kroky v tomto pořadí; skóre připravenosti výše se"
+" podle toho mění."
 
 #: admin/class-dashboard.php:223 admin/class-settings.php:705
 msgid "Readiness score"
-msgstr ""
+msgstr "Skóre připravenosti"
 
 #. translators: 1: met checks, 2: total checks.
 #: admin/class-dashboard.php:233 admin/class-dashboard.php:905
 #, php-format
 msgid "%1$d of %2$d checks done"
-msgstr ""
+msgstr "Splněno %1$d z %2$d kontrol"
 
 #: admin/class-dashboard.php:241
 msgid ""
 "The score counts the checks this plugin can perform on its own state. It is "
 "a technical self-check, not a legal assessment."
 msgstr ""
+"Skóre počítá kontroly, které tento plugin dokáže provést nad svým vlastním "
+"stavem. Jde o technickou vlastní kontrolu, ne o právní posouzení."
 
 #: admin/class-dashboard.php:243 admin/class-dashboard.php:247
 #: admin/class-dashboard.php:920
 msgid "Open"
-msgstr ""
+msgstr "Otevřené"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
 #: admin/class-settings.php:707 admin/class-settings.php:726
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: admin/class-dashboard.php:276
 msgid "EU AI Act timeline"
-msgstr ""
+msgstr "Časová osa EU AI Act"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:291
 #, php-format
 msgid "in force for %s"
-msgstr ""
+msgstr "platí už %s"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:294
 #, php-format
 msgid "in %s"
-msgstr ""
+msgstr "za %s"
 
 #: admin/class-dashboard.php:303
 msgid ""
 "Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can"
 " move them."
 msgstr ""
+"Data podle nařízení (EU) 2024/1689, článek 113, ve znění přijetí. Novely je "
+"mohou posunout."
 
 #: admin/class-dashboard.php:316 admin/class-dashboard.php:1020
 #: admin/class-settings.php:778
 msgid "Recent activity"
-msgstr ""
+msgstr "Poslední aktivita"
 
 #: admin/class-dashboard.php:318
 msgid ""
 "Nothing recorded yet. Scans, settings changes, bulk actions and declarations"
 " show up here."
 msgstr ""
+"Zatím není nic zaznamenáno. Skeny, změny nastavení, hromadné akce a "
+"deklarace se objeví zde."
 
 #: admin/class-dashboard.php:322 admin/class-settings.php:779
 msgid "When"
-msgstr ""
+msgstr "Kdy"
 
 #: admin/class-dashboard.php:323 admin/class-settings.php:779
 msgid "Event"
-msgstr ""
+msgstr "Událost"
 
 #: admin/class-dashboard.php:324
 msgid "Details"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: admin/class-dashboard.php:325 admin/class-settings.php:779
 msgid "By"
-msgstr ""
+msgstr "Kdo"
 
 #: admin/class-dashboard.php:333 admin/class-media-library.php:408
 msgid "system"
-msgstr ""
+msgstr "systém"
 
 #: admin/class-dashboard.php:377
 msgid "The first-run setup is not finished yet."
-msgstr ""
+msgstr "Úvodní nastavení zatím není dokončeno."
 
 #: admin/class-dashboard.php:378 admin/class-settings.php:832
 msgid "Open setup"
-msgstr ""
+msgstr "Otevřít úvodní nastavení"
 
 #: admin/class-dashboard.php:386
 msgid "At a glance"
-msgstr ""
+msgstr "Ve zkratce"
 
 #: admin/class-dashboard.php:390 admin/class-dashboard.php:960
 msgid "AI-written posts"
-msgstr ""
+msgstr "Příspěvky napsané AI"
 
 #: admin/class-dashboard.php:394
 msgid "Labeled media"
-msgstr ""
+msgstr "Označená média"
 
 #: admin/class-dashboard.php:398 admin/class-dashboard.php:957
 #: admin/class-settings.php:818
 msgid "Waiting for review"
-msgstr ""
+msgstr "Čeká na kontrolu"
 
 #: admin/class-dashboard.php:402 admin/class-dashboard.php:961
 #: admin/class-settings.php:224
 msgid "AI systems"
-msgstr ""
+msgstr "Systémy AI"
 
 #: admin/class-dashboard.php:406 admin/class-dashboard.php:432
 #: admin/class-dashboard.php:935 admin/class-settings.php:713
 msgid "Self-assessment"
-msgstr ""
+msgstr "Sebehodnocení"
 
 #: admin/class-dashboard.php:407
 msgid "AI literacy checklist"
-msgstr ""
+msgstr "Kontrolní seznam gramotnosti v oblasti AI"
 
 #: admin/class-dashboard.php:408 admin/class-dashboard.php:566
 #: admin/class-dashboard.php:936
 msgid "Compliance report"
-msgstr ""
+msgstr "Zpráva o souladu"
 
 #: admin/class-dashboard.php:409 admin/class-settings.php:829
 msgid "Export audit CSV"
-msgstr ""
+msgstr "Exportovat auditní CSV"
 
 #: admin/class-dashboard.php:435
 msgid ""
@@ -351,40 +391,50 @@ msgid ""
 "asks and of whom, and which plugin page handles it; complete answers count "
 "toward the readiness score and are printed in the compliance report."
 msgstr ""
+"Které povinnosti transparentnosti podle EU AI Act se na web vztahují, závisí"
+" na tom, jak AI skutečně používá: web bez chatbota nemá o chatbotech co "
+"sdělovat, web, který publikuje články napsané AI, ano. Odpovězte na šest "
+"otázek ano nebo ne podle dnešního stavu; příklady pod každou otázkou "
+"ukazují, co se počítá, a pokud si nejste jisti, zeptejte se lidí, kteří "
+"obsah tvoří. Výsledek níže u každého potvrzeného použití uvádí, co AI Act "
+"požaduje a po kom, a která stránka pluginu to řeší; úplné odpovědi se "
+"započítávají do skóre připravenosti a tisknou se ve zprávě o souladu."
 
 #: admin/class-dashboard.php:436
 msgid ""
 "Stored on this site only, nothing is sent anywhere. Come back and update the"
 " answers whenever the site starts or stops using AI in one of these ways."
 msgstr ""
+"Uloženo pouze na tomto webu, nic se nikam neodesílá. Vraťte se a odpovědi "
+"aktualizujte, kdykoli web začne nebo přestane AI takto používat."
 
 #: admin/class-dashboard.php:444 admin/class-settings.php:475
 #: admin/class-settings.php:701
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 #: admin/class-dashboard.php:445 admin/class-settings.php:476
 #: admin/class-settings.php:702
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: admin/class-dashboard.php:448
 msgid "Save answers"
-msgstr ""
+msgstr "Uložit odpovědi"
 
 #. translators: 1: name, 2: date.
 #: admin/class-dashboard.php:456 admin/class-dashboard.php:556
 #, php-format
 msgid "Last saved by %1$s on %2$s."
-msgstr ""
+msgstr "Naposledy uloženo uživatelem %1$s dne %2$s."
 
 #: admin/class-dashboard.php:457 admin/class-dashboard.php:557
 msgid "unknown"
-msgstr ""
+msgstr "neznámé"
 
 #: admin/class-dashboard.php:467 admin/class-dashboard.php:493
 msgid "Your to-do list"
-msgstr ""
+msgstr "Váš seznam úkolů"
 
 #: admin/class-dashboard.php:470
 msgid ""
@@ -392,18 +442,21 @@ msgid ""
 "starts using AI; the Article 4 checklist below still documents your "
 "awareness."
 msgstr ""
+"Na všechny otázky jste odpověděli ne. Až web začne AI používat, odpovědi "
+"aktualizujte; kontrolní seznam podle článku 4 níže přesto dokumentuje vaši "
+"informovanost."
 
 #: admin/class-dashboard.php:474
 msgid "Use of AI"
-msgstr ""
+msgstr "Použití AI"
 
 #: admin/class-dashboard.php:475 admin/class-settings.php:717
 msgid "What the AI Act says"
-msgstr ""
+msgstr "Co říká AI Act"
 
 #: admin/class-dashboard.php:476
 msgid "Recommended action"
-msgstr ""
+msgstr "Doporučený krok"
 
 #: admin/class-dashboard.php:489
 msgid ""
@@ -411,6 +464,10 @@ msgid ""
 " it under their own authority; a website operator is usually the deployer. "
 "This overview is a technical aid, not legal advice."
 msgstr ""
+"Poskytovatel je ten, kdo systém AI vytvořil nebo natrénoval, zavádějící "
+"subjekt ten, kdo jej používá z vlastní pravomoci; provozovatel webu je "
+"obvykle zavádějící subjekt. Tento přehled je technická pomůcka, ne právní "
+"poradenství."
 
 #: admin/class-dashboard.php:494
 msgid ""
@@ -418,10 +475,13 @@ msgid ""
 "every use you confirmed it says what the AI Act asks and of whom, and which "
 "plugin page handles it."
 msgstr ""
+"Tento přehled se objeví, jakmile zodpovíte a uložíte všech šest otázek. U "
+"každého potvrzeného použití uvádí, co AI Act požaduje a po kom, a která "
+"stránka pluginu to řeší."
 
 #: admin/class-dashboard.php:526
 msgid "AI literacy (Article 4)"
-msgstr ""
+msgstr "Gramotnost v oblasti AI (článek 4)"
 
 #: admin/class-dashboard.php:527
 msgid ""
@@ -434,27 +494,37 @@ msgid ""
 "readiness score and appears in the compliance report with the name and date "
 "of the last save."
 msgstr ""
+"Článek 4 platí od 2. února 2025 pro každého poskytovatele a zavádějící "
+"subjekt, ať jste výše odpověděli cokoli: v rámci svých možností přijímáte "
+"opatření, aby osoby, které vaším jménem provozují nebo používají systémy AI,"
+" měly dostatečnou úroveň gramotnosti v oblasti AI, s ohledem na jejich "
+"znalosti a kontext použití. Nařízení nepředepisuje žádné konkrétní školení "
+"ani certifikát; tento kontrolní seznam zaznamenává opatření, která obvykle "
+"slouží jako doklad. Započítává se do skóre připravenosti a ve zprávě o "
+"souladu se objeví se jménem a datem posledního uložení."
 
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:533
 #, php-format
 msgid "%1$d of %2$d done"
-msgstr ""
+msgstr "Splněno %1$d z %2$d"
 
 #: admin/class-dashboard.php:548
 msgid "Save checklist"
-msgstr ""
+msgstr "Uložit kontrolní seznam"
 
 #: admin/class-dashboard.php:564
 msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
 msgstr ""
+"Obě části této obrazovky se promítnou do zprávy o souladu, dokumentu, který "
+"si uschováte pro své záznamy nebo předáte tomu, kdo o něj požádá."
 
 #: admin/class-dashboard.php:602 admin/class-settings.php:513
 #: admin/class-settings.php:732
 msgid "AI systems in use"
-msgstr ""
+msgstr "Používané systémy AI"
 
 #: admin/class-dashboard.php:605
 msgid ""
@@ -463,97 +533,105 @@ msgid ""
 "fetched. Tick the systems visitors should be told about; the notice itself "
 "is switched on under Settings, AI systems."
 msgstr ""
+"Nainstalované pluginy se porovnávají se seznamem známých nástrojů AI, který "
+"je součástí tohoto pluginu; zahrnuty jsou i chatboty, ve kterých odpovídá "
+"AI. Nic se nestahuje. Zaškrtněte systémy, o kterých mají být návštěvníci "
+"informováni; samotné upozornění se zapíná v Nastavení, Systémy AI."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:610
 #, php-format
 msgid "Last scan %s ago."
-msgstr ""
+msgstr "Poslední sken před %s."
 
 #: admin/class-dashboard.php:614
 msgid "The visitor notice is currently off."
-msgstr ""
+msgstr "Upozornění pro návštěvníky je momentálně vypnuté."
 
 #: admin/class-dashboard.php:622
 msgid "No AI system detected or declared yet."
-msgstr ""
+msgstr "Zatím nebyl zjištěn ani deklarován žádný systém AI."
 
 #: admin/class-dashboard.php:626
 msgid "Visible"
-msgstr ""
+msgstr "Viditelné"
 
 #: admin/class-dashboard.php:627 admin/class-settings.php:736
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #: admin/class-dashboard.php:628 admin/class-dashboard.php:676
 #: admin/class-settings.php:736
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #: admin/class-dashboard.php:629 admin/class-settings.php:736
 msgid "Articles"
-msgstr ""
+msgstr "Články"
 
 #: admin/class-dashboard.php:630
 msgid "Found via"
-msgstr ""
+msgstr "Zjištěno přes"
 
 #: admin/class-dashboard.php:649 includes/class-notice.php:638
 msgid "Remove"
-msgstr ""
+msgstr "Odebrat"
 
 #: admin/class-dashboard.php:659
 msgid "Save visibility"
-msgstr ""
+msgstr "Uložit viditelnost"
 
 #: admin/class-dashboard.php:661
 msgid "Scan installed plugins again"
-msgstr ""
+msgstr "Znovu prohledat nainstalované pluginy"
 
 #: admin/class-dashboard.php:668
 msgid "Possibly AI"
-msgstr ""
+msgstr "Možná AI"
 
 #: admin/class-dashboard.php:669
 msgid ""
 "Active plugins the list does not know whose name or description mentions AI."
 " Suggestions only: declare what really is an AI system, ignore the rest."
 msgstr ""
+"Aktivní pluginy, které seznam nezná a jejichž název nebo popis zmiňuje AI. "
+"Jde jen o návrhy: deklarujte, co je skutečně systém AI, zbytek ignorujte."
 
 #: admin/class-dashboard.php:671
 msgid "No further candidates among the active plugins."
-msgstr ""
+msgstr "Mezi aktivními pluginy nejsou žádní další kandidáti."
 
 #: admin/class-dashboard.php:675
 msgid "Plugin"
-msgstr ""
+msgstr "Plugin"
 
 #: admin/class-dashboard.php:693
 msgid "Declare as AI system"
-msgstr ""
+msgstr "Deklarovat jako systém AI"
 
 #: admin/class-dashboard.php:703
 msgid "Declare another system"
-msgstr ""
+msgstr "Deklarovat další systém"
 
 #: admin/class-dashboard.php:704
 msgid ""
 "For tools that are not WordPress plugins: an external service, a script, an "
 "API your theme calls."
 msgstr ""
+"Pro nástroje, které nejsou pluginy WordPressu: externí služba, skript, API, "
+"které volá vaše šablona."
 
 #: admin/class-dashboard.php:708
 msgid "Name of the system"
-msgstr ""
+msgstr "Název systému"
 
 #: admin/class-dashboard.php:714
 msgid "Declare"
-msgstr ""
+msgstr "Deklarovat"
 
 #: admin/class-dashboard.php:762 admin/class-settings.php:762
 msgid "AI-written content"
-msgstr ""
+msgstr "Obsah napsaný AI"
 
 #: admin/class-dashboard.php:765
 msgid ""
@@ -562,14 +640,19 @@ msgid ""
 "posts at once in Bulk Edit; the lists below are the regular post lists "
 "filtered by level, with the same Quick Edit and Bulk Edit tools."
 msgstr ""
+"Každý příspěvek, stránka a veřejný vlastní typ obsahu nese úroveň AI pro "
+"svůj text. Úroveň se nastavuje v postranním panelu editoru, v Rychlých "
+"úpravách nebo pro více příspěvků najednou v Hromadných úpravách; seznamy "
+"níže jsou běžné seznamy příspěvků filtrované podle úrovně, se stejnými "
+"nástroji Rychlé úpravy a Hromadné úpravy."
 
 #: admin/class-dashboard.php:776
 msgid "Post type"
-msgstr ""
+msgstr "Typ obsahu"
 
 #: admin/class-dashboard.php:777
 msgid "Open list"
-msgstr ""
+msgstr "Otevřít seznam"
 
 #: admin/class-dashboard.php:799
 msgid ""
@@ -577,18 +660,21 @@ msgid ""
 "set the AI level to \"No AI used\" or clear it. The note wording, position "
 "and style live under Settings, AI-written text."
 msgstr ""
+"Chcete-li označení odebrat u více příspěvků najednou, vyberte je v seznamu, "
+"zvolte Hromadné úpravy a nastavte úroveň AI na „Bez použití AI“ nebo ji "
+"vymažte. Znění, pozice a styl poznámky jsou v Nastavení, Text napsaný AI."
 
 #: admin/class-dashboard.php:801
 msgid "Text settings"
-msgstr ""
+msgstr "Nastavení textu"
 
 #: admin/class-dashboard.php:832
 msgid "AI images and media"
-msgstr ""
+msgstr "Obrázky a média AI"
 
 #: admin/class-dashboard.php:837
 msgid "Media lists"
-msgstr ""
+msgstr "Seznamy médií"
 
 #: admin/class-dashboard.php:838
 msgid ""
@@ -596,27 +682,30 @@ msgid ""
 "actions (label, unlabel, confirm, dismiss, declare as camera photo or human "
 "work)."
 msgstr ""
+"Zobrazení seznamu v knihovně médií obsahuje sloupec AI, filtr a hromadné "
+"akce (označit, odebrat označení, potvrdit, zamítnout, deklarovat jako "
+"fotografii z fotoaparátu nebo lidskou tvorbu)."
 
 #: admin/class-dashboard.php:840 admin/class-dashboard.php:956
 #: admin/class-settings.php:814
 msgid "Labeled as AI"
-msgstr ""
+msgstr "Označeno jako AI"
 
 #: admin/class-dashboard.php:841
 msgid "Review queue"
-msgstr ""
+msgstr "Fronta ke kontrole"
 
 #: admin/class-dashboard.php:842
 msgid "Declared as not AI"
-msgstr ""
+msgstr "Deklarováno jako bez AI"
 
 #: admin/class-dashboard.php:843
 msgid "Unlabeled"
-msgstr ""
+msgstr "Neoznačeno"
 
 #: admin/class-dashboard.php:844
 msgid "Badge settings"
-msgstr ""
+msgstr "Nastavení odznaku"
 
 #. translators: %d: number of dismissed files.
 #: admin/class-dashboard.php:851
@@ -628,62 +717,73 @@ msgid_plural ""
 "%d files were dismissed from the review queue and stay unlabeled until you "
 "decide otherwise."
 msgstr[0] ""
+"%d soubor byl zamítnut z fronty ke kontrole a zůstává neoznačený, dokud "
+"nerozhodnete jinak."
 msgstr[1] ""
+"%d soubory byly zamítnuty z fronty ke kontrole a zůstávají neoznačené, dokud"
+" nerozhodnete jinak."
+msgstr[2] ""
+"%d souborů bylo zamítnuto z fronty ke kontrole a zůstávají neoznačené, dokud"
+" nerozhodnete jinak."
 
 #: admin/class-dashboard.php:876
 msgid "TransparAI: Readiness"
-msgstr ""
+msgstr "TransparAI: Připravenost"
 
 #: admin/class-dashboard.php:877
 msgid "TransparAI: Numbers"
-msgstr ""
+msgstr "TransparAI: Čísla"
 
 #: admin/class-dashboard.php:914
 msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
 msgstr ""
+"Všechny kontroly, které plugin umí provést, jsou splněné. Až web začne nebo "
+"přestane AI používat, udržujte odpovědi aktuální."
 
 #: admin/class-dashboard.php:916
 msgid "Still open"
-msgstr ""
+msgstr "Stále otevřené"
 
 #: admin/class-dashboard.php:928
 msgid "In force"
-msgstr ""
+msgstr "V platnosti"
 
 #: admin/class-dashboard.php:928
 msgid "Next deadline"
-msgstr ""
+msgstr "Nejbližší termín"
 
 #: admin/class-dashboard.php:938
 msgid ""
 "Technical self-check of the plugin state. Not legal advice, no liability."
 msgstr ""
+"Technická vlastní kontrola stavu pluginu. Není právní poradenství, žádná "
+"odpovědnost."
 
 #: admin/class-dashboard.php:958
 msgid "Declared human-made"
-msgstr ""
+msgstr "Deklarováno jako vytvořeno člověkem"
 
 #: admin/class-dashboard.php:959
 msgid "Not scanned yet"
-msgstr ""
+msgstr "Zatím neprohledáno"
 
 #. translators: 1: scanned files, 2: files in the library.
 #: admin/class-dashboard.php:979
 #, php-format
 msgid "Library: %1$s of %2$s files scanned."
-msgstr ""
+msgstr "Knihovna: prohledáno %1$s z %2$s souborů."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:987
 #, php-format
 msgid "Last scan finished %s ago."
-msgstr ""
+msgstr "Poslední sken skončil před %s."
 
 #: admin/class-dashboard.php:989
 msgid "No scan has finished yet."
-msgstr ""
+msgstr "Zatím neskončil žádný sken."
 
 #. translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated
 #. and reviewed posts.
@@ -692,160 +792,170 @@ msgstr ""
 msgid ""
 "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
 msgstr ""
+"Texty: %1$s s pomocí AI, %2$s vygenerováno AI, %3$s vygenerováno a "
+"zkontrolováno."
 
 #. translators: 1: systems visitors are told about, 2: inventoried systems.
 #: admin/class-dashboard.php:1011
 #, php-format
 msgid "Systems: %1$s of %2$s shown to visitors."
-msgstr ""
+msgstr "Systémy: %1$s z %2$s se zobrazuje návštěvníkům."
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1066
 #, php-format
 msgid "since %1$s (%2$s)"
-msgstr ""
+msgstr "od %1$s (%2$s)"
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1069
 #, php-format
 msgid "%1$s (in %2$s)"
-msgstr ""
+msgstr "%1$s (za %2$s)"
 
 #: admin/class-media-library.php:74
 msgid "Media is AI-generated"
-msgstr ""
+msgstr "Médium je vygenerováno AI"
 
 #: admin/class-media-library.php:84 admin/class-media-library.php:377
 msgid "no declaration"
-msgstr ""
+msgstr "bez deklarace"
 
 #: admin/class-media-library.php:85
 msgid "camera photo (digitalCapture)"
-msgstr ""
+msgstr "fotografie z fotoaparátu (digitalCapture)"
 
 #: admin/class-media-library.php:86
 msgid "human digital work (digitalCreation)"
-msgstr ""
+msgstr "lidská digitální tvorba (digitalCreation)"
 
 #: admin/class-media-library.php:88
 msgid "Not AI:"
-msgstr ""
+msgstr "Bez AI:"
 
 #: admin/class-media-library.php:97
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
 msgstr ""
+"Metadata souboru se nepodařilo aktualizovat (do souboru nelze zapisovat). "
+"Stav označení ve WordPressu a metadata uvnitř souboru se mohou lišit."
 
 #: admin/class-media-library.php:103
 msgid "Confirm AI label"
-msgstr ""
+msgstr "Potvrdit označení AI"
 
 #: admin/class-media-library.php:104
 msgid "Not AI, dismiss"
-msgstr ""
+msgstr "Bez AI, zamítnout"
 
 #: admin/class-media-library.php:109
 msgid "Re-check file metadata"
-msgstr ""
+msgstr "Znovu zkontrolovat metadata souboru"
 
 #: admin/class-media-library.php:114
 msgid "Check delivery"
-msgstr ""
+msgstr "Zkontrolovat doručení"
 
 #: admin/class-media-library.php:124 admin/class-media-library.php:496
 msgid "Show file metadata"
-msgstr ""
+msgstr "Zobrazit metadata souboru"
 
 #: admin/class-media-library.php:127
 msgid "AI content"
-msgstr ""
+msgstr "Obsah AI"
 
 #: admin/class-media-library.php:130
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
 msgstr ""
+"Řídí odznak ve front-endu, strojově čitelná metadata souboru a filtr v "
+"knihovně médií."
 
 #: admin/class-media-library.php:136
 msgid "Default (site setting)"
-msgstr ""
+msgstr "Výchozí (nastavení webu)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
 #: admin/class-setup.php:306
 msgid "Top left"
-msgstr ""
+msgstr "Vlevo nahoře"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
 #: admin/class-setup.php:307
 msgid "Top right"
-msgstr ""
+msgstr "Vpravo nahoře"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
 #: admin/class-setup.php:308
 msgid "Bottom left"
-msgstr ""
+msgstr "Vlevo dole"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
 #: admin/class-setup.php:309
 msgid "Bottom right"
-msgstr ""
+msgstr "Vpravo dole"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
 #: admin/class-setup.php:318
 msgid "Caption line below the image"
-msgstr ""
+msgstr "Řádek popisku pod obrázkem"
 
 #: admin/class-media-library.php:142
 msgid "Hide the visible badge on this image"
-msgstr ""
+msgstr "Skrýt viditelný odznak u tohoto obrázku"
 
 #: admin/class-media-library.php:151
 msgid "Badge position"
-msgstr ""
+msgstr "Pozice odznaku"
 
 #: admin/class-media-library.php:154
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
+"Platí jen pro tento obrázek. Použijte jej, pokud odznak zakrývá překryv "
+"šablony."
 
 #: admin/class-media-library.php:158
 msgid "AI generator"
-msgstr ""
+msgstr "Generátor AI"
 
 #: admin/class-media-library.php:162
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
 msgstr ""
+"Název nástroje AI, např. „Midjourney“. Zobrazuje se přes volbu zdroje v "
+"odznaku a zástupný text {generator}."
 
 #: admin/class-media-library.php:182
 msgid "certain"
-msgstr ""
+msgstr "jisté"
 
 #: admin/class-media-library.php:183
 msgid "likely"
-msgstr ""
+msgstr "pravděpodobné"
 
 #: admin/class-media-library.php:184
 msgid "hint"
-msgstr ""
+msgstr "náznak"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
 #: admin/class-setup.php:194 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
-msgstr ""
+msgstr "Nemáte oprávnění to provést."
 
 #: admin/class-media-library.php:293 includes/class-rest.php:243
 msgid "Unknown action."
-msgstr ""
+msgstr "Neznámá akce."
 
 #: admin/class-media-library.php:334 includes/class-delivery.php:73
 #: includes/class-scanner.php:313
 msgid "Invalid attachment."
-msgstr ""
+msgstr "Neplatná příloha."
 
 #. translators: %s: IPTC digital source type token.
 #: admin/class-media-library.php:358
@@ -854,124 +964,132 @@ msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
 "into files that carry no other digital source type."
 msgstr ""
+"Tato příloha je deklarována jako nevytvořená AI (%s). Deklarace se zapisuje "
+"do souborů, které nenesou jiný typ digitálního zdroje."
 
 #: admin/class-media-library.php:360
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
 msgstr ""
+"Tato příloha je označena jako vygenerovaná AI, takže každý soubor níže by "
+"měl nést deklaraci."
 
 #: admin/class-media-library.php:361
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
 msgstr ""
+"Tato příloha není označena jako vygenerovaná AI. Do jejích souborů se nic "
+"nezapisuje a níže se žádná deklarace neočekává."
 
 #: admin/class-media-library.php:365
 msgid "Files"
-msgstr ""
+msgstr "Soubory"
 
 #: admin/class-media-library.php:368
 msgid "format cannot carry the declaration"
-msgstr ""
+msgstr "formát nedokáže deklaraci nést"
 
 #: admin/class-media-library.php:371
 msgid "declaration present"
-msgstr ""
+msgstr "deklarace přítomna"
 
 #: admin/class-media-library.php:374
 msgid "declaration missing"
-msgstr ""
+msgstr "deklarace chybí"
 
 #: admin/class-media-library.php:384
 msgid "No readable file found for this attachment."
-msgstr ""
+msgstr "Pro tuto přílohu nebyl nalezen žádný čitelný soubor."
 
 #: admin/class-media-library.php:388
 msgid "Digital source type in the main file"
-msgstr ""
+msgstr "Typ digitálního zdroje v hlavním souboru"
 
 #: admin/class-media-library.php:390
 msgid "None declared."
-msgstr ""
+msgstr "Nic deklarováno."
 
 #: admin/class-media-library.php:398
 msgid "Detection evidence"
-msgstr ""
+msgstr "Důkazy detekce"
 
 #: admin/class-media-library.php:404
 msgid "History"
-msgstr ""
+msgstr "Historie"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
 #: admin/class-media-library.php:417
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "z %s"
 
 #: admin/class-media-library.php:430
 msgid "XMP packet of the main file"
-msgstr ""
+msgstr "Paket XMP hlavního souboru"
 
 #: admin/class-media-library.php:432
 msgid "This file carries no XMP block."
-msgstr ""
+msgstr "Tento soubor neobsahuje žádný blok XMP."
 
 #: admin/class-media-library.php:485 admin/class-media-library.php:551
 msgid "AI status: all"
-msgstr ""
+msgstr "Stav AI: vše"
 
 #: admin/class-media-library.php:486 admin/class-media-library.php:552
 msgid "Only AI-labeled"
-msgstr ""
+msgstr "Jen označené jako AI"
 
 #: admin/class-media-library.php:487 admin/class-media-library.php:536
 #: admin/class-media-library.php:553
 msgid "Detected, needs review"
-msgstr ""
+msgstr "Zjištěno, vyžaduje kontrolu"
 
 #: admin/class-media-library.php:488 admin/class-media-library.php:555
 msgid "Without AI label"
-msgstr ""
+msgstr "Bez označení AI"
 
 #: admin/class-media-library.php:489 admin/class-media-library.php:554
 msgid "Declared not AI (camera, human work)"
-msgstr ""
+msgstr "Deklarováno jako bez AI (fotoaparát, lidská tvorba)"
 
 #: admin/class-media-library.php:490 admin/class-media-library.php:596
 msgid "Mark as AI-generated"
-msgstr ""
+msgstr "Označit jako vygenerované AI"
 
 #: admin/class-media-library.php:491 admin/class-media-library.php:597
 msgid "Remove AI label"
-msgstr ""
+msgstr "Odebrat označení AI"
 
 #: admin/class-media-library.php:492
 msgid "Please select media first."
-msgstr ""
+msgstr "Nejprve vyberte média."
 
 #: admin/class-media-library.php:493
 msgid "Updating the AI label failed."
-msgstr ""
+msgstr "Aktualizace označení AI se nezdařila."
 
 #: admin/class-media-library.php:494
 msgid "Result"
-msgstr ""
+msgstr "Výsledek"
 
 #: admin/class-media-library.php:495
 msgid "No AI provenance signals found in the file."
-msgstr ""
+msgstr "V souboru nebyly nalezeny žádné signály o původu z AI."
 
 #: admin/class-media-library.php:497
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
 msgstr ""
+"Označení bylo nastaveno, ale metadata se do souboru nepodařilo zapsat. "
+"Zkontrolujte oprávnění k zápisu do adresáře s nahranými soubory."
 
 #: admin/class-media-library.php:498
 msgid "Hide file metadata"
-msgstr ""
+msgstr "Skrýt metadata souboru"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
@@ -981,6 +1099,8 @@ msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
 "comparable."
 msgstr ""
+"Zkontrolováno %1$d: %2$d doručeno s deklarací, %3$d bez ní, %4$d nelze "
+"porovnat."
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
@@ -990,133 +1110,138 @@ msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
 "(already decided)."
 msgstr ""
+"Prohledáno %1$d, automaticky označeno %2$d, zařazeno ke kontrole %3$d, "
+"přeskočeno %4$d (již rozhodnuto)."
 
 #: admin/class-media-library.php:503
 msgid "Scan complete."
-msgstr ""
+msgstr "Sken dokončen."
 
 #: admin/class-media-library.php:504
 msgid "Scan request failed. You can restart to continue."
-msgstr ""
+msgstr "Požadavek na sken selhal. Pokračovat můžete opětovným spuštěním."
 
 #: admin/class-media-library.php:515 includes/class-notice.php:305
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: admin/class-media-library.php:598
 msgid "Confirm detected AI label"
-msgstr ""
+msgstr "Potvrdit zjištěné označení AI"
 
 #: admin/class-media-library.php:599
 msgid "Dismiss detected AI label"
-msgstr ""
+msgstr "Zamítnout zjištěné označení AI"
 
 #: admin/class-media-library.php:600
 msgid "Declare as camera photo (not AI)"
-msgstr ""
+msgstr "Deklarovat jako fotografii z fotoaparátu (bez AI)"
 
 #: admin/class-media-library.php:601
 msgid "Declare as human work (not AI)"
-msgstr ""
+msgstr "Deklarovat jako lidskou tvorbu (bez AI)"
 
 #: admin/class-media-library.php:602
 msgid "Remove \"not AI\" declaration"
-msgstr ""
+msgstr "Odebrat deklaraci „bez AI“"
 
 #. translators: %d: number of updated media files.
 #: admin/class-media-library.php:644
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Označení AI aktualizováno u %d mediálního souboru."
+msgstr[1] "Označení AI aktualizováno u %d mediálních souborů."
+msgstr[2] "Označení AI aktualizováno u %d mediálních souborů."
 
 #: admin/class-settings.php:47 admin/class-settings.php:97
 msgid "You are not allowed to export this."
-msgstr ""
+msgstr "Nemáte oprávnění to exportovat."
 
 #: admin/class-settings.php:65
 msgid "The export could not be started."
-msgstr ""
+msgstr "Export se nepodařilo spustit."
 
 #: admin/class-settings.php:115 admin/class-settings.php:129
 msgid "audit report"
-msgstr ""
+msgstr "auditní zpráva"
 
 #: admin/class-settings.php:130
 msgid "items"
-msgstr ""
+msgstr "položek"
 
 #: admin/class-settings.php:133
 msgid "Document hash"
-msgstr ""
+msgstr "Hash dokumentu"
 
 #: admin/class-settings.php:134
 msgid ""
 "sha256 over the facts below without timestamps: two reports of an unchanged "
 "site carry the same hash."
 msgstr ""
+"sha256 z níže uvedených faktů bez časových razítek: dvě zprávy z nezměněného"
+" webu nesou stejný hash."
 
 #: admin/class-settings.php:135
 msgid "Basis"
-msgstr ""
+msgstr "Podklad"
 
 #: admin/class-settings.php:136
 msgid "Limitations"
-msgstr ""
+msgstr "Omezení"
 
 #: admin/class-settings.php:143
 msgid "Print or save as PDF"
-msgstr ""
+msgstr "Vytisknout nebo uložit jako PDF"
 
 #: admin/class-settings.php:145
 msgid "Media audit list"
-msgstr ""
+msgstr "Auditní seznam médií"
 
 #: admin/class-settings.php:221 admin/class-settings.php:254
 msgid "Visible badge"
-msgstr ""
+msgstr "Viditelný odznak"
 
 #: admin/class-settings.php:222 admin/class-settings.php:366
 #: includes/class-compliance.php:65
 msgid "AI-written text"
-msgstr ""
+msgstr "Text napsaný AI"
 
 #: admin/class-settings.php:223 admin/class-settings.php:440
 msgid "Chatbot disclosure"
-msgstr ""
+msgstr "Upozornění na chatbota"
 
 #: admin/class-settings.php:225 admin/class-settings.php:549
 msgid "Automatic detection"
-msgstr ""
+msgstr "Automatická detekce"
 
 #: admin/class-settings.php:226
 msgid "File metadata"
-msgstr ""
+msgstr "Metadata souborů"
 
 #: admin/class-settings.php:227 admin/class-settings.php:651
 msgid "Uninstall"
-msgstr ""
+msgstr "Odinstalace"
 
 #: admin/class-settings.php:235
 msgid "Settings saved."
-msgstr ""
+msgstr "Nastavení uloženo."
 
 #: admin/class-settings.php:247
 msgid "Settings sections"
-msgstr ""
+msgstr "Sekce nastavení"
 
 #: admin/class-settings.php:257
 msgid "Show badge"
-msgstr ""
+msgstr "Zobrazit odznak"
 
 #: admin/class-settings.php:260
 msgid "Show a visible badge on labeled media in the front end"
-msgstr ""
+msgstr "Zobrazovat u označených médií viditelný odznak ve front-endu"
 
 #: admin/class-settings.php:264
 msgid "Start date"
-msgstr ""
+msgstr "Počáteční datum"
 
 #: admin/class-settings.php:267
 msgid ""
@@ -1124,19 +1249,22 @@ msgid ""
 "media stay labeled in the admin only. Leave empty to badge all labeled "
 "media."
 msgstr ""
+"Odznak ve front-endu dostanou jen média nahraná v tento den nebo později; "
+"starší média zůstanou označena jen v administraci. Nechte prázdné, aby "
+"odznak dostala všechna označená média."
 
 #: admin/class-settings.php:271
 msgid "Badge text"
-msgstr ""
+msgstr "Text odznaku"
 
 #: admin/class-settings.php:273 includes/class-frontend.php:229
 #: includes/class-frontend.php:234 includes/class-notice.php:154
 msgid "AI-generated"
-msgstr ""
+msgstr "Vygenerováno AI"
 
 #: admin/class-settings.php:275
 msgid "Leave empty for the translated default label."
-msgstr ""
+msgstr "Nechte prázdné pro přeložené výchozí označení."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site}
 #. placeholder (do not translate), 3: example template.
@@ -1147,94 +1275,105 @@ msgid ""
 "title), e.g. %3$s. Images without a known generator fall back to the default"
 " label."
 msgstr ""
+"Zástupné texty: %1$s (zjištěný nebo ručně nastavený generátor) a %2$s (název"
+" webu), např. %3$s. Obrázky bez známého generátoru použijí výchozí označení."
 
 #: admin/class-settings.php:289
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhled"
 
 #: admin/class-settings.php:297 admin/class-setup.php:317
 msgid "Overlay on the image"
-msgstr ""
+msgstr "Překryv na obrázku"
 
 #: admin/class-settings.php:315 admin/class-setup.php:292
 msgid "Dark"
-msgstr ""
+msgstr "Tmavý"
 
 #: admin/class-settings.php:316 admin/class-setup.php:293
 msgid "Light"
-msgstr ""
+msgstr "Světlý"
 
 #: admin/class-settings.php:317 admin/class-setup.php:294
 msgid "Outline"
-msgstr ""
+msgstr "Obrysový"
 
 #: admin/class-settings.php:318 admin/class-setup.php:295
 msgid "Icon only (short label)"
-msgstr ""
+msgstr "Jen ikona (krátké označení)"
 
 #: admin/class-settings.php:325
 msgid "Small"
-msgstr ""
+msgstr "Malý"
 
 #: admin/class-settings.php:326
 msgid "Medium"
-msgstr ""
+msgstr "Střední"
 
 #: admin/class-settings.php:327
 msgid "Large"
-msgstr ""
+msgstr "Velký"
 
 #: admin/class-settings.php:334
 msgid "Extras"
-msgstr ""
+msgstr "Doplňky"
 
 #: admin/class-settings.php:337
 msgid ""
 "Show the detected generator in the badge (e.g. \"AI-generated · "
 "Midjourney\"; ignored when the badge text contains {generator})"
 msgstr ""
+"Zobrazit v odznaku zjištěný generátor (např. „Vygenerováno AI · Midjourney“;"
+" ignoruje se, pokud text odznaku obsahuje {generator})"
 
 #: admin/class-settings.php:339
 msgid "Append the label to the image alt text (screen readers)"
-msgstr ""
+msgstr "Připojit označení k alternativnímu textu obrázku (čtečky obrazovky)"
 
 #: admin/class-settings.php:341
 msgid ""
 "Automatically move a badge to another corner, or below the image, if a theme"
 " overlay covers it (recommended, needs JavaScript)"
 msgstr ""
+"Automaticky přesunout odznak do jiného rohu nebo pod obrázek, pokud jej "
+"zakrývá překryv šablony (doporučeno, vyžaduje JavaScript)"
 
 #: admin/class-settings.php:343
 msgid ""
 "Also label images printed without an attachment ID (ACF fields, sliders, "
 "builders) and CSS backgrounds (experimental, needs JavaScript)"
 msgstr ""
+"Označovat i obrázky vypsané bez ID přílohy (pole ACF, slidery, buildery) a "
+"pozadí CSS (experimentální, vyžaduje JavaScript)"
 
 #: admin/class-settings.php:347
 msgid "Not AI"
-msgstr ""
+msgstr "Bez AI"
 
 #: admin/class-settings.php:350
 msgid ""
 "Also show a badge on media declared as camera photo or human work (the "
 "structured data carries the declaration either way)"
 msgstr ""
+"Zobrazovat odznak i u médií deklarovaných jako fotografie z fotoaparátu nebo"
+" lidská tvorba (strukturovaná data nesou deklaraci tak či tak)"
 
 #: admin/class-settings.php:351 includes/class-frontend.php:207
 msgid "Human made"
-msgstr ""
+msgstr "Vytvořeno člověkem"
 
 #: admin/class-settings.php:355
 msgid "Page notice"
-msgstr ""
+msgstr "Upozornění na stránce"
 
 #: admin/class-settings.php:358
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
+"Přidat krátkou poznámku na konec stránek, které obsahují označená média"
 
 #: admin/class-settings.php:359 includes/class-frontend.php:782
 msgid "This page contains AI-generated media."
-msgstr ""
+msgstr "Tato stránka obsahuje média vygenerovaná AI."
 
 #: admin/class-settings.php:367
 msgid ""
@@ -1243,81 +1382,92 @@ msgid ""
 "bulk. AI levels show a note on the post; the shortcode [transparai_notice] "
 "and the \"AI notice\" block place it anywhere by hand."
 msgstr ""
+"Každý příspěvek nese úroveň AI (žádná, s pomocí AI, vygenerováno AI, "
+"vygenerováno AI a zkontrolováno), nastavenou v postranním panelu editoru, v "
+"Rychlých úpravách nebo hromadně. Úrovně AI zobrazí u příspěvku poznámku; "
+"shortcode [transparai_notice] a blok „Upozornění na AI“ ji umístí ručně "
+"kamkoli."
 
 #: admin/class-settings.php:370
 msgid "Note text"
-msgstr ""
+msgstr "Text poznámky"
 
 #: admin/class-settings.php:372 includes/class-notice.php:140
 msgid "This text was generated by AI."
-msgstr ""
+msgstr "Tento text byl vygenerován AI."
 
 #: admin/class-settings.php:373
 msgid ""
 "Leave empty for a translated wording per level (\"created with the help of "
 "AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
 msgstr ""
+"Nechte prázdné pro přeložené znění podle úrovně („vytvořeno s pomocí AI“, "
+"„vygenerováno AI“, „vygenerováno AI a zkontrolováno člověkem“)."
 
 #: admin/class-settings.php:379
 msgid "Ahead of the content"
-msgstr ""
+msgstr "Před obsahem"
 
 #: admin/class-settings.php:380
 msgid "After the content"
-msgstr ""
+msgstr "Za obsahem"
 
 #: admin/class-settings.php:381
 msgid "Ahead of and after the content"
-msgstr ""
+msgstr "Před obsahem i za ním"
 
 #: admin/class-settings.php:382 admin/class-settings.php:530
 msgid "Only where a block or shortcode is placed"
-msgstr ""
+msgstr "Jen tam, kde je umístěn blok nebo shortcode"
 
 #: admin/class-settings.php:389 includes/class-notice.php:629
 msgid "Block (own line)"
-msgstr ""
+msgstr "Blok (vlastní řádek)"
 
 #: admin/class-settings.php:390 includes/class-notice.php:630
 msgid "Inline (inside text)"
-msgstr ""
+msgstr "Vložený (uvnitř textu)"
 
 #: admin/class-settings.php:391 admin/class-settings.php:529
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
-msgstr ""
+msgstr "Banner (zavíratelný)"
 
 #: admin/class-settings.php:392 includes/class-notice.php:632
 msgid "Badge (small chip)"
-msgstr ""
+msgstr "Odznak (malý štítek)"
 
 #: admin/class-settings.php:393 includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
-msgstr ""
+msgstr "Modální okno (tlačítko otevře dialog)"
 
 #: admin/class-settings.php:400
 msgid "Post titles"
-msgstr ""
+msgstr "Názvy příspěvků"
 
 #: admin/class-settings.php:403
 msgid ""
 "Append a small AI badge to the title of AI-written posts in lists and "
 "archives"
 msgstr ""
+"Připojit malý odznak AI k názvu příspěvků napsaných AI v seznamech a "
+"archivech"
 
 #: admin/class-settings.php:404
 msgid ""
 "The badge is HTML inside the title. Themes that print titles unescaped "
 "inside attributes should leave this off."
 msgstr ""
+"Odznak je HTML uvnitř názvu. Šablony, které názvy vypisují bez escapování "
+"uvnitř atributů, by měly tuto volbu nechat vypnutou."
 
 #: admin/class-settings.php:408
 msgid "Review"
-msgstr ""
+msgstr "Kontrola"
 
 #: admin/class-settings.php:410
 msgid "Name of the person responsible"
-msgstr ""
+msgstr "Jméno odpovědné osoby"
 
 #: admin/class-settings.php:411
 msgid ""
@@ -1325,41 +1475,52 @@ msgid ""
 " someone else. The reviewer, date and a fingerprint of the reviewed text are"
 " recorded with the post."
 msgstr ""
+"Výchozí „odpovědná osoba“ u zkontrolovaných textů; každý příspěvek může "
+"uvést někoho jiného. U příspěvku se zaznamená kontrolující osoba, datum a "
+"otisk zkontrolovaného textu."
 
 #: admin/class-settings.php:413
 msgid ""
 "Name the reviewer and the review date in the public note and in the "
 "structured data"
 msgstr ""
+"Uvádět kontrolující osobu a datum kontroly ve veřejné poznámce a ve "
+"strukturovaných datech"
 
 #: admin/class-settings.php:417
 msgid "New posts"
-msgstr ""
+msgstr "Nové příspěvky"
 
 #: admin/class-settings.php:422
 msgid ""
 "Preselected level for posts created from now on. Existing posts are never "
 "reclassified."
 msgstr ""
+"Předvybraná úroveň pro příspěvky vytvořené od této chvíle. Stávající "
+"příspěvky se nikdy nepřeřazují."
 
 #: admin/class-settings.php:426
 msgid "Excerpts and feeds"
-msgstr ""
+msgstr "Stručné výpisy a kanály"
 
 #: admin/class-settings.php:429
 msgid ""
 "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
+"Připojit poznámku jako prostý text ke stručným výpisům (archivy, upoutávky, "
+"související příspěvky)"
 
 #: admin/class-settings.php:431
 msgid ""
 "Add the note to RSS feed items (content, summary and a machine-readable "
 "dc:description element)"
 msgstr ""
+"Přidat poznámku do položek RSS kanálu (obsah, souhrn a strojově čitelný "
+"prvek dc:description)"
 
 #: admin/class-settings.php:433
 msgid "Prefix feed item titles of AI-written posts with [AI]"
-msgstr ""
+msgstr "Přidat k názvům položek kanálu u příspěvků napsaných AI předponu [AI]"
 
 #: admin/class-settings.php:441
 msgid ""
@@ -1370,79 +1531,91 @@ msgid ""
 "local: active plugins, theme snippets, the scripts a page registers, and "
 "what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
+"Návštěvníci musí být informováni, že komunikují se systémem AI, nejpozději "
+"při zahájení konverzace. Rozhoduje vaše odpověď; to, co plugin na webu "
+"najde, ji jen doplňuje, protože většina chatovacích widgetů jsou živé chaty,"
+" kde odpovídá člověk, a nepravdivé „tady odpovídá AI“ by návštěvníky uvedlo "
+"v omyl. Detekce probíhá lokálně: aktivní pluginy, úryvky v šabloně, skripty,"
+" které stránka registruje, a to, co viděl váš vlastní prohlížeč v roli "
+"správce. Žádný požadavek neopouští server."
 
 #: admin/class-settings.php:445
 msgid "Found on this site"
-msgstr ""
+msgstr "Nalezeno na tomto webu"
 
 #: admin/class-settings.php:448
 msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
 msgstr ""
+"Zatím nebyl nalezen žádný známý chatovací widget ani chatbot. Otevřete pár "
+"stránek svého webu, když jste přihlášeni; kontrola proběhne ve vašem "
+"prohlížeči a výsledek se objeví zde."
 
 #: admin/class-settings.php:453
 msgid "a bot answers"
-msgstr ""
+msgstr "odpovídá bot"
 
 #: admin/class-settings.php:454
 msgid "people answer"
-msgstr ""
+msgstr "odpovídají lidé"
 
 #: admin/class-settings.php:455
 msgid "live chat with optional bot"
-msgstr ""
+msgstr "živý chat s volitelným botem"
 
 #: admin/class-settings.php:456
 msgid "staffing unknown"
-msgstr ""
+msgstr "obsazení neznámé"
 
 #: admin/class-settings.php:467
 msgid "Does this site run a chat?"
-msgstr ""
+msgstr "Provozuje tento web chat?"
 
 #: admin/class-settings.php:474
 msgid "Not decided yet"
-msgstr ""
+msgstr "Zatím nerozhodnuto"
 
 #: admin/class-settings.php:483
 msgid "An AI answers"
-msgstr ""
+msgstr "Odpovídá AI"
 
 #: admin/class-settings.php:484
 msgid "People answer, an AI sometimes"
-msgstr ""
+msgstr "Odpovídají lidé, někdy AI"
 
 #: admin/class-settings.php:485
 msgid "Only people answer"
-msgstr ""
+msgstr "Odpovídají jen lidé"
 
 #: admin/class-settings.php:489
 msgid ""
 "The notice appears only with \"Yes\" and an AI that answers at least "
 "sometimes."
 msgstr ""
+"Upozornění se zobrazí jen při odpovědi „Ano“ a tehdy, když AI odpovídá "
+"alespoň někdy."
 
 #: admin/class-settings.php:493
 msgid "Notice"
-msgstr ""
+msgstr "Upozornění"
 
 #: admin/class-settings.php:495 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
-msgstr ""
+msgstr "Komunikujete se systémem AI."
 
 #: admin/class-settings.php:501
 msgid ""
 "As the first message of the bot (AI Engine; otherwise next to the widget)"
-msgstr ""
+msgstr "Jako první zpráva bota (AI Engine; jinak vedle widgetu)"
 
 #: admin/class-settings.php:502
 msgid "Next to the chat widget"
-msgstr ""
+msgstr "Vedle chatovacího widgetu"
 
 #: admin/class-settings.php:503
 msgid "As a line at the end of every page"
-msgstr ""
+msgstr "Jako řádek na konci každé stránky"
 
 #: admin/class-settings.php:514
 msgid ""
@@ -1451,33 +1624,40 @@ msgid ""
 "about is decided per system on the AI Systems page; nothing is switched on "
 "from a finding alone. The list ships with the plugin, nothing is fetched."
 msgstr ""
+"Plugin porovnává vaše nainstalované pluginy s přiloženým seznamem známých "
+"nástrojů AI a další můžete deklarovat ručně. O tom, o kterých z nich budou "
+"návštěvníci informováni, se rozhoduje u každého systému zvlášť na stránce "
+"Systémy AI; ze samotného nálezu se nic nezapíná. Seznam je součástí pluginu,"
+" nic se nestahuje."
 
 #: admin/class-settings.php:517
 msgid "Visitor notice"
-msgstr ""
+msgstr "Upozornění pro návštěvníky"
 
 #: admin/class-settings.php:520
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
+"Zobrazovat na každé stránce upozornění se jmény systémů AI označených jako "
+"viditelné"
 
 #: admin/class-settings.php:527
 msgid "Line at the end of the page"
-msgstr ""
+msgstr "Řádek na konci stránky"
 
 #: admin/class-settings.php:528
 msgid "Small badge in a corner"
-msgstr ""
+msgstr "Malý odznak v rohu"
 
 #: admin/class-settings.php:538
 msgid "Notice text"
-msgstr ""
+msgstr "Text upozornění"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
 #: admin/class-settings.php:540 includes/class-systems.php:458
 #, php-format
 msgid "This site uses AI systems: %s."
-msgstr ""
+msgstr "Tento web používá systémy AI: %s."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:541
@@ -1486,109 +1666,128 @@ msgid ""
 "Leave empty for the translated default. %s is replaced with the names of the"
 " visible systems."
 msgstr ""
+"Nechte prázdné pro přeložené výchozí znění. %s se nahradí názvy viditelných "
+"systémů."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:542
 msgid "Manage detected and declared AI systems"
-msgstr ""
+msgstr "Spravovat zjištěné a deklarované systémy AI"
 
 #: admin/class-settings.php:552
 msgid "Detect on upload"
-msgstr ""
+msgstr "Detekovat při nahrání"
 
 #: admin/class-settings.php:555
 msgid ""
 "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
+"Prověřovat nově nahrané soubory na původ z AI (C2PA, XMP/IPTC, signatury "
+"generátorů)"
 
 #: admin/class-settings.php:559
 msgid "Standard declarations"
-msgstr ""
+msgstr "Standardní deklarace"
 
 #: admin/class-settings.php:566 admin/class-settings.php:583
 msgid "Label automatically"
-msgstr ""
+msgstr "Označit automaticky"
 
 #: admin/class-settings.php:567 admin/class-settings.php:584
 msgid "Put into review queue"
-msgstr ""
+msgstr "Zařadit do fronty ke kontrole"
 
 #: admin/class-settings.php:568 admin/class-settings.php:585
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorovat"
 
 #: admin/class-settings.php:572
 msgid ""
 "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in"
 " C2PA, AIGC declaration)."
 msgstr ""
+"Soubory, které výslovně deklarují původ z AI (IPTC DigitalSourceType, "
+"tvrzení o AI v C2PA, deklarace AIGC)."
 
 #: admin/class-settings.php:576
 msgid "Generator signatures"
-msgstr ""
+msgstr "Signatury generátorů"
 
 #: admin/class-settings.php:589
 msgid ""
 "Strong signals without a formal declaration (Stable Diffusion parameters, "
 "ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr ""
+"Silné signály bez formální deklarace (parametry Stable Diffusion, workflow "
+"ComfyUI, názvy generátorů v EXIF/XMP, C2PA zapsané fotoaparátem)."
 
 #: admin/class-settings.php:593
 msgid "More sources"
-msgstr ""
+msgstr "Další zdroje"
 
 #: admin/class-settings.php:596
 msgid ""
 "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
+"Skenovat i nahrané video a zvuk (C2PA v MP4/MOV, deklarace AIGC v MP3)"
 
 #: admin/class-settings.php:598
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
+"Používat vzory názvů souborů jako náznaky ke kontrole (nikdy neoznačuje "
+"automaticky)"
 
 #: admin/class-settings.php:606
 msgid "Machine-readable file metadata"
-msgstr ""
+msgstr "Strojově čitelná metadata souborů"
 
 #: admin/class-settings.php:609
 msgid "Write into files"
-msgstr ""
+msgstr "Zapisovat do souborů"
 
 #: admin/class-settings.php:612
 msgid ""
 "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and "
 "AVIF files (all size variants)"
 msgstr ""
+"Zapisovat IPTC DigitalSourceType jako XMP do označených souborů JPEG, PNG, "
+"WebP a AVIF (všechny velikostní varianty)"
 
 #: admin/class-settings.php:614
 msgid ""
 "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC "
 "block)"
 msgstr ""
+"Zrcadlit jej i do IPTC-IIM (JPEG, jen pokud soubor nemá jiný blok IPTC)"
 
 #: admin/class-settings.php:616
 msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
 msgstr ""
+"Zapisovat digitalCapture nebo digitalCreation i do médií, která jste "
+"deklarovali jako nevytvořená AI, ale nikdy nepřepsat deklaraci, kterou už "
+"zapsal jiný nástroj nebo fotoaparát"
 
 #: admin/class-settings.php:620
 msgid "Auto-repair"
-msgstr ""
+msgstr "Automatická oprava"
 
 #: admin/class-settings.php:623
 msgid ""
 "Restore the metadata when image optimizers or regeneration strip it (hourly "
 "integrity sweep)"
 msgstr ""
+"Obnovit metadata, když je optimalizátory obrázků nebo přegenerování odstraní"
+" (hodinová kontrola integrity)"
 
 #: admin/class-settings.php:627
 msgid "Delivery check"
-msgstr ""
+msgstr "Kontrola doručení"
 
 #: admin/class-settings.php:630
 msgid "Allow checking whether the declaration survives delivery"
-msgstr ""
+msgstr "Umožnit kontrolu, zda deklarace přežije doručení"
 
 #: admin/class-settings.php:631
 msgid ""
@@ -1599,46 +1798,59 @@ msgid ""
 "request goes to your own site and nowhere else, and it only ever happens "
 "when you press the button."
 msgstr ""
+"Přidá tlačítko do podrobností přílohy a sem. Po kliknutí plugin stáhne daný "
+"obrázek přes jeho vlastní veřejnou URL a porovná doručené bajty se souborem "
+"na disku, což je jediný způsob, jak zjistit, že optimalizující CDN vaše "
+"obrázky překóduje a deklaraci cestou ven zahodí. Požadavek míří na váš "
+"vlastní web a nikam jinam a proběhne jen tehdy, když stisknete tlačítko."
 
 #: admin/class-settings.php:634
 msgid "Check a sample of five files"
-msgstr ""
+msgstr "Zkontrolovat vzorek pěti souborů"
 
 #: admin/class-settings.php:641
 msgid "Structured data"
-msgstr ""
+msgstr "Strukturovaná data"
 
 #: admin/class-settings.php:644
 msgid ""
 "Add Schema.org JSON-LD with the IPTC digital source type for the labeled "
 "media of each page (search engines read it without opening the files)"
 msgstr ""
+"Přidat Schema.org JSON-LD s typem digitálního zdroje IPTC pro označená média"
+" každé stránky (vyhledávače je přečtou, aniž by otevíraly soubory)"
 
 #: admin/class-settings.php:654
 msgid "Data removal"
-msgstr ""
+msgstr "Odstranění dat"
 
 #: admin/class-settings.php:657
 msgid ""
 "Delete all plugin data (labels, detection results, settings) when the plugin"
 " is uninstalled"
 msgstr ""
+"Při odinstalaci pluginu smazat všechna jeho data (označení, výsledky "
+"detekce, nastavení)"
 
 #: admin/class-settings.php:663
 msgid "Save changes"
-msgstr ""
+msgstr "Uložit změny"
 
 #: admin/class-settings.php:680
 msgid ""
 "Detection relies on metadata embedded by generators; files whose metadata "
 "was stripped carry no signal."
 msgstr ""
+"Detekce se opírá o metadata vložená generátory; soubory, kterým byla "
+"metadata odstraněna, nenesou žádný signál."
 
 #: admin/class-settings.php:681
 msgid ""
 "A declaration records a statement by the site operator; it is not "
 "cryptographic proof of origin."
 msgstr ""
+"Deklarace zaznamenává prohlášení provozovatele webu; není kryptografickým "
+"důkazem původu."
 
 #: admin/class-settings.php:682
 msgid ""
@@ -1646,6 +1858,8 @@ msgid ""
 "whether content changed since the review, not whether the review was "
 "correct."
 msgstr ""
+"Úrovně u textů zadávají editoři; otisk kontroly ukazuje, zda se obsah od "
+"kontroly změnil, ne zda byla kontrola správná."
 
 #: admin/class-settings.php:683
 msgid ""
@@ -1653,134 +1867,137 @@ msgid ""
 "summarise the plugin state and the operator's own answers; they are not a "
 "legal assessment."
 msgstr ""
+"Skóre připravenosti, sebehodnocení a kontrolní seznam gramotnosti v oblasti "
+"AI shrnují stav pluginu a vlastní odpovědi provozovatele; nejsou právním "
+"posouzením."
 
 #: admin/class-settings.php:707
 msgid "Check"
-msgstr ""
+msgstr "Kontrola"
 
 #: admin/class-settings.php:715 admin/class-settings.php:725
 msgid "Saved"
-msgstr ""
+msgstr "Uloženo"
 
 #: admin/class-settings.php:717
 msgid "Question"
-msgstr ""
+msgstr "Otázka"
 
 #: admin/class-settings.php:717
 msgid "Answer"
-msgstr ""
+msgstr "Odpověď"
 
 #: admin/class-settings.php:720
 msgid "not answered"
-msgstr ""
+msgstr "nezodpovězeno"
 
 #: admin/class-settings.php:724
 msgid "AI literacy checklist (Article 4)"
-msgstr ""
+msgstr "Kontrolní seznam gramotnosti v oblasti AI (článek 4)"
 
 #: admin/class-settings.php:726
 msgid "Item"
-msgstr ""
+msgstr "Položka"
 
 #: admin/class-settings.php:734
 msgid "None detected or declared."
-msgstr ""
+msgstr "Nic nebylo zjištěno ani deklarováno."
 
 #: admin/class-settings.php:736
 msgid "Source"
-msgstr ""
+msgstr "Zdroj"
 
 #: admin/class-settings.php:736
 msgid "Visitors told"
-msgstr ""
+msgstr "Návštěvníci informováni"
 
 #: admin/class-settings.php:738 includes/class-systems.php:354
 msgid "declared by hand"
-msgstr ""
+msgstr "deklarováno ručně"
 
 #: admin/class-settings.php:738
 msgid "Detected"
-msgstr ""
+msgstr "Zjištěno"
 
 #: admin/class-settings.php:743
 msgid "Disclosure notices"
-msgstr ""
+msgstr "Upozornění o použití AI"
 
 #: admin/class-settings.php:747
 msgid "Text note style"
-msgstr ""
+msgstr "Styl poznámky u textu"
 
 #: admin/class-settings.php:748
 msgid "Text note position"
-msgstr ""
+msgstr "Pozice poznámky u textu"
 
 #: admin/class-settings.php:749
 msgid "Visible badge on labeled media"
-msgstr ""
+msgstr "Viditelný odznak u označených médií"
 
 #: admin/class-settings.php:750
 msgid "Page notice on pages with labeled media"
-msgstr ""
+msgstr "Upozornění na stránkách s označenými médii"
 
 #: admin/class-settings.php:751
 msgid "Chatbot question answered with"
-msgstr ""
+msgstr "Odpověď na otázku o chatbotovi"
 
 #: admin/class-settings.php:752
 msgid "Chatbot notice active"
-msgstr ""
+msgstr "Upozornění na chatbota aktivní"
 
 #: admin/class-settings.php:753
 msgid "AI systems notice"
-msgstr ""
+msgstr "Upozornění na systémy AI"
 
 #: admin/class-settings.php:754
 msgid "Structured data (Schema.org)"
-msgstr ""
+msgstr "Strukturovaná data (Schema.org)"
 
 #: admin/class-settings.php:771
 msgid "Title"
-msgstr ""
+msgstr "Název"
 
 #: admin/class-settings.php:771
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: admin/class-settings.php:771
 msgid "Level"
-msgstr ""
+msgstr "Úroveň"
 
 #: admin/class-settings.php:771
 msgid "Reviewed by"
-msgstr ""
+msgstr "Kontrolující osoba"
 
 #: admin/class-settings.php:771
 msgid "Reviewed on"
-msgstr ""
+msgstr "Datum kontroly"
 
 #: admin/class-settings.php:771
 msgid "Review current"
-msgstr ""
+msgstr "Kontrola aktuální"
 
 #: admin/class-settings.php:806
 msgid "Library status"
-msgstr ""
+msgstr "Stav knihovny"
 
 #: admin/class-settings.php:810
 msgid "Media files"
-msgstr ""
+msgstr "Mediální soubory"
 
 #: admin/class-settings.php:822
 msgid "Scanned"
-msgstr ""
+msgstr "Prohledáno"
 
 #: admin/class-settings.php:827
 msgid "Open review queue"
-msgstr ""
+msgstr "Otevřít frontu ke kontrole"
 
 #: admin/class-settings.php:830
 msgid "Print view"
-msgstr ""
+msgstr "Tisková verze"
 
 #: admin/class-settings.php:835
 msgid ""
@@ -1790,28 +2007,35 @@ msgid ""
 "stated limitations; the same record is available at /wp-"
 "json/transparai/v1/report."
 msgstr ""
+"Export vypíše každý označený, deklarovaný i čekající soubor se zdrojem "
+"detekce, mírou jistoty, úplnou historií a osobou, která stojí za každou "
+"změnou. Tisková verze navíc přidá hash dokumentu vypočtený z faktů, podklad "
+"pro posouzení a uvedená omezení; tentýž záznam je dostupný na /wp-"
+"json/transparai/v1/report."
 
 #: admin/class-settings.php:851 admin/class-settings.php:853
 msgid "Scan existing library"
-msgstr ""
+msgstr "Prohledat stávající knihovnu"
 
 #: admin/class-settings.php:855
 msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
 msgstr ""
+"Čte metadata vašich stávajících mediálních souborů (C2PA, XMP/IPTC, "
+"signatury generátorů) po malých dávkách. Nic neopouští váš server."
 
 #: admin/class-settings.php:857
 msgid "Scan new/unscanned media"
-msgstr ""
+msgstr "Prohledat nová/neprohledaná média"
 
 #: admin/class-settings.php:858
 msgid "Rescan everything"
-msgstr ""
+msgstr "Prohledat vše znovu"
 
 #: admin/class-settings.php:859
 msgid "Pause"
-msgstr ""
+msgstr "Pozastavit"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
@@ -1821,28 +2045,32 @@ msgid ""
 "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, "
 "%3$d failed (%4$s ago)."
 msgstr ""
+"Automatická oprava, poslední úplný průchod: zkontrolováno %1$d označených "
+"souborů, opraveno %2$d, selhalo %3$d (před %4$s)."
 
 #: admin/class-settings.php:895
 msgid "TransparAI links"
-msgstr ""
+msgstr "Odkazy TransparAI"
 
 #: admin/class-settings.php:898
 msgid "Support forum"
-msgstr ""
+msgstr "Fórum podpory"
 
 #: admin/class-setup.php:261
 msgid "Setup in three steps"
-msgstr ""
+msgstr "Nastavení ve třech krocích"
 
 #: admin/class-setup.php:262
 msgid ""
 "Each step writes something real and can be taken back with the undo button. "
 "Nothing is labeled without your review, and no request leaves your server."
 msgstr ""
+"Každý krok skutečně něco zapíše a lze jej vzít zpět tlačítkem Zpět. Nic se "
+"neoznačí bez vaší kontroly a žádný požadavek neopouští váš server."
 
 #: admin/class-setup.php:266
 msgid "1. Scan the existing library"
-msgstr ""
+msgstr "1. Prohledat stávající knihovnu"
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:272
@@ -1851,83 +2079,95 @@ msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
 "strong signals wait in the review queue."
 msgstr ""
+"%1$d mediálních souborů, z toho %2$d prohledáno. Jednoznačné deklarace se "
+"označí, silné signály čekají ve frontě ke kontrole."
 
 #: admin/class-setup.php:279
 msgid "Scan now"
-msgstr ""
+msgstr "Prohledat nyní"
 
 #: admin/class-setup.php:283
 msgid "2. Choose the badge look"
-msgstr ""
+msgstr "2. Zvolit vzhled odznaku"
 
 #: admin/class-setup.php:320
 msgid "Save badge look"
-msgstr ""
+msgstr "Uložit vzhled odznaku"
 
 #: admin/class-setup.php:330
 msgid "3. Decide about the files"
-msgstr ""
+msgstr "3. Rozhodnout o souborech"
 
 #: admin/class-setup.php:335
 msgid ""
 "Write the machine-readable declaration into labeled image files (XMP, all "
 "sizes; merged into existing metadata, removable)"
 msgstr ""
+"Zapisovat strojově čitelnou deklaraci do označených obrázkových souborů "
+"(XMP, všechny velikosti; sloučí se se stávajícími metadaty, lze odstranit)"
 
 #: admin/class-setup.php:336
 msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr ""
+msgstr "Zrcadlit ji do IPTC-IIM u souborů JPEG bez jiného bloku IPTC"
 
 #: admin/class-setup.php:337
 msgid ""
 "Also write digitalCapture or digitalCreation for media declared as not AI-"
 "made"
 msgstr ""
+"Zapisovat digitalCapture nebo digitalCreation i u médií deklarovaných jako "
+"nevytvořená AI"
 
 #: admin/class-setup.php:338
 msgid "Restore declarations that image optimizers strip (hourly sweep)"
 msgstr ""
+"Obnovovat deklarace, které odstraní optimalizátory obrázků (hodinový "
+"průchod)"
 
 #: admin/class-setup.php:340
 msgid "Save file settings"
-msgstr ""
+msgstr "Uložit nastavení souborů"
 
 #: admin/class-setup.php:355
 msgid "Finish setup"
-msgstr ""
+msgstr "Dokončit nastavení"
 
 #. translators: %s: name of the setup step (badge or writing).
 #: admin/class-setup.php:368
 #, php-format
 msgid "Undo last step (%s)"
-msgstr ""
+msgstr "Vrátit zpět poslední krok (%s)"
 
 #: admin/class-setup.php:369
 msgid "badge look"
-msgstr ""
+msgstr "vzhled odznaku"
 
 #: admin/class-setup.php:369
 msgid "file settings"
-msgstr ""
+msgstr "nastavení souborů"
 
 #: admin/class-setup.php:381
 msgid "Not now"
-msgstr ""
+msgstr "Teď ne"
 
 #: includes/class-compliance.php:57
 msgid "Chatbot or assistant"
-msgstr ""
+msgstr "Chatbot nebo asistent"
 
 #: includes/class-compliance.php:58
 msgid ""
 "Does your site run a chatbot or virtual assistant that talks to visitors?"
 msgstr ""
+"Provozuje váš web chatbota nebo virtuálního asistenta, který komunikuje s "
+"návštěvníky?"
 
 #: includes/class-compliance.php:59
 msgid ""
 "Examples: a support chat answered by an AI, an assistant widget, a chat "
 "plugin with an AI mode."
 msgstr ""
+"Příklady: podpůrný chat, ve kterém odpovídá AI, widget asistenta, chatovací "
+"plugin s režimem AI."
 
 #: includes/class-compliance.php:60
 msgid ""
@@ -1935,17 +2175,24 @@ msgid ""
 "interaction known no later than the first exchange. You deploy the system, "
 "and the notice appears on your pages, so it is set up here."
 msgstr ""
+"Čl. 50 odst. 1 ukládá poskytovateli chatovacího systému, aby interakci s AI "
+"oznámil nejpozději při první výměně zpráv. Systém zavádíte vy a upozornění "
+"se zobrazuje na vašich stránkách, takže se nastavuje zde."
 
 #: includes/class-compliance.php:61
 msgid ""
 "Answer the chatbot question in the settings; the notice follows your answer."
 msgstr ""
+"Odpovězte na otázku o chatbotovi v nastavení; upozornění se řídí vaší "
+"odpovědí."
 
 #: includes/class-compliance.php:66
 msgid ""
 "Does your site publish text that was generated or substantially assisted by "
 "AI?"
 msgstr ""
+"Publikuje váš web text, který byl vygenerován AI nebo při jehož psaní AI "
+"podstatně pomáhala?"
 
 #: includes/class-compliance.php:67
 msgid ""
@@ -1953,6 +2200,9 @@ msgid ""
 "AI-assisted copy. Answer yes even if a person edited the text afterwards; "
 "the review is recorded per post on the AI Content page."
 msgstr ""
+"Příklady: příspěvky na blog navržené jazykovým modelem, popisy produktů, "
+"texty psané s pomocí AI. Odpovězte ano i tehdy, pokud text následně upravil "
+"člověk; kontrola se zaznamenává u každého příspěvku na stránce Obsah AI."
 
 #: includes/class-compliance.php:68
 msgid ""
@@ -1961,26 +2211,37 @@ msgid ""
 "and someone holds editorial responsibility. Other AI-written text carries no"
 " duty under Article 50; the AI level documents your practice either way."
 msgstr ""
+"Čl. 50 odst. 4 vám jako zavádějícímu subjektu ukládá zveřejnit, že text "
+"napsaný AI, který informuje veřejnost o věcech veřejného zájmu, vznikl "
+"pomocí AI, ledaže jej zkontroloval člověk a někdo nese redakční odpovědnost."
+" Jiný text napsaný AI žádnou povinnost podle článku 50 nezakládá; úroveň AI "
+"tak jako tak dokumentuje vaši praxi."
 
 #: includes/class-compliance.php:69
 msgid ""
 "Set the AI level on each post (editor sidebar, Quick Edit or Bulk Edit) so "
 "the note appears."
 msgstr ""
+"Nastavte u každého příspěvku úroveň AI (postranní panel editoru, Rychlé "
+"úpravy nebo Hromadné úpravy), aby se poznámka zobrazila."
 
 #: includes/class-compliance.php:73
 msgid "AI-generated images and media"
-msgstr ""
+msgstr "Obrázky a média vygenerovaná AI"
 
 #: includes/class-compliance.php:74
 msgid "Does your site use AI-generated images or other AI-generated media?"
 msgstr ""
+"Používá váš web obrázky vygenerované AI nebo jiná média vygenerovaná AI?"
 
 #: includes/class-compliance.php:75
 msgid ""
 "Examples: images from ChatGPT, Gemini, Firefly, Midjourney or Stable "
 "Diffusion, AI-edited photos, whether or not they show real people or places."
 msgstr ""
+"Příklady: obrázky z ChatGPT, Gemini, Firefly, Midjourney nebo Stable "
+"Diffusion, fotografie upravené AI, ať už zobrazují skutečné osoby či místa, "
+"nebo ne."
 
 #: includes/class-compliance.php:76
 msgid ""
@@ -1990,28 +2251,40 @@ msgid ""
 " real people, places or events and would pass as authentic. Other AI images "
 "carry no disclosure duty of their own."
 msgstr ""
+"Čl. 50 odst. 2 ukládá poskytovateli generátoru označit výstup strojově "
+"čitelným způsobem; plugin toto označení ve vašich souborech udržuje. Čl. 50 "
+"odst. 4 vám jako zavádějícímu subjektu ukládá zveřejnit deepfaky: obsah, "
+"který vypadá jako skutečné osoby, místa nebo události a mohl by být "
+"považován za autentický. Ostatní obrázky AI samy o sobě žádnou povinnost "
+"zveřejnění nezakládají."
 
 #: includes/class-compliance.php:77
 msgid ""
 "Scan the media library, confirm the review queue and keep the visible badge "
 "and file metadata on."
 msgstr ""
+"Prohledejte knihovnu médií, zpracujte frontu ke kontrole a ponechte zapnutý "
+"viditelný odznak i metadata souborů."
 
 #: includes/class-compliance.php:81
 msgid "Synthetic audio, video and deepfakes"
-msgstr ""
+msgstr "Syntetický zvuk, video a deepfaky"
 
 #: includes/class-compliance.php:82
 msgid ""
 "Does your site generate or host synthetic audio, video or deepfake-style "
 "content?"
 msgstr ""
+"Generuje nebo hostuje váš web syntetický zvuk, video nebo obsah typu "
+"deepfake?"
 
 #: includes/class-compliance.php:83
 msgid ""
 "Examples: AI voice-overs, AI-generated video, cloned voices, digital "
 "avatars."
 msgstr ""
+"Příklady: namluvení pomocí AI, video vygenerované AI, klonované hlasy, "
+"digitální avataři."
 
 #: includes/class-compliance.php:84
 msgid ""
@@ -2019,28 +2292,35 @@ msgid ""
 "50(4) obliges you as deployer to disclose deepfakes, which a cloned voice or"
 " an avatar of a real person is; a generic synthetic voice is not."
 msgstr ""
+"Čl. 50 odst. 2 ukládá poskytovateli generátoru označit výstup. Čl. 50 odst. "
+"4 vám jako zavádějícímu subjektu ukládá zveřejnit deepfaky, jimiž klonovaný "
+"hlas nebo avatar skutečné osoby jsou; obecný syntetický hlas nikoli."
 
 #: includes/class-compliance.php:85
 msgid ""
 "Label the media in the library (video and audio are detected too) and add an"
 " explicit note on affected pages."
 msgstr ""
+"Označte média v knihovně (video a zvuk se detekují také) a na dotčené "
+"stránky přidejte výslovnou poznámku."
 
 #: includes/class-compliance.php:89
 msgid "Personalisation and recommendations"
-msgstr ""
+msgstr "Personalizace a doporučování"
 
 #: includes/class-compliance.php:90
 msgid ""
 "Does your site use AI for personalisation, recommendations or audience "
 "targeting?"
 msgstr ""
+"Používá váš web AI k personalizaci, doporučování nebo cílení na publikum?"
 
 #: includes/class-compliance.php:91
 msgid ""
 "Examples: product recommendations, personalised content, behavioural "
 "targeting."
 msgstr ""
+"Příklady: doporučování produktů, personalizovaný obsah, behaviorální cílení."
 
 #: includes/class-compliance.php:92
 msgid ""
@@ -2049,26 +2329,35 @@ msgid ""
 "online platforms and profiling have rules of their own in the Digital "
 "Services Act and the GDPR, outside the AI Act."
 msgstr ""
+"Podle článku 50 žádná povinnost. Na tento nástroj se stejně jako na každý "
+"systém AI, který zavádíte, vztahuje článek 4, takže patří do evidence. "
+"Doporučovací systémy na online platformách a profilování mají vlastní "
+"pravidla v aktu o digitálních službách a v GDPR, mimo AI Act."
 
 #: includes/class-compliance.php:93
 msgid ""
 "Declare the tool on the AI Systems page and decide whether visitors are told"
 " about it."
 msgstr ""
+"Deklarujte nástroj na stránce Systémy AI a rozhodněte, zda o něm budou "
+"návštěvníci informováni."
 
 #: includes/class-compliance.php:97
 msgid "AI translation"
-msgstr ""
+msgstr "Překlad pomocí AI"
 
 #: includes/class-compliance.php:98
 msgid "Does your site use AI translation to serve content in other languages?"
 msgstr ""
+"Používá váš web překlad pomocí AI, aby nabídl obsah v dalších jazycích?"
 
 #: includes/class-compliance.php:99
 msgid ""
 "Examples: DeepL, machine-translated pages from a multilingual plugin, AI "
 "translation add-ons."
 msgstr ""
+"Příklady: DeepL, strojově přeložené stránky z vícejazyčného pluginu, "
+"překladové doplňky s AI."
 
 #: includes/class-compliance.php:100
 msgid ""
@@ -2077,442 +2366,498 @@ msgid ""
 "under Art. 50(4), like any AI-manipulated text. Article 4 applies to the "
 "tool either way."
 msgstr ""
+"Podle článku 50 žádná vlastní povinnost. Strojově přeložený text, který "
+"informuje veřejnost o věcech veřejného zájmu a který nikdo nekontroluje, "
+"může spadat pod čl. 50 odst. 4 jako každý text upravený AI. Článek 4 se na "
+"nástroj vztahuje tak jako tak."
 
 #: includes/class-compliance.php:101
 msgid ""
 "Declare the translation tool on the AI Systems page; consider a notice on "
 "translated pages."
 msgstr ""
+"Deklarujte překladový nástroj na stránce Systémy AI; zvažte upozornění na "
+"přeložených stránkách."
 
 #: includes/class-compliance.php:120
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
 msgstr ""
+"Zaměstnanci a přispěvatelé vědí, které nástroje AI tento web používá a k "
+"čemu slouží"
 
 #: includes/class-compliance.php:121
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
 msgstr ""
+"Interní pravidla pro používání AI (co je dovoleno, co vyžaduje kontrolu) "
+"jsou sepsaná"
 
 #: includes/class-compliance.php:122
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
 msgstr ""
+"Lidé, kteří s nástroji AI pracují, absolvovali školení nebo dostali pokyny k"
+" jejich možnostem a mezím"
 
 #: includes/class-compliance.php:123
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
+"Je stanoveno datum revize používání nástrojů AI, pravidel a těchto deklarací"
 
 #: includes/class-compliance.php:124
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
 msgstr ""
+"U každého nástroje AI byl při rozhodování o potřebných pokynech pro "
+"zaměstnance zohledněn kontext použití a osoby, kterých se týká (návštěvníci,"
+" zákazníci)"
 
 #: includes/class-compliance.php:138
 msgid "AI Act enters into force"
-msgstr ""
+msgstr "AI Act vstupuje v platnost"
 
 #: includes/class-compliance.php:139
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
 msgstr ""
+"Nařízení (EU) 2024/1689 je v platnosti; jeho povinnosti se začínají používat"
+" postupně."
 
 #: includes/class-compliance.php:143
 msgid "General provisions and prohibited practices apply"
-msgstr ""
+msgstr "Použijí se obecná ustanovení a zákaz některých praktik"
 
 #: includes/class-compliance.php:144
 msgid ""
 "Chapters I and II: the AI literacy duty for providers and deployers (Article"
 " 4) and the ban on prohibited AI practices (Article 5)."
 msgstr ""
+"Kapitoly I a II: povinnost gramotnosti v oblasti AI pro poskytovatele a "
+"zavádějící subjekty (článek 4) a zákaz zakázaných praktik v oblasti AI "
+"(článek 5)."
 
 #: includes/class-compliance.php:148
 msgid "General-purpose AI and governance rules apply"
-msgstr ""
+msgstr "Použijí se pravidla pro obecné modely AI a pro správu"
 
 #: includes/class-compliance.php:149
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
 msgstr ""
+"Povinnosti poskytovatelů obecných modelů AI, oznamující orgány, správa a "
+"sankce (kapitoly V, VII a XII)."
 
 #: includes/class-compliance.php:153
 msgid "General application, including Article 50"
-msgstr ""
+msgstr "Obecná použitelnost včetně článku 50"
 
 #: includes/class-compliance.php:154
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
 msgstr ""
+"Použijí se povinnosti transparentnosti pro chatboty, obsah vygenerovaný AI a"
+" deepfaky (článek 50) a většina zbývajících ustanovení."
 
 #: includes/class-compliance.php:158
 msgid "High-risk AI in regulated products"
-msgstr ""
+msgstr "Vysoce riziková AI v regulovaných výrobcích"
 
 #: includes/class-compliance.php:159
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
 msgstr ""
+"Povinnosti pro vysoce rizikové systémy AI, které jsou bezpečnostními "
+"komponentami výrobků podle přílohy I (čl. 6 odst. 1)."
 
 #: includes/class-compliance.php:171
 msgid "Settings saved"
-msgstr ""
+msgstr "Nastavení uloženo"
 
 #: includes/class-compliance.php:172
 msgid "Library scan started"
-msgstr ""
+msgstr "Sken knihovny zahájen"
 
 #: includes/class-compliance.php:173
 msgid "Library scan finished"
-msgstr ""
+msgstr "Sken knihovny dokončen"
 
 #: includes/class-compliance.php:174
 msgid "Auto-repair sweep finished"
-msgstr ""
+msgstr "Průchod automatické opravy dokončen"
 
 #: includes/class-compliance.php:175
 msgid "Bulk action: labeled as AI"
-msgstr ""
+msgstr "Hromadná akce: označeno jako AI"
 
 #: includes/class-compliance.php:176
 msgid "Bulk action: label removed"
-msgstr ""
+msgstr "Hromadná akce: označení odebráno"
 
 #: includes/class-compliance.php:177
 msgid "Bulk action: review confirmed"
-msgstr ""
+msgstr "Hromadná akce: kontrola potvrzena"
 
 #: includes/class-compliance.php:178
 msgid "Bulk action: review dismissed"
-msgstr ""
+msgstr "Hromadná akce: kontrola zamítnuta"
 
 #: includes/class-compliance.php:179
 msgid "Bulk action: declared as camera photo"
-msgstr ""
+msgstr "Hromadná akce: deklarováno jako fotografie z fotoaparátu"
 
 #: includes/class-compliance.php:180
 msgid "Bulk action: declared as human work"
-msgstr ""
+msgstr "Hromadná akce: deklarováno jako lidská tvorba"
 
 #: includes/class-compliance.php:181
 msgid "Bulk action: declaration removed"
-msgstr ""
+msgstr "Hromadná akce: deklarace odebrána"
 
 #: includes/class-compliance.php:182
 msgid "Setup: badge look chosen"
-msgstr ""
+msgstr "Nastavení: zvolen vzhled odznaku"
 
 #: includes/class-compliance.php:183
 msgid "Setup: file writing chosen"
-msgstr ""
+msgstr "Nastavení: zvolen zápis do souborů"
 
 #: includes/class-compliance.php:184
 msgid "Setup: last step undone"
-msgstr ""
+msgstr "Nastavení: poslední krok vrácen zpět"
 
 #: includes/class-compliance.php:185
 msgid "Setup finished"
-msgstr ""
+msgstr "Nastavení dokončeno"
 
 #: includes/class-compliance.php:186
 msgid "Self-assessment saved"
-msgstr ""
+msgstr "Sebehodnocení uloženo"
 
 #: includes/class-compliance.php:187
 msgid "AI literacy checklist saved"
-msgstr ""
+msgstr "Kontrolní seznam gramotnosti v oblasti AI uložen"
 
 #: includes/class-compliance.php:188
 msgid "AI systems scanned"
-msgstr ""
+msgstr "Systémy AI prohledány"
 
 #: includes/class-compliance.php:189
 msgid "AI system declared"
-msgstr ""
+msgstr "Systém AI deklarován"
 
 #: includes/class-compliance.php:190
 msgid "AI system declaration removed"
-msgstr ""
+msgstr "Deklarace systému AI odebrána"
 
 #: includes/class-compliance.php:191
 msgid "AI systems notice visibility changed"
-msgstr ""
+msgstr "Změněna viditelnost upozornění na systémy AI"
 
 #: includes/class-compliance.php:444
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
 msgstr ""
+"Text napsaný AI je deklarován: buď sebehodnocení uvádí, že se žádný "
+"nepublikuje, nebo alespoň jeden příspěvek nese úroveň AI"
 
 #: includes/class-compliance.php:447
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
 msgstr ""
+"Nastavte úroveň AI u příspěvků napsaných AI, nebo na otázku o textu "
+"odpovězte ne."
 
 #: includes/class-compliance.php:451
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
 msgstr ""
+"Média AI jsou označena: buď sebehodnocení uvádí, že se žádná nepoužívají, "
+"nebo je odznak zapnutý, alespoň jeden soubor je označen a ve frontě ke "
+"kontrole nic nečeká"
 
 #: includes/class-compliance.php:454
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
 msgstr ""
+"Prohledejte knihovnu, zpracujte frontu ke kontrole a ponechte viditelný "
+"odznak zapnutý."
 
 #: includes/class-compliance.php:458
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
 msgstr ""
+"Otázka na chatbota je zodpovězena (ano nebo ne), takže upozornění v chatu se"
+" řídí rozhodnutím"
 
 #: includes/class-compliance.php:461
 msgid "Answer whether the site runs a chat and who answers in it."
-msgstr ""
+msgstr "Odpovězte, zda web provozuje chat a kdo v něm odpovídá."
 
 #: includes/class-compliance.php:465
 msgid "Self-assessment and Article 4 checklist are complete"
-msgstr ""
+msgstr "Sebehodnocení a kontrolní seznam podle článku 4 jsou úplné"
 
 #: includes/class-compliance.php:468
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
+"Odpovězte na šest otázek a zaškrtněte položky kontrolního seznamu, které se "
+"vás týkají."
 
 #: includes/class-compliance.php:477
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
 msgstr ""
+"Systémy AI jsou zinventarizované: seznam pluginů byl prohledán a u každého "
+"zjištěného nebo deklarovaného systému je rozhodnuto o viditelnosti"
 
 #: includes/class-compliance.php:480
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
 msgstr ""
+"Spusťte sken na stránce Systémy AI a rozhodněte, o kterých systémech budou "
+"návštěvníci informováni."
 
 #: includes/class-compliance.php:514
 msgid "Good"
-msgstr ""
+msgstr "Dobré"
 
 #: includes/class-compliance.php:515
 msgid "Needs attention"
-msgstr ""
+msgstr "Vyžaduje pozornost"
 
 #: includes/class-compliance.php:517
 msgid "Action required"
-msgstr ""
+msgstr "Nutný zásah"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr ""
+msgstr "Kontrola doručení je vypnutá."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr ""
+msgstr "Tato příloha nemá žádný soubor."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr ""
+msgstr "Soubor je doručován z jiného hostitele, takže se nekontroluje."
 
 #: includes/class-delivery.php:113
 msgid ""
 "The file on disk carries no AI declaration, so there is nothing to compare."
-msgstr ""
+msgstr "Soubor na disku nenese žádnou deklaraci AI, takže není co porovnávat."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr ""
+msgstr "Obrázek se nepodařilo stáhnout přes jeho veřejnou URL."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr ""
+msgstr "Odpověď nebyla čitelný obrázek."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr ""
+msgstr "Deklarace je v doručeném souboru přítomna."
 
 #: includes/class-delivery.php:151
 msgid ""
 "The delivered file carries no declaration. Something between WordPress and "
 "the visitor re-encodes the image, usually an optimizing CDN or a proxy."
 msgstr ""
+"Doručený soubor nenese žádnou deklaraci. Něco mezi WordPressem a "
+"návštěvníkem obrázek překóduje, obvykle optimalizující CDN nebo proxy."
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr ""
+msgstr "Doručeno s neporušenou deklarací"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr ""
+msgstr "Doručeno bez deklarace"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr ""
+msgstr "Není co kontrolovat"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr ""
+msgstr "Doručováno z jiného hostitele"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"
-msgstr ""
+msgstr "Nepodařilo se stáhnout"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
 #: includes/class-frontend.php:215
 msgctxt "short human badge label"
 msgid "Human"
-msgstr ""
+msgstr "Člověk"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
 #: includes/class-frontend.php:246
 msgctxt "short badge label"
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: includes/class-notice.php:136
 msgid "This text was created with the help of AI."
-msgstr ""
+msgstr "Tento text byl vytvořen s pomocí AI."
 
 #: includes/class-notice.php:138
 msgid "This text was generated by AI and reviewed by a person."
-msgstr ""
+msgstr "Tento text byl vygenerován AI a zkontrolován člověkem."
 
 #: includes/class-notice.php:152
 msgid "No AI used"
-msgstr ""
+msgstr "Bez použití AI"
 
 #: includes/class-notice.php:153
 msgid "AI-assisted"
-msgstr ""
+msgstr "S pomocí AI"
 
 #: includes/class-notice.php:155
 msgid "AI-generated, reviewed by a person"
-msgstr ""
+msgstr "Vygenerováno AI, zkontrolováno člověkem"
 
 #: includes/class-notice.php:195
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Skrýt toto upozornění"
 
 #: includes/class-notice.php:198
 msgid "AI notice"
-msgstr ""
+msgstr "Upozornění na AI"
 
 #: includes/class-notice.php:200
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: includes/class-notice.php:587
 msgid ""
 "Choose a file from the media library in the block settings. Only labeled "
 "files show a label."
 msgstr ""
+"Vyberte soubor z knihovny médií v nastavení bloku. Označení se zobrazí jen u"
+" označených souborů."
 
 #: includes/class-notice.php:590
 msgid ""
 "This file carries no label, so nothing shows. Label it in the media library "
 "or choose another file."
 msgstr ""
+"Tento soubor nenese žádné označení, takže se nic nezobrazí. Označte jej v "
+"knihovně médií nebo vyberte jiný soubor."
 
 #: includes/class-notice.php:593
 msgid ""
 "No AI system is marked as visible yet, so nothing shows. Mark systems under "
 "TransparAI, AI Systems."
 msgstr ""
+"Zatím není žádný systém AI označen jako viditelný, takže se nic nezobrazí. "
+"Systémy označte v TransparAI, Systémy AI."
 
 #: includes/class-notice.php:596
 msgid ""
 "The chatbot notice is off, so nothing shows. Answer the chatbot question in "
 "the TransparAI settings."
 msgstr ""
+"Upozornění na chatbota je vypnuté, takže se nic nezobrazí. Odpovězte na "
+"otázku o chatbotovi v nastavení TransparAI."
 
 #: includes/class-notice.php:599
 msgid ""
 "This post has no AI level yet, so the notice stays hidden. Set the level in "
 "the document sidebar under TransparAI."
 msgstr ""
+"Tento příspěvek zatím nemá úroveň AI, takže upozornění zůstane skryté. "
+"Úroveň nastavte v postranním panelu dokumentu v sekci TransparAI."
 
 #: includes/class-notice.php:628
 msgid "Style"
-msgstr ""
+msgstr "Styl"
 
 #: includes/class-notice.php:634
 msgid "Custom text"
-msgstr ""
+msgstr "Vlastní text"
 
 #: includes/class-notice.php:635
 msgid "Leave empty to use the wording from the TransparAI settings."
-msgstr ""
+msgstr "Nechte prázdné, aby se použilo znění z nastavení TransparAI."
 
 #: includes/class-notice.php:636
 msgid "Select file"
-msgstr ""
+msgstr "Vybrat soubor"
 
 #: includes/class-notice.php:637
 msgid "Replace file"
-msgstr ""
+msgstr "Nahradit soubor"
 
 #: includes/class-systems.php:53
 msgid "Text generation"
-msgstr ""
+msgstr "Generování textu"
 
 #: includes/class-systems.php:54
 msgid "Image generation"
-msgstr ""
+msgstr "Generování obrázků"
 
 #: includes/class-systems.php:55
 msgid "Chatbot"
-msgstr ""
+msgstr "Chatbot"
 
 #: includes/class-systems.php:56
 msgid "Translation"
-msgstr ""
+msgstr "Překlad"
 
 #: includes/class-systems.php:57
 msgid "Personalisation"
-msgstr ""
+msgstr "Personalizace"
 
 #: includes/class-systems.php:58
 msgid "SEO assistant"
-msgstr ""
+msgstr "Asistent SEO"
 
 #: includes/class-systems.php:59
 msgid "Search and recommendations"
-msgstr ""
+msgstr "Vyhledávání a doporučování"
 
 #: includes/class-systems.php:60
 msgid "Audio and video"
-msgstr ""
+msgstr "Zvuk a video"
 
 #: includes/class-systems.php:61
 msgid "Editor assistant"
-msgstr ""
+msgstr "Asistent editoru"
 
 #: includes/class-systems.php:62
 msgid "Other"
-msgstr ""
+msgstr "Ostatní"
 
 #. translators: %s: plugin file.
 #: includes/class-systems.php:232
 #, php-format
 msgid "plugin %s"
-msgstr ""
+msgstr "plugin %s"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block title"
 msgid "Chatbot AI Notice"
-msgstr ""
+msgstr "Upozornění na chatbota AI"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block description"
@@ -2522,37 +2867,41 @@ msgid ""
 "contact page or next to the chat widget. Stays hidden while the chatbot "
 "question is unanswered or no AI answers."
 msgstr ""
+"Sděluje návštěvníkům, že v chatu odpovídá AI, jak požaduje článek 50 EU AI "
+"Act, se zněním z nastavení TransparAI. Umístěte jej na kontaktní stránku "
+"nebo vedle chatovacího widgetu. Zůstává skrytý, dokud není otázka na "
+"chatbota zodpovězena nebo pokud neodpovídá žádná AI."
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chatbot"
-msgstr ""
+msgstr "chatbot"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "ai"
-msgstr ""
+msgstr "ai"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "disclosure"
-msgstr ""
+msgstr "zveřejnění"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "eu ai act"
-msgstr ""
+msgstr "eu ai act"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chat"
-msgstr ""
+msgstr "chat"
 
 #: blocks/media-label/block.json
 msgctxt "block title"
 msgid "AI Image Label"
-msgstr ""
+msgstr "Označení obrázku AI"
 
 #: blocks/media-label/block.json
 msgctxt "block description"
@@ -2562,36 +2911,41 @@ msgid ""
 " a gallery, in a caption or next to a builder image the automatic badge does"
 " not reach. Shows only for labeled files."
 msgstr ""
+"Označení jednoho obrázku, videa nebo zvukového souboru z knihovny médií: "
+"Vygenerováno AI, s názvem generátoru, pokud je znám, nebo Vytvořeno "
+"člověkem. Umístěte jej pod galerii, do popisku nebo vedle obrázku z "
+"builderu, kam automatický odznak nedosáhne. Zobrazuje se jen u označených "
+"souborů."
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "ai image"
-msgstr ""
+msgstr "obrázek ai"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "c2pa"
-msgstr ""
+msgstr "c2pa"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "content credentials"
-msgstr ""
+msgstr "content credentials"
 
 #: blocks/media-label/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "label"
-msgstr ""
+msgstr "označení"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "human made"
-msgstr ""
+msgstr "vytvořeno člověkem"
 
 #: blocks/notice/block.json
 msgctxt "block title"
 msgid "AI Notice"
-msgstr ""
+msgstr "Upozornění na AI"
 
 #: blocks/notice/block.json
 msgctxt "block description"
@@ -2601,16 +2955,20 @@ msgid ""
 "with the wording from the TransparAI settings. Shows only when the post has "
 "an AI level."
 msgstr ""
+"Poznámka o použití AI u textu napsaného AI, jak požaduje EU AI Act: blok, "
+"vložená poznámka, zavíratelný banner, odznak nebo tlačítko, které otevře "
+"dialog, se zněním z nastavení TransparAI. Zobrazuje se jen tehdy, když má "
+"příspěvek nastavenou úroveň AI."
 
 #: blocks/notice/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "transparency"
-msgstr ""
+msgstr "transparentnost"
 
 #: blocks/systems-list/block.json
 msgctxt "block title"
 msgid "AI Systems List"
-msgstr ""
+msgstr "Seznam systémů AI"
 
 #: blocks/systems-list/block.json
 msgctxt "block description"
@@ -2620,31 +2978,35 @@ msgid ""
 " in sync with the registry: a system you add or hide appears or disappears "
 "on every page that carries the list."
 msgstr ""
+"Seznam systémů AI označených jako viditelné v registru TransparAI, každý se "
+"svou kategorií. Stavební kámen prohlášení o transparentnosti AI, udržovaný v"
+" souladu s registrem: systém, který přidáte nebo skryjete, se objeví nebo "
+"zmizí na každé stránce, která seznam obsahuje."
 
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "ai systems"
-msgstr ""
+msgstr "systémy ai"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "transparency statement"
-msgstr ""
+msgstr "prohlášení o transparentnosti"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "registry"
-msgstr ""
+msgstr "registr"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "list"
-msgstr ""
+msgstr "seznam"
 
 #: blocks/systems-notice/block.json
 msgctxt "block title"
 msgid "AI Systems Notice"
-msgstr ""
+msgstr "Upozornění na systémy AI"
 
 #: blocks/systems-notice/block.json
 msgctxt "block description"
@@ -2654,13 +3016,17 @@ msgid ""
 " imprint, the privacy policy or a transparency page. Shows only when at "
 "least one system is marked as visible."
 msgstr ""
+"Jedna věta se jmény systémů AI, které tento web používá, převzatá z registru"
+" TransparAI: chatboty, doporučování, generování obrázků, překlad. Pro tiráž,"
+" zásady ochrany osobních údajů nebo stránku o transparentnosti. Zobrazuje se"
+" jen tehdy, když je alespoň jeden systém označen jako viditelný."
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "privacy policy"
-msgstr ""
+msgstr "zásady ochrany osobních údajů"
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "imprint"
-msgstr ""
+msgstr "tiráž"
