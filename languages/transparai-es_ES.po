@@ -18,11 +18,13 @@ msgstr ""
 #: transparai.php
 msgid "TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection"
 msgstr ""
+"TransparAI: Cumplimiento de la Ley de IA de la UE, aviso de IA & detección "
+"de imágenes IA"
 
 #. Plugin URI of the plugin
 #: transparai.php
 msgid "https://wordpress.org/plugins/transparai/"
-msgstr ""
+msgstr "https://wordpress.org/plugins/transparai/"
 
 #. Description of the plugin
 #: transparai.php
@@ -37,12 +39,12 @@ msgstr ""
 #. Author of the plugin
 #: transparai.php
 msgid "Patrick Schlesinger"
-msgstr ""
+msgstr "Patrick Schlesinger"
 
 #. Author URI of the plugin
 #: transparai.php
 msgid "https://www.cms-admins.de/"
-msgstr ""
+msgstr "https://www.cms-admins.de/"
 
 #: admin/class-content-label.php:74 admin/class-content-label.php:166
 msgid "TransparAI"
