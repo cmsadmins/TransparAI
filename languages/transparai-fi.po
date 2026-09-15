@@ -30,6 +30,8 @@ msgid ""
 "Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track "
 "EU AI Act readiness with a score, self-assessment and compliance report."
 msgstr ""
+"Tunnista tekoälykuvat (C2PA, IPTC), merkitse tekoälysisältö ja chatbotit, "
+"seuraa EU AI Act -valmiutta pisteillä, itsearvioinnilla ja raportilla."
 
 #. Author of the plugin
 #: transparai.php
@@ -43,15 +45,15 @@ msgstr "https://www.cms-admins.de/"
 
 #: admin/class-content-label.php:74 admin/class-content-label.php:166
 msgid "TransparAI"
-msgstr ""
+msgstr "TransparAI"
 
 #: admin/class-content-label.php:100 admin/class-content-label.php:167
 msgid "AI in this text"
-msgstr ""
+msgstr "Tekoäly tässä tekstissä"
 
 #: admin/class-content-label.php:108 admin/class-content-label.php:168
 msgid "Responsible person"
-msgstr ""
+msgstr "Vastuuhenkilö"
 
 #. translators: 1: reviewer name, 2: review date.
 #. translators: 1: name of the reviewer, 2: review date.
@@ -59,86 +61,92 @@ msgstr ""
 #: includes/class-notice.php:115
 #, php-format
 msgid "Reviewed by %1$s on %2$s."
-msgstr ""
+msgstr "Tarkistanut %1$s %2$s."
 
 #: admin/class-content-label.php:123
 msgid ""
 "The text or its images changed since; save with the reviewed level again "
 "after checking."
 msgstr ""
+"Teksti tai sen kuvat ovat muuttuneet sen jälkeen. Tarkista sisältö ja "
+"tallenna uudelleen tarkistetulla tasolla."
 
 #: admin/class-content-label.php:128
 msgid ""
 "AI levels show a note on the post. The wording, position, excerpt and feed "
 "options are in the TransparAI settings."
 msgstr ""
+"Tekoälytasot näyttävät huomautuksen artikkelissa. Sanamuoto, sijainti sekä "
+"otteiden ja syötteiden valinnat ovat TransparAI:n asetuksissa."
 
 #: admin/class-content-label.php:172
 msgid ""
 "AI levels show a note on the post. Wording and placement are set in the "
 "TransparAI settings."
 msgstr ""
+"Tekoälytasot näyttävät huomautuksen artikkelissa. Sanamuoto ja sijoittelu "
+"asetetaan TransparAI:n asetuksissa."
 
 #: admin/class-content-label.php:243 admin/class-content-label.php:376
 #: admin/class-content-label.php:406
 msgid "AI text"
-msgstr ""
+msgstr "Tekoälyteksti"
 
 #: admin/class-content-label.php:269
 msgid "changed since review"
-msgstr ""
+msgstr "muuttunut tarkistuksen jälkeen"
 
 #: admin/class-content-label.php:314
 msgid "All AI levels"
-msgstr ""
+msgstr "Kaikki tekoälytasot"
 
 #: admin/class-content-label.php:315 admin/class-dashboard.php:789
 msgid "Any AI involvement"
-msgstr ""
+msgstr "Tekoäly mukana jollain tavalla"
 
 #: admin/class-content-label.php:316 admin/class-dashboard.php:793
 #: includes/class-notice.php:151
 msgid "Not classified"
-msgstr ""
+msgstr "Ei luokiteltu"
 
 #: admin/class-content-label.php:408
 msgid "&mdash; No change &mdash;"
-msgstr ""
+msgstr "&mdash; Ei muutosta &mdash;"
 
 #: admin/class-content-label.php:409
 msgid "Remove classification"
-msgstr ""
+msgstr "Poista luokitus"
 
 #: admin/class-dashboard.php:50 admin/class-dashboard.php:373
 #: admin/class-dashboard.php:934
 msgid "Dashboard"
-msgstr ""
+msgstr "Ohjausnäkymä"
 
 #: admin/class-dashboard.php:51
 msgid "Assessment"
-msgstr ""
+msgstr "Itsearviointi"
 
 #: admin/class-dashboard.php:52 admin/class-dashboard.php:1033
 msgid "AI Systems"
-msgstr ""
+msgstr "Tekoälyjärjestelmät"
 
 #: admin/class-dashboard.php:53 admin/class-dashboard.php:1032
 msgid "AI Content"
-msgstr ""
+msgstr "Tekoälysisältö"
 
 #: admin/class-dashboard.php:54 admin/class-dashboard.php:1031
 msgid "AI Images"
-msgstr ""
+msgstr "Tekoälykuvat"
 
 #: admin/class-dashboard.php:59 admin/class-dashboard.php:410
 #: admin/class-settings.php:178
 msgid "Settings"
-msgstr ""
+msgstr "Asetukset"
 
 #: admin/class-dashboard.php:107 admin/class-setup.php:324
 #: admin/class-setup.php:344
 msgid "Saved."
-msgstr ""
+msgstr "Tallennettu."
 
 #: admin/class-dashboard.php:118
 msgid ""
@@ -151,57 +159,78 @@ msgid ""
 " provided without warranty of any kind, and the author accepts no liability "
 "for its use or for decisions based on it."
 msgstr ""
+"TransparAI on tekninen työkalu, ei oikeudellista neuvontaa. Se auttaa sinua "
+"tunnistamaan, merkitsemään ja dokumentoimaan tekoälyn käytön tällä "
+"sivustolla, mutta se ei voi kertoa, onko sivustosi EU AI Actin tai minkään "
+"muun lain mukainen. Valmiuspisteet, itsearviointi ja jokainen huomautus "
+"kuvaavat vain lisäosan omia tarkistuksia ja sinun vastauksiasi. "
+"Oikeudelliset velvoitteet riippuvat tilanteestasi ja ovat sinun vastuullasi;"
+" oikeudellista arviota varten käänny lakimiehen puoleen. Lisäosa toimitetaan"
+" ilman minkäänlaista takuuta, eikä tekijä vastaa sen käytöstä tai siihen "
+"perustuvista päätöksistä."
 
 #: admin/class-dashboard.php:133
 msgid "Please read before you rely on anything here."
-msgstr ""
+msgstr "Lue tämä ennen kuin luotat mihinkään täällä esitettyyn."
 
 #: admin/class-dashboard.php:137
 msgid "I understand: no legal advice, no liability"
-msgstr ""
+msgstr "Ymmärrän: ei oikeudellista neuvontaa, ei vastuuta"
 
 #: admin/class-dashboard.php:145 admin/class-settings.php:132
 msgid "Not legal advice, no liability"
-msgstr ""
+msgstr "Ei oikeudellista neuvontaa, ei vastuuta"
 
 #: admin/class-dashboard.php:156 admin/class-dashboard.php:507
 #: admin/class-dashboard.php:577 admin/class-dashboard.php:726
 msgid "You are not allowed to do this."
-msgstr ""
+msgstr "Sinulla ei ole oikeutta tehdä tätä."
 
 #: admin/class-dashboard.php:170
 msgid ""
 "Scan the media library, then confirm or dismiss what lands in the review "
 "queue. Labeled files get the visible badge and the machine-readable marking."
 msgstr ""
+"Skannaa mediakirjasto ja vahvista tai hylkää se, mikä päätyy "
+"tarkistusjonoon. Merkityt tiedostot saavat näkyvän merkin ja koneluettavan "
+"merkinnän."
 
 #: admin/class-dashboard.php:171
 msgid ""
 "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, "
 "Bulk Edit) so the visitor note appears."
 msgstr ""
+"Aseta tekoälyn kirjoittamille artikkeleille ja sivuille tekoälytaso "
+"(editorin sivupalkki, pikamuokkaus, massamuokkaus), jotta kävijöille "
+"näytettävä huomautus ilmestyy."
 
 #: admin/class-dashboard.php:172
 msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
 msgstr ""
+"Vastaa, onko sivustolla chat ja kuka siinä vastaa; chatbot-huomautus seuraa "
+"vastaustasi."
 
 #: admin/class-dashboard.php:173
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
 msgstr ""
+"Käy läpi tekoälyjärjestelmät, jotka lisäosa löysi lisäosiesi joukosta, "
+"ilmoita muut käsin ja päätä, mistä kävijöille kerrotaan."
 
 #: admin/class-dashboard.php:174
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
 msgstr ""
+"Vastaa itsearvioinnin kuuteen kysymykseen, rastita 4 artiklan tarkistuslista"
+" ja vie sitten vaatimustenmukaisuusraportti arkistoosi."
 
 #: admin/class-dashboard.php:178
 msgid "How TransparAI works"
-msgstr ""
+msgstr "Näin TransparAI toimii"
 
 #: admin/class-dashboard.php:179
 msgid ""
@@ -212,133 +241,145 @@ msgid ""
 "what you decided. Work through the steps in this order; the readiness score "
 "above follows along."
 msgstr ""
+"EU AI Act edellyttää verkkosivustolta kolmea asiaa: kävijöiden on "
+"tiedettävä, kun he keskustelevat tekoälyn kanssa, tekoälyn luomassa mediassa"
+" on oltava koneluettava merkintä, ja yleiseen etuun liittyvistä asioista "
+"tekoälyn kirjoittama teksti on ilmoitettava. Tämä lisäosa kattaa kaikkien "
+"kolmen teknisen puolen ja dokumentoi tekemäsi päätökset. Käy vaiheet läpi "
+"tässä järjestyksessä; yllä olevat valmiuspisteet seuraavat mukana."
 
 #: admin/class-dashboard.php:223 admin/class-settings.php:705
 msgid "Readiness score"
-msgstr ""
+msgstr "Valmiuspisteet"
 
 #. translators: 1: met checks, 2: total checks.
 #: admin/class-dashboard.php:233 admin/class-dashboard.php:905
 #, php-format
 msgid "%1$d of %2$d checks done"
-msgstr ""
+msgstr "%1$d/%2$d tarkistusta tehty"
 
 #: admin/class-dashboard.php:241
 msgid ""
 "The score counts the checks this plugin can perform on its own state. It is "
 "a technical self-check, not a legal assessment."
 msgstr ""
+"Pisteisiin lasketaan ne tarkistukset, jotka lisäosa voi tehdä omasta "
+"tilastaan. Kyseessä on tekninen itsetarkistus, ei oikeudellinen arvio."
 
 #: admin/class-dashboard.php:243 admin/class-dashboard.php:247
 #: admin/class-dashboard.php:920
 msgid "Open"
-msgstr ""
+msgstr "Avoinna"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
 #: admin/class-settings.php:707 admin/class-settings.php:726
 msgid "Done"
-msgstr ""
+msgstr "Valmis"
 
 #: admin/class-dashboard.php:276
 msgid "EU AI Act timeline"
-msgstr ""
+msgstr "EU AI Actin aikajana"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:291
 #, php-format
 msgid "in force for %s"
-msgstr ""
+msgstr "voimassa jo %s"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:294
 #, php-format
 msgid "in %s"
-msgstr ""
+msgstr "%s kuluttua"
 
 #: admin/class-dashboard.php:303
 msgid ""
 "Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can"
 " move them."
 msgstr ""
+"Päivämäärät asetuksen (EU) 2024/1689 113 artiklan mukaisina, sellaisina kuin"
+" ne on hyväksytty. Muutokset voivat siirtää niitä."
 
 #: admin/class-dashboard.php:316 admin/class-dashboard.php:1020
 #: admin/class-settings.php:778
 msgid "Recent activity"
-msgstr ""
+msgstr "Viimeaikainen toiminta"
 
 #: admin/class-dashboard.php:318
 msgid ""
 "Nothing recorded yet. Scans, settings changes, bulk actions and declarations"
 " show up here."
 msgstr ""
+"Mitään ei ole vielä kirjattu. Skannaukset, asetusmuutokset, massatoiminnot "
+"ja ilmoitukset näkyvät täällä."
 
 #: admin/class-dashboard.php:322 admin/class-settings.php:779
 msgid "When"
-msgstr ""
+msgstr "Milloin"
 
 #: admin/class-dashboard.php:323 admin/class-settings.php:779
 msgid "Event"
-msgstr ""
+msgstr "Tapahtuma"
 
 #: admin/class-dashboard.php:324
 msgid "Details"
-msgstr ""
+msgstr "Tiedot"
 
 #: admin/class-dashboard.php:325 admin/class-settings.php:779
 msgid "By"
-msgstr ""
+msgstr "Tekijä"
 
 #: admin/class-dashboard.php:333 admin/class-media-library.php:408
 msgid "system"
-msgstr ""
+msgstr "järjestelmä"
 
 #: admin/class-dashboard.php:377
 msgid "The first-run setup is not finished yet."
-msgstr ""
+msgstr "Käyttöönotto on vielä kesken."
 
 #: admin/class-dashboard.php:378 admin/class-settings.php:832
 msgid "Open setup"
-msgstr ""
+msgstr "Avaa käyttöönotto"
 
 #: admin/class-dashboard.php:386
 msgid "At a glance"
-msgstr ""
+msgstr "Yhdellä silmäyksellä"
 
 #: admin/class-dashboard.php:390 admin/class-dashboard.php:960
 msgid "AI-written posts"
-msgstr ""
+msgstr "Tekoälyn kirjoittamat artikkelit"
 
 #: admin/class-dashboard.php:394
 msgid "Labeled media"
-msgstr ""
+msgstr "Merkityt mediatiedostot"
 
 #: admin/class-dashboard.php:398 admin/class-dashboard.php:957
 #: admin/class-settings.php:818
 msgid "Waiting for review"
-msgstr ""
+msgstr "Odottaa tarkistusta"
 
 #: admin/class-dashboard.php:402 admin/class-dashboard.php:961
 #: admin/class-settings.php:224
 msgid "AI systems"
-msgstr ""
+msgstr "Tekoälyjärjestelmät"
 
 #: admin/class-dashboard.php:406 admin/class-dashboard.php:432
 #: admin/class-dashboard.php:935 admin/class-settings.php:713
 msgid "Self-assessment"
-msgstr ""
+msgstr "Itsearviointi"
 
 #: admin/class-dashboard.php:407
 msgid "AI literacy checklist"
-msgstr ""
+msgstr "Tekoälylukutaidon tarkistuslista"
 
 #: admin/class-dashboard.php:408 admin/class-dashboard.php:566
 #: admin/class-dashboard.php:936
 msgid "Compliance report"
-msgstr ""
+msgstr "Vaatimustenmukaisuusraportti"
 
 #: admin/class-dashboard.php:409 admin/class-settings.php:829
 msgid "Export audit CSV"
-msgstr ""
+msgstr "Vie CSV-tarkastusluettelo"
 
 #: admin/class-dashboard.php:435
 msgid ""
@@ -351,40 +392,53 @@ msgid ""
 "asks and of whom, and which plugin page handles it; complete answers count "
 "toward the readiness score and are printed in the compliance report."
 msgstr ""
+"Se, mitkä EU AI Actin läpinäkyvyysvelvoitteet koskevat verkkosivustoa, "
+"riippuu siitä, miten se todella käyttää tekoälyä: sivustolla, jolla ei ole "
+"chatbottia, ei ole chatboteista mitään ilmoitettavaa, tekoälyn kirjoittamia "
+"artikkeleita julkaisevalla sivustolla on. Vastaa kuuteen kysymykseen kyllä "
+"tai ei sen mukaan, miten asiat ovat tänään; kunkin kysymyksen alla olevat "
+"esimerkit kertovat, mikä lasketaan mukaan, ja jos olet epävarma, kysy "
+"sisällön tekijöiltä. Alla oleva tulos kertoo jokaisesta vahvistetusta "
+"käytöstä, mitä tekoälyasetus edellyttää ja keneltä, ja mikä lisäosan sivu "
+"hoitaa asian; valmiit vastaukset vaikuttavat valmiuspisteisiin ja tulostuvat"
+" vaatimustenmukaisuusraporttiin."
 
 #: admin/class-dashboard.php:436
 msgid ""
 "Stored on this site only, nothing is sent anywhere. Come back and update the"
 " answers whenever the site starts or stops using AI in one of these ways."
 msgstr ""
+"Tallennetaan vain tälle sivustolle, mitään ei lähetetä minnekään. Palaa "
+"päivittämään vastaukset aina, kun sivusto alkaa tai lakkaa käyttämästä "
+"tekoälyä jollain näistä tavoista."
 
 #: admin/class-dashboard.php:444 admin/class-settings.php:475
 #: admin/class-settings.php:701
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: admin/class-dashboard.php:445 admin/class-settings.php:476
 #: admin/class-settings.php:702
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: admin/class-dashboard.php:448
 msgid "Save answers"
-msgstr ""
+msgstr "Tallenna vastaukset"
 
 #. translators: 1: name, 2: date.
 #: admin/class-dashboard.php:456 admin/class-dashboard.php:556
 #, php-format
 msgid "Last saved by %1$s on %2$s."
-msgstr ""
+msgstr "Viimeksi tallentanut %1$s %2$s."
 
 #: admin/class-dashboard.php:457 admin/class-dashboard.php:557
 msgid "unknown"
-msgstr ""
+msgstr "tuntematon"
 
 #: admin/class-dashboard.php:467 admin/class-dashboard.php:493
 msgid "Your to-do list"
-msgstr ""
+msgstr "Tehtävälistasi"
 
 #: admin/class-dashboard.php:470
 msgid ""
@@ -392,18 +446,21 @@ msgid ""
 "starts using AI; the Article 4 checklist below still documents your "
 "awareness."
 msgstr ""
+"Vastasit jokaiseen kysymykseen ei. Pidä vastaukset ajan tasalla, kun sivusto"
+" alkaa käyttää tekoälyä; alla oleva 4 artiklan tarkistuslista dokumentoi "
+"silti tietoisuutesi."
 
 #: admin/class-dashboard.php:474
 msgid "Use of AI"
-msgstr ""
+msgstr "Tekoälyn käyttö"
 
 #: admin/class-dashboard.php:475 admin/class-settings.php:717
 msgid "What the AI Act says"
-msgstr ""
+msgstr "Mitä tekoälyasetus sanoo"
 
 #: admin/class-dashboard.php:476
 msgid "Recommended action"
-msgstr ""
+msgstr "Suositeltu toimenpide"
 
 #: admin/class-dashboard.php:489
 msgid ""
@@ -411,6 +468,10 @@ msgid ""
 " it under their own authority; a website operator is usually the deployer. "
 "This overview is a technical aid, not legal advice."
 msgstr ""
+"Tarjoaja on se, joka rakensi tai koulutti tekoälyjärjestelmän, ja "
+"käyttöönottaja se, joka käyttää sitä omassa vastuussaan; verkkosivuston "
+"ylläpitäjä on yleensä käyttöönottaja. Tämä yhteenveto on tekninen apuväline,"
+" ei oikeudellista neuvontaa."
 
 #: admin/class-dashboard.php:494
 msgid ""
@@ -418,10 +479,14 @@ msgid ""
 "every use you confirmed it says what the AI Act asks and of whom, and which "
 "plugin page handles it."
 msgstr ""
+"Tämä yhteenveto ilmestyy, kun kaikkiin kuuteen kysymykseen on vastattu ja "
+"vastaukset on tallennettu. Jokaisesta vahvistamastasi käytöstä se kertoo, "
+"mitä tekoälyasetus edellyttää ja keneltä, ja mikä lisäosan sivu hoitaa "
+"asian."
 
 #: admin/class-dashboard.php:526
 msgid "AI literacy (Article 4)"
-msgstr ""
+msgstr "Tekoälylukutaito (4 artikla)"
 
 #: admin/class-dashboard.php:527
 msgid ""
@@ -434,27 +499,38 @@ msgid ""
 "readiness score and appears in the compliance report with the name and date "
 "of the last save."
 msgstr ""
+"4 artiklaa on sovellettu 2. helmikuuta 2025 alkaen jokaiseen tarjoajaan ja "
+"käyttöönottajaan riippumatta siitä, mitä vastasit yllä: toteutat "
+"toimenpiteitä, siinä määrin kuin se on mahdollista, jotta niillä "
+"henkilöillä, jotka käyttävät tekoälyjärjestelmiä sinun puolestasi, on "
+"riittävä tekoälylukutaito heidän taustansa ja käyttöyhteyden huomioon "
+"ottaen. Asetus ei määrää tiettyä koulutusta eikä todistusta; tämä "
+"tarkistuslista kirjaa ne toimenpiteet, jotka yleensä kelpaavat näytöksi. Se "
+"vaikuttaa valmiuspisteisiin ja näkyy vaatimustenmukaisuusraportissa "
+"viimeisimmän tallennuksen tekijän nimen ja päivämäärän kanssa."
 
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:533
 #, php-format
 msgid "%1$d of %2$d done"
-msgstr ""
+msgstr "%1$d/%2$d tehty"
 
 #: admin/class-dashboard.php:548
 msgid "Save checklist"
-msgstr ""
+msgstr "Tallenna tarkistuslista"
 
 #: admin/class-dashboard.php:564
 msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
 msgstr ""
+"Tämän näkymän molemmat osat päätyvät vaatimustenmukaisuusraporttiin, siihen "
+"dokumenttiin, jonka säilytät arkistossasi tai annat sitä pyytävälle."
 
 #: admin/class-dashboard.php:602 admin/class-settings.php:513
 #: admin/class-settings.php:732
 msgid "AI systems in use"
-msgstr ""
+msgstr "Käytössä olevat tekoälyjärjestelmät"
 
 #: admin/class-dashboard.php:605
 msgid ""
@@ -463,97 +539,107 @@ msgid ""
 "fetched. Tick the systems visitors should be told about; the notice itself "
 "is switched on under Settings, AI systems."
 msgstr ""
+"Asennettuja lisäosia verrataan tunnettujen tekoälytyökalujen luetteloon, "
+"joka tulee tämän lisäosan mukana; mukana ovat chatbotit, joissa vastaa "
+"tekoäly. Mitään ei haeta verkosta. Rastita ne järjestelmät, joista "
+"kävijöille kerrotaan; itse huomautus kytketään päälle kohdassa Asetukset, "
+"Tekoälyjärjestelmät."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:610
 #, php-format
 msgid "Last scan %s ago."
-msgstr ""
+msgstr "Viimeisin skannaus %s sitten."
 
 #: admin/class-dashboard.php:614
 msgid "The visitor notice is currently off."
-msgstr ""
+msgstr "Kävijöille näytettävä huomautus on tällä hetkellä pois päältä."
 
 #: admin/class-dashboard.php:622
 msgid "No AI system detected or declared yet."
-msgstr ""
+msgstr "Yhtään tekoälyjärjestelmää ei ole vielä tunnistettu eikä ilmoitettu."
 
 #: admin/class-dashboard.php:626
 msgid "Visible"
-msgstr ""
+msgstr "Näkyvissä"
 
 #: admin/class-dashboard.php:627 admin/class-settings.php:736
 msgid "System"
-msgstr ""
+msgstr "Järjestelmä"
 
 #: admin/class-dashboard.php:628 admin/class-dashboard.php:676
 #: admin/class-settings.php:736
 msgid "Category"
-msgstr ""
+msgstr "Luokka"
 
 #: admin/class-dashboard.php:629 admin/class-settings.php:736
 msgid "Articles"
-msgstr ""
+msgstr "Artiklat"
 
 #: admin/class-dashboard.php:630
 msgid "Found via"
-msgstr ""
+msgstr "Löytötapa"
 
 #: admin/class-dashboard.php:649 includes/class-notice.php:638
 msgid "Remove"
-msgstr ""
+msgstr "Poista"
 
 #: admin/class-dashboard.php:659
 msgid "Save visibility"
-msgstr ""
+msgstr "Tallenna näkyvyys"
 
 #: admin/class-dashboard.php:661
 msgid "Scan installed plugins again"
-msgstr ""
+msgstr "Skannaa asennetut lisäosat uudelleen"
 
 #: admin/class-dashboard.php:668
 msgid "Possibly AI"
-msgstr ""
+msgstr "Mahdollisesti tekoälyä"
 
 #: admin/class-dashboard.php:669
 msgid ""
 "Active plugins the list does not know whose name or description mentions AI."
 " Suggestions only: declare what really is an AI system, ignore the rest."
 msgstr ""
+"Käytössä olevat lisäosat, joita luettelo ei tunne ja joiden nimi tai kuvaus "
+"mainitsee tekoälyn. Pelkkiä ehdotuksia: ilmoita se, mikä todella on "
+"tekoälyjärjestelmä, ja jätä muut huomiotta."
 
 #: admin/class-dashboard.php:671
 msgid "No further candidates among the active plugins."
-msgstr ""
+msgstr "Käytössä olevien lisäosien joukossa ei ole muita ehdokkaita."
 
 #: admin/class-dashboard.php:675
 msgid "Plugin"
-msgstr ""
+msgstr "Lisäosa"
 
 #: admin/class-dashboard.php:693
 msgid "Declare as AI system"
-msgstr ""
+msgstr "Ilmoita tekoälyjärjestelmäksi"
 
 #: admin/class-dashboard.php:703
 msgid "Declare another system"
-msgstr ""
+msgstr "Ilmoita toinen järjestelmä"
 
 #: admin/class-dashboard.php:704
 msgid ""
 "For tools that are not WordPress plugins: an external service, a script, an "
 "API your theme calls."
 msgstr ""
+"Työkaluille, jotka eivät ole WordPress-lisäosia: ulkoinen palvelu, skripti "
+"tai teemasi kutsuma API."
 
 #: admin/class-dashboard.php:708
 msgid "Name of the system"
-msgstr ""
+msgstr "Järjestelmän nimi"
 
 #: admin/class-dashboard.php:714
 msgid "Declare"
-msgstr ""
+msgstr "Ilmoita"
 
 #: admin/class-dashboard.php:762 admin/class-settings.php:762
 msgid "AI-written content"
-msgstr ""
+msgstr "Tekoälyn kirjoittama sisältö"
 
 #: admin/class-dashboard.php:765
 msgid ""
@@ -562,14 +648,19 @@ msgid ""
 "posts at once in Bulk Edit; the lists below are the regular post lists "
 "filtered by level, with the same Quick Edit and Bulk Edit tools."
 msgstr ""
+"Jokaisella artikkelilla, sivulla ja julkisella mukautetulla sisältötyypillä "
+"on tekstin tekoälytaso. Taso asetetaan editorin sivupalkissa, "
+"pikamuokkauksessa tai monelle artikkelille kerralla massamuokkauksessa; alla"
+" olevat listat ovat tavallisia artikkelilistoja tason mukaan suodatettuina, "
+"samoilla pikamuokkaus- ja massamuokkaustyökaluilla."
 
 #: admin/class-dashboard.php:776
 msgid "Post type"
-msgstr ""
+msgstr "Sisältötyyppi"
 
 #: admin/class-dashboard.php:777
 msgid "Open list"
-msgstr ""
+msgstr "Avaa lista"
 
 #: admin/class-dashboard.php:799
 msgid ""
@@ -577,18 +668,22 @@ msgid ""
 "set the AI level to \"No AI used\" or clear it. The note wording, position "
 "and style live under Settings, AI-written text."
 msgstr ""
+"Poistaaksesi merkinnän monelta artikkelilta kerralla valitse ne listasta, "
+"valitse Massamuokkaus ja aseta tekoälytasoksi \"Tekoälyä ei käytetty\" tai "
+"tyhjennä se. Huomautuksen sanamuoto, sijainti ja tyyli ovat kohdassa "
+"Asetukset, Tekoälyn kirjoittama teksti."
 
 #: admin/class-dashboard.php:801
 msgid "Text settings"
-msgstr ""
+msgstr "Tekstiasetukset"
 
 #: admin/class-dashboard.php:832
 msgid "AI images and media"
-msgstr ""
+msgstr "Tekoälykuvat ja -media"
 
 #: admin/class-dashboard.php:837
 msgid "Media lists"
-msgstr ""
+msgstr "Medialistat"
 
 #: admin/class-dashboard.php:838
 msgid ""
@@ -596,27 +691,30 @@ msgid ""
 "actions (label, unlabel, confirm, dismiss, declare as camera photo or human "
 "work)."
 msgstr ""
+"Mediakirjaston listanäkymässä ovat tekoälysarake, suodatin ja massatoiminnot"
+" (merkitse, poista merkintä, vahvista, hylkää, ilmoita kameravalokuvaksi tai"
+" ihmisen työksi)."
 
 #: admin/class-dashboard.php:840 admin/class-dashboard.php:956
 #: admin/class-settings.php:814
 msgid "Labeled as AI"
-msgstr ""
+msgstr "Merkitty tekoälyksi"
 
 #: admin/class-dashboard.php:841
 msgid "Review queue"
-msgstr ""
+msgstr "Tarkistusjono"
 
 #: admin/class-dashboard.php:842
 msgid "Declared as not AI"
-msgstr ""
+msgstr "Ilmoitettu ei-tekoälyksi"
 
 #: admin/class-dashboard.php:843
 msgid "Unlabeled"
-msgstr ""
+msgstr "Ei merkintää"
 
 #: admin/class-dashboard.php:844
 msgid "Badge settings"
-msgstr ""
+msgstr "Merkin asetukset"
 
 #. translators: %d: number of dismissed files.
 #: admin/class-dashboard.php:851
@@ -628,62 +726,70 @@ msgid_plural ""
 "%d files were dismissed from the review queue and stay unlabeled until you "
 "decide otherwise."
 msgstr[0] ""
+"%d tiedosto hylättiin tarkistusjonosta, ja se pysyy merkitsemättömänä, "
+"kunnes päätät toisin."
 msgstr[1] ""
+"%d tiedostoa hylättiin tarkistusjonosta, ja ne pysyvät merkitsemättöminä, "
+"kunnes päätät toisin."
 
 #: admin/class-dashboard.php:876
 msgid "TransparAI: Readiness"
-msgstr ""
+msgstr "TransparAI: valmius"
 
 #: admin/class-dashboard.php:877
 msgid "TransparAI: Numbers"
-msgstr ""
+msgstr "TransparAI: luvut"
 
 #: admin/class-dashboard.php:914
 msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
 msgstr ""
+"Jokainen tarkistus, jonka lisäosa voi tehdä, on tehty. Pidä vastaukset ajan "
+"tasalla, kun sivusto alkaa tai lakkaa käyttämästä tekoälyä."
 
 #: admin/class-dashboard.php:916
 msgid "Still open"
-msgstr ""
+msgstr "Vielä avoinna"
 
 #: admin/class-dashboard.php:928
 msgid "In force"
-msgstr ""
+msgstr "Voimassa"
 
 #: admin/class-dashboard.php:928
 msgid "Next deadline"
-msgstr ""
+msgstr "Seuraava määräaika"
 
 #: admin/class-dashboard.php:938
 msgid ""
 "Technical self-check of the plugin state. Not legal advice, no liability."
 msgstr ""
+"Lisäosan tilan tekninen itsetarkistus. Ei oikeudellista neuvontaa, ei "
+"vastuuta."
 
 #: admin/class-dashboard.php:958
 msgid "Declared human-made"
-msgstr ""
+msgstr "Ilmoitettu ihmisen tekemäksi"
 
 #: admin/class-dashboard.php:959
 msgid "Not scanned yet"
-msgstr ""
+msgstr "Ei vielä skannattu"
 
 #. translators: 1: scanned files, 2: files in the library.
 #: admin/class-dashboard.php:979
 #, php-format
 msgid "Library: %1$s of %2$s files scanned."
-msgstr ""
+msgstr "Kirjasto: %1$s/%2$s tiedostoa skannattu."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:987
 #, php-format
 msgid "Last scan finished %s ago."
-msgstr ""
+msgstr "Viimeisin skannaus valmistui %s sitten."
 
 #: admin/class-dashboard.php:989
 msgid "No scan has finished yet."
-msgstr ""
+msgstr "Yhtään skannausta ei ole vielä saatu valmiiksi."
 
 #. translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated
 #. and reviewed posts.
@@ -692,160 +798,171 @@ msgstr ""
 msgid ""
 "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
 msgstr ""
+"Tekstit: %1$s tekoälyavusteista, %2$s tekoälyn luomaa, %3$s luotu ja "
+"tarkistettu."
 
 #. translators: 1: systems visitors are told about, 2: inventoried systems.
 #: admin/class-dashboard.php:1011
 #, php-format
 msgid "Systems: %1$s of %2$s shown to visitors."
-msgstr ""
+msgstr "Järjestelmät: %1$s/%2$s näytetään kävijöille."
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1066
 #, php-format
 msgid "since %1$s (%2$s)"
-msgstr ""
+msgstr "%1$s alkaen (%2$s)"
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1069
 #, php-format
 msgid "%1$s (in %2$s)"
-msgstr ""
+msgstr "%1$s (%2$s kuluttua)"
 
 #: admin/class-media-library.php:74
 msgid "Media is AI-generated"
-msgstr ""
+msgstr "Media on tekoälyn luoma"
 
 #: admin/class-media-library.php:84 admin/class-media-library.php:377
 msgid "no declaration"
-msgstr ""
+msgstr "ei ilmoitusta"
 
 #: admin/class-media-library.php:85
 msgid "camera photo (digitalCapture)"
-msgstr ""
+msgstr "kameravalokuva (digitalCapture)"
 
 #: admin/class-media-library.php:86
 msgid "human digital work (digitalCreation)"
-msgstr ""
+msgstr "ihmisen digitaalinen työ (digitalCreation)"
 
 #: admin/class-media-library.php:88
 msgid "Not AI:"
-msgstr ""
+msgstr "Ei tekoälyä:"
 
 #: admin/class-media-library.php:97
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
 msgstr ""
+"Tiedoston metatietoja ei voitu päivittää (tiedostoon ei voi kirjoittaa). "
+"Merkinnän tila WordPressissä ja tiedoston sisäiset metatiedot voivat poiketa"
+" toisistaan."
 
 #: admin/class-media-library.php:103
 msgid "Confirm AI label"
-msgstr ""
+msgstr "Vahvista tekoälymerkintä"
 
 #: admin/class-media-library.php:104
 msgid "Not AI, dismiss"
-msgstr ""
+msgstr "Ei tekoälyä, hylkää"
 
 #: admin/class-media-library.php:109
 msgid "Re-check file metadata"
-msgstr ""
+msgstr "Tarkista tiedoston metatiedot uudelleen"
 
 #: admin/class-media-library.php:114
 msgid "Check delivery"
-msgstr ""
+msgstr "Tarkista toimitus"
 
 #: admin/class-media-library.php:124 admin/class-media-library.php:496
 msgid "Show file metadata"
-msgstr ""
+msgstr "Näytä tiedoston metatiedot"
 
 #: admin/class-media-library.php:127
 msgid "AI content"
-msgstr ""
+msgstr "Tekoälysisältö"
 
 #: admin/class-media-library.php:130
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
 msgstr ""
+"Ohjaa julkisen puolen merkkiä, koneluettavia tiedoston metatietoja ja "
+"mediakirjaston suodatinta."
 
 #: admin/class-media-library.php:136
 msgid "Default (site setting)"
-msgstr ""
+msgstr "Oletus (sivuston asetus)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
 #: admin/class-setup.php:306
 msgid "Top left"
-msgstr ""
+msgstr "Ylhäällä vasemmalla"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
 #: admin/class-setup.php:307
 msgid "Top right"
-msgstr ""
+msgstr "Ylhäällä oikealla"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
 #: admin/class-setup.php:308
 msgid "Bottom left"
-msgstr ""
+msgstr "Alhaalla vasemmalla"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
 #: admin/class-setup.php:309
 msgid "Bottom right"
-msgstr ""
+msgstr "Alhaalla oikealla"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
 #: admin/class-setup.php:318
 msgid "Caption line below the image"
-msgstr ""
+msgstr "Kuvatekstirivi kuvan alla"
 
 #: admin/class-media-library.php:142
 msgid "Hide the visible badge on this image"
-msgstr ""
+msgstr "Piilota näkyvä merkki tästä kuvasta"
 
 #: admin/class-media-library.php:151
 msgid "Badge position"
-msgstr ""
+msgstr "Merkin sijainti"
 
 #: admin/class-media-library.php:154
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
+"Vaikuttaa vain tähän kuvaan. Käytä sitä, jos teeman päällyste peittää merkin"
+" tässä."
 
 #: admin/class-media-library.php:158
 msgid "AI generator"
-msgstr ""
+msgstr "Tekoälygeneraattori"
 
 #: admin/class-media-library.php:162
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
 msgstr ""
+"Tekoälytyökalun nimi, esimerkiksi \"Midjourney\". Näytetään merkin "
+"lähdevalinnalla ja {generator}-paikkamerkillä."
 
 #: admin/class-media-library.php:182
 msgid "certain"
-msgstr ""
+msgstr "varma"
 
 #: admin/class-media-library.php:183
 msgid "likely"
-msgstr ""
+msgstr "todennäköinen"
 
 #: admin/class-media-library.php:184
 msgid "hint"
-msgstr ""
+msgstr "viite"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
 #: admin/class-setup.php:194 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
-msgstr ""
+msgstr "Sinulla ei ole oikeutta tehdä tuota."
 
 #: admin/class-media-library.php:293 includes/class-rest.php:243
 msgid "Unknown action."
-msgstr ""
+msgstr "Tuntematon toiminto."
 
 #: admin/class-media-library.php:334 includes/class-delivery.php:73
 #: includes/class-scanner.php:313
 msgid "Invalid attachment."
-msgstr ""
+msgstr "Virheellinen liitetiedosto."
 
 #. translators: %s: IPTC digital source type token.
 #: admin/class-media-library.php:358
@@ -854,124 +971,133 @@ msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
 "into files that carry no other digital source type."
 msgstr ""
+"Tämä liitetiedosto on ilmoitettu muuksi kuin tekoälyn tekemäksi (%s). "
+"Ilmoitus kirjoitetaan niihin tiedostoihin, joissa ei ole muuta digitaalista "
+"lähdetyyppiä."
 
 #: admin/class-media-library.php:360
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
 msgstr ""
+"Tämä liitetiedosto on merkitty tekoälyn luomaksi, joten jokaisessa alla "
+"olevassa tiedostossa pitäisi olla ilmoitus."
 
 #: admin/class-media-library.php:361
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
 msgstr ""
+"Tätä liitetiedostoa ei ole merkitty tekoälyn luomaksi. Sen tiedostoihin ei "
+"kirjoiteta mitään, eikä alla odoteta ilmoitusta."
 
 #: admin/class-media-library.php:365
 msgid "Files"
-msgstr ""
+msgstr "Tiedostot"
 
 #: admin/class-media-library.php:368
 msgid "format cannot carry the declaration"
-msgstr ""
+msgstr "tiedostomuoto ei voi sisältää ilmoitusta"
 
 #: admin/class-media-library.php:371
 msgid "declaration present"
-msgstr ""
+msgstr "ilmoitus löytyy"
 
 #: admin/class-media-library.php:374
 msgid "declaration missing"
-msgstr ""
+msgstr "ilmoitus puuttuu"
 
 #: admin/class-media-library.php:384
 msgid "No readable file found for this attachment."
-msgstr ""
+msgstr "Tälle liitetiedostolle ei löytynyt luettavaa tiedostoa."
 
 #: admin/class-media-library.php:388
 msgid "Digital source type in the main file"
-msgstr ""
+msgstr "Digitaalinen lähdetyyppi päätiedostossa"
 
 #: admin/class-media-library.php:390
 msgid "None declared."
-msgstr ""
+msgstr "Ei ilmoitettu."
 
 #: admin/class-media-library.php:398
 msgid "Detection evidence"
-msgstr ""
+msgstr "Tunnistuksen näyttö"
 
 #: admin/class-media-library.php:404
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
 #: admin/class-media-library.php:417
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "aiemmin %s"
 
 #: admin/class-media-library.php:430
 msgid "XMP packet of the main file"
-msgstr ""
+msgstr "Päätiedoston XMP-paketti"
 
 #: admin/class-media-library.php:432
 msgid "This file carries no XMP block."
-msgstr ""
+msgstr "Tässä tiedostossa ei ole XMP-lohkoa."
 
 #: admin/class-media-library.php:485 admin/class-media-library.php:551
 msgid "AI status: all"
-msgstr ""
+msgstr "Tekoälytila: kaikki"
 
 #: admin/class-media-library.php:486 admin/class-media-library.php:552
 msgid "Only AI-labeled"
-msgstr ""
+msgstr "Vain tekoälyksi merkityt"
 
 #: admin/class-media-library.php:487 admin/class-media-library.php:536
 #: admin/class-media-library.php:553
 msgid "Detected, needs review"
-msgstr ""
+msgstr "Tunnistettu, vaatii tarkistuksen"
 
 #: admin/class-media-library.php:488 admin/class-media-library.php:555
 msgid "Without AI label"
-msgstr ""
+msgstr "Ilman tekoälymerkintää"
 
 #: admin/class-media-library.php:489 admin/class-media-library.php:554
 msgid "Declared not AI (camera, human work)"
-msgstr ""
+msgstr "Ilmoitettu ei-tekoälyksi (kamera, ihmisen työ)"
 
 #: admin/class-media-library.php:490 admin/class-media-library.php:596
 msgid "Mark as AI-generated"
-msgstr ""
+msgstr "Merkitse tekoälyn luomaksi"
 
 #: admin/class-media-library.php:491 admin/class-media-library.php:597
 msgid "Remove AI label"
-msgstr ""
+msgstr "Poista tekoälymerkintä"
 
 #: admin/class-media-library.php:492
 msgid "Please select media first."
-msgstr ""
+msgstr "Valitse ensin mediatiedostoja."
 
 #: admin/class-media-library.php:493
 msgid "Updating the AI label failed."
-msgstr ""
+msgstr "Tekoälymerkinnän päivitys epäonnistui."
 
 #: admin/class-media-library.php:494
 msgid "Result"
-msgstr ""
+msgstr "Tulos"
 
 #: admin/class-media-library.php:495
 msgid "No AI provenance signals found in the file."
-msgstr ""
+msgstr "Tiedostosta ei löytynyt tekoälyn alkuperäsignaaleja."
 
 #: admin/class-media-library.php:497
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
 msgstr ""
+"Merkintä asetettiin, mutta metatietoja ei voitu kirjoittaa tiedostoon. "
+"Tarkista lataushakemiston kirjoitusoikeudet."
 
 #: admin/class-media-library.php:498
 msgid "Hide file metadata"
-msgstr ""
+msgstr "Piilota tiedoston metatiedot"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
@@ -981,6 +1107,8 @@ msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
 "comparable."
 msgstr ""
+"%1$d tarkistettu: %2$d toimitettiin ilmoituksen kanssa, %3$d ilman, %4$d ei "
+"vertailukelpoisia."
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
@@ -990,133 +1118,137 @@ msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
 "(already decided)."
 msgstr ""
+"%1$d skannattu, %2$d merkitty automaattisesti, %3$d tarkistusjonoon, %4$d "
+"ohitettu (jo päätetty)."
 
 #: admin/class-media-library.php:503
 msgid "Scan complete."
-msgstr ""
+msgstr "Skannaus valmis."
 
 #: admin/class-media-library.php:504
 msgid "Scan request failed. You can restart to continue."
-msgstr ""
+msgstr "Skannauspyyntö epäonnistui. Voit jatkaa käynnistämällä uudelleen."
 
 #: admin/class-media-library.php:515 includes/class-notice.php:305
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: admin/class-media-library.php:598
 msgid "Confirm detected AI label"
-msgstr ""
+msgstr "Vahvista tunnistettu tekoälymerkintä"
 
 #: admin/class-media-library.php:599
 msgid "Dismiss detected AI label"
-msgstr ""
+msgstr "Hylkää tunnistettu tekoälymerkintä"
 
 #: admin/class-media-library.php:600
 msgid "Declare as camera photo (not AI)"
-msgstr ""
+msgstr "Ilmoita kameravalokuvaksi (ei tekoälyä)"
 
 #: admin/class-media-library.php:601
 msgid "Declare as human work (not AI)"
-msgstr ""
+msgstr "Ilmoita ihmisen työksi (ei tekoälyä)"
 
 #: admin/class-media-library.php:602
 msgid "Remove \"not AI\" declaration"
-msgstr ""
+msgstr "Poista \"ei tekoälyä\" -ilmoitus"
 
 #. translators: %d: number of updated media files.
 #: admin/class-media-library.php:644
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tekoälymerkintä päivitettiin %d mediatiedostolle."
+msgstr[1] "Tekoälymerkintä päivitettiin %d mediatiedostolle."
 
 #: admin/class-settings.php:47 admin/class-settings.php:97
 msgid "You are not allowed to export this."
-msgstr ""
+msgstr "Sinulla ei ole oikeutta viedä tätä."
 
 #: admin/class-settings.php:65
 msgid "The export could not be started."
-msgstr ""
+msgstr "Vientiä ei voitu käynnistää."
 
 #: admin/class-settings.php:115 admin/class-settings.php:129
 msgid "audit report"
-msgstr ""
+msgstr "tarkastusraportti"
 
 #: admin/class-settings.php:130
 msgid "items"
-msgstr ""
+msgstr "kohdetta"
 
 #: admin/class-settings.php:133
 msgid "Document hash"
-msgstr ""
+msgstr "Dokumenttitiiviste"
 
 #: admin/class-settings.php:134
 msgid ""
 "sha256 over the facts below without timestamps: two reports of an unchanged "
 "site carry the same hash."
 msgstr ""
+"sha256 alla olevista tiedoista ilman aikaleimoja: muuttumattoman sivuston "
+"kaksi raporttia saavat saman tiivisteen."
 
 #: admin/class-settings.php:135
 msgid "Basis"
-msgstr ""
+msgstr "Peruste"
 
 #: admin/class-settings.php:136
 msgid "Limitations"
-msgstr ""
+msgstr "Rajoitukset"
 
 #: admin/class-settings.php:143
 msgid "Print or save as PDF"
-msgstr ""
+msgstr "Tulosta tai tallenna PDF-muodossa"
 
 #: admin/class-settings.php:145
 msgid "Media audit list"
-msgstr ""
+msgstr "Median tarkastusluettelo"
 
 #: admin/class-settings.php:221 admin/class-settings.php:254
 msgid "Visible badge"
-msgstr ""
+msgstr "Näkyvä merkki"
 
 #: admin/class-settings.php:222 admin/class-settings.php:366
 #: includes/class-compliance.php:65
 msgid "AI-written text"
-msgstr ""
+msgstr "Tekoälyn kirjoittama teksti"
 
 #: admin/class-settings.php:223 admin/class-settings.php:440
 msgid "Chatbot disclosure"
-msgstr ""
+msgstr "Chatbotista ilmoittaminen"
 
 #: admin/class-settings.php:225 admin/class-settings.php:549
 msgid "Automatic detection"
-msgstr ""
+msgstr "Automaattinen tunnistus"
 
 #: admin/class-settings.php:226
 msgid "File metadata"
-msgstr ""
+msgstr "Tiedoston metatiedot"
 
 #: admin/class-settings.php:227 admin/class-settings.php:651
 msgid "Uninstall"
-msgstr ""
+msgstr "Asennuksen poisto"
 
 #: admin/class-settings.php:235
 msgid "Settings saved."
-msgstr ""
+msgstr "Asetukset tallennettu."
 
 #: admin/class-settings.php:247
 msgid "Settings sections"
-msgstr ""
+msgstr "Asetusten osiot"
 
 #: admin/class-settings.php:257
 msgid "Show badge"
-msgstr ""
+msgstr "Näytä merkki"
 
 #: admin/class-settings.php:260
 msgid "Show a visible badge on labeled media in the front end"
-msgstr ""
+msgstr "Näytä näkyvä merkki merkityissä mediatiedostoissa julkisella puolella"
 
 #: admin/class-settings.php:264
 msgid "Start date"
-msgstr ""
+msgstr "Alkamispäivä"
 
 #: admin/class-settings.php:267
 msgid ""
@@ -1124,19 +1256,23 @@ msgid ""
 "media stay labeled in the admin only. Leave empty to badge all labeled "
 "media."
 msgstr ""
+"Vain tänä päivänä tai sen jälkeen palvelimelle lähetetyt mediatiedostot "
+"saavat merkin julkisella puolella; aiemmat pysyvät merkittyinä vain "
+"hallintapuolella. Jätä tyhjäksi, jos haluat merkin kaikkiin merkittyihin "
+"mediatiedostoihin."
 
 #: admin/class-settings.php:271
 msgid "Badge text"
-msgstr ""
+msgstr "Merkin teksti"
 
 #: admin/class-settings.php:273 includes/class-frontend.php:229
 #: includes/class-frontend.php:234 includes/class-notice.php:154
 msgid "AI-generated"
-msgstr ""
+msgstr "Tekoälyn luoma"
 
 #: admin/class-settings.php:275
 msgid "Leave empty for the translated default label."
-msgstr ""
+msgstr "Jätä tyhjäksi, jos haluat käyttää käännettyä oletusmerkintää."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site}
 #. placeholder (do not translate), 3: example template.
@@ -1147,94 +1283,107 @@ msgid ""
 "title), e.g. %3$s. Images without a known generator fall back to the default"
 " label."
 msgstr ""
+"Paikkamerkit: %1$s (tunnistettu tai käsin asetettu generaattori) ja %2$s "
+"(sivuston nimi), esimerkiksi %3$s. Kuvat, joiden generaattoria ei tunneta, "
+"käyttävät oletusmerkintää."
 
 #: admin/class-settings.php:289
 msgid "Appearance"
-msgstr ""
+msgstr "Ulkoasu"
 
 #: admin/class-settings.php:297 admin/class-setup.php:317
 msgid "Overlay on the image"
-msgstr ""
+msgstr "Päällyste kuvan päällä"
 
 #: admin/class-settings.php:315 admin/class-setup.php:292
 msgid "Dark"
-msgstr ""
+msgstr "Tumma"
 
 #: admin/class-settings.php:316 admin/class-setup.php:293
 msgid "Light"
-msgstr ""
+msgstr "Vaalea"
 
 #: admin/class-settings.php:317 admin/class-setup.php:294
 msgid "Outline"
-msgstr ""
+msgstr "Ääriviiva"
 
 #: admin/class-settings.php:318 admin/class-setup.php:295
 msgid "Icon only (short label)"
-msgstr ""
+msgstr "Vain kuvake (lyhyt merkintä)"
 
 #: admin/class-settings.php:325
 msgid "Small"
-msgstr ""
+msgstr "Pieni"
 
 #: admin/class-settings.php:326
 msgid "Medium"
-msgstr ""
+msgstr "Keskikokoinen"
 
 #: admin/class-settings.php:327
 msgid "Large"
-msgstr ""
+msgstr "Suuri"
 
 #: admin/class-settings.php:334
 msgid "Extras"
-msgstr ""
+msgstr "Lisäasetukset"
 
 #: admin/class-settings.php:337
 msgid ""
 "Show the detected generator in the badge (e.g. \"AI-generated · "
 "Midjourney\"; ignored when the badge text contains {generator})"
 msgstr ""
+"Näytä tunnistettu generaattori merkissä (esimerkiksi \"Tekoälyn luoma · "
+"Midjourney\"; ohitetaan, kun merkin teksti sisältää {generator})"
 
 #: admin/class-settings.php:339
 msgid "Append the label to the image alt text (screen readers)"
-msgstr ""
+msgstr "Lisää merkintä kuvan vaihtoehtoiseen tekstiin (ruudunlukijat)"
 
 #: admin/class-settings.php:341
 msgid ""
 "Automatically move a badge to another corner, or below the image, if a theme"
 " overlay covers it (recommended, needs JavaScript)"
 msgstr ""
+"Siirrä merkki automaattisesti toiseen kulmaan tai kuvan alapuolelle, jos "
+"teeman päällyste peittää sen (suositeltu, vaatii JavaScriptin)"
 
 #: admin/class-settings.php:343
 msgid ""
 "Also label images printed without an attachment ID (ACF fields, sliders, "
 "builders) and CSS backgrounds (experimental, needs JavaScript)"
 msgstr ""
+"Merkitse myös kuvat, jotka tulostetaan ilman liitetiedoston tunnistetta "
+"(ACF-kentät, karusellit, sivunrakentajat), sekä CSS-taustat (kokeellinen, "
+"vaatii JavaScriptin)"
 
 #: admin/class-settings.php:347
 msgid "Not AI"
-msgstr ""
+msgstr "Ei tekoälyä"
 
 #: admin/class-settings.php:350
 msgid ""
 "Also show a badge on media declared as camera photo or human work (the "
 "structured data carries the declaration either way)"
 msgstr ""
+"Näytä merkki myös mediatiedostoissa, jotka on ilmoitettu kameravalokuviksi "
+"tai ihmisen työksi (rakenteinen data sisältää ilmoituksen joka tapauksessa)"
 
 #: admin/class-settings.php:351 includes/class-frontend.php:207
 msgid "Human made"
-msgstr ""
+msgstr "Ihmisen tekemä"
 
 #: admin/class-settings.php:355
 msgid "Page notice"
-msgstr ""
+msgstr "Sivun huomautus"
 
 #: admin/class-settings.php:358
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
+"Lisää lyhyt huomautus niiden sivujen loppuun, joilla on merkittyä mediaa"
 
 #: admin/class-settings.php:359 includes/class-frontend.php:782
 msgid "This page contains AI-generated media."
-msgstr ""
+msgstr "Tämä sivu sisältää tekoälyn luomaa mediaa."
 
 #: admin/class-settings.php:367
 msgid ""
@@ -1243,81 +1392,93 @@ msgid ""
 "bulk. AI levels show a note on the post; the shortcode [transparai_notice] "
 "and the \"AI notice\" block place it anywhere by hand."
 msgstr ""
+"Jokaisella artikkelilla on tekoälytaso (ei mitään, tekoälyavusteinen, "
+"tekoälyn luoma, tekoälyn luoma ja tarkistettu), joka asetetaan editorin "
+"sivupalkissa, pikamuokkauksessa tai massana. Tekoälytasot näyttävät "
+"huomautuksen artikkelissa; lyhytkoodi [transparai_notice] ja "
+"\"Tekoälyhuomautus\"-lohko sijoittavat sen käsin mihin tahansa."
 
 #: admin/class-settings.php:370
 msgid "Note text"
-msgstr ""
+msgstr "Huomautuksen teksti"
 
 #: admin/class-settings.php:372 includes/class-notice.php:140
 msgid "This text was generated by AI."
-msgstr ""
+msgstr "Tämä teksti on tekoälyn luoma."
 
 #: admin/class-settings.php:373
 msgid ""
 "Leave empty for a translated wording per level (\"created with the help of "
 "AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
 msgstr ""
+"Jätä tyhjäksi, jos haluat käyttää käännettyä tasokohtaista sanamuotoa "
+"(\"luotu tekoälyn avulla\", \"tekoälyn luoma\", \"tekoälyn luoma ja ihmisen "
+"tarkistama\")."
 
 #: admin/class-settings.php:379
 msgid "Ahead of the content"
-msgstr ""
+msgstr "Ennen sisältöä"
 
 #: admin/class-settings.php:380
 msgid "After the content"
-msgstr ""
+msgstr "Sisällön jälkeen"
 
 #: admin/class-settings.php:381
 msgid "Ahead of and after the content"
-msgstr ""
+msgstr "Ennen sisältöä ja sen jälkeen"
 
 #: admin/class-settings.php:382 admin/class-settings.php:530
 msgid "Only where a block or shortcode is placed"
-msgstr ""
+msgstr "Vain siellä, mihin lohko tai lyhytkoodi on sijoitettu"
 
 #: admin/class-settings.php:389 includes/class-notice.php:629
 msgid "Block (own line)"
-msgstr ""
+msgstr "Lohko (oma rivi)"
 
 #: admin/class-settings.php:390 includes/class-notice.php:630
 msgid "Inline (inside text)"
-msgstr ""
+msgstr "Tekstin sisäinen"
 
 #: admin/class-settings.php:391 admin/class-settings.php:529
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
-msgstr ""
+msgstr "Palkki (suljettava)"
 
 #: admin/class-settings.php:392 includes/class-notice.php:632
 msgid "Badge (small chip)"
-msgstr ""
+msgstr "Merkki (pieni)"
 
 #: admin/class-settings.php:393 includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
-msgstr ""
+msgstr "Modaali (painike avaa dialogin)"
 
 #: admin/class-settings.php:400
 msgid "Post titles"
-msgstr ""
+msgstr "Artikkelien otsikot"
 
 #: admin/class-settings.php:403
 msgid ""
 "Append a small AI badge to the title of AI-written posts in lists and "
 "archives"
 msgstr ""
+"Lisää pieni tekoälymerkki tekoälyn kirjoittamien artikkelien otsikkoon "
+"listoissa ja arkistoissa"
 
 #: admin/class-settings.php:404
 msgid ""
 "The badge is HTML inside the title. Themes that print titles unescaped "
 "inside attributes should leave this off."
 msgstr ""
+"Merkki on HTML-koodia otsikon sisällä. Jos teema tulostaa otsikoita "
+"suojaamattomina attribuuttien sisällä, jätä tämä pois päältä."
 
 #: admin/class-settings.php:408
 msgid "Review"
-msgstr ""
+msgstr "Tarkistus"
 
 #: admin/class-settings.php:410
 msgid "Name of the person responsible"
-msgstr ""
+msgstr "Vastuuhenkilön nimi"
 
 #: admin/class-settings.php:411
 msgid ""
@@ -1325,41 +1486,53 @@ msgid ""
 " someone else. The reviewer, date and a fingerprint of the reviewed text are"
 " recorded with the post."
 msgstr ""
+"Oletus tarkistettujen tekstien \"vastuuhenkilölle\"; jokaiseen artikkeliin "
+"voi nimetä jonkun muun. Tarkistaja, päivämäärä ja tarkistetun tekstin "
+"tunniste tallennetaan artikkelin yhteyteen."
 
 #: admin/class-settings.php:413
 msgid ""
 "Name the reviewer and the review date in the public note and in the "
 "structured data"
 msgstr ""
+"Nimeä tarkistaja ja tarkistuspäivä julkisessa huomautuksessa ja "
+"rakenteisessa datassa"
 
 #: admin/class-settings.php:417
 msgid "New posts"
-msgstr ""
+msgstr "Uudet artikkelit"
 
 #: admin/class-settings.php:422
 msgid ""
 "Preselected level for posts created from now on. Existing posts are never "
 "reclassified."
 msgstr ""
+"Esivalittu taso tästä eteenpäin luotaville artikkeleille. Olemassa olevia "
+"artikkeleita ei luokitella uudelleen."
 
 #: admin/class-settings.php:426
 msgid "Excerpts and feeds"
-msgstr ""
+msgstr "Otteet ja syötteet"
 
 #: admin/class-settings.php:429
 msgid ""
 "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
+"Lisää huomautus pelkkänä tekstinä otteisiin (arkistot, nostot, aiheeseen "
+"liittyvät artikkelit)"
 
 #: admin/class-settings.php:431
 msgid ""
 "Add the note to RSS feed items (content, summary and a machine-readable "
 "dc:description element)"
 msgstr ""
+"Lisää huomautus RSS-syötteen kohteisiin (sisältö, tiivistelmä ja "
+"koneluettava dc:description-elementti)"
 
 #: admin/class-settings.php:433
 msgid "Prefix feed item titles of AI-written posts with [AI]"
 msgstr ""
+"Lisää [AI]-etuliite tekoälyn kirjoittamien artikkelien otsikoihin syötteessä"
 
 #: admin/class-settings.php:441
 msgid ""
@@ -1370,79 +1543,92 @@ msgid ""
 "local: active plugins, theme snippets, the scripts a page registers, and "
 "what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
+"Kävijöille on kerrottava, kun he keskustelevat tekoälyjärjestelmän kanssa, "
+"viimeistään keskustelun alkaessa. Sinun vastauksesi ratkaisee; se, mitä "
+"lisäosa sivustolta löytää, on vain taustatietoa, koska useimmat chat-"
+"vimpaimet ovat live-chatteja, joissa vastaa ihminen, ja väärä \"tämä on "
+"tekoäly\" johtaisi kävijöitä harhaan. Tunnistus tapahtuu paikallisesti: "
+"käytössä olevat lisäosat, teeman koodinpätkät, sivun rekisteröimät skriptit "
+"ja se, mitä oma selaimesi näki ylläpitäjänä. Yksikään pyyntö ei lähde "
+"palvelimelta."
 
 #: admin/class-settings.php:445
 msgid "Found on this site"
-msgstr ""
+msgstr "Löytyi tältä sivustolta"
 
 #: admin/class-settings.php:448
 msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
 msgstr ""
+"Tunnettua chat- tai chatbot-vimpainta ei ole toistaiseksi löytynyt. Avaa "
+"muutama sivustosi sivu kirjautuneena; tarkistus suoritetaan selaimessasi ja "
+"raportoi tänne."
 
 #: admin/class-settings.php:453
 msgid "a bot answers"
-msgstr ""
+msgstr "vastaa botti"
 
 #: admin/class-settings.php:454
 msgid "people answer"
-msgstr ""
+msgstr "vastaavat ihmiset"
 
 #: admin/class-settings.php:455
 msgid "live chat with optional bot"
-msgstr ""
+msgstr "live-chat, jossa voi olla botti"
 
 #: admin/class-settings.php:456
 msgid "staffing unknown"
-msgstr ""
+msgstr "ei tiedetä, kuka vastaa"
 
 #: admin/class-settings.php:467
 msgid "Does this site run a chat?"
-msgstr ""
+msgstr "Onko tällä sivustolla chat?"
 
 #: admin/class-settings.php:474
 msgid "Not decided yet"
-msgstr ""
+msgstr "Ei vielä päätetty"
 
 #: admin/class-settings.php:483
 msgid "An AI answers"
-msgstr ""
+msgstr "Vastaa tekoäly"
 
 #: admin/class-settings.php:484
 msgid "People answer, an AI sometimes"
-msgstr ""
+msgstr "Vastaavat ihmiset, joskus tekoäly"
 
 #: admin/class-settings.php:485
 msgid "Only people answer"
-msgstr ""
+msgstr "Vastaavat vain ihmiset"
 
 #: admin/class-settings.php:489
 msgid ""
 "The notice appears only with \"Yes\" and an AI that answers at least "
 "sometimes."
 msgstr ""
+"Huomautus näkyy vain, jos vastaus on \"Kyllä\" ja tekoäly vastaa ainakin "
+"joskus."
 
 #: admin/class-settings.php:493
 msgid "Notice"
-msgstr ""
+msgstr "Huomautus"
 
 #: admin/class-settings.php:495 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
-msgstr ""
+msgstr "Keskustelet tekoälyjärjestelmän kanssa."
 
 #: admin/class-settings.php:501
 msgid ""
 "As the first message of the bot (AI Engine; otherwise next to the widget)"
-msgstr ""
+msgstr "Botin ensimmäisenä viestinä (AI Engine; muuten vimpaimen vieressä)"
 
 #: admin/class-settings.php:502
 msgid "Next to the chat widget"
-msgstr ""
+msgstr "Chat-vimpaimen vieressä"
 
 #: admin/class-settings.php:503
 msgid "As a line at the end of every page"
-msgstr ""
+msgstr "Rivinä jokaisen sivun lopussa"
 
 #: admin/class-settings.php:514
 msgid ""
@@ -1451,33 +1637,40 @@ msgid ""
 "about is decided per system on the AI Systems page; nothing is switched on "
 "from a finding alone. The list ships with the plugin, nothing is fetched."
 msgstr ""
+"Lisäosa vertaa asennettuja lisäosiasi mukana tulevaan luetteloon tunnetuista"
+" tekoälytyökaluista ja antaa sinun ilmoittaa muut käsin. Siitä, mistä niistä"
+" kävijöille kerrotaan, päätetään järjestelmäkohtaisesti Tekoälyjärjestelmät-"
+"sivulla; mitään ei kytketä päälle pelkän löydöksen perusteella. Luettelo "
+"tulee lisäosan mukana, mitään ei haeta verkosta."
 
 #: admin/class-settings.php:517
 msgid "Visitor notice"
-msgstr ""
+msgstr "Kävijöiden huomautus"
 
 #: admin/class-settings.php:520
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
+"Näytä jokaisella sivulla huomautus, joka nimeää näkyviksi merkityt "
+"tekoälyjärjestelmät"
 
 #: admin/class-settings.php:527
 msgid "Line at the end of the page"
-msgstr ""
+msgstr "Rivi sivun lopussa"
 
 #: admin/class-settings.php:528
 msgid "Small badge in a corner"
-msgstr ""
+msgstr "Pieni merkki kulmassa"
 
 #: admin/class-settings.php:538
 msgid "Notice text"
-msgstr ""
+msgstr "Huomautuksen teksti"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
 #: admin/class-settings.php:540 includes/class-systems.php:458
 #, php-format
 msgid "This site uses AI systems: %s."
-msgstr ""
+msgstr "Tämä sivusto käyttää tekoälyjärjestelmiä: %s."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:541
@@ -1486,109 +1679,131 @@ msgid ""
 "Leave empty for the translated default. %s is replaced with the names of the"
 " visible systems."
 msgstr ""
+"Jätä tyhjäksi, jos haluat käyttää käännettyä oletusta. %s korvataan näkyvien"
+" järjestelmien nimillä."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:542
 msgid "Manage detected and declared AI systems"
-msgstr ""
+msgstr "Hallitse tunnistettuja ja ilmoitettuja tekoälyjärjestelmiä"
 
 #: admin/class-settings.php:552
 msgid "Detect on upload"
-msgstr ""
+msgstr "Tunnistus lähetyksen yhteydessä"
 
 #: admin/class-settings.php:555
 msgid ""
 "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
+"Tutki uusista lähetetyistä tiedostoista tekoälyn alkuperämerkit (C2PA, "
+"XMP/IPTC, generaattorien tunnisteet)"
 
 #: admin/class-settings.php:559
 msgid "Standard declarations"
-msgstr ""
+msgstr "Standardien mukaiset ilmoitukset"
 
 #: admin/class-settings.php:566 admin/class-settings.php:583
 msgid "Label automatically"
-msgstr ""
+msgstr "Merkitse automaattisesti"
 
 #: admin/class-settings.php:567 admin/class-settings.php:584
 msgid "Put into review queue"
-msgstr ""
+msgstr "Siirrä tarkistusjonoon"
 
 #: admin/class-settings.php:568 admin/class-settings.php:585
 msgid "Ignore"
-msgstr ""
+msgstr "Ohita"
 
 #: admin/class-settings.php:572
 msgid ""
 "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in"
 " C2PA, AIGC declaration)."
 msgstr ""
+"Tiedostot, jotka ilmoittavat tekoälyalkuperän nimenomaisesti (IPTC "
+"DigitalSourceType, C2PA:n tekoälyväite, AIGC-ilmoitus)."
 
 #: admin/class-settings.php:576
 msgid "Generator signatures"
-msgstr ""
+msgstr "Generaattorien tunnisteet"
 
 #: admin/class-settings.php:589
 msgid ""
 "Strong signals without a formal declaration (Stable Diffusion parameters, "
 "ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr ""
+"Vahvat signaalit ilman muodollista ilmoitusta (Stable Diffusionin "
+"parametrit, ComfyUI-työnkulut, generaattorien nimet EXIF/XMP-tiedoissa, "
+"kameran kirjoittama C2PA)."
 
 #: admin/class-settings.php:593
 msgid "More sources"
-msgstr ""
+msgstr "Lisää lähteitä"
 
 #: admin/class-settings.php:596
 msgid ""
 "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
+"Skannaa myös lähetetyt video- ja äänitiedostot (MP4/MOV C2PA, MP3 AIGC "
+"-ilmoitukset)"
 
 #: admin/class-settings.php:598
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
+"Käytä tiedostonimien kaavoja tarkistusvihjeinä (ei koskaan merkitse "
+"automaattisesti)"
 
 #: admin/class-settings.php:606
 msgid "Machine-readable file metadata"
-msgstr ""
+msgstr "Koneluettavat tiedoston metatiedot"
 
 #: admin/class-settings.php:609
 msgid "Write into files"
-msgstr ""
+msgstr "Kirjoita tiedostoihin"
 
 #: admin/class-settings.php:612
 msgid ""
 "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and "
 "AVIF files (all size variants)"
 msgstr ""
+"Kirjoita IPTC DigitalSourceType XMP-muodossa merkittyihin JPEG-, PNG-, WebP-"
+" ja AVIF-tiedostoihin (kaikki kokovariantit)"
 
 #: admin/class-settings.php:614
 msgid ""
 "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC "
 "block)"
 msgstr ""
+"Peilaa se myös IPTC-IIM-muotoon (JPEG, vain kun tiedostossa ei ole muuta "
+"IPTC-lohkoa)"
 
 #: admin/class-settings.php:616
 msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
 msgstr ""
+"Kirjoita digitalCapture tai digitalCreation myös mediaan, jonka olet "
+"ilmoittanut muuksi kuin tekoälyn tekemäksi, mutta älä koskaan korvaa "
+"ilmoitusta, jonka toinen työkalu tai kamera on jo kirjoittanut"
 
 #: admin/class-settings.php:620
 msgid "Auto-repair"
-msgstr ""
+msgstr "Automaattinen korjaus"
 
 #: admin/class-settings.php:623
 msgid ""
 "Restore the metadata when image optimizers or regeneration strip it (hourly "
 "integrity sweep)"
 msgstr ""
+"Palauta metatiedot, kun kuvaoptimoijat tai uudelleenluonti riisuvat ne "
+"(tunnin välein ajettava eheystarkistus)"
 
 #: admin/class-settings.php:627
 msgid "Delivery check"
-msgstr ""
+msgstr "Toimitustarkistus"
 
 #: admin/class-settings.php:630
 msgid "Allow checking whether the declaration survives delivery"
-msgstr ""
+msgstr "Salli sen tarkistaminen, säilyykö ilmoitus toimituksessa"
 
 #: admin/class-settings.php:631
 msgid ""
@@ -1599,46 +1814,61 @@ msgid ""
 "request goes to your own site and nowhere else, and it only ever happens "
 "when you press the button."
 msgstr ""
+"Lisää painikkeen liitetiedoston tietoihin ja tähän. Napsautuksesta lisäosa "
+"hakee kyseisen kuvan sen omasta julkisesta osoitteesta ja vertaa "
+"toimitettuja tavuja levyllä olevaan tiedostoon. Se on ainoa tapa huomata, "
+"että optimoiva CDN pakkaa kuvasi uudelleen ja pudottaa ilmoituksen matkalla."
+" Pyyntö menee omalle sivustollesi eikä minnekään muualle, ja se tapahtuu "
+"vain, kun painat painiketta."
 
 #: admin/class-settings.php:634
 msgid "Check a sample of five files"
-msgstr ""
+msgstr "Tarkista viiden tiedoston otos"
 
 #: admin/class-settings.php:641
 msgid "Structured data"
-msgstr ""
+msgstr "Rakenteinen data"
 
 #: admin/class-settings.php:644
 msgid ""
 "Add Schema.org JSON-LD with the IPTC digital source type for the labeled "
 "media of each page (search engines read it without opening the files)"
 msgstr ""
+"Lisää Schema.org JSON-LD, jossa on IPTC:n digitaalinen lähdetyyppi, kunkin "
+"sivun merkityille mediatiedostoille (hakukoneet lukevat sen avaamatta "
+"tiedostoja)"
 
 #: admin/class-settings.php:654
 msgid "Data removal"
-msgstr ""
+msgstr "Tietojen poisto"
 
 #: admin/class-settings.php:657
 msgid ""
 "Delete all plugin data (labels, detection results, settings) when the plugin"
 " is uninstalled"
 msgstr ""
+"Poista kaikki lisäosan tiedot (merkinnät, tunnistustulokset, asetukset), kun"
+" lisäosan asennus poistetaan"
 
 #: admin/class-settings.php:663
 msgid "Save changes"
-msgstr ""
+msgstr "Tallenna muutokset"
 
 #: admin/class-settings.php:680
 msgid ""
 "Detection relies on metadata embedded by generators; files whose metadata "
 "was stripped carry no signal."
 msgstr ""
+"Tunnistus perustuu generaattorien upottamiin metatietoihin; tiedostoissa, "
+"joiden metatiedot on riisuttu, ei ole signaalia."
 
 #: admin/class-settings.php:681
 msgid ""
 "A declaration records a statement by the site operator; it is not "
 "cryptographic proof of origin."
 msgstr ""
+"Ilmoitus kirjaa sivuston ylläpitäjän lausuman; se ei ole kryptografinen "
+"todiste alkuperästä."
 
 #: admin/class-settings.php:682
 msgid ""
@@ -1646,6 +1876,8 @@ msgid ""
 "whether content changed since the review, not whether the review was "
 "correct."
 msgstr ""
+"Tekstien ilmoitustasot syöttävät toimittajat; tarkistuksen tunniste kertoo, "
+"onko sisältö muuttunut tarkistuksen jälkeen, ei sitä, oliko tarkistus oikea."
 
 #: admin/class-settings.php:683
 msgid ""
@@ -1653,134 +1885,137 @@ msgid ""
 "summarise the plugin state and the operator's own answers; they are not a "
 "legal assessment."
 msgstr ""
+"Valmiuspisteet, itsearviointi ja tekoälylukutaidon tarkistuslista "
+"tiivistävät lisäosan tilan ja ylläpitäjän omat vastaukset; ne eivät ole "
+"oikeudellinen arvio."
 
 #: admin/class-settings.php:707
 msgid "Check"
-msgstr ""
+msgstr "Tarkistus"
 
 #: admin/class-settings.php:715 admin/class-settings.php:725
 msgid "Saved"
-msgstr ""
+msgstr "Tallennettu"
 
 #: admin/class-settings.php:717
 msgid "Question"
-msgstr ""
+msgstr "Kysymys"
 
 #: admin/class-settings.php:717
 msgid "Answer"
-msgstr ""
+msgstr "Vastaus"
 
 #: admin/class-settings.php:720
 msgid "not answered"
-msgstr ""
+msgstr "ei vastattu"
 
 #: admin/class-settings.php:724
 msgid "AI literacy checklist (Article 4)"
-msgstr ""
+msgstr "Tekoälylukutaidon tarkistuslista (4 artikla)"
 
 #: admin/class-settings.php:726
 msgid "Item"
-msgstr ""
+msgstr "Kohta"
 
 #: admin/class-settings.php:734
 msgid "None detected or declared."
-msgstr ""
+msgstr "Ei tunnistettu eikä ilmoitettu."
 
 #: admin/class-settings.php:736
 msgid "Source"
-msgstr ""
+msgstr "Lähde"
 
 #: admin/class-settings.php:736
 msgid "Visitors told"
-msgstr ""
+msgstr "Kävijöille kerrotaan"
 
 #: admin/class-settings.php:738 includes/class-systems.php:354
 msgid "declared by hand"
-msgstr ""
+msgstr "ilmoitettu käsin"
 
 #: admin/class-settings.php:738
 msgid "Detected"
-msgstr ""
+msgstr "Tunnistettu"
 
 #: admin/class-settings.php:743
 msgid "Disclosure notices"
-msgstr ""
+msgstr "Ilmoitushuomautukset"
 
 #: admin/class-settings.php:747
 msgid "Text note style"
-msgstr ""
+msgstr "Tekstihuomautuksen tyyli"
 
 #: admin/class-settings.php:748
 msgid "Text note position"
-msgstr ""
+msgstr "Tekstihuomautuksen sijainti"
 
 #: admin/class-settings.php:749
 msgid "Visible badge on labeled media"
-msgstr ""
+msgstr "Näkyvä merkki merkityissä mediatiedostoissa"
 
 #: admin/class-settings.php:750
 msgid "Page notice on pages with labeled media"
-msgstr ""
+msgstr "Sivun huomautus sivuilla, joilla on merkittyä mediaa"
 
 #: admin/class-settings.php:751
 msgid "Chatbot question answered with"
-msgstr ""
+msgstr "Chatbot-kysymykseen vastattu"
 
 #: admin/class-settings.php:752
 msgid "Chatbot notice active"
-msgstr ""
+msgstr "Chatbot-huomautus käytössä"
 
 #: admin/class-settings.php:753
 msgid "AI systems notice"
-msgstr ""
+msgstr "Tekoälyjärjestelmien huomautus"
 
 #: admin/class-settings.php:754
 msgid "Structured data (Schema.org)"
-msgstr ""
+msgstr "Rakenteinen data (Schema.org)"
 
 #: admin/class-settings.php:771
 msgid "Title"
-msgstr ""
+msgstr "Otsikko"
 
 #: admin/class-settings.php:771
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 #: admin/class-settings.php:771
 msgid "Level"
-msgstr ""
+msgstr "Taso"
 
 #: admin/class-settings.php:771
 msgid "Reviewed by"
-msgstr ""
+msgstr "Tarkistaja"
 
 #: admin/class-settings.php:771
 msgid "Reviewed on"
-msgstr ""
+msgstr "Tarkistuspäivä"
 
 #: admin/class-settings.php:771
 msgid "Review current"
-msgstr ""
+msgstr "Tarkistus ajan tasalla"
 
 #: admin/class-settings.php:806
 msgid "Library status"
-msgstr ""
+msgstr "Kirjaston tila"
 
 #: admin/class-settings.php:810
 msgid "Media files"
-msgstr ""
+msgstr "Mediatiedostot"
 
 #: admin/class-settings.php:822
 msgid "Scanned"
-msgstr ""
+msgstr "Skannattu"
 
 #: admin/class-settings.php:827
 msgid "Open review queue"
-msgstr ""
+msgstr "Avaa tarkistusjono"
 
 #: admin/class-settings.php:830
 msgid "Print view"
-msgstr ""
+msgstr "Tulostusnäkymä"
 
 #: admin/class-settings.php:835
 msgid ""
@@ -1790,28 +2025,36 @@ msgid ""
 "stated limitations; the same record is available at /wp-"
 "json/transparai/v1/report."
 msgstr ""
+"Vienti listaa jokaisen merkityn, ilmoitetun ja odottavan tiedoston "
+"tunnistuslähteineen, varmuusasteineen, koko historioineen ja kunkin "
+"muutoksen tehneine henkilöineen. Tulostusnäkymä lisää mukaan tiedoista "
+"lasketun dokumenttitiivisteen, ohjeistuksen perustan ja mainitut "
+"rajoitukset; sama tietue on saatavilla osoitteessa /wp-"
+"json/transparai/v1/report."
 
 #: admin/class-settings.php:851 admin/class-settings.php:853
 msgid "Scan existing library"
-msgstr ""
+msgstr "Skannaa olemassa oleva kirjasto"
 
 #: admin/class-settings.php:855
 msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
 msgstr ""
+"Lukee olemassa olevien mediatiedostojesi metatiedot (C2PA, XMP/IPTC, "
+"generaattorien tunnisteet) pienissä erissä. Mitään ei lähde palvelimeltasi."
 
 #: admin/class-settings.php:857
 msgid "Scan new/unscanned media"
-msgstr ""
+msgstr "Skannaa uudet tai skannaamattomat mediatiedostot"
 
 #: admin/class-settings.php:858
 msgid "Rescan everything"
-msgstr ""
+msgstr "Skannaa kaikki uudelleen"
 
 #: admin/class-settings.php:859
 msgid "Pause"
-msgstr ""
+msgstr "Keskeytä"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
@@ -1821,28 +2064,33 @@ msgid ""
 "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, "
 "%3$d failed (%4$s ago)."
 msgstr ""
+"Automaattinen korjaus, viimeisin täysi ajo: %1$d merkittyä tiedostoa "
+"tarkistettu, %2$d korjattu, %3$d epäonnistui (%4$s sitten)."
 
 #: admin/class-settings.php:895
 msgid "TransparAI links"
-msgstr ""
+msgstr "TransparAI-linkit"
 
 #: admin/class-settings.php:898
 msgid "Support forum"
-msgstr ""
+msgstr "Tukifoorumi"
 
 #: admin/class-setup.php:261
 msgid "Setup in three steps"
-msgstr ""
+msgstr "Käyttöönotto kolmessa vaiheessa"
 
 #: admin/class-setup.php:262
 msgid ""
 "Each step writes something real and can be taken back with the undo button. "
 "Nothing is labeled without your review, and no request leaves your server."
 msgstr ""
+"Jokainen vaihe kirjoittaa jotain todellista, ja sen voi perua kumoa-"
+"painikkeella. Mitään ei merkitä ilman tarkistustasi, eikä yksikään pyyntö "
+"lähde palvelimeltasi."
 
 #: admin/class-setup.php:266
 msgid "1. Scan the existing library"
-msgstr ""
+msgstr "1. Skannaa olemassa oleva kirjasto"
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:272
@@ -1851,83 +2099,97 @@ msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
 "strong signals wait in the review queue."
 msgstr ""
+"%1$d mediatiedostoa, joista %2$d skannattu. Selkeät ilmoitukset merkitään, "
+"vahvat signaalit odottavat tarkistusjonossa."
 
 #: admin/class-setup.php:279
 msgid "Scan now"
-msgstr ""
+msgstr "Skannaa nyt"
 
 #: admin/class-setup.php:283
 msgid "2. Choose the badge look"
-msgstr ""
+msgstr "2. Valitse merkin ulkoasu"
 
 #: admin/class-setup.php:320
 msgid "Save badge look"
-msgstr ""
+msgstr "Tallenna merkin ulkoasu"
 
 #: admin/class-setup.php:330
 msgid "3. Decide about the files"
-msgstr ""
+msgstr "3. Päätä tiedostoista"
 
 #: admin/class-setup.php:335
 msgid ""
 "Write the machine-readable declaration into labeled image files (XMP, all "
 "sizes; merged into existing metadata, removable)"
 msgstr ""
+"Kirjoita koneluettava ilmoitus merkittyihin kuvatiedostoihin (XMP, kaikki "
+"koot; yhdistetään olemassa oleviin metatietoihin, poistettavissa)"
 
 #: admin/class-setup.php:336
 msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
 msgstr ""
+"Peilaa se IPTC-IIM-muotoon niihin JPEG-tiedostoihin, joissa ei ole muuta "
+"IPTC-lohkoa"
 
 #: admin/class-setup.php:337
 msgid ""
 "Also write digitalCapture or digitalCreation for media declared as not AI-"
 "made"
 msgstr ""
+"Kirjoita digitalCapture tai digitalCreation myös mediaan, joka on ilmoitettu"
+" muuksi kuin tekoälyn tekemäksi"
 
 #: admin/class-setup.php:338
 msgid "Restore declarations that image optimizers strip (hourly sweep)"
 msgstr ""
+"Palauta ilmoitukset, jotka kuvaoptimoijat riisuvat (tunnin välein ajettava "
+"korjausajo)"
 
 #: admin/class-setup.php:340
 msgid "Save file settings"
-msgstr ""
+msgstr "Tallenna tiedostoasetukset"
 
 #: admin/class-setup.php:355
 msgid "Finish setup"
-msgstr ""
+msgstr "Päätä käyttöönotto"
 
 #. translators: %s: name of the setup step (badge or writing).
 #: admin/class-setup.php:368
 #, php-format
 msgid "Undo last step (%s)"
-msgstr ""
+msgstr "Kumoa viimeisin vaihe (%s)"
 
 #: admin/class-setup.php:369
 msgid "badge look"
-msgstr ""
+msgstr "merkin ulkoasu"
 
 #: admin/class-setup.php:369
 msgid "file settings"
-msgstr ""
+msgstr "tiedostoasetukset"
 
 #: admin/class-setup.php:381
 msgid "Not now"
-msgstr ""
+msgstr "Ei nyt"
 
 #: includes/class-compliance.php:57
 msgid "Chatbot or assistant"
-msgstr ""
+msgstr "Chatbot tai assistentti"
 
 #: includes/class-compliance.php:58
 msgid ""
 "Does your site run a chatbot or virtual assistant that talks to visitors?"
 msgstr ""
+"Onko sivustollasi chatbot tai virtuaaliassistentti, joka keskustelee "
+"kävijöiden kanssa?"
 
 #: includes/class-compliance.php:59
 msgid ""
 "Examples: a support chat answered by an AI, an assistant widget, a chat "
 "plugin with an AI mode."
 msgstr ""
+"Esimerkkejä: tukichat, jossa vastaa tekoäly, assistenttivimpain, chat-"
+"lisäosa, jossa on tekoälytila."
 
 #: includes/class-compliance.php:60
 msgid ""
@@ -1935,17 +2197,23 @@ msgid ""
 "interaction known no later than the first exchange. You deploy the system, "
 "and the notice appears on your pages, so it is set up here."
 msgstr ""
+"50 artiklan 1 kohta velvoittaa chat-järjestelmän tarjoajan kertomaan "
+"tekoälyvuorovaikutuksesta viimeistään ensimmäisessä viestinvaihdossa. Sinä "
+"otat järjestelmän käyttöön, ja huomautus näkyy sinun sivuillasi, joten se "
+"asetetaan täällä."
 
 #: includes/class-compliance.php:61
 msgid ""
 "Answer the chatbot question in the settings; the notice follows your answer."
-msgstr ""
+msgstr "Vastaa chatbot-kysymykseen asetuksissa; huomautus seuraa vastaustasi."
 
 #: includes/class-compliance.php:66
 msgid ""
 "Does your site publish text that was generated or substantially assisted by "
 "AI?"
 msgstr ""
+"Julkaiseeko sivustosi tekstiä, jonka tekoäly on luonut tai jonka tekemisessä"
+" tekoäly on ollut olennaisesti apuna?"
 
 #: includes/class-compliance.php:67
 msgid ""
@@ -1953,6 +2221,10 @@ msgid ""
 "AI-assisted copy. Answer yes even if a person edited the text afterwards; "
 "the review is recorded per post on the AI Content page."
 msgstr ""
+"Esimerkkejä: kielimallilla luonnostellut blogiartikkelit, tuotekuvaukset, "
+"tekoälyavusteiset markkinointitekstit. Vastaa kyllä myös silloin, kun "
+"ihminen on muokannut tekstiä jälkeenpäin; tarkistus kirjataan "
+"artikkelikohtaisesti Tekoälysisältö-sivulla."
 
 #: includes/class-compliance.php:68
 msgid ""
@@ -1961,26 +2233,38 @@ msgid ""
 "and someone holds editorial responsibility. Other AI-written text carries no"
 " duty under Article 50; the AI level documents your practice either way."
 msgstr ""
+"50 artiklan 4 kohta velvoittaa sinut käyttöönottajana ilmoittamaan tekoälyn "
+"kirjoittamasta tekstistä, jolla tiedotetaan yleisölle yleiseen etuun "
+"liittyvistä asioista, ellei ihminen ole tarkistanut sitä ja joku kanna "
+"toimituksellista vastuuta. Muusta tekoälyn kirjoittamasta tekstistä ei "
+"seuraa velvoitetta 50 artiklan nojalla; tekoälytaso dokumentoi käytäntösi "
+"joka tapauksessa."
 
 #: includes/class-compliance.php:69
 msgid ""
 "Set the AI level on each post (editor sidebar, Quick Edit or Bulk Edit) so "
 "the note appears."
 msgstr ""
+"Aseta tekoälytaso jokaiseen artikkeliin (editorin sivupalkki, pikamuokkaus "
+"tai massamuokkaus), jotta huomautus ilmestyy."
 
 #: includes/class-compliance.php:73
 msgid "AI-generated images and media"
-msgstr ""
+msgstr "Tekoälyn luomat kuvat ja media"
 
 #: includes/class-compliance.php:74
 msgid "Does your site use AI-generated images or other AI-generated media?"
 msgstr ""
+"Käyttääkö sivustosi tekoälyn luomia kuvia tai muuta tekoälyn luomaa mediaa?"
 
 #: includes/class-compliance.php:75
 msgid ""
 "Examples: images from ChatGPT, Gemini, Firefly, Midjourney or Stable "
 "Diffusion, AI-edited photos, whether or not they show real people or places."
 msgstr ""
+"Esimerkkejä: ChatGPT:n, Geminin, Fireflyn, Midjourneyn tai Stable "
+"Diffusionin kuvat, tekoälyllä muokatut valokuvat, riippumatta siitä, "
+"esittävätkö ne todellisia ihmisiä tai paikkoja."
 
 #: includes/class-compliance.php:76
 msgid ""
@@ -1990,28 +2274,40 @@ msgid ""
 " real people, places or events and would pass as authentic. Other AI images "
 "carry no disclosure duty of their own."
 msgstr ""
+"50 artiklan 2 kohta velvoittaa generaattorin tarjoajan merkitsemään "
+"tuotoksen koneluettavasti; lisäosa pitää tämän merkinnän tiedostoissasi. 50 "
+"artiklan 4 kohta velvoittaa sinut käyttöönottajana ilmoittamaan "
+"syväväärennöksistä: sisällöstä, joka näyttää todellisilta ihmisiltä, "
+"paikoilta tai tapahtumilta ja joka menisi aidosta. Muista tekoälykuvista ei "
+"seuraa omaa ilmoitusvelvollisuutta."
 
 #: includes/class-compliance.php:77
 msgid ""
 "Scan the media library, confirm the review queue and keep the visible badge "
 "and file metadata on."
 msgstr ""
+"Skannaa mediakirjasto, käsittele tarkistusjono ja pidä näkyvä merkki ja "
+"tiedostojen metatiedot päällä."
 
 #: includes/class-compliance.php:81
 msgid "Synthetic audio, video and deepfakes"
-msgstr ""
+msgstr "Synteettinen ääni, video ja syväväärennökset"
 
 #: includes/class-compliance.php:82
 msgid ""
 "Does your site generate or host synthetic audio, video or deepfake-style "
 "content?"
 msgstr ""
+"Luoko sivustosi synteettistä ääntä, videota tai syväväärennöksen kaltaista "
+"sisältöä tai tarjoaako se sellaista?"
 
 #: includes/class-compliance.php:83
 msgid ""
 "Examples: AI voice-overs, AI-generated video, cloned voices, digital "
 "avatars."
 msgstr ""
+"Esimerkkejä: tekoälyn puheäänet, tekoälyn luoma video, kloonatut äänet, "
+"digitaaliset avatarit."
 
 #: includes/class-compliance.php:84
 msgid ""
@@ -2019,28 +2315,37 @@ msgid ""
 "50(4) obliges you as deployer to disclose deepfakes, which a cloned voice or"
 " an avatar of a real person is; a generic synthetic voice is not."
 msgstr ""
+"50 artiklan 2 kohta velvoittaa generaattorin tarjoajan merkitsemään "
+"tuotoksen. 50 artiklan 4 kohta velvoittaa sinut käyttöönottajana "
+"ilmoittamaan syväväärennöksistä, joita kloonattu ääni tai todellisen ihmisen"
+" avatar ovat; yleinen synteettinen puheääni ei ole."
 
 #: includes/class-compliance.php:85
 msgid ""
 "Label the media in the library (video and audio are detected too) and add an"
 " explicit note on affected pages."
 msgstr ""
+"Merkitse mediatiedostot kirjastossa (myös video ja ääni tunnistetaan) ja "
+"lisää selkeä huomautus niille sivuille, joita asia koskee."
 
 #: includes/class-compliance.php:89
 msgid "Personalisation and recommendations"
-msgstr ""
+msgstr "Personointi ja suositukset"
 
 #: includes/class-compliance.php:90
 msgid ""
 "Does your site use AI for personalisation, recommendations or audience "
 "targeting?"
 msgstr ""
+"Käyttääkö sivustosi tekoälyä personointiin, suosituksiin tai kohdentamiseen?"
 
 #: includes/class-compliance.php:91
 msgid ""
 "Examples: product recommendations, personalised content, behavioural "
 "targeting."
 msgstr ""
+"Esimerkkejä: tuotesuositukset, personoitu sisältö, käyttäytymiseen perustuva"
+" kohdentaminen."
 
 #: includes/class-compliance.php:92
 msgid ""
@@ -2049,26 +2354,36 @@ msgid ""
 "online platforms and profiling have rules of their own in the Digital "
 "Services Act and the GDPR, outside the AI Act."
 msgstr ""
+"Ei velvoitetta 50 artiklan nojalla. 4 artikla koskee tätä työkalua kuten "
+"jokaista käyttöön ottamaasi tekoälyjärjestelmää, joten se kuuluu "
+"inventaarioon. Verkkoalustojen suositusjärjestelmiä ja profilointia koskevat"
+" omat sääntönsä Digital Services Actissa ja yleisessä tietosuoja-"
+"asetuksessa, tekoälyasetuksen ulkopuolella."
 
 #: includes/class-compliance.php:93
 msgid ""
 "Declare the tool on the AI Systems page and decide whether visitors are told"
 " about it."
 msgstr ""
+"Ilmoita työkalu Tekoälyjärjestelmät-sivulla ja päätä, kerrotaanko siitä "
+"kävijöille."
 
 #: includes/class-compliance.php:97
 msgid "AI translation"
-msgstr ""
+msgstr "Tekoälykäännös"
 
 #: includes/class-compliance.php:98
 msgid "Does your site use AI translation to serve content in other languages?"
 msgstr ""
+"Käyttääkö sivustosi tekoälykäännöstä tarjotakseen sisältöä muilla kielillä?"
 
 #: includes/class-compliance.php:99
 msgid ""
 "Examples: DeepL, machine-translated pages from a multilingual plugin, AI "
 "translation add-ons."
 msgstr ""
+"Esimerkkejä: DeepL, monikielisen lisäosan konekääntämät sivut, "
+"tekoälykäännöslaajennukset."
 
 #: includes/class-compliance.php:100
 msgid ""
@@ -2077,442 +2392,501 @@ msgid ""
 "under Art. 50(4), like any AI-manipulated text. Article 4 applies to the "
 "tool either way."
 msgstr ""
+"Ei omaa velvoitetta 50 artiklan nojalla. Konekäännetty teksti, jolla "
+"tiedotetaan yleisölle yleiseen etuun liittyvistä asioista ja jota kukaan ei "
+"tarkista, voi kuulua 50 artiklan 4 kohdan piiriin kuten mikä tahansa "
+"tekoälyllä muokattu teksti. 4 artikla koskee työkalua joka tapauksessa."
 
 #: includes/class-compliance.php:101
 msgid ""
 "Declare the translation tool on the AI Systems page; consider a notice on "
 "translated pages."
 msgstr ""
+"Ilmoita käännöstyökalu Tekoälyjärjestelmät-sivulla; harkitse huomautusta "
+"käännetyillä sivuilla."
 
 #: includes/class-compliance.php:120
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
 msgstr ""
+"Henkilöstö ja avustajat tietävät, mitä tekoälytyökaluja tämä sivusto käyttää"
+" ja mihin niitä käytetään"
 
 #: includes/class-compliance.php:121
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
 msgstr ""
+"Tekoälyn käyttöä koskeva sisäinen ohjeistus (mikä on sallittua, mikä vaatii "
+"tarkistuksen) on kirjattu"
 
 #: includes/class-compliance.php:122
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
 msgstr ""
+"Tekoälytyökalujen kanssa työskentelevät ovat saaneet koulutusta tai "
+"opastusta työkalujen kyvyistä ja rajoista"
 
 #: includes/class-compliance.php:123
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
+"Tekoälytyökalujen käytön, ohjeistuksen ja näiden ilmoitusten tarkistukselle "
+"on sovittu päivämäärä"
 
 #: includes/class-compliance.php:124
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
 msgstr ""
+"Jokaisen tekoälytyökalun kohdalla on otettu huomioon käyttöyhteys ja ne "
+"henkilöt, joihin se vaikuttaa (kävijät, asiakkaat), kun on päätetty, "
+"millaista opastusta henkilöstö tarvitsee"
 
 #: includes/class-compliance.php:138
 msgid "AI Act enters into force"
-msgstr ""
+msgstr "Tekoälyasetus tulee voimaan"
 
 #: includes/class-compliance.php:139
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
 msgstr ""
+"Asetus (EU) 2024/1689 on voimassa; sen velvoitteita aletaan soveltaa "
+"vaiheittain."
 
 #: includes/class-compliance.php:143
 msgid "General provisions and prohibited practices apply"
-msgstr ""
+msgstr "Yleisiä säännöksiä ja kiellettyjä käytäntöjä sovelletaan"
 
 #: includes/class-compliance.php:144
 msgid ""
 "Chapters I and II: the AI literacy duty for providers and deployers (Article"
 " 4) and the ban on prohibited AI practices (Article 5)."
 msgstr ""
+"I ja II luku: tarjoajia ja käyttöönottajia koskeva tekoälylukutaitovelvoite "
+"(4 artikla) ja kiellettyjen tekoälykäytäntöjen kielto (5 artikla)."
 
 #: includes/class-compliance.php:148
 msgid "General-purpose AI and governance rules apply"
-msgstr ""
+msgstr "Yleiskäyttöistä tekoälyä ja hallintoa koskevia sääntöjä sovelletaan"
 
 #: includes/class-compliance.php:149
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
 msgstr ""
+"Yleiskäyttöisten tekoälymallien tarjoajien velvoitteet, ilmoittamisesta "
+"vastaavat viranomaiset, hallinto ja seuraamukset (V, VII ja XII luku)."
 
 #: includes/class-compliance.php:153
 msgid "General application, including Article 50"
-msgstr ""
+msgstr "Yleinen soveltaminen, mukaan lukien 50 artikla"
 
 #: includes/class-compliance.php:154
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
 msgstr ""
+"Chatboteja, tekoälyn luomaa sisältöä ja syväväärennöksiä koskevia "
+"läpinäkyvyysvelvoitteita (50 artikla) ja useimpia jäljellä olevia säännöksiä"
+" sovelletaan."
 
 #: includes/class-compliance.php:158
 msgid "High-risk AI in regulated products"
-msgstr ""
+msgstr "Suuririskinen tekoäly säännellyissä tuotteissa"
 
 #: includes/class-compliance.php:159
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
 msgstr ""
+"Velvoitteet suuririskisille tekoälyjärjestelmille, jotka ovat liitteen I "
+"kattamien tuotteiden turvakomponentteja (6 artiklan 1 kohta)."
 
 #: includes/class-compliance.php:171
 msgid "Settings saved"
-msgstr ""
+msgstr "Asetukset tallennettu"
 
 #: includes/class-compliance.php:172
 msgid "Library scan started"
-msgstr ""
+msgstr "Kirjaston skannaus aloitettu"
 
 #: includes/class-compliance.php:173
 msgid "Library scan finished"
-msgstr ""
+msgstr "Kirjaston skannaus valmis"
 
 #: includes/class-compliance.php:174
 msgid "Auto-repair sweep finished"
-msgstr ""
+msgstr "Automaattinen korjausajo valmis"
 
 #: includes/class-compliance.php:175
 msgid "Bulk action: labeled as AI"
-msgstr ""
+msgstr "Massatoiminto: merkitty tekoälyksi"
 
 #: includes/class-compliance.php:176
 msgid "Bulk action: label removed"
-msgstr ""
+msgstr "Massatoiminto: merkintä poistettu"
 
 #: includes/class-compliance.php:177
 msgid "Bulk action: review confirmed"
-msgstr ""
+msgstr "Massatoiminto: tarkistus vahvistettu"
 
 #: includes/class-compliance.php:178
 msgid "Bulk action: review dismissed"
-msgstr ""
+msgstr "Massatoiminto: tarkistus hylätty"
 
 #: includes/class-compliance.php:179
 msgid "Bulk action: declared as camera photo"
-msgstr ""
+msgstr "Massatoiminto: ilmoitettu kameravalokuvaksi"
 
 #: includes/class-compliance.php:180
 msgid "Bulk action: declared as human work"
-msgstr ""
+msgstr "Massatoiminto: ilmoitettu ihmisen työksi"
 
 #: includes/class-compliance.php:181
 msgid "Bulk action: declaration removed"
-msgstr ""
+msgstr "Massatoiminto: ilmoitus poistettu"
 
 #: includes/class-compliance.php:182
 msgid "Setup: badge look chosen"
-msgstr ""
+msgstr "Käyttöönotto: merkin ulkoasu valittu"
 
 #: includes/class-compliance.php:183
 msgid "Setup: file writing chosen"
-msgstr ""
+msgstr "Käyttöönotto: tiedostoihin kirjoittaminen valittu"
 
 #: includes/class-compliance.php:184
 msgid "Setup: last step undone"
-msgstr ""
+msgstr "Käyttöönotto: viimeisin vaihe kumottu"
 
 #: includes/class-compliance.php:185
 msgid "Setup finished"
-msgstr ""
+msgstr "Käyttöönotto valmis"
 
 #: includes/class-compliance.php:186
 msgid "Self-assessment saved"
-msgstr ""
+msgstr "Itsearviointi tallennettu"
 
 #: includes/class-compliance.php:187
 msgid "AI literacy checklist saved"
-msgstr ""
+msgstr "Tekoälylukutaidon tarkistuslista tallennettu"
 
 #: includes/class-compliance.php:188
 msgid "AI systems scanned"
-msgstr ""
+msgstr "Tekoälyjärjestelmät skannattu"
 
 #: includes/class-compliance.php:189
 msgid "AI system declared"
-msgstr ""
+msgstr "Tekoälyjärjestelmä ilmoitettu"
 
 #: includes/class-compliance.php:190
 msgid "AI system declaration removed"
-msgstr ""
+msgstr "Tekoälyjärjestelmän ilmoitus poistettu"
 
 #: includes/class-compliance.php:191
 msgid "AI systems notice visibility changed"
-msgstr ""
+msgstr "Tekoälyjärjestelmien huomautuksen näkyvyys muuttui"
 
 #: includes/class-compliance.php:444
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
 msgstr ""
+"Tekoälyn kirjoittama teksti on ilmoitettu: joko itsearviointi kertoo, ettei "
+"sellaista julkaista, tai vähintään yhdellä artikkelilla on tekoälytaso"
 
 #: includes/class-compliance.php:447
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
 msgstr ""
+"Aseta tekoälytaso tekoälyn kirjoittamiin artikkeleihisi tai vastaa "
+"tekstikysymykseen ei."
 
 #: includes/class-compliance.php:451
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
 msgstr ""
+"Tekoälymedia on merkitty: joko itsearviointi kertoo, ettei sellaista "
+"käytetä, tai merkki on päällä, vähintään yksi tiedosto on merkitty eikä "
+"tarkistusjonossa odota mitään"
 
 #: includes/class-compliance.php:454
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
 msgstr ""
+"Skannaa kirjasto, käy tarkistusjono läpi ja pidä näkyvä merkki päällä."
 
 #: includes/class-compliance.php:458
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
 msgstr ""
+"Chatbot-kysymykseen on vastattu (kyllä tai ei), joten chat-huomautus "
+"perustuu päätökseen"
 
 #: includes/class-compliance.php:461
 msgid "Answer whether the site runs a chat and who answers in it."
-msgstr ""
+msgstr "Vastaa, onko sivustolla chat ja kuka siinä vastaa."
 
 #: includes/class-compliance.php:465
 msgid "Self-assessment and Article 4 checklist are complete"
-msgstr ""
+msgstr "Itsearviointi ja 4 artiklan tarkistuslista ovat valmiit"
 
 #: includes/class-compliance.php:468
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
+"Vastaa kuuteen kysymykseen ja rastita ne tarkistuslistan kohdat, jotka "
+"pätevät."
 
 #: includes/class-compliance.php:477
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
 msgstr ""
+"Tekoälyjärjestelmät on inventoitu: lisäosaluettelo on skannattu ja "
+"jokaisesta tunnistetusta tai ilmoitetusta järjestelmästä on tehty "
+"näkyvyyspäätös"
 
 #: includes/class-compliance.php:480
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
 msgstr ""
+"Suorita skannaus Tekoälyjärjestelmät-sivulla ja päätä, mistä järjestelmistä "
+"kävijöille kerrotaan."
 
 #: includes/class-compliance.php:514
 msgid "Good"
-msgstr ""
+msgstr "Hyvä"
 
 #: includes/class-compliance.php:515
 msgid "Needs attention"
-msgstr ""
+msgstr "Vaatii huomiota"
 
 #: includes/class-compliance.php:517
 msgid "Action required"
-msgstr ""
+msgstr "Vaatii toimenpiteitä"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr ""
+msgstr "Toimitustarkistus on pois päältä."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr ""
+msgstr "Tällä liitetiedostolla ei ole tiedostoa."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr ""
+msgstr "Tiedosto tarjoillaan toiselta palvelimelta, joten sitä ei tarkisteta."
 
 #: includes/class-delivery.php:113
 msgid ""
 "The file on disk carries no AI declaration, so there is nothing to compare."
 msgstr ""
+"Levyllä olevassa tiedostossa ei ole tekoälyilmoitusta, joten vertailtavaa ei"
+" ole."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr ""
+msgstr "Kuvaa ei voitu hakea sen julkisesta osoitteesta."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr ""
+msgstr "Vastaus ei ollut luettava kuva."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr ""
+msgstr "Ilmoitus on mukana toimitetussa tiedostossa."
 
 #: includes/class-delivery.php:151
 msgid ""
 "The delivered file carries no declaration. Something between WordPress and "
 "the visitor re-encodes the image, usually an optimizing CDN or a proxy."
 msgstr ""
+"Toimitetussa tiedostossa ei ole ilmoitusta. Jokin WordPressin ja kävijän "
+"välissä pakkaa kuvan uudelleen, yleensä optimoiva CDN tai välityspalvelin."
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr ""
+msgstr "Toimitettu ilmoitus ehjänä"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr ""
+msgstr "Toimitettu ilman ilmoitusta"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr ""
+msgstr "Ei tarkistettavaa"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr ""
+msgstr "Tarjoillaan toiselta palvelimelta"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"
-msgstr ""
+msgstr "Ei voitu hakea"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
 #: includes/class-frontend.php:215
 msgctxt "short human badge label"
 msgid "Human"
-msgstr ""
+msgstr "Ihminen"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
 #: includes/class-frontend.php:246
 msgctxt "short badge label"
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: includes/class-notice.php:136
 msgid "This text was created with the help of AI."
-msgstr ""
+msgstr "Tämä teksti on luotu tekoälyn avulla."
 
 #: includes/class-notice.php:138
 msgid "This text was generated by AI and reviewed by a person."
-msgstr ""
+msgstr "Tämä teksti on tekoälyn luoma ja ihmisen tarkistama."
 
 #: includes/class-notice.php:152
 msgid "No AI used"
-msgstr ""
+msgstr "Tekoälyä ei käytetty"
 
 #: includes/class-notice.php:153
 msgid "AI-assisted"
-msgstr ""
+msgstr "Tekoälyavusteinen"
 
 #: includes/class-notice.php:155
 msgid "AI-generated, reviewed by a person"
-msgstr ""
+msgstr "Tekoälyn luoma, ihmisen tarkistama"
 
 #: includes/class-notice.php:195
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Ohita tämä ilmoitus"
 
 #: includes/class-notice.php:198
 msgid "AI notice"
-msgstr ""
+msgstr "Tekoälyhuomautus"
 
 #: includes/class-notice.php:200
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: includes/class-notice.php:587
 msgid ""
 "Choose a file from the media library in the block settings. Only labeled "
 "files show a label."
 msgstr ""
+"Valitse tiedosto mediakirjastosta lohkon asetuksissa. Vain merkityt "
+"tiedostot näyttävät merkinnän."
 
 #: includes/class-notice.php:590
 msgid ""
 "This file carries no label, so nothing shows. Label it in the media library "
 "or choose another file."
 msgstr ""
+"Tässä tiedostossa ei ole merkintää, joten mitään ei näy. Merkitse se "
+"mediakirjastossa tai valitse toinen tiedosto."
 
 #: includes/class-notice.php:593
 msgid ""
 "No AI system is marked as visible yet, so nothing shows. Mark systems under "
 "TransparAI, AI Systems."
 msgstr ""
+"Yhtään tekoälyjärjestelmää ei ole vielä merkitty näkyväksi, joten mitään ei "
+"näy. Merkitse järjestelmiä kohdassa TransparAI, Tekoälyjärjestelmät."
 
 #: includes/class-notice.php:596
 msgid ""
 "The chatbot notice is off, so nothing shows. Answer the chatbot question in "
 "the TransparAI settings."
 msgstr ""
+"Chatbot-huomautus on pois päältä, joten mitään ei näy. Vastaa chatbot-"
+"kysymykseen TransparAI:n asetuksissa."
 
 #: includes/class-notice.php:599
 msgid ""
 "This post has no AI level yet, so the notice stays hidden. Set the level in "
 "the document sidebar under TransparAI."
 msgstr ""
+"Tällä artikkelilla ei ole vielä tekoälytasoa, joten huomautus pysyy "
+"piilossa. Aseta taso dokumentin sivupalkissa kohdassa TransparAI."
 
 #: includes/class-notice.php:628
 msgid "Style"
-msgstr ""
+msgstr "Tyyli"
 
 #: includes/class-notice.php:634
 msgid "Custom text"
-msgstr ""
+msgstr "Mukautettu teksti"
 
 #: includes/class-notice.php:635
 msgid "Leave empty to use the wording from the TransparAI settings."
-msgstr ""
+msgstr "Jätä tyhjäksi, jos haluat käyttää TransparAI:n asetusten sanamuotoa."
 
 #: includes/class-notice.php:636
 msgid "Select file"
-msgstr ""
+msgstr "Valitse tiedosto"
 
 #: includes/class-notice.php:637
 msgid "Replace file"
-msgstr ""
+msgstr "Vaihda tiedosto"
 
 #: includes/class-systems.php:53
 msgid "Text generation"
-msgstr ""
+msgstr "Tekstin luonti"
 
 #: includes/class-systems.php:54
 msgid "Image generation"
-msgstr ""
+msgstr "Kuvien luonti"
 
 #: includes/class-systems.php:55
 msgid "Chatbot"
-msgstr ""
+msgstr "Chatbot"
 
 #: includes/class-systems.php:56
 msgid "Translation"
-msgstr ""
+msgstr "Kääntäminen"
 
 #: includes/class-systems.php:57
 msgid "Personalisation"
-msgstr ""
+msgstr "Personointi"
 
 #: includes/class-systems.php:58
 msgid "SEO assistant"
-msgstr ""
+msgstr "Hakukoneoptimoinnin assistentti"
 
 #: includes/class-systems.php:59
 msgid "Search and recommendations"
-msgstr ""
+msgstr "Haku ja suositukset"
 
 #: includes/class-systems.php:60
 msgid "Audio and video"
-msgstr ""
+msgstr "Ääni ja video"
 
 #: includes/class-systems.php:61
 msgid "Editor assistant"
-msgstr ""
+msgstr "Editorin assistentti"
 
 #: includes/class-systems.php:62
 msgid "Other"
-msgstr ""
+msgstr "Muu"
 
 #. translators: %s: plugin file.
 #: includes/class-systems.php:232
 #, php-format
 msgid "plugin %s"
-msgstr ""
+msgstr "lisäosa %s"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block title"
 msgid "Chatbot AI Notice"
-msgstr ""
+msgstr "Chatbotin tekoälyhuomautus"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block description"
@@ -2522,37 +2896,41 @@ msgid ""
 "contact page or next to the chat widget. Stays hidden while the chatbot "
 "question is unanswered or no AI answers."
 msgstr ""
+"Kertoo kävijöille, että chatissa vastaa tekoäly, kuten EU AI Actin 50 "
+"artikla edellyttää, TransparAI:n asetusten sanamuodolla. Sijoita se "
+"yhteydenottosivulle tai chat-vimpaimen viereen. Pysyy piilossa, kun chatbot-"
+"kysymykseen ei ole vastattu tai kun tekoäly ei vastaa."
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chatbot"
-msgstr ""
+msgstr "chatbot"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "ai"
-msgstr ""
+msgstr "tekoäly"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "disclosure"
-msgstr ""
+msgstr "ilmoittaminen"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "eu ai act"
-msgstr ""
+msgstr "eu ai act"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chat"
-msgstr ""
+msgstr "chat"
 
 #: blocks/media-label/block.json
 msgctxt "block title"
 msgid "AI Image Label"
-msgstr ""
+msgstr "Tekoälykuvan merkintä"
 
 #: blocks/media-label/block.json
 msgctxt "block description"
@@ -2562,36 +2940,40 @@ msgid ""
 " a gallery, in a caption or next to a builder image the automatic badge does"
 " not reach. Shows only for labeled files."
 msgstr ""
+"Yhden mediakirjaston kuva-, video- tai äänitiedoston merkintä: tekoälyn "
+"luoma, generaattorin nimineen jos se tunnetaan, tai Ihmisen tekemä. Sijoita "
+"se gallerian alle, kuvatekstiin tai sivunrakentajan kuvan viereen, johon "
+"automaattinen merkki ei yllä. Näkyy vain merkityille tiedostoille."
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "ai image"
-msgstr ""
+msgstr "tekoälykuva"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "c2pa"
-msgstr ""
+msgstr "c2pa"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "content credentials"
-msgstr ""
+msgstr "content credentials"
 
 #: blocks/media-label/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "label"
-msgstr ""
+msgstr "merkintä"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "human made"
-msgstr ""
+msgstr "ihmisen tekemä"
 
 #: blocks/notice/block.json
 msgctxt "block title"
 msgid "AI Notice"
-msgstr ""
+msgstr "Tekoälyhuomautus"
 
 #: blocks/notice/block.json
 msgctxt "block description"
@@ -2601,16 +2983,20 @@ msgid ""
 "with the wording from the TransparAI settings. Shows only when the post has "
 "an AI level."
 msgstr ""
+"Ilmoitushuomautus tekoälyn kirjoittamalle tekstille, kuten EU AI Act "
+"edellyttää: lohko, tekstin sisäinen huomautus, suljettava palkki, merkki tai"
+" painike, joka avaa dialogin, TransparAI:n asetusten sanamuodolla. Näkyy "
+"vain, kun artikkelilla on tekoälytaso."
 
 #: blocks/notice/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "transparency"
-msgstr ""
+msgstr "läpinäkyvyys"
 
 #: blocks/systems-list/block.json
 msgctxt "block title"
 msgid "AI Systems List"
-msgstr ""
+msgstr "Tekoälyjärjestelmien luettelo"
 
 #: blocks/systems-list/block.json
 msgctxt "block description"
@@ -2620,31 +3006,36 @@ msgid ""
 " in sync with the registry: a system you add or hide appears or disappears "
 "on every page that carries the list."
 msgstr ""
+"Luettelo tekoälyjärjestelmistä, jotka on merkitty näkyviksi TransparAI:n "
+"rekisterissä, kukin luokkineen. Rakennuspalikka tekoälyn "
+"läpinäkyvyysselostetta varten, pysyy rekisterin mukana: lisäämäsi tai "
+"piilottamasi järjestelmä ilmestyy tai katoaa jokaiselta sivulta, jolla "
+"luettelo on."
 
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "ai systems"
-msgstr ""
+msgstr "tekoälyjärjestelmät"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "transparency statement"
-msgstr ""
+msgstr "läpinäkyvyysseloste"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "registry"
-msgstr ""
+msgstr "rekisteri"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "list"
-msgstr ""
+msgstr "luettelo"
 
 #: blocks/systems-notice/block.json
 msgctxt "block title"
 msgid "AI Systems Notice"
-msgstr ""
+msgstr "Tekoälyjärjestelmien huomautus"
 
 #: blocks/systems-notice/block.json
 msgctxt "block description"
@@ -2654,13 +3045,18 @@ msgid ""
 " imprint, the privacy policy or a transparency page. Shows only when at "
 "least one system is marked as visible."
 msgstr ""
+"Yksi lause, joka nimeää tämän sivuston käyttämät tekoälyjärjestelmät "
+"TransparAI:n rekisteristä: chatbotit, suositukset, kuvien luonti, "
+"kääntäminen. Tietoja sivustosta -sivulle, tietosuojaselosteeseen tai "
+"läpinäkyvyyssivulle. Näkyy vain, kun vähintään yksi järjestelmä on merkitty "
+"näkyväksi."
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "privacy policy"
-msgstr ""
+msgstr "tietosuojaseloste"
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "imprint"
-msgstr ""
+msgstr "tietoja sivustosta"
