@@ -120,11 +120,11 @@ msgstr "Odebrat zařazení"
 #: admin/class-dashboard.php:50 admin/class-dashboard.php:373
 #: admin/class-dashboard.php:934
 msgid "Dashboard"
-msgstr "Nástěnka"
+msgstr "Ovládací panel"
 
 #: admin/class-dashboard.php:51
 msgid "Assessment"
-msgstr "Sebehodnocení"
+msgstr "Kontrola řešení"
 
 #: admin/class-dashboard.php:52 admin/class-dashboard.php:1033
 msgid "AI Systems"
@@ -183,7 +183,7 @@ msgstr "Není právní poradenství, žádná odpovědnost"
 #: admin/class-dashboard.php:156 admin/class-dashboard.php:507
 #: admin/class-dashboard.php:577 admin/class-dashboard.php:726
 msgid "You are not allowed to do this."
-msgstr "Nemáte oprávnění provést tuto akci."
+msgstr "K této akci nemáte oprávnění."
 
 #: admin/class-dashboard.php:170
 msgid ""
@@ -268,7 +268,7 @@ msgstr ""
 #: admin/class-dashboard.php:243 admin/class-dashboard.php:247
 #: admin/class-dashboard.php:920
 msgid "Open"
-msgstr "Otevřené"
+msgstr "Otevřít"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
 #: admin/class-settings.php:707 admin/class-settings.php:726
@@ -289,7 +289,7 @@ msgstr "platí už %s"
 #: admin/class-dashboard.php:294
 #, php-format
 msgid "in %s"
-msgstr "za %s"
+msgstr "v %s"
 
 #: admin/class-dashboard.php:303
 msgid ""
@@ -302,7 +302,7 @@ msgstr ""
 #: admin/class-dashboard.php:316 admin/class-dashboard.php:1020
 #: admin/class-settings.php:778
 msgid "Recent activity"
-msgstr "Poslední aktivita"
+msgstr "Nedávná aktivita"
 
 #: admin/class-dashboard.php:318
 msgid ""
@@ -314,11 +314,11 @@ msgstr ""
 
 #: admin/class-dashboard.php:322 admin/class-settings.php:779
 msgid "When"
-msgstr "Kdy"
+msgstr "Když"
 
 #: admin/class-dashboard.php:323 admin/class-settings.php:779
 msgid "Event"
-msgstr "Událost"
+msgstr "událost"
 
 #: admin/class-dashboard.php:324
 msgid "Details"
@@ -326,7 +326,7 @@ msgstr "Podrobnosti"
 
 #: admin/class-dashboard.php:325 admin/class-settings.php:779
 msgid "By"
-msgstr "Kdo"
+msgstr "Autor"
 
 #: admin/class-dashboard.php:333 admin/class-media-library.php:408
 msgid "system"
@@ -342,7 +342,7 @@ msgstr "Otevřít úvodní nastavení"
 
 #: admin/class-dashboard.php:386
 msgid "At a glance"
-msgstr "Ve zkratce"
+msgstr "Na první pohled"
 
 #: admin/class-dashboard.php:390 admin/class-dashboard.php:960
 msgid "AI-written posts"
@@ -430,7 +430,7 @@ msgstr "Naposledy uloženo uživatelem %1$s dne %2$s."
 
 #: admin/class-dashboard.php:457 admin/class-dashboard.php:557
 msgid "unknown"
-msgstr "neznámé"
+msgstr "neznámá"
 
 #: admin/class-dashboard.php:467 admin/class-dashboard.php:493
 msgid "Your to-do list"
@@ -456,7 +456,7 @@ msgstr "Co říká AI Act"
 
 #: admin/class-dashboard.php:476
 msgid "Recommended action"
-msgstr "Doporučený krok"
+msgstr "Doporučená akce"
 
 #: admin/class-dashboard.php:489
 msgid ""
@@ -603,7 +603,7 @@ msgstr "Mezi aktivními pluginy nejsou žádní další kandidáti."
 
 #: admin/class-dashboard.php:675
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Zásuvný modul"
 
 #: admin/class-dashboard.php:693
 msgid "Declare as AI system"
@@ -648,7 +648,7 @@ msgstr ""
 
 #: admin/class-dashboard.php:776
 msgid "Post type"
-msgstr "Typ obsahu"
+msgstr "Typ příspěvku"
 
 #: admin/class-dashboard.php:777
 msgid "Open list"
@@ -767,7 +767,7 @@ msgstr "Deklarováno jako vytvořeno člověkem"
 
 #: admin/class-dashboard.php:959
 msgid "Not scanned yet"
-msgstr "Zatím neprohledáno"
+msgstr "Ještě nebylo naskenováno"
 
 #. translators: 1: scanned files, 2: files in the library.
 #: admin/class-dashboard.php:979
@@ -1017,7 +1017,7 @@ msgstr "Důkazy detekce"
 
 #: admin/class-media-library.php:404
 msgid "History"
-msgstr "Historie"
+msgstr "Dějiny"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
@@ -1168,7 +1168,7 @@ msgstr "auditní zpráva"
 
 #: admin/class-settings.php:130
 msgid "items"
-msgstr "položek"
+msgstr "položky"
 
 #: admin/class-settings.php:133
 msgid "Document hash"
@@ -1184,7 +1184,7 @@ msgstr ""
 
 #: admin/class-settings.php:135
 msgid "Basis"
-msgstr "Podklad"
+msgstr "Základní"
 
 #: admin/class-settings.php:136
 msgid "Limitations"
@@ -1213,7 +1213,7 @@ msgstr "Upozornění na chatbota"
 
 #: admin/class-settings.php:225 admin/class-settings.php:549
 msgid "Automatic detection"
-msgstr "Automatická detekce"
+msgstr "Automatické rozpoznání"
 
 #: admin/class-settings.php:226
 msgid "File metadata"
@@ -1221,11 +1221,11 @@ msgstr "Metadata souborů"
 
 #: admin/class-settings.php:227 admin/class-settings.php:651
 msgid "Uninstall"
-msgstr "Odinstalace"
+msgstr "Odinstalovat"
 
 #: admin/class-settings.php:235
 msgid "Settings saved."
-msgstr "Nastavení uloženo."
+msgstr "Nastavení bylo uloženo."
 
 #: admin/class-settings.php:247
 msgid "Settings sections"
@@ -1241,7 +1241,7 @@ msgstr "Zobrazovat u označených médií viditelný odznak ve front-endu"
 
 #: admin/class-settings.php:264
 msgid "Start date"
-msgstr "Počáteční datum"
+msgstr "Datum začátku"
 
 #: admin/class-settings.php:267
 msgid ""
@@ -1288,15 +1288,15 @@ msgstr "Překryv na obrázku"
 
 #: admin/class-settings.php:315 admin/class-setup.php:292
 msgid "Dark"
-msgstr "Tmavý"
+msgstr "Tmavá"
 
 #: admin/class-settings.php:316 admin/class-setup.php:293
 msgid "Light"
-msgstr "Světlý"
+msgstr "Světlé"
 
 #: admin/class-settings.php:317 admin/class-setup.php:294
 msgid "Outline"
-msgstr "Obrysový"
+msgstr "Osnova"
 
 #: admin/class-settings.php:318 admin/class-setup.php:295
 msgid "Icon only (short label)"
@@ -1308,11 +1308,11 @@ msgstr "Malý"
 
 #: admin/class-settings.php:326
 msgid "Medium"
-msgstr "Střední"
+msgstr "Střední velikost"
 
 #: admin/class-settings.php:327
 msgid "Large"
-msgstr "Velký"
+msgstr "Grande"
 
 #: admin/class-settings.php:334
 msgid "Extras"
@@ -1443,7 +1443,7 @@ msgstr "Modální okno (tlačítko otevře dialog)"
 
 #: admin/class-settings.php:400
 msgid "Post titles"
-msgstr "Názvy příspěvků"
+msgstr "Titulky příspěvků"
 
 #: admin/class-settings.php:403
 msgid ""
@@ -1463,7 +1463,7 @@ msgstr ""
 
 #: admin/class-settings.php:408
 msgid "Review"
-msgstr "Kontrola"
+msgstr "Přehled"
 
 #: admin/class-settings.php:410
 msgid "Name of the person responsible"
@@ -1489,7 +1489,7 @@ msgstr ""
 
 #: admin/class-settings.php:417
 msgid "New posts"
-msgstr "Nové příspěvky"
+msgstr "Nový příspěvek"
 
 #: admin/class-settings.php:422
 msgid ""
@@ -1598,7 +1598,7 @@ msgstr ""
 
 #: admin/class-settings.php:493
 msgid "Notice"
-msgstr "Upozornění"
+msgstr "Oznámení"
 
 #: admin/class-settings.php:495 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
@@ -1650,7 +1650,7 @@ msgstr "Malý odznak v rohu"
 
 #: admin/class-settings.php:538
 msgid "Notice text"
-msgstr "Text upozornění"
+msgstr "Text oznámení"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
@@ -1699,7 +1699,7 @@ msgstr "Zařadit do fronty ke kontrole"
 
 #: admin/class-settings.php:568 admin/class-settings.php:585
 msgid "Ignore"
-msgstr "Ignorovat"
+msgstr "Přeskočit"
 
 #: admin/class-settings.php:572
 msgid ""
@@ -1881,7 +1881,7 @@ msgstr "Uloženo"
 
 #: admin/class-settings.php:717
 msgid "Question"
-msgstr "Otázka"
+msgstr "Dotaz"
 
 #: admin/class-settings.php:717
 msgid "Answer"
@@ -1897,7 +1897,7 @@ msgstr "Kontrolní seznam gramotnosti v oblasti AI (článek 4)"
 
 #: admin/class-settings.php:726
 msgid "Item"
-msgstr "Položka"
+msgstr "Také"
 
 #: admin/class-settings.php:734
 msgid "None detected or declared."
@@ -1989,7 +1989,7 @@ msgstr "Mediální soubory"
 
 #: admin/class-settings.php:822
 msgid "Scanned"
-msgstr "Prohledáno"
+msgstr "Skenováno"
 
 #: admin/class-settings.php:827
 msgid "Open review queue"
@@ -2035,7 +2035,7 @@ msgstr "Prohledat vše znovu"
 
 #: admin/class-settings.php:859
 msgid "Pause"
-msgstr "Pozastavit"
+msgstr "Přestávka"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
@@ -2084,7 +2084,7 @@ msgstr ""
 
 #: admin/class-setup.php:279
 msgid "Scan now"
-msgstr "Prohledat nyní"
+msgstr "Skenovat nyní"
 
 #: admin/class-setup.php:283
 msgid "2. Choose the badge look"
@@ -2481,7 +2481,7 @@ msgstr ""
 
 #: includes/class-compliance.php:171
 msgid "Settings saved"
-msgstr "Nastavení uloženo"
+msgstr "Nastavení bylo uloženo"
 
 #: includes/class-compliance.php:172
 msgid "Library scan started"
@@ -2636,7 +2636,7 @@ msgstr ""
 
 #: includes/class-compliance.php:514
 msgid "Good"
-msgstr "Dobré"
+msgstr "Dobrý"
 
 #: includes/class-compliance.php:515
 msgid "Needs attention"
@@ -2644,7 +2644,7 @@ msgstr "Vyžaduje pozornost"
 
 #: includes/class-compliance.php:517
 msgid "Action required"
-msgstr "Nutný zásah"
+msgstr "Vyžaduje se akce"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
@@ -2714,7 +2714,7 @@ msgstr "Člověk"
 #: includes/class-frontend.php:246
 msgctxt "short badge label"
 msgid "AI"
-msgstr "AI"
+msgstr "Umělá inteligence"
 
 #: includes/class-notice.php:136
 msgid "This text was created with the help of AI."
@@ -2726,7 +2726,7 @@ msgstr "Tento text byl vygenerován AI a zkontrolován člověkem."
 
 #: includes/class-notice.php:152
 msgid "No AI used"
-msgstr "Bez použití AI"
+msgstr "Nebyla použita umělá inteligence"
 
 #: includes/class-notice.php:153
 msgid "AI-assisted"
@@ -2738,7 +2738,7 @@ msgstr "Vygenerováno AI, zkontrolováno člověkem"
 
 #: includes/class-notice.php:195
 msgid "Dismiss this notice"
-msgstr "Skrýt toto upozornění"
+msgstr "Zavřít toto oznámení"
 
 #: includes/class-notice.php:198
 msgid "AI notice"
@@ -2790,7 +2790,7 @@ msgstr ""
 
 #: includes/class-notice.php:628
 msgid "Style"
-msgstr "Styl"
+msgstr "CSS"
 
 #: includes/class-notice.php:634
 msgid "Custom text"
@@ -2846,7 +2846,7 @@ msgstr "Asistent editoru"
 
 #: includes/class-systems.php:62
 msgid "Other"
-msgstr "Ostatní"
+msgstr "Jiný"
 
 #. translators: %s: plugin file.
 #: includes/class-systems.php:232
@@ -2935,7 +2935,7 @@ msgstr "content credentials"
 #: blocks/media-label/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "label"
-msgstr "označení"
+msgstr "popisek"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
