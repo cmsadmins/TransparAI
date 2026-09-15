@@ -379,6 +379,7 @@ th{background:#f6f7f7;}
 									'before' => __( 'Ahead of the content', 'transparai' ),
 									'after'  => __( 'After the content', 'transparai' ),
 									'both'   => __( 'Ahead of and after the content', 'transparai' ),
+									'manual' => __( 'Only where a block or shortcode is placed', 'transparai' ),
 								)
 							);
 							self::select(
@@ -526,6 +527,7 @@ th{background:#f6f7f7;}
 									'footer' => __( 'Line at the end of the page', 'transparai' ),
 									'badge'  => __( 'Small badge in a corner', 'transparai' ),
 									'banner' => __( 'Banner (dismissible)', 'transparai' ),
+									'manual' => __( 'Only where a block or shortcode is placed', 'transparai' ),
 								)
 							);
 							?>

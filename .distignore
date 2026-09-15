@@ -2,6 +2,7 @@
 .distignore
 .editorconfig
 .git
+.claude
 .gitignore
 .gitattributes
 .github

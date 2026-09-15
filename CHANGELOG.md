@@ -18,6 +18,13 @@
   prefers the first bot message and falls back to the widget badge (`chatbot_output` = `chat`), and
   the AI systems visitor notice is on so that marking a system visible is one step (`systems_notice`;
   nothing prints while no system is visible). Stored settings are not changed.
+- Blocks: five server-rendered blocks, each with its own `block.json` ("AI Notice" now with all
+  five styles and several per post, "AI Image Label" with a media picker and the Human made label,
+  "AI Systems Notice", "AI Systems List" with categories, "Chatbot AI Notice"), one shared editor
+  script (`blocks/editor.js`) and one render path with the shortcode (`TransparAI_Notice::resolve()`);
+  shortcode type `chatbot`. A placed AI Notice block marks the note as placed, so block theme
+  templates no longer show it twice. New value `manual` ("only where a block or shortcode is placed")
+  for `content_notice_position` and `systems_notice_style`.
 - Admin screens: the disclaimer card sits at the end of every screen above the footer (the
   one-time "I understand" notice stays under the title); the settings page opens with the tabs,
   the library scan lives in the "Automatic detection" tab and the library counters on the

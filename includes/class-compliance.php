@@ -54,7 +54,6 @@ final class TransparAI_Compliance {
 	public static function questions(): array {
 		return array(
 			'chatbot'         => array(
-				'label'    => __( 'Chatbot or assistant', 'transparai' ),
 				'text'     => __( 'Does your site run a chatbot or virtual assistant that talks to visitors?', 'transparai' ),
 				'hint'     => __( 'Examples: a support chat answered by an AI, an assistant widget, a chat plugin with an AI mode.', 'transparai' ),
 				'duty'     => __( 'Art. 50(1) obliges the provider of the chat system to make the AI interaction known no later than the first exchange. You deploy the system, and the notice appears on your pages, so it is set up here.', 'transparai' ),
@@ -62,7 +61,6 @@ final class TransparAI_Compliance {
 				'page'     => 'transparai-settings&tab=chatbot',
 			),
 			'ai_text'         => array(
-				'label'    => __( 'AI-written text', 'transparai' ),
 				'text'     => __( 'Does your site publish text that was generated or substantially assisted by AI?', 'transparai' ),
 				'hint'     => __( 'Examples: blog posts drafted with a language model, product descriptions, AI-assisted copy. Answer yes even if a person edited the text afterwards; the review is recorded per post on the AI Content page.', 'transparai' ),
 				'duty'     => __( 'Art. 50(4) obliges you as deployer to disclose AI-written text that informs the public on matters of public interest, unless a person has reviewed it and someone holds editorial responsibility. Other AI-written text carries no duty under Article 50; the AI level documents your practice either way.', 'transparai' ),
@@ -70,7 +68,6 @@ final class TransparAI_Compliance {
 				'page'     => 'transparai-content',
 			),
 			'ai_images'       => array(
-				'label'    => __( 'AI-generated images and media', 'transparai' ),
 				'text'     => __( 'Does your site use AI-generated images or other AI-generated media?', 'transparai' ),
 				'hint'     => __( 'Examples: images from ChatGPT, Gemini, Firefly, Midjourney or Stable Diffusion, AI-edited photos, whether or not they show real people or places.', 'transparai' ),
 				'duty'     => __( 'Art. 50(2) obliges the provider of the generator to mark the output in a machine-readable way; the plugin keeps that marking in your files. Art. 50(4) obliges you as deployer to disclose deepfakes: content that looks like real people, places or events and would pass as authentic. Other AI images carry no disclosure duty of their own.', 'transparai' ),
@@ -86,7 +83,6 @@ final class TransparAI_Compliance {
 				'page'     => 'transparai-images',
 			),
 			'personalisation' => array(
-				'label'    => __( 'Personalisation and recommendations', 'transparai' ),
 				'text'     => __( 'Does your site use AI for personalisation, recommendations or audience targeting?', 'transparai' ),
 				'hint'     => __( 'Examples: product recommendations, personalised content, behavioural targeting.', 'transparai' ),
 				'duty'     => __( 'No duty under Article 50. Article 4 applies to the tool as to every AI system you deploy, so it belongs in the inventory. Recommender systems on online platforms and profiling have rules of their own in the Digital Services Act and the GDPR, outside the AI Act.', 'transparai' ),
@@ -94,12 +90,18 @@ final class TransparAI_Compliance {
 				'page'     => 'transparai-systems',
 			),
 			'translation'     => array(
-				'label'    => __( 'AI translation', 'transparai' ),
 				'text'     => __( 'Does your site use AI translation to serve content in other languages?', 'transparai' ),
 				'hint'     => __( 'Examples: DeepL, machine-translated pages from a multilingual plugin, AI translation add-ons.', 'transparai' ),
 				'duty'     => __( 'No duty of its own under Article 50. Machine-translated text that informs the public on matters of public interest and that nobody reviews can fall under Art. 50(4), like any AI-manipulated text. Article 4 applies to the tool either way.', 'transparai' ),
 				'action'   => __( 'Declare the translation tool on the AI Systems page; consider a notice on translated pages.', 'transparai' ),
 				'page'     => 'transparai-systems',
+			),
+			'synthetic_media' => array(
+				'text'     => __( 'Does your site generate or host synthetic audio, video or deepfake-style content?', 'transparai' ),
+				'hint'     => __( 'Examples: AI voice-overs, AI-generated video, cloned voices, digital avatars.', 'transparai' ),
+				'articles' => array( 'Art. 50(2)', 'Art. 50(4)' ),
+				'action'   => __( 'Label the media in the library (video and audio are detected too) and add an explicit note on affected pages.', 'transparai' ),
+				'page'     => 'transparai-images',
 			),
 		);
 	}

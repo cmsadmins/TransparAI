@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "transparai/media-label",
+	"title": "AI Image Label",
+	"category": "media",
+	"icon": "format-image",
+	"description": "The label of one image, video or audio file from the media library: AI-generated, with the generator name when known, or Human made. Place it under a gallery, in a caption or next to a builder image the automatic badge does not reach. Shows only for labeled files.",
+	"keywords": [ "ai image", "c2pa", "content credentials", "label", "human made" ],
+	"textdomain": "transparai",
+	"attributes": {
+		"id": { "type": "integer", "default": 0 },
+		"variant": { "type": "string", "default": "inline", "enum": [ "block", "inline", "banner", "badge", "modal" ] },
+		"text": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "transparai-blocks-editor"
+}

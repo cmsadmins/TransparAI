@@ -39,7 +39,7 @@ final class TransparAI_Options {
 			'badge_size'              => 'medium', /* small | medium | large. */
 			'badge_from_date'         => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
 			'badge_show_source'       => '0', /* Append detected generator name to the badge. */
-			'badge_alt_append'        => '1', /* Append note to image alt text (screen readers get the disclosure too). */
+			'badge_alt_append'        => '0', /* Append note to image alt text. */
 			'badge_guard'             => '1', /* JS: move badges that a theme overlay covers. */
 			'background_badges'       => '0', /* Experimental: label CSS background images via JS map. */
 			'page_notice'             => '0', /* Site-wide footer note on pages containing labeled media. */
@@ -48,7 +48,7 @@ final class TransparAI_Options {
 			'human_badge_text'        => '', /* Empty = translated default "Human made". */
 			/* AI-written text: per-post disclosure levels. */
 			'content_notice_text'     => '', /* Custom note for all AI levels; empty = translated default per level. */
-			'content_notice_position' => 'before', /* before | after | both. */
+			'content_notice_position' => 'before', /* before | after | both | manual (blocks and shortcode only). */
 			'content_notice_style'    => 'block', /* block | inline | banner (dismissible) | badge | modal. */
 			'content_title_badge'     => '0', /* Append a small AI badge to the post title in the loop. */
 			'feed_title_prefix'       => '0', /* Prefix feed item titles of AI-written posts with [AI]. */
@@ -56,17 +56,17 @@ final class TransparAI_Options {
 			'content_responsible'     => '', /* Default name of the person responsible for reviewed texts. */
 			'content_show_reviewer'   => '0', /* Append "reviewed by {name} on {date}" to the note. */
 			'content_excerpt_notice'  => '0', /* Also append a plain-text line to excerpts (archives, teasers). */
-			'feed_notice'             => '1', /* Plain-text note in RSS/Atom items plus dc:description; the content note skips feeds. */
+			'feed_notice'             => '0', /* Plain-text note in RSS/Atom items plus dc:description. */
 
 			/* Chatbot disclosure: the operator's answer leads, detection only informs it. */
 			'chatbot_answer'          => 'unknown', /* unknown | yes | no: does the site run a chat? */
 			'chatbot_staffing'        => 'mixed', /* ai | human | mixed: who answers in it. */
 			'chatbot_notice_text'     => '', /* Empty = translated default. */
-			'chatbot_output'          => 'chat', /* chat (first bot message, AI Engine; falls back to badge) | badge (next to the widget) | footer. */
+			'chatbot_output'          => 'badge', /* chat (first bot message, AI Engine) | badge (next to the widget) | footer. */
 
 			/* AI systems in use (bundled local registry, nothing is fetched). */
-			'systems_notice'          => '1', /* Front-end notice naming the AI systems switched to visible; prints nothing while none is. */
-			'systems_notice_style'    => 'footer', /* footer | badge | banner. */
+			'systems_notice'          => '0', /* Front-end notice naming the AI systems switched to visible. */
+			'systems_notice_style'    => 'footer', /* footer | badge | banner | manual (blocks and shortcode only). */
 			'systems_notice_text'     => '', /* Empty = translated default; %s = list of names. */
 
 			/* Automatic detection. */
@@ -145,9 +145,9 @@ final class TransparAI_Options {
 			'mode_certain'            => array( 'flag', 'queue', 'off' ),
 			'mode_likely'             => array( 'flag', 'queue', 'off' ),
 
-			'content_notice_position' => array( 'before', 'after', 'both' ),
+			'content_notice_position' => array( 'before', 'after', 'both', 'manual' ),
 			'content_notice_style'    => array( 'block', 'inline', 'banner', 'badge', 'modal' ),
-			'systems_notice_style'    => array( 'footer', 'badge', 'banner' ),
+			'systems_notice_style'    => array( 'footer', 'badge', 'banner', 'manual' ),
 			'content_default_level'   => array_merge( array( '' ), TransparAI_Meta::CONTENT_LEVELS ),
 			'chatbot_answer'          => array( 'unknown', 'yes', 'no' ),
 			'chatbot_staffing'        => array( 'ai', 'human', 'mixed' ),

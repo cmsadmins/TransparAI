@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "transparai/chatbot-notice",
+	"title": "Chatbot AI Notice",
+	"category": "text",
+	"icon": "format-chat",
+	"description": "Tells visitors that an AI answers in the chat, as Article 50 of the EU AI Act requires, with the wording from the TransparAI settings. Put it on the contact page or next to the chat widget. Stays hidden while the chatbot question is unanswered or no AI answers.",
+	"keywords": [ "chatbot", "ai", "disclosure", "eu ai act", "chat" ],
+	"textdomain": "transparai",
+	"attributes": {
+		"variant": { "type": "string", "default": "block", "enum": [ "block", "inline", "banner", "badge", "modal" ] },
+		"text": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"reusable": false
+	},
+	"editorScript": "transparai-blocks-editor"
+}

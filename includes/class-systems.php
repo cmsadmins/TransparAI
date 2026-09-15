@@ -471,7 +471,7 @@ final class TransparAI_Systems {
 	 * Front-end stylesheet when the notice will print.
 	 */
 	public static function enqueue(): void {
-		if ( array() === self::visible() ) {
+		if ( array() === self::visible() || 'manual' === TransparAI_Options::get( 'systems_notice_style' ) ) {
 			return;
 		}
 		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );

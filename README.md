@@ -63,8 +63,8 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_content_responsible`: name of the person responsible for a reviewed text (optional, falls back to the site default).
 * `_transparai_content_review`: JSON stamp written by the plugin when a post reaches the reviewed level: `{"by":display name,"by_id":user ID,"on":Y-m-d,"responsible":name,"hash":sha256}`. The hash covers title, content, featured image and every embedded attachment together with its AI label; `TransparAI_Meta::is_review_current()` tells whether it still matches. Readable in the editor, never writable through REST, and stripped down to the date for readers without `edit_post`.
 
-### Shortcode and block for the text note
-`[transparai_notice]` renders the note of the current post (`type="content"`, the default), `[transparai_notice type="media" id="123"]` the badge label of one labeled attachment. `style="inline"` gives a `span` inside running text instead of a `div`, `text="..."` overrides the wording, `id` picks another post. Both the shortcode and the "AI notice" block render only what is declared: a post without AI level or an unlabeled attachment produces nothing. When either is placed, the automatic note steps back. Filters: `transparai_notice_text` (`$text, $post_id, $level`) and `transparai_notice_html` (`$html, $args`).
+### Shortcode and blocks
+`[transparai_notice]` renders the note of the current post (`type="content"`, the default), `[transparai_notice type="media" id="123"]` the label of one attachment (AI-generated or Human made), `type="systems"` the AI systems notice and `type="chatbot"` the chatbot notice. `style` accepts `block`, `inline`, `banner`, `badge` or `modal`, `text="..."` overrides the wording, `id` picks another post or file. Five blocks cover the same ground with a live preview: "AI Notice" (`transparai/notice`), "AI Image Label" (`transparai/media-label`, with a media picker), "AI Systems Notice" (`transparai/systems-notice`), "AI Systems List" (`transparai/systems-list`, a `ul` with categories) and "Chatbot AI Notice" (`transparai/chatbot-notice`). Each block has its own `block.json` under `blocks/`, all share `blocks/editor.js` and one render path with the shortcode (`TransparAI_Notice::resolve()`). Everything renders only what is declared: a post without AI level, an unlabeled attachment, no visible system or no AI in the chat produces nothing. A placed AI Notice block marks the note as placed, so the automatic note steps back, also in block theme templates. The setting "only where a block or shortcode is placed" (`content_notice_position` and `systems_notice_style` value `manual`) switches the automatic output off entirely. Filters: `transparai_notice_text` (`$text, $post_id, $level`) and `transparai_notice_html` (`$html, $args`).
 
 ### REST API
 
@@ -141,8 +141,9 @@ add_filter( 'transparai_systems_registry', function ( array $registry ): array {
 ```
 
 The visitor notice text goes through `transparai_systems_notice` (`$text`, `$systems`).
-`[transparai_notice type="systems"]` places it by hand; `style` accepts `block`, `inline`,
-`banner`, `badge` or `modal` for every notice type.
+`[transparai_notice type="systems"]`, the "AI Systems Notice" block and the "AI Systems List" block place it
+by hand; `style` accepts `block`, `inline`, `banner`, `badge` or `modal` for every notice type, and the
+`manual` notice style keeps the automatic footer line off.
 
 ### Label markup your theme renders itself
 

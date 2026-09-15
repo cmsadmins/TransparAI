@@ -324,6 +324,12 @@ p .trai-wrap {
 	font-size: 0.85em;
 }
 
+/* AI systems list block: the theme's list, the category muted behind the name. */
+.trai-systems-list-category {
+	opacity: 0.7;
+	font-size: 0.9em;
+}
+
 /* Note styles beyond block and inline: banner (dismissible), badge (chip),
    modal (native dialog). Neutral colors only, the theme's own text color. */
 .trai-notice--banner {
