@@ -1613,3 +1613,22 @@ msgstr ""
 "sygnalizuje późniejsze edycje. Nowy blok „Informacja o AI” i shortcode "
 "<code>[transparai_notice]</code>; informacja może trafiać do zajawek i "
 "kanałów RSS (dc:description)."
+
+#. Found in changelog list item.
+msgid ""
+"The plugin name and the readme are translated for every one of those "
+"languages, so the plugin directory shows them in the reader's own language."
+msgstr ""
+"Nazwa wtyczki i README są przetłumaczone na każdy z tych języków, dzięki "
+"czemu katalog wtyczek pokazuje je w języku samego czytelnika."
+
+#. Found in changelog list item.
+msgid ""
+"Ten more languages ship with the plugin: Polish, Portuguese, Swedish, "
+"Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German "
+"variant, next to the existing German, French, Spanish, Italian and Dutch."
+msgstr ""
+"Dziesięć kolejnych języków jest dostarczanych z wtyczką: polski, "
+"portugalski, szwedzki, duński, fiński, czeski, rumuński, grecki, węgierski i"
+" formalny wariant niemieckiego, obok dotychczasowego niemieckiego, "
+"francuskiego, hiszpańskiego, włoskiego i niderlandzkiego."

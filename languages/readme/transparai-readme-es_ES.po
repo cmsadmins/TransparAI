@@ -1643,3 +1643,22 @@ msgstr ""
 " posteriores. Nuevo bloque «Aviso de IA» y shortcode "
 "<code>[transparai_notice]</code>; la nota puede ir en los extractos y en los"
 " feeds RSS (dc:description)."
+
+#. Found in changelog list item.
+msgid ""
+"The plugin name and the readme are translated for every one of those "
+"languages, so the plugin directory shows them in the reader's own language."
+msgstr ""
+"El nombre del plugin y el README están traducidos a todos esos idiomas, de "
+"modo que el directorio de plugins los muestra en el idioma del propio "
+"lector."
+
+#. Found in changelog list item.
+msgid ""
+"Ten more languages ship with the plugin: Polish, Portuguese, Swedish, "
+"Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German "
+"variant, next to the existing German, French, Spanish, Italian and Dutch."
+msgstr ""
+"Diez idiomas más se incluyen con el plugin: polaco, portugués, sueco, danés,"
+" finés, checo, rumano, griego, húngaro y una variante alemana formal, junto "
+"al alemán, francés, español, italiano y neerlandés ya existentes."

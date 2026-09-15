@@ -1587,3 +1587,22 @@ msgstr ""
 " innehållsfingeravtryck som flaggar senare redigeringar. Nytt block ”AI-"
 "notis” och kortkoden <code>[transparai_notice]</code>; notisen kan tas med i"
 " utdrag och RSS-flöden (dc:description)."
+
+#. Found in changelog list item.
+msgid ""
+"The plugin name and the readme are translated for every one of those "
+"languages, so the plugin directory shows them in the reader's own language."
+msgstr ""
+"Tilläggets namn och README-filen är översatta till vart och ett av dessa "
+"språk, så att tilläggskatalogen visar dem på läsarens eget språk."
+
+#. Found in changelog list item.
+msgid ""
+"Ten more languages ship with the plugin: Polish, Portuguese, Swedish, "
+"Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German "
+"variant, next to the existing German, French, Spanish, Italian and Dutch."
+msgstr ""
+"Tio ytterligare språk följer med tillägget: polska, portugisiska, svenska, "
+"danska, finska, tjeckiska, rumänska, grekiska, ungerska och en formell tysk "
+"variant, vid sidan av befintliga tyska, franska, spanska, italienska och "
+"nederländska."

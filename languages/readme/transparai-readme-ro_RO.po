@@ -1630,3 +1630,22 @@ msgstr ""
 "semnalează editările ulterioare. Bloc nou „Notă IA” și shortcode "
 "<code>[transparai_notice]</code>; nota poate fi inclusă în rezumate și "
 "fluxuri RSS (dc:description)."
+
+#. Found in changelog list item.
+msgid ""
+"The plugin name and the readme are translated for every one of those "
+"languages, so the plugin directory shows them in the reader's own language."
+msgstr ""
+"Numele modulului și README-ul sunt traduse în fiecare dintre aceste limbi, "
+"astfel încât directorul de module le afișează în limba cititorului."
+
+#. Found in changelog list item.
+msgid ""
+"Ten more languages ship with the plugin: Polish, Portuguese, Swedish, "
+"Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German "
+"variant, next to the existing German, French, Spanish, Italian and Dutch."
+msgstr ""
+"Zece limbi în plus sunt livrate cu modulul: polonă, portugheză, suedeză, "
+"daneză, finlandeză, cehă, română, greacă, maghiară și o variantă germană "
+"formală, alături de germana, franceza, spaniola, italiana și neerlandeza "
+"existente."

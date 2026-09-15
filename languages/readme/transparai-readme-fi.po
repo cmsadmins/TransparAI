@@ -1635,3 +1635,22 @@ msgstr ""
 "tunnisteen, joka merkitsee myöhemmät muokkaukset. Uusi "
 "\"Tekoälyhuomautus\"-lohko ja lyhytkoodi <code>[transparai_notice]</code>; "
 "huomautuksen voi viedä otteisiin ja RSS-syötteisiin (dc:description)."
+
+#. Found in changelog list item.
+msgid ""
+"The plugin name and the readme are translated for every one of those "
+"languages, so the plugin directory shows them in the reader's own language."
+msgstr ""
+"Lisäosan nimi ja README-tiedosto on käännetty jokaiselle näistä kielistä, "
+"joten lisäosahakemisto näyttää ne lukijan omalla kielellä."
+
+#. Found in changelog list item.
+msgid ""
+"Ten more languages ship with the plugin: Polish, Portuguese, Swedish, "
+"Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German "
+"variant, next to the existing German, French, Spanish, Italian and Dutch."
+msgstr ""
+"Lisäosan mukana tulee kymmenen uutta kieltä: puola, portugali, ruotsi, "
+"tanska, suomi, tšekki, romania, kreikka, unkari ja saksan teitittelevä "
+"muunnelma nykyisten saksan, ranskan, espanjan, italian ja hollannin "
+"rinnalle."
