@@ -30,6 +30,8 @@ msgid ""
 "Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track "
 "EU AI Act readiness with a score, self-assessment and compliance report."
 msgstr ""
+"Upptäck AI-bilder via C2PA och IPTC, märk AI-innehåll och chattbotar, följ "
+"EU AI Act-beredskap med poäng, självbedömning och efterlevnadsrapport."
 
 #. Author of the plugin
 #: transparai.php
@@ -43,15 +45,15 @@ msgstr "https://www.cms-admins.de/"
 
 #: admin/class-content-label.php:74 admin/class-content-label.php:166
 msgid "TransparAI"
-msgstr ""
+msgstr "TransparAI"
 
 #: admin/class-content-label.php:100 admin/class-content-label.php:167
 msgid "AI in this text"
-msgstr ""
+msgstr "AI i den här texten"
 
 #: admin/class-content-label.php:108 admin/class-content-label.php:168
 msgid "Responsible person"
-msgstr ""
+msgstr "Ansvarig person"
 
 #. translators: 1: reviewer name, 2: review date.
 #. translators: 1: name of the reviewer, 2: review date.
@@ -59,86 +61,92 @@ msgstr ""
 #: includes/class-notice.php:115
 #, php-format
 msgid "Reviewed by %1$s on %2$s."
-msgstr ""
+msgstr "Granskad av %1$s den %2$s."
 
 #: admin/class-content-label.php:123
 msgid ""
 "The text or its images changed since; save with the reviewed level again "
 "after checking."
 msgstr ""
+"Texten eller dess bilder har ändrats sedan dess; spara med den granskade "
+"nivån igen efter kontroll."
 
 #: admin/class-content-label.php:128
 msgid ""
 "AI levels show a note on the post. The wording, position, excerpt and feed "
 "options are in the TransparAI settings."
 msgstr ""
+"AI-nivåer visar en notis på inlägget. Formulering, position och alternativen"
+" för utdrag och flöden finns i TransparAI-inställningarna."
 
 #: admin/class-content-label.php:172
 msgid ""
 "AI levels show a note on the post. Wording and placement are set in the "
 "TransparAI settings."
 msgstr ""
+"AI-nivåer visar en notis på inlägget. Formulering och placering ställs in i "
+"TransparAI-inställningarna."
 
 #: admin/class-content-label.php:243 admin/class-content-label.php:376
 #: admin/class-content-label.php:406
 msgid "AI text"
-msgstr ""
+msgstr "AI-text"
 
 #: admin/class-content-label.php:269
 msgid "changed since review"
-msgstr ""
+msgstr "ändrad sedan granskningen"
 
 #: admin/class-content-label.php:314
 msgid "All AI levels"
-msgstr ""
+msgstr "Alla AI-nivåer"
 
 #: admin/class-content-label.php:315 admin/class-dashboard.php:789
 msgid "Any AI involvement"
-msgstr ""
+msgstr "All AI-inblandning"
 
 #: admin/class-content-label.php:316 admin/class-dashboard.php:793
 #: includes/class-notice.php:151
 msgid "Not classified"
-msgstr ""
+msgstr "Inte klassificerad"
 
 #: admin/class-content-label.php:408
 msgid "&mdash; No change &mdash;"
-msgstr ""
+msgstr "&mdash; Ingen ändring &mdash;"
 
 #: admin/class-content-label.php:409
 msgid "Remove classification"
-msgstr ""
+msgstr "Ta bort klassificering"
 
 #: admin/class-dashboard.php:50 admin/class-dashboard.php:373
 #: admin/class-dashboard.php:934
 msgid "Dashboard"
-msgstr ""
+msgstr "Adminpanel"
 
 #: admin/class-dashboard.php:51
 msgid "Assessment"
-msgstr ""
+msgstr "Självbedömning"
 
 #: admin/class-dashboard.php:52 admin/class-dashboard.php:1033
 msgid "AI Systems"
-msgstr ""
+msgstr "AI-system"
 
 #: admin/class-dashboard.php:53 admin/class-dashboard.php:1032
 msgid "AI Content"
-msgstr ""
+msgstr "AI-innehåll"
 
 #: admin/class-dashboard.php:54 admin/class-dashboard.php:1031
 msgid "AI Images"
-msgstr ""
+msgstr "AI-bilder"
 
 #: admin/class-dashboard.php:59 admin/class-dashboard.php:410
 #: admin/class-settings.php:178
 msgid "Settings"
-msgstr ""
+msgstr "Inställningar"
 
 #: admin/class-dashboard.php:107 admin/class-setup.php:324
 #: admin/class-setup.php:344
 msgid "Saved."
-msgstr ""
+msgstr "Sparat."
 
 #: admin/class-dashboard.php:118
 msgid ""
@@ -151,57 +159,77 @@ msgid ""
 " provided without warranty of any kind, and the author accepts no liability "
 "for its use or for decisions based on it."
 msgstr ""
+"TransparAI är ett tekniskt verktyg, inte juridisk rådgivning. Det hjälper "
+"dig att upptäcka, märka och dokumentera AI-användning på den här "
+"webbplatsen; det kan inte avgöra om din webbplats uppfyller EU AI Act eller "
+"någon annan lag. Beredskapspoängen, självbedömningen och varje notis återger"
+" tilläggets egna kontroller och dina svar, ingenting mer. Rättsliga "
+"skyldigheter beror på din situation och förblir ditt ansvar; för en juridisk"
+" bedömning, rådfråga en jurist. Tillägget tillhandahålls utan garanti av "
+"något slag, och upphovsmannen tar inget ansvar för dess användning eller för"
+" beslut som grundas på det."
 
 #: admin/class-dashboard.php:133
 msgid "Please read before you rely on anything here."
-msgstr ""
+msgstr "Läs detta innan du förlitar dig på något här."
 
 #: admin/class-dashboard.php:137
 msgid "I understand: no legal advice, no liability"
-msgstr ""
+msgstr "Jag förstår: ingen juridisk rådgivning, inget ansvar"
 
 #: admin/class-dashboard.php:145 admin/class-settings.php:132
 msgid "Not legal advice, no liability"
-msgstr ""
+msgstr "Ingen juridisk rådgivning, inget ansvar"
 
 #: admin/class-dashboard.php:156 admin/class-dashboard.php:507
 #: admin/class-dashboard.php:577 admin/class-dashboard.php:726
 msgid "You are not allowed to do this."
-msgstr ""
+msgstr "Du har inte behörighet att göra detta."
 
 #: admin/class-dashboard.php:170
 msgid ""
 "Scan the media library, then confirm or dismiss what lands in the review "
 "queue. Labeled files get the visible badge and the machine-readable marking."
 msgstr ""
+"Skanna mediabiblioteket och bekräfta eller avfärda sedan det som hamnar i "
+"granskningskön. Märkta filer får det synliga märket och den maskinläsbara "
+"märkningen."
 
 #: admin/class-dashboard.php:171
 msgid ""
 "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, "
 "Bulk Edit) so the visitor note appears."
 msgstr ""
+"Ge AI-skrivna inlägg och sidor deras AI-nivå (redigerarens sidopanel, "
+"Snabbredigera, Massredigera) så att besökarnotisen visas."
 
 #: admin/class-dashboard.php:172
 msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
 msgstr ""
+"Svara på om webbplatsen har en chatt och vem som svarar i den; "
+"chattbotnotisen följer ditt svar."
 
 #: admin/class-dashboard.php:173
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
 msgstr ""
+"Gå igenom de AI-system som tillägget hittade bland dina tillägg, deklarera "
+"andra och bestäm vilka besökarna ska informeras om."
 
 #: admin/class-dashboard.php:174
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
 msgstr ""
+"Besvara självbedömningens sex frågor och bocka av checklistan för artikel 4,"
+" exportera sedan efterlevnadsrapporten för din dokumentation."
 
 #: admin/class-dashboard.php:178
 msgid "How TransparAI works"
-msgstr ""
+msgstr "Så fungerar TransparAI"
 
 #: admin/class-dashboard.php:179
 msgid ""
@@ -212,133 +240,145 @@ msgid ""
 "what you decided. Work through the steps in this order; the readiness score "
 "above follows along."
 msgstr ""
+"EU AI Act kräver tre saker av en webbplats: besökarna måste veta när de "
+"talar med en AI, AI-genererade medier måste bära en maskinläsbar märkning, "
+"och AI-genererad text i frågor av allmänintresse måste redovisas. Det här "
+"tillägget täcker den tekniska sidan av alla tre och dokumenterar vad du har "
+"beslutat. Arbeta igenom stegen i den här ordningen; beredskapspoängen ovan "
+"följer med."
 
 #: admin/class-dashboard.php:223 admin/class-settings.php:705
 msgid "Readiness score"
-msgstr ""
+msgstr "Beredskapspoäng"
 
 #. translators: 1: met checks, 2: total checks.
 #: admin/class-dashboard.php:233 admin/class-dashboard.php:905
 #, php-format
 msgid "%1$d of %2$d checks done"
-msgstr ""
+msgstr "%1$d av %2$d kontroller klara"
 
 #: admin/class-dashboard.php:241
 msgid ""
 "The score counts the checks this plugin can perform on its own state. It is "
 "a technical self-check, not a legal assessment."
 msgstr ""
+"Poängen räknar de kontroller som tillägget kan utföra på sitt eget "
+"tillstånd. Det är en teknisk självkontroll, inte en juridisk bedömning."
 
 #: admin/class-dashboard.php:243 admin/class-dashboard.php:247
 #: admin/class-dashboard.php:920
 msgid "Open"
-msgstr ""
+msgstr "Öppen"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
 #: admin/class-settings.php:707 admin/class-settings.php:726
 msgid "Done"
-msgstr ""
+msgstr "Klar"
 
 #: admin/class-dashboard.php:276
 msgid "EU AI Act timeline"
-msgstr ""
+msgstr "Tidslinje för EU AI Act"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:291
 #, php-format
 msgid "in force for %s"
-msgstr ""
+msgstr "i kraft sedan %s"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:294
 #, php-format
 msgid "in %s"
-msgstr ""
+msgstr "om %s"
 
 #: admin/class-dashboard.php:303
 msgid ""
 "Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can"
 " move them."
 msgstr ""
+"Datum enligt förordning (EU) 2024/1689, artikel 113, i antagen lydelse. "
+"Ändringar kan flytta dem."
 
 #: admin/class-dashboard.php:316 admin/class-dashboard.php:1020
 #: admin/class-settings.php:778
 msgid "Recent activity"
-msgstr ""
+msgstr "Senaste aktivitet"
 
 #: admin/class-dashboard.php:318
 msgid ""
 "Nothing recorded yet. Scans, settings changes, bulk actions and declarations"
 " show up here."
 msgstr ""
+"Ingenting har registrerats än. Skanningar, ändrade inställningar, "
+"massåtgärder och deklarationer visas här."
 
 #: admin/class-dashboard.php:322 admin/class-settings.php:779
 msgid "When"
-msgstr ""
+msgstr "När"
 
 #: admin/class-dashboard.php:323 admin/class-settings.php:779
 msgid "Event"
-msgstr ""
+msgstr "Händelse"
 
 #: admin/class-dashboard.php:324
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: admin/class-dashboard.php:325 admin/class-settings.php:779
 msgid "By"
-msgstr ""
+msgstr "Av"
 
 #: admin/class-dashboard.php:333 admin/class-media-library.php:408
 msgid "system"
-msgstr ""
+msgstr "system"
 
 #: admin/class-dashboard.php:377
 msgid "The first-run setup is not finished yet."
-msgstr ""
+msgstr "Startguiden är inte klar än."
 
 #: admin/class-dashboard.php:378 admin/class-settings.php:832
 msgid "Open setup"
-msgstr ""
+msgstr "Öppna startguiden"
 
 #: admin/class-dashboard.php:386
 msgid "At a glance"
-msgstr ""
+msgstr "Snabbtitt"
 
 #: admin/class-dashboard.php:390 admin/class-dashboard.php:960
 msgid "AI-written posts"
-msgstr ""
+msgstr "AI-skrivna inlägg"
 
 #: admin/class-dashboard.php:394
 msgid "Labeled media"
-msgstr ""
+msgstr "Märkta medier"
 
 #: admin/class-dashboard.php:398 admin/class-dashboard.php:957
 #: admin/class-settings.php:818
 msgid "Waiting for review"
-msgstr ""
+msgstr "Väntar på granskning"
 
 #: admin/class-dashboard.php:402 admin/class-dashboard.php:961
 #: admin/class-settings.php:224
 msgid "AI systems"
-msgstr ""
+msgstr "AI-system"
 
 #: admin/class-dashboard.php:406 admin/class-dashboard.php:432
 #: admin/class-dashboard.php:935 admin/class-settings.php:713
 msgid "Self-assessment"
-msgstr ""
+msgstr "Självbedömning"
 
 #: admin/class-dashboard.php:407
 msgid "AI literacy checklist"
-msgstr ""
+msgstr "Checklista för AI-kunnighet"
 
 #: admin/class-dashboard.php:408 admin/class-dashboard.php:566
 #: admin/class-dashboard.php:936
 msgid "Compliance report"
-msgstr ""
+msgstr "Efterlevnadsrapport"
 
 #: admin/class-dashboard.php:409 admin/class-settings.php:829
 msgid "Export audit CSV"
-msgstr ""
+msgstr "Exportera revisions-CSV"
 
 #: admin/class-dashboard.php:435
 msgid ""
@@ -351,40 +391,52 @@ msgid ""
 "asks and of whom, and which plugin page handles it; complete answers count "
 "toward the readiness score and are printed in the compliance report."
 msgstr ""
+"Vilka transparenskrav i EU AI Act som gäller för en webbplats beror på hur "
+"den faktiskt använder AI: en webbplats utan chattbot har ingenting att "
+"upplysa om när det gäller chattbotar, en webbplats som publicerar AI-skrivna"
+" artiklar har det. Besvara de sex frågorna med Ja eller Nej utifrån hur det "
+"ser ut i dag; exemplen under varje fråga visar vad som räknas, och om du är "
+"osäker, fråga de personer som tar fram innehållet. Resultatet nedan anger "
+"för varje bekräftad användning vad AI-förordningen kräver och av vem, och "
+"vilken sida i tillägget som hanterar den; fullständiga svar räknas in i "
+"beredskapspoängen och skrivs ut i efterlevnadsrapporten."
 
 #: admin/class-dashboard.php:436
 msgid ""
 "Stored on this site only, nothing is sent anywhere. Come back and update the"
 " answers whenever the site starts or stops using AI in one of these ways."
 msgstr ""
+"Lagras endast på den här webbplatsen, ingenting skickas någonstans. Kom "
+"tillbaka och uppdatera svaren när webbplatsen börjar eller slutar använda AI"
+" på något av dessa sätt."
 
 #: admin/class-dashboard.php:444 admin/class-settings.php:475
 #: admin/class-settings.php:701
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: admin/class-dashboard.php:445 admin/class-settings.php:476
 #: admin/class-settings.php:702
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: admin/class-dashboard.php:448
 msgid "Save answers"
-msgstr ""
+msgstr "Spara svar"
 
 #. translators: 1: name, 2: date.
 #: admin/class-dashboard.php:456 admin/class-dashboard.php:556
 #, php-format
 msgid "Last saved by %1$s on %2$s."
-msgstr ""
+msgstr "Senast sparat av %1$s den %2$s."
 
 #: admin/class-dashboard.php:457 admin/class-dashboard.php:557
 msgid "unknown"
-msgstr ""
+msgstr "okänd"
 
 #: admin/class-dashboard.php:467 admin/class-dashboard.php:493
 msgid "Your to-do list"
-msgstr ""
+msgstr "Din att göra-lista"
 
 #: admin/class-dashboard.php:470
 msgid ""
@@ -392,18 +444,21 @@ msgid ""
 "starts using AI; the Article 4 checklist below still documents your "
 "awareness."
 msgstr ""
+"Du svarade nej på alla frågor. Håll svaren aktuella när webbplatsen börjar "
+"använda AI; checklistan för artikel 4 nedan dokumenterar ändå din "
+"medvetenhet."
 
 #: admin/class-dashboard.php:474
 msgid "Use of AI"
-msgstr ""
+msgstr "Användning av AI"
 
 #: admin/class-dashboard.php:475 admin/class-settings.php:717
 msgid "What the AI Act says"
-msgstr ""
+msgstr "Vad AI-förordningen säger"
 
 #: admin/class-dashboard.php:476
 msgid "Recommended action"
-msgstr ""
+msgstr "Rekommenderad åtgärd"
 
 #: admin/class-dashboard.php:489
 msgid ""
@@ -411,6 +466,10 @@ msgid ""
 " it under their own authority; a website operator is usually the deployer. "
 "This overview is a technical aid, not legal advice."
 msgstr ""
+"Leverantör är den som har byggt eller tränat AI-systemet, tillhandahållare "
+"är den som använder det under eget ansvar; en webbplatsoperatör är oftast "
+"tillhandahållare. Den här översikten är ett tekniskt hjälpmedel, inte "
+"juridisk rådgivning."
 
 #: admin/class-dashboard.php:494
 msgid ""
@@ -418,10 +477,13 @@ msgid ""
 "every use you confirmed it says what the AI Act asks and of whom, and which "
 "plugin page handles it."
 msgstr ""
+"Den här översikten visas när alla sex frågor är besvarade och sparade. För "
+"varje användning du har bekräftat anges vad AI-förordningen kräver och av "
+"vem, och vilken sida i tillägget som hanterar den."
 
 #: admin/class-dashboard.php:526
 msgid "AI literacy (Article 4)"
-msgstr ""
+msgstr "AI-kunnighet (artikel 4)"
 
 #: admin/class-dashboard.php:527
 msgid ""
@@ -434,27 +496,38 @@ msgid ""
 "readiness score and appears in the compliance report with the name and date "
 "of the last save."
 msgstr ""
+"Artikel 4 gäller sedan den 2 februari 2025 för varje leverantör och "
+"tillhandahållare, oavsett vad du har svarat ovan: du vidtar åtgärder, så "
+"långt du kan, för att de personer som driver eller använder AI-system för "
+"din räkning ska ha en tillräcklig nivå av AI-kunnighet, med hänsyn till "
+"deras bakgrund och användningssammanhanget. Förordningen föreskriver ingen "
+"särskild utbildning och inget certifikat; den här checklistan registrerar de"
+" åtgärder som vanligtvis fungerar som bevis. Den räknas in i "
+"beredskapspoängen och visas i efterlevnadsrapporten med namn och datum för "
+"den senaste sparningen."
 
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:533
 #, php-format
 msgid "%1$d of %2$d done"
-msgstr ""
+msgstr "%1$d av %2$d klara"
 
 #: admin/class-dashboard.php:548
 msgid "Save checklist"
-msgstr ""
+msgstr "Spara checklista"
 
 #: admin/class-dashboard.php:564
 msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
 msgstr ""
+"Båda delarna av den här skärmen hamnar i efterlevnadsrapporten, det dokument"
+" du behåller för din dokumentation eller lämnar till den som frågar."
 
 #: admin/class-dashboard.php:602 admin/class-settings.php:513
 #: admin/class-settings.php:732
 msgid "AI systems in use"
-msgstr ""
+msgstr "AI-system som används"
 
 #: admin/class-dashboard.php:605
 msgid ""
@@ -463,97 +536,106 @@ msgid ""
 "fetched. Tick the systems visitors should be told about; the notice itself "
 "is switched on under Settings, AI systems."
 msgstr ""
+"Installerade tillägg matchas mot en lista över kända AI-verktyg som följer "
+"med det här tillägget; chattbotar där en AI svarar ingår. Ingenting hämtas. "
+"Bocka för de system som besökarna ska informeras om; själva notisen slås på "
+"under Inställningar, AI-system."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:610
 #, php-format
 msgid "Last scan %s ago."
-msgstr ""
+msgstr "Senaste skanningen för %s sedan."
 
 #: admin/class-dashboard.php:614
 msgid "The visitor notice is currently off."
-msgstr ""
+msgstr "Besökarnotisen är för närvarande avstängd."
 
 #: admin/class-dashboard.php:622
 msgid "No AI system detected or declared yet."
-msgstr ""
+msgstr "Inget AI-system har upptäckts eller deklarerats än."
 
 #: admin/class-dashboard.php:626
 msgid "Visible"
-msgstr ""
+msgstr "Synligt"
 
 #: admin/class-dashboard.php:627 admin/class-settings.php:736
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: admin/class-dashboard.php:628 admin/class-dashboard.php:676
 #: admin/class-settings.php:736
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 #: admin/class-dashboard.php:629 admin/class-settings.php:736
 msgid "Articles"
-msgstr ""
+msgstr "Artiklar"
 
 #: admin/class-dashboard.php:630
 msgid "Found via"
-msgstr ""
+msgstr "Hittat via"
 
 #: admin/class-dashboard.php:649 includes/class-notice.php:638
 msgid "Remove"
-msgstr ""
+msgstr "Ta bort"
 
 #: admin/class-dashboard.php:659
 msgid "Save visibility"
-msgstr ""
+msgstr "Spara synlighet"
 
 #: admin/class-dashboard.php:661
 msgid "Scan installed plugins again"
-msgstr ""
+msgstr "Skanna installerade tillägg igen"
 
 #: admin/class-dashboard.php:668
 msgid "Possibly AI"
-msgstr ""
+msgstr "Möjligen AI"
 
 #: admin/class-dashboard.php:669
 msgid ""
 "Active plugins the list does not know whose name or description mentions AI."
 " Suggestions only: declare what really is an AI system, ignore the rest."
 msgstr ""
+"Aktiva tillägg som listan inte känner till och vars namn eller beskrivning "
+"nämner AI. Endast förslag: deklarera det som verkligen är ett AI-system, "
+"ignorera resten."
 
 #: admin/class-dashboard.php:671
 msgid "No further candidates among the active plugins."
-msgstr ""
+msgstr "Inga fler kandidater bland de aktiva tilläggen."
 
 #: admin/class-dashboard.php:675
 msgid "Plugin"
-msgstr ""
+msgstr "Tillägg"
 
 #: admin/class-dashboard.php:693
 msgid "Declare as AI system"
-msgstr ""
+msgstr "Deklarera som AI-system"
 
 #: admin/class-dashboard.php:703
 msgid "Declare another system"
-msgstr ""
+msgstr "Deklarera ett annat system"
 
 #: admin/class-dashboard.php:704
 msgid ""
 "For tools that are not WordPress plugins: an external service, a script, an "
 "API your theme calls."
 msgstr ""
+"För verktyg som inte är WordPress-tillägg: en extern tjänst, ett skript, ett"
+" API som ditt tema anropar."
 
 #: admin/class-dashboard.php:708
 msgid "Name of the system"
-msgstr ""
+msgstr "Systemets namn"
 
 #: admin/class-dashboard.php:714
 msgid "Declare"
-msgstr ""
+msgstr "Deklarera"
 
 #: admin/class-dashboard.php:762 admin/class-settings.php:762
 msgid "AI-written content"
-msgstr ""
+msgstr "AI-skrivet innehåll"
 
 #: admin/class-dashboard.php:765
 msgid ""
@@ -562,14 +644,19 @@ msgid ""
 "posts at once in Bulk Edit; the lists below are the regular post lists "
 "filtered by level, with the same Quick Edit and Bulk Edit tools."
 msgstr ""
+"Varje inlägg, sida och offentlig egen innehållstyp bär en AI-nivå för sin "
+"text. Nivån ställs in i redigerarens sidopanel, i Snabbredigera eller för "
+"många inlägg samtidigt i Massredigera; listorna nedan är de vanliga "
+"inläggslistorna filtrerade på nivå, med samma verktyg för Snabbredigera och "
+"Massredigera."
 
 #: admin/class-dashboard.php:776
 msgid "Post type"
-msgstr ""
+msgstr "Inläggstyp"
 
 #: admin/class-dashboard.php:777
 msgid "Open list"
-msgstr ""
+msgstr "Öppna listan"
 
 #: admin/class-dashboard.php:799
 msgid ""
@@ -577,18 +664,22 @@ msgid ""
 "set the AI level to \"No AI used\" or clear it. The note wording, position "
 "and style live under Settings, AI-written text."
 msgstr ""
+"För att ta bort märkningen från många inlägg samtidigt markerar du dem i "
+"listan, väljer Massredigera och sätter AI-nivån till ”Ingen AI används” "
+"eller tömmer den. Notisens formulering, position och stil finns under "
+"Inställningar, AI-skriven text."
 
 #: admin/class-dashboard.php:801
 msgid "Text settings"
-msgstr ""
+msgstr "Textinställningar"
 
 #: admin/class-dashboard.php:832
 msgid "AI images and media"
-msgstr ""
+msgstr "AI-bilder och medier"
 
 #: admin/class-dashboard.php:837
 msgid "Media lists"
-msgstr ""
+msgstr "Medielistor"
 
 #: admin/class-dashboard.php:838
 msgid ""
@@ -596,27 +687,30 @@ msgid ""
 "actions (label, unlabel, confirm, dismiss, declare as camera photo or human "
 "work)."
 msgstr ""
+"Mediabibliotekets listvy har AI-kolumnen, filtret och massåtgärderna (märk, "
+"ta bort märkning, bekräfta, avfärda, deklarera som kamerafoto eller "
+"mänskligt arbete)."
 
 #: admin/class-dashboard.php:840 admin/class-dashboard.php:956
 #: admin/class-settings.php:814
 msgid "Labeled as AI"
-msgstr ""
+msgstr "Märkta som AI"
 
 #: admin/class-dashboard.php:841
 msgid "Review queue"
-msgstr ""
+msgstr "Granskningskö"
 
 #: admin/class-dashboard.php:842
 msgid "Declared as not AI"
-msgstr ""
+msgstr "Deklarerade som inte AI"
 
 #: admin/class-dashboard.php:843
 msgid "Unlabeled"
-msgstr ""
+msgstr "Omärkta"
 
 #: admin/class-dashboard.php:844
 msgid "Badge settings"
-msgstr ""
+msgstr "Märkesinställningar"
 
 #. translators: %d: number of dismissed files.
 #: admin/class-dashboard.php:851
@@ -628,62 +722,70 @@ msgid_plural ""
 "%d files were dismissed from the review queue and stay unlabeled until you "
 "decide otherwise."
 msgstr[0] ""
+"%d fil avfärdades från granskningskön och förblir omärkt tills du bestämmer "
+"annat."
 msgstr[1] ""
+"%d filer avfärdades från granskningskön och förblir omärkta tills du "
+"bestämmer annat."
 
 #: admin/class-dashboard.php:876
 msgid "TransparAI: Readiness"
-msgstr ""
+msgstr "TransparAI: Beredskap"
 
 #: admin/class-dashboard.php:877
 msgid "TransparAI: Numbers"
-msgstr ""
+msgstr "TransparAI: Siffror"
 
 #: admin/class-dashboard.php:914
 msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
 msgstr ""
+"Alla kontroller som tillägget kan utföra är klara. Håll svaren aktuella när "
+"webbplatsen börjar eller slutar använda AI."
 
 #: admin/class-dashboard.php:916
 msgid "Still open"
-msgstr ""
+msgstr "Fortfarande öppna"
 
 #: admin/class-dashboard.php:928
 msgid "In force"
-msgstr ""
+msgstr "I kraft"
 
 #: admin/class-dashboard.php:928
 msgid "Next deadline"
-msgstr ""
+msgstr "Nästa tidsfrist"
 
 #: admin/class-dashboard.php:938
 msgid ""
 "Technical self-check of the plugin state. Not legal advice, no liability."
 msgstr ""
+"Teknisk självkontroll av tilläggets tillstånd. Ingen juridisk rådgivning, "
+"inget ansvar."
 
 #: admin/class-dashboard.php:958
 msgid "Declared human-made"
-msgstr ""
+msgstr "Deklarerade som skapade av människa"
 
 #: admin/class-dashboard.php:959
 msgid "Not scanned yet"
-msgstr ""
+msgstr "Inte skannade än"
 
 #. translators: 1: scanned files, 2: files in the library.
 #: admin/class-dashboard.php:979
 #, php-format
 msgid "Library: %1$s of %2$s files scanned."
-msgstr ""
+msgstr "Bibliotek: %1$s av %2$s filer skannade."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:987
 #, php-format
 msgid "Last scan finished %s ago."
-msgstr ""
+msgstr "Senaste skanningen slutfördes för %s sedan."
 
 #: admin/class-dashboard.php:989
 msgid "No scan has finished yet."
-msgstr ""
+msgstr "Ingen skanning har slutförts än."
 
 #. translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated
 #. and reviewed posts.
@@ -692,160 +794,170 @@ msgstr ""
 msgid ""
 "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
 msgstr ""
+"Texter: %1$s AI-assisterade, %2$s AI-genererade, %3$s genererade och "
+"granskade."
 
 #. translators: 1: systems visitors are told about, 2: inventoried systems.
 #: admin/class-dashboard.php:1011
 #, php-format
 msgid "Systems: %1$s of %2$s shown to visitors."
-msgstr ""
+msgstr "System: %1$s av %2$s visas för besökare."
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1066
 #, php-format
 msgid "since %1$s (%2$s)"
-msgstr ""
+msgstr "sedan %1$s (%2$s)"
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1069
 #, php-format
 msgid "%1$s (in %2$s)"
-msgstr ""
+msgstr "%1$s (om %2$s)"
 
 #: admin/class-media-library.php:74
 msgid "Media is AI-generated"
-msgstr ""
+msgstr "Mediet är AI-genererat"
 
 #: admin/class-media-library.php:84 admin/class-media-library.php:377
 msgid "no declaration"
-msgstr ""
+msgstr "ingen deklaration"
 
 #: admin/class-media-library.php:85
 msgid "camera photo (digitalCapture)"
-msgstr ""
+msgstr "kamerafoto (digitalCapture)"
 
 #: admin/class-media-library.php:86
 msgid "human digital work (digitalCreation)"
-msgstr ""
+msgstr "mänskligt digitalt arbete (digitalCreation)"
 
 #: admin/class-media-library.php:88
 msgid "Not AI:"
-msgstr ""
+msgstr "Inte AI:"
 
 #: admin/class-media-library.php:97
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
 msgstr ""
+"Filens metadata kunde inte uppdateras (filen är inte skrivbar). "
+"Märkningsstatusen i WordPress och metadata inuti filen kan skilja sig åt."
 
 #: admin/class-media-library.php:103
 msgid "Confirm AI label"
-msgstr ""
+msgstr "Bekräfta AI-märkning"
 
 #: admin/class-media-library.php:104
 msgid "Not AI, dismiss"
-msgstr ""
+msgstr "Inte AI, avfärda"
 
 #: admin/class-media-library.php:109
 msgid "Re-check file metadata"
-msgstr ""
+msgstr "Kontrollera filens metadata igen"
 
 #: admin/class-media-library.php:114
 msgid "Check delivery"
-msgstr ""
+msgstr "Kontrollera leveransen"
 
 #: admin/class-media-library.php:124 admin/class-media-library.php:496
 msgid "Show file metadata"
-msgstr ""
+msgstr "Visa filens metadata"
 
 #: admin/class-media-library.php:127
 msgid "AI content"
-msgstr ""
+msgstr "AI-innehåll"
 
 #: admin/class-media-library.php:130
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
 msgstr ""
+"Styr märket i frontend, den maskinläsbara filmetadatan och filtret i "
+"mediabiblioteket."
 
 #: admin/class-media-library.php:136
 msgid "Default (site setting)"
-msgstr ""
+msgstr "Standard (webbplatsens inställning)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
 #: admin/class-setup.php:306
 msgid "Top left"
-msgstr ""
+msgstr "Uppe till vänster"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
 #: admin/class-setup.php:307
 msgid "Top right"
-msgstr ""
+msgstr "Uppe till höger"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
 #: admin/class-setup.php:308
 msgid "Bottom left"
-msgstr ""
+msgstr "Nere till vänster"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
 #: admin/class-setup.php:309
 msgid "Bottom right"
-msgstr ""
+msgstr "Nere till höger"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
 #: admin/class-setup.php:318
 msgid "Caption line below the image"
-msgstr ""
+msgstr "Bildtextrad under bilden"
 
 #: admin/class-media-library.php:142
 msgid "Hide the visible badge on this image"
-msgstr ""
+msgstr "Dölj det synliga märket på den här bilden"
 
 #: admin/class-media-library.php:151
 msgid "Badge position"
-msgstr ""
+msgstr "Märkets position"
 
 #: admin/class-media-library.php:154
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
+"Gäller bara den här bilden. Använd det om ett temaöverlägg täcker märket "
+"här."
 
 #: admin/class-media-library.php:158
 msgid "AI generator"
-msgstr ""
+msgstr "AI-generator"
 
 #: admin/class-media-library.php:162
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
 msgstr ""
+"Namnet på AI-verktyget, t.ex. ”Midjourney”. Visas av märkets källalternativ "
+"och platshållaren {generator}."
 
 #: admin/class-media-library.php:182
 msgid "certain"
-msgstr ""
+msgstr "säker"
 
 #: admin/class-media-library.php:183
 msgid "likely"
-msgstr ""
+msgstr "sannolik"
 
 #: admin/class-media-library.php:184
 msgid "hint"
-msgstr ""
+msgstr "indikation"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
 #: admin/class-setup.php:194 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
-msgstr ""
+msgstr "Du har inte behörighet att göra det."
 
 #: admin/class-media-library.php:293 includes/class-rest.php:243
 msgid "Unknown action."
-msgstr ""
+msgstr "Okänd åtgärd."
 
 #: admin/class-media-library.php:334 includes/class-delivery.php:73
 #: includes/class-scanner.php:313
 msgid "Invalid attachment."
-msgstr ""
+msgstr "Ogiltig bilaga."
 
 #. translators: %s: IPTC digital source type token.
 #: admin/class-media-library.php:358
@@ -854,124 +966,132 @@ msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
 "into files that carry no other digital source type."
 msgstr ""
+"Den här bilagan är deklarerad som inte AI-skapad (%s). Deklarationen skrivs "
+"in i filer som inte bär någon annan digital källtyp."
 
 #: admin/class-media-library.php:360
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
 msgstr ""
+"Den här bilagan är märkt som AI-genererad, så varje fil nedan bör bära "
+"deklarationen."
 
 #: admin/class-media-library.php:361
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
 msgstr ""
+"Den här bilagan är inte märkt som AI-genererad. Ingenting skrivs in i dess "
+"filer, och ingen deklaration förväntas nedan."
 
 #: admin/class-media-library.php:365
 msgid "Files"
-msgstr ""
+msgstr "Filer"
 
 #: admin/class-media-library.php:368
 msgid "format cannot carry the declaration"
-msgstr ""
+msgstr "formatet kan inte bära deklarationen"
 
 #: admin/class-media-library.php:371
 msgid "declaration present"
-msgstr ""
+msgstr "deklaration finns"
 
 #: admin/class-media-library.php:374
 msgid "declaration missing"
-msgstr ""
+msgstr "deklaration saknas"
 
 #: admin/class-media-library.php:384
 msgid "No readable file found for this attachment."
-msgstr ""
+msgstr "Ingen läsbar fil hittades för den här bilagan."
 
 #: admin/class-media-library.php:388
 msgid "Digital source type in the main file"
-msgstr ""
+msgstr "Digital källtyp i huvudfilen"
 
 #: admin/class-media-library.php:390
 msgid "None declared."
-msgstr ""
+msgstr "Ingen deklarerad."
 
 #: admin/class-media-library.php:398
 msgid "Detection evidence"
-msgstr ""
+msgstr "Detekteringsbevis"
 
 #: admin/class-media-library.php:404
 msgid "History"
-msgstr ""
+msgstr "Historik"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
 #: admin/class-media-library.php:417
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "från %s"
 
 #: admin/class-media-library.php:430
 msgid "XMP packet of the main file"
-msgstr ""
+msgstr "Huvudfilens XMP-paket"
 
 #: admin/class-media-library.php:432
 msgid "This file carries no XMP block."
-msgstr ""
+msgstr "Den här filen bär inget XMP-block."
 
 #: admin/class-media-library.php:485 admin/class-media-library.php:551
 msgid "AI status: all"
-msgstr ""
+msgstr "AI-status: alla"
 
 #: admin/class-media-library.php:486 admin/class-media-library.php:552
 msgid "Only AI-labeled"
-msgstr ""
+msgstr "Endast AI-märkta"
 
 #: admin/class-media-library.php:487 admin/class-media-library.php:536
 #: admin/class-media-library.php:553
 msgid "Detected, needs review"
-msgstr ""
+msgstr "Upptäckta, behöver granskas"
 
 #: admin/class-media-library.php:488 admin/class-media-library.php:555
 msgid "Without AI label"
-msgstr ""
+msgstr "Utan AI-märkning"
 
 #: admin/class-media-library.php:489 admin/class-media-library.php:554
 msgid "Declared not AI (camera, human work)"
-msgstr ""
+msgstr "Deklarerade som inte AI (kamera, mänskligt arbete)"
 
 #: admin/class-media-library.php:490 admin/class-media-library.php:596
 msgid "Mark as AI-generated"
-msgstr ""
+msgstr "Märk som AI-genererad"
 
 #: admin/class-media-library.php:491 admin/class-media-library.php:597
 msgid "Remove AI label"
-msgstr ""
+msgstr "Ta bort AI-märkning"
 
 #: admin/class-media-library.php:492
 msgid "Please select media first."
-msgstr ""
+msgstr "Välj media först."
 
 #: admin/class-media-library.php:493
 msgid "Updating the AI label failed."
-msgstr ""
+msgstr "Det gick inte att uppdatera AI-märkningen."
 
 #: admin/class-media-library.php:494
 msgid "Result"
-msgstr ""
+msgstr "Resultat"
 
 #: admin/class-media-library.php:495
 msgid "No AI provenance signals found in the file."
-msgstr ""
+msgstr "Inga signaler om AI-ursprung hittades i filen."
 
 #: admin/class-media-library.php:497
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
 msgstr ""
+"Märkningen sattes, men metadata kunde inte skrivas in i filen. Kontrollera "
+"skrivrättigheterna för uppladdningskatalogen."
 
 #: admin/class-media-library.php:498
 msgid "Hide file metadata"
-msgstr ""
+msgstr "Dölj filens metadata"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
@@ -981,6 +1101,8 @@ msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
 "comparable."
 msgstr ""
+"%1$d kontrollerade: %2$d levererade med deklarationen, %3$d utan, %4$d inte "
+"jämförbara."
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
@@ -990,133 +1112,137 @@ msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
 "(already decided)."
 msgstr ""
+"%1$d skannade, %2$d automatiskt märkta, %3$d köade för granskning, %4$d "
+"överhoppade (redan beslutade)."
 
 #: admin/class-media-library.php:503
 msgid "Scan complete."
-msgstr ""
+msgstr "Skanningen är klar."
 
 #: admin/class-media-library.php:504
 msgid "Scan request failed. You can restart to continue."
-msgstr ""
+msgstr "Skanningsbegäran misslyckades. Du kan starta om för att fortsätta."
 
 #: admin/class-media-library.php:515 includes/class-notice.php:305
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: admin/class-media-library.php:598
 msgid "Confirm detected AI label"
-msgstr ""
+msgstr "Bekräfta upptäckt AI-märkning"
 
 #: admin/class-media-library.php:599
 msgid "Dismiss detected AI label"
-msgstr ""
+msgstr "Avfärda upptäckt AI-märkning"
 
 #: admin/class-media-library.php:600
 msgid "Declare as camera photo (not AI)"
-msgstr ""
+msgstr "Deklarera som kamerafoto (inte AI)"
 
 #: admin/class-media-library.php:601
 msgid "Declare as human work (not AI)"
-msgstr ""
+msgstr "Deklarera som mänskligt arbete (inte AI)"
 
 #: admin/class-media-library.php:602
 msgid "Remove \"not AI\" declaration"
-msgstr ""
+msgstr "Ta bort deklarationen ”inte AI”"
 
 #. translators: %d: number of updated media files.
 #: admin/class-media-library.php:644
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "AI-märkningen uppdaterades för %d mediefil."
+msgstr[1] "AI-märkningen uppdaterades för %d mediefiler."
 
 #: admin/class-settings.php:47 admin/class-settings.php:97
 msgid "You are not allowed to export this."
-msgstr ""
+msgstr "Du har inte behörighet att exportera detta."
 
 #: admin/class-settings.php:65
 msgid "The export could not be started."
-msgstr ""
+msgstr "Exporten kunde inte startas."
 
 #: admin/class-settings.php:115 admin/class-settings.php:129
 msgid "audit report"
-msgstr ""
+msgstr "revisionsrapport"
 
 #: admin/class-settings.php:130
 msgid "items"
-msgstr ""
+msgstr "poster"
 
 #: admin/class-settings.php:133
 msgid "Document hash"
-msgstr ""
+msgstr "Dokumenthash"
 
 #: admin/class-settings.php:134
 msgid ""
 "sha256 over the facts below without timestamps: two reports of an unchanged "
 "site carry the same hash."
 msgstr ""
+"sha256 över fakta nedan utan tidsstämplar: två rapporter från en oförändrad "
+"webbplats får samma hash."
 
 #: admin/class-settings.php:135
 msgid "Basis"
-msgstr ""
+msgstr "Grund"
 
 #: admin/class-settings.php:136
 msgid "Limitations"
-msgstr ""
+msgstr "Begränsningar"
 
 #: admin/class-settings.php:143
 msgid "Print or save as PDF"
-msgstr ""
+msgstr "Skriv ut eller spara som PDF"
 
 #: admin/class-settings.php:145
 msgid "Media audit list"
-msgstr ""
+msgstr "Revisionslista för medier"
 
 #: admin/class-settings.php:221 admin/class-settings.php:254
 msgid "Visible badge"
-msgstr ""
+msgstr "Synligt märke"
 
 #: admin/class-settings.php:222 admin/class-settings.php:366
 #: includes/class-compliance.php:65
 msgid "AI-written text"
-msgstr ""
+msgstr "AI-skriven text"
 
 #: admin/class-settings.php:223 admin/class-settings.php:440
 msgid "Chatbot disclosure"
-msgstr ""
+msgstr "Upplysning om chattbot"
 
 #: admin/class-settings.php:225 admin/class-settings.php:549
 msgid "Automatic detection"
-msgstr ""
+msgstr "Automatisk detektering"
 
 #: admin/class-settings.php:226
 msgid "File metadata"
-msgstr ""
+msgstr "Filmetadata"
 
 #: admin/class-settings.php:227 admin/class-settings.php:651
 msgid "Uninstall"
-msgstr ""
+msgstr "Avinstallation"
 
 #: admin/class-settings.php:235
 msgid "Settings saved."
-msgstr ""
+msgstr "Inställningar sparade."
 
 #: admin/class-settings.php:247
 msgid "Settings sections"
-msgstr ""
+msgstr "Inställningsavsnitt"
 
 #: admin/class-settings.php:257
 msgid "Show badge"
-msgstr ""
+msgstr "Visa märke"
 
 #: admin/class-settings.php:260
 msgid "Show a visible badge on labeled media in the front end"
-msgstr ""
+msgstr "Visa ett synligt märke på märkta medier i frontend"
 
 #: admin/class-settings.php:264
 msgid "Start date"
-msgstr ""
+msgstr "Startdatum"
 
 #: admin/class-settings.php:267
 msgid ""
@@ -1124,19 +1250,22 @@ msgid ""
 "media stay labeled in the admin only. Leave empty to badge all labeled "
 "media."
 msgstr ""
+"Endast medier som laddats upp detta datum eller senare får märket i "
+"frontend; tidigare medier förblir märkta enbart i adminpanelen. Lämna tomt "
+"för att sätta märke på alla märkta medier."
 
 #: admin/class-settings.php:271
 msgid "Badge text"
-msgstr ""
+msgstr "Märkestext"
 
 #: admin/class-settings.php:273 includes/class-frontend.php:229
 #: includes/class-frontend.php:234 includes/class-notice.php:154
 msgid "AI-generated"
-msgstr ""
+msgstr "AI-genererad"
 
 #: admin/class-settings.php:275
 msgid "Leave empty for the translated default label."
-msgstr ""
+msgstr "Lämna tomt för den översatta standardetiketten."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site}
 #. placeholder (do not translate), 3: example template.
@@ -1147,94 +1276,106 @@ msgid ""
 "title), e.g. %3$s. Images without a known generator fall back to the default"
 " label."
 msgstr ""
+"Platshållare: %1$s (upptäckt eller manuellt angiven generator) och %2$s "
+"(webbplatsens titel), t.ex. %3$s. Bilder utan känd generator faller tillbaka"
+" på standardetiketten."
 
 #: admin/class-settings.php:289
 msgid "Appearance"
-msgstr ""
+msgstr "Utseende"
 
 #: admin/class-settings.php:297 admin/class-setup.php:317
 msgid "Overlay on the image"
-msgstr ""
+msgstr "Överlägg på bilden"
 
 #: admin/class-settings.php:315 admin/class-setup.php:292
 msgid "Dark"
-msgstr ""
+msgstr "Mörkt"
 
 #: admin/class-settings.php:316 admin/class-setup.php:293
 msgid "Light"
-msgstr ""
+msgstr "Ljust"
 
 #: admin/class-settings.php:317 admin/class-setup.php:294
 msgid "Outline"
-msgstr ""
+msgstr "Kontur"
 
 #: admin/class-settings.php:318 admin/class-setup.php:295
 msgid "Icon only (short label)"
-msgstr ""
+msgstr "Endast ikon (kort etikett)"
 
 #: admin/class-settings.php:325
 msgid "Small"
-msgstr ""
+msgstr "Litet"
 
 #: admin/class-settings.php:326
 msgid "Medium"
-msgstr ""
+msgstr "Mellan"
 
 #: admin/class-settings.php:327
 msgid "Large"
-msgstr ""
+msgstr "Stort"
 
 #: admin/class-settings.php:334
 msgid "Extras"
-msgstr ""
+msgstr "Extra"
 
 #: admin/class-settings.php:337
 msgid ""
 "Show the detected generator in the badge (e.g. \"AI-generated · "
 "Midjourney\"; ignored when the badge text contains {generator})"
 msgstr ""
+"Visa den upptäckta generatorn i märket (t.ex. ”AI-genererad · Midjourney”; "
+"ignoreras när märkestexten innehåller {generator})"
 
 #: admin/class-settings.php:339
 msgid "Append the label to the image alt text (screen readers)"
-msgstr ""
+msgstr "Lägg till etiketten i bildens alt-text (skärmläsare)"
 
 #: admin/class-settings.php:341
 msgid ""
 "Automatically move a badge to another corner, or below the image, if a theme"
 " overlay covers it (recommended, needs JavaScript)"
 msgstr ""
+"Flytta automatiskt ett märke till ett annat hörn, eller under bilden, om ett"
+" temaöverlägg täcker det (rekommenderas, kräver JavaScript)"
 
 #: admin/class-settings.php:343
 msgid ""
 "Also label images printed without an attachment ID (ACF fields, sliders, "
 "builders) and CSS backgrounds (experimental, needs JavaScript)"
 msgstr ""
+"Märk även bilder som skrivs ut utan bilage-ID (ACF-fält, sliders, byggare) "
+"och CSS-bakgrunder (experimentellt, kräver JavaScript)"
 
 #: admin/class-settings.php:347
 msgid "Not AI"
-msgstr ""
+msgstr "Inte AI"
 
 #: admin/class-settings.php:350
 msgid ""
 "Also show a badge on media declared as camera photo or human work (the "
 "structured data carries the declaration either way)"
 msgstr ""
+"Visa märket även på medier som deklarerats som kamerafoto eller mänskligt "
+"arbete (de strukturerade data bär deklarationen i vilket fall)"
 
 #: admin/class-settings.php:351 includes/class-frontend.php:207
 msgid "Human made"
-msgstr ""
+msgstr "Skapad av människa"
 
 #: admin/class-settings.php:355
 msgid "Page notice"
-msgstr ""
+msgstr "Sidnotis"
 
 #: admin/class-settings.php:358
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
+"Lägg till en kort notis i slutet av sidor som innehåller märkta medier"
 
 #: admin/class-settings.php:359 includes/class-frontend.php:782
 msgid "This page contains AI-generated media."
-msgstr ""
+msgstr "Den här sidan innehåller AI-genererade medier."
 
 #: admin/class-settings.php:367
 msgid ""
@@ -1243,81 +1384,92 @@ msgid ""
 "bulk. AI levels show a note on the post; the shortcode [transparai_notice] "
 "and the \"AI notice\" block place it anywhere by hand."
 msgstr ""
+"Varje inlägg bär en AI-nivå (ingen, AI-assisterad, AI-genererad, AI-"
+"genererad och granskad), som ställs in i redigerarens sidopanel, i "
+"Snabbredigera eller som massåtgärd. AI-nivåer visar en notis på inlägget; "
+"kortkoden [transparai_notice] och blocket ”AI-notis” placerar den var som "
+"helst för hand."
 
 #: admin/class-settings.php:370
 msgid "Note text"
-msgstr ""
+msgstr "Notistext"
 
 #: admin/class-settings.php:372 includes/class-notice.php:140
 msgid "This text was generated by AI."
-msgstr ""
+msgstr "Den här texten är genererad av AI."
 
 #: admin/class-settings.php:373
 msgid ""
 "Leave empty for a translated wording per level (\"created with the help of "
 "AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
 msgstr ""
+"Lämna tomt för en översatt formulering per nivå (”skapad med hjälp av AI”, "
+"”genererad av AI”, ”genererad av AI och granskad av en person”)."
 
 #: admin/class-settings.php:379
 msgid "Ahead of the content"
-msgstr ""
+msgstr "Före innehållet"
 
 #: admin/class-settings.php:380
 msgid "After the content"
-msgstr ""
+msgstr "Efter innehållet"
 
 #: admin/class-settings.php:381
 msgid "Ahead of and after the content"
-msgstr ""
+msgstr "Före och efter innehållet"
 
 #: admin/class-settings.php:382 admin/class-settings.php:530
 msgid "Only where a block or shortcode is placed"
-msgstr ""
+msgstr "Bara där ett block eller en kortkod är placerad"
 
 #: admin/class-settings.php:389 includes/class-notice.php:629
 msgid "Block (own line)"
-msgstr ""
+msgstr "Block (egen rad)"
 
 #: admin/class-settings.php:390 includes/class-notice.php:630
 msgid "Inline (inside text)"
-msgstr ""
+msgstr "Inline (inne i texten)"
 
 #: admin/class-settings.php:391 admin/class-settings.php:529
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
-msgstr ""
+msgstr "Banner (kan stängas)"
 
 #: admin/class-settings.php:392 includes/class-notice.php:632
 msgid "Badge (small chip)"
-msgstr ""
+msgstr "Märke (liten bricka)"
 
 #: admin/class-settings.php:393 includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
-msgstr ""
+msgstr "Modal (en knapp öppnar en dialogruta)"
 
 #: admin/class-settings.php:400
 msgid "Post titles"
-msgstr ""
+msgstr "Inläggsrubriker"
 
 #: admin/class-settings.php:403
 msgid ""
 "Append a small AI badge to the title of AI-written posts in lists and "
 "archives"
 msgstr ""
+"Lägg till ett litet AI-märke vid rubriken på AI-skrivna inlägg i listor och "
+"arkiv"
 
 #: admin/class-settings.php:404
 msgid ""
 "The badge is HTML inside the title. Themes that print titles unescaped "
 "inside attributes should leave this off."
 msgstr ""
+"Märket är HTML inne i rubriken. Teman som skriver ut rubriker oescapade "
+"inuti attribut bör lämna detta avstängt."
 
 #: admin/class-settings.php:408
 msgid "Review"
-msgstr ""
+msgstr "Granskning"
 
 #: admin/class-settings.php:410
 msgid "Name of the person responsible"
-msgstr ""
+msgstr "Namn på ansvarig person"
 
 #: admin/class-settings.php:411
 msgid ""
@@ -1325,41 +1477,51 @@ msgid ""
 " someone else. The reviewer, date and a fingerprint of the reviewed text are"
 " recorded with the post."
 msgstr ""
+"Standard för ”ansvarig person” i granskade texter; varje inlägg kan ange "
+"någon annan. Granskaren, datumet och ett fingeravtryck av den granskade "
+"texten registreras med inlägget."
 
 #: admin/class-settings.php:413
 msgid ""
 "Name the reviewer and the review date in the public note and in the "
 "structured data"
 msgstr ""
+"Ange granskaren och granskningsdatumet i den offentliga notisen och i de "
+"strukturerade data"
 
 #: admin/class-settings.php:417
 msgid "New posts"
-msgstr ""
+msgstr "Nya inlägg"
 
 #: admin/class-settings.php:422
 msgid ""
 "Preselected level for posts created from now on. Existing posts are never "
 "reclassified."
 msgstr ""
+"Förvald nivå för inlägg som skapas från och med nu. Befintliga inlägg "
+"omklassificeras aldrig."
 
 #: admin/class-settings.php:426
 msgid "Excerpts and feeds"
-msgstr ""
+msgstr "Utdrag och flöden"
 
 #: admin/class-settings.php:429
 msgid ""
 "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
+"Lägg till notisen som ren text i utdrag (arkiv, puffar, relaterade inlägg)"
 
 #: admin/class-settings.php:431
 msgid ""
 "Add the note to RSS feed items (content, summary and a machine-readable "
 "dc:description element)"
 msgstr ""
+"Lägg till notisen i RSS-flödets poster (content, summary och ett "
+"maskinläsbart dc:description-element)"
 
 #: admin/class-settings.php:433
 msgid "Prefix feed item titles of AI-written posts with [AI]"
-msgstr ""
+msgstr "Sätt prefixet [AI] på flödesrubrikerna för AI-skrivna inlägg"
 
 #: admin/class-settings.php:441
 msgid ""
@@ -1370,79 +1532,89 @@ msgid ""
 "local: active plugins, theme snippets, the scripts a page registers, and "
 "what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
+"Besökarna måste få veta när de talar med ett AI-system, senast när samtalet "
+"börjar. Ditt svar avgör; det tillägget hittar på webbplatsen är bara ett "
+"underlag, eftersom de flesta chattwidgetar är livechattar där en person "
+"svarar och ett felaktigt ”det här är en AI” skulle vilseleda besökarna. "
+"Detekteringen är lokal: aktiva tillägg, temautdrag, de skript en sida "
+"registrerar och det din egen webbläsare såg som administratör. Inget anrop "
+"lämnar servern."
 
 #: admin/class-settings.php:445
 msgid "Found on this site"
-msgstr ""
+msgstr "Hittat på den här webbplatsen"
 
 #: admin/class-settings.php:448
 msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
 msgstr ""
+"Ingen känd chatt- eller chattbotwidget har hittats hittills. Öppna några "
+"sidor på din webbplats medan du är inloggad; kontrollen körs i din "
+"webbläsare och rapporterar här."
 
 #: admin/class-settings.php:453
 msgid "a bot answers"
-msgstr ""
+msgstr "en bot svarar"
 
 #: admin/class-settings.php:454
 msgid "people answer"
-msgstr ""
+msgstr "människor svarar"
 
 #: admin/class-settings.php:455
 msgid "live chat with optional bot"
-msgstr ""
+msgstr "livechatt med valfri bot"
 
 #: admin/class-settings.php:456
 msgid "staffing unknown"
-msgstr ""
+msgstr "bemanning okänd"
 
 #: admin/class-settings.php:467
 msgid "Does this site run a chat?"
-msgstr ""
+msgstr "Har den här webbplatsen en chatt?"
 
 #: admin/class-settings.php:474
 msgid "Not decided yet"
-msgstr ""
+msgstr "Inte beslutat än"
 
 #: admin/class-settings.php:483
 msgid "An AI answers"
-msgstr ""
+msgstr "En AI svarar"
 
 #: admin/class-settings.php:484
 msgid "People answer, an AI sometimes"
-msgstr ""
+msgstr "Människor svarar, ibland en AI"
 
 #: admin/class-settings.php:485
 msgid "Only people answer"
-msgstr ""
+msgstr "Endast människor svarar"
 
 #: admin/class-settings.php:489
 msgid ""
 "The notice appears only with \"Yes\" and an AI that answers at least "
 "sometimes."
-msgstr ""
+msgstr "Notisen visas bara vid ”Ja” och en AI som svarar åtminstone ibland."
 
 #: admin/class-settings.php:493
 msgid "Notice"
-msgstr ""
+msgstr "Notis"
 
 #: admin/class-settings.php:495 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
-msgstr ""
+msgstr "Du chattar med ett AI-system."
 
 #: admin/class-settings.php:501
 msgid ""
 "As the first message of the bot (AI Engine; otherwise next to the widget)"
-msgstr ""
+msgstr "Som bottens första meddelande (AI Engine; annars bredvid widgeten)"
 
 #: admin/class-settings.php:502
 msgid "Next to the chat widget"
-msgstr ""
+msgstr "Bredvid chattwidgeten"
 
 #: admin/class-settings.php:503
 msgid "As a line at the end of every page"
-msgstr ""
+msgstr "Som en rad i slutet av varje sida"
 
 #: admin/class-settings.php:514
 msgid ""
@@ -1451,33 +1623,40 @@ msgid ""
 "about is decided per system on the AI Systems page; nothing is switched on "
 "from a finding alone. The list ships with the plugin, nothing is fetched."
 msgstr ""
+"Tillägget matchar dina installerade tillägg mot en medföljande lista över "
+"kända AI-verktyg och låter dig deklarera andra för hand. Vilka av dem "
+"besökarna informeras om bestäms per system på sidan AI-system; ingenting "
+"slås på enbart utifrån ett fynd. Listan följer med tillägget, ingenting "
+"hämtas."
 
 #: admin/class-settings.php:517
 msgid "Visitor notice"
-msgstr ""
+msgstr "Besökarnotis"
 
 #: admin/class-settings.php:520
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
+"Visa en notis som namnger de AI-system som markerats som synliga på varje "
+"sida"
 
 #: admin/class-settings.php:527
 msgid "Line at the end of the page"
-msgstr ""
+msgstr "Rad i slutet av sidan"
 
 #: admin/class-settings.php:528
 msgid "Small badge in a corner"
-msgstr ""
+msgstr "Litet märke i ett hörn"
 
 #: admin/class-settings.php:538
 msgid "Notice text"
-msgstr ""
+msgstr "Notisens text"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
 #: admin/class-settings.php:540 includes/class-systems.php:458
 #, php-format
 msgid "This site uses AI systems: %s."
-msgstr ""
+msgstr "Den här webbplatsen använder AI-system: %s."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:541
@@ -1486,109 +1665,130 @@ msgid ""
 "Leave empty for the translated default. %s is replaced with the names of the"
 " visible systems."
 msgstr ""
+"Lämna tomt för den översatta standardtexten. %s ersätts med namnen på de "
+"synliga systemen."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:542
 msgid "Manage detected and declared AI systems"
-msgstr ""
+msgstr "Hantera upptäckta och deklarerade AI-system"
 
 #: admin/class-settings.php:552
 msgid "Detect on upload"
-msgstr ""
+msgstr "Detektera vid uppladdning"
 
 #: admin/class-settings.php:555
 msgid ""
 "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
+"Undersök nya uppladdningar efter AI-ursprung (C2PA, XMP/IPTC, "
+"generatorsignaturer)"
 
 #: admin/class-settings.php:559
 msgid "Standard declarations"
-msgstr ""
+msgstr "Standarddeklarationer"
 
 #: admin/class-settings.php:566 admin/class-settings.php:583
 msgid "Label automatically"
-msgstr ""
+msgstr "Märk automatiskt"
 
 #: admin/class-settings.php:567 admin/class-settings.php:584
 msgid "Put into review queue"
-msgstr ""
+msgstr "Lägg i granskningskön"
 
 #: admin/class-settings.php:568 admin/class-settings.php:585
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorera"
 
 #: admin/class-settings.php:572
 msgid ""
 "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in"
 " C2PA, AIGC declaration)."
 msgstr ""
+"Filer som uttryckligen deklarerar AI-ursprung (IPTC DigitalSourceType, AI-"
+"påstående i C2PA, AIGC-deklaration)."
 
 #: admin/class-settings.php:576
 msgid "Generator signatures"
-msgstr ""
+msgstr "Generatorsignaturer"
 
 #: admin/class-settings.php:589
 msgid ""
 "Strong signals without a formal declaration (Stable Diffusion parameters, "
 "ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr ""
+"Starka signaler utan formell deklaration (Stable Diffusion-parametrar, "
+"ComfyUI-arbetsflöden, generatornamn i EXIF/XMP, C2PA skriven av kameran)."
 
 #: admin/class-settings.php:593
 msgid "More sources"
-msgstr ""
+msgstr "Fler källor"
 
 #: admin/class-settings.php:596
 msgid ""
 "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
+"Skanna även uppladdningar av video och ljud (C2PA i MP4/MOV, AIGC-"
+"deklarationer i MP3)"
 
 #: admin/class-settings.php:598
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
+"Använd filnamnsmönster som granskningsindikationer (märker aldrig "
+"automatiskt)"
 
 #: admin/class-settings.php:606
 msgid "Machine-readable file metadata"
-msgstr ""
+msgstr "Maskinläsbar filmetadata"
 
 #: admin/class-settings.php:609
 msgid "Write into files"
-msgstr ""
+msgstr "Skriv in i filer"
 
 #: admin/class-settings.php:612
 msgid ""
 "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and "
 "AVIF files (all size variants)"
 msgstr ""
+"Skriv IPTC DigitalSourceType som XMP i märkta JPEG-, PNG-, WebP- och AVIF-"
+"filer (alla storleksvarianter)"
 
 #: admin/class-settings.php:614
 msgid ""
 "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC "
 "block)"
 msgstr ""
+"Spegla den även i IPTC-IIM (JPEG, bara när filen inte har något annat IPTC-"
+"block)"
 
 #: admin/class-settings.php:616
 msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
 msgstr ""
+"Skriv även digitalCapture eller digitalCreation i medier du deklarerat som "
+"inte AI-skapade, men aldrig över en deklaration som ett annat verktyg eller "
+"en kamera redan har skrivit"
 
 #: admin/class-settings.php:620
 msgid "Auto-repair"
-msgstr ""
+msgstr "Automatisk reparation"
 
 #: admin/class-settings.php:623
 msgid ""
 "Restore the metadata when image optimizers or regeneration strip it (hourly "
 "integrity sweep)"
 msgstr ""
+"Återställ metadata när bildoptimerare eller omgenerering tar bort den "
+"(timvist integritetssvep)"
 
 #: admin/class-settings.php:627
 msgid "Delivery check"
-msgstr ""
+msgstr "Leveranskontroll"
 
 #: admin/class-settings.php:630
 msgid "Allow checking whether the declaration survives delivery"
-msgstr ""
+msgstr "Tillåt kontroll av om deklarationen överlever leveransen"
 
 #: admin/class-settings.php:631
 msgid ""
@@ -1599,46 +1799,60 @@ msgid ""
 "request goes to your own site and nowhere else, and it only ever happens "
 "when you press the button."
 msgstr ""
+"Lägger till en knapp i bilagedetaljerna och här. Vid klick hämtar tillägget "
+"bilden via dess egen offentliga URL och jämför de levererade byten med filen"
+" på disken, vilket är det enda sättet att upptäcka att ett optimerande CDN "
+"kodar om dina bilder och tappar deklarationen på vägen ut. Anropet går till "
+"din egen webbplats och ingen annanstans, och det sker bara när du trycker på"
+" knappen."
 
 #: admin/class-settings.php:634
 msgid "Check a sample of five files"
-msgstr ""
+msgstr "Kontrollera ett stickprov på fem filer"
 
 #: admin/class-settings.php:641
 msgid "Structured data"
-msgstr ""
+msgstr "Strukturerade data"
 
 #: admin/class-settings.php:644
 msgid ""
 "Add Schema.org JSON-LD with the IPTC digital source type for the labeled "
 "media of each page (search engines read it without opening the files)"
 msgstr ""
+"Lägg till Schema.org JSON-LD med IPTC:s digitala källtyp för varje sidas "
+"märkta medier (sökmotorer läser den utan att öppna filerna)"
 
 #: admin/class-settings.php:654
 msgid "Data removal"
-msgstr ""
+msgstr "Databorttagning"
 
 #: admin/class-settings.php:657
 msgid ""
 "Delete all plugin data (labels, detection results, settings) when the plugin"
 " is uninstalled"
 msgstr ""
+"Ta bort all tilläggsdata (märkningar, detekteringsresultat, inställningar) "
+"när tillägget avinstalleras"
 
 #: admin/class-settings.php:663
 msgid "Save changes"
-msgstr ""
+msgstr "Spara ändringar"
 
 #: admin/class-settings.php:680
 msgid ""
 "Detection relies on metadata embedded by generators; files whose metadata "
 "was stripped carry no signal."
 msgstr ""
+"Detekteringen bygger på metadata som generatorer bäddar in; filer vars "
+"metadata har tagits bort bär ingen signal."
 
 #: admin/class-settings.php:681
 msgid ""
 "A declaration records a statement by the site operator; it is not "
 "cryptographic proof of origin."
 msgstr ""
+"En deklaration registrerar ett uttalande från webbplatsoperatören; den är "
+"inget kryptografiskt bevis på ursprung."
 
 #: admin/class-settings.php:682
 msgid ""
@@ -1646,6 +1860,9 @@ msgid ""
 "whether content changed since the review, not whether the review was "
 "correct."
 msgstr ""
+"Upplysningsnivåer för text anges av redaktörer; granskningsfingeravtrycket "
+"visar om innehållet har ändrats sedan granskningen, inte om granskningen var"
+" korrekt."
 
 #: admin/class-settings.php:683
 msgid ""
@@ -1653,134 +1870,137 @@ msgid ""
 "summarise the plugin state and the operator's own answers; they are not a "
 "legal assessment."
 msgstr ""
+"Beredskapspoängen, självbedömningen och checklistan för AI-kunnighet "
+"sammanfattar tilläggets tillstånd och operatörens egna svar; de är ingen "
+"juridisk bedömning."
 
 #: admin/class-settings.php:707
 msgid "Check"
-msgstr ""
+msgstr "Kontroll"
 
 #: admin/class-settings.php:715 admin/class-settings.php:725
 msgid "Saved"
-msgstr ""
+msgstr "Sparat"
 
 #: admin/class-settings.php:717
 msgid "Question"
-msgstr ""
+msgstr "Fråga"
 
 #: admin/class-settings.php:717
 msgid "Answer"
-msgstr ""
+msgstr "Svar"
 
 #: admin/class-settings.php:720
 msgid "not answered"
-msgstr ""
+msgstr "ej besvarad"
 
 #: admin/class-settings.php:724
 msgid "AI literacy checklist (Article 4)"
-msgstr ""
+msgstr "Checklista för AI-kunnighet (artikel 4)"
 
 #: admin/class-settings.php:726
 msgid "Item"
-msgstr ""
+msgstr "Punkt"
 
 #: admin/class-settings.php:734
 msgid "None detected or declared."
-msgstr ""
+msgstr "Inget upptäckt eller deklarerat."
 
 #: admin/class-settings.php:736
 msgid "Source"
-msgstr ""
+msgstr "Källa"
 
 #: admin/class-settings.php:736
 msgid "Visitors told"
-msgstr ""
+msgstr "Besökare informeras"
 
 #: admin/class-settings.php:738 includes/class-systems.php:354
 msgid "declared by hand"
-msgstr ""
+msgstr "deklarerat för hand"
 
 #: admin/class-settings.php:738
 msgid "Detected"
-msgstr ""
+msgstr "Upptäckt"
 
 #: admin/class-settings.php:743
 msgid "Disclosure notices"
-msgstr ""
+msgstr "Upplysningsnotiser"
 
 #: admin/class-settings.php:747
 msgid "Text note style"
-msgstr ""
+msgstr "Stil för textnotis"
 
 #: admin/class-settings.php:748
 msgid "Text note position"
-msgstr ""
+msgstr "Position för textnotis"
 
 #: admin/class-settings.php:749
 msgid "Visible badge on labeled media"
-msgstr ""
+msgstr "Synligt märke på märkta medier"
 
 #: admin/class-settings.php:750
 msgid "Page notice on pages with labeled media"
-msgstr ""
+msgstr "Sidnotis på sidor med märkta medier"
 
 #: admin/class-settings.php:751
 msgid "Chatbot question answered with"
-msgstr ""
+msgstr "Chattbotfrågan besvarad med"
 
 #: admin/class-settings.php:752
 msgid "Chatbot notice active"
-msgstr ""
+msgstr "Chattbotnotis aktiv"
 
 #: admin/class-settings.php:753
 msgid "AI systems notice"
-msgstr ""
+msgstr "AI-systemnotis"
 
 #: admin/class-settings.php:754
 msgid "Structured data (Schema.org)"
-msgstr ""
+msgstr "Strukturerade data (Schema.org)"
 
 #: admin/class-settings.php:771
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: admin/class-settings.php:771
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: admin/class-settings.php:771
 msgid "Level"
-msgstr ""
+msgstr "Nivå"
 
 #: admin/class-settings.php:771
 msgid "Reviewed by"
-msgstr ""
+msgstr "Granskad av"
 
 #: admin/class-settings.php:771
 msgid "Reviewed on"
-msgstr ""
+msgstr "Granskad den"
 
 #: admin/class-settings.php:771
 msgid "Review current"
-msgstr ""
+msgstr "Granskningen aktuell"
 
 #: admin/class-settings.php:806
 msgid "Library status"
-msgstr ""
+msgstr "Bibliotekets status"
 
 #: admin/class-settings.php:810
 msgid "Media files"
-msgstr ""
+msgstr "Mediefiler"
 
 #: admin/class-settings.php:822
 msgid "Scanned"
-msgstr ""
+msgstr "Skannade"
 
 #: admin/class-settings.php:827
 msgid "Open review queue"
-msgstr ""
+msgstr "Öppna granskningskön"
 
 #: admin/class-settings.php:830
 msgid "Print view"
-msgstr ""
+msgstr "Utskriftsvy"
 
 #: admin/class-settings.php:835
 msgid ""
@@ -1790,28 +2010,35 @@ msgid ""
 "stated limitations; the same record is available at /wp-"
 "json/transparai/v1/report."
 msgstr ""
+"Exporten listar varje märkt, deklarerad och väntande fil med dess "
+"detekteringskälla, konfidens, fullständiga historik och personen bakom varje"
+" ändring. Utskriftsvyn lägger till en dokumenthash över fakta, "
+"vägledningsgrunden och de angivna begränsningarna; samma post finns på /wp-"
+"json/transparai/v1/report."
 
 #: admin/class-settings.php:851 admin/class-settings.php:853
 msgid "Scan existing library"
-msgstr ""
+msgstr "Skanna befintligt bibliotek"
 
 #: admin/class-settings.php:855
 msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
 msgstr ""
+"Läser metadata i dina befintliga mediefiler (C2PA, XMP/IPTC, "
+"generatorsignaturer) i små omgångar. Ingenting lämnar din server."
 
 #: admin/class-settings.php:857
 msgid "Scan new/unscanned media"
-msgstr ""
+msgstr "Skanna nya/oskannade medier"
 
 #: admin/class-settings.php:858
 msgid "Rescan everything"
-msgstr ""
+msgstr "Skanna om allt"
 
 #: admin/class-settings.php:859
 msgid "Pause"
-msgstr ""
+msgstr "Pausa"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
@@ -1821,28 +2048,32 @@ msgid ""
 "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, "
 "%3$d failed (%4$s ago)."
 msgstr ""
+"Automatisk reparation, senaste fullständiga svep: %1$d märkta filer "
+"kontrollerade, %2$d reparerade, %3$d misslyckade (för %4$s sedan)."
 
 #: admin/class-settings.php:895
 msgid "TransparAI links"
-msgstr ""
+msgstr "TransparAI-länkar"
 
 #: admin/class-settings.php:898
 msgid "Support forum"
-msgstr ""
+msgstr "Supportforum"
 
 #: admin/class-setup.php:261
 msgid "Setup in three steps"
-msgstr ""
+msgstr "Konfiguration i tre steg"
 
 #: admin/class-setup.php:262
 msgid ""
 "Each step writes something real and can be taken back with the undo button. "
 "Nothing is labeled without your review, and no request leaves your server."
 msgstr ""
+"Varje steg skriver något på riktigt och kan tas tillbaka med ångra-knappen. "
+"Ingenting märks utan din granskning, och inget anrop lämnar din server."
 
 #: admin/class-setup.php:266
 msgid "1. Scan the existing library"
-msgstr ""
+msgstr "1. Skanna det befintliga biblioteket"
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:272
@@ -1851,83 +2082,93 @@ msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
 "strong signals wait in the review queue."
 msgstr ""
+"%1$d mediefiler, varav %2$d skannade. Tydliga deklarationer märks, starka "
+"signaler väntar i granskningskön."
 
 #: admin/class-setup.php:279
 msgid "Scan now"
-msgstr ""
+msgstr "Skanna nu"
 
 #: admin/class-setup.php:283
 msgid "2. Choose the badge look"
-msgstr ""
+msgstr "2. Välj märkets utseende"
 
 #: admin/class-setup.php:320
 msgid "Save badge look"
-msgstr ""
+msgstr "Spara märkets utseende"
 
 #: admin/class-setup.php:330
 msgid "3. Decide about the files"
-msgstr ""
+msgstr "3. Besluta om filerna"
 
 #: admin/class-setup.php:335
 msgid ""
 "Write the machine-readable declaration into labeled image files (XMP, all "
 "sizes; merged into existing metadata, removable)"
 msgstr ""
+"Skriv den maskinläsbara deklarationen i märkta bildfiler (XMP, alla "
+"storlekar; sammanfogas med befintliga metadata, kan tas bort)"
 
 #: admin/class-setup.php:336
 msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr ""
+msgstr "Spegla den i IPTC-IIM för JPEG-filer utan något annat IPTC-block"
 
 #: admin/class-setup.php:337
 msgid ""
 "Also write digitalCapture or digitalCreation for media declared as not AI-"
 "made"
 msgstr ""
+"Skriv även digitalCapture eller digitalCreation för medier som deklarerats "
+"som inte AI-skapade"
 
 #: admin/class-setup.php:338
 msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr ""
+msgstr "Återställ deklarationer som bildoptimerare tar bort (timvist svep)"
 
 #: admin/class-setup.php:340
 msgid "Save file settings"
-msgstr ""
+msgstr "Spara filinställningar"
 
 #: admin/class-setup.php:355
 msgid "Finish setup"
-msgstr ""
+msgstr "Avsluta konfigurationen"
 
 #. translators: %s: name of the setup step (badge or writing).
 #: admin/class-setup.php:368
 #, php-format
 msgid "Undo last step (%s)"
-msgstr ""
+msgstr "Ångra senaste steget (%s)"
 
 #: admin/class-setup.php:369
 msgid "badge look"
-msgstr ""
+msgstr "märkets utseende"
 
 #: admin/class-setup.php:369
 msgid "file settings"
-msgstr ""
+msgstr "filinställningar"
 
 #: admin/class-setup.php:381
 msgid "Not now"
-msgstr ""
+msgstr "Inte nu"
 
 #: includes/class-compliance.php:57
 msgid "Chatbot or assistant"
-msgstr ""
+msgstr "Chattbot eller assistent"
 
 #: includes/class-compliance.php:58
 msgid ""
 "Does your site run a chatbot or virtual assistant that talks to visitors?"
 msgstr ""
+"Har din webbplats en chattbot eller virtuell assistent som talar med "
+"besökarna?"
 
 #: includes/class-compliance.php:59
 msgid ""
 "Examples: a support chat answered by an AI, an assistant widget, a chat "
 "plugin with an AI mode."
 msgstr ""
+"Exempel: en supportchatt där en AI svarar, en assistentwidget, ett "
+"chattillägg med AI-läge."
 
 #: includes/class-compliance.php:60
 msgid ""
@@ -1935,17 +2176,22 @@ msgid ""
 "interaction known no later than the first exchange. You deploy the system, "
 "and the notice appears on your pages, so it is set up here."
 msgstr ""
+"Art. 50(1) ålägger leverantören av chattsystemet att göra AI-interaktionen "
+"känd senast vid det första utbytet. Du tillhandahåller systemet och notisen "
+"visas på dina sidor, så den ställs in här."
 
 #: includes/class-compliance.php:61
 msgid ""
 "Answer the chatbot question in the settings; the notice follows your answer."
-msgstr ""
+msgstr "Besvara chattbotfrågan i inställningarna; notisen följer ditt svar."
 
 #: includes/class-compliance.php:66
 msgid ""
 "Does your site publish text that was generated or substantially assisted by "
 "AI?"
 msgstr ""
+"Publicerar din webbplats text som har genererats eller i väsentlig grad "
+"tagits fram med hjälp av AI?"
 
 #: includes/class-compliance.php:67
 msgid ""
@@ -1953,6 +2199,9 @@ msgid ""
 "AI-assisted copy. Answer yes even if a person edited the text afterwards; "
 "the review is recorded per post on the AI Content page."
 msgstr ""
+"Exempel: blogginlägg som utkastats med en språkmodell, produktbeskrivningar,"
+" AI-assisterad text. Svara ja även om en person redigerade texten efteråt; "
+"granskningen registreras per inlägg på sidan AI-innehåll."
 
 #: includes/class-compliance.php:68
 msgid ""
@@ -1961,26 +2210,38 @@ msgid ""
 "and someone holds editorial responsibility. Other AI-written text carries no"
 " duty under Article 50; the AI level documents your practice either way."
 msgstr ""
+"Art. 50(4) ålägger dig som tillhandahållare att upplysa om AI-skriven text "
+"som informerar allmänheten i frågor av allmänintresse, om inte en person har"
+" granskat den och någon har det redaktionella ansvaret. Annan AI-skriven "
+"text medför ingen skyldighet enligt artikel 50; AI-nivån dokumenterar ändå "
+"din praxis."
 
 #: includes/class-compliance.php:69
 msgid ""
 "Set the AI level on each post (editor sidebar, Quick Edit or Bulk Edit) so "
 "the note appears."
 msgstr ""
+"Ange AI-nivån på varje inlägg (redigerarens sidopanel, Snabbredigera eller "
+"Massredigera) så att notisen visas."
 
 #: includes/class-compliance.php:73
 msgid "AI-generated images and media"
-msgstr ""
+msgstr "AI-genererade bilder och medier"
 
 #: includes/class-compliance.php:74
 msgid "Does your site use AI-generated images or other AI-generated media?"
 msgstr ""
+"Använder din webbplats AI-genererade bilder eller andra AI-genererade "
+"medier?"
 
 #: includes/class-compliance.php:75
 msgid ""
 "Examples: images from ChatGPT, Gemini, Firefly, Midjourney or Stable "
 "Diffusion, AI-edited photos, whether or not they show real people or places."
 msgstr ""
+"Exempel: bilder från ChatGPT, Gemini, Firefly, Midjourney eller Stable "
+"Diffusion, AI-redigerade foton, oavsett om de visar verkliga personer eller "
+"platser."
 
 #: includes/class-compliance.php:76
 msgid ""
@@ -1990,28 +2251,39 @@ msgid ""
 " real people, places or events and would pass as authentic. Other AI images "
 "carry no disclosure duty of their own."
 msgstr ""
+"Art. 50(2) ålägger generatorns leverantör att märka utdata på ett "
+"maskinläsbart sätt; tillägget bevarar den märkningen i dina filer. Art. "
+"50(4) ålägger dig som tillhandahållare att upplysa om deepfakes: innehåll "
+"som ser ut som verkliga personer, platser eller händelser och som skulle "
+"uppfattas som äkta. Andra AI-bilder medför ingen egen upplysningsplikt."
 
 #: includes/class-compliance.php:77
 msgid ""
 "Scan the media library, confirm the review queue and keep the visible badge "
 "and file metadata on."
 msgstr ""
+"Skanna mediabiblioteket, bekräfta granskningskön och håll det synliga märket"
+" och filmetadatan påslagna."
 
 #: includes/class-compliance.php:81
 msgid "Synthetic audio, video and deepfakes"
-msgstr ""
+msgstr "Syntetiskt ljud, video och deepfakes"
 
 #: includes/class-compliance.php:82
 msgid ""
 "Does your site generate or host synthetic audio, video or deepfake-style "
 "content?"
 msgstr ""
+"Genererar eller lagrar din webbplats syntetiskt ljud, syntetisk video eller "
+"innehåll av deepfake-typ?"
 
 #: includes/class-compliance.php:83
 msgid ""
 "Examples: AI voice-overs, AI-generated video, cloned voices, digital "
 "avatars."
 msgstr ""
+"Exempel: AI-speakerröster, AI-genererad video, klonade röster, digitala "
+"avatarer."
 
 #: includes/class-compliance.php:84
 msgid ""
@@ -2019,28 +2291,38 @@ msgid ""
 "50(4) obliges you as deployer to disclose deepfakes, which a cloned voice or"
 " an avatar of a real person is; a generic synthetic voice is not."
 msgstr ""
+"Art. 50(2) ålägger generatorns leverantör att märka utdata. Art. 50(4) "
+"ålägger dig som tillhandahållare att upplysa om deepfakes, vilket en klonad "
+"röst eller en avatar av en verklig person är; en generisk syntetisk röst är "
+"det inte."
 
 #: includes/class-compliance.php:85
 msgid ""
 "Label the media in the library (video and audio are detected too) and add an"
 " explicit note on affected pages."
 msgstr ""
+"Märk medierna i biblioteket (video och ljud upptäcks också) och lägg till en"
+" uttrycklig notis på berörda sidor."
 
 #: includes/class-compliance.php:89
 msgid "Personalisation and recommendations"
-msgstr ""
+msgstr "Personalisering och rekommendationer"
 
 #: includes/class-compliance.php:90
 msgid ""
 "Does your site use AI for personalisation, recommendations or audience "
 "targeting?"
 msgstr ""
+"Använder din webbplats AI för personalisering, rekommendationer eller "
+"målgruppsinriktning?"
 
 #: includes/class-compliance.php:91
 msgid ""
 "Examples: product recommendations, personalised content, behavioural "
 "targeting."
 msgstr ""
+"Exempel: produktrekommendationer, personaliserat innehåll, beteendebaserad "
+"inriktning."
 
 #: includes/class-compliance.php:92
 msgid ""
@@ -2049,26 +2331,36 @@ msgid ""
 "online platforms and profiling have rules of their own in the Digital "
 "Services Act and the GDPR, outside the AI Act."
 msgstr ""
+"Ingen skyldighet enligt artikel 50. Artikel 4 gäller verktyget precis som "
+"varje AI-system du tillhandahåller, så det hör hemma i inventeringen. "
+"Rekommendationssystem på onlineplattformar och profilering har egna regler i"
+" Digital Services Act och GDPR, utanför AI-förordningen."
 
 #: includes/class-compliance.php:93
 msgid ""
 "Declare the tool on the AI Systems page and decide whether visitors are told"
 " about it."
 msgstr ""
+"Deklarera verktyget på sidan AI-system och bestäm om besökarna ska "
+"informeras om det."
 
 #: includes/class-compliance.php:97
 msgid "AI translation"
-msgstr ""
+msgstr "AI-översättning"
 
 #: includes/class-compliance.php:98
 msgid "Does your site use AI translation to serve content in other languages?"
 msgstr ""
+"Använder din webbplats AI-översättning för att leverera innehåll på andra "
+"språk?"
 
 #: includes/class-compliance.php:99
 msgid ""
 "Examples: DeepL, machine-translated pages from a multilingual plugin, AI "
 "translation add-ons."
 msgstr ""
+"Exempel: DeepL, maskinöversatta sidor från ett flerspråkstillägg, tillägg "
+"för AI-översättning."
 
 #: includes/class-compliance.php:100
 msgid ""
@@ -2077,442 +2369,499 @@ msgid ""
 "under Art. 50(4), like any AI-manipulated text. Article 4 applies to the "
 "tool either way."
 msgstr ""
+"Ingen egen skyldighet enligt artikel 50. Maskinöversatt text som informerar "
+"allmänheten i frågor av allmänintresse och som ingen granskar kan falla "
+"under Art. 50(4), liksom all AI-manipulerad text. Artikel 4 gäller verktyget"
+" i vilket fall."
 
 #: includes/class-compliance.php:101
 msgid ""
 "Declare the translation tool on the AI Systems page; consider a notice on "
 "translated pages."
 msgstr ""
+"Deklarera översättningsverktyget på sidan AI-system; överväg en notis på "
+"översatta sidor."
 
 #: includes/class-compliance.php:120
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
 msgstr ""
+"Personal och medarbetare vet vilka AI-verktyg den här webbplatsen använder "
+"och vad de används till"
 
 #: includes/class-compliance.php:121
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
 msgstr ""
+"En intern policy för AI-användning (vad som är tillåtet, vad som kräver "
+"granskning) finns nedskriven"
 
 #: includes/class-compliance.php:122
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
 msgstr ""
+"Personer som arbetar med AI-verktyg har fått utbildning eller vägledning om "
+"verktygens förmågor och begränsningar"
 
 #: includes/class-compliance.php:123
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
+"Ett datum är satt för att se över användningen av AI-verktyg, policyn och "
+"dessa deklarationer"
 
 #: includes/class-compliance.php:124
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
 msgstr ""
+"För varje AI-verktyg har användningssammanhanget och de personer det berör "
+"(besökare, kunder) beaktats när det beslutades vilken vägledning personalen "
+"behöver"
 
 #: includes/class-compliance.php:138
 msgid "AI Act enters into force"
-msgstr ""
+msgstr "AI-förordningen träder i kraft"
 
 #: includes/class-compliance.php:139
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
 msgstr ""
+"Förordning (EU) 2024/1689 är i kraft; dess skyldigheter börjar tillämpas "
+"stegvis."
 
 #: includes/class-compliance.php:143
 msgid "General provisions and prohibited practices apply"
-msgstr ""
+msgstr "Allmänna bestämmelser och förbjudna metoder börjar tillämpas"
 
 #: includes/class-compliance.php:144
 msgid ""
 "Chapters I and II: the AI literacy duty for providers and deployers (Article"
 " 4) and the ban on prohibited AI practices (Article 5)."
 msgstr ""
+"Kapitel I och II: skyldigheten om AI-kunnighet för leverantörer och "
+"tillhandahållare (artikel 4) och förbudet mot otillåtna AI-metoder (artikel "
+"5)."
 
 #: includes/class-compliance.php:148
 msgid "General-purpose AI and governance rules apply"
-msgstr ""
+msgstr "Regler för AI för allmänna ändamål och styrning börjar tillämpas"
 
 #: includes/class-compliance.php:149
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
 msgstr ""
+"Skyldigheter för leverantörer av AI-modeller för allmänna ändamål, anmälande"
+" myndigheter, styrning och sanktioner (kapitel V, VII och XII)."
 
 #: includes/class-compliance.php:153
 msgid "General application, including Article 50"
-msgstr ""
+msgstr "Allmän tillämpning, inklusive artikel 50"
 
 #: includes/class-compliance.php:154
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
 msgstr ""
+"Transparensskyldigheter för chattbotar, AI-genererat innehåll och deepfakes "
+"(artikel 50) och de flesta återstående bestämmelserna börjar tillämpas."
 
 #: includes/class-compliance.php:158
 msgid "High-risk AI in regulated products"
-msgstr ""
+msgstr "Högrisk-AI i reglerade produkter"
 
 #: includes/class-compliance.php:159
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
 msgstr ""
+"Skyldigheter för AI-system med hög risk som är säkerhetskomponenter i "
+"produkter som omfattas av bilaga I (artikel 6(1))."
 
 #: includes/class-compliance.php:171
 msgid "Settings saved"
-msgstr ""
+msgstr "Inställningar sparade"
 
 #: includes/class-compliance.php:172
 msgid "Library scan started"
-msgstr ""
+msgstr "Biblioteksskanning startad"
 
 #: includes/class-compliance.php:173
 msgid "Library scan finished"
-msgstr ""
+msgstr "Biblioteksskanning slutförd"
 
 #: includes/class-compliance.php:174
 msgid "Auto-repair sweep finished"
-msgstr ""
+msgstr "Svep för automatisk reparation slutfört"
 
 #: includes/class-compliance.php:175
 msgid "Bulk action: labeled as AI"
-msgstr ""
+msgstr "Massåtgärd: märkt som AI"
 
 #: includes/class-compliance.php:176
 msgid "Bulk action: label removed"
-msgstr ""
+msgstr "Massåtgärd: märkning borttagen"
 
 #: includes/class-compliance.php:177
 msgid "Bulk action: review confirmed"
-msgstr ""
+msgstr "Massåtgärd: granskning bekräftad"
 
 #: includes/class-compliance.php:178
 msgid "Bulk action: review dismissed"
-msgstr ""
+msgstr "Massåtgärd: granskning avfärdad"
 
 #: includes/class-compliance.php:179
 msgid "Bulk action: declared as camera photo"
-msgstr ""
+msgstr "Massåtgärd: deklarerad som kamerafoto"
 
 #: includes/class-compliance.php:180
 msgid "Bulk action: declared as human work"
-msgstr ""
+msgstr "Massåtgärd: deklarerad som mänskligt arbete"
 
 #: includes/class-compliance.php:181
 msgid "Bulk action: declaration removed"
-msgstr ""
+msgstr "Massåtgärd: deklaration borttagen"
 
 #: includes/class-compliance.php:182
 msgid "Setup: badge look chosen"
-msgstr ""
+msgstr "Konfiguration: märkets utseende valt"
 
 #: includes/class-compliance.php:183
 msgid "Setup: file writing chosen"
-msgstr ""
+msgstr "Konfiguration: filskrivning vald"
 
 #: includes/class-compliance.php:184
 msgid "Setup: last step undone"
-msgstr ""
+msgstr "Konfiguration: senaste steget ångrat"
 
 #: includes/class-compliance.php:185
 msgid "Setup finished"
-msgstr ""
+msgstr "Konfigurationen slutförd"
 
 #: includes/class-compliance.php:186
 msgid "Self-assessment saved"
-msgstr ""
+msgstr "Självbedömning sparad"
 
 #: includes/class-compliance.php:187
 msgid "AI literacy checklist saved"
-msgstr ""
+msgstr "Checklista för AI-kunnighet sparad"
 
 #: includes/class-compliance.php:188
 msgid "AI systems scanned"
-msgstr ""
+msgstr "AI-system skannade"
 
 #: includes/class-compliance.php:189
 msgid "AI system declared"
-msgstr ""
+msgstr "AI-system deklarerat"
 
 #: includes/class-compliance.php:190
 msgid "AI system declaration removed"
-msgstr ""
+msgstr "Deklaration av AI-system borttagen"
 
 #: includes/class-compliance.php:191
 msgid "AI systems notice visibility changed"
-msgstr ""
+msgstr "Synligheten för AI-systemnotisen ändrad"
 
 #: includes/class-compliance.php:444
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
 msgstr ""
+"AI-skriven text är deklarerad: antingen anger självbedömningen att ingen "
+"publiceras, eller så bär minst ett inlägg en AI-nivå"
 
 #: includes/class-compliance.php:447
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
 msgstr ""
+"Ange AI-nivån på dina AI-skrivna inlägg, eller svara nej på textfrågan."
 
 #: includes/class-compliance.php:451
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
 msgstr ""
+"AI-medier är märkta: antingen anger självbedömningen att inga används, eller"
+" så är märket påslaget, minst en fil är märkt och ingenting väntar i "
+"granskningskön"
 
 #: includes/class-compliance.php:454
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
 msgstr ""
+"Skanna biblioteket, arbeta igenom granskningskön och håll det synliga märket"
+" påslaget."
 
 #: includes/class-compliance.php:458
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
 msgstr ""
+"Chattbotfrågan är besvarad (ja eller nej), så chattnotisen följer ett beslut"
 
 #: includes/class-compliance.php:461
 msgid "Answer whether the site runs a chat and who answers in it."
-msgstr ""
+msgstr "Svara på om webbplatsen har en chatt och vem som svarar i den."
 
 #: includes/class-compliance.php:465
 msgid "Self-assessment and Article 4 checklist are complete"
-msgstr ""
+msgstr "Självbedömningen och checklistan för artikel 4 är kompletta"
 
 #: includes/class-compliance.php:468
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
+"Besvara de sex frågorna och bocka för de punkter i checklistan som gäller."
 
 #: includes/class-compliance.php:477
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
 msgstr ""
+"AI-systemen är inventerade: tilläggslistan har skannats och varje upptäckt "
+"eller deklarerat system har ett beslut om synlighet"
 
 #: includes/class-compliance.php:480
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
 msgstr ""
+"Kör skanningen på sidan AI-system och bestäm vilka system besökarna ska "
+"informeras om."
 
 #: includes/class-compliance.php:514
 msgid "Good"
-msgstr ""
+msgstr "Bra"
 
 #: includes/class-compliance.php:515
 msgid "Needs attention"
-msgstr ""
+msgstr "Kräver uppmärksamhet"
 
 #: includes/class-compliance.php:517
 msgid "Action required"
-msgstr ""
+msgstr "Åtgärd krävs"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr ""
+msgstr "Leveranskontrollen är avstängd."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr ""
+msgstr "Den här bilagan har ingen fil."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr ""
+msgstr "Filen levereras från en annan värd, så den kontrolleras inte."
 
 #: includes/class-delivery.php:113
 msgid ""
 "The file on disk carries no AI declaration, so there is nothing to compare."
 msgstr ""
+"Filen på disken bär ingen AI-deklaration, så det finns ingenting att "
+"jämföra."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr ""
+msgstr "Bilden kunde inte hämtas via sin offentliga URL."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr ""
+msgstr "Svaret var inte en läsbar bild."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr ""
+msgstr "Deklarationen finns i den levererade filen."
 
 #: includes/class-delivery.php:151
 msgid ""
 "The delivered file carries no declaration. Something between WordPress and "
 "the visitor re-encodes the image, usually an optimizing CDN or a proxy."
 msgstr ""
+"Den levererade filen bär ingen deklaration. Något mellan WordPress och "
+"besökaren kodar om bilden, oftast ett optimerande CDN eller en proxy."
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr ""
+msgstr "Levererad med deklarationen intakt"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr ""
+msgstr "Levererad utan deklarationen"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr ""
+msgstr "Ingenting att kontrollera"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr ""
+msgstr "Levereras från en annan värd"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"
-msgstr ""
+msgstr "Kunde inte hämtas"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
 #: includes/class-frontend.php:215
 msgctxt "short human badge label"
 msgid "Human"
-msgstr ""
+msgstr "Människa"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
 #: includes/class-frontend.php:246
 msgctxt "short badge label"
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: includes/class-notice.php:136
 msgid "This text was created with the help of AI."
-msgstr ""
+msgstr "Den här texten är skapad med hjälp av AI."
 
 #: includes/class-notice.php:138
 msgid "This text was generated by AI and reviewed by a person."
-msgstr ""
+msgstr "Den här texten är genererad av AI och granskad av en person."
 
 #: includes/class-notice.php:152
 msgid "No AI used"
-msgstr ""
+msgstr "Ingen AI används"
 
 #: includes/class-notice.php:153
 msgid "AI-assisted"
-msgstr ""
+msgstr "AI-assisterad"
 
 #: includes/class-notice.php:155
 msgid "AI-generated, reviewed by a person"
-msgstr ""
+msgstr "AI-genererad, granskad av en person"
 
 #: includes/class-notice.php:195
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Avfärda denna notis"
 
 #: includes/class-notice.php:198
 msgid "AI notice"
-msgstr ""
+msgstr "AI-notis"
 
 #: includes/class-notice.php:200
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: includes/class-notice.php:587
 msgid ""
 "Choose a file from the media library in the block settings. Only labeled "
 "files show a label."
 msgstr ""
+"Välj en fil från mediabiblioteket i blockinställningarna. Endast märkta "
+"filer visar en märkning."
 
 #: includes/class-notice.php:590
 msgid ""
 "This file carries no label, so nothing shows. Label it in the media library "
 "or choose another file."
 msgstr ""
+"Den här filen bär ingen märkning, så ingenting visas. Märk den i "
+"mediabiblioteket eller välj en annan fil."
 
 #: includes/class-notice.php:593
 msgid ""
 "No AI system is marked as visible yet, so nothing shows. Mark systems under "
 "TransparAI, AI Systems."
 msgstr ""
+"Inget AI-system är markerat som synligt än, så ingenting visas. Markera "
+"system under TransparAI, AI-system."
 
 #: includes/class-notice.php:596
 msgid ""
 "The chatbot notice is off, so nothing shows. Answer the chatbot question in "
 "the TransparAI settings."
 msgstr ""
+"Chattbotnotisen är avstängd, så ingenting visas. Besvara chattbotfrågan i "
+"TransparAI-inställningarna."
 
 #: includes/class-notice.php:599
 msgid ""
 "This post has no AI level yet, so the notice stays hidden. Set the level in "
 "the document sidebar under TransparAI."
 msgstr ""
+"Det här inlägget har ingen AI-nivå än, så notisen förblir dold. Ange nivån i"
+" dokumentets sidopanel under TransparAI."
 
 #: includes/class-notice.php:628
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: includes/class-notice.php:634
 msgid "Custom text"
-msgstr ""
+msgstr "Egen text"
 
 #: includes/class-notice.php:635
 msgid "Leave empty to use the wording from the TransparAI settings."
 msgstr ""
+"Lämna tomt för att använda formuleringen från TransparAI-inställningarna."
 
 #: includes/class-notice.php:636
 msgid "Select file"
-msgstr ""
+msgstr "Välj fil"
 
 #: includes/class-notice.php:637
 msgid "Replace file"
-msgstr ""
+msgstr "Ersätt fil"
 
 #: includes/class-systems.php:53
 msgid "Text generation"
-msgstr ""
+msgstr "Textgenerering"
 
 #: includes/class-systems.php:54
 msgid "Image generation"
-msgstr ""
+msgstr "Bildgenerering"
 
 #: includes/class-systems.php:55
 msgid "Chatbot"
-msgstr ""
+msgstr "Chattbot"
 
 #: includes/class-systems.php:56
 msgid "Translation"
-msgstr ""
+msgstr "Översättning"
 
 #: includes/class-systems.php:57
 msgid "Personalisation"
-msgstr ""
+msgstr "Personalisering"
 
 #: includes/class-systems.php:58
 msgid "SEO assistant"
-msgstr ""
+msgstr "SEO-assistent"
 
 #: includes/class-systems.php:59
 msgid "Search and recommendations"
-msgstr ""
+msgstr "Sök och rekommendationer"
 
 #: includes/class-systems.php:60
 msgid "Audio and video"
-msgstr ""
+msgstr "Ljud och video"
 
 #: includes/class-systems.php:61
 msgid "Editor assistant"
-msgstr ""
+msgstr "Redigerarassistent"
 
 #: includes/class-systems.php:62
 msgid "Other"
-msgstr ""
+msgstr "Övrigt"
 
 #. translators: %s: plugin file.
 #: includes/class-systems.php:232
 #, php-format
 msgid "plugin %s"
-msgstr ""
+msgstr "tillägg %s"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block title"
 msgid "Chatbot AI Notice"
-msgstr ""
+msgstr "AI-notis för chattbot"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block description"
@@ -2522,37 +2871,41 @@ msgid ""
 "contact page or next to the chat widget. Stays hidden while the chatbot "
 "question is unanswered or no AI answers."
 msgstr ""
+"Talar om för besökarna att en AI svarar i chatten, som artikel 50 i EU AI "
+"Act kräver, med formuleringen från TransparAI-inställningarna. Placera det "
+"på kontaktsidan eller bredvid chattwidgeten. Förblir dolt så länge "
+"chattbotfrågan är obesvarad eller ingen AI svarar."
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chatbot"
-msgstr ""
+msgstr "chattbot"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "ai"
-msgstr ""
+msgstr "ai"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "disclosure"
-msgstr ""
+msgstr "upplysning"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "eu ai act"
-msgstr ""
+msgstr "eu ai act"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chat"
-msgstr ""
+msgstr "chatt"
 
 #: blocks/media-label/block.json
 msgctxt "block title"
 msgid "AI Image Label"
-msgstr ""
+msgstr "AI-bildmärkning"
 
 #: blocks/media-label/block.json
 msgctxt "block description"
@@ -2562,36 +2915,40 @@ msgid ""
 " a gallery, in a caption or next to a builder image the automatic badge does"
 " not reach. Shows only for labeled files."
 msgstr ""
+"Märkningen för en bild-, video- eller ljudfil från mediabiblioteket: AI-"
+"genererad, med generatorns namn när det är känt, eller Skapad av människa. "
+"Placera det under ett galleri, i en bildtext eller bredvid en byggarbild som"
+" det automatiska märket inte når. Visas bara för märkta filer."
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "ai image"
-msgstr ""
+msgstr "ai-bild"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "c2pa"
-msgstr ""
+msgstr "c2pa"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "content credentials"
-msgstr ""
+msgstr "content credentials"
 
 #: blocks/media-label/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "label"
-msgstr ""
+msgstr "märkning"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "human made"
-msgstr ""
+msgstr "skapad av människa"
 
 #: blocks/notice/block.json
 msgctxt "block title"
 msgid "AI Notice"
-msgstr ""
+msgstr "AI-notis"
 
 #: blocks/notice/block.json
 msgctxt "block description"
@@ -2601,16 +2958,20 @@ msgid ""
 "with the wording from the TransparAI settings. Shows only when the post has "
 "an AI level."
 msgstr ""
+"Upplysningsnotis för AI-skriven text, som EU AI Act kräver: ett block, en "
+"inline-notis, en banner som kan stängas, ett märke eller en knapp som öppnar"
+" en dialogruta, med formuleringen från TransparAI-inställningarna. Visas "
+"bara när inlägget har en AI-nivå."
 
 #: blocks/notice/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "transparency"
-msgstr ""
+msgstr "transparens"
 
 #: blocks/systems-list/block.json
 msgctxt "block title"
 msgid "AI Systems List"
-msgstr ""
+msgstr "AI-systemlista"
 
 #: blocks/systems-list/block.json
 msgctxt "block description"
@@ -2620,31 +2981,35 @@ msgid ""
 " in sync with the registry: a system you add or hide appears or disappears "
 "on every page that carries the list."
 msgstr ""
+"En lista över de AI-system som markerats som synliga i TransparAI-registret,"
+" var och en med sin kategori. Byggstenen för en AI-transparensförklaring, "
+"som hålls synkroniserad med registret: ett system du lägger till eller "
+"döljer visas eller försvinner på varje sida som bär listan."
 
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "ai systems"
-msgstr ""
+msgstr "ai-system"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "transparency statement"
-msgstr ""
+msgstr "transparensförklaring"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "registry"
-msgstr ""
+msgstr "register"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "list"
-msgstr ""
+msgstr "lista"
 
 #: blocks/systems-notice/block.json
 msgctxt "block title"
 msgid "AI Systems Notice"
-msgstr ""
+msgstr "AI-systemnotis"
 
 #: blocks/systems-notice/block.json
 msgctxt "block description"
@@ -2654,13 +3019,17 @@ msgid ""
 " imprint, the privacy policy or a transparency page. Shows only when at "
 "least one system is marked as visible."
 msgstr ""
+"En mening som namnger de AI-system den här webbplatsen använder, hämtad från"
+" TransparAI-registret: chattbotar, rekommendationer, bildgenerering, "
+"översättning. För företagsinformationen, integritetspolicyn eller en "
+"transparenssida. Visas bara när minst ett system är markerat som synligt."
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "privacy policy"
-msgstr ""
+msgstr "integritetspolicy"
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "imprint"
-msgstr ""
+msgstr "företagsinformation"
