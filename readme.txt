@@ -200,15 +200,22 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Screenshots ==
 
-1. TransparAI dashboard with the readiness score, open checks, counters and the EU AI Act timeline
-2. Media library grid with AI badges, a review state and bulk labeling
-3. Attachment details: label checkbox, detection evidence, review actions and the file inspection with its raw XMP packet
-4. Self-assessment with the obligations that apply to the site and the Article 4 AI literacy checklist
-5. AI systems in use: detected plugins, suggestions and the per-system visibility for the visitor notice
-6. Front-end notice styles on an AI-written post: banner, badge and title badge
-7. Settings with tabs, library statistics, the batched scan and the audit export
-8. Front-end badge on a labeled image
-9. Compliance report print view with the document hash
+1. Dashboard with the readiness score, the open check, the five steps in order and the counters
+2. Media library grid: AI badges, the badge for media declared as not AI and the AI status filter
+3. Attachment details: label, detection evidence, the declaration in every file size and the raw XMP packet
+4. Media list filtered to the review queue, with the AI column and the bulk actions
+5. Front end: title badge, the note above an AI-written text and the badge on a generated image
+6. Self-assessment: the six questions that decide which transparency duties apply
+7. The duties that follow from the answers, plus the Article 4 AI literacy checklist
+8. AI systems in use: detected plugins, a suggestion to declare and the visibility for the visitor notice
+9. Post list with the AI text column, the level filter and Quick Edit
+10. Block editor: the TransparAI panel with level, responsible person and review stamp
+11. Settings: badge look with a live preview, alt text, the not-AI badge and the page notice
+12. Setup in three steps: scan the library, choose the badge, decide about the files
+13. Compliance report in print view with the document hash
+14. The two dashboard widgets: readiness and numbers
+15. AI images screen: library status, batched scan, audit export and the media lists
+16. EU AI Act timeline and the activity log that records every change
 
 == Changelog ==
 
