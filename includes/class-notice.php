@@ -58,6 +58,10 @@ final class TransparAI_Notice {
 		add_filter( 'the_excerpt_rss', array( self::class, 'filter_excerpt_rss' ), 20 );
 		add_action( 'rss2_item', array( self::class, 'rss_item' ) );
 
+		/* Optional title badge in the loop and [AI] prefix on feed item titles. */
+		add_filter( 'the_title', array( self::class, 'filter_title' ), 20, 2 );
+		add_filter( 'the_title_rss', array( self::class, 'filter_title_rss' ), 20 );
+
 		add_shortcode( 'transparai_notice', array( self::class, 'shortcode' ) );
 		add_action( 'init', array( self::class, 'register_block' ) );
 		add_action( 'enqueue_block_editor_assets', array( self::class, 'localize_block_editor' ) );
@@ -141,29 +145,55 @@ final class TransparAI_Notice {
 	 * Markup
 	 * ------------------------------------------------------------------- */
 
+	public const VARIANTS = array( 'block', 'inline', 'banner', 'badge', 'modal' );
+
 	/**
-	 * The note element. An inline variant is a span (a div inside a paragraph
-	 * is invalid HTML and splits the paragraph), a block variant a div.
+	 * The note element. Inline and badge variants are spans (a div inside a
+	 * paragraph is invalid HTML and splits the paragraph); block and banner
+	 * are divs, the banner with a dismiss button; modal is a button that
+	 * opens a native dialog.
 	 *
-	 * @param array{text?:string, variant?:string, type?:string, class?:string} $args Text, inline|block, content|media, extra classes.
+	 * @param array{text?:string, variant?:string, type?:string, class?:string} $args Text, variant, content|media|systems, extra classes.
 	 */
 	public static function render( array $args ): string {
 		$text = trim( (string) ( $args['text'] ?? '' ) );
 		if ( '' === $text ) {
 			return '';
 		}
-		$variant = 'inline' === ( $args['variant'] ?? '' ) ? 'inline' : 'block';
-		$type    = 'media' === ( $args['type'] ?? '' ) ? 'media' : 'content';
-		$tag     = 'inline' === $variant ? 'span' : 'div';
-		$class   = self::MARKER . ' ' . self::MARKER . '--' . $variant . ' ' . self::MARKER . '--' . $type;
+		$variant = (string) ( $args['variant'] ?? 'block' );
+		if ( ! in_array( $variant, self::VARIANTS, true ) ) {
+			$variant = 'block';
+		}
+		$type  = in_array( $args['type'] ?? '', array( 'media', 'systems' ), true ) ? (string) $args['type'] : 'content';
+		$class = self::MARKER . ' ' . self::MARKER . '--' . $variant . ' ' . self::MARKER . '--' . $type;
 		if ( ! empty( $args['class'] ) ) {
 			$class .= ' ' . (string) $args['class'];
 		}
-		$html = '<' . $tag . ' class="' . esc_attr( trim( $class ) ) . '" role="note">' . esc_html( $text ) . '</' . $tag . '>';
+		$class = esc_attr( trim( $class ) );
+		switch ( $variant ) {
+			case 'inline':
+			case 'badge':
+				$html = '<span class="' . $class . '" role="note">' . esc_html( $text ) . '</span>';
+				break;
+			case 'banner':
+				$html = '<div class="' . $class . '" role="note"><span class="trai-notice-text">' . esc_html( $text ) . '</span>'
+					. '<button type="button" class="trai-notice-dismiss" aria-label="' . esc_attr__( 'Dismiss this notice', 'transparai' ) . '">&times;</button></div>';
+				break;
+			case 'modal':
+				$html = '<div class="' . $class . '"><button type="button" class="trai-notice-open">' . esc_html__( 'AI notice', 'transparai' ) . '</button>'
+					. '<dialog class="trai-notice-dialog" role="note"><p>' . esc_html( $text ) . '</p>'
+					. '<button type="button" class="trai-notice-close">' . esc_html__( 'Close', 'transparai' ) . '</button></dialog></div>';
+				break;
+			default:
+				$html = '<div class="' . $class . '" role="note">' . esc_html( $text ) . '</div>';
+		}
 
 		/* The note can appear with the badge switched off; late enqueues print in the footer. */
 		if ( function_exists( 'wp_enqueue_style' ) && ! is_admin() ) {
 			wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
+			if ( in_array( $variant, array( 'banner', 'modal' ), true ) ) {
+				wp_enqueue_script( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/js/front.js', array(), TRANSPARAI_VERSION, true );
+			}
 		}
 
 		/**
@@ -205,8 +235,71 @@ final class TransparAI_Notice {
 		if ( has_block( self::BLOCK, $post_id ) || str_contains( $content, 'class="' . self::MARKER . ' ' ) ) {
 			return $content;
 		}
-		$html = self::render( array( 'text' => $text ) );
-		return 'after' === TransparAI_Options::get( 'content_notice_position' ) ? $content . $html : $html . $content;
+		$style = TransparAI_Options::get( 'content_notice_style' );
+		$html  = self::render(
+			array(
+				'text'    => $text,
+				'variant' => $style,
+			)
+		);
+		/* Span variants need a block of their own between blocks, or a constrained theme layout leaves them at the edge. */
+		if ( '' !== $html && in_array( $style, array( 'inline', 'badge' ), true ) ) {
+			$html = '<p class="trai-notice-wrap">' . $html . '</p>';
+		}
+		return self::place( $content, $html );
+	}
+
+	/**
+	 * Put the note ahead of, after, or on both sides of the content.
+	 */
+	private static function place( string $content, string $note ): string {
+		$position = TransparAI_Options::get( 'content_notice_position' );
+		if ( 'after' === $position ) {
+			return $content . $note;
+		}
+		if ( 'both' === $position ) {
+			return $note . $content . $note;
+		}
+		return $note . $content;
+	}
+
+	/**
+	 * Small "AI" badge behind the title of AI-written posts, in the loop
+	 * only (menus and widgets print titles too, but outside the loop or
+	 * for another id). Opt-in: the badge is markup inside the title.
+	 *
+	 * @param string|mixed $title   Title.
+	 * @param int|mixed    $post_id Post ID.
+	 * @return string|mixed
+	 */
+	public static function filter_title( $title, $post_id = 0 ) {
+		if ( ! is_string( $title ) || is_admin() || is_feed() || ! TransparAI_Options::enabled( 'content_title_badge' ) ) {
+			return $title;
+		}
+		$post_id = (int) $post_id;
+		if ( $post_id <= 0 || ! in_the_loop() || $post_id !== (int) get_the_ID() ) {
+			return $title;
+		}
+		if ( str_contains( $title, 'trai-title-badge' ) || ! TransparAI_Meta::level_is_ai( TransparAI_Meta::get_content_level( $post_id ) ) ) {
+			return $title;
+		}
+		return $title . ' <span class="' . esc_attr( self::MARKER . ' ' . self::MARKER . '--badge trai-title-badge' ) . '" role="note">' . esc_html__( 'AI', 'transparai' ) . '</span>';
+	}
+
+	/**
+	 * [AI] in front of feed item titles of AI-written posts (opt-in).
+	 *
+	 * @param string|mixed $title Feed title.
+	 * @return string|mixed
+	 */
+	public static function filter_title_rss( $title ) {
+		if ( ! is_string( $title ) || ! TransparAI_Options::enabled( 'feed_title_prefix' ) ) {
+			return $title;
+		}
+		if ( ! TransparAI_Meta::level_is_ai( TransparAI_Meta::get_content_level( (int) get_the_ID() ) ) || str_starts_with( $title, '[AI] ' ) ) {
+			return $title;
+		}
+		return '[AI] ' . $title;
 	}
 
 	/**
@@ -246,8 +339,7 @@ final class TransparAI_Notice {
 		if ( '' === $text || str_contains( $content, $text ) ) {
 			return $content;
 		}
-		$line = '<p>' . esc_html( $text ) . '</p>';
-		return 'after' === TransparAI_Options::get( 'content_notice_position' ) ? $content . $line : $line . $content;
+		return self::place( $content, '<p>' . esc_html( $text ) . '</p>' );
 	}
 
 	/**
@@ -287,7 +379,7 @@ final class TransparAI_Notice {
 	 * ------------------------------------------------------------------- */
 
 	/**
-	 * `[transparai_notice type="content|media" style="block|inline" text="" id=""]`.
+	 * `[transparai_notice type="content|media|systems" style="block|inline|banner|badge|modal" text="" id=""]`.
 	 *
 	 * Placing the shortcode is the editor's decision to show the note, so it
 	 * renders regardless of the automatic note. It still never states what is
@@ -307,7 +399,7 @@ final class TransparAI_Notice {
 			is_array( $atts ) ? $atts : array(),
 			'transparai_notice'
 		);
-		$type = 'media' === $atts['type'] ? 'media' : 'content';
+		$type = in_array( $atts['type'], array( 'media', 'systems' ), true ) ? $atts['type'] : 'content';
 		/* A media label sits next to an image inside running text: inline by default. */
 		if ( '' === $atts['style'] ) {
 			$atts['style'] = 'media' === $type ? 'inline' : 'block';
@@ -315,7 +407,15 @@ final class TransparAI_Notice {
 		$id   = (int) $atts['id'];
 		$text = sanitize_text_field( (string) $atts['text'] );
 
-		if ( 'media' === $type ) {
+		if ( 'systems' === $type ) {
+			$systems = class_exists( 'TransparAI_Systems' ) ? TransparAI_Systems::visible() : array();
+			if ( array() === $systems ) {
+				return '';
+			}
+			if ( '' === $text ) {
+				$text = TransparAI_Systems::notice_text( $systems );
+			}
+		} elseif ( 'media' === $type ) {
 			if ( $id <= 0 || ! TransparAI_Meta::is_flagged( $id ) ) {
 				return '';
 			}
@@ -338,7 +438,7 @@ final class TransparAI_Notice {
 		return self::render(
 			array(
 				'text'    => $text,
-				'variant' => 'inline' === $atts['style'] ? 'inline' : 'block',
+				'variant' => (string) $atts['style'],
 				'type'    => $type,
 			)
 		);
@@ -389,7 +489,7 @@ final class TransparAI_Notice {
 		return self::render(
 			array(
 				'text'    => $text,
-				'variant' => 'inline' === ( $attributes['variant'] ?? '' ) ? 'inline' : 'block',
+				'variant' => (string) ( $attributes['variant'] ?? 'block' ),
 				'class'   => $class,
 			)
 		);

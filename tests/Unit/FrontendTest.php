@@ -357,4 +357,39 @@ final class FrontendTest extends TestCase {
 		$out = TransparAI_Frontend::filter_wpb_image( $img, 42 );
 		$this->assertStringNotContainsString( 'wp-image-42', $out['thumbnail'] );
 	}
+
+
+	public function test_public_label_media_filter_and_bricks_element(): void {
+		global $trai_test_options, $trai_test_filters;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );
+		update_post_meta( 7, TransparAI_Meta::KEY_FLAG, '1' );
+		$html = '<div><img class="wp-image-7" src="/wp-content/uploads/2026/09/seven.jpg"></div>';
+
+		TransparAI_Frontend::init();
+		$this->assertArrayHasKey( 'transparai_label_media', $trai_test_filters, 'The public filter is registered' );
+		$this->assertArrayHasKey( 'bricks/frontend/render_element', $trai_test_filters );
+		$this->assertStringContainsString( 'trai-badge', apply_filters( 'transparai_label_media', $html ) );
+
+		$this->assertStringContainsString( 'trai-badge', TransparAI_Frontend::filter_bricks_element( $html, null ) );
+		$this->assertSame( '', TransparAI_Frontend::filter_bricks_element( '', null ) );
+		$this->assertSame( 5, TransparAI_Frontend::filter_bricks_element( 5, null ), 'Non-string output passes through' );
+
+		if ( ! function_exists( 'bricks_is_builder' ) ) {
+			function bricks_is_builder() { // phpcs:ignore Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace
+				return true;
+			}
+		}
+		$this->assertSame( $html, TransparAI_Frontend::filter_bricks_element( $html, null ), 'Untouched inside the Bricks builder' );
+	}
+
+	public function test_human_badge_is_not_rewrapped_on_repeated_runs(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1', 'human_badge' => '1' );
+		update_post_meta( 9, TransparAI_Meta::KEY_HUMAN, TransparAI_Meta::DST_CAPTURE );
+		$html  = '<p><img class="wp-image-9" src="/wp-content/uploads/2026/09/photo.jpg"></p>';
+		$once  = TransparAI_Frontend::wrap_images( $html );
+		$twice = TransparAI_Frontend::wrap_images( TransparAI_Frontend::wrap_images( $once ) );
+		$this->assertSame( 1, substr_count( $once, 'trai-badge--human' ) );
+		$this->assertSame( $once, $twice, 'The human badge must be as idempotent as the AI badge' );
+	}
 }

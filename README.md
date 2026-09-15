@@ -4,7 +4,9 @@ WordPress plugin that finds AI-generated media in the library, labels it with a
 visible badge (EU AI Act, Art. 50) and writes machine-readable IPTC/XMP metadata
 into the files. Detection covers C2PA/Content Credentials, the IPTC digital
 source type, generator signatures in PNG chunks and EXIF/XMP, MP4 boxes and MP3
-declarations.
+declarations. A compliance module adds the readiness score, a self-assessment,
+the Article 4 AI literacy checklist, a local registry of AI plugins in use and
+a compliance report, all under a top-level "TransparAI" admin menu.
 
 - Requires WordPress 6.2+ and PHP 7.4+ (tested up to PHP 8.5)
 - No external requests, no telemetry. Everything runs on your server.
@@ -66,6 +68,10 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 
 ### REST API
 
+`GET /report` now carries `compliance` (`score`, `traffic`, `factors`, `assessment`,
+`literacy`, `systems`, `content`, `notices`) and `log`; the `document_hash` covers the
+compliance facts but not the log or the save timestamps.
+
  (`/wp-json/transparai/v1/`, authenticated users with `upload_files`, writes additionally need `edit_post` on the attachment, the report needs `manage_options`; nothing is public):
 
 * `GET /media?status=flagged|detected|human|labeled|all&page=1&per_page=20`: paginated audit rows.
@@ -100,6 +106,53 @@ This sets the confirmed label, records the generator name and, with file writing
 * `trai-badge-manual`: keep the position as configured and switch the automatic overlay guard off for this subtree.
 
 The first six switch the guard off by themselves, since a placement you chose should not be second-guessed. The stacking level of all badges is the CSS custom property `--trai-badge-z` (default `30`, raised to `99` only where the guard found a real overlap); it inherits, so a theme can tune it globally or per container with a single declaration and without touching the stylesheet. The markup is one wrapper `span` carrying the state classes plus `span.trai-badge` directly after the media element.
+
+### Compliance module
+
+Three options besides the settings array, no custom tables:
+
+| Option | Shape |
+|---|---|
+| `transparai_compliance` (autoload off) | `assessment{id => yes|no}`, `assessment_at`, `assessment_by`, `literacy{id => bool}`, `literacy_at`, `literacy_by` |
+| `transparai_systems` | `detected{id => evidence}`, `manual{id => {name, category, slug}}`, `visible{id => true}`, `scanned_at` |
+| `transparai_log` | last 200 site events (`t`, `e`, `u`, `n`, `d`) |
+
+`TransparAI_Compliance::score()` is the share of met factors (`factors()`), each a
+decision or an artefact the plugin can verify itself; `traffic()` buckets it at 80 and 50.
+`milestones()` holds the enforcement dates of Regulation (EU) 2024/1689 (Article 113) in one place.
+
+`data/ai-systems.json` is the bundled registry (`id`, `name`, `category`, `article`, `risk`, `url`,
+`slugs`). Categories: `content`, `image`, `chatbot`, `translation`, `personalisation`, `seo`,
+`search`, `audio_video`, `assistant`, `other`. Extend or adjust it without a fork:
+
+```php
+add_filter( 'transparai_systems_registry', function ( array $registry ): array {
+    $registry['house-recommender'] = array(
+        'id'       => 'house-recommender',
+        'name'     => 'House Recommender',
+        'category' => 'personalisation',
+        'article'  => 'Art. 4',
+        'risk'     => 'limited',
+        'url'      => '',
+        'slugs'    => array( 'house-recommender' ),
+    );
+    return $registry;
+} );
+```
+
+The visitor notice text goes through `transparai_systems_notice` (`$text`, `$systems`).
+`[transparai_notice type="systems"]` places it by hand; `style` accepts `block`, `inline`,
+`banner`, `badge` or `modal` for every notice type.
+
+### Label markup your theme renders itself
+
+```php
+echo apply_filters( 'transparai_label_media', $html );
+```
+
+Same rules as `the_content`: badge switched on, no builder editor, no feed. No
+`function_exists()` guard is needed, an inactive plugin leaves the filter unregistered.
+Bricks Builder output is handled automatically through `bricks/frontend/render_element`.
 
 ### WP-CLI
 

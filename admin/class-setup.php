@@ -107,7 +107,7 @@ final class TransparAI_Setup {
 	 * Settings page URL with the setup card open.
 	 */
 	public static function url( string $extra = '' ): string {
-		return admin_url( 'upload.php?page=transparai&setup=1' . $extra );
+		return admin_url( 'admin.php?page=transparai-settings&setup=1' . $extra );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -211,11 +211,11 @@ final class TransparAI_Setup {
 			case 'finish':
 				update_option( self::OPT_DONE, time(), false );
 				TransparAI_Meta::log_site( 'setup-finished' );
-				wp_safe_redirect( admin_url( 'upload.php?page=transparai&settings-updated=1' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=transparai-settings&settings-updated=1' ) );
 				exit;
 			case 'skip':
 				update_user_meta( get_current_user_id(), self::USER_SKIPPED, '1' );
-				wp_safe_redirect( admin_url( 'upload.php?page=transparai' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=transparai-settings' ) );
 				exit;
 		}
 		wp_safe_redirect( self::url( '&done=' . rawurlencode( $step ) ) );

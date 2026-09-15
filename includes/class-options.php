@@ -39,7 +39,7 @@ final class TransparAI_Options {
 			'badge_size'              => 'medium', /* small | medium | large. */
 			'badge_from_date'         => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
 			'badge_show_source'       => '0', /* Append detected generator name to the badge. */
-			'badge_alt_append'        => '0', /* Append note to image alt text. */
+			'badge_alt_append'        => '1', /* Append note to image alt text (screen readers get the disclosure too). */
 			'badge_guard'             => '1', /* JS: move badges that a theme overlay covers. */
 			'background_badges'       => '0', /* Experimental: label CSS background images via JS map. */
 			'page_notice'             => '0', /* Site-wide footer note on pages containing labeled media. */
@@ -48,18 +48,26 @@ final class TransparAI_Options {
 			'human_badge_text'        => '', /* Empty = translated default "Human made". */
 			/* AI-written text: per-post disclosure levels. */
 			'content_notice_text'     => '', /* Custom note for all AI levels; empty = translated default per level. */
-			'content_notice_position' => 'before', /* before | after the content. */
+			'content_notice_position' => 'before', /* before | after | both. */
+			'content_notice_style'    => 'block', /* block | inline | banner (dismissible) | badge | modal. */
+			'content_title_badge'     => '0', /* Append a small AI badge to the post title in the loop. */
+			'feed_title_prefix'       => '0', /* Prefix feed item titles of AI-written posts with [AI]. */
 			'content_default_level'   => '', /* Preselected level for new posts only; '' = none. */
 			'content_responsible'     => '', /* Default name of the person responsible for reviewed texts. */
 			'content_show_reviewer'   => '0', /* Append "reviewed by {name} on {date}" to the note. */
 			'content_excerpt_notice'  => '0', /* Also append a plain-text line to excerpts (archives, teasers). */
-			'feed_notice'             => '0', /* Plain-text note in RSS/Atom items plus dc:description. */
+			'feed_notice'             => '1', /* Plain-text note in RSS/Atom items plus dc:description; the content note skips feeds. */
 
 			/* Chatbot disclosure: the operator's answer leads, detection only informs it. */
 			'chatbot_answer'          => 'unknown', /* unknown | yes | no: does the site run a chat? */
 			'chatbot_staffing'        => 'mixed', /* ai | human | mixed: who answers in it. */
 			'chatbot_notice_text'     => '', /* Empty = translated default. */
-			'chatbot_output'          => 'badge', /* chat (first bot message, AI Engine) | badge (next to the widget) | footer. */
+			'chatbot_output'          => 'chat', /* chat (first bot message, AI Engine; falls back to badge) | badge (next to the widget) | footer. */
+
+			/* AI systems in use (bundled local registry, nothing is fetched). */
+			'systems_notice'          => '1', /* Front-end notice naming the AI systems switched to visible; prints nothing while none is. */
+			'systems_notice_style'    => 'footer', /* footer | badge | banner. */
+			'systems_notice_text'     => '', /* Empty = translated default; %s = list of names. */
 
 			/* Automatic detection. */
 			'autodetect'              => '1',
@@ -137,7 +145,9 @@ final class TransparAI_Options {
 			'mode_certain'            => array( 'flag', 'queue', 'off' ),
 			'mode_likely'             => array( 'flag', 'queue', 'off' ),
 
-			'content_notice_position' => array( 'before', 'after' ),
+			'content_notice_position' => array( 'before', 'after', 'both' ),
+			'content_notice_style'    => array( 'block', 'inline', 'banner', 'badge', 'modal' ),
+			'systems_notice_style'    => array( 'footer', 'badge', 'banner' ),
 			'content_default_level'   => array_merge( array( '' ), TransparAI_Meta::CONTENT_LEVELS ),
 			'chatbot_answer'          => array( 'unknown', 'yes', 'no' ),
 			'chatbot_staffing'        => array( 'ai', 'human', 'mixed' ),
@@ -155,6 +165,9 @@ final class TransparAI_Options {
 			'content_show_reviewer',
 			'content_excerpt_notice',
 			'feed_notice',
+			'content_title_badge',
+			'feed_title_prefix',
+			'systems_notice',
 			'autodetect',
 			'filename_hints',
 			'detect_av',
@@ -184,7 +197,7 @@ final class TransparAI_Options {
 				$clean[ $key ] = $valid ? $value : '';
 				continue;
 			}
-			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text', 'chatbot_notice_text' ), true ) ) {
+			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text', 'chatbot_notice_text', 'systems_notice_text' ), true ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_text_field( (string) $raw[ $key ] ) : '';
 				$clean[ $key ] = mb_substr( $value, 0, in_array( $key, array( 'badge_text', 'content_responsible', 'human_badge_text' ), true ) ? 100 : 300 );
 				continue;

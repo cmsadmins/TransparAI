@@ -16,6 +16,11 @@
 			if (!width) {
 				return; /* Not rendered yet (lazyload); the load handler re-runs this. */
 			}
+			/* Icons and tracking pixels have no room for a label; the file metadata and the structured data still carry the disclosure. */
+			badge.classList.toggle('trai-badge--tiny', width < 48);
+			if (width < 48) {
+				return;
+			}
 			badge.classList.remove('trai-badge--mini');
 			/* Mini only on genuinely small images. A label that merely outgrows
 			   the media stays visible and is ellipsized by the CSS cap instead:
@@ -616,4 +621,40 @@
 			attributeFilter: ['style', 'src']
 		});
 	}
+})();
+
+/* Note controls: dismiss a banner for this page view (nothing is stored),
+   open and close the modal note through the native dialog element. */
+(function () {
+	'use strict';
+
+	document.addEventListener('click', function (event) {
+		var target = event.target;
+		if (!target || !target.closest) {
+			return;
+		}
+		var dismiss = target.closest('.trai-notice-dismiss');
+		if (dismiss) {
+			var notice = dismiss.closest('.trai-notice');
+			if (notice) {
+				notice.classList.add('trai-notice--dismissed');
+			}
+			return;
+		}
+		var open = target.closest('.trai-notice-open');
+		if (open) {
+			var dialog = open.parentElement ? open.parentElement.querySelector('dialog') : null;
+			if (dialog) {
+				dialog.showModal();
+			}
+			return;
+		}
+		var close = target.closest('.trai-notice-close');
+		if (close) {
+			var owner = close.closest('dialog');
+			if (owner) {
+				owner.close();
+			}
+		}
+	});
 })();
