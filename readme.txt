@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, ai transparency, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -212,6 +212,10 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.2 =
+* Ten more languages ship with the plugin: Polish, Portuguese, Swedish, Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German variant, next to the existing German, French, Spanish, Italian and Dutch.
+* The plugin name and the readme are translated for every one of those languages, so the plugin directory shows them in the reader's own language.
+
 = 1.1.1 =
 * Compliance module: top-level "TransparAI" menu with Dashboard, Assessment, AI Systems, AI Content, AI Images and Settings; readiness score with traffic light over five checks; six-question self-assessment with the Article 4 AI literacy checklist on the same screen; EU AI Act timeline; two WordPress dashboard widgets (readiness and numbers); `wp transparai score`, `content`, `assessment`, `systems` and `report`.
 * AI systems registry: a bundled list of 130 wordpress.org plugins is matched on your server against the installed plugins, chatbots and manual declarations included; per-system visibility for a visitor notice as footer line, badge or dismissible banner. Nothing is fetched.
@@ -241,6 +245,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+Adds ten more languages for the plugin interface and the directory listing. Nothing else changes; existing labels and settings carry over.
 
 = 1.1.1 =
 Adds the compliance module (readiness score, self-assessment, Article 4 checklist, AI systems registry, dashboard widgets), five blocks and new notice styles. The settings page moves to the new TransparAI menu; existing labels and settings carry over unchanged.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2 (2026-09-15)
+
+- Ten more bundled catalogs: pl_PL, pt_PT, sv_SE, da_DK, fi, cs_CZ, ro_RO, el, hu_HU and de_DE_formal,
+  next to de_DE, fr_FR, es_ES, it_IT and nl_NL. Every catalog carries the localized plugin name.
+- The readme is translated for all fifteen locales and submitted to translate.wordpress.org, so the
+  localized plugin directory pages show title, short description and description in the reader's language.
+
 ## 1.1.1 (2026-09-15)
 
 - Footer notices: the page notice for labeled media, the chatbot notice in its footer variant and the
