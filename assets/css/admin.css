@@ -851,20 +851,153 @@
 	align-items: center;
 }
 
-/* WordPress dashboard widget */
+/* WordPress dashboard widgets: "Readiness" (main column) and "Numbers"
+   (side column) on the core postbox ground. Same tokens, 8px grid, hairlines
+   instead of boxes, orange only as the accent. */
+.trai-widget {
+	--trai-primary: #FF6800;
+	--trai-muted: #646970;
+	--trai-border-light: #e0e0e0;
+	--trai-danger-light: #b32d2e;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
 .trai-widget .trai-widget-score {
 	display: flex;
 	align-items: baseline;
-	gap: 8px;
-	margin: 0 0 8px;
+	flex-wrap: wrap;
+	gap: 8px 10px;
+	margin: 0 0 4px;
 }
 
 .trai-widget .trai-score-number {
-	font-size: 32px;
+	font-size: 40px;
 }
 
-.trai-widget .trai-widget-counts {
-	margin: 0 0 8px;
+.trai-widget .trai-score-summary {
+	flex-basis: 100%;
+}
+
+.trai-widget-heading {
+	display: block;
+	margin: 16px 0 4px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-widget-muted {
+	color: var(--trai-muted, #646970);
+}
+
+.trai-widget-allclear {
+	margin: 8px 0 0;
+}
+
+.trai-widget .trai-widget-factors .trai-factor {
+	gap: 10px;
+	padding: 6px 0;
+}
+
+.trai-widget .trai-factor-state {
+	flex-basis: 48px;
+}
+
+.trai-widget a.trai-factor-text {
+	text-decoration: none;
+	color: #1d2327;
+	transition: all 0.2s ease;
+}
+
+.trai-widget a.trai-factor-text:hover,
+.trai-widget a.trai-factor-text:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-widget-milestone {
+	margin: 12px 0 0;
+	padding-top: 8px;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-widget-milestone .trai-widget-heading {
+	margin: 0 0 2px;
+}
+
+.trai-widget-milestone strong {
+	display: block;
+}
+
+/* Numbers widget: two-column tile grid, then one line per area. */
+.trai-widget .trai-widget-stats {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px 16px;
+	margin: 4px 0 12px;
+}
+
+.trai-widget .trai-stat-number {
+	font-size: 26px;
+}
+
+.trai-widget a.trai-stat {
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.2s ease;
+}
+
+.trai-widget a.trai-stat:hover .trai-stat-number,
+.trai-widget a.trai-stat:focus .trai-stat-number {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-widget-facts,
+.trai-widget-log {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.trai-widget-facts li,
+.trai-widget-log li {
+	margin: 0;
+	padding: 6px 0;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-widget-log .trai-widget-muted {
+	display: block;
+	font-size: 12px;
+}
+
+/* Footer links: hairline above, gaps instead of pipe separators. */
+.trai-widget-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 16px;
+	margin: 12px 0 0;
+	padding-top: 8px;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-widget-links a {
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.trai-widget-links a:hover,
+.trai-widget-links a:focus {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-widget-disclaimer {
+	margin: 8px 0 0;
+	font-size: 12px;
+	color: var(--trai-muted, #646970);
 }
 
 /* Disclaimer: dark card, the one place the brand ground appears in the admin.

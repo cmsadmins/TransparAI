@@ -24,7 +24,7 @@ Article 50, the transparency obligations, applies from 2 August 2026: visitors m
 
 **Readiness score, self-assessment and compliance report**
 
-The TransparAI dashboard rates your compliance readiness from 0 to 100 with a traffic light: each check stands for a decision or an artefact the plugin can verify on its own, such as an AI level on your AI-written posts, a worked-through review queue, an answered chatbot question and an inventoried list of AI systems. A six-question self-assessment (chatbot, AI text, AI images, personalisation, translation, synthetic media) names the obligations likely to apply and the page that addresses each of them. The Article 4 checklist counts toward the score. A widget on the WordPress dashboard keeps the score in view. The score is a technical self-check of the plugin state and your own answers, not a legal assessment.
+The TransparAI dashboard rates your compliance readiness from 0 to 100 with a traffic light: each check stands for a decision or an artefact the plugin can verify on its own, such as an AI level on your AI-written posts, a worked-through review queue, an answered chatbot question and an inventoried list of AI systems. A six-question self-assessment (chatbot, AI text, AI images, personalisation, translation, synthetic media) names the obligations likely to apply and the page that addresses each of them. The Article 4 checklist counts toward the score. Two widgets on the WordPress dashboard keep the score with its open checks and the key numbers in view. The score is a technical self-check of the plugin state and your own answers, not a legal assessment.
 
 **AI systems registry: which AI plugins run on your site**
 
