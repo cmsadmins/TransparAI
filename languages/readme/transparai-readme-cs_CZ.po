@@ -24,8 +24,7 @@ msgstr ""
 msgid ""
 "TransparAI: EU AI Act Compliance, AI Disclosure &amp; AI Image Detection"
 msgstr ""
-"TransparAI: Soulad s EU AI Act (akt o AI), označování obsahu AI &amp; "
-"detekce obrázků AI"
+"TransparAI: EU AI Act Compliance, AI Disclosure &amp; AI Image Detection"
 
 #. Found in faq paragraph.
 msgid ""
