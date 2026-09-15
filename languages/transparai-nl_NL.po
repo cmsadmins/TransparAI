@@ -2176,3 +2176,48 @@ msgstr "Personalisatie en aanbevelingen"
 #: includes/class-compliance.php:92
 msgid "AI translation"
 msgstr "AI-vertaling"
+
+msgid "TransparAI: Readiness"
+msgstr "TransparAI: Gereedheid"
+
+msgid "TransparAI: Numbers"
+msgstr "TransparAI: Cijfers"
+
+msgid "Every check the plugin can perform is done. Keep the answers current when the site starts or stops using AI."
+msgstr "Alle controles die de plugin zelf kan uitvoeren zijn afgerond. Houd de antwoorden actueel wanneer de site AI gaat gebruiken of ermee stopt."
+
+msgid "Still open"
+msgstr "Nog open"
+
+msgid "In force"
+msgstr "Van kracht"
+
+msgid "Next deadline"
+msgstr "Volgende deadline"
+
+msgid "Declared human-made"
+msgstr "Aangemerkt als door mensen gemaakt"
+
+msgid "Not scanned yet"
+msgstr "Nog niet gescand"
+
+msgid "Library: %1$s of %2$s files scanned."
+msgstr "Bibliotheek: %1$s van %2$s bestanden gescand."
+
+msgid "Last scan finished %s ago."
+msgstr "Laatste scan %s geleden afgerond."
+
+msgid "No scan has finished yet."
+msgstr "Er is nog geen scan afgerond."
+
+msgid "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
+msgstr "Teksten: %1$s AI-ondersteund, %2$s door AI gemaakt, %3$s gemaakt en gecontroleerd."
+
+msgid "Systems: %1$s of %2$s shown to visitors."
+msgstr "Systemen: %1$s van %2$s zichtbaar voor bezoekers."
+
+msgid "since %1$s (%2$s)"
+msgstr "sinds %1$s (%2$s)"
+
+msgid "%1$s (in %2$s)"
+msgstr "%1$s (over %2$s)"

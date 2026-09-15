@@ -2176,3 +2176,48 @@ msgstr "Personalización y recomendaciones"
 #: includes/class-compliance.php:92
 msgid "AI translation"
 msgstr "Traducción por IA"
+
+msgid "TransparAI: Readiness"
+msgstr "TransparAI: Preparación"
+
+msgid "TransparAI: Numbers"
+msgstr "TransparAI: Cifras"
+
+msgid "Every check the plugin can perform is done. Keep the answers current when the site starts or stops using AI."
+msgstr "Todas las comprobaciones que el plugin puede realizar por sí mismo están hechas. Mantenga las respuestas al día cuando el sitio empiece o deje de usar IA."
+
+msgid "Still open"
+msgstr "Todavía pendiente"
+
+msgid "In force"
+msgstr "En vigor"
+
+msgid "Next deadline"
+msgstr "Próximo plazo"
+
+msgid "Declared human-made"
+msgstr "Declarados hechos por personas"
+
+msgid "Not scanned yet"
+msgstr "Sin escanear todavía"
+
+msgid "Library: %1$s of %2$s files scanned."
+msgstr "Biblioteca: %1$s de %2$s archivos escaneados."
+
+msgid "Last scan finished %s ago."
+msgstr "Último escaneo terminado hace %s."
+
+msgid "No scan has finished yet."
+msgstr "Todavía no ha terminado ningún escaneo."
+
+msgid "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
+msgstr "Textos: %1$s asistidos por IA, %2$s generados por IA, %3$s generados y revisados."
+
+msgid "Systems: %1$s of %2$s shown to visitors."
+msgstr "Sistemas: %1$s de %2$s mostrados a los visitantes."
+
+msgid "since %1$s (%2$s)"
+msgstr "desde el %1$s (%2$s)"
+
+msgid "%1$s (in %2$s)"
+msgstr "%1$s (en %2$s)"

@@ -16,7 +16,10 @@
   Readiness score 0 to 100 with a traffic light over five checks (`TransparAI_Compliance::factors()`),
   six-question self-assessment with the Article 4 checklist on the same screen (option
   `transparai_compliance`, with name and date of the last save), EU AI Act timeline with the dates of Regulation (EU) 2024/1689
-  Article 113, WordPress dashboard widget, recent activity from the site log.
+  Article 113, recent activity from the site log. Two WordPress dashboard widgets: "Readiness" with the
+  score, the open checks and the next EU AI Act date, "Numbers" with labeled, queued, human-declared and
+  unscanned media, AI-written posts by level, AI systems, last scan and the latest activity; every
+  number links to its screen. The library counters carry the human-made count (`stats()["human"]`).
 - AI systems registry (`TransparAI_Systems`, `data/ai-systems.json` with 130 wordpress.org plugins):
   installed and network-active plugins are matched locally, chatbots an AI answers in are merged
   from the chatbot list, "possibly AI" suggestions from plugin headers, manual declarations,

@@ -2176,3 +2176,48 @@ msgstr "Personalisierung und Empfehlungen"
 #: includes/class-compliance.php:92
 msgid "AI translation"
 msgstr "KI-Übersetzung"
+
+msgid "TransparAI: Readiness"
+msgstr "TransparAI: Bereitschaft"
+
+msgid "TransparAI: Numbers"
+msgstr "TransparAI: Zahlen"
+
+msgid "Every check the plugin can perform is done. Keep the answers current when the site starts or stops using AI."
+msgstr "Alle Prüfungen, die das Plugin selbst durchführen kann, sind erledigt. Halten Sie die Antworten aktuell, wenn die Website KI neu einsetzt oder nicht mehr einsetzt."
+
+msgid "Still open"
+msgstr "Noch offen"
+
+msgid "In force"
+msgstr "In Kraft"
+
+msgid "Next deadline"
+msgstr "Nächste Frist"
+
+msgid "Declared human-made"
+msgstr "Als menschlich erklärt"
+
+msgid "Not scanned yet"
+msgstr "Noch nicht gescannt"
+
+msgid "Library: %1$s of %2$s files scanned."
+msgstr "Mediathek: %1$s von %2$s Dateien gescannt."
+
+msgid "Last scan finished %s ago."
+msgstr "Letzter Scan vor %s abgeschlossen."
+
+msgid "No scan has finished yet."
+msgstr "Noch kein Scan abgeschlossen."
+
+msgid "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
+msgstr "Texte: %1$s KI-unterstützt, %2$s KI-generiert, %3$s generiert und geprüft."
+
+msgid "Systems: %1$s of %2$s shown to visitors."
+msgstr "Systeme: %1$s von %2$s für Besucher sichtbar."
+
+msgid "since %1$s (%2$s)"
+msgstr "seit %1$s (%2$s)"
+
+msgid "%1$s (in %2$s)"
+msgstr "%1$s (in %2$s)"

@@ -478,7 +478,7 @@ final class TransparAI_Dashboard {
 						<tbody>
 						<?php foreach ( $applicable as $question ) : ?>
 							<tr>
-								<td><?php echo esc_html( $question['label'] ); ?></td>
+								<td><?php echo esc_html( $question['text'] ); ?></td>
 								<td><?php echo esc_html( implode( ', ', $question['articles'] ) ); ?></td>
 								<td><a href="<?php echo esc_url( self::url( $question['page'] ) ); ?>"><?php echo esc_html( $question['action'] ); ?></a></td>
 							</tr>
@@ -860,47 +860,230 @@ final class TransparAI_Dashboard {
 	}
 
 	/* ---------------------------------------------------------------------
-	 * WordPress dashboard widget
+	 * WordPress dashboard widgets
 	 * ------------------------------------------------------------------- */
 
 	/**
-	 * Register the widget for administrators.
+	 * Two widgets for administrators, side by side on the WordPress dashboard
+	 * and deliberately not overlapping: "Readiness" is the state of the
+	 * compliance checks (score, what is still open, the next deadline),
+	 * "Numbers" is the inventory (media, texts, systems, last scan, activity).
 	 */
 	public static function register_widget(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		wp_add_dashboard_widget( 'transparai_readiness', 'TransparAI', array( self::class, 'render_widget' ), null, null, 'normal', 'high' );
+		wp_add_dashboard_widget( 'transparai_readiness', __( 'TransparAI: Readiness', 'transparai' ), array( self::class, 'render_widget' ), null, null, 'normal', 'high' );
+		wp_add_dashboard_widget( 'transparai_numbers', __( 'TransparAI: Numbers', 'transparai' ), array( self::class, 'render_numbers_widget' ), null, null, 'side', 'high' );
 	}
 
 	/**
-	 * Widget body: score, counts, links.
+	 * Readiness widget: score with traffic light, the open checks with their
+	 * next step, the next EU AI Act milestone, links to the compliance screens.
 	 */
 	public static function render_widget(): void {
+		$factors = TransparAI_Compliance::factors();
 		$score   = TransparAI_Compliance::score();
-		$stats   = TransparAI_Scanner::stats();
-		$content = TransparAI_Compliance::count_level( TransparAI_Compliance::AI_VALUES );
-		$systems = TransparAI_Systems::count();
+		$open    = array();
+		foreach ( $factors as $factor ) {
+			if ( ! $factor['met'] ) {
+				$open[] = $factor;
+			}
+		}
+		$next = self::next_milestone();
 		?>
 		<div class="trai-widget">
 			<p class="trai-widget-score">
 				<span class="trai-score-number"><?php echo esc_html( (string) $score ); ?></span>
 				<span class="trai-score-of">/ 100</span>
 				<?php echo self::traffic_chip( $score ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in traffic_chip(). ?>
+				<span class="trai-score-summary">
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: 1: met checks, 2: total checks. */
+						__( '%1$d of %2$d checks done', 'transparai' ),
+						count( $factors ) - count( $open ),
+						count( $factors )
+					)
+				);
+				?>
+				</span>
 			</p>
-			<ul class="trai-widget-counts">
-				<li><?php echo esc_html( sprintf( '%s: %s', __( 'AI-written posts', 'transparai' ), number_format_i18n( $content ) ) ); ?></li>
-				<li><?php echo esc_html( sprintf( '%s: %s', __( 'Labeled media', 'transparai' ), number_format_i18n( $stats['flagged'] ) ) ); ?></li>
-				<li><?php echo esc_html( sprintf( '%s: %s', __( 'Waiting for review', 'transparai' ), number_format_i18n( $stats['detected'] ) ) ); ?></li>
-				<li><?php echo esc_html( sprintf( '%s: %s', __( 'AI systems', 'transparai' ), number_format_i18n( $systems ) ) ); ?></li>
-			</ul>
-			<p>
-				<a href="<?php echo esc_url( self::url( self::MENU ) ); ?>"><?php esc_html_e( 'Dashboard', 'transparai' ); ?></a> |
-				<a href="<?php echo esc_url( self::url( 'transparai-assessment' ) ); ?>"><?php esc_html_e( 'Self-assessment', 'transparai' ); ?></a> |
+			<?php if ( array() === $open ) : ?>
+				<p class="trai-widget-allclear"><?php esc_html_e( 'Every check the plugin can perform is done. Keep the answers current when the site starts or stops using AI.', 'transparai' ); ?></p>
+			<?php else : ?>
+				<p class="trai-widget-heading"><?php esc_html_e( 'Still open', 'transparai' ); ?></p>
+				<ul class="trai-factors trai-widget-factors">
+					<?php foreach ( $open as $factor ) : ?>
+						<li class="trai-factor trai-factor--open">
+							<span class="trai-factor-state"><?php esc_html_e( 'Open', 'transparai' ); ?></span>
+							<a class="trai-factor-text" href="<?php echo esc_url( self::url( $factor['page'] ) ); ?>"><?php echo esc_html( $factor['action'] ); ?></a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+			<?php if ( null !== $next ) : ?>
+				<p class="trai-widget-milestone">
+					<span class="trai-widget-heading"><?php echo esc_html( $next['past'] ? __( 'In force', 'transparai' ) : __( 'Next deadline', 'transparai' ) ); ?></span>
+					<strong><?php echo esc_html( $next['title'] ); ?></strong>
+					<span class="trai-widget-muted"><?php echo esc_html( $next['when'] ); ?></span>
+				</p>
+			<?php endif; ?>
+			<p class="trai-widget-links">
+				<a href="<?php echo esc_url( self::url( self::MENU ) ); ?>"><?php esc_html_e( 'Dashboard', 'transparai' ); ?></a>
+				<a href="<?php echo esc_url( self::url( 'transparai-assessment' ) ); ?>"><?php esc_html_e( 'Self-assessment', 'transparai' ); ?></a>
 				<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Compliance report', 'transparai' ); ?></a>
 			</p>
-			<p class="description"><?php esc_html_e( 'Technical self-check of the plugin state. Not legal advice, no liability.', 'transparai' ); ?></p>
+			<p class="trai-widget-disclaimer"><?php esc_html_e( 'Technical self-check of the plugin state. Not legal advice, no liability.', 'transparai' ); ?></p>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Numbers widget: the inventory behind the score. Every number links to
+	 * the screen where it can be changed.
+	 */
+	public static function render_numbers_widget(): void {
+		$stats     = TransparAI_Scanner::stats();
+		$counts    = TransparAI_Compliance::content_counts();
+		$systems   = TransparAI_Systems::count();
+		$visible   = count( TransparAI_Systems::visible() );
+		$unscanned = max( 0, (int) $stats['total'] - (int) $stats['scanned'] );
+		$last_scan = self::last_event_time( 'scan-finished' );
+		$log       = array_slice( array_reverse( TransparAI_Meta::site_log() ), 0, 3 );
+		$tiles     = array(
+			array( (int) $stats['flagged'], __( 'Labeled as AI', 'transparai' ), self::url( 'transparai-images' ), false ),
+			array( (int) $stats['detected'], __( 'Waiting for review', 'transparai' ), admin_url( 'upload.php?mode=list&transparai_filter=detected' ), $stats['detected'] > 0 ),
+			array( (int) ( $stats['human'] ?? 0 ), __( 'Declared human-made', 'transparai' ), admin_url( 'upload.php?mode=list&transparai_filter=human' ), false ),
+			array( $unscanned, __( 'Not scanned yet', 'transparai' ), self::url( TransparAI_Settings::PAGE, '&tab=detection' ), $unscanned > 0 ),
+			array( (int) $counts['ai'], __( 'AI-written posts', 'transparai' ), self::url( 'transparai-content' ), false ),
+			array( $systems, __( 'AI systems', 'transparai' ), self::url( 'transparai-systems' ), false ),
+		);
+		?>
+		<div class="trai-widget">
+			<div class="trai-stats trai-widget-stats">
+				<?php foreach ( $tiles as $tile ) : ?>
+					<a class="trai-stat<?php echo $tile[3] ? ' trai-stat--action' : ''; ?>" href="<?php echo esc_url( $tile[2] ); ?>">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $tile[0] ) ); ?></span>
+						<span class="trai-stat-label"><?php echo esc_html( $tile[1] ); ?></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+			<ul class="trai-widget-facts">
+				<li>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: 1: scanned files, 2: files in the library. */
+						__( 'Library: %1$s of %2$s files scanned.', 'transparai' ),
+						number_format_i18n( (int) $stats['scanned'] ),
+						number_format_i18n( (int) $stats['total'] )
+					)
+				);
+				echo ' ';
+				if ( $last_scan > 0 ) {
+					/* translators: %s: human time difference. */
+					echo esc_html( sprintf( __( 'Last scan finished %s ago.', 'transparai' ), human_time_diff( $last_scan ) ) );
+				} else {
+					esc_html_e( 'No scan has finished yet.', 'transparai' );
+				}
+				?>
+				</li>
+				<li>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated and reviewed posts. */
+						__( 'Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed.', 'transparai' ),
+						number_format_i18n( (int) $counts[ TransparAI_Meta::LEVEL_ASSISTED ] ),
+						number_format_i18n( (int) $counts[ TransparAI_Meta::LEVEL_GEN ] ),
+						number_format_i18n( (int) $counts[ TransparAI_Meta::LEVEL_REVIEWED ] )
+					)
+				);
+				?>
+				</li>
+				<li>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: 1: systems visitors are told about, 2: inventoried systems. */
+						__( 'Systems: %1$s of %2$s shown to visitors.', 'transparai' ),
+						number_format_i18n( $visible ),
+						number_format_i18n( $systems )
+					)
+				);
+				?>
+				</li>
+			</ul>
+			<?php if ( array() !== $log ) : ?>
+				<p class="trai-widget-heading"><?php esc_html_e( 'Recent activity', 'transparai' ); ?></p>
+				<ul class="trai-widget-log">
+					<?php foreach ( $log as $entry ) : ?>
+						<li>
+							<span class="trai-widget-muted"><?php echo esc_html( date_i18n( (string) get_option( 'date_format', 'Y-m-d' ) . ' ' . (string) get_option( 'time_format', 'H:i' ), $entry['t'] ) ); ?></span>
+							<?php echo esc_html( TransparAI_Compliance::event_label( $entry['e'] ) ); ?>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+			<p class="trai-widget-links">
+				<a href="<?php echo esc_url( self::url( 'transparai-images' ) ); ?>"><?php esc_html_e( 'AI Images', 'transparai' ); ?></a>
+				<a href="<?php echo esc_url( self::url( 'transparai-content' ) ); ?>"><?php esc_html_e( 'AI Content', 'transparai' ); ?></a>
+				<a href="<?php echo esc_url( self::url( 'transparai-systems' ) ); ?>"><?php esc_html_e( 'AI Systems', 'transparai' ); ?></a>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * The milestone that matters now: the next one still ahead, or the last
+	 * one once all are in force. Null only if the list is empty.
+	 *
+	 * @return array{title:string, when:string, past:bool}|null
+	 */
+	public static function next_milestone(): ?array {
+		$now  = time();
+		$pick = null;
+		foreach ( TransparAI_Compliance::milestones() as $milestone ) {
+			$stamp = (int) strtotime( $milestone['date'] . ' 00:00:00 UTC' );
+			$pick  = array(
+				'title' => $milestone['title'],
+				'stamp' => $stamp,
+				'past'  => $stamp <= $now,
+			);
+			if ( $stamp > $now ) {
+				break;
+			}
+		}
+		if ( null === $pick ) {
+			return null;
+		}
+		$date = date_i18n( (string) get_option( 'date_format', 'Y-m-d' ), $pick['stamp'] );
+		$diff = human_time_diff( $pick['stamp'], $now );
+		if ( $pick['past'] ) {
+			/* translators: 1: date, 2: human time difference. */
+			$when = sprintf( __( 'since %1$s (%2$s)', 'transparai' ), $date, $diff );
+		} else {
+			/* translators: 1: date, 2: human time difference. */
+			$when = sprintf( __( '%1$s (in %2$s)', 'transparai' ), $date, $diff );
+		}
+		return array(
+			'title' => $pick['title'],
+			'past'  => $pick['past'],
+			'when'  => $when,
+		);
+	}
+
+	/**
+	 * Timestamp of the newest site-log entry with this event id, 0 if none.
+	 */
+	public static function last_event_time( string $event ): int {
+		foreach ( array_reverse( TransparAI_Meta::site_log() ) as $entry ) {
+			if ( $event === $entry['e'] ) {
+				return $entry['t'];
+			}
+		}
+		return 0;
 	}
 }
