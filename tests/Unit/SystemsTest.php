@@ -61,7 +61,7 @@ final class SystemsTest extends TestCase {
 		$all = TransparAI_Systems::all();
 		$this->assertSame( 'detected', $all['ai-engine']['source'] );
 		$this->assertFalse( $all['ai-engine']['visible'] );
-		$this->assertSame( array(), TransparAI_Systems::visible(), 'Nothing is visible without the notice option' );
+		$this->assertSame( array(), TransparAI_Systems::visible(), 'Nothing is visible until a system is ticked' );
 	}
 
 	public function test_declare_visibility_and_undeclare(): void {
@@ -77,9 +77,10 @@ final class SystemsTest extends TestCase {
 
 		TransparAI_Systems::set_visible( array( $id, 'not-a-system' ) );
 		$this->assertTrue( TransparAI_Systems::all()[ $id ]['visible'] );
-		$this->assertSame( array(), TransparAI_Systems::visible(), 'Notice option still off' );
+		$trai_test_options['transparai_settings'] = array( 'systems_notice' => '0' );
+		$this->assertSame( array(), TransparAI_Systems::visible(), 'Notice option switched off' );
 
-		$trai_test_options['transparai_settings'] = array( 'systems_notice' => '1' );
+		$trai_test_options['transparai_settings'] = array();
 		$visible                                   = TransparAI_Systems::visible();
 		$this->assertSame( array( $id ), array_keys( $visible ) );
 		$this->assertSame( 'This site uses AI systems: House Recommender.', TransparAI_Systems::notice_text( $visible ) );

@@ -561,6 +561,10 @@ final class TransparAI_Dashboard {
 				?>
 				</p>
 			<?php endif; ?>
+			<p class="description"><?php esc_html_e( 'Both parts of this screen end up in the compliance report, the document you keep for your records or hand to whoever asks.', 'transparai' ); ?></p>
+			<p class="trai-actions">
+				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Compliance report', 'transparai' ); ?></a>
+			</p>
 		</section>
 		<?php
 	}

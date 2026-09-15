@@ -39,7 +39,7 @@ final class TransparAI_Options {
 			'badge_size'              => 'medium', /* small | medium | large. */
 			'badge_from_date'         => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
 			'badge_show_source'       => '0', /* Append detected generator name to the badge. */
-			'badge_alt_append'        => '0', /* Append note to image alt text. */
+			'badge_alt_append'        => '1', /* Append note to image alt text (screen readers get the disclosure too). */
 			'badge_guard'             => '1', /* JS: move badges that a theme overlay covers. */
 			'background_badges'       => '0', /* Experimental: label CSS background images via JS map. */
 			'page_notice'             => '0', /* Site-wide footer note on pages containing labeled media. */
@@ -56,16 +56,16 @@ final class TransparAI_Options {
 			'content_responsible'     => '', /* Default name of the person responsible for reviewed texts. */
 			'content_show_reviewer'   => '0', /* Append "reviewed by {name} on {date}" to the note. */
 			'content_excerpt_notice'  => '0', /* Also append a plain-text line to excerpts (archives, teasers). */
-			'feed_notice'             => '0', /* Plain-text note in RSS/Atom items plus dc:description. */
+			'feed_notice'             => '1', /* Plain-text note in RSS/Atom items plus dc:description; the content note skips feeds. */
 
 			/* Chatbot disclosure: the operator's answer leads, detection only informs it. */
 			'chatbot_answer'          => 'unknown', /* unknown | yes | no: does the site run a chat? */
 			'chatbot_staffing'        => 'mixed', /* ai | human | mixed: who answers in it. */
 			'chatbot_notice_text'     => '', /* Empty = translated default. */
-			'chatbot_output'          => 'badge', /* chat (first bot message, AI Engine) | badge (next to the widget) | footer. */
+			'chatbot_output'          => 'chat', /* chat (first bot message, AI Engine; falls back to badge) | badge (next to the widget) | footer. */
 
 			/* AI systems in use (bundled local registry, nothing is fetched). */
-			'systems_notice'          => '0', /* Front-end notice naming the AI systems switched to visible. */
+			'systems_notice'          => '1', /* Front-end notice naming the AI systems switched to visible; prints nothing while none is. */
 			'systems_notice_style'    => 'footer', /* footer | badge | banner | manual (blocks and shortcode only). */
 			'systems_notice_text'     => '', /* Empty = translated default; %s = list of names. */
 
