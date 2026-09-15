@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection 1.1.1\n"
+"Project-Id-Version: TransparAI 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "POT-Creation-Date: 2026-09-15T07:24:25+00:00\n"
 "PO-Revision-Date: 2026-09-15 07:25+0000\n"
@@ -17,12 +17,12 @@ msgstr ""
 #. Plugin Name of the plugin
 #: transparai.php
 msgid "TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection"
-msgstr ""
+msgstr "TransparAI: EU AI Act Compliance, KI-Kennzeichnung & KI-Bilderkennung"
 
 #. Plugin URI of the plugin
 #: transparai.php
 msgid "https://wordpress.org/plugins/transparai/"
-msgstr ""
+msgstr "https://wordpress.org/plugins/transparai/"
 
 #. Description of the plugin
 #: transparai.php
@@ -37,12 +37,12 @@ msgstr ""
 #. Author of the plugin
 #: transparai.php
 msgid "Patrick Schlesinger"
-msgstr ""
+msgstr "Patrick Schlesinger"
 
 #. Author URI of the plugin
 #: transparai.php
 msgid "https://www.cms-admins.de/"
-msgstr ""
+msgstr "https://www.cms-admins.de/"
 
 #: admin/class-content-label.php:74 admin/class-content-label.php:166
 msgid "TransparAI"
