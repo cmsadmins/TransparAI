@@ -252,9 +252,9 @@ $trai_e2e_system = TransparAI_Systems::declare( 'E2E Recommender', 'personalisat
 TransparAI_Systems::set_visible( array( $trai_e2e_system ) );
 update_option( 'transparai_settings', array_merge( TransparAI_Options::all(), array( 'systems_notice' => '1', 'systems_notice_style' => 'footer' ) ) );
 $trai_e2e_home = trai_e2e_fetch( home_url( '/' ) );
-trai_e2e_check( str_contains( $trai_e2e_home, 'trai-systems-notice' ) && str_contains( $trai_e2e_home, 'E2E Recommender' ), 'AI systems notice names the visible system' );
+trai_e2e_check( str_contains( $trai_e2e_home, 'trai-page-notice__systems' ) && str_contains( $trai_e2e_home, 'E2E Recommender' ), 'AI systems notice names the visible system in the shared footer line' );
 TransparAI_Systems::undeclare( $trai_e2e_system );
-trai_e2e_check( ! str_contains( trai_e2e_fetch( home_url( '/' ) ), 'trai-systems-notice' ), 'notice disappears with the declaration' );
+trai_e2e_check( ! str_contains( trai_e2e_fetch( home_url( '/' ) ), 'trai-page-notice__systems' ), 'notice disappears with the declaration' );
 
 /* Notice styles, title badge and feed prefix on the AI-written post. */
 update_option(
