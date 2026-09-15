@@ -30,6 +30,8 @@ msgid ""
 "Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track "
 "EU AI Act readiness with a score, self-assessment and compliance report."
 msgstr ""
+"MI-képek felismerése C2PA és IPTC alapján, MI-tartalom és chatbotok "
+"jelölése, EU AI Act felkészültség: pontszám, önértékelés, jelentés."
 
 #. Author of the plugin
 #: transparai.php
@@ -43,15 +45,15 @@ msgstr "https://www.cms-admins.de/"
 
 #: admin/class-content-label.php:74 admin/class-content-label.php:166
 msgid "TransparAI"
-msgstr ""
+msgstr "TransparAI"
 
 #: admin/class-content-label.php:100 admin/class-content-label.php:167
 msgid "AI in this text"
-msgstr ""
+msgstr "MI ebben a szövegben"
 
 #: admin/class-content-label.php:108 admin/class-content-label.php:168
 msgid "Responsible person"
-msgstr ""
+msgstr "Felelős személy"
 
 #. translators: 1: reviewer name, 2: review date.
 #. translators: 1: name of the reviewer, 2: review date.
@@ -59,86 +61,93 @@ msgstr ""
 #: includes/class-notice.php:115
 #, php-format
 msgid "Reviewed by %1$s on %2$s."
-msgstr ""
+msgstr "Ellenőrizte: %1$s, ekkor: %2$s."
 
 #: admin/class-content-label.php:123
 msgid ""
 "The text or its images changed since; save with the reviewed level again "
 "after checking."
 msgstr ""
+"A szöveg vagy a képei azóta módosultak; ellenőrzés után mentse újra az "
+"ellenőrzött szinttel."
 
 #: admin/class-content-label.php:128
 msgid ""
 "AI levels show a note on the post. The wording, position, excerpt and feed "
 "options are in the TransparAI settings."
 msgstr ""
+"Az MI-szintek megjegyzést jelenítenek meg a bejegyzésen. A szöveg, a "
+"pozíció, a kivonat és a hírcsatorna beállításai a TransparAI beállításai "
+"között találhatók."
 
 #: admin/class-content-label.php:172
 msgid ""
 "AI levels show a note on the post. Wording and placement are set in the "
 "TransparAI settings."
 msgstr ""
+"Az MI-szintek megjegyzést jelenítenek meg a bejegyzésen. A szöveget és az "
+"elhelyezést a TransparAI beállításaiban lehet megadni."
 
 #: admin/class-content-label.php:243 admin/class-content-label.php:376
 #: admin/class-content-label.php:406
 msgid "AI text"
-msgstr ""
+msgstr "MI-szöveg"
 
 #: admin/class-content-label.php:269
 msgid "changed since review"
-msgstr ""
+msgstr "az ellenőrzés óta módosult"
 
 #: admin/class-content-label.php:314
 msgid "All AI levels"
-msgstr ""
+msgstr "Minden MI-szint"
 
 #: admin/class-content-label.php:315 admin/class-dashboard.php:789
 msgid "Any AI involvement"
-msgstr ""
+msgstr "Bármilyen MI-közreműködés"
 
 #: admin/class-content-label.php:316 admin/class-dashboard.php:793
 #: includes/class-notice.php:151
 msgid "Not classified"
-msgstr ""
+msgstr "Nincs besorolva"
 
 #: admin/class-content-label.php:408
 msgid "&mdash; No change &mdash;"
-msgstr ""
+msgstr "&mdash; Nincs változás &mdash;"
 
 #: admin/class-content-label.php:409
 msgid "Remove classification"
-msgstr ""
+msgstr "Besorolás eltávolítása"
 
 #: admin/class-dashboard.php:50 admin/class-dashboard.php:373
 #: admin/class-dashboard.php:934
 msgid "Dashboard"
-msgstr ""
+msgstr "Vezérlőpult"
 
 #: admin/class-dashboard.php:51
 msgid "Assessment"
-msgstr ""
+msgstr "Önértékelés"
 
 #: admin/class-dashboard.php:52 admin/class-dashboard.php:1033
 msgid "AI Systems"
-msgstr ""
+msgstr "MI-rendszerek"
 
 #: admin/class-dashboard.php:53 admin/class-dashboard.php:1032
 msgid "AI Content"
-msgstr ""
+msgstr "MI-tartalom"
 
 #: admin/class-dashboard.php:54 admin/class-dashboard.php:1031
 msgid "AI Images"
-msgstr ""
+msgstr "MI-képek"
 
 #: admin/class-dashboard.php:59 admin/class-dashboard.php:410
 #: admin/class-settings.php:178
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 #: admin/class-dashboard.php:107 admin/class-setup.php:324
 #: admin/class-setup.php:344
 msgid "Saved."
-msgstr ""
+msgstr "Elmentve."
 
 #: admin/class-dashboard.php:118
 msgid ""
@@ -151,57 +160,80 @@ msgid ""
 " provided without warranty of any kind, and the author accepts no liability "
 "for its use or for decisions based on it."
 msgstr ""
+"A TransparAI technikai eszköz, nem jogi tanácsadás. Segít felismerni, "
+"címkézni és dokumentálni az MI használatát ezen a webhelyen; azt nem tudja "
+"megmondani, hogy a webhelye megfelel-e az EU AI Actnak vagy bármely más "
+"jogszabálynak. A felkészültségi pontszám, az önértékelés és minden "
+"tájékoztató a bővítmény saját ellenőrzéseit és az Ön válaszait tükrözi, "
+"semmi többet. A jogi kötelezettségek az Ön helyzetétől függenek, és az Ön "
+"felelősségében maradnak; jogi értékelésért forduljon ügyvédhez. A bővítmény "
+"mindenféle garancia nélkül érkezik, a szerző pedig nem vállal felelősséget a"
+" használatáért vagy az azon alapuló döntésekért."
 
 #: admin/class-dashboard.php:133
 msgid "Please read before you rely on anything here."
-msgstr ""
+msgstr "Kérjük, olvassa el, mielőtt bármire is támaszkodna itt."
 
 #: admin/class-dashboard.php:137
 msgid "I understand: no legal advice, no liability"
-msgstr ""
+msgstr "Megértettem: nem jogi tanácsadás, nincs felelősségvállalás"
 
 #: admin/class-dashboard.php:145 admin/class-settings.php:132
 msgid "Not legal advice, no liability"
-msgstr ""
+msgstr "Nem jogi tanácsadás, nincs felelősségvállalás"
 
 #: admin/class-dashboard.php:156 admin/class-dashboard.php:507
 #: admin/class-dashboard.php:577 admin/class-dashboard.php:726
 msgid "You are not allowed to do this."
-msgstr ""
+msgstr "Nincs jogosultsága ehhez a művelethez."
 
 #: admin/class-dashboard.php:170
 msgid ""
 "Scan the media library, then confirm or dismiss what lands in the review "
 "queue. Labeled files get the visible badge and the machine-readable marking."
 msgstr ""
+"Vizsgálja át a médiatárat, majd erősítse meg vagy vesse el, ami az "
+"ellenőrzési sorba kerül. A címkézett fájlok megkapják a látható jelvényt és "
+"a gépileg olvasható jelölést."
 
 #: admin/class-dashboard.php:171
 msgid ""
 "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, "
 "Bulk Edit) so the visitor note appears."
 msgstr ""
+"Adja meg az MI által írt bejegyzések és oldalak MI-szintjét (szerkesztő "
+"oldalsáv, Gyors szerkesztés, Csoportos szerkesztés), hogy a látogatói "
+"megjegyzés megjelenjen."
 
 #: admin/class-dashboard.php:172
 msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
 msgstr ""
+"Válaszolja meg, hogy a webhelyen fut-e chat, és ki válaszol benne; a "
+"chatbot-tájékoztató a válaszát követi."
 
 #: admin/class-dashboard.php:173
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
 msgstr ""
+"Nézze át azokat az MI-rendszereket, amelyeket a bővítmény a telepített "
+"bővítményei között talált, jelentsen be továbbiakat, és döntse el, melyekről"
+" tájékoztatja a látogatókat."
 
 #: admin/class-dashboard.php:174
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
 msgstr ""
+"Válaszolja meg az önértékelés hat kérdését, jelölje be a 4. cikk szerinti "
+"ellenőrzőlistát, majd exportálja a megfelelőségi jelentést a "
+"nyilvántartásához."
 
 #: admin/class-dashboard.php:178
 msgid "How TransparAI works"
-msgstr ""
+msgstr "Hogyan működik a TransparAI"
 
 #: admin/class-dashboard.php:179
 msgid ""
@@ -212,133 +244,145 @@ msgid ""
 "what you decided. Work through the steps in this order; the readiness score "
 "above follows along."
 msgstr ""
+"Az EU AI Act három dolgot kér egy webhelyen: a látogatóknak tudniuk kell, ha"
+" MI-vel beszélnek, az MI által generált médiának gépileg olvasható jelölést "
+"kell hordoznia, a közérdekű ügyekről MI által generált szöveget pedig "
+"közölni kell. Ez a bővítmény mindhárom technikai oldalát lefedi, és "
+"dokumentálja, amit Ön eldöntött. Haladjon végig a lépéseken ebben a "
+"sorrendben; a fenti felkészültségi pontszám követi."
 
 #: admin/class-dashboard.php:223 admin/class-settings.php:705
 msgid "Readiness score"
-msgstr ""
+msgstr "Felkészültségi pontszám"
 
 #. translators: 1: met checks, 2: total checks.
 #: admin/class-dashboard.php:233 admin/class-dashboard.php:905
 #, php-format
 msgid "%1$d of %2$d checks done"
-msgstr ""
+msgstr "%2$d ellenőrzésből %1$d kész"
 
 #: admin/class-dashboard.php:241
 msgid ""
 "The score counts the checks this plugin can perform on its own state. It is "
 "a technical self-check, not a legal assessment."
 msgstr ""
+"A pontszám azokat az ellenőrzéseket számolja, amelyeket a bővítmény a saját "
+"állapotán el tud végezni. Ez technikai önellenőrzés, nem jogi értékelés."
 
 #: admin/class-dashboard.php:243 admin/class-dashboard.php:247
 #: admin/class-dashboard.php:920
 msgid "Open"
-msgstr ""
+msgstr "Nyitott"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
 #: admin/class-settings.php:707 admin/class-settings.php:726
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 #: admin/class-dashboard.php:276
 msgid "EU AI Act timeline"
-msgstr ""
+msgstr "EU AI Act ütemterv"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:291
 #, php-format
 msgid "in force for %s"
-msgstr ""
+msgstr "%s óta hatályos"
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:294
 #, php-format
 msgid "in %s"
-msgstr ""
+msgstr "%s múlva"
 
 #: admin/class-dashboard.php:303
 msgid ""
 "Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can"
 " move them."
 msgstr ""
+"A dátumok az (EU) 2024/1689 rendelet 113. cikke szerint, az elfogadott "
+"szöveg alapján. Módosítások megváltoztathatják őket."
 
 #: admin/class-dashboard.php:316 admin/class-dashboard.php:1020
 #: admin/class-settings.php:778
 msgid "Recent activity"
-msgstr ""
+msgstr "Legutóbbi tevékenység"
 
 #: admin/class-dashboard.php:318
 msgid ""
 "Nothing recorded yet. Scans, settings changes, bulk actions and declarations"
 " show up here."
 msgstr ""
+"Még nincs rögzítve semmi. Az átvizsgálások, a beállításmódosítások, a "
+"tömeges műveletek és a bejelentések itt jelennek meg."
 
 #: admin/class-dashboard.php:322 admin/class-settings.php:779
 msgid "When"
-msgstr ""
+msgstr "Mikor"
 
 #: admin/class-dashboard.php:323 admin/class-settings.php:779
 msgid "Event"
-msgstr ""
+msgstr "Esemény"
 
 #: admin/class-dashboard.php:324
 msgid "Details"
-msgstr ""
+msgstr "Részletek"
 
 #: admin/class-dashboard.php:325 admin/class-settings.php:779
 msgid "By"
-msgstr ""
+msgstr "Végezte"
 
 #: admin/class-dashboard.php:333 admin/class-media-library.php:408
 msgid "system"
-msgstr ""
+msgstr "rendszer"
 
 #: admin/class-dashboard.php:377
 msgid "The first-run setup is not finished yet."
-msgstr ""
+msgstr "A kezdeti beállítás még nincs befejezve."
 
 #: admin/class-dashboard.php:378 admin/class-settings.php:832
 msgid "Open setup"
-msgstr ""
+msgstr "Beállítás megnyitása"
 
 #: admin/class-dashboard.php:386
 msgid "At a glance"
-msgstr ""
+msgstr "Egy pillantásra"
 
 #: admin/class-dashboard.php:390 admin/class-dashboard.php:960
 msgid "AI-written posts"
-msgstr ""
+msgstr "MI által írt bejegyzések"
 
 #: admin/class-dashboard.php:394
 msgid "Labeled media"
-msgstr ""
+msgstr "Címkézett média"
 
 #: admin/class-dashboard.php:398 admin/class-dashboard.php:957
 #: admin/class-settings.php:818
 msgid "Waiting for review"
-msgstr ""
+msgstr "Ellenőrzésre vár"
 
 #: admin/class-dashboard.php:402 admin/class-dashboard.php:961
 #: admin/class-settings.php:224
 msgid "AI systems"
-msgstr ""
+msgstr "MI-rendszerek"
 
 #: admin/class-dashboard.php:406 admin/class-dashboard.php:432
 #: admin/class-dashboard.php:935 admin/class-settings.php:713
 msgid "Self-assessment"
-msgstr ""
+msgstr "Önértékelés"
 
 #: admin/class-dashboard.php:407
 msgid "AI literacy checklist"
-msgstr ""
+msgstr "MI-jártassági ellenőrzőlista"
 
 #: admin/class-dashboard.php:408 admin/class-dashboard.php:566
 #: admin/class-dashboard.php:936
 msgid "Compliance report"
-msgstr ""
+msgstr "Megfelelőségi jelentés"
 
 #: admin/class-dashboard.php:409 admin/class-settings.php:829
 msgid "Export audit CSV"
-msgstr ""
+msgstr "Audit CSV exportálása"
 
 #: admin/class-dashboard.php:435
 msgid ""
@@ -351,40 +395,53 @@ msgid ""
 "asks and of whom, and which plugin page handles it; complete answers count "
 "toward the readiness score and are printed in the compliance report."
 msgstr ""
+"Az, hogy az EU AI Act mely átláthatósági kötelezettségei vonatkoznak egy "
+"webhelyre, attól függ, hogyan használ valójában MI-t: egy chatbot nélküli "
+"webhelynek nincs mit közölnie a chatbotokról, egy MI által írt cikkeket "
+"közlőnek van. Válaszolja meg a hat kérdést Igennel vagy Nemmel a mai állapot"
+" szerint; az egyes kérdések alatti példák mutatják, mi számít bele, és ha "
+"bizonytalan, kérdezze meg azokat, akik a tartalmat készítik. Az alábbi "
+"eredmény minden megerősített használatnál megmondja, mit kér az AI Act és "
+"kitől, valamint melyik bővítményoldal kezeli; a teljes válaszok "
+"beleszámítanak a felkészültségi pontszámba, és megjelennek a megfelelőségi "
+"jelentésben."
 
 #: admin/class-dashboard.php:436
 msgid ""
 "Stored on this site only, nothing is sent anywhere. Come back and update the"
 " answers whenever the site starts or stops using AI in one of these ways."
 msgstr ""
+"Csak ezen a webhelyen tárolódik, semmi sem kerül továbbításra. Térjen "
+"vissza, és frissítse a válaszokat, valahányszor a webhely elkezdi vagy "
+"abbahagyja az MI ilyen jellegű használatát."
 
 #: admin/class-dashboard.php:444 admin/class-settings.php:475
 #: admin/class-settings.php:701
 msgid "Yes"
-msgstr ""
+msgstr "Igen"
 
 #: admin/class-dashboard.php:445 admin/class-settings.php:476
 #: admin/class-settings.php:702
 msgid "No"
-msgstr ""
+msgstr "Nem"
 
 #: admin/class-dashboard.php:448
 msgid "Save answers"
-msgstr ""
+msgstr "Válaszok mentése"
 
 #. translators: 1: name, 2: date.
 #: admin/class-dashboard.php:456 admin/class-dashboard.php:556
 #, php-format
 msgid "Last saved by %1$s on %2$s."
-msgstr ""
+msgstr "Utoljára mentette: %1$s, ekkor: %2$s."
 
 #: admin/class-dashboard.php:457 admin/class-dashboard.php:557
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #: admin/class-dashboard.php:467 admin/class-dashboard.php:493
 msgid "Your to-do list"
-msgstr ""
+msgstr "Az Ön teendőlistája"
 
 #: admin/class-dashboard.php:470
 msgid ""
@@ -392,18 +449,21 @@ msgid ""
 "starts using AI; the Article 4 checklist below still documents your "
 "awareness."
 msgstr ""
+"Minden kérdésre nemmel válaszolt. Tartsa naprakészen a válaszokat, ha a "
+"webhely elkezd MI-t használni; az alábbi, 4. cikk szerinti ellenőrzőlista "
+"ettől függetlenül dokumentálja a tudatosságát."
 
 #: admin/class-dashboard.php:474
 msgid "Use of AI"
-msgstr ""
+msgstr "Az MI használata"
 
 #: admin/class-dashboard.php:475 admin/class-settings.php:717
 msgid "What the AI Act says"
-msgstr ""
+msgstr "Mit mond az AI Act"
 
 #: admin/class-dashboard.php:476
 msgid "Recommended action"
-msgstr ""
+msgstr "Javasolt teendő"
 
 #: admin/class-dashboard.php:489
 msgid ""
@@ -411,6 +471,10 @@ msgid ""
 " it under their own authority; a website operator is usually the deployer. "
 "This overview is a technical aid, not legal advice."
 msgstr ""
+"A szolgáltató az, aki az MI-rendszert építette vagy tanította, az alkalmazó "
+"pedig az, aki saját felelősségére használja; egy webhely üzemeltetője "
+"rendszerint az alkalmazó. Ez az áttekintés technikai segédlet, nem jogi "
+"tanácsadás."
 
 #: admin/class-dashboard.php:494
 msgid ""
@@ -418,10 +482,13 @@ msgid ""
 "every use you confirmed it says what the AI Act asks and of whom, and which "
 "plugin page handles it."
 msgstr ""
+"Ez az áttekintés akkor jelenik meg, ha mind a hat kérdés meg van válaszolva "
+"és el van mentve. Minden megerősített használatnál megmondja, mit kér az AI "
+"Act és kitől, valamint melyik bővítményoldal kezeli."
 
 #: admin/class-dashboard.php:526
 msgid "AI literacy (Article 4)"
-msgstr ""
+msgstr "MI-jártasság (4. cikk)"
 
 #: admin/class-dashboard.php:527
 msgid ""
@@ -434,27 +501,39 @@ msgid ""
 "readiness score and appears in the compliance report with the name and date "
 "of the last save."
 msgstr ""
+"A 4. cikk 2025. február 2. óta minden szolgáltatóra és alkalmazóra "
+"vonatkozik, bármit is válaszolt fent: a lehetőségeihez mérten intézkedéseket"
+" tesz annak érdekében, hogy az MI-rendszereket az Ön nevében működtető vagy "
+"használó személyek megfelelő szintű MI-jártassággal rendelkezzenek, "
+"figyelembe véve a hátterüket és a használat kontextusát. A rendelet nem ír "
+"elő konkrét képzést vagy tanúsítványt; ez az ellenőrzőlista azokat az "
+"intézkedéseket rögzíti, amelyek általában bizonyítékként szolgálnak. "
+"Beleszámít a felkészültségi pontszámba, és az utolsó mentés nevével és "
+"dátumával jelenik meg a megfelelőségi jelentésben."
 
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:533
 #, php-format
 msgid "%1$d of %2$d done"
-msgstr ""
+msgstr "%2$d elemből %1$d kész"
 
 #: admin/class-dashboard.php:548
 msgid "Save checklist"
-msgstr ""
+msgstr "Ellenőrzőlista mentése"
 
 #: admin/class-dashboard.php:564
 msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
 msgstr ""
+"A képernyő mindkét része bekerül a megfelelőségi jelentésbe, abba a "
+"dokumentumba, amelyet a nyilvántartásában megőriz, vagy átad annak, aki "
+"kéri."
 
 #: admin/class-dashboard.php:602 admin/class-settings.php:513
 #: admin/class-settings.php:732
 msgid "AI systems in use"
-msgstr ""
+msgstr "Használt MI-rendszerek"
 
 #: admin/class-dashboard.php:605
 msgid ""
@@ -463,97 +542,107 @@ msgid ""
 "fetched. Tick the systems visitors should be told about; the notice itself "
 "is switched on under Settings, AI systems."
 msgstr ""
+"A telepített bővítményeket a bővítménnyel együtt érkező, ismert MI-"
+"eszközöket tartalmazó lista veti össze; az MI által válaszolt chatbotok is "
+"benne vannak. Semmi nem kerül letöltésre. Jelölje be azokat a rendszereket, "
+"amelyekről a látogatók értesüljenek; magát a tájékoztatót a Beállítások, MI-"
+"rendszerek alatt lehet bekapcsolni."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:610
 #, php-format
 msgid "Last scan %s ago."
-msgstr ""
+msgstr "Az utolsó átvizsgálás %s ezelőtt volt."
 
 #: admin/class-dashboard.php:614
 msgid "The visitor notice is currently off."
-msgstr ""
+msgstr "A látogatói tájékoztató jelenleg ki van kapcsolva."
 
 #: admin/class-dashboard.php:622
 msgid "No AI system detected or declared yet."
-msgstr ""
+msgstr "Még nincs felismert vagy bejelentett MI-rendszer."
 
 #: admin/class-dashboard.php:626
 msgid "Visible"
-msgstr ""
+msgstr "Látható"
 
 #: admin/class-dashboard.php:627 admin/class-settings.php:736
 msgid "System"
-msgstr ""
+msgstr "Rendszer"
 
 #: admin/class-dashboard.php:628 admin/class-dashboard.php:676
 #: admin/class-settings.php:736
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
 #: admin/class-dashboard.php:629 admin/class-settings.php:736
 msgid "Articles"
-msgstr ""
+msgstr "Cikkek"
 
 #: admin/class-dashboard.php:630
 msgid "Found via"
-msgstr ""
+msgstr "Felismerés módja"
 
 #: admin/class-dashboard.php:649 includes/class-notice.php:638
 msgid "Remove"
-msgstr ""
+msgstr "Eltávolítás"
 
 #: admin/class-dashboard.php:659
 msgid "Save visibility"
-msgstr ""
+msgstr "Láthatóság mentése"
 
 #: admin/class-dashboard.php:661
 msgid "Scan installed plugins again"
-msgstr ""
+msgstr "Telepített bővítmények újbóli átvizsgálása"
 
 #: admin/class-dashboard.php:668
 msgid "Possibly AI"
-msgstr ""
+msgstr "Esetleg MI"
 
 #: admin/class-dashboard.php:669
 msgid ""
 "Active plugins the list does not know whose name or description mentions AI."
 " Suggestions only: declare what really is an AI system, ignore the rest."
 msgstr ""
+"Olyan aktív bővítmények, amelyeket a lista nem ismer, és amelyek neve vagy "
+"leírása említi az MI-t. Csak javaslatok: jelentse be azt, ami valóban MI-"
+"rendszer, a többit hagyja figyelmen kívül."
 
 #: admin/class-dashboard.php:671
 msgid "No further candidates among the active plugins."
-msgstr ""
+msgstr "Nincs további jelölt az aktív bővítmények között."
 
 #: admin/class-dashboard.php:675
 msgid "Plugin"
-msgstr ""
+msgstr "Bővítmény"
 
 #: admin/class-dashboard.php:693
 msgid "Declare as AI system"
-msgstr ""
+msgstr "Bejelentés MI-rendszerként"
 
 #: admin/class-dashboard.php:703
 msgid "Declare another system"
-msgstr ""
+msgstr "Másik rendszer bejelentése"
 
 #: admin/class-dashboard.php:704
 msgid ""
 "For tools that are not WordPress plugins: an external service, a script, an "
 "API your theme calls."
 msgstr ""
+"Olyan eszközökhöz, amelyek nem WordPress-bővítmények: külső szolgáltatás, "
+"szkript, a sablon által hívott API."
 
 #: admin/class-dashboard.php:708
 msgid "Name of the system"
-msgstr ""
+msgstr "A rendszer neve"
 
 #: admin/class-dashboard.php:714
 msgid "Declare"
-msgstr ""
+msgstr "Bejelentés"
 
 #: admin/class-dashboard.php:762 admin/class-settings.php:762
 msgid "AI-written content"
-msgstr ""
+msgstr "MI által írt tartalom"
 
 #: admin/class-dashboard.php:765
 msgid ""
@@ -562,14 +651,19 @@ msgid ""
 "posts at once in Bulk Edit; the lists below are the regular post lists "
 "filtered by level, with the same Quick Edit and Bulk Edit tools."
 msgstr ""
+"Minden bejegyzés, oldal és nyilvános egyéni bejegyzéstípus MI-szintet hordoz"
+" a szövegéhez. A szint a szerkesztő oldalsávjában, a Gyors szerkesztésben "
+"vagy egyszerre több bejegyzésnél a Csoportos szerkesztésben állítható be; az"
+" alábbi listák a szokásos bejegyzéslisták szint szerint szűrve, ugyanazokkal"
+" a Gyors szerkesztés és Csoportos szerkesztés eszközökkel."
 
 #: admin/class-dashboard.php:776
 msgid "Post type"
-msgstr ""
+msgstr "Bejegyzéstípus"
 
 #: admin/class-dashboard.php:777
 msgid "Open list"
-msgstr ""
+msgstr "Lista megnyitása"
 
 #: admin/class-dashboard.php:799
 msgid ""
@@ -577,18 +671,22 @@ msgid ""
 "set the AI level to \"No AI used\" or clear it. The note wording, position "
 "and style live under Settings, AI-written text."
 msgstr ""
+"Ha egyszerre több bejegyzésről szeretné levenni a jelölést, jelölje ki őket "
+"a listában, válassza a Csoportos szerkesztést, és állítsa az MI-szintet a "
+"„Nem használt MI-t” értékre, vagy törölje. A megjegyzés szövege, pozíciója "
+"és stílusa a Beállítások, MI által írt szöveg alatt található."
 
 #: admin/class-dashboard.php:801
 msgid "Text settings"
-msgstr ""
+msgstr "Szövegbeállítások"
 
 #: admin/class-dashboard.php:832
 msgid "AI images and media"
-msgstr ""
+msgstr "MI-képek és média"
 
 #: admin/class-dashboard.php:837
 msgid "Media lists"
-msgstr ""
+msgstr "Médialisták"
 
 #: admin/class-dashboard.php:838
 msgid ""
@@ -596,27 +694,30 @@ msgid ""
 "actions (label, unlabel, confirm, dismiss, declare as camera photo or human "
 "work)."
 msgstr ""
+"A médiatár listanézete tartalmazza az MI-oszlopot, a szűrőt és a tömeges "
+"műveleteket (címkézés, címke eltávolítása, megerősítés, elvetés, bejelentés "
+"fényképként vagy emberi alkotásként)."
 
 #: admin/class-dashboard.php:840 admin/class-dashboard.php:956
 #: admin/class-settings.php:814
 msgid "Labeled as AI"
-msgstr ""
+msgstr "MI-ként címkézve"
 
 #: admin/class-dashboard.php:841
 msgid "Review queue"
-msgstr ""
+msgstr "Ellenőrzési sor"
 
 #: admin/class-dashboard.php:842
 msgid "Declared as not AI"
-msgstr ""
+msgstr "Nem MI-ként bejelentve"
 
 #: admin/class-dashboard.php:843
 msgid "Unlabeled"
-msgstr ""
+msgstr "Címkézetlen"
 
 #: admin/class-dashboard.php:844
 msgid "Badge settings"
-msgstr ""
+msgstr "Jelvénybeállítások"
 
 #. translators: %d: number of dismissed files.
 #: admin/class-dashboard.php:851
@@ -628,62 +729,70 @@ msgid_plural ""
 "%d files were dismissed from the review queue and stay unlabeled until you "
 "decide otherwise."
 msgstr[0] ""
+"%d fájl elvetésre került az ellenőrzési sorból, és címkézetlen marad, amíg "
+"másképp nem dönt."
 msgstr[1] ""
+"%d fájl elvetésre került az ellenőrzési sorból, és címkézetlen marad, amíg "
+"másképp nem dönt."
 
 #: admin/class-dashboard.php:876
 msgid "TransparAI: Readiness"
-msgstr ""
+msgstr "TransparAI: Felkészültség"
 
 #: admin/class-dashboard.php:877
 msgid "TransparAI: Numbers"
-msgstr ""
+msgstr "TransparAI: Számok"
 
 #: admin/class-dashboard.php:914
 msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
 msgstr ""
+"A bővítmény minden elvégezhető ellenőrzése kész. Tartsa naprakészen a "
+"válaszokat, ha a webhely elkezdi vagy abbahagyja az MI használatát."
 
 #: admin/class-dashboard.php:916
 msgid "Still open"
-msgstr ""
+msgstr "Még nyitott"
 
 #: admin/class-dashboard.php:928
 msgid "In force"
-msgstr ""
+msgstr "Hatályos"
 
 #: admin/class-dashboard.php:928
 msgid "Next deadline"
-msgstr ""
+msgstr "Következő határidő"
 
 #: admin/class-dashboard.php:938
 msgid ""
 "Technical self-check of the plugin state. Not legal advice, no liability."
 msgstr ""
+"A bővítmény állapotának technikai önellenőrzése. Nem jogi tanácsadás, nincs "
+"felelősségvállalás."
 
 #: admin/class-dashboard.php:958
 msgid "Declared human-made"
-msgstr ""
+msgstr "Emberi alkotásként bejelentve"
 
 #: admin/class-dashboard.php:959
 msgid "Not scanned yet"
-msgstr ""
+msgstr "Még nincs átvizsgálva"
 
 #. translators: 1: scanned files, 2: files in the library.
 #: admin/class-dashboard.php:979
 #, php-format
 msgid "Library: %1$s of %2$s files scanned."
-msgstr ""
+msgstr "Médiatár: %2$s fájlból %1$s átvizsgálva."
 
 #. translators: %s: human time difference.
 #: admin/class-dashboard.php:987
 #, php-format
 msgid "Last scan finished %s ago."
-msgstr ""
+msgstr "Az utolsó átvizsgálás %s ezelőtt fejeződött be."
 
 #: admin/class-dashboard.php:989
 msgid "No scan has finished yet."
-msgstr ""
+msgstr "Még egyetlen átvizsgálás sem fejeződött be."
 
 #. translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated
 #. and reviewed posts.
@@ -692,160 +801,170 @@ msgstr ""
 msgid ""
 "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
 msgstr ""
+"Szövegek: %1$s MI-vel segített, %2$s MI által generált, %3$s generált és "
+"ellenőrzött."
 
 #. translators: 1: systems visitors are told about, 2: inventoried systems.
 #: admin/class-dashboard.php:1011
 #, php-format
 msgid "Systems: %1$s of %2$s shown to visitors."
-msgstr ""
+msgstr "Rendszerek: %2$s közül %1$s jelenik meg a látogatóknak."
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1066
 #, php-format
 msgid "since %1$s (%2$s)"
-msgstr ""
+msgstr "%1$s óta (%2$s)"
 
 #. translators: 1: date, 2: human time difference.
 #: admin/class-dashboard.php:1069
 #, php-format
 msgid "%1$s (in %2$s)"
-msgstr ""
+msgstr "%1$s (%2$s múlva)"
 
 #: admin/class-media-library.php:74
 msgid "Media is AI-generated"
-msgstr ""
+msgstr "A média MI által generált"
 
 #: admin/class-media-library.php:84 admin/class-media-library.php:377
 msgid "no declaration"
-msgstr ""
+msgstr "nincs nyilatkozat"
 
 #: admin/class-media-library.php:85
 msgid "camera photo (digitalCapture)"
-msgstr ""
+msgstr "fényképezőgéppel készült fotó (digitalCapture)"
 
 #: admin/class-media-library.php:86
 msgid "human digital work (digitalCreation)"
-msgstr ""
+msgstr "emberi digitális alkotás (digitalCreation)"
 
 #: admin/class-media-library.php:88
 msgid "Not AI:"
-msgstr ""
+msgstr "Nem MI:"
 
 #: admin/class-media-library.php:97
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
 msgstr ""
+"A fájl metaadatait nem sikerült frissíteni (a fájl nem írható). A "
+"WordPressben tárolt címkeállapot és a fájlon belüli metaadat eltérhet."
 
 #: admin/class-media-library.php:103
 msgid "Confirm AI label"
-msgstr ""
+msgstr "MI-címke megerősítése"
 
 #: admin/class-media-library.php:104
 msgid "Not AI, dismiss"
-msgstr ""
+msgstr "Nem MI, elvetés"
 
 #: admin/class-media-library.php:109
 msgid "Re-check file metadata"
-msgstr ""
+msgstr "Fájl metaadatainak újraellenőrzése"
 
 #: admin/class-media-library.php:114
 msgid "Check delivery"
-msgstr ""
+msgstr "Kiszolgálás ellenőrzése"
 
 #: admin/class-media-library.php:124 admin/class-media-library.php:496
 msgid "Show file metadata"
-msgstr ""
+msgstr "Fájl metaadatainak megjelenítése"
 
 #: admin/class-media-library.php:127
 msgid "AI content"
-msgstr ""
+msgstr "MI-tartalom"
 
 #: admin/class-media-library.php:130
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
 msgstr ""
+"Vezérli a látogatói oldali jelvényt, a gépileg olvasható fájlmetaadatot és a"
+" médiatár szűrőjét."
 
 #: admin/class-media-library.php:136
 msgid "Default (site setting)"
-msgstr ""
+msgstr "Alapértelmezett (webhelybeállítás)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
 #: admin/class-setup.php:306
 msgid "Top left"
-msgstr ""
+msgstr "Bal felül"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
 #: admin/class-setup.php:307
 msgid "Top right"
-msgstr ""
+msgstr "Jobb felül"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
 #: admin/class-setup.php:308
 msgid "Bottom left"
-msgstr ""
+msgstr "Bal alul"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
 #: admin/class-setup.php:309
 msgid "Bottom right"
-msgstr ""
+msgstr "Jobb alul"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
 #: admin/class-setup.php:318
 msgid "Caption line below the image"
-msgstr ""
+msgstr "Képaláírás-sor a kép alatt"
 
 #: admin/class-media-library.php:142
 msgid "Hide the visible badge on this image"
-msgstr ""
+msgstr "A látható jelvény elrejtése ezen a képen"
 
 #: admin/class-media-library.php:151
 msgid "Badge position"
-msgstr ""
+msgstr "Jelvény pozíciója"
 
 #: admin/class-media-library.php:154
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
+"Csak ezt a képet bírálja felül. Akkor használja, ha a sablon egy rátétje itt"
+" eltakarja a jelvényt."
 
 #: admin/class-media-library.php:158
 msgid "AI generator"
-msgstr ""
+msgstr "MI-generátor"
 
 #: admin/class-media-library.php:162
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
 msgstr ""
+"Az MI-eszköz neve, például „Midjourney”. A jelvény forrásbeállítása és a "
+"{generator} helyőrző jeleníti meg."
 
 #: admin/class-media-library.php:182
 msgid "certain"
-msgstr ""
+msgstr "biztos"
 
 #: admin/class-media-library.php:183
 msgid "likely"
-msgstr ""
+msgstr "valószínű"
 
 #: admin/class-media-library.php:184
 msgid "hint"
-msgstr ""
+msgstr "utalás"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
 #: admin/class-setup.php:194 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
-msgstr ""
+msgstr "Nincs jogosultsága ehhez a művelethez."
 
 #: admin/class-media-library.php:293 includes/class-rest.php:243
 msgid "Unknown action."
-msgstr ""
+msgstr "Ismeretlen művelet."
 
 #: admin/class-media-library.php:334 includes/class-delivery.php:73
 #: includes/class-scanner.php:313
 msgid "Invalid attachment."
-msgstr ""
+msgstr "Érvénytelen csatolmány."
 
 #. translators: %s: IPTC digital source type token.
 #: admin/class-media-library.php:358
@@ -854,124 +973,133 @@ msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
 "into files that carry no other digital source type."
 msgstr ""
+"Ez a csatolmány nem MI által készítettként van bejelentve (%s). A "
+"nyilatkozat azokba a fájlokba kerül beírásra, amelyek nem hordoznak más "
+"digitális forrástípust."
 
 #: admin/class-media-library.php:360
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
 msgstr ""
+"Ez a csatolmány MI által generáltként van címkézve, ezért az alábbi fájlok "
+"mindegyikének hordoznia kell a nyilatkozatot."
 
 #: admin/class-media-library.php:361
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
 msgstr ""
+"Ez a csatolmány nincs MI által generáltként címkézve. Semmi nem kerül a "
+"fájljaiba, és lent sem várható nyilatkozat."
 
 #: admin/class-media-library.php:365
 msgid "Files"
-msgstr ""
+msgstr "Fájlok"
 
 #: admin/class-media-library.php:368
 msgid "format cannot carry the declaration"
-msgstr ""
+msgstr "a formátum nem tud nyilatkozatot hordozni"
 
 #: admin/class-media-library.php:371
 msgid "declaration present"
-msgstr ""
+msgstr "a nyilatkozat jelen van"
 
 #: admin/class-media-library.php:374
 msgid "declaration missing"
-msgstr ""
+msgstr "hiányzik a nyilatkozat"
 
 #: admin/class-media-library.php:384
 msgid "No readable file found for this attachment."
-msgstr ""
+msgstr "Ehhez a csatolmányhoz nem található olvasható fájl."
 
 #: admin/class-media-library.php:388
 msgid "Digital source type in the main file"
-msgstr ""
+msgstr "Digitális forrástípus a fő fájlban"
 
 #: admin/class-media-library.php:390
 msgid "None declared."
-msgstr ""
+msgstr "Nincs bejelentve."
 
 #: admin/class-media-library.php:398
 msgid "Detection evidence"
-msgstr ""
+msgstr "Felismerési bizonyíték"
 
 #: admin/class-media-library.php:404
 msgid "History"
-msgstr ""
+msgstr "Előzmények"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
 #: admin/class-media-library.php:417
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "előzőleg: %s"
 
 #: admin/class-media-library.php:430
 msgid "XMP packet of the main file"
-msgstr ""
+msgstr "A fő fájl XMP-csomagja"
 
 #: admin/class-media-library.php:432
 msgid "This file carries no XMP block."
-msgstr ""
+msgstr "Ez a fájl nem tartalmaz XMP-blokkot."
 
 #: admin/class-media-library.php:485 admin/class-media-library.php:551
 msgid "AI status: all"
-msgstr ""
+msgstr "MI-állapot: mind"
 
 #: admin/class-media-library.php:486 admin/class-media-library.php:552
 msgid "Only AI-labeled"
-msgstr ""
+msgstr "Csak MI-ként címkézett"
 
 #: admin/class-media-library.php:487 admin/class-media-library.php:536
 #: admin/class-media-library.php:553
 msgid "Detected, needs review"
-msgstr ""
+msgstr "Felismert, ellenőrzésre vár"
 
 #: admin/class-media-library.php:488 admin/class-media-library.php:555
 msgid "Without AI label"
-msgstr ""
+msgstr "MI-címke nélkül"
 
 #: admin/class-media-library.php:489 admin/class-media-library.php:554
 msgid "Declared not AI (camera, human work)"
-msgstr ""
+msgstr "Nem MI-ként bejelentve (fényképezőgép, emberi alkotás)"
 
 #: admin/class-media-library.php:490 admin/class-media-library.php:596
 msgid "Mark as AI-generated"
-msgstr ""
+msgstr "Megjelölés MI által generáltként"
 
 #: admin/class-media-library.php:491 admin/class-media-library.php:597
 msgid "Remove AI label"
-msgstr ""
+msgstr "MI-címke eltávolítása"
 
 #: admin/class-media-library.php:492
 msgid "Please select media first."
-msgstr ""
+msgstr "Először válasszon ki médiát."
 
 #: admin/class-media-library.php:493
 msgid "Updating the AI label failed."
-msgstr ""
+msgstr "Az MI-címke frissítése nem sikerült."
 
 #: admin/class-media-library.php:494
 msgid "Result"
-msgstr ""
+msgstr "Eredmény"
 
 #: admin/class-media-library.php:495
 msgid "No AI provenance signals found in the file."
-msgstr ""
+msgstr "A fájlban nem található MI-eredetre utaló jel."
 
 #: admin/class-media-library.php:497
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
 msgstr ""
+"A címke beállításra került, de a metaadatot nem sikerült a fájlba írni. "
+"Ellenőrizze a feltöltési könyvtár írási jogosultságait."
 
 #: admin/class-media-library.php:498
 msgid "Hide file metadata"
-msgstr ""
+msgstr "Fájl metaadatainak elrejtése"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
@@ -981,6 +1109,8 @@ msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
 "comparable."
 msgstr ""
+"%1$d ellenőrizve: %2$d a nyilatkozattal együtt került kiszolgálásra, %3$d "
+"anélkül, %4$d nem összehasonlítható."
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
@@ -990,133 +1120,137 @@ msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
 "(already decided)."
 msgstr ""
+"%1$d átvizsgálva, %2$d automatikusan címkézve, %3$d ellenőrzési sorba "
+"került, %4$d kihagyva (már eldöntve)."
 
 #: admin/class-media-library.php:503
 msgid "Scan complete."
-msgstr ""
+msgstr "Az átvizsgálás befejeződött."
 
 #: admin/class-media-library.php:504
 msgid "Scan request failed. You can restart to continue."
-msgstr ""
+msgstr "Az átvizsgálási kérés nem sikerült. Az újraindítással folytathatja."
 
 #: admin/class-media-library.php:515 includes/class-notice.php:305
 msgid "AI"
-msgstr ""
+msgstr "MI"
 
 #: admin/class-media-library.php:598
 msgid "Confirm detected AI label"
-msgstr ""
+msgstr "Felismert MI-címke megerősítése"
 
 #: admin/class-media-library.php:599
 msgid "Dismiss detected AI label"
-msgstr ""
+msgstr "Felismert MI-címke elvetése"
 
 #: admin/class-media-library.php:600
 msgid "Declare as camera photo (not AI)"
-msgstr ""
+msgstr "Bejelentés fényképként (nem MI)"
 
 #: admin/class-media-library.php:601
 msgid "Declare as human work (not AI)"
-msgstr ""
+msgstr "Bejelentés emberi alkotásként (nem MI)"
 
 #: admin/class-media-library.php:602
 msgid "Remove \"not AI\" declaration"
-msgstr ""
+msgstr "A „nem MI” nyilatkozat eltávolítása"
 
 #. translators: %d: number of updated media files.
 #: admin/class-media-library.php:644
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Az MI-címke frissítve %d médiafájlnál."
+msgstr[1] "Az MI-címke frissítve %d médiafájlnál."
 
 #: admin/class-settings.php:47 admin/class-settings.php:97
 msgid "You are not allowed to export this."
-msgstr ""
+msgstr "Nincs jogosultsága ennek az exportálásához."
 
 #: admin/class-settings.php:65
 msgid "The export could not be started."
-msgstr ""
+msgstr "Az exportálást nem sikerült elindítani."
 
 #: admin/class-settings.php:115 admin/class-settings.php:129
 msgid "audit report"
-msgstr ""
+msgstr "auditjelentés"
 
 #: admin/class-settings.php:130
 msgid "items"
-msgstr ""
+msgstr "elem"
 
 #: admin/class-settings.php:133
 msgid "Document hash"
-msgstr ""
+msgstr "Dokumentum-hash"
 
 #: admin/class-settings.php:134
 msgid ""
 "sha256 over the facts below without timestamps: two reports of an unchanged "
 "site carry the same hash."
 msgstr ""
+"sha256 az alábbi tények felett, időbélyegek nélkül: egy változatlan webhely "
+"két jelentése ugyanazt a hasht hordozza."
 
 #: admin/class-settings.php:135
 msgid "Basis"
-msgstr ""
+msgstr "Alap"
 
 #: admin/class-settings.php:136
 msgid "Limitations"
-msgstr ""
+msgstr "Korlátok"
 
 #: admin/class-settings.php:143
 msgid "Print or save as PDF"
-msgstr ""
+msgstr "Nyomtatás vagy mentés PDF-ként"
 
 #: admin/class-settings.php:145
 msgid "Media audit list"
-msgstr ""
+msgstr "Médiaauditlista"
 
 #: admin/class-settings.php:221 admin/class-settings.php:254
 msgid "Visible badge"
-msgstr ""
+msgstr "Látható jelvény"
 
 #: admin/class-settings.php:222 admin/class-settings.php:366
 #: includes/class-compliance.php:65
 msgid "AI-written text"
-msgstr ""
+msgstr "MI által írt szöveg"
 
 #: admin/class-settings.php:223 admin/class-settings.php:440
 msgid "Chatbot disclosure"
-msgstr ""
+msgstr "Chatbot-tájékoztatás"
 
 #: admin/class-settings.php:225 admin/class-settings.php:549
 msgid "Automatic detection"
-msgstr ""
+msgstr "Automatikus felismerés"
 
 #: admin/class-settings.php:226
 msgid "File metadata"
-msgstr ""
+msgstr "Fájlmetaadatok"
 
 #: admin/class-settings.php:227 admin/class-settings.php:651
 msgid "Uninstall"
-msgstr ""
+msgstr "Eltávolítás"
 
 #: admin/class-settings.php:235
 msgid "Settings saved."
-msgstr ""
+msgstr "A beállítások elmentve."
 
 #: admin/class-settings.php:247
 msgid "Settings sections"
-msgstr ""
+msgstr "Beállítási szakaszok"
 
 #: admin/class-settings.php:257
 msgid "Show badge"
-msgstr ""
+msgstr "Jelvény megjelenítése"
 
 #: admin/class-settings.php:260
 msgid "Show a visible badge on labeled media in the front end"
-msgstr ""
+msgstr "Látható jelvény megjelenítése a címkézett médián a látogatói oldalon"
 
 #: admin/class-settings.php:264
 msgid "Start date"
-msgstr ""
+msgstr "Kezdődátum"
 
 #: admin/class-settings.php:267
 msgid ""
@@ -1124,19 +1258,22 @@ msgid ""
 "media stay labeled in the admin only. Leave empty to badge all labeled "
 "media."
 msgstr ""
+"Csak az ezen a napon vagy utána feltöltött média kap látogatói oldali "
+"jelvényt; a korábbi média csak az adminfelületen marad címkézett. Hagyja "
+"üresen, ha minden címkézett média kapjon jelvényt."
 
 #: admin/class-settings.php:271
 msgid "Badge text"
-msgstr ""
+msgstr "Jelvény szövege"
 
 #: admin/class-settings.php:273 includes/class-frontend.php:229
 #: includes/class-frontend.php:234 includes/class-notice.php:154
 msgid "AI-generated"
-msgstr ""
+msgstr "MI által generált"
 
 #: admin/class-settings.php:275
 msgid "Leave empty for the translated default label."
-msgstr ""
+msgstr "Hagyja üresen a lefordított alapértelmezett címkéhez."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site}
 #. placeholder (do not translate), 3: example template.
@@ -1147,94 +1284,108 @@ msgid ""
 "title), e.g. %3$s. Images without a known generator fall back to the default"
 " label."
 msgstr ""
+"Helyőrzők: %1$s (felismert vagy kézzel megadott generátor) és %2$s (a "
+"webhely címe), például %3$s. Az ismert generátor nélküli képek az "
+"alapértelmezett címkét kapják."
 
 #: admin/class-settings.php:289
 msgid "Appearance"
-msgstr ""
+msgstr "Megjelenés"
 
 #: admin/class-settings.php:297 admin/class-setup.php:317
 msgid "Overlay on the image"
-msgstr ""
+msgstr "Rátét a képen"
 
 #: admin/class-settings.php:315 admin/class-setup.php:292
 msgid "Dark"
-msgstr ""
+msgstr "Sötét"
 
 #: admin/class-settings.php:316 admin/class-setup.php:293
 msgid "Light"
-msgstr ""
+msgstr "Világos"
 
 #: admin/class-settings.php:317 admin/class-setup.php:294
 msgid "Outline"
-msgstr ""
+msgstr "Körvonalas"
 
 #: admin/class-settings.php:318 admin/class-setup.php:295
 msgid "Icon only (short label)"
-msgstr ""
+msgstr "Csak ikon (rövid címke)"
 
 #: admin/class-settings.php:325
 msgid "Small"
-msgstr ""
+msgstr "Kicsi"
 
 #: admin/class-settings.php:326
 msgid "Medium"
-msgstr ""
+msgstr "Közepes"
 
 #: admin/class-settings.php:327
 msgid "Large"
-msgstr ""
+msgstr "Nagy"
 
 #: admin/class-settings.php:334
 msgid "Extras"
-msgstr ""
+msgstr "Extrák"
 
 #: admin/class-settings.php:337
 msgid ""
 "Show the detected generator in the badge (e.g. \"AI-generated · "
 "Midjourney\"; ignored when the badge text contains {generator})"
 msgstr ""
+"A felismert generátor megjelenítése a jelvényben (például „MI által generált"
+" · Midjourney”; figyelmen kívül marad, ha a jelvény szövege tartalmazza a "
+"{generator} elemet)"
 
 #: admin/class-settings.php:339
 msgid "Append the label to the image alt text (screen readers)"
-msgstr ""
+msgstr "A címke hozzáfűzése a kép alt szövegéhez (képernyőolvasók)"
 
 #: admin/class-settings.php:341
 msgid ""
 "Automatically move a badge to another corner, or below the image, if a theme"
 " overlay covers it (recommended, needs JavaScript)"
 msgstr ""
+"A jelvény automatikus áthelyezése másik sarokba vagy a kép alá, ha egy "
+"sablonrátét eltakarja (ajánlott, JavaScriptet igényel)"
 
 #: admin/class-settings.php:343
 msgid ""
 "Also label images printed without an attachment ID (ACF fields, sliders, "
 "builders) and CSS backgrounds (experimental, needs JavaScript)"
 msgstr ""
+"A csatolmányazonosító nélkül kiírt képek (ACF-mezők, diavetítők, "
+"oldalépítők) és a CSS-hátterek címkézése is (kísérleti, JavaScriptet "
+"igényel)"
 
 #: admin/class-settings.php:347
 msgid "Not AI"
-msgstr ""
+msgstr "Nem MI"
 
 #: admin/class-settings.php:350
 msgid ""
 "Also show a badge on media declared as camera photo or human work (the "
 "structured data carries the declaration either way)"
 msgstr ""
+"Jelvény megjelenítése a fényképként vagy emberi alkotásként bejelentett "
+"médián is (a strukturált adatok mindkét esetben hordozzák a nyilatkozatot)"
 
 #: admin/class-settings.php:351 includes/class-frontend.php:207
 msgid "Human made"
-msgstr ""
+msgstr "Emberi alkotás"
 
 #: admin/class-settings.php:355
 msgid "Page notice"
-msgstr ""
+msgstr "Oldaltájékoztató"
 
 #: admin/class-settings.php:358
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
+"Rövid megjegyzés hozzáadása a címkézett médiát tartalmazó oldalak végén"
 
 #: admin/class-settings.php:359 includes/class-frontend.php:782
 msgid "This page contains AI-generated media."
-msgstr ""
+msgstr "Ez az oldal MI által generált médiát tartalmaz."
 
 #: admin/class-settings.php:367
 msgid ""
@@ -1243,81 +1394,92 @@ msgid ""
 "bulk. AI levels show a note on the post; the shortcode [transparai_notice] "
 "and the \"AI notice\" block place it anywhere by hand."
 msgstr ""
+"Minden bejegyzés MI-szintet hordoz (nincs, MI-vel segített, MI által "
+"generált, MI által generált és ellenőrzött), amely a szerkesztő "
+"oldalsávjában, a Gyors szerkesztésben vagy csoportosan állítható be. Az MI-"
+"szintek megjegyzést jelenítenek meg a bejegyzésen; a [transparai_notice] "
+"shortcode és az „MI-tájékoztató” blokk bárhová kézzel elhelyezi."
 
 #: admin/class-settings.php:370
 msgid "Note text"
-msgstr ""
+msgstr "A megjegyzés szövege"
 
 #: admin/class-settings.php:372 includes/class-notice.php:140
 msgid "This text was generated by AI."
-msgstr ""
+msgstr "Ezt a szöveget MI generálta."
 
 #: admin/class-settings.php:373
 msgid ""
 "Leave empty for a translated wording per level (\"created with the help of "
 "AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
 msgstr ""
+"Hagyja üresen a szintenként lefordított szöveghez („MI segítségével "
+"készült”, „MI generálta”, „MI generálta és egy személy ellenőrizte”)."
 
 #: admin/class-settings.php:379
 msgid "Ahead of the content"
-msgstr ""
+msgstr "A tartalom előtt"
 
 #: admin/class-settings.php:380
 msgid "After the content"
-msgstr ""
+msgstr "A tartalom után"
 
 #: admin/class-settings.php:381
 msgid "Ahead of and after the content"
-msgstr ""
+msgstr "A tartalom előtt és után"
 
 #: admin/class-settings.php:382 admin/class-settings.php:530
 msgid "Only where a block or shortcode is placed"
-msgstr ""
+msgstr "Csak ott, ahol blokk vagy shortcode van elhelyezve"
 
 #: admin/class-settings.php:389 includes/class-notice.php:629
 msgid "Block (own line)"
-msgstr ""
+msgstr "Blokk (saját sorban)"
 
 #: admin/class-settings.php:390 includes/class-notice.php:630
 msgid "Inline (inside text)"
-msgstr ""
+msgstr "Soron belüli (a szövegben)"
 
 #: admin/class-settings.php:391 admin/class-settings.php:529
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
-msgstr ""
+msgstr "Szalag (bezárható)"
 
 #: admin/class-settings.php:392 includes/class-notice.php:632
 msgid "Badge (small chip)"
-msgstr ""
+msgstr "Jelvény (kis címke)"
 
 #: admin/class-settings.php:393 includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
-msgstr ""
+msgstr "Modális (a gomb párbeszédablakot nyit)"
 
 #: admin/class-settings.php:400
 msgid "Post titles"
-msgstr ""
+msgstr "Bejegyzéscímek"
 
 #: admin/class-settings.php:403
 msgid ""
 "Append a small AI badge to the title of AI-written posts in lists and "
 "archives"
 msgstr ""
+"Kis MI-jelvény hozzáfűzése az MI által írt bejegyzések címéhez a listákban "
+"és archívumokban"
 
 #: admin/class-settings.php:404
 msgid ""
 "The badge is HTML inside the title. Themes that print titles unescaped "
 "inside attributes should leave this off."
 msgstr ""
+"A jelvény HTML-kód a címen belül. Azok a sablonok, amelyek a címeket escape-"
+"elés nélkül írják ki attribútumokban, hagyják ezt kikapcsolva."
 
 #: admin/class-settings.php:408
 msgid "Review"
-msgstr ""
+msgstr "Ellenőrzés"
 
 #: admin/class-settings.php:410
 msgid "Name of the person responsible"
-msgstr ""
+msgstr "A felelős személy neve"
 
 #: admin/class-settings.php:411
 msgid ""
@@ -1325,41 +1487,53 @@ msgid ""
 " someone else. The reviewer, date and a fingerprint of the reviewed text are"
 " recorded with the post."
 msgstr ""
+"A „felelős személy” alapértelmezése az ellenőrzött szövegeknél; minden "
+"bejegyzésnél megnevezhető más is. Az ellenőrző neve, a dátum és az "
+"ellenőrzött szöveg ujjlenyomata a bejegyzéssel együtt kerül rögzítésre."
 
 #: admin/class-settings.php:413
 msgid ""
 "Name the reviewer and the review date in the public note and in the "
 "structured data"
 msgstr ""
+"Az ellenőrző nevének és az ellenőrzés dátumának megnevezése a nyilvános "
+"megjegyzésben és a strukturált adatokban"
 
 #: admin/class-settings.php:417
 msgid "New posts"
-msgstr ""
+msgstr "Új bejegyzések"
 
 #: admin/class-settings.php:422
 msgid ""
 "Preselected level for posts created from now on. Existing posts are never "
 "reclassified."
 msgstr ""
+"A mostantól létrehozott bejegyzések előre kiválasztott szintje. A meglévő "
+"bejegyzések soha nem kerülnek újra besorolásra."
 
 #: admin/class-settings.php:426
 msgid "Excerpts and feeds"
-msgstr ""
+msgstr "Kivonatok és hírcsatornák"
 
 #: admin/class-settings.php:429
 msgid ""
 "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
+"A megjegyzés hozzáfűzése egyszerű szövegként a kivonatokhoz (archívumok, "
+"ajánlók, kapcsolódó bejegyzések)"
 
 #: admin/class-settings.php:431
 msgid ""
 "Add the note to RSS feed items (content, summary and a machine-readable "
 "dc:description element)"
 msgstr ""
+"A megjegyzés hozzáadása az RSS-hírcsatorna elemeihez (tartalom, összefoglaló"
+" és egy gépileg olvasható dc:description elem)"
 
 #: admin/class-settings.php:433
 msgid "Prefix feed item titles of AI-written posts with [AI]"
 msgstr ""
+"Az MI által írt bejegyzések hírcsatorna-címeinek ellátása [AI] előtaggal"
 
 #: admin/class-settings.php:441
 msgid ""
@@ -1370,79 +1544,91 @@ msgid ""
 "local: active plugins, theme snippets, the scripts a page registers, and "
 "what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
+"A látogatókat tájékoztatni kell, ha MI-rendszerrel beszélnek, legkésőbb a "
+"beszélgetés kezdetén. Az Ön válasza dönt; amit a bővítmény a webhelyen "
+"talál, csak tájékoztat, mert a legtöbb chat-widget élő chat, ahol ember "
+"válaszol, és egy téves „ez egy MI” félrevezetné a látogatókat. A felismerés "
+"helyben történik: aktív bővítmények, sablonrészletek, az oldal által "
+"regisztrált szkriptek, és amit a saját böngészője adminisztrátorként látott."
+" Egyetlen kérés sem hagyja el a szervert."
 
 #: admin/class-settings.php:445
 msgid "Found on this site"
-msgstr ""
+msgstr "A webhelyen található"
 
 #: admin/class-settings.php:448
 msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
 msgstr ""
+"Eddig nem található ismert chat- vagy chatbot-widget. Nyisson meg néhány "
+"oldalt a webhelyén bejelentkezve; az ellenőrzés a böngészőjében fut, és ide "
+"jelent vissza."
 
 #: admin/class-settings.php:453
 msgid "a bot answers"
-msgstr ""
+msgstr "bot válaszol"
 
 #: admin/class-settings.php:454
 msgid "people answer"
-msgstr ""
+msgstr "emberek válaszolnak"
 
 #: admin/class-settings.php:455
 msgid "live chat with optional bot"
-msgstr ""
+msgstr "élő chat, opcionális bottal"
 
 #: admin/class-settings.php:456
 msgid "staffing unknown"
-msgstr ""
+msgstr "ismeretlen, ki válaszol"
 
 #: admin/class-settings.php:467
 msgid "Does this site run a chat?"
-msgstr ""
+msgstr "Fut ezen a webhelyen chat?"
 
 #: admin/class-settings.php:474
 msgid "Not decided yet"
-msgstr ""
+msgstr "Még nincs eldöntve"
 
 #: admin/class-settings.php:483
 msgid "An AI answers"
-msgstr ""
+msgstr "MI válaszol"
 
 #: admin/class-settings.php:484
 msgid "People answer, an AI sometimes"
-msgstr ""
+msgstr "Emberek válaszolnak, néha MI"
 
 #: admin/class-settings.php:485
 msgid "Only people answer"
-msgstr ""
+msgstr "Csak emberek válaszolnak"
 
 #: admin/class-settings.php:489
 msgid ""
 "The notice appears only with \"Yes\" and an AI that answers at least "
 "sometimes."
 msgstr ""
+"A tájékoztató csak „Igen” válasz és legalább néha válaszoló MI esetén "
+"jelenik meg."
 
 #: admin/class-settings.php:493
 msgid "Notice"
-msgstr ""
+msgstr "Tájékoztató"
 
 #: admin/class-settings.php:495 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
-msgstr ""
+msgstr "Egy MI-rendszerrel cseveg."
 
 #: admin/class-settings.php:501
 msgid ""
 "As the first message of the bot (AI Engine; otherwise next to the widget)"
-msgstr ""
+msgstr "A bot első üzeneteként (AI Engine; egyébként a widget mellett)"
 
 #: admin/class-settings.php:502
 msgid "Next to the chat widget"
-msgstr ""
+msgstr "A chat-widget mellett"
 
 #: admin/class-settings.php:503
 msgid "As a line at the end of every page"
-msgstr ""
+msgstr "Sorként minden oldal végén"
 
 #: admin/class-settings.php:514
 msgid ""
@@ -1451,33 +1637,41 @@ msgid ""
 "about is decided per system on the AI Systems page; nothing is switched on "
 "from a finding alone. The list ships with the plugin, nothing is fetched."
 msgstr ""
+"A bővítmény a telepített bővítményeit egy mellékelt, ismert MI-eszközöket "
+"tartalmazó listával veti össze, és lehetővé teszi továbbiak kézi "
+"bejelentését. Hogy ezek közül melyekről értesülnek a látogatók, az MI-"
+"rendszerek oldalon rendszerenként dől el; egyetlen találat alapján semmi nem"
+" kapcsol be. A lista a bővítménnyel együtt érkezik, semmi nem kerül "
+"letöltésre."
 
 #: admin/class-settings.php:517
 msgid "Visitor notice"
-msgstr ""
+msgstr "Látogatói tájékoztató"
 
 #: admin/class-settings.php:520
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
+"Tájékoztató megjelenítése minden oldalon, amely megnevezi a láthatóként "
+"megjelölt MI-rendszereket"
 
 #: admin/class-settings.php:527
 msgid "Line at the end of the page"
-msgstr ""
+msgstr "Sor az oldal végén"
 
 #: admin/class-settings.php:528
 msgid "Small badge in a corner"
-msgstr ""
+msgstr "Kis jelvény a sarokban"
 
 #: admin/class-settings.php:538
 msgid "Notice text"
-msgstr ""
+msgstr "A tájékoztató szövege"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
 #: admin/class-settings.php:540 includes/class-systems.php:458
 #, php-format
 msgid "This site uses AI systems: %s."
-msgstr ""
+msgstr "Ez a webhely MI-rendszereket használ: %s."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:541
@@ -1486,109 +1680,130 @@ msgid ""
 "Leave empty for the translated default. %s is replaced with the names of the"
 " visible systems."
 msgstr ""
+"Hagyja üresen a lefordított alapértelmezéshez. A %s helyére a látható "
+"rendszerek nevei kerülnek."
 
 #. translators: %s is the literal placeholder token shown to the user.
 #: admin/class-settings.php:542
 msgid "Manage detected and declared AI systems"
-msgstr ""
+msgstr "Felismert és bejelentett MI-rendszerek kezelése"
 
 #: admin/class-settings.php:552
 msgid "Detect on upload"
-msgstr ""
+msgstr "Felismerés feltöltéskor"
 
 #: admin/class-settings.php:555
 msgid ""
 "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
+"Az új feltöltések vizsgálata MI-eredet szempontjából (C2PA, XMP/IPTC, "
+"generátor-szignatúrák)"
 
 #: admin/class-settings.php:559
 msgid "Standard declarations"
-msgstr ""
+msgstr "Szabványos nyilatkozatok"
 
 #: admin/class-settings.php:566 admin/class-settings.php:583
 msgid "Label automatically"
-msgstr ""
+msgstr "Automatikus címkézés"
 
 #: admin/class-settings.php:567 admin/class-settings.php:584
 msgid "Put into review queue"
-msgstr ""
+msgstr "Ellenőrzési sorba helyezés"
 
 #: admin/class-settings.php:568 admin/class-settings.php:585
 msgid "Ignore"
-msgstr ""
+msgstr "Figyelmen kívül hagyás"
 
 #: admin/class-settings.php:572
 msgid ""
 "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in"
 " C2PA, AIGC declaration)."
 msgstr ""
+"Olyan fájlok, amelyek kifejezetten MI-eredetet jelentenek be (IPTC "
+"DigitalSourceType, MI-állítás a C2PA-ban, AIGC-nyilatkozat)."
 
 #: admin/class-settings.php:576
 msgid "Generator signatures"
-msgstr ""
+msgstr "Generátor-szignatúrák"
 
 #: admin/class-settings.php:589
 msgid ""
 "Strong signals without a formal declaration (Stable Diffusion parameters, "
 "ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr ""
+"Erős jelek formális nyilatkozat nélkül (Stable Diffusion paraméterek, "
+"ComfyUI munkafolyamatok, generátornevek az EXIF/XMP-ben, fényképezőgép által"
+" írt C2PA)."
 
 #: admin/class-settings.php:593
 msgid "More sources"
-msgstr ""
+msgstr "További források"
 
 #: admin/class-settings.php:596
 msgid ""
 "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
+"Videó- és hangfeltöltések átvizsgálása is (MP4/MOV C2PA, MP3 AIGC-"
+"nyilatkozatok)"
 
 #: admin/class-settings.php:598
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
+"Fájlnévminták használata ellenőrzési utalásként (soha nem címkéz "
+"automatikusan)"
 
 #: admin/class-settings.php:606
 msgid "Machine-readable file metadata"
-msgstr ""
+msgstr "Gépileg olvasható fájlmetaadatok"
 
 #: admin/class-settings.php:609
 msgid "Write into files"
-msgstr ""
+msgstr "Írás a fájlokba"
 
 #: admin/class-settings.php:612
 msgid ""
 "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and "
 "AVIF files (all size variants)"
 msgstr ""
+"Az IPTC DigitalSourceType beírása XMP-ként a címkézett JPEG-, PNG-, WebP- és"
+" AVIF-fájlokba (minden méretváltozatba)"
 
 #: admin/class-settings.php:614
 msgid ""
 "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC "
 "block)"
 msgstr ""
+"Tükrözés az IPTC-IIM-be is (JPEG, csak ha a fájlnak nincs más IPTC-blokkja)"
 
 #: admin/class-settings.php:616
 msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
 msgstr ""
+"A digitalCapture vagy digitalCreation beírása a nem MI által készítettként "
+"bejelentett médiába is, de soha nem egy másik eszköz vagy fényképezőgép "
+"által már beírt nyilatkozat fölé"
 
 #: admin/class-settings.php:620
 msgid "Auto-repair"
-msgstr ""
+msgstr "Automatikus javítás"
 
 #: admin/class-settings.php:623
 msgid ""
 "Restore the metadata when image optimizers or regeneration strip it (hourly "
 "integrity sweep)"
 msgstr ""
+"A metaadat visszaállítása, ha a képoptimalizálók vagy az újragenerálás "
+"eltávolítják (óránkénti integritás-ellenőrző futás)"
 
 #: admin/class-settings.php:627
 msgid "Delivery check"
-msgstr ""
+msgstr "Kiszolgálási ellenőrzés"
 
 #: admin/class-settings.php:630
 msgid "Allow checking whether the declaration survives delivery"
-msgstr ""
+msgstr "Annak ellenőrzése, hogy a nyilatkozat túléli-e a kiszolgálást"
 
 #: admin/class-settings.php:631
 msgid ""
@@ -1599,46 +1814,61 @@ msgid ""
 "request goes to your own site and nowhere else, and it only ever happens "
 "when you press the button."
 msgstr ""
+"Gombot ad a csatolmány részleteihez és ide. Kattintásra a bővítmény lekéri a"
+" képet a saját nyilvános URL-jén keresztül, és összeveti a kiszolgált "
+"bájtokat a lemezen lévő fájllal; csak így lehet észrevenni, hogy egy "
+"optimalizáló CDN újrakódolja a képeit, és kifelé menet eldobja a "
+"nyilatkozatot. A kérés a saját webhelyére megy és sehová máshová, és "
+"kizárólag akkor, ha megnyomja a gombot."
 
 #: admin/class-settings.php:634
 msgid "Check a sample of five files"
-msgstr ""
+msgstr "Öt fájlból álló minta ellenőrzése"
 
 #: admin/class-settings.php:641
 msgid "Structured data"
-msgstr ""
+msgstr "Strukturált adatok"
 
 #: admin/class-settings.php:644
 msgid ""
 "Add Schema.org JSON-LD with the IPTC digital source type for the labeled "
 "media of each page (search engines read it without opening the files)"
 msgstr ""
+"Schema.org JSON-LD hozzáadása az IPTC digitális forrástípussal az egyes "
+"oldalak címkézett médiájához (a keresőmotorok a fájlok megnyitása nélkül "
+"olvassák)"
 
 #: admin/class-settings.php:654
 msgid "Data removal"
-msgstr ""
+msgstr "Adatok törlése"
 
 #: admin/class-settings.php:657
 msgid ""
 "Delete all plugin data (labels, detection results, settings) when the plugin"
 " is uninstalled"
 msgstr ""
+"Minden bővítményadat törlése (címkék, felismerési eredmények, beállítások) a"
+" bővítmény eltávolításakor"
 
 #: admin/class-settings.php:663
 msgid "Save changes"
-msgstr ""
+msgstr "Módosítások mentése"
 
 #: admin/class-settings.php:680
 msgid ""
 "Detection relies on metadata embedded by generators; files whose metadata "
 "was stripped carry no signal."
 msgstr ""
+"A felismerés a generátorok által beágyazott metaadatokra támaszkodik; azok a"
+" fájlok, amelyekből a metaadatot eltávolították, nem hordoznak jelet."
 
 #: admin/class-settings.php:681
 msgid ""
 "A declaration records a statement by the site operator; it is not "
 "cryptographic proof of origin."
 msgstr ""
+"A nyilatkozat a webhely üzemeltetőjének kijelentését rögzíti; nem az eredet "
+"kriptográfiai bizonyítéka."
 
 #: admin/class-settings.php:682
 msgid ""
@@ -1646,6 +1876,9 @@ msgid ""
 "whether content changed since the review, not whether the review was "
 "correct."
 msgstr ""
+"A szöveges jelölési szinteket a szerkesztők adják meg; az ellenőrzési "
+"ujjlenyomat azt mutatja, hogy a tartalom módosult-e az ellenőrzés óta, nem "
+"azt, hogy az ellenőrzés helyes volt-e."
 
 #: admin/class-settings.php:683
 msgid ""
@@ -1653,134 +1886,137 @@ msgid ""
 "summarise the plugin state and the operator's own answers; they are not a "
 "legal assessment."
 msgstr ""
+"A felkészültségi pontszám, az önértékelés és az MI-jártassági ellenőrzőlista"
+" a bővítmény állapotát és az üzemeltető saját válaszait foglalja össze; nem "
+"jogi értékelés."
 
 #: admin/class-settings.php:707
 msgid "Check"
-msgstr ""
+msgstr "Ellenőrzés"
 
 #: admin/class-settings.php:715 admin/class-settings.php:725
 msgid "Saved"
-msgstr ""
+msgstr "Mentve"
 
 #: admin/class-settings.php:717
 msgid "Question"
-msgstr ""
+msgstr "Kérdés"
 
 #: admin/class-settings.php:717
 msgid "Answer"
-msgstr ""
+msgstr "Válasz"
 
 #: admin/class-settings.php:720
 msgid "not answered"
-msgstr ""
+msgstr "nincs megválaszolva"
 
 #: admin/class-settings.php:724
 msgid "AI literacy checklist (Article 4)"
-msgstr ""
+msgstr "MI-jártassági ellenőrzőlista (4. cikk)"
 
 #: admin/class-settings.php:726
 msgid "Item"
-msgstr ""
+msgstr "Elem"
 
 #: admin/class-settings.php:734
 msgid "None detected or declared."
-msgstr ""
+msgstr "Nincs felismert vagy bejelentett."
 
 #: admin/class-settings.php:736
 msgid "Source"
-msgstr ""
+msgstr "Forrás"
 
 #: admin/class-settings.php:736
 msgid "Visitors told"
-msgstr ""
+msgstr "Látogatók tájékoztatva"
 
 #: admin/class-settings.php:738 includes/class-systems.php:354
 msgid "declared by hand"
-msgstr ""
+msgstr "kézzel bejelentve"
 
 #: admin/class-settings.php:738
 msgid "Detected"
-msgstr ""
+msgstr "Felismert"
 
 #: admin/class-settings.php:743
 msgid "Disclosure notices"
-msgstr ""
+msgstr "Tájékoztatók"
 
 #: admin/class-settings.php:747
 msgid "Text note style"
-msgstr ""
+msgstr "A szöveges megjegyzés stílusa"
 
 #: admin/class-settings.php:748
 msgid "Text note position"
-msgstr ""
+msgstr "A szöveges megjegyzés pozíciója"
 
 #: admin/class-settings.php:749
 msgid "Visible badge on labeled media"
-msgstr ""
+msgstr "Látható jelvény a címkézett médián"
 
 #: admin/class-settings.php:750
 msgid "Page notice on pages with labeled media"
-msgstr ""
+msgstr "Oldaltájékoztató a címkézett médiát tartalmazó oldalakon"
 
 #: admin/class-settings.php:751
 msgid "Chatbot question answered with"
-msgstr ""
+msgstr "A chatbot-kérdésre adott válasz"
 
 #: admin/class-settings.php:752
 msgid "Chatbot notice active"
-msgstr ""
+msgstr "A chatbot-tájékoztató aktív"
 
 #: admin/class-settings.php:753
 msgid "AI systems notice"
-msgstr ""
+msgstr "MI-rendszerek tájékoztató"
 
 #: admin/class-settings.php:754
 msgid "Structured data (Schema.org)"
-msgstr ""
+msgstr "Strukturált adatok (Schema.org)"
 
 #: admin/class-settings.php:771
 msgid "Title"
-msgstr ""
+msgstr "Cím"
 
 #: admin/class-settings.php:771
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 #: admin/class-settings.php:771
 msgid "Level"
-msgstr ""
+msgstr "Szint"
 
 #: admin/class-settings.php:771
 msgid "Reviewed by"
-msgstr ""
+msgstr "Ellenőrizte"
 
 #: admin/class-settings.php:771
 msgid "Reviewed on"
-msgstr ""
+msgstr "Ellenőrzés dátuma"
 
 #: admin/class-settings.php:771
 msgid "Review current"
-msgstr ""
+msgstr "Az ellenőrzés naprakész"
 
 #: admin/class-settings.php:806
 msgid "Library status"
-msgstr ""
+msgstr "A médiatár állapota"
 
 #: admin/class-settings.php:810
 msgid "Media files"
-msgstr ""
+msgstr "Médiafájlok"
 
 #: admin/class-settings.php:822
 msgid "Scanned"
-msgstr ""
+msgstr "Átvizsgálva"
 
 #: admin/class-settings.php:827
 msgid "Open review queue"
-msgstr ""
+msgstr "Ellenőrzési sor megnyitása"
 
 #: admin/class-settings.php:830
 msgid "Print view"
-msgstr ""
+msgstr "Nyomtatási nézet"
 
 #: admin/class-settings.php:835
 msgid ""
@@ -1790,28 +2026,36 @@ msgid ""
 "stated limitations; the same record is available at /wp-"
 "json/transparai/v1/report."
 msgstr ""
+"Az export minden címkézett, bejelentett és függőben lévő fájlt felsorol a "
+"felismerés forrásával, a megbízhatóságával, a teljes előzményeivel és az "
+"egyes módosítások mögött álló személlyel. A nyomtatási nézet a tényekre "
+"számított dokumentum-hasht, az útmutatási alapot és a megnevezett korlátokat"
+" adja hozzá; ugyanez a rekord elérhető a /wp-json/transparai/v1/report "
+"címen."
 
 #: admin/class-settings.php:851 admin/class-settings.php:853
 msgid "Scan existing library"
-msgstr ""
+msgstr "A meglévő médiatár átvizsgálása"
 
 #: admin/class-settings.php:855
 msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
 msgstr ""
+"Kis kötegekben beolvassa a meglévő médiafájlok metaadatait (C2PA, XMP/IPTC, "
+"generátor-szignatúrák). Semmi sem hagyja el a szerverét."
 
 #: admin/class-settings.php:857
 msgid "Scan new/unscanned media"
-msgstr ""
+msgstr "Új/át nem vizsgált média átvizsgálása"
 
 #: admin/class-settings.php:858
 msgid "Rescan everything"
-msgstr ""
+msgstr "Minden újbóli átvizsgálása"
 
 #: admin/class-settings.php:859
 msgid "Pause"
-msgstr ""
+msgstr "Szünet"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
@@ -1821,28 +2065,33 @@ msgid ""
 "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, "
 "%3$d failed (%4$s ago)."
 msgstr ""
+"Automatikus javítás, utolsó teljes futás: %1$d címkézett fájl ellenőrizve, "
+"%2$d javítva, %3$d sikertelen (%4$s ezelőtt)."
 
 #: admin/class-settings.php:895
 msgid "TransparAI links"
-msgstr ""
+msgstr "TransparAI-hivatkozások"
 
 #: admin/class-settings.php:898
 msgid "Support forum"
-msgstr ""
+msgstr "Támogatói fórum"
 
 #: admin/class-setup.php:261
 msgid "Setup in three steps"
-msgstr ""
+msgstr "Beállítás három lépésben"
 
 #: admin/class-setup.php:262
 msgid ""
 "Each step writes something real and can be taken back with the undo button. "
 "Nothing is labeled without your review, and no request leaves your server."
 msgstr ""
+"Minden lépés valódi változtatást ír, és a visszavonás gombbal visszavonható."
+" Semmi nem kerül címkézésre az Ön ellenőrzése nélkül, és egyetlen kérés sem "
+"hagyja el a szerverét."
 
 #: admin/class-setup.php:266
 msgid "1. Scan the existing library"
-msgstr ""
+msgstr "1. A meglévő médiatár átvizsgálása"
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:272
@@ -1851,83 +2100,97 @@ msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
 "strong signals wait in the review queue."
 msgstr ""
+"%1$d médiafájl, ebből %2$d átvizsgálva. Az egyértelmű nyilatkozatok "
+"címkézésre kerülnek, az erős jelek az ellenőrzési sorban várnak."
 
 #: admin/class-setup.php:279
 msgid "Scan now"
-msgstr ""
+msgstr "Átvizsgálás most"
 
 #: admin/class-setup.php:283
 msgid "2. Choose the badge look"
-msgstr ""
+msgstr "2. A jelvény megjelenésének kiválasztása"
 
 #: admin/class-setup.php:320
 msgid "Save badge look"
-msgstr ""
+msgstr "Jelvénymegjelenés mentése"
 
 #: admin/class-setup.php:330
 msgid "3. Decide about the files"
-msgstr ""
+msgstr "3. Döntés a fájlokról"
 
 #: admin/class-setup.php:335
 msgid ""
 "Write the machine-readable declaration into labeled image files (XMP, all "
 "sizes; merged into existing metadata, removable)"
 msgstr ""
+"A gépileg olvasható nyilatkozat beírása a címkézett képfájlokba (XMP, minden"
+" méret; a meglévő metaadatokba fésülve, eltávolítható)"
 
 #: admin/class-setup.php:336
 msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
 msgstr ""
+"Tükrözés az IPTC-IIM-be azoknál a JPEG-fájloknál, amelyeknek nincs másik "
+"IPTC-blokkjuk"
 
 #: admin/class-setup.php:337
 msgid ""
 "Also write digitalCapture or digitalCreation for media declared as not AI-"
 "made"
 msgstr ""
+"A digitalCapture vagy digitalCreation beírása a nem MI által készítettként "
+"bejelentett médiához is"
 
 #: admin/class-setup.php:338
 msgid "Restore declarations that image optimizers strip (hourly sweep)"
 msgstr ""
+"A képoptimalizálók által eltávolított nyilatkozatok visszaállítása "
+"(óránkénti futás)"
 
 #: admin/class-setup.php:340
 msgid "Save file settings"
-msgstr ""
+msgstr "Fájlbeállítások mentése"
 
 #: admin/class-setup.php:355
 msgid "Finish setup"
-msgstr ""
+msgstr "Beállítás befejezése"
 
 #. translators: %s: name of the setup step (badge or writing).
 #: admin/class-setup.php:368
 #, php-format
 msgid "Undo last step (%s)"
-msgstr ""
+msgstr "Utolsó lépés visszavonása (%s)"
 
 #: admin/class-setup.php:369
 msgid "badge look"
-msgstr ""
+msgstr "jelvénymegjelenés"
 
 #: admin/class-setup.php:369
 msgid "file settings"
-msgstr ""
+msgstr "fájlbeállítások"
 
 #: admin/class-setup.php:381
 msgid "Not now"
-msgstr ""
+msgstr "Most nem"
 
 #: includes/class-compliance.php:57
 msgid "Chatbot or assistant"
-msgstr ""
+msgstr "Chatbot vagy asszisztens"
 
 #: includes/class-compliance.php:58
 msgid ""
 "Does your site run a chatbot or virtual assistant that talks to visitors?"
 msgstr ""
+"Fut a webhelyén olyan chatbot vagy virtuális asszisztens, amely a "
+"látogatókkal beszélget?"
 
 #: includes/class-compliance.php:59
 msgid ""
 "Examples: a support chat answered by an AI, an assistant widget, a chat "
 "plugin with an AI mode."
 msgstr ""
+"Példák: MI által megválaszolt ügyfélszolgálati chat, asszisztens-widget, MI-"
+"módú chatbővítmény."
 
 #: includes/class-compliance.php:60
 msgid ""
@@ -1935,17 +2198,25 @@ msgid ""
 "interaction known no later than the first exchange. You deploy the system, "
 "and the notice appears on your pages, so it is set up here."
 msgstr ""
+"Az 50. cikk (1) bekezdése a chatrendszer szolgáltatóját kötelezi arra, hogy "
+"legkésőbb az első interakciónál közölje az MI-vel folytatott interakciót. Ön"
+" a rendszer alkalmazója, és a tájékoztató az Ön oldalain jelenik meg, ezért "
+"itt lehet beállítani."
 
 #: includes/class-compliance.php:61
 msgid ""
 "Answer the chatbot question in the settings; the notice follows your answer."
 msgstr ""
+"Válaszolja meg a chatbot-kérdést a beállításokban; a tájékoztató a válaszát "
+"követi."
 
 #: includes/class-compliance.php:66
 msgid ""
 "Does your site publish text that was generated or substantially assisted by "
 "AI?"
 msgstr ""
+"Tesz közzé a webhelye olyan szöveget, amelyet MI generált vagy jelentős "
+"mértékben segített?"
 
 #: includes/class-compliance.php:67
 msgid ""
@@ -1953,6 +2224,10 @@ msgid ""
 "AI-assisted copy. Answer yes even if a person edited the text afterwards; "
 "the review is recorded per post on the AI Content page."
 msgstr ""
+"Példák: nyelvi modellel megírt blogbejegyzések, termékleírások, MI-vel "
+"segített szövegek. Akkor is válaszoljon igennel, ha utána egy személy "
+"szerkesztette a szöveget; az ellenőrzés bejegyzésenként az MI-tartalom "
+"oldalon kerül rögzítésre."
 
 #: includes/class-compliance.php:68
 msgid ""
@@ -1961,26 +2236,39 @@ msgid ""
 "and someone holds editorial responsibility. Other AI-written text carries no"
 " duty under Article 50; the AI level documents your practice either way."
 msgstr ""
+"Az 50. cikk (4) bekezdése Önt mint alkalmazót arra kötelezi, hogy közölje az"
+" MI által írt szöveget, amely a nyilvánosságot közérdekű ügyekről "
+"tájékoztatja, kivéve, ha egy személy ellenőrizte, és valaki szerkesztői "
+"felelősséget visel érte. Az egyéb MI által írt szöveg az 50. cikk alapján "
+"nem jár kötelezettséggel; az MI-szint mindkét esetben dokumentálja a "
+"gyakorlatát."
 
 #: includes/class-compliance.php:69
 msgid ""
 "Set the AI level on each post (editor sidebar, Quick Edit or Bulk Edit) so "
 "the note appears."
 msgstr ""
+"Állítsa be az MI-szintet minden bejegyzésnél (szerkesztő oldalsáv, Gyors "
+"szerkesztés vagy Csoportos szerkesztés), hogy a megjegyzés megjelenjen."
 
 #: includes/class-compliance.php:73
 msgid "AI-generated images and media"
-msgstr ""
+msgstr "MI által generált képek és média"
 
 #: includes/class-compliance.php:74
 msgid "Does your site use AI-generated images or other AI-generated media?"
 msgstr ""
+"Használ a webhelye MI által generált képeket vagy egyéb MI által generált "
+"médiát?"
 
 #: includes/class-compliance.php:75
 msgid ""
 "Examples: images from ChatGPT, Gemini, Firefly, Midjourney or Stable "
 "Diffusion, AI-edited photos, whether or not they show real people or places."
 msgstr ""
+"Példák: ChatGPT-, Gemini-, Firefly-, Midjourney- vagy Stable Diffusion-"
+"képek, MI-vel szerkesztett fotók, függetlenül attól, hogy valós személyeket "
+"vagy helyeket ábrázolnak-e."
 
 #: includes/class-compliance.php:76
 msgid ""
@@ -1990,28 +2278,40 @@ msgid ""
 " real people, places or events and would pass as authentic. Other AI images "
 "carry no disclosure duty of their own."
 msgstr ""
+"Az 50. cikk (2) bekezdése a generátor szolgáltatóját kötelezi arra, hogy a "
+"kimenetet gépileg olvasható módon jelölje meg; a bővítmény ezt a jelölést "
+"tartja meg a fájljaiban. Az 50. cikk (4) bekezdése Önt mint alkalmazót a "
+"deepfake-ek közlésére kötelezi: olyan tartalomra, amely valós személyeknek, "
+"helyeknek vagy eseményeknek tűnik, és hitelesnek hatna. Az egyéb MI-képek "
+"önmagukban nem járnak közlési kötelezettséggel."
 
 #: includes/class-compliance.php:77
 msgid ""
 "Scan the media library, confirm the review queue and keep the visible badge "
 "and file metadata on."
 msgstr ""
+"Vizsgálja át a médiatárat, erősítse meg az ellenőrzési sort, és tartsa "
+"bekapcsolva a látható jelvényt és a fájlmetaadatokat."
 
 #: includes/class-compliance.php:81
 msgid "Synthetic audio, video and deepfakes"
-msgstr ""
+msgstr "Szintetikus hang, videó és deepfake-ek"
 
 #: includes/class-compliance.php:82
 msgid ""
 "Does your site generate or host synthetic audio, video or deepfake-style "
 "content?"
 msgstr ""
+"Generál vagy tárol a webhelye szintetikus hangot, videót vagy deepfake "
+"jellegű tartalmat?"
 
 #: includes/class-compliance.php:83
 msgid ""
 "Examples: AI voice-overs, AI-generated video, cloned voices, digital "
 "avatars."
 msgstr ""
+"Példák: MI-narrációk, MI által generált videó, klónozott hangok, digitális "
+"avatárok."
 
 #: includes/class-compliance.php:84
 msgid ""
@@ -2019,28 +2319,37 @@ msgid ""
 "50(4) obliges you as deployer to disclose deepfakes, which a cloned voice or"
 " an avatar of a real person is; a generic synthetic voice is not."
 msgstr ""
+"Az 50. cikk (2) bekezdése a generátor szolgáltatóját kötelezi a kimenet "
+"megjelölésére. Az 50. cikk (4) bekezdése Önt mint alkalmazót a deepfake-ek "
+"közlésére kötelezi, amilyen egy klónozott hang vagy egy valós személy "
+"avatárja; egy általános szintetikus hang nem az."
 
 #: includes/class-compliance.php:85
 msgid ""
 "Label the media in the library (video and audio are detected too) and add an"
 " explicit note on affected pages."
 msgstr ""
+"Címkézze a médiát a médiatárban (a videót és a hangot is felismeri a "
+"bővítmény), és tegyen kifejezett megjegyzést az érintett oldalakra."
 
 #: includes/class-compliance.php:89
 msgid "Personalisation and recommendations"
-msgstr ""
+msgstr "Személyre szabás és ajánlások"
 
 #: includes/class-compliance.php:90
 msgid ""
 "Does your site use AI for personalisation, recommendations or audience "
 "targeting?"
 msgstr ""
+"Használ a webhelye MI-t személyre szabáshoz, ajánlásokhoz vagy célközönség-"
+"célzáshoz?"
 
 #: includes/class-compliance.php:91
 msgid ""
 "Examples: product recommendations, personalised content, behavioural "
 "targeting."
 msgstr ""
+"Példák: termékajánlások, személyre szabott tartalom, viselkedésalapú célzás."
 
 #: includes/class-compliance.php:92
 msgid ""
@@ -2049,26 +2358,37 @@ msgid ""
 "online platforms and profiling have rules of their own in the Digital "
 "Services Act and the GDPR, outside the AI Act."
 msgstr ""
+"Az 50. cikk alapján nincs kötelezettség. A 4. cikk erre az eszközre is "
+"vonatkozik, mint minden alkalmazott MI-rendszerre, ezért helye van a "
+"nyilvántartásban. Az online platformok ajánlórendszereire és a "
+"profilalkotásra saját szabályok vonatkoznak a Digital Services Actben és a "
+"GDPR-ban, az AI Acton kívül."
 
 #: includes/class-compliance.php:93
 msgid ""
 "Declare the tool on the AI Systems page and decide whether visitors are told"
 " about it."
 msgstr ""
+"Jelentse be az eszközt az MI-rendszerek oldalon, és döntse el, hogy a "
+"látogatók értesüljenek-e róla."
 
 #: includes/class-compliance.php:97
 msgid "AI translation"
-msgstr ""
+msgstr "MI-fordítás"
 
 #: includes/class-compliance.php:98
 msgid "Does your site use AI translation to serve content in other languages?"
 msgstr ""
+"Használ a webhelye MI-fordítást ahhoz, hogy más nyelveken szolgáltasson "
+"tartalmat?"
 
 #: includes/class-compliance.php:99
 msgid ""
 "Examples: DeepL, machine-translated pages from a multilingual plugin, AI "
 "translation add-ons."
 msgstr ""
+"Példák: DeepL, gépi fordítású oldalak egy többnyelvű bővítményből, MI-"
+"fordítási kiegészítők."
 
 #: includes/class-compliance.php:100
 msgid ""
@@ -2077,442 +2397,507 @@ msgid ""
 "under Art. 50(4), like any AI-manipulated text. Article 4 applies to the "
 "tool either way."
 msgstr ""
+"Az 50. cikk alapján önmagában nincs kötelezettség. A gépi fordítású szöveg, "
+"amely a nyilvánosságot közérdekű ügyekről tájékoztatja, és amelyet senki nem"
+" ellenőriz, az 50. cikk (4) bekezdése alá eshet, mint bármely MI által "
+"manipulált szöveg. A 4. cikk mindkét esetben vonatkozik az eszközre."
 
 #: includes/class-compliance.php:101
 msgid ""
 "Declare the translation tool on the AI Systems page; consider a notice on "
 "translated pages."
 msgstr ""
+"Jelentse be a fordítóeszközt az MI-rendszerek oldalon; fontolja meg a "
+"tájékoztatót a lefordított oldalakon."
 
 #: includes/class-compliance.php:120
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
 msgstr ""
+"A munkatársak és a közreműködők tudják, mely MI-eszközöket használja ez a "
+"webhely, és mire használják őket"
 
 #: includes/class-compliance.php:121
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
 msgstr ""
+"Az MI-használatról szóló belső szabályzat (mi engedélyezett, mi igényel "
+"ellenőrzést) írásba van foglalva"
 
 #: includes/class-compliance.php:122
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
 msgstr ""
+"Az MI-eszközökkel dolgozó személyek képzést vagy útmutatást kaptak az "
+"eszközök képességeiről és korlátairól"
 
 #: includes/class-compliance.php:123
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
+"Ki van tűzve egy időpont az MI-eszközök használatának, a szabályzatnak és "
+"ezeknek a nyilatkozatoknak a felülvizsgálatára"
 
 #: includes/class-compliance.php:124
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
 msgstr ""
+"Minden MI-eszköznél mérlegelték a használat kontextusát és az érintett "
+"személyeket (látogatók, ügyfelek), amikor eldöntötték, milyen útmutatásra "
+"van szüksége a munkatársaknak"
 
 #: includes/class-compliance.php:138
 msgid "AI Act enters into force"
-msgstr ""
+msgstr "Az AI Act hatályba lép"
 
 #: includes/class-compliance.php:139
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
 msgstr ""
+"Az (EU) 2024/1689 rendelet hatályos; kötelezettségei szakaszosan válnak "
+"alkalmazandóvá."
 
 #: includes/class-compliance.php:143
 msgid "General provisions and prohibited practices apply"
-msgstr ""
+msgstr "Az általános rendelkezések és a tiltott gyakorlatok alkalmazandók"
 
 #: includes/class-compliance.php:144
 msgid ""
 "Chapters I and II: the AI literacy duty for providers and deployers (Article"
 " 4) and the ban on prohibited AI practices (Article 5)."
 msgstr ""
+"I. és II. fejezet: a szolgáltatókra és alkalmazókra vonatkozó MI-jártassági "
+"kötelezettség (4. cikk) és a tiltott MI-gyakorlatok tilalma (5. cikk)."
 
 #: includes/class-compliance.php:148
 msgid "General-purpose AI and governance rules apply"
 msgstr ""
+"Az általános célú MI-re és az irányításra vonatkozó szabályok alkalmazandók"
 
 #: includes/class-compliance.php:149
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
 msgstr ""
+"Az általános célú MI-modellek szolgáltatóira vonatkozó kötelezettségek, a "
+"bejelentő hatóságok, az irányítás és a szankciók (V., VII. és XII. fejezet)."
 
 #: includes/class-compliance.php:153
 msgid "General application, including Article 50"
-msgstr ""
+msgstr "Általános alkalmazás, az 50. cikket is beleértve"
 
 #: includes/class-compliance.php:154
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
 msgstr ""
+"A chatbotokra, az MI által generált tartalomra és a deepfake-ekre vonatkozó "
+"átláthatósági kötelezettségek (50. cikk), valamint a legtöbb fennmaradó "
+"rendelkezés alkalmazandó."
 
 #: includes/class-compliance.php:158
 msgid "High-risk AI in regulated products"
-msgstr ""
+msgstr "Nagy kockázatú MI a szabályozott termékekben"
 
 #: includes/class-compliance.php:159
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
 msgstr ""
+"Az I. mellékletben szabályozott termékek biztonsági alkotóelemét képező, "
+"nagy kockázatú MI-rendszerekre vonatkozó kötelezettségek (6. cikk (1) "
+"bekezdés)."
 
 #: includes/class-compliance.php:171
 msgid "Settings saved"
-msgstr ""
+msgstr "Beállítások elmentve"
 
 #: includes/class-compliance.php:172
 msgid "Library scan started"
-msgstr ""
+msgstr "A médiatár átvizsgálása elindult"
 
 #: includes/class-compliance.php:173
 msgid "Library scan finished"
-msgstr ""
+msgstr "A médiatár átvizsgálása befejeződött"
 
 #: includes/class-compliance.php:174
 msgid "Auto-repair sweep finished"
-msgstr ""
+msgstr "Az automatikus javítási futás befejeződött"
 
 #: includes/class-compliance.php:175
 msgid "Bulk action: labeled as AI"
-msgstr ""
+msgstr "Tömeges művelet: MI-ként címkézve"
 
 #: includes/class-compliance.php:176
 msgid "Bulk action: label removed"
-msgstr ""
+msgstr "Tömeges művelet: címke eltávolítva"
 
 #: includes/class-compliance.php:177
 msgid "Bulk action: review confirmed"
-msgstr ""
+msgstr "Tömeges művelet: ellenőrzés megerősítve"
 
 #: includes/class-compliance.php:178
 msgid "Bulk action: review dismissed"
-msgstr ""
+msgstr "Tömeges művelet: ellenőrzés elvetve"
 
 #: includes/class-compliance.php:179
 msgid "Bulk action: declared as camera photo"
-msgstr ""
+msgstr "Tömeges művelet: fényképként bejelentve"
 
 #: includes/class-compliance.php:180
 msgid "Bulk action: declared as human work"
-msgstr ""
+msgstr "Tömeges művelet: emberi alkotásként bejelentve"
 
 #: includes/class-compliance.php:181
 msgid "Bulk action: declaration removed"
-msgstr ""
+msgstr "Tömeges művelet: nyilatkozat eltávolítva"
 
 #: includes/class-compliance.php:182
 msgid "Setup: badge look chosen"
-msgstr ""
+msgstr "Beállítás: jelvénymegjelenés kiválasztva"
 
 #: includes/class-compliance.php:183
 msgid "Setup: file writing chosen"
-msgstr ""
+msgstr "Beállítás: fájlba írás kiválasztva"
 
 #: includes/class-compliance.php:184
 msgid "Setup: last step undone"
-msgstr ""
+msgstr "Beállítás: utolsó lépés visszavonva"
 
 #: includes/class-compliance.php:185
 msgid "Setup finished"
-msgstr ""
+msgstr "A beállítás befejeződött"
 
 #: includes/class-compliance.php:186
 msgid "Self-assessment saved"
-msgstr ""
+msgstr "Az önértékelés elmentve"
 
 #: includes/class-compliance.php:187
 msgid "AI literacy checklist saved"
-msgstr ""
+msgstr "Az MI-jártassági ellenőrzőlista elmentve"
 
 #: includes/class-compliance.php:188
 msgid "AI systems scanned"
-msgstr ""
+msgstr "MI-rendszerek átvizsgálva"
 
 #: includes/class-compliance.php:189
 msgid "AI system declared"
-msgstr ""
+msgstr "MI-rendszer bejelentve"
 
 #: includes/class-compliance.php:190
 msgid "AI system declaration removed"
-msgstr ""
+msgstr "MI-rendszer bejelentése eltávolítva"
 
 #: includes/class-compliance.php:191
 msgid "AI systems notice visibility changed"
-msgstr ""
+msgstr "Az MI-rendszerek tájékoztató láthatósága módosult"
 
 #: includes/class-compliance.php:444
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
 msgstr ""
+"Az MI által írt szöveg be van jelentve: vagy az önértékelés szerint nem "
+"jelenik meg ilyen, vagy legalább egy bejegyzés MI-szintet hordoz"
 
 #: includes/class-compliance.php:447
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
 msgstr ""
+"Állítsa be az MI-szintet az MI által írt bejegyzésein, vagy válaszoljon "
+"nemmel a szöveges kérdésre."
 
 #: includes/class-compliance.php:451
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
 msgstr ""
+"Az MI-média címkézve van: vagy az önértékelés szerint nincs ilyen "
+"használatban, vagy a jelvény be van kapcsolva, legalább egy fájl címkézve "
+"van, és semmi sem vár az ellenőrzési sorban"
 
 #: includes/class-compliance.php:454
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
 msgstr ""
+"Vizsgálja át a médiatárat, dolgozza fel az ellenőrzési sort, és tartsa "
+"bekapcsolva a látható jelvényt."
 
 #: includes/class-compliance.php:458
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
 msgstr ""
+"A chatbot-kérdés meg van válaszolva (igen vagy nem), így a chat-tájékoztató "
+"döntést követ"
 
 #: includes/class-compliance.php:461
 msgid "Answer whether the site runs a chat and who answers in it."
-msgstr ""
+msgstr "Válaszolja meg, hogy a webhelyen fut-e chat, és ki válaszol benne."
 
 #: includes/class-compliance.php:465
 msgid "Self-assessment and Article 4 checklist are complete"
-msgstr ""
+msgstr "Az önértékelés és a 4. cikk szerinti ellenőrzőlista teljes"
 
 #: includes/class-compliance.php:468
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
+"Válaszolja meg a hat kérdést, és jelölje be az ellenőrzőlista vonatkozó "
+"elemeit."
 
 #: includes/class-compliance.php:477
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
 msgstr ""
+"Az MI-rendszerek nyilvántartásba vannak véve: a bővítménylista át lett "
+"vizsgálva, és minden felismert vagy bejelentett rendszernél van láthatósági "
+"döntés"
 
 #: includes/class-compliance.php:480
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
 msgstr ""
+"Futtassa az átvizsgálást az MI-rendszerek oldalon, és döntse el, mely "
+"rendszerekről tájékoztatja a látogatókat."
 
 #: includes/class-compliance.php:514
 msgid "Good"
-msgstr ""
+msgstr "Jó"
 
 #: includes/class-compliance.php:515
 msgid "Needs attention"
-msgstr ""
+msgstr "Figyelmet igényel"
 
 #: includes/class-compliance.php:517
 msgid "Action required"
-msgstr ""
+msgstr "Beavatkozás szükséges"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
-msgstr ""
+msgstr "A kiszolgálási ellenőrzés ki van kapcsolva."
 
 #: includes/class-delivery.php:98
 msgid "This attachment has no file."
-msgstr ""
+msgstr "Ehhez a csatolmányhoz nem tartozik fájl."
 
 #: includes/class-delivery.php:107
 msgid "The file is served from another host, so it is not checked."
-msgstr ""
+msgstr "A fájlt másik kiszolgáló szolgálja ki, ezért nem kerül ellenőrzésre."
 
 #: includes/class-delivery.php:113
 msgid ""
 "The file on disk carries no AI declaration, so there is nothing to compare."
 msgstr ""
+"A lemezen lévő fájl nem hordoz MI-nyilatkozatot, így nincs mit "
+"összehasonlítani."
 
 #: includes/class-delivery.php:133
 msgid "The image could not be fetched over its public URL."
-msgstr ""
+msgstr "A képet nem sikerült letölteni a nyilvános URL-jén keresztül."
 
 #: includes/class-delivery.php:138
 msgid "The response was not a readable image."
-msgstr ""
+msgstr "A válasz nem volt olvasható kép."
 
 #: includes/class-delivery.php:150
 msgid "The declaration is present in the delivered file."
-msgstr ""
+msgstr "A nyilatkozat jelen van a kiszolgált fájlban."
 
 #: includes/class-delivery.php:151
 msgid ""
 "The delivered file carries no declaration. Something between WordPress and "
 "the visitor re-encodes the image, usually an optimizing CDN or a proxy."
 msgstr ""
+"A kiszolgált fájl nem hordoz nyilatkozatot. A WordPress és a látogató között"
+" valami újrakódolja a képet, rendszerint egy optimalizáló CDN vagy egy "
+"proxy."
 
 #: includes/class-delivery.php:206
 msgid "Delivered with the declaration intact"
-msgstr ""
+msgstr "A nyilatkozat épségben megérkezett"
 
 #: includes/class-delivery.php:208
 msgid "Delivered without the declaration"
-msgstr ""
+msgstr "Nyilatkozat nélkül került kiszolgálásra"
 
 #: includes/class-delivery.php:210
 msgid "Nothing to check"
-msgstr ""
+msgstr "Nincs mit ellenőrizni"
 
 #: includes/class-delivery.php:212
 msgid "Served from another host"
-msgstr ""
+msgstr "Másik kiszolgálóról érkezik"
 
 #: includes/class-delivery.php:214
 msgid "Could not be fetched"
-msgstr ""
+msgstr "Nem sikerült letölteni"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
 #: includes/class-frontend.php:215
 msgctxt "short human badge label"
 msgid "Human"
-msgstr ""
+msgstr "Ember"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
 #: includes/class-frontend.php:246
 msgctxt "short badge label"
 msgid "AI"
-msgstr ""
+msgstr "MI"
 
 #: includes/class-notice.php:136
 msgid "This text was created with the help of AI."
-msgstr ""
+msgstr "Ez a szöveg MI segítségével készült."
 
 #: includes/class-notice.php:138
 msgid "This text was generated by AI and reviewed by a person."
-msgstr ""
+msgstr "Ezt a szöveget MI generálta, és egy személy ellenőrizte."
 
 #: includes/class-notice.php:152
 msgid "No AI used"
-msgstr ""
+msgstr "Nem használt MI-t"
 
 #: includes/class-notice.php:153
 msgid "AI-assisted"
-msgstr ""
+msgstr "MI-vel segített"
 
 #: includes/class-notice.php:155
 msgid "AI-generated, reviewed by a person"
-msgstr ""
+msgstr "MI által generált, személy által ellenőrzött"
 
 #: includes/class-notice.php:195
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Tájékoztató bezárása"
 
 #: includes/class-notice.php:198
 msgid "AI notice"
-msgstr ""
+msgstr "MI-tájékoztató"
 
 #: includes/class-notice.php:200
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: includes/class-notice.php:587
 msgid ""
 "Choose a file from the media library in the block settings. Only labeled "
 "files show a label."
 msgstr ""
+"Válasszon fájlt a médiatárból a blokk beállításaiban. Csak a címkézett "
+"fájlok mutatnak címkét."
 
 #: includes/class-notice.php:590
 msgid ""
 "This file carries no label, so nothing shows. Label it in the media library "
 "or choose another file."
 msgstr ""
+"Ez a fájl nem hordoz címkét, ezért semmi nem jelenik meg. Címkézze a "
+"médiatárban, vagy válasszon másik fájlt."
 
 #: includes/class-notice.php:593
 msgid ""
 "No AI system is marked as visible yet, so nothing shows. Mark systems under "
 "TransparAI, AI Systems."
 msgstr ""
+"Még egyetlen MI-rendszer sincs láthatóként megjelölve, ezért semmi nem "
+"jelenik meg. Jelöljön meg rendszereket a TransparAI, MI-rendszerek alatt."
 
 #: includes/class-notice.php:596
 msgid ""
 "The chatbot notice is off, so nothing shows. Answer the chatbot question in "
 "the TransparAI settings."
 msgstr ""
+"A chatbot-tájékoztató ki van kapcsolva, ezért semmi nem jelenik meg. "
+"Válaszolja meg a chatbot-kérdést a TransparAI beállításaiban."
 
 #: includes/class-notice.php:599
 msgid ""
 "This post has no AI level yet, so the notice stays hidden. Set the level in "
 "the document sidebar under TransparAI."
 msgstr ""
+"Ennek a bejegyzésnek még nincs MI-szintje, ezért a tájékoztató rejtve marad."
+" Állítsa be a szintet a dokumentum oldalsávjában a TransparAI alatt."
 
 #: includes/class-notice.php:628
 msgid "Style"
-msgstr ""
+msgstr "Stílus"
 
 #: includes/class-notice.php:634
 msgid "Custom text"
-msgstr ""
+msgstr "Egyéni szöveg"
 
 #: includes/class-notice.php:635
 msgid "Leave empty to use the wording from the TransparAI settings."
 msgstr ""
+"Hagyja üresen, ha a TransparAI beállításaiban megadott szöveget szeretné "
+"használni."
 
 #: includes/class-notice.php:636
 msgid "Select file"
-msgstr ""
+msgstr "Fájl kiválasztása"
 
 #: includes/class-notice.php:637
 msgid "Replace file"
-msgstr ""
+msgstr "Fájl cseréje"
 
 #: includes/class-systems.php:53
 msgid "Text generation"
-msgstr ""
+msgstr "Szöveggenerálás"
 
 #: includes/class-systems.php:54
 msgid "Image generation"
-msgstr ""
+msgstr "Képgenerálás"
 
 #: includes/class-systems.php:55
 msgid "Chatbot"
-msgstr ""
+msgstr "Chatbot"
 
 #: includes/class-systems.php:56
 msgid "Translation"
-msgstr ""
+msgstr "Fordítás"
 
 #: includes/class-systems.php:57
 msgid "Personalisation"
-msgstr ""
+msgstr "Személyre szabás"
 
 #: includes/class-systems.php:58
 msgid "SEO assistant"
-msgstr ""
+msgstr "SEO-asszisztens"
 
 #: includes/class-systems.php:59
 msgid "Search and recommendations"
-msgstr ""
+msgstr "Keresés és ajánlások"
 
 #: includes/class-systems.php:60
 msgid "Audio and video"
-msgstr ""
+msgstr "Hang és videó"
 
 #: includes/class-systems.php:61
 msgid "Editor assistant"
-msgstr ""
+msgstr "Szerkesztőasszisztens"
 
 #: includes/class-systems.php:62
 msgid "Other"
-msgstr ""
+msgstr "Egyéb"
 
 #. translators: %s: plugin file.
 #: includes/class-systems.php:232
 #, php-format
 msgid "plugin %s"
-msgstr ""
+msgstr "%s bővítmény"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block title"
 msgid "Chatbot AI Notice"
-msgstr ""
+msgstr "Chatbot MI-tájékoztató"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block description"
@@ -2522,37 +2907,41 @@ msgid ""
 "contact page or next to the chat widget. Stays hidden while the chatbot "
 "question is unanswered or no AI answers."
 msgstr ""
+"Közli a látogatókkal, hogy a chatben MI válaszol, ahogy azt az EU AI Act 50."
+" cikke megköveteli, a TransparAI beállításaiban megadott szöveggel. Helyezze"
+" a kapcsolatfelvételi oldalra vagy a chat-widget mellé. Rejtve marad, amíg a"
+" chatbot-kérdés megválaszolatlan, vagy amíg nem MI válaszol."
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chatbot"
-msgstr ""
+msgstr "chatbot"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "ai"
-msgstr ""
+msgstr "mi"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "disclosure"
-msgstr ""
+msgstr "jelölés"
 
 #: blocks/chatbot-notice/block.json blocks/notice/block.json
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "eu ai act"
-msgstr ""
+msgstr "eu ai act"
 
 #: blocks/chatbot-notice/block.json
 msgctxt "block keyword"
 msgid "chat"
-msgstr ""
+msgstr "chat"
 
 #: blocks/media-label/block.json
 msgctxt "block title"
 msgid "AI Image Label"
-msgstr ""
+msgstr "MI-képcímke"
 
 #: blocks/media-label/block.json
 msgctxt "block description"
@@ -2562,36 +2951,40 @@ msgid ""
 " a gallery, in a caption or next to a builder image the automatic badge does"
 " not reach. Shows only for labeled files."
 msgstr ""
+"A médiatár egyetlen kép-, videó- vagy hangfájljának címkéje: MI által "
+"generált, ismert esetben a generátor nevével, vagy Emberi alkotás. Helyezze "
+"galéria alá, képaláírásba vagy olyan oldalépítő-kép mellé, amelyet az "
+"automatikus jelvény nem ér el. Csak címkézett fájloknál jelenik meg."
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "ai image"
-msgstr ""
+msgstr "mi-kép"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "c2pa"
-msgstr ""
+msgstr "c2pa"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "content credentials"
-msgstr ""
+msgstr "content credentials"
 
 #: blocks/media-label/block.json blocks/notice/block.json
 msgctxt "block keyword"
 msgid "label"
-msgstr ""
+msgstr "címke"
 
 #: blocks/media-label/block.json
 msgctxt "block keyword"
 msgid "human made"
-msgstr ""
+msgstr "emberi alkotás"
 
 #: blocks/notice/block.json
 msgctxt "block title"
 msgid "AI Notice"
-msgstr ""
+msgstr "MI-tájékoztató"
 
 #: blocks/notice/block.json
 msgctxt "block description"
@@ -2601,16 +2994,20 @@ msgid ""
 "with the wording from the TransparAI settings. Shows only when the post has "
 "an AI level."
 msgstr ""
+"Jelölő megjegyzés az MI által írt szöveghez, ahogy azt az EU AI Act kéri: "
+"blokk, soron belüli megjegyzés, bezárható szalag, jelvény vagy "
+"párbeszédablakot nyitó gomb, a TransparAI beállításaiban megadott szöveggel."
+" Csak akkor jelenik meg, ha a bejegyzésnek van MI-szintje."
 
 #: blocks/notice/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "transparency"
-msgstr ""
+msgstr "átláthatóság"
 
 #: blocks/systems-list/block.json
 msgctxt "block title"
 msgid "AI Systems List"
-msgstr ""
+msgstr "MI-rendszerek listája"
 
 #: blocks/systems-list/block.json
 msgctxt "block description"
@@ -2620,31 +3017,36 @@ msgid ""
 " in sync with the registry: a system you add or hide appears or disappears "
 "on every page that carries the list."
 msgstr ""
+"A TransparAI nyilvántartásában láthatóként megjelölt MI-rendszerek listája, "
+"mindegyik a saját kategóriájával. Az MI-átláthatósági nyilatkozat "
+"építőeleme, amely a nyilvántartással szinkronban marad: egy hozzáadott vagy "
+"elrejtett rendszer minden olyan oldalon megjelenik vagy eltűnik, amely a "
+"listát hordozza."
 
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "ai systems"
-msgstr ""
+msgstr "mi-rendszerek"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "transparency statement"
-msgstr ""
+msgstr "átláthatósági nyilatkozat"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "registry"
-msgstr ""
+msgstr "nyilvántartás"
 
 #: blocks/systems-list/block.json
 msgctxt "block keyword"
 msgid "list"
-msgstr ""
+msgstr "lista"
 
 #: blocks/systems-notice/block.json
 msgctxt "block title"
 msgid "AI Systems Notice"
-msgstr ""
+msgstr "MI-rendszerek tájékoztató"
 
 #: blocks/systems-notice/block.json
 msgctxt "block description"
@@ -2654,13 +3056,18 @@ msgid ""
 " imprint, the privacy policy or a transparency page. Shows only when at "
 "least one system is marked as visible."
 msgstr ""
+"Egy mondat, amely megnevezi a webhely által használt MI-rendszereket a "
+"TransparAI nyilvántartása alapján: chatbotok, ajánlások, képgenerálás, "
+"fordítás. Az impresszumhoz, az adatvédelmi irányelvekhez vagy egy "
+"átláthatósági oldalhoz. Csak akkor jelenik meg, ha legalább egy rendszer "
+"láthatóként van megjelölve."
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "privacy policy"
-msgstr ""
+msgstr "adatvédelmi irányelvek"
 
 #: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "imprint"
-msgstr ""
+msgstr "impresszum"
