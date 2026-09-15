@@ -748,9 +748,9 @@ msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
 msgstr ""
-"Alle Prüfungen, die das Plugin selbst durchführen kann, sind erledigt. "
-"Halten Sie die Antworten aktuell, wenn die Website KI neu einsetzt oder "
-"nicht mehr einsetzt."
+"Alle Prüfungen, die das Plugin selbst durchführen kann, sind erledigt. Halte"
+" die Antworten aktuell, wenn die Website KI neu einsetzt oder nicht mehr "
+"einsetzt."
 
 #: admin/class-dashboard.php:916
 msgid "Still open"
@@ -2781,7 +2781,7 @@ msgid ""
 "Choose a file from the media library in the block settings. Only labeled "
 "files show a label."
 msgstr ""
-"Wählen Sie in den Block-Einstellungen eine Datei aus der Mediathek. Nur "
+"Wähle in den Block-Einstellungen eine Datei aus der Mediathek. Nur "
 "gekennzeichnete Dateien zeigen ein Label."
 
 #: includes/class-notice.php:590
@@ -2789,8 +2789,8 @@ msgid ""
 "This file carries no label, so nothing shows. Label it in the media library "
 "or choose another file."
 msgstr ""
-"Diese Datei trägt keine Kennzeichnung, deshalb erscheint nichts. "
-"Kennzeichnen Sie sie in der Mediathek oder wählen Sie eine andere Datei."
+"Diese Datei trägt keine Kennzeichnung, deshalb erscheint nichts. Kennzeichne"
+" sie in der Mediathek oder wähle eine andere Datei."
 
 #: includes/class-notice.php:593
 msgid ""
@@ -2798,14 +2798,14 @@ msgid ""
 "TransparAI, AI Systems."
 msgstr ""
 "Noch kein KI-System ist als sichtbar markiert, deshalb erscheint nichts. "
-"Markieren Sie Systeme unter TransparAI, KI-Systeme."
+"Markiere Systeme unter TransparAI, KI-Systeme."
 
 #: includes/class-notice.php:596
 msgid ""
 "The chatbot notice is off, so nothing shows. Answer the chatbot question in "
 "the TransparAI settings."
 msgstr ""
-"Der Chatbot-Hinweis ist aus, deshalb erscheint nichts. Beantworten Sie die "
+"Der Chatbot-Hinweis ist aus, deshalb erscheint nichts. Beantworte die "
 "Chatbot-Frage in den TransparAI-Einstellungen."
 
 #: includes/class-notice.php:599
@@ -3009,8 +3009,8 @@ msgid ""
 msgstr ""
 "Eine Liste der KI-Systeme, die im TransparAI-Register als sichtbar markiert "
 "sind, jeweils mit Kategorie. Der Baustein für eine KI-Transparenzerklärung, "
-"immer synchron mit dem Register: Ein System, das Sie hinzufügen oder "
-"verbergen, erscheint oder verschwindet auf jeder Seite mit dieser Liste."
+"immer synchron mit dem Register: Ein System, das du hinzufügst oder "
+"verbirgst, erscheint oder verschwindet auf jeder Seite mit dieser Liste."
 
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"

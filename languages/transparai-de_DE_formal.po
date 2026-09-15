@@ -259,7 +259,7 @@ msgstr "Readiness-Score"
 #: admin/class-dashboard.php:233 admin/class-dashboard.php:905
 #, php-format
 msgid "%1$d of %2$d checks done"
-msgstr "%1$d von %2$d Prüfungen erfüllt"
+msgstr "%1$d von %2$d Prüfpunkten erfüllt"
 
 #: admin/class-dashboard.php:241
 msgid ""
@@ -1188,7 +1188,7 @@ msgid ""
 "site carry the same hash."
 msgstr ""
 "sha256 über die Fakten unten ohne Zeitstempel: zwei Berichte einer "
-"unveränderten Site tragen denselben Hash."
+"unveränderten Website tragen denselben Hash."
 
 #: admin/class-settings.php:135
 msgid "Basis"
@@ -1543,15 +1543,16 @@ msgid ""
 msgstr ""
 "Besucher müssen erfahren, wenn sie mit einem KI-System sprechen, spätestens "
 "zu Beginn des Gesprächs. Ihre Antwort entscheidet; was das Plugin auf der "
-"Site findet, dient nur der Information, denn die meisten Chat-Widgets sind "
-"Live-Chats, in denen ein Mensch antwortet, und ein falsches „Das ist eine "
-"KI“ würde Besucher in die Irre führen. Die Erkennung läuft lokal: aktive "
-"Plugins, Theme-Schnipsel, die Skripte einer Seite und das, was Ihr eigener "
-"Browser als Administrator gesehen hat. Keine Anfrage verlässt den Server."
+"Website findet, dient nur der Information, denn die meisten Chat-Widgets "
+"sind Live-Chats, in denen ein Mensch antwortet, und ein falsches „Das ist "
+"eine KI“ würde Besucher in die Irre führen. Die Erkennung läuft lokal: "
+"aktive Plugins, Theme-Schnipsel, die Skripte einer Seite und das, was Ihr "
+"eigener Browser als Administrator gesehen hat. Keine Anfrage verlässt den "
+"Server."
 
 #: admin/class-settings.php:445
 msgid "Found on this site"
-msgstr "Auf dieser Site gefunden"
+msgstr "Auf dieser Website gefunden"
 
 #: admin/class-settings.php:448
 msgid ""
@@ -1559,8 +1560,8 @@ msgid ""
 "while logged in; the check runs in your browser and reports here."
 msgstr ""
 "Bisher kein bekanntes Chat- oder Chatbot-Widget gefunden. Öffnen Sie ein "
-"paar Seiten Ihrer Site im eingeloggten Zustand; die Prüfung läuft in Ihrem "
-"Browser und meldet sich hier."
+"paar Seiten Ihrer Website im eingeloggten Zustand; die Prüfung läuft in "
+"Ihrem Browser und meldet sich hier."
 
 #: admin/class-settings.php:453
 msgid "a bot answers"
@@ -1580,7 +1581,7 @@ msgstr "Besetzung unbekannt"
 
 #: admin/class-settings.php:467
 msgid "Does this site run a chat?"
-msgstr "Läuft auf dieser Site ein Chat?"
+msgstr "Läuft auf dieser Website ein Chat?"
 
 #: admin/class-settings.php:474
 msgid "Not decided yet"
