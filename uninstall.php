@@ -42,7 +42,10 @@ function transparai_uninstall_site(): void {
 	delete_option( 'transparai_log' );
 	delete_option( 'transparai_setup_done' );
 	delete_option( 'transparai_setup_journal' );
+	delete_option( 'transparai_compliance' );
+	delete_option( 'transparai_systems' );
 	delete_metadata( 'user', 0, 'transparai_setup_skipped', '', true );
+	delete_metadata( 'user', 0, 'transparai_legal_ack', '', true );
 
 	global $wpdb;
 

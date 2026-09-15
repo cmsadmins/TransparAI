@@ -185,6 +185,58 @@ final class FrontendTest extends TestCase {
 		$this->reset_rendered();
 	}
 
+	public function test_page_notice_and_schema_work_with_the_badge_off(): void {
+		global $trai_test_options, $trai_test_meta;
+		$this->reset_rendered();
+		$trai_test_options['transparai_settings'] = array(
+			'badge_enabled'    => '0',
+			'badge_alt_append' => '1',
+			'schema_output'    => '1',
+			'page_notice'      => '1',
+			'page_notice_text' => 'Some media here is AI-made.',
+		);
+		$this->seed_map( array( '2026/09/ai.jpg' => 77 ) );
+		$trai_test_meta[77]['_test_url'] = 'https://example.test/wp-content/uploads/2026/09/ai.jpg';
+
+		$tag = '<img class="wp-image-77" src="/wp-content/uploads/2026/09/ai.jpg">';
+		$this->assertSame( $tag, TransparAI_Frontend::wrap_images( $tag ), 'No badge markup while the badge is off' );
+		$attachment     = new WP_Post();
+		$attachment->ID = 77;
+		$attr           = TransparAI_Frontend::filter_image_attributes( array( 'alt' => 'A tree' ), $attachment );
+		$this->assertSame( 'A tree', $attr['alt'], 'Alt append belongs to the badge and stays off with it' );
+
+		ob_start();
+		TransparAI_Frontend::print_footer_output();
+		$out = (string) ob_get_clean();
+		$this->assertStringContainsString( 'TrainedAlgorithmicMediaDigitalSource', $out, 'Structured data does not depend on the badge' );
+		$this->assertStringContainsString( '<p class="trai-page-notice" role="note"><span class="trai-page-notice__media">Some media here is AI-made.</span></p>', $out );
+		$this->reset_rendered();
+	}
+
+	public function test_footer_notice_lines_merge_into_one_paragraph(): void {
+		global $trai_test_options, $trai_test_filters;
+		$this->reset_rendered();
+		$trai_test_options['transparai_settings'] = array(
+			'badge_enabled' => '1',
+			'page_notice'   => '1',
+		);
+		$trai_test_filters['transparai_footer_notices'][] = static function ( array $lines ): array {
+			$lines['chat']    = 'You are chatting with an AI system.';
+			$lines['systems'] = 'This site uses AI systems: Example.';
+			$lines['empty']   = '';
+			return $lines;
+		};
+
+		ob_start();
+		TransparAI_Frontend::print_footer_output();
+		$out = (string) ob_get_clean();
+		$this->assertSame( 1, substr_count( $out, '<p class="trai-page-notice"' ), 'One paragraph for every source' );
+		$this->assertStringNotContainsString( 'trai-page-notice__media', $out, 'No media line without rendered media' );
+		$this->assertStringContainsString( '<span class="trai-page-notice__chat">You are chatting with an AI system.</span> <span class="trai-page-notice__systems">This site uses AI systems: Example.</span>', $out );
+		$this->assertStringNotContainsString( 'trai-page-notice__empty', $out, 'Empty lines are dropped' );
+		$this->reset_rendered();
+	}
+
 	public function test_image_attributes_injection_and_alt_append(): void {
 		global $trai_test_options;
 		$trai_test_options['transparai_settings'] = array(
@@ -356,5 +408,40 @@ final class FrontendTest extends TestCase {
 		$img = array( 'thumbnail' => '<img class="wp-image-7" src="/x.jpg" />' );
 		$out = TransparAI_Frontend::filter_wpb_image( $img, 42 );
 		$this->assertStringNotContainsString( 'wp-image-42', $out['thumbnail'] );
+	}
+
+
+	public function test_public_label_media_filter_and_bricks_element(): void {
+		global $trai_test_options, $trai_test_filters;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1' );
+		update_post_meta( 7, TransparAI_Meta::KEY_FLAG, '1' );
+		$html = '<div><img class="wp-image-7" src="/wp-content/uploads/2026/09/seven.jpg"></div>';
+
+		TransparAI_Frontend::init();
+		$this->assertArrayHasKey( 'transparai_label_media', $trai_test_filters, 'The public filter is registered' );
+		$this->assertArrayHasKey( 'bricks/frontend/render_element', $trai_test_filters );
+		$this->assertStringContainsString( 'trai-badge', apply_filters( 'transparai_label_media', $html ) );
+
+		$this->assertStringContainsString( 'trai-badge', TransparAI_Frontend::filter_bricks_element( $html, null ) );
+		$this->assertSame( '', TransparAI_Frontend::filter_bricks_element( '', null ) );
+		$this->assertSame( 5, TransparAI_Frontend::filter_bricks_element( 5, null ), 'Non-string output passes through' );
+
+		if ( ! function_exists( 'bricks_is_builder' ) ) {
+			function bricks_is_builder() { // phpcs:ignore Generic.Functions.OpeningFunctionBraceKernighanRitchie.ContentAfterBrace
+				return true;
+			}
+		}
+		$this->assertSame( $html, TransparAI_Frontend::filter_bricks_element( $html, null ), 'Untouched inside the Bricks builder' );
+	}
+
+	public function test_human_badge_is_not_rewrapped_on_repeated_runs(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1', 'human_badge' => '1' );
+		update_post_meta( 9, TransparAI_Meta::KEY_HUMAN, TransparAI_Meta::DST_CAPTURE );
+		$html  = '<p><img class="wp-image-9" src="/wp-content/uploads/2026/09/photo.jpg"></p>';
+		$once  = TransparAI_Frontend::wrap_images( $html );
+		$twice = TransparAI_Frontend::wrap_images( TransparAI_Frontend::wrap_images( $once ) );
+		$this->assertSame( 1, substr_count( $once, 'trai-badge--human' ) );
+		$this->assertSame( $once, $twice, 'The human badge must be as idempotent as the AI badge' );
 	}
 }

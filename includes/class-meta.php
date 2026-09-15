@@ -78,6 +78,13 @@ final class TransparAI_Meta {
 	private const SITE_LOG       = 'transparai_log';
 	private const SITE_LOG_LIMIT = 200;
 	public const REPORT_LIMIT    = 5000;
+	/** What a report can and cannot say (English keys; the print view translates by index). */
+	public const LIMITATIONS = array(
+		'Detection relies on metadata embedded by generators; files whose metadata was stripped carry no signal.',
+		'A declaration records a statement by the site operator; it is not cryptographic proof of origin.',
+		'Text disclosure levels are entered by editors; the review fingerprint shows whether content changed since the review, not whether the review was correct.',
+		'The readiness score, the self-assessment and the AI literacy checklist summarise the plugin state and the operator\'s own answers; they are not a legal assessment.',
+	);
 	/** The rules a declaration made with this version refers to. */
 	public const GUIDANCE_BASIS = 'Regulation (EU) 2024/1689 (AI Act), Article 50; IPTC Digital Source Type vocabulary (cv.iptc.org/newscodes/digitalsourcetype)';
 
@@ -805,15 +812,13 @@ final class TransparAI_Meta {
 			'site'           => home_url( '/' ),
 			'status'         => $status,
 			'guidance_basis' => self::GUIDANCE_BASIS,
-			'limitations'    => array(
-				'Detection relies on metadata embedded by generators; files whose metadata was stripped carry no signal.',
-				'A declaration records a statement by the site operator; it is not cryptographic proof of origin.',
-				'Text disclosure levels are entered by editors; the review fingerprint shows whether content changed since the review, not whether the review was correct.',
-			),
+			'limitations'    => self::LIMITATIONS,
 			'counts'         => $counts,
 			'truncated'      => $more,
 			'truncated_note' => $more ? sprintf( 'Only the first %d items are included.', self::REPORT_LIMIT ) : '',
 			'items'          => $rows,
+			'compliance'     => class_exists( 'TransparAI_Compliance' ) ? TransparAI_Compliance::summary() : array(),
+			'log'            => array_slice( array_reverse( self::site_log() ), 0, 50 ),
 			'generated_at'   => gmdate( 'c' ),
 		);
 		$record['document_hash'] = self::document_hash( $record );
@@ -826,7 +831,8 @@ final class TransparAI_Meta {
 	 * @param array<string, mixed> $record Report record.
 	 */
 	public static function document_hash( array $record ): string {
-		unset( $record['generated_at'], $record['document_hash'] );
+		/* The log and the declaration timestamps are volatile by nature; the declared facts are not. */
+		unset( $record['generated_at'], $record['document_hash'], $record['log'], $record['compliance']['assessment']['at'], $record['compliance']['literacy']['at'] );
 		$sort = static function ( array $value ) use ( &$sort ): array {
 			foreach ( $value as $key => $item ) {
 				if ( is_array( $item ) ) {

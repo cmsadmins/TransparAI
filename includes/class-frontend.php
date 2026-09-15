@@ -74,6 +74,20 @@ final class TransparAI_Frontend {
 		 */
 		add_filter( 'elementor/image_size/get_attachment_image_html', array( self::class, 'filter_elementor_image' ), 20, 4 );
 
+		/*
+		 * Bricks renders every element through this filter, bottom-up and
+		 * sometimes twice; wrap_images() is idempotent. Without Bricks the
+		 * filter never runs.
+		 */
+		add_filter( 'bricks/frontend/render_element', array( self::class, 'filter_bricks_element' ), 20, 2 );
+
+		/*
+		 * Public entry point for markup a theme renders itself:
+		 * echo apply_filters( 'transparai_label_media', $html );
+		 * Same rules as the_content (badge on, no builder editor, no feed).
+		 */
+		add_filter( 'transparai_label_media', array( self::class, 'filter_content' ), 10 );
+
 		/* Invalidate the URL map when labels change. */
 		add_action( 'added_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
 		add_action( 'updated_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
@@ -94,7 +108,7 @@ final class TransparAI_Frontend {
 	 * are excluded. Without the builders every check is a cheap no-op.
 	 */
 	private static function should_filter(): bool {
-		if ( is_admin() || is_feed() || wp_doing_ajax() || ! TransparAI_Options::enabled( 'badge_enabled' ) ) {
+		if ( is_admin() || is_feed() || wp_doing_ajax() ) {
 			return false;
 		}
 		if ( class_exists( 'TransparAI_WooCommerce' ) && TransparAI_WooCommerce::is_muted() ) {
@@ -146,17 +160,21 @@ final class TransparAI_Frontend {
 	}
 
 	/**
-	 * Whether an attachment gets a visible badge. A non-AI declaration is
-	 * collected for the structured data either way; its badge is opt-in,
-	 * since "Human made" on every photo is visual noise.
+	 * Whether an attachment gets a visible badge. Labeled media is collected
+	 * for the structured data and the page notice either way: both work with
+	 * the badge switched off. The non-AI badge is opt-in on top, since
+	 * "Human made" on every photo is visual noise.
 	 */
 	private static function renders_badge( int $attachment_id ): bool {
 		$kind = self::label_kind( $attachment_id );
-		if ( 'human' === $kind && ! TransparAI_Options::enabled( 'human_badge' ) ) {
+		if ( '' === $kind ) {
+			return false;
+		}
+		if ( ! TransparAI_Options::enabled( 'badge_enabled' ) || ( 'human' === $kind && ! TransparAI_Options::enabled( 'human_badge' ) ) ) {
 			self::collect( $attachment_id );
 			return false;
 		}
-		return '' !== $kind;
+		return true;
 	}
 
 	/**
@@ -309,7 +327,7 @@ final class TransparAI_Frontend {
 	 * Enqueue front-end assets (and the optional background map).
 	 */
 	public static function enqueue(): void {
-		if ( ! self::should_filter() ) {
+		if ( ! self::should_filter() || ! TransparAI_Options::enabled( 'badge_enabled' ) ) {
 			return;
 		}
 		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
@@ -352,7 +370,7 @@ final class TransparAI_Frontend {
 		$map = self::url_map();
 
 		$wrapped = preg_replace_callback(
-			'/<img\b[^>]*>(?!<span class="trai-badge")/i',
+			'/<img\b[^>]*>(?!<span class="trai-badge[ "])/i',
 			static function ( array $matches ) use ( $map ): string {
 				$tag = $matches[0];
 
@@ -429,6 +447,26 @@ final class TransparAI_Frontend {
 			return $content;
 		}
 		return self::wrap_images( $content );
+	}
+
+	/**
+	 * Bricks element output: the shared wrapper, skipped inside the builder.
+	 *
+	 * @param string|mixed $html    Element HTML.
+	 * @param mixed        $element Element instance (unused).
+	 * @return string|mixed
+	 */
+	public static function filter_bricks_element( $html, $element = null ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- fixed filter signature.
+		if ( ! is_string( $html ) || '' === $html || ! self::should_filter() ) {
+			return $html;
+		}
+		foreach ( array( 'bricks_is_builder', 'bricks_is_builder_iframe', 'bricks_is_builder_call' ) as $probe ) {
+			// @phpstan-ignore-next-line -- Bricks defines these functions at runtime; the analysis stubs do not know them.
+			if ( function_exists( $probe ) && $probe() ) {
+				return $html;
+			}
+		}
+		return self::wrap_images( $html );
 	}
 
 	/**
@@ -529,7 +567,7 @@ final class TransparAI_Frontend {
 			$attr['class'] = trim( $class . ' wp-image-' . (int) $attachment->ID );
 		}
 
-		if ( ! TransparAI_Options::enabled( 'badge_alt_append' ) ) {
+		if ( ! TransparAI_Options::enabled( 'badge_enabled' ) || ! TransparAI_Options::enabled( 'badge_alt_append' ) ) {
 			return $attr;
 		}
 		if ( ! self::is_badged( (int) $attachment->ID ) ) {
@@ -670,9 +708,11 @@ final class TransparAI_Frontend {
 	}
 
 	/**
-	 * Footer output: JSON-LD for the labeled media of this page and the
-	 * optional site-wide notice. Both are server-rendered (page-cache safe)
-	 * and only appear when labeled media was actually rendered.
+	 * Footer output: JSON-LD for the labeled media of this page and the one
+	 * shared footer notice. The media line only appears when labeled media
+	 * was actually rendered; the chatbot and AI systems lines join it through
+	 * the `transparai_footer_notices` filter, so a page never stacks three
+	 * separate notes. Everything is server-rendered (page-cache safe).
 	 */
 	public static function print_footer_output(): void {
 		if ( is_admin() || is_feed() || wp_doing_ajax() ) {
@@ -735,13 +775,32 @@ final class TransparAI_Frontend {
 			}
 		}
 
+		$lines = array();
 		if ( $badged && TransparAI_Options::enabled( 'page_notice' ) ) {
 			$text = TransparAI_Options::get( 'page_notice_text' );
 			if ( '' === $text ) {
 				$text = __( 'This page contains AI-generated media.', 'transparai' );
 			}
-			echo '<p class="trai-page-notice">' . esc_html( $text ) . '</p>' . "\n";
+			$lines['media'] = $text;
 		}
+		/**
+		 * Filters the lines of the shared footer notice.
+		 *
+		 * @param array<string, string> $lines Plain-text lines keyed by source (media, chat, systems).
+		 */
+		$lines = array_filter( array_map( 'strval', (array) apply_filters( 'transparai_footer_notices', $lines ) ) );
+		if ( array() === $lines ) {
+			return;
+		}
+		/* The note can appear with the badge switched off; a late enqueue prints with the footer styles. */
+		if ( function_exists( 'wp_enqueue_style' ) ) {
+			wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
+		}
+		$html = '';
+		foreach ( $lines as $key => $line ) {
+			$html .= ( '' === $html ? '' : ' ' ) . '<span class="trai-page-notice__' . sanitize_html_class( (string) $key ) . '">' . esc_html( $line ) . '</span>';
+		}
+		echo '<p class="trai-page-notice" role="note">' . $html . '</p>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every line is escaped above, the class comes from sanitize_html_class().
 	}
 
 	/**

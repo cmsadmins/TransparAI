@@ -168,7 +168,14 @@ p .trai-wrap {
 	text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Icon-only: show just the short label, keep the full text for readers. */
+/* Icon-only: show just the short label, keep the full text for readers.
+   The overlay cap above is em-based, so at font-size 0 it would collapse
+   to 0px and clip the ::after label away; the chip is tiny anyway. */
+.trai-style-icon-only .trai-badge,
+.trai-mode-overlay .trai-badge--mini {
+	max-width: none;
+}
+
 .trai-style-icon-only .trai-badge {
 	font-size: 0;
 	padding: 3px 5px;
@@ -315,4 +322,111 @@ p .trai-wrap {
 	border: 1px dashed currentColor;
 	opacity: 0.6;
 	font-size: 0.85em;
+}
+
+/* Note styles beyond block and inline: banner (dismissible), badge (chip),
+   modal (native dialog). Neutral colors only, the theme's own text color. */
+.trai-notice--banner {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75em;
+	margin: 0 0 1.25em;
+	padding: 0.6em 0.9em;
+	border: 1px solid currentColor;
+}
+
+.trai-notice--banner .trai-notice-text {
+	flex: 1 1 auto;
+}
+
+.trai-notice-dismiss {
+	flex: 0 0 auto;
+	margin: 0;
+	padding: 0 0.35em;
+	border: 1px solid currentColor;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	line-height: 1.4;
+	cursor: pointer;
+}
+
+.trai-notice--dismissed,
+.trai-badge--tiny {
+	display: none;
+}
+
+.trai-notice--badge {
+	display: inline-block;
+	margin: 0 0 0.75em;
+	padding: 0.15em 0.6em;
+	border: 1px solid currentColor;
+	border-radius: 3px;
+	font-size: 0.75em;
+	line-height: 1.6;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.trai-title-badge {
+	margin-left: 0.4em;
+	font-size: clamp(11px, 0.4em, 14px);
+	font-weight: 400;
+	vertical-align: middle;
+}
+
+.trai-notice--modal {
+	display: block;
+	margin: 0 0 1.25em;
+}
+
+.trai-notice-wrap {
+	margin: 0 0 1.25em;
+}
+
+.trai-notice-open,
+.trai-notice-close {
+	padding: 0.35em 0.9em;
+	border: 1px solid currentColor;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-size: 0.85em;
+	cursor: pointer;
+}
+
+.trai-notice-dialog {
+	max-width: 32em;
+	padding: 1.25em 1.5em;
+	border: 1px solid currentColor;
+	color: inherit;
+	background: #fff;
+	font-size: 1em;
+}
+
+.trai-notice-dialog::backdrop {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.trai-notice-dialog p {
+	margin: 0 0 1em;
+}
+
+/* AI systems notice: footer line shares .trai-page-notice, badge is a
+   fixed corner chip, banner reuses the note banner. */
+.trai-systems-notice--badge {
+	position: fixed;
+	right: 12px;
+	bottom: 12px;
+	z-index: var(--trai-badge-z, 30);
+	max-width: 22em;
+	margin: 0;
+	padding: 0.4em 0.75em;
+	border: 1px solid #1a1a1a;
+	background: #fff;
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 1.5;
 }

@@ -1,6 +1,7 @@
 <?php
 /**
  * WP-CLI commands: bulk-scan, label, audit-export and metadata verification,
+ * plus the compliance state (text levels, assessment, AI systems, report),
  * built for agencies and large libraries.
  *
  * @package   TransparAI
@@ -16,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Manage AI media labels.
+ * Manage AI labels and the EU AI Act compliance state.
  */
 final class TransparAI_CLI {
 
@@ -235,12 +236,371 @@ final class TransparAI_CLI {
 	}
 
 	/**
+	 * Readiness score and the checks behind it.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--format=<format>]
+	 * : table, csv, json or yaml. Default: table.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai score
+	 *     wp transparai score --format=json
+	 *
+	 * @param array $args       Positional args (unused).
+	 * @param array $assoc_args Flags.
+	 */
+	public function score( array $args, array $assoc_args ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed -- fixed WP-CLI command signature.
+		$score = TransparAI_Compliance::score();
+		$rows  = array();
+		foreach ( TransparAI_Compliance::factors() as $factor ) {
+			$rows[] = array(
+				'check' => $factor['id'],
+				'met'   => $factor['met'] ? 'yes' : 'no',
+				'label' => $factor['label'],
+			);
+		}
+		$format = (string) ( $assoc_args['format'] ?? 'table' );
+		if ( 'table' === $format ) {
+			WP_CLI::line( sprintf( 'Readiness score: %d/100 (%s)', $score, TransparAI_Compliance::traffic( $score ) ) );
+		}
+		\WP_CLI\Utils\format_items( $format, $rows, array( 'check', 'met', 'label' ) );
+	}
+
+	/**
+	 * The audit report as JSON: media rows with their history, the compliance
+	 * summary, the site log and the document hash (the same record the admin
+	 * print view and GET /transparai/v1/report render).
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--status=<status>]
+	 * : flagged, detected, human, labeled or all (default).
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai report > transparai-report.json
+	 *
+	 * @param array $args       Positional args (unused).
+	 * @param array $assoc_args Flags.
+	 */
+	public function report( array $args, array $assoc_args ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed -- fixed WP-CLI command signature.
+		$status = sanitize_key( (string) ( $assoc_args['status'] ?? 'all' ) );
+		if ( ! in_array( $status, array( 'flagged', 'detected', 'human', 'labeled', 'all' ), true ) ) {
+			WP_CLI::error( 'Unknown --status, use flagged, detected, human, labeled or all.' );
+		}
+		WP_CLI::line( (string) wp_json_encode( TransparAI_Meta::report( $status ), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) );
+	}
+
+	/**
+	 * List published posts that carry an AI level, or set the level on posts.
+	 *
+	 * The reviewed level stamps the review with the user the command runs as,
+	 * so pass --user=<login> for a stamp that names a person.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [<id>...]
+	 * : Post IDs to change. Without any, the posts with an AI level are listed (first 5000).
+	 *
+	 * [--level=<level>]
+	 * : none, assisted, generated or generated_reviewed. Required with IDs unless --remove is given.
+	 *
+	 * [--remove]
+	 * : Remove the classification from the given posts (a review stamp stays).
+	 *
+	 * [--format=<format>]
+	 * : table (default), csv, json, ids or count.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai content --format=csv > ai-content.csv
+	 *     wp transparai content 42 43 --level=assisted
+	 *     wp transparai content 42 --level=generated_reviewed --user=editor
+	 *
+	 * @param array $args       Post IDs.
+	 * @param array $assoc_args Flags.
+	 */
+	public function content( array $args, array $assoc_args ): void {
+		if ( array() === $args ) {
+			$rows = TransparAI_Compliance::content_items();
+			foreach ( $rows as &$row ) {
+				$row['review_current'] = $row['review_current'] ? 'yes' : 'no';
+			}
+			unset( $row );
+			self::print_rows( $assoc_args, $rows, array( 'ID', 'type', 'level', 'title', 'reviewed_by', 'reviewed_on', 'review_current' ) );
+			return;
+		}
+
+		$remove = isset( $assoc_args['remove'] );
+		$level  = $remove ? '' : TransparAI_Meta::sanitize_content_level( (string) ( $assoc_args['level'] ?? '' ) );
+		if ( ! $remove && '' === $level ) {
+			WP_CLI::error( 'Pass --level=none|assisted|generated|generated_reviewed, or --remove.' );
+		}
+		$types = TransparAI_Compliance::post_types();
+		$count = 0;
+		foreach ( $args as $id ) {
+			$id = absint( $id );
+			if ( ! $id || ! in_array( (string) get_post_type( $id ), $types, true ) ) {
+				WP_CLI::warning( sprintf( '#%s is not a public post, skipped.', $id ) );
+				continue;
+			}
+			TransparAI_Meta::set_content_level( $id, $level );
+			++$count;
+		}
+		if ( $remove ) {
+			WP_CLI::success( sprintf( '%d classification(s) removed.', $count ) );
+			return;
+		}
+		WP_CLI::success( sprintf( '%d post(s) set to %s.', $count, $level ) );
+	}
+
+	/**
+	 * Self-assessment and Article 4 checklist: show them, or record answers.
+	 *
+	 * Answers and ticks carry the name of the user the command runs as, so
+	 * pass --user=<login> for a stamp that names a person.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--answer=<list>]
+	 * : Comma-separated <question>:<yes|no> pairs, e.g. chatbot:no,ai_text:yes, with the
+	 * question IDs this command lists. Unlisted questions keep their answer.
+	 *
+	 * [--tick=<list>]
+	 * : Checklist item IDs done, comma-separated, or all or none; unlisted items count as not done.
+	 *
+	 * [--format=<format>]
+	 * : table (default), csv, json or yaml.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai assessment
+	 *     wp transparai assessment --answer=chatbot:no,ai_text:yes --user=editor
+	 *     wp transparai assessment --tick=all
+	 *
+	 * @param array $args       Positional args (unused).
+	 * @param array $assoc_args Flags.
+	 */
+	public function assessment( array $args, array $assoc_args ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed -- fixed WP-CLI command signature.
+		if ( isset( $assoc_args['answer'] ) ) {
+			$answers = TransparAI_Compliance::assessment();
+			foreach ( explode( ',', (string) $assoc_args['answer'] ) as $pair ) {
+				$parts = explode( ':', trim( $pair ), 2 );
+				$id    = sanitize_key( $parts[0] );
+				$value = sanitize_key( $parts[1] ?? '' );
+				if ( ! array_key_exists( $id, $answers ) || ! in_array( $value, array( 'yes', 'no' ), true ) ) {
+					WP_CLI::error( sprintf( 'Unknown answer "%s", use <question>:yes or <question>:no.', $pair ) );
+				}
+				$answers[ $id ] = $value;
+			}
+			TransparAI_Compliance::save_assessment( $answers );
+			WP_CLI::log( 'Assessment saved.' );
+		}
+
+		if ( isset( $assoc_args['tick'] ) ) {
+			$items = array_keys( TransparAI_Compliance::literacy_items() );
+			$list  = (string) $assoc_args['tick'];
+			if ( 'all' === $list ) {
+				$done = $items;
+			} elseif ( 'none' === $list ) {
+				$done = array();
+			} else {
+				$done = array_map( 'sanitize_key', explode( ',', $list ) );
+				foreach ( array_diff( $done, $items ) as $unknown ) {
+					WP_CLI::error( sprintf( 'Unknown checklist item "%s".', $unknown ) );
+				}
+			}
+			TransparAI_Compliance::save_literacy( array_fill_keys( $done, true ) );
+			WP_CLI::log( 'Checklist saved.' );
+		}
+
+		$state = TransparAI_Compliance::state();
+		$rows  = array();
+		foreach ( TransparAI_Compliance::questions() as $id => $question ) {
+			$rows[] = array(
+				'item'  => $id,
+				'kind'  => 'question',
+				'state' => '' === $state['assessment'][ $id ] ? 'open' : $state['assessment'][ $id ],
+				'label' => $question['label'],
+			);
+		}
+		foreach ( TransparAI_Compliance::literacy_items() as $id => $label ) {
+			$rows[] = array(
+				'item'  => $id,
+				'kind'  => 'checklist',
+				'state' => $state['literacy'][ $id ] ? 'done' : 'open',
+				'label' => $label,
+			);
+		}
+		\WP_CLI\Utils\format_items( (string) ( $assoc_args['format'] ?? 'table' ), $rows, array( 'item', 'kind', 'state', 'label' ) );
+	}
+
+	/**
+	 * Inventory of AI systems: plugins matched against the bundled registry
+	 * plus manual declarations. Runs the first scan by itself.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--rescan]
+	 * : Match the active plugins against the registry again first.
+	 *
+	 * [--format=<format>]
+	 * : table (default), csv, json, ids or count.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai systems --rescan
+	 *     wp transparai systems --format=json
+	 *
+	 * @param array $args       Positional args (unused).
+	 * @param array $assoc_args Flags.
+	 */
+	public function systems( array $args, array $assoc_args ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed -- fixed WP-CLI command signature.
+		if ( isset( $assoc_args['rescan'] ) || 0 === TransparAI_Systems::scanned_at() ) {
+			$found = TransparAI_Systems::scan();
+			WP_CLI::log( sprintf( 'Scan finished: %d system(s) detected.', count( $found ) ) );
+		}
+		$rows = array();
+		foreach ( TransparAI_Systems::all() as $system ) {
+			$rows[] = array(
+				'ID'       => $system['id'],
+				'name'     => $system['name'],
+				'category' => $system['category'],
+				'article'  => $system['article'],
+				'source'   => $system['source'],
+				'visible'  => $system['visible'] ? 'yes' : 'no',
+				'evidence' => $system['evidence'],
+			);
+		}
+		self::print_rows( $assoc_args, $rows, array( 'ID', 'name', 'category', 'article', 'source', 'visible', 'evidence' ) );
+	}
+
+	/**
+	 * Declare an AI system by hand (a tool the registry does not know).
+	 *
+	 * ## OPTIONS
+	 *
+	 * <name>
+	 * : Name shown in the inventory and the visitor notice.
+	 *
+	 * [--category=<category>]
+	 * : content, image, chatbot, translation, personalisation, seo, search, audio_video, assistant or other (default).
+	 *
+	 * [--slug=<slug>]
+	 * : Plugin directory slug, if the tool is a plugin.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai systems-declare "House Recommender" --category=personalisation
+	 *
+	 * @subcommand systems-declare
+	 *
+	 * @param array $args       The name.
+	 * @param array $assoc_args Flags.
+	 */
+	public function systems_declare( array $args, array $assoc_args ): void {
+		$category = sanitize_key( (string) ( $assoc_args['category'] ?? 'other' ) );
+		if ( ! in_array( $category, TransparAI_Systems::CATEGORIES, true ) ) {
+			WP_CLI::error( 'Unknown --category, use one of: ' . implode( ', ', TransparAI_Systems::CATEGORIES ) . '.' );
+		}
+		$id = TransparAI_Systems::declare( (string) $args[0], $category, (string) ( $assoc_args['slug'] ?? '' ) );
+		if ( '' === $id ) {
+			WP_CLI::error( 'The name is empty.' );
+		}
+		WP_CLI::success( sprintf( 'Declared as %s (not named in the visitor notice yet, see systems-visible).', $id ) );
+	}
+
+	/**
+	 * Remove manual declarations.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <id>...
+	 * : System IDs as listed by `wp transparai systems` (manual-... entries only).
+	 *
+	 * @subcommand systems-undeclare
+	 *
+	 * @param array $args       System IDs.
+	 * @param array $assoc_args Flags (unused).
+	 */
+	public function systems_undeclare( array $args, array $assoc_args ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- fixed WP-CLI command signature.
+		$manual = TransparAI_Systems::state()['manual'];
+		$count  = 0;
+		foreach ( $args as $id ) {
+			$id = sanitize_key( (string) $id );
+			if ( ! isset( $manual[ $id ] ) ) {
+				WP_CLI::warning( sprintf( '%s is not a manual declaration, skipped.', $id ) );
+				continue;
+			}
+			TransparAI_Systems::undeclare( $id );
+			++$count;
+		}
+		WP_CLI::success( sprintf( '%d declaration(s) removed.', $count ) );
+	}
+
+	/**
+	 * Decide which systems the visitor notice names. The given IDs replace
+	 * the current selection; without any, nothing is named.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [<id>...]
+	 * : System IDs as listed by `wp transparai systems`.
+	 *
+	 * [--all]
+	 * : Name every inventoried system.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai systems-visible ai-engine manual-house-recommender
+	 *     wp transparai systems-visible --all
+	 *
+	 * @subcommand systems-visible
+	 *
+	 * @param array $args       System IDs.
+	 * @param array $assoc_args Flags.
+	 */
+	public function systems_visible( array $args, array $assoc_args ): void {
+		$known = array_keys( TransparAI_Systems::all() );
+		$ids   = isset( $assoc_args['all'] ) ? $known : array_map( 'sanitize_key', array_map( 'strval', $args ) );
+		foreach ( array_diff( $ids, $known ) as $unknown ) {
+			WP_CLI::warning( sprintf( '%s is not in the inventory, dropped.', $unknown ) );
+		}
+		TransparAI_Systems::set_visible( $ids );
+		$count = count( array_intersect( $ids, $known ) );
+		if ( ! TransparAI_Options::enabled( 'systems_notice' ) ) {
+			WP_CLI::warning( 'The AI systems notice is switched off in the settings, so visitors see nothing yet.' );
+		}
+		WP_CLI::success( sprintf( '%d system(s) named in the visitor notice.', $count ) );
+	}
+
+	/**
+	 * Print rows in the requested --format, with the bare ID list for ids.
+	 *
+	 * @param array<string, mixed>             $assoc_args Flags.
+	 * @param array<int, array<string, mixed>> $rows       Rows.
+	 * @param string[]                         $columns    Columns in order.
+	 */
+	private static function print_rows( array $assoc_args, array $rows, array $columns ): void {
+		$format = sanitize_key( (string) ( $assoc_args['format'] ?? 'table' ) );
+		if ( 'ids' === $format ) {
+			// The ids format prints the items themselves, so it needs the bare
+			// list; handing it the full rows would print "Array" per entry.
+			WP_CLI::log( implode( ' ', wp_list_pluck( $rows, 'ID' ) ) );
+			return;
+		}
+		\WP_CLI\Utils\format_items( $format, $rows, $columns );
+	}
+
+	/**
 	 * List labeled or detected attachments (audit export).
 	 *
 	 * ## OPTIONS
 	 *
 	 * [--status=<status>]
-	 * : flagged (default), detected, human, or all.
+	 * : flagged (default), detected, human, labeled (flagged or human) or all.
 	 *
 	 * [--format=<format>]
 	 * : table (default), csv, json, ids or count.
@@ -254,18 +614,7 @@ final class TransparAI_CLI {
 	 */
 	public function status( array $args, array $assoc_args ): void {
 		$status = isset( $assoc_args['status'] ) ? sanitize_key( (string) $assoc_args['status'] ) : 'flagged';
-		$format = isset( $assoc_args['format'] ) ? sanitize_key( (string) $assoc_args['format'] ) : 'table';
-
-		$rows = TransparAI_Meta::audit_rows( $status );
-
-		if ( 'ids' === $format ) {
-			// The ids format prints the items themselves, so it needs the bare
-			// list; handing it the full rows would print "Array" per entry.
-			WP_CLI::log( implode( ' ', wp_list_pluck( $rows, 'ID' ) ) );
-			return;
-		}
-
-		\WP_CLI\Utils\format_items( $format, $rows, TransparAI_Meta::audit_columns() );
+		self::print_rows( $assoc_args, TransparAI_Meta::audit_rows( $status ), TransparAI_Meta::audit_columns() );
 	}
 
 	/**
@@ -383,7 +732,7 @@ final class TransparAI_CLI {
 	 */
 	public function verify_delivery( array $args, array $assoc_args ): void {
 		if ( ! TransparAI_Delivery::enabled() ) {
-			WP_CLI::error( 'The delivery check is switched off. Enable it under Media, TransparAI first.' );
+			WP_CLI::error( 'The delivery check is switched off. Enable it under TransparAI, Settings, File metadata first.' );
 		}
 
 		if ( array() === $args ) {

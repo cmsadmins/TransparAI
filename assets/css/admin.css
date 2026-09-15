@@ -74,6 +74,15 @@
 	font-weight: 600;
 }
 
+/* Block inside a card (scan block in the detection tab): hairline above. */
+.trai-settings .trai-card-subtitle {
+	margin: 24px 0 8px;
+	padding-top: 16px;
+	border-top: 1px solid #c3c4c7;
+	font-size: 14px;
+	font-weight: 600;
+}
+
 /* Page footer: brand line left, contact links right, single hairline above.
    Muted text, orange only on hover/focus. */
 .trai-settings .trai-footer {
@@ -418,7 +427,7 @@
 
 .trai-inspect-state--ok {
 	background: rgba(34, 197, 94, 0.15);
-	color: #15803d;
+	color: var(--trai-success-text, #15803d);
 }
 
 .trai-inspect-state--missing {
@@ -567,7 +576,7 @@
 	margin: 0 0 12px;
 }
 
-#trai-setup-preview {
+.trai-badge-preview {
 	display: inline-block;
 	position: relative;
 }
@@ -618,4 +627,274 @@
 
 .trai-inline-edit select {
 	max-width: 100%;
+}
+
+/* =====================================================================
+ * Compliance screens (dashboard, assessment, AI systems)
+ * and the settings tabs. Same tokens, same 8px grid, same cards.
+ * =================================================================== */
+.trai-settings,
+.trai-widget {
+	--trai-success: #22c55e;
+	--trai-warning: #eab308;
+	--trai-danger: #ef4444;
+	--trai-success-text: #15803d;
+	--trai-warning-text: #854d0e;
+}
+
+.trai-settings .trai-page-title {
+	margin: -8px 0 16px;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--trai-muted, #646970);
+}
+
+/* Settings tabs: core nav-tab look, panels toggled by [hidden]. */
+.trai-settings .trai-tabs {
+	margin-bottom: 16px;
+}
+
+.trai-settings .trai-tabs .nav-tab:focus {
+	box-shadow: 0 0 0 1px var(--trai-primary, #FF6800);
+	outline: none;
+}
+
+/* Score */
+.trai-score {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 8px 12px;
+	margin: 8px 0 12px;
+}
+
+.trai-score-number {
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-score-of {
+	font-size: 18px;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-score-summary {
+	font-size: 13px;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-traffic {
+	display: inline-block;
+	padding: 2px 10px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.6;
+	transition: all 0.2s ease;
+}
+
+.trai-traffic--good {
+	color: var(--trai-success-text, #15803d);
+	background: rgba(34, 197, 94, 0.15);
+}
+
+.trai-traffic--attention {
+	color: var(--trai-warning-text, #854d0e);
+	background: rgba(234, 179, 8, 0.15);
+}
+
+.trai-traffic--action {
+	color: var(--trai-danger-light, #b32d2e);
+	background: rgba(239, 68, 68, 0.15);
+}
+
+.trai-settings .trai-subtitle {
+	margin: 16px 0 8px;
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-factors {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.trai-factor {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+	padding: 8px 0;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-factor-state {
+	flex: 0 0 56px;
+	padding: 2px 0;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.trai-factor--open .trai-factor-state {
+	color: var(--trai-warning-text, #854d0e);
+	background: rgba(234, 179, 8, 0.15);
+}
+
+.trai-factor--met .trai-factor-state {
+	color: var(--trai-success-text, #15803d);
+	background: rgba(34, 197, 94, 0.15);
+}
+
+.trai-factor-text {
+	flex: 1 1 auto;
+	line-height: 1.5;
+}
+
+/* Linked counters on the dashboard keep the stat look. */
+.trai-settings a.trai-stat {
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.2s ease;
+}
+
+.trai-settings a.trai-stat:hover .trai-stat-number,
+.trai-settings a.trai-stat:focus .trai-stat-number {
+	color: var(--trai-primary, #FF6800);
+}
+
+/* Timeline */
+.trai-timeline {
+	margin: 8px 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.trai-milestone {
+	display: flex;
+	gap: 16px;
+	padding: 8px 0;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-milestone-date {
+	flex: 0 0 112px;
+	font-weight: 600;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-milestone--past .trai-milestone-date {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-milestone-body {
+	flex: 1 1 auto;
+	line-height: 1.5;
+}
+
+.trai-milestone-when {
+	margin-left: 8px;
+	font-size: 12px;
+	color: var(--trai-muted, #646970);
+}
+
+/* Tables on our screens: core widefat, only spacing of our own. */
+.trai-settings .trai-table {
+	margin: 8px 0 12px;
+}
+
+/* Assessment */
+.trai-question {
+	margin: 0 0 16px;
+	padding: 12px 0 0;
+	border: 0;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-question legend {
+	padding: 0;
+	font-weight: 600;
+}
+
+.trai-question label {
+	margin-right: 16px;
+}
+
+/* Literacy */
+.trai-checklist {
+	margin: 8px 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.trai-checklist li {
+	padding: 8px 0;
+	border-top: 1px solid var(--trai-border-light, #e0e0e0);
+}
+
+.trai-progress-label {
+	font-weight: 600;
+}
+
+/* Inline declare form */
+.trai-inline-form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+}
+
+/* WordPress dashboard widget */
+.trai-widget .trai-widget-score {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	margin: 0 0 8px;
+}
+
+.trai-widget .trai-score-number {
+	font-size: 32px;
+}
+
+.trai-widget .trai-widget-counts {
+	margin: 0 0 8px;
+}
+
+/* Disclaimer: dark card, the one place the brand ground appears in the admin.
+   Repeated on every screen on purpose. */
+.trai-settings .trai-disclaimer {
+	background: var(--trai-bg, #1a1a1a);
+	color: var(--trai-text, #e5e5e5);
+}
+
+.trai-settings .trai-disclaimer .trai-card-title {
+	color: var(--trai-primary, #FF6800);
+}
+
+.trai-settings .trai-disclaimer p {
+	margin: 0;
+	color: var(--trai-text, #e5e5e5);
+}
+
+.trai-settings .trai-legal-notice p:first-child {
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+/* Getting-started steps */
+.trai-steps {
+	margin: 8px 0 0 20px;
+	padding: 0;
+}
+
+.trai-steps li {
+	margin: 0 0 8px;
+	line-height: 1.5;
 }

@@ -102,8 +102,12 @@
 		};
 
 		scanStart.addEventListener('click', function () { begin('missing'); });
-		/* Setup card: same scan, the progress shows in the scan card below. */
+		/* Setup card: same scan, the progress shows in the detection tab below. */
 		jQuery(document).on('click', '.trai-setup-scan', function () {
+			var tab = document.querySelector('.trai-tabs [data-tab="detection"]');
+			if (tab) {
+				tab.click();
+			}
 			begin('missing');
 			var card = document.getElementById('trai-scan-progress');
 			if (card && card.scrollIntoView) {
@@ -117,17 +121,19 @@
 		});
 	}
 
-	/* Setup card: live preview of the badge look. */
-	var preview = document.getElementById('trai-setup-preview');
-	if (preview) {
-		var previewForm = preview.closest('form');
-		var setClass = function (prefix, value) {
-			preview.className = preview.className.replace(new RegExp('\\b' + prefix + '[a-z-]+'), prefix + value);
-		};
-		jQuery(previewForm).on('change', 'input[name="badge_style"]', function () { setClass('trai-style-', this.value); });
-		jQuery(previewForm).on('change', 'select[name="badge_position"]', function () { setClass('trai-pos-', this.value); });
-		jQuery(previewForm).on('change', 'select[name="badge_mode"]', function () { setClass('trai-mode-', this.value); });
-	}
+	/* Live badge preview (setup card and settings tab): the controls are
+	   named badge_style, badge_position, badge_mode and badge_size, either
+	   bare (setup) or inside the options array (settings). */
+	jQuery('.trai-badge-preview').each(function () {
+		var preview = this;
+		var prefixes = { badge_style: 'trai-style-', badge_position: 'trai-pos-', badge_mode: 'trai-mode-', badge_size: 'trai-size-' };
+		jQuery(preview.closest('form')).on('change', 'select, input[type="radio"]', function () {
+			var key = this.name.replace(/^.*\[(\w+)\]$/, '$1');
+			if (prefixes[key]) {
+				preview.className = preview.className.replace(new RegExp('\\b' + prefixes[key] + '[a-z-]+'), prefixes[key] + this.value);
+			}
+		});
+	});
 
 	/* =====================================================================
 	 * Attachment details: review buttons + re-check (list mode edit screen
@@ -395,4 +401,44 @@
 			}).render());
 		}
 	};
+})();
+
+(function () {
+	'use strict';
+
+	/* =====================================================================
+	 * Settings page: tabs. Every panel stays in the DOM (one form, the
+	 * Settings API rebuilds the whole option from it); tabs only toggle
+	 * [hidden]. The referer field is updated so the save lands on the
+	 * same tab.
+	 * =================================================================== */
+
+	var tabs = document.querySelector('.trai-tabs');
+	if (tabs) {
+		var panels = document.querySelectorAll('.trai-tab-panel');
+		var referer = document.querySelector('input[name="_wp_http_referer"]');
+		var activateTab = function (id) {
+			tabs.querySelectorAll('.nav-tab').forEach(function (link) {
+				link.classList.toggle('nav-tab-active', link.getAttribute('data-tab') === id);
+			});
+			panels.forEach(function (panel) {
+				panel.hidden = panel.id !== 'trai-tab-' + id;
+			});
+			var url = new URL(window.location.href);
+			url.searchParams.set('tab', id);
+			url.hash = '';
+			window.history.replaceState(null, '', url.toString());
+			if (referer) {
+				referer.value = url.pathname + url.search;
+			}
+		};
+		tabs.addEventListener('click', function (event) {
+			var link = event.target.closest('.nav-tab');
+			if (!link) {
+				return;
+			}
+			event.preventDefault();
+			activateTab(link.getAttribute('data-tab'));
+		});
+	}
 })();

@@ -107,7 +107,7 @@ final class TransparAI_Setup {
 	 * Settings page URL with the setup card open.
 	 */
 	public static function url( string $extra = '' ): string {
-		return admin_url( 'upload.php?page=transparai&setup=1' . $extra );
+		return admin_url( 'admin.php?page=transparai-settings&setup=1' . $extra );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -211,11 +211,11 @@ final class TransparAI_Setup {
 			case 'finish':
 				update_option( self::OPT_DONE, time(), false );
 				TransparAI_Meta::log_site( 'setup-finished' );
-				wp_safe_redirect( admin_url( 'upload.php?page=transparai&settings-updated=1' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=transparai-settings&settings-updated=1' ) );
 				exit;
 			case 'skip':
 				update_user_meta( get_current_user_id(), self::USER_SKIPPED, '1' );
-				wp_safe_redirect( admin_url( 'upload.php?page=transparai' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=transparai-settings' ) );
 				exit;
 		}
 		wp_safe_redirect( self::url( '&done=' . rawurlencode( $step ) ) );
@@ -225,6 +225,24 @@ final class TransparAI_Setup {
 	/* ---------------------------------------------------------------------
 	 * Card
 	 * ------------------------------------------------------------------- */
+
+	/**
+	 * Badge preview with the real front-end styles: a neutral sample area
+	 * plus the badge, classed like the front-end wrapper. admin.js swaps the
+	 * classes live when a badge control in the enclosing form changes.
+	 *
+	 * @param array<string, string> $options Current options.
+	 */
+	public static function preview( array $options ): void {
+		?>
+		<div class="trai-setup-preview-wrap">
+			<span class="trai-badge-preview trai-wrap trai-pos-<?php echo esc_attr( $options['badge_position'] ); ?> trai-size-<?php echo esc_attr( $options['badge_size'] ); ?> trai-style-<?php echo esc_attr( $options['badge_style'] ); ?> trai-mode-<?php echo esc_attr( $options['badge_mode'] ); ?>">
+				<span class="trai-setup-sample" aria-hidden="true"></span>
+				<span class="trai-badge" role="note" data-trai-short="<?php echo esc_attr( TransparAI_Frontend::badge_short_label() ); ?>"><?php echo esc_html( TransparAI_Frontend::badge_label() ); ?></span>
+			</span>
+		</div>
+		<?php
+	}
 
 	/**
 	 * The setup card on the settings page.
@@ -267,12 +285,7 @@ final class TransparAI_Setup {
 						<?php wp_nonce_field( self::NONCE ); ?>
 						<input type="hidden" name="action" value="transparai_setup" />
 						<input type="hidden" name="step" value="badge" />
-						<div class="trai-setup-preview-wrap">
-							<span id="trai-setup-preview" class="trai-wrap trai-pos-<?php echo esc_attr( $options['badge_position'] ); ?> trai-size-medium trai-style-<?php echo esc_attr( $options['badge_style'] ); ?> trai-mode-<?php echo esc_attr( $options['badge_mode'] ); ?>">
-								<span class="trai-setup-sample" aria-hidden="true"></span>
-								<span class="trai-badge" role="note" data-trai-short="<?php echo esc_attr( TransparAI_Frontend::badge_short_label() ); ?>"><?php echo esc_html( TransparAI_Frontend::badge_label() ); ?></span>
-							</span>
-						</div>
+						<?php self::preview( $options ); ?>
 						<p>
 							<?php
 							$styles = array(
