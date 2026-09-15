@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, ai transparency, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.0.3
+Stable tag: 1.1.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -212,6 +212,14 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.1 =
+* Compliance module: top-level "TransparAI" menu with Dashboard, Assessment, AI Systems, AI Content, AI Images and Settings; readiness score with traffic light over five checks; six-question self-assessment with the Article 4 AI literacy checklist on the same screen; EU AI Act timeline; two WordPress dashboard widgets (readiness and numbers); `wp transparai score`, `content`, `assessment`, `systems` and `report`.
+* AI systems registry: a bundled list of 130 wordpress.org plugins is matched on your server against the installed plugins, chatbots and manual declarations included; per-system visibility for a visitor notice as footer line, badge or dismissible banner. Nothing is fetched.
+* Five server-rendered blocks: AI Notice, AI Image Label, AI Systems Notice, AI Systems List and Chatbot AI Notice, each with its own block.json; shortcode type `chatbot`; new setting "only where a block or shortcode is placed" for the text note and the systems notice.
+* Text note styles block, inline, banner, badge and modal, position "ahead of and after the content", optional title badge and [AI] feed title prefix; Bricks Builder image badges; filter `transparai_label_media` for markup a theme renders itself.
+* Report, print view and `GET /report` carry the compliance summary and the site log; the document hash covers the facts only.
+* Settings page under the new menu with tabs; footer notices print as one paragraph; page notice and structured data no longer depend on the visible badge; icon-only and mini badges keep their short label; new defaults for alt text, feed note, chatbot output and systems notice (stored settings are not changed).
+
 = 1.0.3 =
 * AI-written text: a disclosure level per post (no AI, AI-assisted, AI-generated, AI-generated and reviewed) in the block editor sidebar, the classic meta box, Quick Edit and Bulk Edit, with a sortable list column and filter. Reviewed texts record reviewer, date and a content fingerprint that flags later edits. New "AI notice" block and `[transparai_notice]` shortcode; the note can go into excerpts and RSS feeds (dc:description).
 * Camera photos and human work: media can be declared as digitalCapture or digitalCreation, in the details, in bulk or via `wp transparai human`; written into files that carry no other digital source type, shown in the structured data, optional "Human made" badge.
@@ -233,6 +241,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Adds the compliance module (readiness score, self-assessment, Article 4 checklist, AI systems registry, dashboard widgets), five blocks and new notice styles. The settings page moves to the new TransparAI menu; existing labels and settings carry over unchanged.
 
 = 1.0.3 =
 Adds disclosure levels for AI-written text, declarations for camera photos and human work, WooCommerce variation and lightbox badges, a REST API, a fuller audit trail with print view, a first-run setup and chatbot disclosure. Existing labels and settings carry over unchanged.

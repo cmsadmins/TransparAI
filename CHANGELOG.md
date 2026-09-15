@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.1 (2026-09-15)
 
 - Footer notices: the page notice for labeled media, the chatbot notice in its footer variant and the
   AI systems notice in its footer style print as one paragraph (`.trai-page-notice`, one span per
