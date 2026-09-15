@@ -1,5 +1,52 @@
 # Changelog
 
+## Unreleased
+
+- Blocks: five server-rendered blocks, each with its own `block.json` ("AI Notice" now with all
+  five styles and several per post, "AI Image Label" with a media picker and the Human made label,
+  "AI Systems Notice", "AI Systems List" with categories, "Chatbot AI Notice"), one shared editor
+  script (`blocks/editor.js`) and one render path with the shortcode (`TransparAI_Notice::resolve()`);
+  shortcode type `chatbot`. A placed AI Notice block marks the note as placed, so block theme
+  templates no longer show it twice. New value `manual` ("only where a block or shortcode is placed")
+  for `content_notice_position` and `systems_notice_style`.
+- Admin screens: the disclaimer card sits at the end of every screen above the footer (the
+  one-time "I understand" notice stays under the title); the settings page opens with the tabs,
+  the library scan lives in the "Automatic detection" tab and the library counters on the
+  Dashboard and the AI Images screen.
+- Compliance module: top-level admin menu "TransparAI" with Dashboard, Assessment, AI Systems,
+  AI Content, AI Images and Settings (`TransparAI_Dashboard`); Media keeps a link.
+  Readiness score 0 to 100 with a traffic light over five checks (`TransparAI_Compliance::factors()`),
+  six-question self-assessment with the Article 4 checklist on the same screen (option
+  `transparai_compliance`, with name and date of the last save), EU AI Act timeline with the dates of Regulation (EU) 2024/1689
+  Article 113, WordPress dashboard widget, recent activity from the site log.
+- AI systems registry (`TransparAI_Systems`, `data/ai-systems.json` with 130 wordpress.org plugins):
+  installed and network-active plugins are matched locally, chatbots an AI answers in are merged
+  from the chatbot list, "possibly AI" suggestions from plugin headers, manual declarations,
+  per-system visibility for a visitor notice (footer line, badge or dismissible banner; options
+  `systems_notice`, `systems_notice_style`, `systems_notice_text`), rescan on plugin activation.
+  Filters `transparai_systems_registry` and `transparai_systems_notice`, shortcode type `systems`.
+  Nothing is fetched.
+- Text notice: styles block, inline, banner (dismissible, no storage), badge and modal (native
+  dialog) via `content_notice_style`; position `both`; optional title badge (`content_title_badge`)
+  and `[AI]` feed title prefix (`feed_title_prefix`). The shortcode and the block accept every style.
+- Front end: Bricks Builder image badges (`bricks/frontend/render_element`) and the public filter
+  `transparai_label_media` for markup a theme renders itself.
+- Front end: the human-made badge is wrapped once, like the AI badge (the idempotency guard now
+  matches every `trai-badge` variant); badges on images narrower than 48 px are hidden by the
+  front-end script (icons, tracking pixels), the in-file and structured-data disclosure stays.
+- Report: `TransparAI_Meta::report()`, the print view and `GET /report` carry the compliance
+  summary and the site log; the document hash covers the facts, not the log or save timestamps;
+  fourth limitation added. New CLI command `wp transparai score`.
+- Settings screen moved to `admin.php?page=transparai-settings` with tabs (badge, AI-written text,
+  chatbot, AI systems, detection, file metadata, uninstall); status, scan and footer cards are
+  shared with the AI Images screen. `wpml-config.xml` now lists every notice text.
+- readme and plugin header: name is "TransparAI: EU AI Act Compliance, AI Disclosure & AI Image
+  Detection", tags `eu ai act, ai compliance, ai disclosure, ai transparency, c2pa`; the Plugin
+  Name msgid stays untranslated on purpose. Catalogs regenerated for de, es, fr, it, nl.
+- Tests: `ComplianceTest`, `SystemsTest`, `PublishedTextTest` (no em dashes, no emojis, no remote
+  requests outside the delivery check), new cases in `NoticeTest`, `FrontendTest`, `ReportRestTest`,
+  `SetupTest`, `AdminLabelsTest`; ten new e2e checks.
+
 ## 1.0.3 (2026-09-14)
 
 - Chatbot disclosure (`TransparAI_Chatbot`, `data/chatbots.json` with 44 vendors and their staffing):

@@ -75,7 +75,6 @@ final class TransparAI_REST {
 						'default' => 20,
 					),
 				),
-				'schema'              => array( self::class, 'item_schema' ),
 			)
 		);
 
@@ -112,7 +111,6 @@ final class TransparAI_REST {
 						)
 					),
 				),
-				'schema' => array( self::class, 'item_schema' ),
 			)
 		);
 
@@ -328,37 +326,5 @@ final class TransparAI_REST {
 			$item['terms'] = $inspect['terms'];
 		}
 		return $item;
-	}
-
-	/**
-	 * Schema of one media item (self-description for /wp-json).
-	 *
-	 * @return array<string, mixed>
-	 */
-	public static function item_schema(): array {
-		$string = array( 'type' => 'string' );
-		return array(
-			'$schema'    => 'http://json-schema.org/draft-04/schema#',
-			'title'      => 'transparai-media',
-			'type'       => 'object',
-			'properties' => array(
-				'ID'            => array( 'type' => 'integer' ),
-				'file'          => $string,
-				'status'        => array(
-					'type' => 'string',
-					'enum' => array( 'flagged', 'detected', 'human' ),
-				),
-				'type'          => $string,
-				'source'        => $string,
-				'generator'     => $string,
-				'confidence'    => $string,
-				'marked_by'     => $string,
-				'last_event'    => $string,
-				'human'         => $string,
-				'detected'      => array( 'type' => 'boolean' ),
-				'history'       => array( 'type' => 'array' ),
-				'expected_type' => $string,
-			),
-		);
 	}
 }

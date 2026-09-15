@@ -235,6 +235,39 @@ final class TransparAI_CLI {
 	}
 
 	/**
+	 * Readiness score and the checks behind it.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--format=<format>]
+	 * : table, csv, json or yaml. Default: table.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp transparai score
+	 *     wp transparai score --format=json
+	 *
+	 * @param array $args       Positional args (unused).
+	 * @param array $assoc_args Flags.
+	 */
+	public function score( array $args, array $assoc_args ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed -- fixed WP-CLI command signature.
+		$score = TransparAI_Compliance::score();
+		$rows  = array();
+		foreach ( TransparAI_Compliance::factors() as $factor ) {
+			$rows[] = array(
+				'check' => $factor['id'],
+				'met'   => $factor['met'] ? 'yes' : 'no',
+				'label' => $factor['label'],
+			);
+		}
+		$format = (string) ( $assoc_args['format'] ?? 'table' );
+		if ( 'table' === $format ) {
+			WP_CLI::line( sprintf( 'Readiness score: %d/100 (%s)', $score, TransparAI_Compliance::traffic( $score ) ) );
+		}
+		\WP_CLI\Utils\format_items( $format, $rows, array( 'check', 'met', 'label' ) );
+	}
+
+	/**
 	 * List labeled or detected attachments (audit export).
 	 *
 	 * ## OPTIONS

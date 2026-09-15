@@ -74,6 +74,20 @@ final class TransparAI_Frontend {
 		 */
 		add_filter( 'elementor/image_size/get_attachment_image_html', array( self::class, 'filter_elementor_image' ), 20, 4 );
 
+		/*
+		 * Bricks renders every element through this filter, bottom-up and
+		 * sometimes twice; wrap_images() is idempotent. Without Bricks the
+		 * filter never runs.
+		 */
+		add_filter( 'bricks/frontend/render_element', array( self::class, 'filter_bricks_element' ), 20, 2 );
+
+		/*
+		 * Public entry point for markup a theme renders itself:
+		 * echo apply_filters( 'transparai_label_media', $html );
+		 * Same rules as the_content (badge on, no builder editor, no feed).
+		 */
+		add_filter( 'transparai_label_media', array( self::class, 'filter_content' ), 10 );
+
 		/* Invalidate the URL map when labels change. */
 		add_action( 'added_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
 		add_action( 'updated_post_meta', array( self::class, 'maybe_flush_bg_map' ), 10, 3 );
@@ -352,7 +366,7 @@ final class TransparAI_Frontend {
 		$map = self::url_map();
 
 		$wrapped = preg_replace_callback(
-			'/<img\b[^>]*>(?!<span class="trai-badge")/i',
+			'/<img\b[^>]*>(?!<span class="trai-badge[ "])/i',
 			static function ( array $matches ) use ( $map ): string {
 				$tag = $matches[0];
 
@@ -429,6 +443,26 @@ final class TransparAI_Frontend {
 			return $content;
 		}
 		return self::wrap_images( $content );
+	}
+
+	/**
+	 * Bricks element output: the shared wrapper, skipped inside the builder.
+	 *
+	 * @param string|mixed $html    Element HTML.
+	 * @param mixed        $element Element instance (unused).
+	 * @return string|mixed
+	 */
+	public static function filter_bricks_element( $html, $element = null ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- fixed filter signature.
+		if ( ! is_string( $html ) || '' === $html || ! self::should_filter() ) {
+			return $html;
+		}
+		foreach ( array( 'bricks_is_builder', 'bricks_is_builder_iframe', 'bricks_is_builder_call' ) as $probe ) {
+			// @phpstan-ignore-next-line -- Bricks defines these functions at runtime; the analysis stubs do not know them.
+			if ( function_exists( $probe ) && $probe() ) {
+				return $html;
+			}
+		}
+		return self::wrap_images( $html );
 	}
 
 	/**

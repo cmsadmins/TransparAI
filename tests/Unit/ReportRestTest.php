@@ -75,7 +75,9 @@ final class ReportRestTest extends TestCase {
 		$this->assertFalse( $a['truncated'] );
 		$this->assertSame( 250, $a['counts']['flagged'] );
 		$this->assertNotEmpty( $a['guidance_basis'] );
-		$this->assertCount( 3, $a['limitations'] );
+		$this->assertCount( 4, $a['limitations'] );
+		$this->assertArrayHasKey( 'compliance', $a );
+		$this->assertArrayHasKey( 'log', $a );
 
 		TransparAI_Meta::unflag( 100 );
 		$this->assertNotSame( $a['document_hash'], TransparAI_Meta::report( 'all' )['document_hash'], 'A changed fact changes the hash' );

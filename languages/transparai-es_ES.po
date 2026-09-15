@@ -1,24 +1,21 @@
-# Translation of TransparAI.
-# Copyright (C) 2026 Patrick Schlesinger
-# This file is distributed under the same license as the TransparAI plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI\n"
+"Project-Id-Version: TransparAI 1.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
-"POT-Creation-Date: 2026-09-08\n"
-"PO-Revision-Date: 2026-09-08\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: es_ES\n"
-"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-14T22:13:49+00:00\n"
+"PO-Revision-Date: 2026-09-15 08:00+0000\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Domain: transparai\n"
 
 #. Plugin Name of the plugin
 #: transparai.php
-msgid "TransparAI: AI Image Detection, EU AI Act Labeling & SEO"
+msgid "TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -28,8 +25,8 @@ msgstr ""
 
 #. Description of the plugin
 #: transparai.php
-msgid "Detect AI images from C2PA Content Credentials and IPTC metadata, label them with a visible AI badge and a machine-readable EU AI Act disclosure."
-msgstr "Detecta imágenes de IA a partir de las Content Credentials de C2PA y los metadatos IPTC, las señala con una insignia visible y una declaración legible por máquina para el Reglamento europeo de IA."
+msgid "Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track EU AI Act readiness with a score, self-assessment and compliance report."
+msgstr "Detecta imágenes de IA mediante C2PA e IPTC, declara contenidos de IA y chatbots, y sigue la preparación para el EU AI Act con una puntuación, una autoevaluación y un informe de cumplimiento."
 
 #. Author of the plugin
 #: transparai.php
@@ -41,607 +38,1875 @@ msgstr ""
 msgid "https://www.cms-admins.de/"
 msgstr ""
 
-#: admin/class-content-label.php:44
-#: admin/class-settings.php:99
-#: admin/class-settings.php:100
+#: admin/class-content-label.php:74
+#: admin/class-content-label.php:166
 msgid "TransparAI"
 msgstr "TransparAI"
 
-#: admin/class-content-label.php:63
-msgid "This content is AI-generated"
-msgstr "Este contenido está generado por IA"
+#: admin/class-content-label.php:100
+#: admin/class-content-label.php:167
+msgid "AI in this text"
+msgstr "IA en este texto"
 
-#: admin/class-content-label.php:65
-msgid "Shows a short note ahead of the content. The wording can be changed in the TransparAI settings."
-msgstr "Muestra un aviso breve delante del contenido. El texto se cambia en los ajustes de TransparAI."
+#: admin/class-content-label.php:108
+#: admin/class-content-label.php:168
+msgid "Responsible person"
+msgstr "Persona responsable"
+
+#. translators: 1: reviewer name, 2: review date.
+#. translators: 1: name of the reviewer, 2: review date.
+#: admin/class-content-label.php:117
+#: admin/class-content-label.php:171
+#: includes/class-notice.php:115
+#, php-format
+msgid "Reviewed by %1$s on %2$s."
+msgstr "Revisado por %1$s el %2$s."
+
+#: admin/class-content-label.php:123
+msgid "The text or its images changed since; save with the reviewed level again after checking."
+msgstr "El texto o sus imágenes han cambiado desde entonces; tras comprobarlo, guarda de nuevo con el nivel «revisado»."
+
+#: admin/class-content-label.php:128
+msgid "AI levels show a note on the post. The wording, position, excerpt and feed options are in the TransparAI settings."
+msgstr "Los niveles de IA muestran un aviso en la entrada. El texto, la posición y las opciones de extracto y feed están en los ajustes de TransparAI."
+
+#: admin/class-content-label.php:172
+msgid "AI levels show a note on the post. Wording and placement are set in the TransparAI settings."
+msgstr "Los niveles de IA muestran un aviso en la entrada. El texto y la ubicación se definen en los ajustes de TransparAI."
+
+#: admin/class-content-label.php:243
+#: admin/class-content-label.php:376
+#: admin/class-content-label.php:406
+msgid "AI text"
+msgstr "Texto IA"
+
+#: admin/class-content-label.php:269
+msgid "changed since review"
+msgstr "modificado desde la revisión"
+
+#: admin/class-content-label.php:314
+msgid "All AI levels"
+msgstr "Todos los niveles de IA"
+
+#: admin/class-content-label.php:315
+#: admin/class-dashboard.php:786
+msgid "Any AI involvement"
+msgstr "Cualquier participación de IA"
+
+#: admin/class-content-label.php:316
+#: admin/class-dashboard.php:790
+#: includes/class-notice.php:151
+msgid "Not classified"
+msgstr "Sin clasificar"
+
+#: admin/class-content-label.php:408
+msgid "&mdash; No change &mdash;"
+msgstr "&mdash; Sin cambios &mdash;"
+
+#: admin/class-content-label.php:409
+msgid "Remove classification"
+msgstr "Quitar la clasificación"
+
+#: admin/class-dashboard.php:50
+#: admin/class-dashboard.php:373
+#: admin/class-dashboard.php:895
+msgid "Dashboard"
+msgstr "Panel"
+
+#: admin/class-dashboard.php:51
+msgid "Assessment"
+msgstr "Evaluación"
+
+#: admin/class-dashboard.php:52
+msgid "AI Systems"
+msgstr "Sistemas de IA"
+
+#: admin/class-dashboard.php:53
+msgid "AI Content"
+msgstr "Contenido de IA"
+
+#: admin/class-dashboard.php:54
+msgid "AI Images"
+msgstr "Imágenes de IA"
+
+#: admin/class-dashboard.php:59
+#: admin/class-dashboard.php:410
+#: admin/class-settings.php:178
+msgid "Settings"
+msgstr "Ajustes"
+
+#: admin/class-dashboard.php:107
+#: admin/class-setup.php:311
+#: admin/class-setup.php:331
+msgid "Saved."
+msgstr "Guardado."
+
+#: admin/class-dashboard.php:118
+msgid "TransparAI is a technical tool, not legal advice. It helps you detect, label and document AI use on this site; it cannot tell you whether your site complies with the EU AI Act or any other law. The readiness score, the self-assessment and every notice reflect the plugin's own checks and your answers, nothing more. Legal obligations depend on your situation and remain your responsibility; for a legal assessment consult a lawyer. The plugin is provided without warranty of any kind, and the author accepts no liability for its use or for decisions based on it."
+msgstr "TransparAI es una herramienta técnica, no asesoramiento jurídico. Te ayuda a detectar, etiquetar y documentar el uso de IA en este sitio; no puede decirte si tu sitio cumple el EU AI Act ni ninguna otra ley. La puntuación de preparación, la autoevaluación y cada aviso reflejan únicamente las comprobaciones propias del plugin y tus respuestas, nada más. Las obligaciones legales dependen de tu situación y siguen siendo tu responsabilidad; para una valoración jurídica consulta a un abogado. El plugin se proporciona sin garantía de ningún tipo, y el autor no asume ninguna responsabilidad por su uso ni por las decisiones basadas en él."
+
+#: admin/class-dashboard.php:133
+msgid "Please read before you rely on anything here."
+msgstr "Lee esto antes de confiar en cualquier cosa de aquí."
+
+#: admin/class-dashboard.php:137
+msgid "I understand: no legal advice, no liability"
+msgstr "Entendido: sin asesoramiento jurídico, sin responsabilidad"
+
+#: admin/class-dashboard.php:145
+#: admin/class-settings.php:132
+msgid "Not legal advice, no liability"
+msgstr "Sin asesoramiento jurídico, sin responsabilidad"
+
+#: admin/class-dashboard.php:156
+#: admin/class-dashboard.php:508
+#: admin/class-dashboard.php:574
+#: admin/class-dashboard.php:723
+msgid "You are not allowed to do this."
+msgstr "No tienes permiso para hacer esto."
+
+#: admin/class-dashboard.php:170
+msgid "Scan the media library, then confirm or dismiss what lands in the review queue. Labeled files get the visible badge and the machine-readable marking."
+msgstr "Analiza la biblioteca de medios y después confirma o descarta lo que llegue a la cola de revisión. Los archivos etiquetados reciben la insignia visible y el marcado legible por máquina."
+
+#: admin/class-dashboard.php:171
+msgid "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, Bulk Edit) so the visitor note appears."
+msgstr "Da a las entradas y páginas escritas con IA su nivel de IA (barra lateral del editor, edición rápida, edición en lote) para que aparezca el aviso a los visitantes."
+
+#: admin/class-dashboard.php:172
+msgid "Answer whether the site runs a chat and who answers in it; the chatbot notice follows your answer."
+msgstr "Responde si el sitio tiene un chat y quién responde en él; el aviso del chatbot sigue tu respuesta."
+
+#: admin/class-dashboard.php:173
+msgid "Check the AI systems the plugin found among your plugins, declare others, and decide which ones visitors are told about."
+msgstr "Revisa los sistemas de IA que el plugin ha encontrado entre tus plugins, declara otros y decide de cuáles se informa a los visitantes."
+
+#: admin/class-dashboard.php:174
+msgid "Answer the six questions of the self-assessment and tick the Article 4 checklist, then export the compliance report for your records."
+msgstr "Responde las seis preguntas de la autoevaluación y marca la lista de comprobación del artículo 4; después exporta el informe de cumplimiento para tus registros."
+
+#: admin/class-dashboard.php:178
+msgid "How TransparAI works"
+msgstr "Cómo funciona TransparAI"
+
+#: admin/class-dashboard.php:179
+msgid "The EU AI Act asks for three things on a website: visitors must know when they talk to an AI, AI-generated media must carry a machine-readable marking, and AI-generated text on matters of public interest must be disclosed. This plugin covers the technical side of all three and documents what you decided. Work through the steps in this order; the readiness score above follows along."
+msgstr "El EU AI Act pide tres cosas en un sitio web: los visitantes deben saber cuándo hablan con una IA, los medios generados por IA deben llevar un marcado legible por máquina, y el texto generado por IA sobre asuntos de interés público debe declararse. Este plugin cubre la parte técnica de las tres y documenta lo que has decidido. Sigue los pasos en este orden; la puntuación de preparación de arriba va acompañando."
+
+#: admin/class-dashboard.php:223
+#: admin/class-settings.php:704
+msgid "Readiness score"
+msgstr "Puntuación de preparación"
+
+#. translators: 1: met checks, 2: total checks.
+#: admin/class-dashboard.php:233
+#, php-format
+msgid "%1$d of %2$d checks done"
+msgstr "%1$d de %2$d comprobaciones superadas"
+
+#: admin/class-dashboard.php:241
+msgid "The score counts the checks this plugin can perform on its own state. It is a technical self-check, not a legal assessment."
+msgstr "La puntuación cuenta las comprobaciones que este plugin puede realizar sobre su propio estado. Es una autocomprobación técnica, no una valoración jurídica."
+
+#: admin/class-dashboard.php:243
+#: admin/class-dashboard.php:247
+msgid "Open"
+msgstr "Pendiente"
+
+#: admin/class-dashboard.php:255
+#: admin/class-dashboard.php:259
+#: admin/class-settings.php:706
+#: admin/class-settings.php:725
+msgid "Done"
+msgstr "Hecho"
+
+#: admin/class-dashboard.php:276
+msgid "EU AI Act timeline"
+msgstr "Cronología del EU AI Act"
+
+#. translators: %s: human time difference.
+#: admin/class-dashboard.php:291
+#, php-format
+msgid "in force for %s"
+msgstr "en vigor desde hace %s"
+
+#. translators: %s: human time difference.
+#: admin/class-dashboard.php:294
+#, php-format
+msgid "in %s"
+msgstr "dentro de %s"
+
+#: admin/class-dashboard.php:303
+msgid "Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can move them."
+msgstr "Fechas según el Reglamento (UE) 2024/1689, artículo 113, en su versión adoptada. Las modificaciones pueden desplazarlas."
+
+#: admin/class-dashboard.php:316
+#: admin/class-settings.php:777
+msgid "Recent activity"
+msgstr "Actividad reciente"
+
+#: admin/class-dashboard.php:318
+msgid "Nothing recorded yet. Scans, settings changes, bulk actions and declarations show up here."
+msgstr "Todavía no hay nada registrado. Los análisis, los cambios de ajustes, las acciones en lote y las declaraciones aparecen aquí."
+
+#: admin/class-dashboard.php:322
+#: admin/class-settings.php:778
+msgid "When"
+msgstr "Cuándo"
+
+#: admin/class-dashboard.php:323
+#: admin/class-settings.php:778
+msgid "Event"
+msgstr "Evento"
+
+#: admin/class-dashboard.php:324
+msgid "Details"
+msgstr "Detalles"
+
+#: admin/class-dashboard.php:325
+#: admin/class-settings.php:778
+msgid "By"
+msgstr "Por"
+
+#: admin/class-dashboard.php:333
+#: admin/class-media-library.php:408
+msgid "system"
+msgstr "sistema"
+
+#: admin/class-dashboard.php:377
+msgid "The first-run setup is not finished yet."
+msgstr "La configuración inicial aún no está terminada."
+
+#: admin/class-dashboard.php:378
+#: admin/class-settings.php:831
+msgid "Open setup"
+msgstr "Abrir la configuración"
+
+#: admin/class-dashboard.php:386
+msgid "At a glance"
+msgstr "De un vistazo"
+
+#: admin/class-dashboard.php:390
+#: admin/class-dashboard.php:889
+msgid "AI-written posts"
+msgstr "Entradas escritas con IA"
+
+#: admin/class-dashboard.php:394
+#: admin/class-dashboard.php:890
+msgid "Labeled media"
+msgstr "Medios etiquetados"
+
+#: admin/class-dashboard.php:398
+#: admin/class-dashboard.php:891
+#: admin/class-settings.php:817
+msgid "Waiting for review"
+msgstr "Pendientes de revisión"
+
+#: admin/class-dashboard.php:402
+#: admin/class-dashboard.php:892
+#: admin/class-settings.php:224
+msgid "AI systems"
+msgstr "Sistemas de IA"
+
+#: admin/class-dashboard.php:406
+#: admin/class-dashboard.php:432
+#: admin/class-dashboard.php:896
+#: admin/class-settings.php:712
+msgid "Self-assessment"
+msgstr "Autoevaluación"
+
+#: admin/class-dashboard.php:407
+msgid "AI literacy checklist"
+msgstr "Lista de comprobación de alfabetización en IA"
+
+#: admin/class-dashboard.php:408
+#: admin/class-dashboard.php:897
+msgid "Compliance report"
+msgstr "Informe de cumplimiento"
+
+#: admin/class-dashboard.php:409
+#: admin/class-settings.php:828
+msgid "Export audit CSV"
+msgstr "Exportar la auditoría en CSV"
+
+#: admin/class-dashboard.php:435
+msgid "The EU AI Act does not treat every website the same way: which transparency duties apply depends on how a site actually uses AI. A site without a chatbot has nothing to disclose about chatbots, a site that publishes AI-written articles does. This self-assessment finds out which of those uses apply to your site, so you only work on what matters here."
+msgstr "El EU AI Act no trata a todos los sitios web por igual: qué obligaciones de transparencia se aplican depende de cómo usa realmente la IA un sitio. Un sitio sin chatbot no tiene nada que declarar sobre chatbots; un sitio que publica artículos escritos por IA, sí. Esta autoevaluación determina cuáles de esos usos afectan a tu sitio, para que solo trabajes en lo que importa aquí."
+
+#: admin/class-dashboard.php:436
+msgid "Answer each of the six questions with Yes or No, as things stand today, not as they might be some day. If you are unsure, ask the people who produce the content for this site; the examples under each question show what counts. After saving, a table appears below with the articles that are likely to apply and a link to the plugin page that handles each one. Complete answers also count toward the readiness score on the dashboard and are printed in the compliance report."
+msgstr "Responde cada una de las seis preguntas con Sí o No, según la situación actual y no según lo que podría ser algún día. Si tienes dudas, pregunta a las personas que producen el contenido de este sitio; los ejemplos bajo cada pregunta muestran qué cuenta. Tras guardar, abajo aparece una tabla con los artículos que probablemente se aplican y un enlace a la página del plugin que se ocupa de cada uno. Las respuestas completas también cuentan para la puntuación de preparación del panel y se imprimen en el informe de cumplimiento."
+
+#: admin/class-dashboard.php:437
+msgid "Stored on this site only, nothing is sent anywhere. You can change the answers at any time; whenever the site starts or stops using AI in one of these ways, come back and update them."
+msgstr "Se guarda solo en este sitio, no se envía nada a ningún lugar. Puedes cambiar las respuestas en cualquier momento; cuando el sitio empiece o deje de usar la IA de una de estas formas, vuelve aquí y actualízalas."
+
+#: admin/class-dashboard.php:495
+msgid "This overview appears once all six questions are answered and saved. It lists the articles of the AI Act that are likely to apply to your site and the plugin page that handles each one."
+msgstr "Este resumen aparece cuando las seis preguntas están respondidas y guardadas. Enumera los artículos del AI Act que probablemente se aplican a tu sitio y la página del plugin que se ocupa de cada uno."
+
+#: admin/class-dashboard.php:445
+#: admin/class-settings.php:474
+#: admin/class-settings.php:700
+msgid "Yes"
+msgstr "Sí"
+
+#: admin/class-dashboard.php:446
+#: admin/class-settings.php:475
+#: admin/class-settings.php:701
+msgid "No"
+msgstr "No"
+
+#: admin/class-dashboard.php:449
+msgid "Save answers"
+msgstr "Guardar respuestas"
+
+#. translators: 1: name, 2: date.
+#: admin/class-dashboard.php:457
+#: admin/class-dashboard.php:557
+#, php-format
+msgid "Last saved by %1$s on %2$s."
+msgstr "Guardado por última vez por %1$s el %2$s."
+
+#: admin/class-dashboard.php:458
+#: admin/class-dashboard.php:558
+msgid "unknown"
+msgstr "desconocido"
+
+#: admin/class-dashboard.php:468
+#: admin/class-dashboard.php:494
+msgid "Your to-do list"
+msgstr "Tu lista de tareas"
+
+#: admin/class-dashboard.php:475
+msgid "Use of AI"
+msgstr "Uso de IA"
+
+#: admin/class-dashboard.php:476
+#: admin/class-dashboard.php:626
+#: admin/class-settings.php:716
+#: admin/class-settings.php:735
+msgid "Articles"
+msgstr "Artículos"
+
+#: admin/class-dashboard.php:477
+msgid "Recommended action"
+msgstr "Acción recomendada"
+
+#: admin/class-dashboard.php:490
+msgid "Whether a paragraph of Article 50 addresses you as provider or as deployer depends on who built the system. This overview is a technical aid, not legal advice."
+msgstr "Que un apartado del artículo 50 te afecte como proveedor o como responsable del despliegue depende de quién construyó el sistema. Esta vista general es una ayuda técnica, no asesoramiento jurídico."
+
+#: admin/class-dashboard.php:527
+msgid "AI literacy (Article 4)"
+msgstr "Alfabetización en IA (artículo 4)"
+
+#: admin/class-dashboard.php:528
+msgid "Article 4 asks providers and deployers to make sure the people who work with AI systems have sufficient AI literacy. Tick what your organisation has done; the checklist counts toward the readiness score and appears in the compliance report."
+msgstr "El artículo 4 pide a proveedores y responsables del despliegue que se aseguren de que las personas que trabajan con sistemas de IA tienen suficiente alfabetización en IA. Marca lo que tu organización ya ha hecho; la lista cuenta para la puntuación de preparación y aparece en el informe de cumplimiento."
+
+#. translators: 1: done, 2: total.
+#: admin/class-dashboard.php:534
+#, php-format
+msgid "%1$d of %2$d done"
+msgstr "%1$d de %2$d hechos"
+
+#: admin/class-dashboard.php:549
+msgid "Save checklist"
+msgstr "Guardar lista de comprobación"
+
+#: admin/class-dashboard.php:599
+#: admin/class-settings.php:512
+#: admin/class-settings.php:731
+msgid "AI systems in use"
+msgstr "Sistemas de IA en uso"
+
+#: admin/class-dashboard.php:602
+msgid "Installed plugins are matched against a list of known AI tools that ships with this plugin; chatbots an AI answers in are included. Nothing is fetched. Tick the systems visitors should be told about; the notice itself is switched on under Settings, AI systems."
+msgstr "Los plugins instalados se comparan con una lista de herramientas de IA conocidas que se incluye con este plugin; se incluyen los chatbots en los que responde una IA. No se descarga nada. Marca los sistemas de los que debe informarse a los visitantes; el aviso en sí se activa en Ajustes, Sistemas de IA."
+
+#. translators: %s: human time difference.
+#: admin/class-dashboard.php:607
+#, php-format
+msgid "Last scan %s ago."
+msgstr "Último análisis hace %s."
+
+#: admin/class-dashboard.php:611
+msgid "The visitor notice is currently off."
+msgstr "El aviso a los visitantes está desactivado actualmente."
+
+#: admin/class-dashboard.php:619
+msgid "No AI system detected or declared yet."
+msgstr "Aún no se ha detectado ni declarado ningún sistema de IA."
+
+#: admin/class-dashboard.php:623
+msgid "Visible"
+msgstr "Visible"
+
+#: admin/class-dashboard.php:624
+#: admin/class-settings.php:735
+msgid "System"
+msgstr "Sistema"
+
+#: admin/class-dashboard.php:625
+#: admin/class-dashboard.php:673
+#: admin/class-settings.php:735
+msgid "Category"
+msgstr "Categoría"
+
+#: admin/class-dashboard.php:627
+msgid "Found via"
+msgstr "Detectado mediante"
+
+#: admin/class-dashboard.php:646
+#: includes/class-notice.php:638
+msgid "Remove"
+msgstr "Quitar"
+
+#: admin/class-dashboard.php:656
+msgid "Save visibility"
+msgstr "Guardar visibilidad"
+
+#: admin/class-dashboard.php:658
+msgid "Scan installed plugins again"
+msgstr "Volver a analizar los plugins instalados"
+
+#: admin/class-dashboard.php:665
+msgid "Possibly AI"
+msgstr "Posiblemente IA"
+
+#: admin/class-dashboard.php:666
+msgid "Active plugins the list does not know whose name or description mentions AI. Suggestions only: declare what really is an AI system, ignore the rest."
+msgstr "Plugins activos que la lista no conoce y cuyo nombre o descripción menciona la IA. Son solo sugerencias: declara lo que realmente sea un sistema de IA e ignora el resto."
+
+#: admin/class-dashboard.php:668
+msgid "No further candidates among the active plugins."
+msgstr "No hay más candidatos entre los plugins activos."
+
+#: admin/class-dashboard.php:672
+msgid "Plugin"
+msgstr "Plugin"
+
+#: admin/class-dashboard.php:690
+msgid "Declare as AI system"
+msgstr "Declarar como sistema de IA"
+
+#: admin/class-dashboard.php:700
+msgid "Declare another system"
+msgstr "Declarar otro sistema"
+
+#: admin/class-dashboard.php:701
+msgid "For tools that are not WordPress plugins: an external service, a script, an API your theme calls."
+msgstr "Para herramientas que no son plugins de WordPress: un servicio externo, un script, una API a la que llama tu tema."
+
+#: admin/class-dashboard.php:705
+msgid "Name of the system"
+msgstr "Nombre del sistema"
+
+#: admin/class-dashboard.php:711
+msgid "Declare"
+msgstr "Declarar"
+
+#: admin/class-dashboard.php:759
+#: admin/class-settings.php:761
+msgid "AI-written content"
+msgstr "Contenido escrito con IA"
+
+#: admin/class-dashboard.php:762
+msgid "Every post, page and public custom post type carries an AI level for its text. The level is set in the editor sidebar, in Quick Edit or for many posts at once in Bulk Edit; the lists below are the regular post lists filtered by level, with the same Quick Edit and Bulk Edit tools."
+msgstr "Cada entrada, página y tipo de contenido personalizado público lleva un nivel de IA para su texto. El nivel se define en la barra lateral del editor, en la edición rápida o para muchas entradas a la vez en la edición en lote; las listas de abajo son las listas de entradas habituales filtradas por nivel, con las mismas herramientas de edición rápida y en lote."
+
+#: admin/class-dashboard.php:773
+msgid "Post type"
+msgstr "Tipo de contenido"
+
+#: admin/class-dashboard.php:774
+msgid "Open list"
+msgstr "Abrir lista"
+
+#: admin/class-dashboard.php:796
+msgid "To unmark many posts at once, select them in the list, choose Bulk Edit and set the AI level to \"No AI used\" or clear it. The note wording, position and style live under Settings, AI-written text."
+msgstr "Para desmarcar muchas entradas a la vez, selecciónalas en la lista, elige la edición en lote y pon el nivel de IA en «Sin uso de IA» o déjalo vacío. El texto, la posición y el estilo del aviso están en Ajustes, Texto escrito con IA."
+
+#: admin/class-dashboard.php:798
+msgid "Text settings"
+msgstr "Ajustes de texto"
+
+#: admin/class-dashboard.php:829
+msgid "AI images and media"
+msgstr "Imágenes y medios de IA"
+
+#: admin/class-dashboard.php:834
+msgid "Media lists"
+msgstr "Listas de medios"
+
+#: admin/class-dashboard.php:835
+msgid "The media library list view carries the AI column, the filter and the bulk actions (label, unlabel, confirm, dismiss, declare as camera photo or human work)."
+msgstr "La vista de lista de la biblioteca de medios incluye la columna de IA, el filtro y las acciones en lote (etiquetar, quitar la etiqueta, confirmar, descartar, declarar como foto de cámara u obra humana)."
+
+#: admin/class-dashboard.php:837
+#: admin/class-settings.php:813
+msgid "Labeled as AI"
+msgstr "Etiquetados como IA"
+
+#: admin/class-dashboard.php:838
+msgid "Review queue"
+msgstr "Cola de revisión"
+
+#: admin/class-dashboard.php:839
+msgid "Declared as not AI"
+msgstr "Declarados sin IA"
+
+#: admin/class-dashboard.php:840
+msgid "Unlabeled"
+msgstr "Sin etiqueta"
+
+#: admin/class-dashboard.php:841
+msgid "Badge settings"
+msgstr "Ajustes de la insignia"
+
+#. translators: %d: number of dismissed files.
+#: admin/class-dashboard.php:848
+#, php-format
+msgid "%d file was dismissed from the review queue and stays unlabeled until you decide otherwise."
+msgid_plural "%d files were dismissed from the review queue and stay unlabeled until you decide otherwise."
+msgstr[0] "%d archivo se ha descartado de la cola de revisión y sigue sin etiqueta hasta que decidas lo contrario."
+msgstr[1] "%d archivos se han descartado de la cola de revisión y siguen sin etiqueta hasta que decidas lo contrario."
+
+#: admin/class-dashboard.php:899
+msgid "Technical self-check of the plugin state. Not legal advice, no liability."
+msgstr "Autocomprobación técnica del estado del plugin. Sin asesoramiento jurídico, sin responsabilidad."
 
 #: admin/class-media-library.php:74
 msgid "Media is AI-generated"
 msgstr "El medio está generado por IA"
 
-#: admin/class-media-library.php:83
+#: admin/class-media-library.php:84
+#: admin/class-media-library.php:377
+msgid "no declaration"
+msgstr "sin declaración"
+
+#: admin/class-media-library.php:85
+msgid "camera photo (digitalCapture)"
+msgstr "foto de cámara (digitalCapture)"
+
+#: admin/class-media-library.php:86
+msgid "human digital work (digitalCreation)"
+msgstr "obra digital humana (digitalCreation)"
+
+#: admin/class-media-library.php:88
+msgid "Not AI:"
+msgstr "Sin IA:"
+
+#: admin/class-media-library.php:97
 msgid "The file metadata could not be updated (file not writable). The label state in WordPress and the metadata inside the file may differ."
 msgstr "No se han podido actualizar los metadatos del archivo (archivo sin permiso de escritura). El estado de la etiqueta en WordPress y los metadatos dentro del archivo pueden diferir."
 
-#: admin/class-media-library.php:89
+#: admin/class-media-library.php:103
 msgid "Confirm AI label"
 msgstr "Confirmar la etiqueta de IA"
 
-#: admin/class-media-library.php:90
+#: admin/class-media-library.php:104
 msgid "Not AI, dismiss"
 msgstr "No es IA, descartar"
 
-#: admin/class-media-library.php:95
+#: admin/class-media-library.php:109
 msgid "Re-check file metadata"
 msgstr "Volver a comprobar los metadatos del archivo"
 
-#: admin/class-media-library.php:100
+#: admin/class-media-library.php:114
 msgid "Check delivery"
 msgstr "Comprobar la entrega"
 
-#: admin/class-media-library.php:110
-#: admin/class-media-library.php:432
+#: admin/class-media-library.php:124
+#: admin/class-media-library.php:496
 msgid "Show file metadata"
 msgstr "Mostrar los metadatos del archivo"
 
-#: admin/class-media-library.php:113
+#: admin/class-media-library.php:127
 msgid "AI content"
 msgstr "Contenido de IA"
 
-#: admin/class-media-library.php:116
+#: admin/class-media-library.php:130
 msgid "Controls the front-end badge, the machine-readable file metadata and the media library filter."
 msgstr "Controla la insignia pública, los metadatos escritos en el archivo y el filtro de la biblioteca de medios."
 
-#: admin/class-media-library.php:122
+#: admin/class-media-library.php:136
 msgid "Default (site setting)"
 msgstr "Predeterminado (ajuste del sitio)"
 
-#: admin/class-media-library.php:123
-#: admin/class-settings.php:285
+#: admin/class-media-library.php:137
+#: admin/class-settings.php:304
+#: admin/class-setup.php:293
 msgid "Top left"
 msgstr "Arriba a la izquierda"
 
-#: admin/class-media-library.php:124
-#: admin/class-settings.php:286
+#: admin/class-media-library.php:138
+#: admin/class-settings.php:305
+#: admin/class-setup.php:294
 msgid "Top right"
 msgstr "Arriba a la derecha"
 
-#: admin/class-media-library.php:125
-#: admin/class-settings.php:287
+#: admin/class-media-library.php:139
+#: admin/class-settings.php:306
+#: admin/class-setup.php:295
 msgid "Bottom left"
 msgstr "Abajo a la izquierda"
 
-#: admin/class-media-library.php:126
-#: admin/class-settings.php:288
+#: admin/class-media-library.php:140
+#: admin/class-settings.php:307
+#: admin/class-setup.php:296
 msgid "Bottom right"
 msgstr "Abajo a la derecha"
 
-#: admin/class-media-library.php:127
-#: admin/class-settings.php:278
+#: admin/class-media-library.php:141
+#: admin/class-settings.php:297
+#: admin/class-setup.php:305
 msgid "Caption line below the image"
 msgstr "Línea de pie debajo de la imagen"
 
-#: admin/class-media-library.php:128
+#: admin/class-media-library.php:142
 msgid "Hide the visible badge on this image"
 msgstr "Ocultar la insignia visible en esta imagen"
 
-#: admin/class-media-library.php:137
+#: admin/class-media-library.php:151
 msgid "Badge position"
 msgstr "Posición de la insignia"
 
-#: admin/class-media-library.php:140
+#: admin/class-media-library.php:154
 msgid "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr "Se aplica solo a esta imagen. Úsalo cuando una capa del tema tape la insignia aquí."
 
-#: admin/class-media-library.php:144
+#: admin/class-media-library.php:158
 msgid "AI generator"
 msgstr "Generador de IA"
 
-#: admin/class-media-library.php:148
+#: admin/class-media-library.php:162
 msgid "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option and the {generator} placeholder."
 msgstr "Nombre de la herramienta de IA, por ejemplo «Midjourney». Lo muestra la opción de origen de la insignia y el marcador {generator}."
 
-#: admin/class-media-library.php:168
+#: admin/class-media-library.php:182
 msgid "certain"
 msgstr "seguro"
 
-#: admin/class-media-library.php:169
+#: admin/class-media-library.php:183
 msgid "likely"
 msgstr "probable"
 
-#: admin/class-media-library.php:170
+#: admin/class-media-library.php:184
 msgid "hint"
 msgstr "indicio"
 
-#: admin/class-media-library.php:263
-#: admin/class-media-library.php:304
+#: admin/class-media-library.php:288
+#: admin/class-media-library.php:329
+#: admin/class-setup.php:194
+#: includes/class-chatbot.php:357
 #: includes/class-delivery.php:66
-#: includes/class-scanner.php:229
-#: includes/class-scanner.php:292
+#: includes/class-scanner.php:233
+#: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
 msgstr "No tienes permiso para hacer eso."
 
-#: admin/class-media-library.php:268
+#: admin/class-media-library.php:293
+#: includes/class-rest.php:243
 msgid "Unknown action."
 msgstr "Acción desconocida."
 
-#: admin/class-media-library.php:309
+#: admin/class-media-library.php:334
 #: includes/class-delivery.php:73
-#: includes/class-scanner.php:296
+#: includes/class-scanner.php:313
 msgid "Invalid attachment."
 msgstr "Adjunto no válido."
 
-#: admin/class-media-library.php:322
+#. translators: %s: IPTC digital source type token.
+#: admin/class-media-library.php:358
+#, php-format
+msgid "This attachment is declared as not AI-made (%s). The declaration is written into files that carry no other digital source type."
+msgstr "Este adjunto está declarado como no creado por IA (%s). La declaración se escribe en los archivos que no llevan otro digital source type."
+
+#: admin/class-media-library.php:360
+msgid "This attachment is labeled as AI-generated, so every file below should carry the declaration."
+msgstr "Este adjunto está etiquetado como generado por IA, por lo que todos los archivos de abajo deberían llevar la declaración."
+
+#: admin/class-media-library.php:361
+msgid "This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below."
+msgstr "Este adjunto no está etiquetado como generado por IA. No se escribe nada en sus archivos y abajo no se espera ninguna declaración."
+
+#: admin/class-media-library.php:365
 msgid "Files"
 msgstr "Archivos"
 
-#: admin/class-media-library.php:325
+#: admin/class-media-library.php:368
 msgid "format cannot carry the declaration"
 msgstr "el formato no puede llevar la declaración"
 
-#: admin/class-media-library.php:328
+#: admin/class-media-library.php:371
 msgid "declaration present"
 msgstr "declaración presente"
 
-#: admin/class-media-library.php:331
+#: admin/class-media-library.php:374
 msgid "declaration missing"
 msgstr "declaración ausente"
 
-#: admin/class-media-library.php:338
+#: admin/class-media-library.php:384
 msgid "No readable file found for this attachment."
 msgstr "No se ha encontrado ningún archivo legible para este adjunto."
 
-#: admin/class-media-library.php:342
+#: admin/class-media-library.php:388
 msgid "Digital source type in the main file"
 msgstr "Digital source type en el archivo principal"
 
-#: admin/class-media-library.php:344
+#: admin/class-media-library.php:390
 msgid "None declared."
 msgstr "Sin declaración."
 
-#: admin/class-media-library.php:352
+#: admin/class-media-library.php:398
 msgid "Detection evidence"
 msgstr "Indicios de la detección"
 
-#: admin/class-media-library.php:358
+#: admin/class-media-library.php:404
 msgid "History"
 msgstr "Historial"
 
-#: admin/class-media-library.php:361
-msgid "system"
-msgstr "sistema"
+#. translators: %s: previous declaration state (ai, detected, human, dismissed).
+#: admin/class-media-library.php:417
+#, php-format
+msgid "from %s"
+msgstr "antes %s"
 
-#: admin/class-media-library.php:371
+#: admin/class-media-library.php:430
 msgid "XMP packet of the main file"
 msgstr "Paquete XMP del archivo principal"
 
-#: admin/class-media-library.php:373
+#: admin/class-media-library.php:432
 msgid "This file carries no XMP block."
 msgstr "Este archivo no contiene ningún bloque XMP."
 
-#: admin/class-media-library.php:422
-#: admin/class-media-library.php:481
+#: admin/class-media-library.php:485
+#: admin/class-media-library.php:551
 msgid "AI status: all"
 msgstr "Estado de IA: todos"
 
-#: admin/class-media-library.php:423
-#: admin/class-media-library.php:482
+#: admin/class-media-library.php:486
+#: admin/class-media-library.php:552
 msgid "Only AI-labeled"
 msgstr "Solo los marcados como IA"
 
-#: admin/class-media-library.php:424
-#: admin/class-media-library.php:468
-#: admin/class-media-library.php:483
+#: admin/class-media-library.php:487
+#: admin/class-media-library.php:536
+#: admin/class-media-library.php:553
 msgid "Detected, needs review"
 msgstr "Detectado, pendiente de revisión"
 
-#: admin/class-media-library.php:425
-#: admin/class-media-library.php:484
+#: admin/class-media-library.php:488
+#: admin/class-media-library.php:555
 msgid "Without AI label"
 msgstr "Sin etiqueta de IA"
 
-#: admin/class-media-library.php:426
-#: admin/class-media-library.php:525
+#: admin/class-media-library.php:489
+#: admin/class-media-library.php:554
+msgid "Declared not AI (camera, human work)"
+msgstr "Declarado sin IA (cámara, obra humana)"
+
+#: admin/class-media-library.php:490
+#: admin/class-media-library.php:596
 msgid "Mark as AI-generated"
 msgstr "Marcar como generado por IA"
 
-#: admin/class-media-library.php:427
-#: admin/class-media-library.php:526
+#: admin/class-media-library.php:491
+#: admin/class-media-library.php:597
 msgid "Remove AI label"
 msgstr "Quitar la etiqueta de IA"
 
-#: admin/class-media-library.php:428
+#: admin/class-media-library.php:492
 msgid "Please select media first."
 msgstr "Selecciona primero algún medio."
 
-#: admin/class-media-library.php:429
-#: admin/class-settings.php:141
+#: admin/class-media-library.php:493
 msgid "Updating the AI label failed."
 msgstr "No se ha podido actualizar la etiqueta de IA."
 
-#: admin/class-media-library.php:430
+#: admin/class-media-library.php:494
 msgid "Result"
 msgstr "Resultado"
 
-#: admin/class-media-library.php:431
+#: admin/class-media-library.php:495
 msgid "No AI provenance signals found in the file."
 msgstr "No se han encontrado señales de procedencia de IA en el archivo."
 
-#: admin/class-media-library.php:433
+#: admin/class-media-library.php:497
 msgid "The label was set, but the metadata could not be written into the file. Check the write permissions of the uploads directory."
 msgstr "La etiqueta se ha guardado, pero los metadatos no se han podido escribir en el archivo. Revisa los permisos de escritura del directorio de subidas."
 
-#: admin/class-media-library.php:434
+#: admin/class-media-library.php:498
 msgid "Hide file metadata"
 msgstr "Ocultar los metadatos del archivo"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped count, 4: count that could not be compared.
-#: admin/class-media-library.php:436
-#: admin/class-settings.php:143
+#: admin/class-media-library.php:500
 #, php-format
 msgid "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not comparable."
 msgstr "%1$d comprobados: %2$d entregados con la declaración, %3$d sin ella, %4$d no comparables."
 
-#: admin/class-media-library.php:447
+#. translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count.
+#: admin/class-media-library.php:502
+#, php-format
+msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
+msgstr "%1$d analizados, %2$d etiquetados automáticamente, %3$d pendientes de revisión, %4$d omitidos (ya decididos)."
+
+#: admin/class-media-library.php:503
+msgid "Scan complete."
+msgstr "Análisis completado."
+
+#: admin/class-media-library.php:504
+msgid "Scan request failed. You can restart to continue."
+msgstr "La petición de análisis ha fallado. Puedes reiniciarlo para continuar."
+
+#: admin/class-media-library.php:515
+#: includes/class-notice.php:305
 msgid "AI"
 msgstr "IA"
 
-#: admin/class-media-library.php:527
+#: admin/class-media-library.php:598
 msgid "Confirm detected AI label"
 msgstr "Confirmar la etiqueta de IA detectada"
 
-#: admin/class-media-library.php:528
+#: admin/class-media-library.php:599
 msgid "Dismiss detected AI label"
 msgstr "Descartar la etiqueta de IA detectada"
 
+#: admin/class-media-library.php:600
+msgid "Declare as camera photo (not AI)"
+msgstr "Declarar como foto de cámara (sin IA)"
+
+#: admin/class-media-library.php:601
+msgid "Declare as human work (not AI)"
+msgstr "Declarar como obra humana (sin IA)"
+
+#: admin/class-media-library.php:602
+msgid "Remove \"not AI\" declaration"
+msgstr "Quitar la declaración «sin IA»"
+
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:567
+#: admin/class-media-library.php:644
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
 msgstr[0] "Etiqueta de IA actualizada en %d archivo de medios."
 msgstr[1] "Etiqueta de IA actualizada en %d archivos de medios."
 
-#: admin/class-settings.php:45
+#: admin/class-settings.php:47
+#: admin/class-settings.php:97
 msgid "You are not allowed to export this."
 msgstr "No tienes permiso para exportar esto."
 
-#: admin/class-settings.php:63
+#: admin/class-settings.php:65
 msgid "The export could not be started."
 msgstr "No se ha podido iniciar la exportación."
 
-#: admin/class-settings.php:88
-msgid "Settings"
-msgstr "Ajustes"
+#: admin/class-settings.php:115
+#: admin/class-settings.php:129
+msgid "audit report"
+msgstr "informe de auditoría"
 
-#. translators: 1: processed count, 2: flagged count, 3: queued count, 4: skipped count.
-#: admin/class-settings.php:138
-#, php-format
-msgid "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped (already decided)."
-msgstr "%1$d analizados, %2$d etiquetados automáticamente, %3$d pendientes de revisión, %4$d omitidos (ya decididos)."
+#: admin/class-settings.php:130
+msgid "items"
+msgstr "elementos"
 
-#: admin/class-settings.php:139
-msgid "Scan complete."
-msgstr "Análisis completado."
+#: admin/class-settings.php:133
+msgid "Document hash"
+msgstr "Hash del documento"
 
-#: admin/class-settings.php:140
-msgid "Scan request failed. You can restart to continue."
-msgstr "La petición de análisis ha fallado. Puedes reiniciarlo para continuar."
+#: admin/class-settings.php:134
+msgid "sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash."
+msgstr "sha256 de los hechos siguientes sin marcas de tiempo: dos informes de un sitio sin cambios llevan el mismo hash."
 
-#: admin/class-settings.php:161
-msgid "Settings saved."
-msgstr "Ajustes guardados."
+#: admin/class-settings.php:135
+msgid "Basis"
+msgstr "Base"
 
-#: admin/class-settings.php:172
-msgid "Library status"
-msgstr "Estado de la biblioteca"
+#: admin/class-settings.php:136
+msgid "Limitations"
+msgstr "Limitaciones"
 
-#: admin/class-settings.php:176
-msgid "Media files"
-msgstr "Archivos de medios"
+#: admin/class-settings.php:143
+msgid "Print or save as PDF"
+msgstr "Imprimir o guardar como PDF"
 
-#: admin/class-settings.php:180
-msgid "Labeled as AI"
-msgstr "Etiquetados como IA"
+#: admin/class-settings.php:145
+msgid "Media audit list"
+msgstr "Lista de auditoría de medios"
 
-#: admin/class-settings.php:184
-msgid "Waiting for review"
-msgstr "Pendientes de revisión"
-
-#: admin/class-settings.php:188
-msgid "Scanned"
-msgstr "Analizados"
-
-#: admin/class-settings.php:193
-msgid "Open review queue"
-msgstr "Abrir la cola de revisión"
-
-#: admin/class-settings.php:195
-msgid "Export audit CSV"
-msgstr "Exportar la auditoría en CSV"
-
-#: admin/class-settings.php:197
-msgid "The export lists every labeled and pending file with its detection source, confidence and the last recorded change."
-msgstr "La exportación incluye cada archivo etiquetado o pendiente con su origen de detección, su nivel de confianza y el último cambio registrado."
-
-#: admin/class-settings.php:201
-msgid "Scan existing library"
-msgstr "Analizar la biblioteca existente"
-
-#: admin/class-settings.php:202
-msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
-msgstr "Lee los metadatos de tus archivos de medios existentes (C2PA, XMP/IPTC, firmas de generadores) en lotes pequeños. Nada sale de tu servidor."
-
-#: admin/class-settings.php:204
-msgid "Scan new/unscanned media"
-msgstr "Analizar los medios nuevos o sin analizar"
-
-#: admin/class-settings.php:205
-msgid "Rescan everything"
-msgstr "Volver a analizar todo"
-
-#: admin/class-settings.php:206
-msgid "Pause"
-msgstr "Pausar"
-
-#. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff.
-#: admin/class-settings.php:219
-#, php-format
-msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
-msgstr "Reparación automática, último ciclo completo: %1$d archivos etiquetados comprobados, %2$d reparados, %3$d fallidos (hace %4$s)."
-
-#: admin/class-settings.php:235
+#: admin/class-settings.php:221
+#: admin/class-settings.php:254
 msgid "Visible badge"
 msgstr "Insignia visible"
 
-#: admin/class-settings.php:238
+#: admin/class-settings.php:222
+#: admin/class-settings.php:365
+msgid "AI-written text"
+msgstr "Texto escrito con IA"
+
+#: admin/class-settings.php:223
+#: admin/class-settings.php:439
+msgid "Chatbot disclosure"
+msgstr "Aviso de chatbot"
+
+#: admin/class-settings.php:225
+#: admin/class-settings.php:548
+msgid "Automatic detection"
+msgstr "Detección automática"
+
+#: admin/class-settings.php:226
+msgid "File metadata"
+msgstr "Metadatos del archivo"
+
+#: admin/class-settings.php:227
+#: admin/class-settings.php:650
+msgid "Uninstall"
+msgstr "Desinstalación"
+
+#: admin/class-settings.php:235
+msgid "Settings saved."
+msgstr "Ajustes guardados."
+
+#: admin/class-settings.php:247
+msgid "Settings sections"
+msgstr "Secciones de ajustes"
+
+#: admin/class-settings.php:257
 msgid "Show badge"
 msgstr "Mostrar la insignia"
 
-#: admin/class-settings.php:241
+#: admin/class-settings.php:260
 msgid "Show a visible badge on labeled media in the front end"
 msgstr "Mostrar una insignia visible en los medios etiquetados de la parte pública"
 
-#: admin/class-settings.php:245
+#: admin/class-settings.php:264
 msgid "Start date"
 msgstr "Fecha de inicio"
 
-#: admin/class-settings.php:248
+#: admin/class-settings.php:267
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
 msgstr "Solo los medios subidos a partir de esta fecha reciben la insignia pública; los anteriores siguen etiquetados solo en la administración. Déjalo vacío para mostrar la insignia en todos los medios etiquetados."
 
-#: admin/class-settings.php:252
+#: admin/class-settings.php:271
 msgid "Badge text"
 msgstr "Texto de la insignia"
 
-#: admin/class-settings.php:254
-#: includes/class-frontend.php:148
-#: includes/class-frontend.php:153
+#: admin/class-settings.php:273
+#: includes/class-frontend.php:225
+#: includes/class-frontend.php:230
+#: includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "Generado por IA"
 
-#: admin/class-settings.php:256
+#: admin/class-settings.php:275
 msgid "Leave empty for the translated default label."
 msgstr "Déjalo vacío para usar el texto traducido por defecto."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template.
-#: admin/class-settings.php:260
+#: admin/class-settings.php:279
 #, php-format
 msgid "Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label."
 msgstr "Marcadores: %1$s (generador detectado o introducido) y %2$s (título del sitio), por ejemplo %3$s. Las imágenes sin generador conocido usan el texto por defecto."
 
-#: admin/class-settings.php:270
+#: admin/class-settings.php:289
 msgid "Appearance"
 msgstr "Aspecto"
 
-#: admin/class-settings.php:277
+#: admin/class-settings.php:296
+#: admin/class-setup.php:304
 msgid "Overlay on the image"
 msgstr "Superpuesta a la imagen"
 
-#: admin/class-settings.php:295
+#: admin/class-settings.php:314
+#: admin/class-setup.php:279
 msgid "Dark"
 msgstr "Oscura"
 
-#: admin/class-settings.php:296
+#: admin/class-settings.php:315
+#: admin/class-setup.php:280
 msgid "Light"
 msgstr "Clara"
 
-#: admin/class-settings.php:297
+#: admin/class-settings.php:316
+#: admin/class-setup.php:281
 msgid "Outline"
 msgstr "Contorno"
 
-#: admin/class-settings.php:298
+#: admin/class-settings.php:317
+#: admin/class-setup.php:282
 msgid "Icon only (short label)"
 msgstr "Solo icono (texto corto)"
 
-#: admin/class-settings.php:305
+#: admin/class-settings.php:324
 msgid "Small"
 msgstr "Pequeña"
 
-#: admin/class-settings.php:306
+#: admin/class-settings.php:325
 msgid "Medium"
 msgstr "Mediana"
 
-#: admin/class-settings.php:307
+#: admin/class-settings.php:326
 msgid "Large"
 msgstr "Grande"
 
-#: admin/class-settings.php:314
+#: admin/class-settings.php:333
 msgid "Extras"
 msgstr "Extras"
 
-#: admin/class-settings.php:317
+#: admin/class-settings.php:336
 msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
 msgstr "Mostrar el generador detectado en la insignia (por ejemplo «Generado por IA · Midjourney»; se ignora si el texto de la insignia contiene {generator})"
 
-#: admin/class-settings.php:319
+#: admin/class-settings.php:338
 msgid "Append the label to the image alt text (screen readers)"
 msgstr "Añadir la etiqueta al texto alternativo de la imagen (lectores de pantalla)"
 
-#: admin/class-settings.php:321
+#: admin/class-settings.php:340
 msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
 msgstr "Mover automáticamente la insignia a otra esquina, o debajo de la imagen, cuando una capa del tema la tape (recomendado, necesita JavaScript)"
 
-#: admin/class-settings.php:323
+#: admin/class-settings.php:342
 msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
 msgstr "Etiquetar también las imágenes mostradas sin ID de adjunto (campos ACF, carruseles, maquetadores) y los fondos CSS (experimental, necesita JavaScript)"
 
-#: admin/class-settings.php:327
+#: admin/class-settings.php:346
+msgid "Not AI"
+msgstr "Sin IA"
+
+#: admin/class-settings.php:349
+msgid "Also show a badge on media declared as camera photo or human work (the structured data carries the declaration either way)"
+msgstr "Mostrar también una insignia en los medios declarados como foto de cámara u obra humana (los datos estructurados llevan la declaración de todos modos)"
+
+#: admin/class-settings.php:350
+#: includes/class-frontend.php:203
+msgid "Human made"
+msgstr "Hecho por personas"
+
+#: admin/class-settings.php:354
 msgid "Page notice"
 msgstr "Aviso de página"
 
-#: admin/class-settings.php:330
+#: admin/class-settings.php:357
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr "Añadir un aviso breve al final de las páginas que contienen medios etiquetados"
 
-#: admin/class-settings.php:331
-#: includes/class-frontend.php:657
+#: admin/class-settings.php:358
+#: includes/class-frontend.php:775
 msgid "This page contains AI-generated media."
 msgstr "Esta página contiene medios generados por IA."
 
-#: admin/class-settings.php:338
-msgid "AI-generated text"
-msgstr "Texto generado por IA"
+#: admin/class-settings.php:366
+msgid "Every post carries an AI level (none, AI-assisted, AI-generated, AI-generated and reviewed), set in the editor sidebar, in Quick Edit or in bulk. AI levels show a note on the post; the shortcode [transparai_notice] and the \"AI notice\" block place it anywhere by hand."
+msgstr "Cada entrada lleva un nivel de IA (ninguno, asistido por IA, generado por IA, generado por IA y revisado), definido en la barra lateral del editor, en la edición rápida o en lote. Los niveles de IA muestran un aviso en la entrada; el shortcode [transparai_notice] y el bloque «Aviso de IA» lo colocan a mano donde quieras."
 
-#: admin/class-settings.php:341
-msgid "Content note"
-msgstr "Aviso de contenido"
+#: admin/class-settings.php:369
+msgid "Note text"
+msgstr "Texto del aviso"
 
-#: admin/class-settings.php:343
-#: includes/class-frontend.php:681
-msgid "This text was created with the help of AI."
-msgstr "Este texto se ha creado con ayuda de IA."
+#: admin/class-settings.php:371
+#: includes/class-notice.php:140
+msgid "This text was generated by AI."
+msgstr "Este texto fue generado por IA."
 
-#: admin/class-settings.php:344
-msgid "Shown ahead of posts you mark with the \"This content is AI-generated\" checkbox in the editor sidebar."
-msgstr "Se muestra delante de las entradas que marcas con la casilla «Este contenido está generado por IA» en la barra lateral del editor."
+#: admin/class-settings.php:372
+msgid "Leave empty for a translated wording per level (\"created with the help of AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
+msgstr "Déjalo vacío para un texto traducido por nivel («creado con ayuda de IA», «generado por IA», «generado por IA y revisado por una persona»)."
 
-#: admin/class-settings.php:351
-msgid "Automatic detection"
-msgstr "Detección automática"
+#: admin/class-settings.php:378
+msgid "Ahead of the content"
+msgstr "Antes del contenido"
 
-#: admin/class-settings.php:354
+#: admin/class-settings.php:379
+msgid "After the content"
+msgstr "Después del contenido"
+
+#: admin/class-settings.php:380
+msgid "Ahead of and after the content"
+msgstr "Delante y detrás del contenido"
+
+#: admin/class-settings.php:388
+#: includes/class-notice.php:629
+msgid "Block (own line)"
+msgstr "Bloque (línea propia)"
+
+#: admin/class-settings.php:389
+#: includes/class-notice.php:630
+msgid "Inline (inside text)"
+msgstr "En línea (dentro del texto)"
+
+#: admin/class-settings.php:390
+#: admin/class-settings.php:528
+#: includes/class-notice.php:631
+msgid "Banner (dismissible)"
+msgstr "Banner (se puede cerrar)"
+
+#: admin/class-settings.php:391
+#: includes/class-notice.php:632
+msgid "Badge (small chip)"
+msgstr "Insignia (chip pequeño)"
+
+#: admin/class-settings.php:392
+#: includes/class-notice.php:633
+msgid "Modal (button opens a dialog)"
+msgstr "Modal (un botón abre un diálogo)"
+
+#: admin/class-settings.php:399
+msgid "Post titles"
+msgstr "Títulos de las entradas"
+
+#: admin/class-settings.php:402
+msgid "Append a small AI badge to the title of AI-written posts in lists and archives"
+msgstr "Añadir una pequeña insignia de IA al título de las entradas escritas con IA en listas y archivos"
+
+#: admin/class-settings.php:403
+msgid "The badge is HTML inside the title. Themes that print titles unescaped inside attributes should leave this off."
+msgstr "La insignia es HTML dentro del título. Los temas que imprimen los títulos sin escapar dentro de atributos deberían dejar esto desactivado."
+
+#: admin/class-settings.php:407
+msgid "Review"
+msgstr "Revisión"
+
+#: admin/class-settings.php:409
+msgid "Name of the person responsible"
+msgstr "Nombre de la persona responsable"
+
+#: admin/class-settings.php:410
+msgid "Default for the \"responsible person\" of reviewed texts; each post can name someone else. The reviewer, date and a fingerprint of the reviewed text are recorded with the post."
+msgstr "Valor por defecto de la «persona responsable» de los textos revisados; cada entrada puede nombrar a otra. El revisor, la fecha y una huella del texto revisado se guardan con la entrada."
+
+#: admin/class-settings.php:412
+msgid "Name the reviewer and the review date in the public note and in the structured data"
+msgstr "Nombrar al revisor y la fecha de revisión en el aviso público y en los datos estructurados"
+
+#: admin/class-settings.php:416
+msgid "New posts"
+msgstr "Entradas nuevas"
+
+#: admin/class-settings.php:421
+msgid "Preselected level for posts created from now on. Existing posts are never reclassified."
+msgstr "Nivel preseleccionado para las entradas creadas a partir de ahora. Las entradas existentes nunca se reclasifican."
+
+#: admin/class-settings.php:425
+msgid "Excerpts and feeds"
+msgstr "Extractos y feeds"
+
+#: admin/class-settings.php:428
+msgid "Append the note as plain text to excerpts (archives, teasers, related posts)"
+msgstr "Añadir el aviso como texto plano a los extractos (archivos, avances, entradas relacionadas)"
+
+#: admin/class-settings.php:430
+msgid "Add the note to RSS feed items (content, summary and a machine-readable dc:description element)"
+msgstr "Añadir el aviso a los elementos del feed RSS (contenido, resumen y un elemento dc:description legible por máquinas)"
+
+#: admin/class-settings.php:432
+msgid "Prefix feed item titles of AI-written posts with [AI]"
+msgstr "Anteponer [AI] a los títulos de los elementos del feed de las entradas escritas con IA"
+
+#: admin/class-settings.php:440
+msgid "Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false \"this is an AI\" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server."
+msgstr "Los visitantes deben saber cuándo hablan con un sistema de IA, a más tardar al comenzar la conversación. Tu respuesta decide; lo que el plugin encuentra en el sitio solo informa, porque la mayoría de los widgets de chat son chats en vivo en los que responde una persona y un falso «esto es una IA» engañaría a los visitantes. La detección es local: plugins activos, fragmentos del tema, los scripts que registra una página y lo que tu propio navegador vio como administrador. Ninguna petición sale del servidor."
+
+#: admin/class-settings.php:444
+msgid "Found on this site"
+msgstr "Encontrado en este sitio"
+
+#: admin/class-settings.php:447
+msgid "No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here."
+msgstr "Por ahora no se ha encontrado ningún widget de chat o chatbot conocido. Abre algunas páginas de tu sitio con la sesión iniciada; la comprobación se ejecuta en tu navegador y se notifica aquí."
+
+#: admin/class-settings.php:452
+msgid "a bot answers"
+msgstr "responde un bot"
+
+#: admin/class-settings.php:453
+msgid "people answer"
+msgstr "responden personas"
+
+#: admin/class-settings.php:454
+msgid "live chat with optional bot"
+msgstr "chat en vivo con bot opcional"
+
+#: admin/class-settings.php:455
+msgid "staffing unknown"
+msgstr "atención desconocida"
+
+#: admin/class-settings.php:466
+msgid "Does this site run a chat?"
+msgstr "¿Este sitio tiene un chat?"
+
+#: admin/class-settings.php:473
+msgid "Not decided yet"
+msgstr "Aún sin decidir"
+
+#: admin/class-settings.php:482
+msgid "An AI answers"
+msgstr "Responde una IA"
+
+#: admin/class-settings.php:483
+msgid "People answer, an AI sometimes"
+msgstr "Responden personas, a veces una IA"
+
+#: admin/class-settings.php:484
+msgid "Only people answer"
+msgstr "Solo responden personas"
+
+#: admin/class-settings.php:488
+msgid "The notice appears only with \"Yes\" and an AI that answers at least sometimes."
+msgstr "El aviso solo aparece con «Sí» y una IA que responde al menos a veces."
+
+#: admin/class-settings.php:492
+msgid "Notice"
+msgstr "Aviso"
+
+#: admin/class-settings.php:494
+#: includes/class-chatbot.php:111
+msgid "You are chatting with an AI system."
+msgstr "Estás chateando con un sistema de IA."
+
+#: admin/class-settings.php:500
+msgid "As the first message of the bot (AI Engine; otherwise next to the widget)"
+msgstr "Como primer mensaje del bot (AI Engine; si no, junto al widget)"
+
+#: admin/class-settings.php:501
+msgid "Next to the chat widget"
+msgstr "Junto al widget de chat"
+
+#: admin/class-settings.php:502
+msgid "As a line at the end of every page"
+msgstr "Como una línea al final de cada página"
+
+#: admin/class-settings.php:513
+msgid "The plugin matches your installed plugins against a bundled list of known AI tools and lets you declare others by hand. Which of them visitors get told about is decided per system on the AI Systems page; nothing is switched on from a finding alone. The list ships with the plugin, nothing is fetched."
+msgstr "El plugin compara los plugins instalados con una lista incluida de herramientas de IA conocidas y permite declarar otras a mano. De cuáles se informa a los visitantes se decide por sistema en la página Sistemas de IA; nada se activa solo por una detección. La lista se incluye con el plugin, no se descarga nada."
+
+#: admin/class-settings.php:516
+msgid "Visitor notice"
+msgstr "Aviso a los visitantes"
+
+#: admin/class-settings.php:519
+msgid "Show a notice naming the AI systems marked as visible on every page"
+msgstr "Mostrar en cada página un aviso con los sistemas de IA marcados como visibles"
+
+#: admin/class-settings.php:526
+msgid "Line at the end of the page"
+msgstr "Línea al final de la página"
+
+#: admin/class-settings.php:527
+msgid "Small badge in a corner"
+msgstr "Insignia pequeña en una esquina"
+
+#: admin/class-settings.php:537
+msgid "Notice text"
+msgstr "Texto del aviso"
+
+#. translators: %s: names of the visible AI systems.
+#. translators: %s: comma-separated names of AI systems.
+#: admin/class-settings.php:539
+#: includes/class-systems.php:457
+#, php-format
+msgid "This site uses AI systems: %s."
+msgstr "Este sitio utiliza sistemas de IA: %s."
+
+#. translators: %s is the literal placeholder token shown to the user.
+#: admin/class-settings.php:540
+#, php-format
+msgid "Leave empty for the translated default. %s is replaced with the names of the visible systems."
+msgstr "Déjalo vacío para usar el texto traducido por defecto. %s se sustituye por los nombres de los sistemas visibles."
+
+#. translators: %s is the literal placeholder token shown to the user.
+#: admin/class-settings.php:541
+msgid "Manage detected and declared AI systems"
+msgstr "Gestionar los sistemas de IA detectados y declarados"
+
+#: admin/class-settings.php:551
 msgid "Detect on upload"
 msgstr "Detectar al subir"
 
-#: admin/class-settings.php:357
+#: admin/class-settings.php:554
 msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr "Inspeccionar las subidas nuevas en busca de procedencia de IA (C2PA, XMP/IPTC, firmas de generadores)"
 
-#: admin/class-settings.php:361
+#: admin/class-settings.php:558
 msgid "Standard declarations"
 msgstr "Declaraciones formales"
 
-#: admin/class-settings.php:368
-#: admin/class-settings.php:385
+#: admin/class-settings.php:565
+#: admin/class-settings.php:582
 msgid "Label automatically"
 msgstr "Etiquetar automáticamente"
 
-#: admin/class-settings.php:369
-#: admin/class-settings.php:386
+#: admin/class-settings.php:566
+#: admin/class-settings.php:583
 msgid "Put into review queue"
 msgstr "Poner en la cola de revisión"
 
-#: admin/class-settings.php:370
-#: admin/class-settings.php:387
+#: admin/class-settings.php:567
+#: admin/class-settings.php:584
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: admin/class-settings.php:374
+#: admin/class-settings.php:571
 msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
 msgstr "Archivos que declaran explícitamente un origen de IA (IPTC DigitalSourceType, declaración de IA en C2PA, declaración AIGC)."
 
-#: admin/class-settings.php:378
+#: admin/class-settings.php:575
 msgid "Generator signatures"
 msgstr "Firmas de generadores"
 
-#: admin/class-settings.php:391
+#: admin/class-settings.php:588
 msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr "Señales fuertes sin declaración formal (parámetros de Stable Diffusion, flujos de ComfyUI, nombres de generadores en EXIF/XMP, C2PA escrito por una cámara)."
 
-#: admin/class-settings.php:395
+#: admin/class-settings.php:592
 msgid "More sources"
 msgstr "Más fuentes"
 
-#: admin/class-settings.php:398
+#: admin/class-settings.php:595
 msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr "Analizar también las subidas de vídeo y audio (C2PA en MP4/MOV, declaraciones AIGC en MP3)"
 
-#: admin/class-settings.php:400
+#: admin/class-settings.php:597
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr "Usar los patrones del nombre de archivo como indicios para la revisión (nunca etiqueta automáticamente)"
 
-#: admin/class-settings.php:407
+#: admin/class-settings.php:605
 msgid "Machine-readable file metadata"
 msgstr "Metadatos legibles por máquina en los archivos"
 
-#: admin/class-settings.php:410
+#: admin/class-settings.php:608
 msgid "Write into files"
 msgstr "Escribir en los archivos"
 
-#: admin/class-settings.php:413
+#: admin/class-settings.php:611
 msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
 msgstr "Escribir el IPTC DigitalSourceType como XMP en los archivos JPEG, PNG, WebP y AVIF etiquetados (todos los tamaños generados)"
 
-#: admin/class-settings.php:415
+#: admin/class-settings.php:613
 msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
 msgstr "Reflejarlo también en IPTC-IIM (JPEG, solo cuando el archivo no tiene otro bloque IPTC)"
 
-#: admin/class-settings.php:419
+#: admin/class-settings.php:615
+msgid "Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote"
+msgstr "Escribir también digitalCapture o digitalCreation en los medios declarados sin IA, pero nunca sobre una declaración que otra herramienta o una cámara ya escribió"
+
+#: admin/class-settings.php:619
 msgid "Auto-repair"
 msgstr "Reparación automática"
 
-#: admin/class-settings.php:422
+#: admin/class-settings.php:622
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
 msgstr "Restaurar los metadatos cuando los optimizadores de imágenes o la regeneración de tamaños los eliminan (ciclo de integridad cada hora)"
 
-#: admin/class-settings.php:426
+#: admin/class-settings.php:626
 msgid "Delivery check"
 msgstr "Comprobación de la entrega"
 
-#: admin/class-settings.php:429
+#: admin/class-settings.php:629
 msgid "Allow checking whether the declaration survives delivery"
 msgstr "Permitir comprobar si la declaración sobrevive a la entrega"
 
-#: admin/class-settings.php:430
+#: admin/class-settings.php:630
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
 msgstr "Añade un botón aquí y en los detalles del adjunto. Al pulsarlo, el plugin descarga la imagen desde su propia URL pública y compara los bytes entregados con el archivo del disco, que es la única forma de notar que un CDN de optimización recodifica tus imágenes y elimina la declaración por el camino. La petición va a tu propio sitio y a ningún otro, y solo ocurre cuando pulsas el botón."
 
-#: admin/class-settings.php:433
+#: admin/class-settings.php:633
 msgid "Check a sample of five files"
 msgstr "Comprobar una muestra de cinco archivos"
 
-#: admin/class-settings.php:440
+#: admin/class-settings.php:640
 msgid "Structured data"
 msgstr "Datos estructurados"
 
-#: admin/class-settings.php:443
+#: admin/class-settings.php:643
 msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
 msgstr "Añadir JSON-LD de Schema.org con el digital source type de IPTC para los medios etiquetados de cada página (los buscadores lo leen sin abrir los archivos)"
 
-#: admin/class-settings.php:450
-msgid "Uninstall"
-msgstr "Desinstalación"
-
-#: admin/class-settings.php:453
+#: admin/class-settings.php:653
 msgid "Data removal"
 msgstr "Eliminación de datos"
 
-#: admin/class-settings.php:456
+#: admin/class-settings.php:656
 msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
 msgstr "Borrar todos los datos del plugin (etiquetas, resultados de detección, ajustes) al desinstalarlo"
 
-#: admin/class-settings.php:462
+#: admin/class-settings.php:662
 msgid "Save changes"
 msgstr "Guardar los cambios"
 
-#: admin/class-settings.php:467
+#: admin/class-settings.php:706
+msgid "Check"
+msgstr "Comprobación"
+
+#: admin/class-settings.php:714
+#: admin/class-settings.php:724
+msgid "Saved"
+msgstr "Guardado"
+
+#: admin/class-settings.php:716
+msgid "Question"
+msgstr "Pregunta"
+
+#: admin/class-settings.php:716
+msgid "Answer"
+msgstr "Respuesta"
+
+#: admin/class-settings.php:719
+msgid "not answered"
+msgstr "sin responder"
+
+#: admin/class-settings.php:723
+msgid "AI literacy checklist (Article 4)"
+msgstr "Lista de comprobación de alfabetización en IA (artículo 4)"
+
+#: admin/class-settings.php:725
+msgid "Item"
+msgstr "Elemento"
+
+#: admin/class-settings.php:733
+msgid "None detected or declared."
+msgstr "Ninguno detectado ni declarado."
+
+#: admin/class-settings.php:735
+msgid "Source"
+msgstr "Origen"
+
+#: admin/class-settings.php:735
+msgid "Visitors told"
+msgstr "Visitantes informados"
+
+#: admin/class-settings.php:742
+msgid "Disclosure notices"
+msgstr "Avisos de divulgación"
+
+#: admin/class-settings.php:770
+msgid "Title"
+msgstr "Título"
+
+#: admin/class-settings.php:770
+msgid "Type"
+msgstr "Tipo"
+
+#: admin/class-settings.php:770
+msgid "Level"
+msgstr "Nivel"
+
+#: admin/class-settings.php:770
+msgid "Reviewed by"
+msgstr "Revisado por"
+
+#: admin/class-settings.php:770
+msgid "Reviewed on"
+msgstr "Revisado el"
+
+#: admin/class-settings.php:770
+msgid "Review current"
+msgstr "Revisión vigente"
+
+#: admin/class-settings.php:805
+msgid "Library status"
+msgstr "Estado de la biblioteca"
+
+#: admin/class-settings.php:809
+msgid "Media files"
+msgstr "Archivos de medios"
+
+#: admin/class-settings.php:821
+msgid "Scanned"
+msgstr "Analizados"
+
+#: admin/class-settings.php:826
+msgid "Open review queue"
+msgstr "Abrir la cola de revisión"
+
+#: admin/class-settings.php:829
+msgid "Print view"
+msgstr "Vista de impresión"
+
+#: admin/class-settings.php:834
+msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
+msgstr "La exportación lista cada archivo etiquetado, declarado o pendiente con su fuente de detección, confianza, historial completo y la persona detrás de cada cambio. La vista de impresión añade un hash del documento sobre los hechos, la base y las limitaciones indicadas; el mismo registro está disponible en /wp-json/transparai/v1/report."
+
+#: admin/class-settings.php:850
+#: admin/class-settings.php:852
+msgid "Scan existing library"
+msgstr "Analizar la biblioteca existente"
+
+#: admin/class-settings.php:854
+msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
+msgstr "Lee los metadatos de tus archivos de medios existentes (C2PA, XMP/IPTC, firmas de generadores) en lotes pequeños. Nada sale de tu servidor."
+
+#: admin/class-settings.php:856
+msgid "Scan new/unscanned media"
+msgstr "Analizar los medios nuevos o sin analizar"
+
+#: admin/class-settings.php:857
+msgid "Rescan everything"
+msgstr "Volver a analizar todo"
+
+#: admin/class-settings.php:858
+msgid "Pause"
+msgstr "Pausar"
+
+#. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff.
+#: admin/class-settings.php:871
+#, php-format
+msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
+msgstr "Reparación automática, último ciclo completo: %1$d archivos etiquetados comprobados, %2$d reparados, %3$d fallidos (hace %4$s)."
+
+#: admin/class-settings.php:894
 msgid "TransparAI links"
 msgstr "Enlaces de TransparAI"
 
-#: admin/class-settings.php:470
+#: admin/class-settings.php:897
 msgid "Support forum"
 msgstr "Foro de soporte"
+
+#: admin/class-setup.php:243
+msgid "Setup in three steps"
+msgstr "Configuración en tres pasos"
+
+#: admin/class-setup.php:244
+msgid "Each step writes something real and can be taken back with the undo button. Nothing is labeled without your review, and no request leaves your server."
+msgstr "Cada paso escribe algo real y puede deshacerse con el botón de deshacer. Nada se etiqueta sin tu revisión y ninguna petición sale de tu servidor."
+
+#: admin/class-setup.php:248
+msgid "1. Scan the existing library"
+msgstr "1. Escanear la biblioteca existente"
+
+#. translators: 1: number of media files, 2: number already scanned.
+#: admin/class-setup.php:254
+#, php-format
+msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
+msgstr "%1$d archivos de medios, %2$d de ellos escaneados. Las declaraciones claras se etiquetan, las señales fuertes esperan en la cola de revisión."
+
+#: admin/class-setup.php:261
+msgid "Scan now"
+msgstr "Escanear ahora"
+
+#: admin/class-setup.php:265
+msgid "2. Choose the badge look"
+msgstr "2. Elegir el aspecto de la insignia"
+
+#: admin/class-setup.php:307
+msgid "Save badge look"
+msgstr "Guardar aspecto de la insignia"
+
+#: admin/class-setup.php:317
+msgid "3. Decide about the files"
+msgstr "3. Decidir sobre los archivos"
+
+#: admin/class-setup.php:322
+msgid "Write the machine-readable declaration into labeled image files (XMP, all sizes; merged into existing metadata, removable)"
+msgstr "Escribir la declaración legible por máquinas en los archivos de imagen etiquetados (XMP, todos los tamaños; fusionada con los metadatos existentes, reversible)"
+
+#: admin/class-setup.php:323
+msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
+msgstr "Reflejarla también en IPTC-IIM en los JPEG sin otro bloque IPTC"
+
+#: admin/class-setup.php:324
+msgid "Also write digitalCapture or digitalCreation for media declared as not AI-made"
+msgstr "Escribir también digitalCapture o digitalCreation en los medios declarados sin IA"
+
+#: admin/class-setup.php:325
+msgid "Restore declarations that image optimizers strip (hourly sweep)"
+msgstr "Restaurar las declaraciones que eliminan los optimizadores de imágenes (barrido cada hora)"
+
+#: admin/class-setup.php:327
+msgid "Save file settings"
+msgstr "Guardar ajustes de archivos"
+
+#: admin/class-setup.php:342
+msgid "Finish setup"
+msgstr "Terminar la configuración"
+
+#. translators: %s: name of the setup step (badge or writing).
+#: admin/class-setup.php:355
+#, php-format
+msgid "Undo last step (%s)"
+msgstr "Deshacer el último paso (%s)"
+
+#: admin/class-setup.php:356
+msgid "badge look"
+msgstr "aspecto de la insignia"
+
+#: admin/class-setup.php:356
+msgid "file settings"
+msgstr "ajustes de archivos"
+
+#: admin/class-setup.php:368
+msgid "Not now"
+msgstr "Ahora no"
+
+#: includes/class-compliance.php:51
+msgid "Does your site run a chatbot or virtual assistant that talks to visitors?"
+msgstr "¿Tu sitio tiene un chatbot o asistente virtual que habla con los visitantes?"
+
+#: includes/class-compliance.php:52
+msgid "Examples: a support chat answered by an AI, an assistant widget, a chat plugin with an AI mode."
+msgstr "Ejemplos: un chat de soporte en el que responde una IA, un widget de asistente, un plugin de chat con modo de IA."
+
+#: includes/class-compliance.php:54
+msgid "Answer the chatbot question in the settings; the notice follows your answer."
+msgstr "Responde la pregunta sobre el chatbot en los ajustes; el aviso sigue tu respuesta."
+
+#: includes/class-compliance.php:58
+msgid "Does your site publish text that was generated or substantially assisted by AI?"
+msgstr "¿Tu sitio publica texto generado por IA o con una ayuda sustancial de la IA?"
+
+#: includes/class-compliance.php:59
+msgid "Examples: blog posts drafted with a language model, product descriptions, AI-assisted copy. Article 50(4) applies to text published to inform the public on matters of public interest; the AI level documents your practice either way."
+msgstr "Ejemplos: entradas de blog redactadas con un modelo de lenguaje, descripciones de producto, textos asistidos por IA. El artículo 50, apartado 4, se aplica a textos publicados para informar al público sobre asuntos de interés público; el nivel de IA documenta tu práctica en cualquier caso."
+
+#: includes/class-compliance.php:61
+msgid "Set the AI level on each post (editor sidebar, Quick Edit or Bulk Edit) so the note appears."
+msgstr "Define el nivel de IA en cada entrada (barra lateral del editor, edición rápida o en lote) para que aparezca el aviso."
+
+#: includes/class-compliance.php:65
+msgid "Does your site use AI-generated images or other AI-generated media?"
+msgstr "¿Tu sitio usa imágenes generadas por IA u otros medios generados por IA?"
+
+#: includes/class-compliance.php:66
+msgid "Examples: images from ChatGPT, Gemini, Firefly, Midjourney or Stable Diffusion, AI-edited photos. Article 50(2) obliges the provider of the generator to mark such media; the plugin preserves that marking in your files and adds the visible disclosure Article 50(4) asks of deepfake deployers."
+msgstr "Ejemplos: imágenes de ChatGPT, Gemini, Firefly, Midjourney o Stable Diffusion, fotos editadas con IA. El artículo 50, apartado 2, obliga al proveedor del generador a marcar estos contenidos; el plugin conserva esa marca en tus archivos y añade la divulgación visible que el artículo 50, apartado 4, exige a los responsables del despliegue de ultrafalsificaciones."
+
+#: includes/class-compliance.php:68
+msgid "Scan the media library, confirm the review queue and keep the visible badge and file metadata on."
+msgstr "Analiza la biblioteca de medios, confirma la cola de revisión y mantén activados la insignia visible y los metadatos del archivo."
+
+#: includes/class-compliance.php:72
+msgid "Does your site use AI for personalisation, recommendations or audience targeting?"
+msgstr "¿Tu sitio usa IA para personalización, recomendaciones o segmentación de audiencias?"
+
+#: includes/class-compliance.php:73
+msgid "Examples: product recommendations, personalised content, behavioural targeting."
+msgstr "Ejemplos: recomendaciones de productos, contenido personalizado, segmentación por comportamiento."
+
+#: includes/class-compliance.php:75
+msgid "Declare the tool on the AI Systems page and decide whether visitors are told about it."
+msgstr "Declara la herramienta en la página Sistemas de IA y decide si se informa de ella a los visitantes."
+
+#: includes/class-compliance.php:79
+msgid "Does your site use AI translation to serve content in other languages?"
+msgstr "¿Tu sitio usa traducción con IA para ofrecer contenido en otros idiomas?"
+
+#: includes/class-compliance.php:80
+msgid "Examples: DeepL, machine-translated pages from a multilingual plugin, AI translation add-ons."
+msgstr "Ejemplos: DeepL, páginas traducidas automáticamente por un plugin multilingüe, complementos de traducción con IA."
+
+#: includes/class-compliance.php:82
+msgid "Declare the translation tool on the AI Systems page; consider a notice on translated pages."
+msgstr "Declara la herramienta de traducción en la página Sistemas de IA; considera un aviso en las páginas traducidas."
+
+#: includes/class-compliance.php:86
+msgid "Does your site generate or host synthetic audio, video or deepfake-style content?"
+msgstr "¿Tu sitio genera o aloja audio o vídeo sintéticos o contenido de tipo deepfake?"
+
+#: includes/class-compliance.php:87
+msgid "Examples: AI voice-overs, AI-generated video, cloned voices, digital avatars."
+msgstr "Ejemplos: locuciones con IA, vídeo generado por IA, voces clonadas, avatares digitales."
+
+#: includes/class-compliance.php:89
+msgid "Label the media in the library (video and audio are detected too) and add an explicit note on affected pages."
+msgstr "Etiqueta los medios en la biblioteca (el vídeo y el audio también se detectan) y añade un aviso explícito en las páginas afectadas."
+
+#: includes/class-compliance.php:102
+msgid "Staff and contributors know which AI tools this site uses and what they are used for"
+msgstr "El personal y los colaboradores saben qué herramientas de IA usa este sitio y para qué se usan"
+
+#: includes/class-compliance.php:103
+msgid "An internal policy on AI use (what is allowed, what needs review) is written down"
+msgstr "Existe por escrito una política interna sobre el uso de IA (qué está permitido, qué necesita revisión)"
+
+#: includes/class-compliance.php:104
+msgid "People who work with AI tools have had training or guidance on their capabilities and limits"
+msgstr "Las personas que trabajan con herramientas de IA han recibido formación u orientación sobre sus capacidades y límites"
+
+#: includes/class-compliance.php:105
+msgid "A date is set to review AI tool usage, the policy and these declarations"
+msgstr "Hay una fecha fijada para revisar el uso de las herramientas de IA, la política y estas declaraciones"
+
+#: includes/class-compliance.php:106
+msgid "Visitors are told about AI-generated content and AI systems on this site"
+msgstr "Se informa a los visitantes sobre el contenido generado por IA y los sistemas de IA de este sitio"
+
+#: includes/class-compliance.php:120
+msgid "AI Act enters into force"
+msgstr "El AI Act entra en vigor"
+
+#: includes/class-compliance.php:121
+msgid "Regulation (EU) 2024/1689 is in force; its obligations start applying in stages."
+msgstr "El Reglamento (UE) 2024/1689 está en vigor; sus obligaciones empiezan a aplicarse por fases."
+
+#: includes/class-compliance.php:125
+msgid "General provisions and prohibited practices apply"
+msgstr "Se aplican las disposiciones generales y las prácticas prohibidas"
+
+#: includes/class-compliance.php:126
+msgid "Chapters I and II: the AI literacy duty for providers and deployers (Article 4) and the ban on prohibited AI practices (Article 5)."
+msgstr "Capítulos I y II: el deber de alfabetización en IA para proveedores y responsables del despliegue (artículo 4) y la prohibición de determinadas prácticas de IA (artículo 5)."
+
+#: includes/class-compliance.php:130
+msgid "General-purpose AI and governance rules apply"
+msgstr "Se aplican las normas sobre IA de uso general y gobernanza"
+
+#: includes/class-compliance.php:131
+msgid "Obligations for providers of general-purpose AI models, notifying authorities, governance and penalties (Chapters V, VII and XII)."
+msgstr "Obligaciones para los proveedores de modelos de IA de uso general, autoridades notificantes, gobernanza y sanciones (capítulos V, VII y XII)."
+
+#: includes/class-compliance.php:135
+msgid "General application, including Article 50"
+msgstr "Aplicación general, incluido el artículo 50"
+
+#: includes/class-compliance.php:136
+msgid "Transparency obligations for chatbots, AI-generated content and deepfakes (Article 50) and most remaining provisions apply."
+msgstr "Se aplican las obligaciones de transparencia para chatbots, contenido generado por IA y deepfakes (artículo 50) y la mayoría de las disposiciones restantes."
+
+#: includes/class-compliance.php:140
+msgid "High-risk AI in regulated products"
+msgstr "IA de alto riesgo en productos regulados"
+
+#: includes/class-compliance.php:141
+msgid "Obligations for high-risk AI systems that are safety components of products covered by Annex I (Article 6(1))."
+msgstr "Obligaciones para los sistemas de IA de alto riesgo que son componentes de seguridad de productos cubiertos por el anexo I (artículo 6, apartado 1)."
+
+#: includes/class-compliance.php:153
+msgid "Settings saved"
+msgstr "Ajustes guardados"
+
+#: includes/class-compliance.php:154
+msgid "Library scan started"
+msgstr "Análisis de la biblioteca iniciado"
+
+#: includes/class-compliance.php:155
+msgid "Library scan finished"
+msgstr "Análisis de la biblioteca terminado"
+
+#: includes/class-compliance.php:156
+msgid "Auto-repair sweep finished"
+msgstr "Ciclo de reparación automática terminado"
+
+#: includes/class-compliance.php:157
+msgid "Bulk action: labeled as AI"
+msgstr "Acción en lote: etiquetados como IA"
+
+#: includes/class-compliance.php:158
+msgid "Bulk action: label removed"
+msgstr "Acción en lote: etiqueta quitada"
+
+#: includes/class-compliance.php:159
+msgid "Bulk action: review confirmed"
+msgstr "Acción en lote: revisión confirmada"
+
+#: includes/class-compliance.php:160
+msgid "Bulk action: review dismissed"
+msgstr "Acción en lote: revisión descartada"
+
+#: includes/class-compliance.php:161
+msgid "Bulk action: declared as camera photo"
+msgstr "Acción en lote: declarados como foto de cámara"
+
+#: includes/class-compliance.php:162
+msgid "Bulk action: declared as human work"
+msgstr "Acción en lote: declarados como obra humana"
+
+#: includes/class-compliance.php:163
+msgid "Bulk action: declaration removed"
+msgstr "Acción en lote: declaración quitada"
+
+#: includes/class-compliance.php:164
+msgid "Setup: badge look chosen"
+msgstr "Configuración: aspecto de la insignia elegido"
+
+#: includes/class-compliance.php:165
+msgid "Setup: file writing chosen"
+msgstr "Configuración: escritura en archivos elegida"
+
+#: includes/class-compliance.php:166
+msgid "Setup: last step undone"
+msgstr "Configuración: último paso deshecho"
+
+#: includes/class-compliance.php:167
+msgid "Setup finished"
+msgstr "Configuración terminada"
+
+#: includes/class-compliance.php:168
+msgid "Self-assessment saved"
+msgstr "Autoevaluación guardada"
+
+#: includes/class-compliance.php:169
+msgid "AI literacy checklist saved"
+msgstr "Lista de comprobación de alfabetización en IA guardada"
+
+#: includes/class-compliance.php:170
+msgid "AI systems scanned"
+msgstr "Sistemas de IA analizados"
+
+#: includes/class-compliance.php:171
+msgid "AI system declared"
+msgstr "Sistema de IA declarado"
+
+#: includes/class-compliance.php:172
+msgid "AI system declaration removed"
+msgstr "Declaración de sistema de IA quitada"
+
+#: includes/class-compliance.php:173
+msgid "AI systems notice visibility changed"
+msgstr "Visibilidad del aviso de sistemas de IA cambiada"
+
+#: includes/class-compliance.php:426
+msgid "AI-written text is declared: either the assessment says none is published, or at least one post carries an AI level"
+msgstr "El texto escrito con IA está declarado: o la evaluación indica que no se publica ninguno, o al menos una entrada lleva un nivel de IA"
+
+#: includes/class-compliance.php:429
+msgid "Set the AI level on your AI-written posts, or answer the text question with no."
+msgstr "Define el nivel de IA en tus entradas escritas con IA, o responde que no a la pregunta sobre el texto."
+
+#: includes/class-compliance.php:433
+msgid "AI media is labeled: either the assessment says none is used, or the badge is on, at least one file is labeled and nothing waits in the review queue"
+msgstr "Los medios de IA están etiquetados: o la evaluación indica que no se usa ninguno, o la insignia está activada, al menos un archivo está etiquetado y nada espera en la cola de revisión"
+
+#: includes/class-compliance.php:436
+msgid "Scan the library, work through the review queue and keep the visible badge on."
+msgstr "Analiza la biblioteca, revisa la cola de revisión y mantén activada la insignia visible."
+
+#: includes/class-compliance.php:440
+msgid "The chatbot question is answered (yes or no), so the chat notice follows a decision"
+msgstr "La pregunta sobre el chatbot está respondida (sí o no), así que el aviso del chat sigue una decisión"
+
+#: includes/class-compliance.php:443
+msgid "Answer whether the site runs a chat and who answers in it."
+msgstr "Responde si el sitio tiene un chat y quién responde en él."
+
+#: includes/class-compliance.php:447
+msgid "Self-assessment and Article 4 checklist are complete"
+msgstr "La autoevaluación y la lista de comprobación del artículo 4 están completas"
+
+#: includes/class-compliance.php:450
+msgid "Answer the six questions and tick the checklist items that apply."
+msgstr "Responde las seis preguntas y marca los elementos de la lista que correspondan."
+
+#: includes/class-compliance.php:459
+msgid "AI systems are inventoried: the plugin list was scanned and every detected or declared system has a visibility decision"
+msgstr "Los sistemas de IA están inventariados: la lista de plugins se ha analizado y cada sistema detectado o declarado tiene una decisión de visibilidad"
+
+#: includes/class-compliance.php:462
+msgid "Run the scan on the AI Systems page and decide which systems visitors are told about."
+msgstr "Ejecuta el análisis en la página Sistemas de IA y decide de qué sistemas se informa a los visitantes."
+
+#: includes/class-compliance.php:496
+msgid "Good"
+msgstr "Bien"
+
+#: includes/class-compliance.php:497
+msgid "Needs attention"
+msgstr "Requiere atención"
+
+#: includes/class-compliance.php:499
+msgid "Action required"
+msgstr "Acción necesaria"
 
 #: includes/class-delivery.php:59
 msgid "The delivery check is switched off."
@@ -695,494 +1960,341 @@ msgstr "Servido desde otro host"
 msgid "Could not be fetched"
 msgstr "No se ha podido descargar"
 
+#. translators: very short label for media declared as not AI-made, shown on small thumbnails.
+#: includes/class-frontend.php:211
+msgctxt "short human badge label"
+msgid "Human"
+msgstr "Humano"
+
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:165
+#: includes/class-frontend.php:242
 msgctxt "short badge label"
 msgid "AI"
 msgstr "IA"
 
+#: includes/class-notice.php:136
+msgid "This text was created with the help of AI."
+msgstr "Este texto se ha creado con ayuda de IA."
 
-#: admin/class-media-library.php
-msgid "This attachment is labeled as AI-generated, so every file below should carry the declaration."
-msgstr "Este adjunto está etiquetado como generado por IA, por lo que todos los archivos de abajo deberían llevar la declaración."
-
-#: admin/class-media-library.php
-msgid "This attachment is not labeled as AI-generated. Nothing is written into its files, and no declaration is expected below."
-msgstr "Este adjunto no está etiquetado como generado por IA. No se escribe nada en sus archivos y abajo no se espera ninguna declaración."
-
-#: admin/class-media-library.php
-msgid "no declaration"
-msgstr "sin declaración"
-
-#: admin/class-content-label.php:100
-#: admin/class-content-label.php:167
-msgid "AI in this text"
-msgstr "IA en este texto"
-
-#: admin/class-content-label.php:108
-#: admin/class-content-label.php:168
-msgid "Responsible person"
-msgstr "Persona responsable"
-
-#. translators: 1: reviewer name, 2: review date.
-#. translators: 1: name of the reviewer, 2: review date.
-#: admin/class-content-label.php:117
-#: admin/class-content-label.php:171
-#: includes/class-notice.php:82
-#, php-format
-msgid "Reviewed by %1$s on %2$s."
-msgstr "Revisado por %1$s el %2$s."
-
-#: admin/class-content-label.php:123
-msgid "The text or its images changed since; save with the reviewed level again after checking."
-msgstr "El texto o sus imágenes han cambiado desde entonces; tras comprobarlo, guarda de nuevo con el nivel «revisado»."
-
-#: admin/class-content-label.php:128
-msgid "AI levels show a note on the post. The wording, position, excerpt and feed options are in the TransparAI settings."
-msgstr "Los niveles de IA muestran un aviso en la entrada. El texto, la posición y las opciones de extracto y feed están en los ajustes de TransparAI."
-
-#: admin/class-content-label.php:172
-msgid "AI levels show a note on the post. Wording and placement are set in the TransparAI settings."
-msgstr "Los niveles de IA muestran un aviso en la entrada. El texto y la ubicación se definen en los ajustes de TransparAI."
-
-#: admin/class-content-label.php:243
-#: admin/class-content-label.php:376
-#: admin/class-content-label.php:406
-msgid "AI text"
-msgstr "Texto IA"
-
-#: admin/class-content-label.php:269
-msgid "changed since review"
-msgstr "modificado desde la revisión"
-
-#: admin/class-content-label.php:314
-msgid "All AI levels"
-msgstr "Todos los niveles de IA"
-
-#: admin/class-content-label.php:315
-msgid "Any AI involvement"
-msgstr "Cualquier participación de IA"
-
-#: admin/class-content-label.php:316
-#: includes/class-notice.php:118
-msgid "Not classified"
-msgstr "Sin clasificar"
-
-#: admin/class-content-label.php:408
-msgid "&mdash; No change &mdash;"
-msgstr "&mdash; Sin cambios &mdash;"
-
-#: admin/class-content-label.php:409
-msgid "Remove classification"
-msgstr "Quitar la clasificación"
-
-#: admin/class-settings.php:322
-msgid "AI-written text"
-msgstr "Texto escrito con IA"
-
-#: admin/class-settings.php:323
-msgid "Every post carries an AI level (none, AI-assisted, AI-generated, AI-generated and reviewed), set in the editor sidebar, in Quick Edit or in bulk. AI levels show a note on the post; the shortcode [transparai_notice] and the \"AI notice\" block place it anywhere by hand."
-msgstr "Cada entrada lleva un nivel de IA (ninguno, asistido por IA, generado por IA, generado por IA y revisado), definido en la barra lateral del editor, en la edición rápida o en lote. Los niveles de IA muestran un aviso en la entrada; el shortcode [transparai_notice] y el bloque «Aviso de IA» lo colocan a mano donde quieras."
-
-#: admin/class-settings.php:326
-msgid "Note text"
-msgstr "Texto del aviso"
-
-#: admin/class-settings.php:328
-#: includes/class-notice.php:107
-msgid "This text was generated by AI."
-msgstr "Este texto fue generado por IA."
-
-#: admin/class-settings.php:329
-msgid "Leave empty for a translated wording per level (\"created with the help of AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
-msgstr "Déjalo vacío para un texto traducido por nivel («creado con ayuda de IA», «generado por IA», «generado por IA y revisado por una persona»)."
-
-#: admin/class-settings.php:335
-msgid "Ahead of the content"
-msgstr "Antes del contenido"
-
-#: admin/class-settings.php:336
-msgid "After the content"
-msgstr "Después del contenido"
-
-#: admin/class-settings.php:343
-msgid "Review"
-msgstr "Revisión"
-
-#: admin/class-settings.php:345
-msgid "Name of the person responsible"
-msgstr "Nombre de la persona responsable"
-
-#: admin/class-settings.php:346
-msgid "Default for the \"responsible person\" of reviewed texts; each post can name someone else. The reviewer, date and a fingerprint of the reviewed text are recorded with the post."
-msgstr "Valor por defecto de la «persona responsable» de los textos revisados; cada entrada puede nombrar a otra. El revisor, la fecha y una huella del texto revisado se guardan con la entrada."
-
-#: admin/class-settings.php:348
-msgid "Name the reviewer and the review date in the public note and in the structured data"
-msgstr "Nombrar al revisor y la fecha de revisión en el aviso público y en los datos estructurados"
-
-#: admin/class-settings.php:352
-msgid "New posts"
-msgstr "Entradas nuevas"
-
-#: admin/class-settings.php:357
-msgid "Preselected level for posts created from now on. Existing posts are never reclassified."
-msgstr "Nivel preseleccionado para las entradas creadas a partir de ahora. Las entradas existentes nunca se reclasifican."
-
-#: admin/class-settings.php:361
-msgid "Excerpts and feeds"
-msgstr "Extractos y feeds"
-
-#: admin/class-settings.php:364
-msgid "Append the note as plain text to excerpts (archives, teasers, related posts)"
-msgstr "Añadir el aviso como texto plano a los extractos (archivos, avances, entradas relacionadas)"
-
-#: admin/class-settings.php:366
-msgid "Add the note to RSS feed items (content, summary and a machine-readable dc:description element)"
-msgstr "Añadir el aviso a los elementos del feed RSS (contenido, resumen y un elemento dc:description legible por máquinas)"
-
-#: includes/class-notice.php:105
+#: includes/class-notice.php:138
 msgid "This text was generated by AI and reviewed by a person."
 msgstr "Este texto fue generado por IA y revisado por una persona."
 
-#: includes/class-notice.php:119
+#: includes/class-notice.php:152
 msgid "No AI used"
 msgstr "Sin uso de IA"
 
-#: includes/class-notice.php:120
+#: includes/class-notice.php:153
 msgid "AI-assisted"
 msgstr "Asistido por IA"
 
-#: includes/class-notice.php:122
+#: includes/class-notice.php:155
 msgid "AI-generated, reviewed by a person"
 msgstr "Generado por IA, revisado por una persona"
 
-#: includes/class-notice.php:355
+#: includes/class-notice.php:195
+msgid "Dismiss this notice"
+msgstr "Descartar este aviso"
+
+#: includes/class-notice.php:198
+msgid "AI notice"
+msgstr "Aviso de IA"
+
+#: includes/class-notice.php:200
+msgid "Close"
+msgstr "Cerrar"
+
+#: includes/class-notice.php:599
 msgid "This post has no AI level yet, so the notice stays hidden. Set the level in the document sidebar under TransparAI."
 msgstr "Esta entrada aún no tiene nivel de IA, así que el aviso permanece oculto. Define el nivel en la barra lateral del documento, en TransparAI."
 
-#: includes/class-notice.php:385
-#: includes/class-notice.php:391
-msgid "AI notice"
-msgstr "Aviso de IA"
-
-#: includes/class-notice.php:386
+#: includes/class-notice.php:628
 msgid "Style"
 msgstr "Estilo"
 
-#: includes/class-notice.php:387
-msgid "Block (own line)"
-msgstr "Bloque (línea propia)"
-
-#: includes/class-notice.php:388
-msgid "Inline (inside text)"
-msgstr "En línea (dentro del texto)"
-
-#: includes/class-notice.php:389
+#: includes/class-notice.php:634
 msgid "Custom text"
 msgstr "Texto personalizado"
 
-#: includes/class-notice.php:390
+#: includes/class-notice.php:635
 msgid "Leave empty to use the wording from the TransparAI settings."
 msgstr "Déjalo vacío para usar el texto de los ajustes de TransparAI."
 
-#: blocks/notice/block.json
-msgctxt "block title"
-msgid "AI notice"
-msgstr "Aviso de IA"
+#: includes/class-systems.php:52
+msgid "Text generation"
+msgstr "Generación de texto"
 
-#: blocks/notice/block.json
-msgctxt "block description"
-msgid "Places the AI disclosure note of this post where you want it. Renders only when the post has an AI level."
-msgstr "Coloca el aviso de IA de esta entrada donde quieras. Solo se muestra si la entrada tiene un nivel de IA."
+#: includes/class-systems.php:53
+msgid "Image generation"
+msgstr "Generación de imágenes"
 
+#: includes/class-systems.php:54
+msgid "Chatbot"
+msgstr "Chatbot"
+
+#: includes/class-systems.php:55
+msgid "Translation"
+msgstr "Traducción"
+
+#: includes/class-systems.php:56
+msgid "Personalisation"
+msgstr "Personalización"
+
+#: includes/class-systems.php:57
+msgid "SEO assistant"
+msgstr "Asistente SEO"
+
+#: includes/class-systems.php:58
+msgid "Search and recommendations"
+msgstr "Búsqueda y recomendaciones"
+
+#: includes/class-systems.php:59
+msgid "Audio and video"
+msgstr "Audio y vídeo"
+
+#: includes/class-systems.php:60
+msgid "Editor assistant"
+msgstr "Asistente del editor"
+
+#: includes/class-systems.php:61
+msgid "Other"
+msgstr "Otro"
+
+#. translators: %s: plugin file.
+#: includes/class-systems.php:231
+#, php-format
+msgid "plugin %s"
+msgstr "plugin %s"
+
+#: admin/class-settings.php:737
+#: includes/class-systems.php:353
+msgid "declared by hand"
+msgstr "declarado a mano"
+
+#: blocks/chatbot-notice/block.json
 #: blocks/notice/block.json
 msgctxt "block keyword"
 msgid "ai"
 msgstr "ia"
 
+#: blocks/chatbot-notice/block.json
 #: blocks/notice/block.json
 msgctxt "block keyword"
 msgid "disclosure"
 msgstr "aviso"
 
 #: blocks/notice/block.json
+#: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "transparency"
 msgstr "transparencia"
 
+#: blocks/chatbot-notice/block.json
 #: blocks/notice/block.json
+#: blocks/systems-list/block.json
+#: blocks/systems-notice/block.json
 msgctxt "block keyword"
 msgid "eu ai act"
 msgstr "ai act"
 
-#: admin/class-media-library.php:85
-msgid "camera photo (digitalCapture)"
-msgstr "foto de cámara (digitalCapture)"
+#: admin/class-settings.php:746
+msgid "Text note style"
+msgstr "Estilo del aviso de texto"
 
-#: admin/class-media-library.php:86
-msgid "human digital work (digitalCreation)"
-msgstr "obra digital humana (digitalCreation)"
+#: admin/class-settings.php:747
+msgid "Text note position"
+msgstr "Posición del aviso de texto"
 
-#: admin/class-media-library.php:88
-msgid "Not AI:"
-msgstr "Sin IA:"
+#: admin/class-settings.php:748
+msgid "Visible badge on labeled media"
+msgstr "Insignia visible en los medios etiquetados"
 
-#. translators: %s: IPTC digital source type token.
-#: admin/class-media-library.php:358
-#, php-format
-msgid "This attachment is declared as not AI-made (%s). The declaration is written into files that carry no other digital source type."
-msgstr "Este adjunto está declarado como no creado por IA (%s). La declaración se escribe en los archivos que no llevan otro digital source type."
+#: admin/class-settings.php:749
+msgid "Page notice on pages with labeled media"
+msgstr "Aviso de página en páginas con medios etiquetados"
 
-#: admin/class-media-library.php:476
-#: admin/class-media-library.php:541
-msgid "Declared not AI (camera, human work)"
-msgstr "Declarado sin IA (cámara, obra humana)"
+#: admin/class-settings.php:750
+msgid "Chatbot question answered with"
+msgstr "Pregunta del chatbot respondida con"
 
-#: admin/class-media-library.php:587
-msgid "Declare as camera photo (not AI)"
-msgstr "Declarar como foto de cámara (sin IA)"
+#: admin/class-settings.php:751
+msgid "Chatbot notice active"
+msgstr "Aviso de chatbot activo"
 
-#: admin/class-media-library.php:588
-msgid "Declare as human work (not AI)"
-msgstr "Declarar como obra humana (sin IA)"
+#: admin/class-settings.php:752
+msgid "AI systems notice"
+msgstr "Aviso de sistemas de IA"
 
-#: admin/class-media-library.php:589
-msgid "Remove \"not AI\" declaration"
-msgstr "Quitar la declaración «sin IA»"
+#: admin/class-settings.php:753
+msgid "Structured data (Schema.org)"
+msgstr "Datos estructurados (Schema.org)"
 
-#: admin/class-settings.php:311
-msgid "Not AI"
-msgstr "Sin IA"
+#: admin/class-settings.php:679
+msgid "Detection relies on metadata embedded by generators; files whose metadata was stripped carry no signal."
+msgstr "La detección se basa en metadatos incrustados por los generadores; los archivos cuyos metadatos se eliminaron no llevan ninguna señal."
 
-#: admin/class-settings.php:314
-msgid "Also show a badge on media declared as camera photo or human work (the structured data carries the declaration either way)"
-msgstr "Mostrar también una insignia en los medios declarados como foto de cámara u obra humana (los datos estructurados llevan la declaración de todos modos)"
+#: admin/class-settings.php:680
+msgid "A declaration records a statement by the site operator; it is not cryptographic proof of origin."
+msgstr "Una declaración registra una afirmación del operador del sitio; no es una prueba criptográfica de origen."
 
-#: admin/class-settings.php:315
-#: includes/class-frontend.php:164
-msgid "Human made"
-msgstr "Hecho por personas"
+#: admin/class-settings.php:681
+msgid "Text disclosure levels are entered by editors; the review fingerprint shows whether content changed since the review, not whether the review was correct."
+msgstr "Los niveles de divulgación de texto los introducen los editores; la huella de revisión muestra si el contenido cambió desde la revisión, no si la revisión fue correcta."
 
-#: admin/class-settings.php:447
-msgid "Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote"
-msgstr "Escribir también digitalCapture o digitalCreation en los medios declarados sin IA, pero nunca sobre una declaración que otra herramienta o una cámara ya escribió"
+#: admin/class-settings.php:682
+msgid "The readiness score, the self-assessment and the AI literacy checklist summarise the plugin state and the operator's own answers; they are not a legal assessment."
+msgstr "La puntuación de preparación, la autoevaluación y la lista de alfabetización en IA resumen el estado del plugin y las propias respuestas del operador; no son una evaluación jurídica."
 
-#. translators: very short label for media declared as not AI-made, shown on small thumbnails.
-#: includes/class-frontend.php:172
-msgctxt "short human badge label"
-msgid "Human"
-msgstr "Humano"
+#: admin/class-settings.php:737
+msgid "Detected"
+msgstr "Detectado"
 
-#. translators: %s: previous declaration state (ai, detected, human, dismissed).
-#: admin/class-media-library.php:417
-#, php-format
-msgid "from %s"
-msgstr "antes %s"
+#: admin/class-dashboard.php:471
+msgid "You answered every question with no. Keep the answers current when the site starts using AI; the Article 4 checklist below still documents your awareness."
+msgstr "Has respondido que no a todas las preguntas. Mantén las respuestas al día cuando el sitio empiece a usar IA; la lista de comprobación del artículo 4 más abajo sigue documentando tu concienciación."
 
-#: admin/class-settings.php:114
-#: admin/class-settings.php:128
-msgid "audit report"
-msgstr "informe de auditoría"
+#: admin/class-settings.php:381
+#: admin/class-settings.php:529
+msgid "Only where a block or shortcode is placed"
+msgstr "Solo donde se coloque un bloque o shortcode"
 
-#: admin/class-settings.php:129
-msgid "items"
-msgstr "elementos"
+#: includes/class-notice.php:587
+msgid "Choose a file from the media library in the block settings. Only labeled files show a label."
+msgstr "Elige un archivo de la biblioteca de medios en los ajustes del bloque. Solo los archivos etiquetados muestran una etiqueta."
 
-#: admin/class-settings.php:131
-msgid "Document hash"
-msgstr "Hash del documento"
+#: includes/class-notice.php:590
+msgid "This file carries no label, so nothing shows. Label it in the media library or choose another file."
+msgstr "Este archivo no lleva etiqueta, por eso no se muestra nada. Etiquétalo en la biblioteca de medios o elige otro archivo."
 
-#: admin/class-settings.php:132
-msgid "sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash."
-msgstr "sha256 de los hechos siguientes sin marcas de tiempo: dos informes de un sitio sin cambios llevan el mismo hash."
+#: includes/class-notice.php:593
+msgid "No AI system is marked as visible yet, so nothing shows. Mark systems under TransparAI, AI Systems."
+msgstr "Ningún sistema de IA está marcado como visible todavía, por eso no se muestra nada. Marca sistemas en TransparAI, Sistemas de IA."
 
-#: admin/class-settings.php:133
-msgid "Basis"
-msgstr "Base"
+#: includes/class-notice.php:596
+msgid "The chatbot notice is off, so nothing shows. Answer the chatbot question in the TransparAI settings."
+msgstr "El aviso del chatbot está desactivado, por eso no se muestra nada. Responde la pregunta sobre el chatbot en los ajustes de TransparAI."
 
-#: admin/class-settings.php:134
-msgid "Limitations"
-msgstr "Limitaciones"
+#: includes/class-notice.php:636
+msgid "Select file"
+msgstr "Seleccionar archivo"
 
-#: admin/class-settings.php:141
-msgid "Print or save as PDF"
-msgstr "Imprimir o guardar como PDF"
+#: includes/class-notice.php:637
+msgid "Replace file"
+msgstr "Reemplazar archivo"
 
-#: admin/class-settings.php:266
-msgid "Print view"
-msgstr "Vista de impresión"
+#: blocks/chatbot-notice/block.json
+msgctxt "block title"
+msgid "Chatbot AI Notice"
+msgstr "Aviso de IA del chatbot"
 
-#: admin/class-settings.php:268
-msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
-msgstr "La exportación lista cada archivo etiquetado, declarado o pendiente con su fuente de detección, confianza, historial completo y la persona detrás de cada cambio. La vista de impresión añade un hash del documento sobre los hechos, la base y las limitaciones indicadas; el mismo registro está disponible en /wp-json/transparai/v1/report."
+#: blocks/chatbot-notice/block.json
+msgctxt "block description"
+msgid "Tells visitors that an AI answers in the chat, as Article 50 of the EU AI Act requires, with the wording from the TransparAI settings. Put it on the contact page or next to the chat widget. Stays hidden while the chatbot question is unanswered or no AI answers."
+msgstr "Informa a los visitantes de que una IA responde en el chat, como exige el artículo 50 de la Ley de IA de la UE, con el texto de los ajustes de TransparAI. Colócalo en la página de contacto o junto al widget de chat. Permanece oculto mientras la pregunta sobre el chatbot no tenga respuesta o ninguna IA responda."
 
-#: admin/class-settings.php:272
-msgid "Open setup"
-msgstr "Abrir la configuración"
+#: blocks/chatbot-notice/block.json
+msgctxt "block keyword"
+msgid "chatbot"
+msgstr "chatbot"
 
-#: admin/class-setup.php:243
-msgid "Setup in three steps"
-msgstr "Configuración en tres pasos"
+#: blocks/chatbot-notice/block.json
+msgctxt "block keyword"
+msgid "chat"
+msgstr "chat"
 
-#: admin/class-setup.php:244
-msgid "Each step writes something real and can be taken back with the undo button. Nothing is labeled without your review, and no request leaves your server."
-msgstr "Cada paso escribe algo real y puede deshacerse con el botón de deshacer. Nada se etiqueta sin tu revisión y ninguna petición sale de tu servidor."
+#: blocks/media-label/block.json
+msgctxt "block title"
+msgid "AI Image Label"
+msgstr "Etiqueta de imagen IA"
 
-#: admin/class-setup.php:248
-msgid "1. Scan the existing library"
-msgstr "1. Escanear la biblioteca existente"
+#: blocks/media-label/block.json
+msgctxt "block description"
+msgid "The label of one image, video or audio file from the media library: AI-generated, with the generator name when known, or Human made. Place it under a gallery, in a caption or next to a builder image the automatic badge does not reach. Shows only for labeled files."
+msgstr "La etiqueta de un archivo de imagen, vídeo o audio de la biblioteca de medios: generado por IA, con el nombre del generador si se conoce, o hecho por personas. Colócala bajo una galería, en un pie de foto o junto a una imagen de un maquetador que la insignia automática no alcanza. Solo se muestra para archivos etiquetados."
 
-#. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:254
-#, php-format
-msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
-msgstr "%1$d archivos de medios, %2$d de ellos escaneados. Las declaraciones claras se etiquetan, las señales fuertes esperan en la cola de revisión."
+#: blocks/media-label/block.json
+msgctxt "block keyword"
+msgid "ai image"
+msgstr "imagen ia"
 
-#: admin/class-setup.php:261
-msgid "Scan now"
-msgstr "Escanear ahora"
+#: blocks/media-label/block.json
+msgctxt "block keyword"
+msgid "c2pa"
+msgstr "c2pa"
 
-#: admin/class-setup.php:265
-msgid "2. Choose the badge look"
-msgstr "2. Elegir el aspecto de la insignia"
+#: blocks/media-label/block.json
+msgctxt "block keyword"
+msgid "content credentials"
+msgstr "content credentials"
 
-#: admin/class-setup.php:307
-msgid "Save badge look"
-msgstr "Guardar aspecto de la insignia"
+#: blocks/media-label/block.json
+#: blocks/notice/block.json
+msgctxt "block keyword"
+msgid "label"
+msgstr "etiqueta"
 
-#: admin/class-setup.php:311
-#: admin/class-setup.php:331
-msgid "Saved."
-msgstr "Guardado."
+#: blocks/media-label/block.json
+msgctxt "block keyword"
+msgid "human made"
+msgstr "hecho por personas"
 
-#: admin/class-setup.php:317
-msgid "3. Decide about the files"
-msgstr "3. Decidir sobre los archivos"
+#: blocks/notice/block.json
+msgctxt "block title"
+msgid "AI Notice"
+msgstr "Aviso de IA"
 
-#: admin/class-setup.php:322
-msgid "Write the machine-readable declaration into labeled image files (XMP, all sizes; merged into existing metadata, removable)"
-msgstr "Escribir la declaración legible por máquinas en los archivos de imagen etiquetados (XMP, todos los tamaños; fusionada con los metadatos existentes, reversible)"
+#: blocks/notice/block.json
+msgctxt "block description"
+msgid "Disclosure note for AI-written text, as the EU AI Act asks for: a block, an inline note, a dismissible banner, a badge or a button that opens a dialog, with the wording from the TransparAI settings. Shows only when the post has an AI level."
+msgstr "Nota de divulgación para textos escritos con IA, como pide la Ley de IA de la UE: un bloque, una nota en línea, un banner descartable, una insignia o un botón que abre un diálogo, con el texto de los ajustes de TransparAI. Solo se muestra cuando la entrada tiene un nivel de IA."
 
-#: admin/class-setup.php:323
-msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr "Reflejarla también en IPTC-IIM en los JPEG sin otro bloque IPTC"
+#: blocks/systems-list/block.json
+msgctxt "block title"
+msgid "AI Systems List"
+msgstr "Lista de sistemas de IA"
 
-#: admin/class-setup.php:324
-msgid "Also write digitalCapture or digitalCreation for media declared as not AI-made"
-msgstr "Escribir también digitalCapture o digitalCreation en los medios declarados sin IA"
+#: blocks/systems-list/block.json
+msgctxt "block description"
+msgid "A list of the AI systems marked as visible in the TransparAI registry, each with its category. The building block for an AI transparency statement, kept in sync with the registry: a system you add or hide appears or disappears on every page that carries the list."
+msgstr "Una lista de los sistemas de IA marcados como visibles en el registro de TransparAI, cada uno con su categoría. La pieza básica de una declaración de transparencia de IA, sincronizada con el registro: un sistema que añades u ocultas aparece o desaparece en todas las páginas que llevan la lista."
 
-#: admin/class-setup.php:325
-msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr "Restaurar las declaraciones que eliminan los optimizadores de imágenes (barrido cada hora)"
+#: blocks/systems-list/block.json
+#: blocks/systems-notice/block.json
+msgctxt "block keyword"
+msgid "ai systems"
+msgstr "sistemas de ia"
 
-#: admin/class-setup.php:327
-msgid "Save file settings"
-msgstr "Guardar ajustes de archivos"
+#: blocks/systems-list/block.json
+msgctxt "block keyword"
+msgid "transparency statement"
+msgstr "declaración de transparencia"
 
-#: admin/class-setup.php:342
-msgid "Finish setup"
-msgstr "Terminar la configuración"
+#: blocks/systems-list/block.json
+msgctxt "block keyword"
+msgid "registry"
+msgstr "registro"
 
-#. translators: %s: name of the setup step (badge or writing).
-#: admin/class-setup.php:355
-#, php-format
-msgid "Undo last step (%s)"
-msgstr "Deshacer el último paso (%s)"
+#: blocks/systems-list/block.json
+msgctxt "block keyword"
+msgid "list"
+msgstr "lista"
 
-#: admin/class-setup.php:356
-msgid "badge look"
-msgstr "aspecto de la insignia"
+#: blocks/systems-notice/block.json
+msgctxt "block title"
+msgid "AI Systems Notice"
+msgstr "Aviso de sistemas de IA"
 
-#: admin/class-setup.php:356
-msgid "file settings"
-msgstr "ajustes de archivos"
+#: blocks/systems-notice/block.json
+msgctxt "block description"
+msgid "One sentence naming the AI systems this site uses, taken from the TransparAI registry: chatbots, recommendations, image generation, translation. For the imprint, the privacy policy or a transparency page. Shows only when at least one system is marked as visible."
+msgstr "Una frase que nombra los sistemas de IA que usa este sitio, tomada del registro de TransparAI: chatbots, recomendaciones, generación de imágenes, traducción. Para el aviso legal, la política de privacidad o una página de transparencia. Solo se muestra cuando al menos un sistema está marcado como visible."
 
-#: admin/class-setup.php:368
-msgid "Not now"
-msgstr "Ahora no"
+#: blocks/systems-notice/block.json
+msgctxt "block keyword"
+msgid "privacy policy"
+msgstr "política de privacidad"
 
-#: admin/class-settings.php:475
-msgid "Chatbot disclosure"
-msgstr "Aviso de chatbot"
-
-#: admin/class-settings.php:476
-msgid "Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false \"this is an AI\" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server."
-msgstr "Los visitantes deben saber cuándo hablan con un sistema de IA, a más tardar al comenzar la conversación. Tu respuesta decide; lo que el plugin encuentra en el sitio solo informa, porque la mayoría de los widgets de chat son chats en vivo en los que responde una persona y un falso «esto es una IA» engañaría a los visitantes. La detección es local: plugins activos, fragmentos del tema, los scripts que registra una página y lo que tu propio navegador vio como administrador. Ninguna petición sale del servidor."
-
-#: admin/class-settings.php:480
-msgid "Found on this site"
-msgstr "Encontrado en este sitio"
-
-#: admin/class-settings.php:483
-msgid "No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here."
-msgstr "Por ahora no se ha encontrado ningún widget de chat o chatbot conocido. Abre algunas páginas de tu sitio con la sesión iniciada; la comprobación se ejecuta en tu navegador y se notifica aquí."
-
-#: admin/class-settings.php:488
-msgid "a bot answers"
-msgstr "responde un bot"
-
-#: admin/class-settings.php:489
-msgid "people answer"
-msgstr "responden personas"
-
-#: admin/class-settings.php:490
-msgid "live chat with optional bot"
-msgstr "chat en vivo con bot opcional"
-
-#: admin/class-settings.php:491
-msgid "staffing unknown"
-msgstr "atención desconocida"
-
-#: admin/class-settings.php:502
-msgid "Does this site run a chat?"
-msgstr "¿Este sitio tiene un chat?"
-
-#: admin/class-settings.php:509
-msgid "Not decided yet"
-msgstr "Aún sin decidir"
-
-#: admin/class-settings.php:510
-msgid "Yes"
-msgstr "Sí"
-
-#: admin/class-settings.php:511
-msgid "No"
-msgstr "No"
-
-#: admin/class-settings.php:518
-msgid "An AI answers"
-msgstr "Responde una IA"
-
-#: admin/class-settings.php:519
-msgid "People answer, an AI sometimes"
-msgstr "Responden personas, a veces una IA"
-
-#: admin/class-settings.php:520
-msgid "Only people answer"
-msgstr "Solo responden personas"
-
-#: admin/class-settings.php:524
-msgid "The notice appears only with \"Yes\" and an AI that answers at least sometimes."
-msgstr "El aviso solo aparece con «Sí» y una IA que responde al menos a veces."
-
-#: admin/class-settings.php:528
-msgid "Notice"
-msgstr "Aviso"
-
-#: admin/class-settings.php:530
-#: includes/class-chatbot.php:111
-msgid "You are chatting with an AI system."
-msgstr "Estás chateando con un sistema de IA."
-
-#: admin/class-settings.php:536
-msgid "As the first message of the bot (AI Engine; otherwise next to the widget)"
-msgstr "Como primer mensaje del bot (AI Engine; si no, junto al widget)"
-
-#: admin/class-settings.php:537
-msgid "Next to the chat widget"
-msgstr "Junto al widget de chat"
-
-#: admin/class-settings.php:538
-msgid "As a line at the end of every page"
-msgstr "Como una línea al final de cada página"
+#: blocks/systems-notice/block.json
+msgctxt "block keyword"
+msgid "imprint"
+msgstr "aviso legal"

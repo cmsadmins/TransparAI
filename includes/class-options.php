@@ -48,7 +48,10 @@ final class TransparAI_Options {
 			'human_badge_text'        => '', /* Empty = translated default "Human made". */
 			/* AI-written text: per-post disclosure levels. */
 			'content_notice_text'     => '', /* Custom note for all AI levels; empty = translated default per level. */
-			'content_notice_position' => 'before', /* before | after the content. */
+			'content_notice_position' => 'before', /* before | after | both | manual (blocks and shortcode only). */
+			'content_notice_style'    => 'block', /* block | inline | banner (dismissible) | badge | modal. */
+			'content_title_badge'     => '0', /* Append a small AI badge to the post title in the loop. */
+			'feed_title_prefix'       => '0', /* Prefix feed item titles of AI-written posts with [AI]. */
 			'content_default_level'   => '', /* Preselected level for new posts only; '' = none. */
 			'content_responsible'     => '', /* Default name of the person responsible for reviewed texts. */
 			'content_show_reviewer'   => '0', /* Append "reviewed by {name} on {date}" to the note. */
@@ -60,6 +63,11 @@ final class TransparAI_Options {
 			'chatbot_staffing'        => 'mixed', /* ai | human | mixed: who answers in it. */
 			'chatbot_notice_text'     => '', /* Empty = translated default. */
 			'chatbot_output'          => 'badge', /* chat (first bot message, AI Engine) | badge (next to the widget) | footer. */
+
+			/* AI systems in use (bundled local registry, nothing is fetched). */
+			'systems_notice'          => '0', /* Front-end notice naming the AI systems switched to visible. */
+			'systems_notice_style'    => 'footer', /* footer | badge | banner | manual (blocks and shortcode only). */
+			'systems_notice_text'     => '', /* Empty = translated default; %s = list of names. */
 
 			/* Automatic detection. */
 			'autodetect'              => '1',
@@ -137,7 +145,9 @@ final class TransparAI_Options {
 			'mode_certain'            => array( 'flag', 'queue', 'off' ),
 			'mode_likely'             => array( 'flag', 'queue', 'off' ),
 
-			'content_notice_position' => array( 'before', 'after' ),
+			'content_notice_position' => array( 'before', 'after', 'both', 'manual' ),
+			'content_notice_style'    => array( 'block', 'inline', 'banner', 'badge', 'modal' ),
+			'systems_notice_style'    => array( 'footer', 'badge', 'banner', 'manual' ),
 			'content_default_level'   => array_merge( array( '' ), TransparAI_Meta::CONTENT_LEVELS ),
 			'chatbot_answer'          => array( 'unknown', 'yes', 'no' ),
 			'chatbot_staffing'        => array( 'ai', 'human', 'mixed' ),
@@ -155,6 +165,9 @@ final class TransparAI_Options {
 			'content_show_reviewer',
 			'content_excerpt_notice',
 			'feed_notice',
+			'content_title_badge',
+			'feed_title_prefix',
+			'systems_notice',
 			'autodetect',
 			'filename_hints',
 			'detect_av',
@@ -184,7 +197,7 @@ final class TransparAI_Options {
 				$clean[ $key ] = $valid ? $value : '';
 				continue;
 			}
-			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text', 'chatbot_notice_text' ), true ) ) {
+			if ( in_array( $key, array( 'badge_text', 'page_notice_text', 'content_notice_text', 'content_responsible', 'human_badge_text', 'chatbot_notice_text', 'systems_notice_text' ), true ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_text_field( (string) $raw[ $key ] ) : '';
 				$clean[ $key ] = mb_substr( $value, 0, in_array( $key, array( 'badge_text', 'content_responsible', 'human_badge_text' ), true ) ? 100 : 300 );
 				continue;

@@ -4,7 +4,9 @@ WordPress plugin that finds AI-generated media in the library, labels it with a
 visible badge (EU AI Act, Art. 50) and writes machine-readable IPTC/XMP metadata
 into the files. Detection covers C2PA/Content Credentials, the IPTC digital
 source type, generator signatures in PNG chunks and EXIF/XMP, MP4 boxes and MP3
-declarations.
+declarations. A compliance module adds the readiness score, a self-assessment,
+the Article 4 AI literacy checklist, a local registry of AI plugins in use and
+a compliance report, all under a top-level "TransparAI" admin menu.
 
 - Requires WordPress 6.2+ and PHP 7.4+ (tested up to PHP 8.5)
 - No external requests, no telemetry. Everything runs on your server.
@@ -61,10 +63,14 @@ Everything below is stable API surface; the prefixes are `transparai_` for hooks
 * `_transparai_content_responsible`: name of the person responsible for a reviewed text (optional, falls back to the site default).
 * `_transparai_content_review`: JSON stamp written by the plugin when a post reaches the reviewed level: `{"by":display name,"by_id":user ID,"on":Y-m-d,"responsible":name,"hash":sha256}`. The hash covers title, content, featured image and every embedded attachment together with its AI label; `TransparAI_Meta::is_review_current()` tells whether it still matches. Readable in the editor, never writable through REST, and stripped down to the date for readers without `edit_post`.
 
-### Shortcode and block for the text note
-`[transparai_notice]` renders the note of the current post (`type="content"`, the default), `[transparai_notice type="media" id="123"]` the badge label of one labeled attachment. `style="inline"` gives a `span` inside running text instead of a `div`, `text="..."` overrides the wording, `id` picks another post. Both the shortcode and the "AI notice" block render only what is declared: a post without AI level or an unlabeled attachment produces nothing. When either is placed, the automatic note steps back. Filters: `transparai_notice_text` (`$text, $post_id, $level`) and `transparai_notice_html` (`$html, $args`).
+### Shortcode and blocks
+`[transparai_notice]` renders the note of the current post (`type="content"`, the default), `[transparai_notice type="media" id="123"]` the label of one attachment (AI-generated or Human made), `type="systems"` the AI systems notice and `type="chatbot"` the chatbot notice. `style` accepts `block`, `inline`, `banner`, `badge` or `modal`, `text="..."` overrides the wording, `id` picks another post or file. Five blocks cover the same ground with a live preview: "AI Notice" (`transparai/notice`), "AI Image Label" (`transparai/media-label`, with a media picker), "AI Systems Notice" (`transparai/systems-notice`), "AI Systems List" (`transparai/systems-list`, a `ul` with categories) and "Chatbot AI Notice" (`transparai/chatbot-notice`). Each block has its own `block.json` under `blocks/`, all share `blocks/editor.js` and one render path with the shortcode (`TransparAI_Notice::resolve()`). Everything renders only what is declared: a post without AI level, an unlabeled attachment, no visible system or no AI in the chat produces nothing. A placed AI Notice block marks the note as placed, so the automatic note steps back, also in block theme templates. The setting "only where a block or shortcode is placed" (`content_notice_position` and `systems_notice_style` value `manual`) switches the automatic output off entirely. Filters: `transparai_notice_text` (`$text, $post_id, $level`) and `transparai_notice_html` (`$html, $args`).
 
 ### REST API
+
+`GET /report` now carries `compliance` (`score`, `traffic`, `factors`, `assessment`,
+`literacy`, `systems`, `content`, `notices`) and `log`; the `document_hash` covers the
+compliance facts but not the log or the save timestamps.
 
  (`/wp-json/transparai/v1/`, authenticated users with `upload_files`, writes additionally need `edit_post` on the attachment, the report needs `manage_options`; nothing is public):
 
@@ -100,6 +106,54 @@ This sets the confirmed label, records the generator name and, with file writing
 * `trai-badge-manual`: keep the position as configured and switch the automatic overlay guard off for this subtree.
 
 The first six switch the guard off by themselves, since a placement you chose should not be second-guessed. The stacking level of all badges is the CSS custom property `--trai-badge-z` (default `30`, raised to `99` only where the guard found a real overlap); it inherits, so a theme can tune it globally or per container with a single declaration and without touching the stylesheet. The markup is one wrapper `span` carrying the state classes plus `span.trai-badge` directly after the media element.
+
+### Compliance module
+
+Three options besides the settings array, no custom tables:
+
+| Option | Shape |
+|---|---|
+| `transparai_compliance` (autoload off) | `assessment{id => yes|no}`, `assessment_at`, `assessment_by`, `literacy{id => bool}`, `literacy_at`, `literacy_by` |
+| `transparai_systems` | `detected{id => evidence}`, `manual{id => {name, category, slug}}`, `visible{id => true}`, `scanned_at` |
+| `transparai_log` | last 200 site events (`t`, `e`, `u`, `n`, `d`) |
+
+`TransparAI_Compliance::score()` is the share of met factors (`factors()`), each a
+decision or an artefact the plugin can verify itself; `traffic()` buckets it at 80 and 50.
+`milestones()` holds the enforcement dates of Regulation (EU) 2024/1689 (Article 113) in one place.
+
+`data/ai-systems.json` is the bundled registry (`id`, `name`, `category`, `article`, `risk`, `url`,
+`slugs`). Categories: `content`, `image`, `chatbot`, `translation`, `personalisation`, `seo`,
+`search`, `audio_video`, `assistant`, `other`. Extend or adjust it without a fork:
+
+```php
+add_filter( 'transparai_systems_registry', function ( array $registry ): array {
+    $registry['house-recommender'] = array(
+        'id'       => 'house-recommender',
+        'name'     => 'House Recommender',
+        'category' => 'personalisation',
+        'article'  => 'Art. 4',
+        'risk'     => 'limited',
+        'url'      => '',
+        'slugs'    => array( 'house-recommender' ),
+    );
+    return $registry;
+} );
+```
+
+The visitor notice text goes through `transparai_systems_notice` (`$text`, `$systems`).
+`[transparai_notice type="systems"]`, the "AI Systems Notice" block and the "AI Systems List" block place it
+by hand; `style` accepts `block`, `inline`, `banner`, `badge` or `modal` for every notice type, and the
+`manual` notice style keeps the automatic footer line off.
+
+### Label markup your theme renders itself
+
+```php
+echo apply_filters( 'transparai_label_media', $html );
+```
+
+Same rules as `the_content`: badge switched on, no builder editor, no feed. No
+`function_exists()` guard is needed, an inactive plugin leaves the filter unregistered.
+Bricks Builder output is handled automatically through `bricks/frontend/render_element`.
 
 ### WP-CLI
 

@@ -21,13 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class TransparAI_Settings {
 
-	private const PAGE = 'transparai';
+	/** Top-level menu slug (dashboard) and this page's slug under it. */
+	public const MENU = 'transparai';
+	public const PAGE = 'transparai-settings';
 
 	/**
 	 * Register hooks.
 	 */
 	public static function init(): void {
-		add_action( 'admin_menu', array( self::class, 'add_page' ) );
 		add_action( 'admin_init', array( self::class, 'register' ) );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'enqueue' ) );
 		add_action( 'admin_post_transparai_export', array( self::class, 'export_csv' ) );
@@ -128,6 +129,7 @@ th{background:#f6f7f7;}
 <h1>Transpar<span>AI</span> <?php esc_html_e( 'audit report', 'transparai' ); ?></h1>
 <p><?php echo esc_html( $report['site'] ); ?>, <?php echo esc_html( $report['generated_at'] ); ?>, <?php echo esc_html( sprintf( '%d %s', count( $report['items'] ), __( 'items', 'transparai' ) ) ); ?><?php echo $report['truncated'] ? ' (' . esc_html( $report['truncated_note'] ) . ')' : ''; ?></p>
 <div class="meta">
+<p><strong><?php esc_html_e( 'Not legal advice, no liability', 'transparai' ); ?>:</strong> <?php echo esc_html( TransparAI_Dashboard::disclaimer_text() ); ?></p>
 <p><strong><?php esc_html_e( 'Document hash', 'transparai' ); ?>:</strong> <code><?php echo esc_html( $report['document_hash'] ); ?></code><br />
 		<?php esc_html_e( 'sha256 over the facts below without timestamps: two reports of an unchanged site carry the same hash.', 'transparai' ); ?></p>
 <p><strong><?php esc_html_e( 'Basis', 'transparai' ); ?>:</strong> <?php echo esc_html( $report['guidance_basis'] ); ?></p>
@@ -136,9 +138,11 @@ th{background:#f6f7f7;}
 		<?php
 		foreach ( $report['limitations'] as $limitation ) :
 			?>
-	<li><?php echo esc_html( $limitation ); ?></li><?php endforeach; ?></ul>
+	<li><?php echo esc_html( self::limitation_text( $limitation ) ); ?></li><?php endforeach; ?></ul>
 </div>
 <p class="no-print"><button type="button" onclick="window.print()"><?php esc_html_e( 'Print or save as PDF', 'transparai' ); ?></button></p>
+				<?php self::print_compliance_sections( $report ); ?>
+<h2><?php esc_html_e( 'Media audit list', 'transparai' ); ?></h2>
 <table>
 <thead><tr>
 		<?php
@@ -171,23 +175,9 @@ th{background:#f6f7f7;}
 	public static function action_links( array $links ): array {
 		array_unshift(
 			$links,
-			'<a href="' . esc_url( admin_url( 'upload.php?page=' . self::PAGE ) ) . '">' . esc_html__( 'Settings', 'transparai' ) . '</a>'
+			'<a href="' . esc_url( admin_url( 'admin.php?page=' . self::PAGE ) ) . '">' . esc_html__( 'Settings', 'transparai' ) . '</a>'
 		);
 		return $links;
-	}
-
-	/**
-	 * Add the submenu page under Media.
-	 */
-	public static function add_page(): void {
-		add_submenu_page(
-			'upload.php',
-			__( 'TransparAI', 'transparai' ),
-			__( 'TransparAI', 'transparai' ),
-			'manage_options',
-			self::PAGE,
-			array( self::class, 'render' )
-		);
 	}
 
 	/**
@@ -206,9 +196,10 @@ th{background:#f6f7f7;}
 
 	/**
 	 * Page assets (scan loop lives in admin.js, gated by the page markup).
+	 * The menu itself is registered by TransparAI_Dashboard.
 	 */
 	public static function enqueue( string $hook ): void {
-		if ( 'media_page_' . self::PAGE !== $hook ) {
+		if ( 'transparai_page_' . self::PAGE !== $hook ) {
 			return;
 		}
 		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
@@ -226,8 +217,19 @@ th{background:#f6f7f7;}
 			return;
 		}
 		$options = TransparAI_Options::all();
-		$stats   = TransparAI_Scanner::stats();
-		$report  = TransparAI_Repair::report();
+		$tabs    = array(
+			'badge'     => __( 'Visible badge', 'transparai' ),
+			'text'      => __( 'AI-written text', 'transparai' ),
+			'chatbot'   => __( 'Chatbot disclosure', 'transparai' ),
+			'systems'   => __( 'AI systems', 'transparai' ),
+			'detection' => __( 'Automatic detection', 'transparai' ),
+			'files'     => __( 'File metadata', 'transparai' ),
+			'uninstall' => __( 'Uninstall', 'transparai' ),
+		);
+		$active  = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'badge'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only tab switch.
+		if ( ! isset( $tabs[ $active ] ) ) {
+			$active = 'badge';
+		}
 
 		if ( isset( $_GET['settings-updated'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only success notice after the Settings API redirect.
 			add_settings_error( 'transparai_messages', 'transparai_saved', __( 'Settings saved.', 'transparai' ), 'updated' );
@@ -235,81 +237,20 @@ th{background:#f6f7f7;}
 		settings_errors( 'transparai_messages' );
 		?>
 		<div class="wrap trai-settings">
-			<h1 class="trai-logo">
-				<?php echo self::logo_mark(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static inline SVG built from constants, no user input. ?>
-				<span class="trai-logo-text">Transpar<span class="trai-logo-ai">AI</span></span>
-			</h1>
-
-			<?php TransparAI_Setup::render_card(); ?>
-
-			<section class="trai-card">
-				<h2 class="trai-card-title"><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
-				<div class="trai-stats">
-					<div class="trai-stat">
-						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
-						<span class="trai-stat-label"><?php esc_html_e( 'Media files', 'transparai' ); ?></span>
-					</div>
-					<div class="trai-stat">
-						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['flagged'] ) ); ?></span>
-						<span class="trai-stat-label"><?php esc_html_e( 'Labeled as AI', 'transparai' ); ?></span>
-					</div>
-					<div class="trai-stat<?php echo $stats['detected'] > 0 ? ' trai-stat--action' : ''; ?>">
-						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['detected'] ) ); ?></span>
-						<span class="trai-stat-label"><?php esc_html_e( 'Waiting for review', 'transparai' ); ?></span>
-					</div>
-					<div class="trai-stat">
-						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['scanned'] ) ); ?></span>
-						<span class="trai-stat-label"><?php esc_html_e( 'Scanned', 'transparai' ); ?></span>
-					</div>
-				</div>
-				<p class="trai-actions">
-					<?php if ( $stats['detected'] > 0 ) : ?>
-						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
-					<?php endif; ?>
-					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
-						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Print view', 'transparai' ); ?></a>
-						<?php if ( ! TransparAI_Setup::visible() ) : ?>
-							<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( TransparAI_Setup::url() ); ?>"><?php esc_html_e( 'Open setup', 'transparai' ); ?></a>
-						<?php endif; ?>
-				</p>
-				<p class="description"><?php esc_html_e( 'The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report.', 'transparai' ); ?></p>
-			</section>
-
-			<section class="trai-card">
-				<h2 class="trai-card-title"><?php esc_html_e( 'Scan existing library', 'transparai' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server.', 'transparai' ); ?></p>
-				<p class="trai-actions">
-					<button type="button" class="trai-btn" id="trai-scan-start" data-mode="missing"><?php esc_html_e( 'Scan new/unscanned media', 'transparai' ); ?></button>
-					<button type="button" class="trai-btn trai-btn--ghost" id="trai-scan-all" data-mode="all"><?php esc_html_e( 'Rescan everything', 'transparai' ); ?></button>
-					<button type="button" class="trai-btn trai-btn--ghost" id="trai-scan-stop" hidden><?php esc_html_e( 'Pause', 'transparai' ); ?></button>
-				</p>
-				<div id="trai-scan-progress" hidden>
-					<div class="trai-progress"><div class="trai-progress-bar" style="width:0"></div></div>
-					<p class="trai-progress-text"></p>
-				</div>
-
-				<?php if ( array() !== $report && isset( $report['completed_at'] ) ) : ?>
-					<p class="trai-report">
-						<?php
-						echo esc_html(
-							sprintf(
-								/* translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff. */
-								__( 'Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago).', 'transparai' ),
-								(int) ( $report['last_checked'] ?? $report['checked'] ?? 0 ),
-								(int) ( $report['last_repaired'] ?? $report['repaired'] ?? 0 ),
-								(int) ( $report['last_failed'] ?? $report['failed'] ?? 0 ),
-								human_time_diff( (int) $report['completed_at'] )
-							)
-						);
-						?>
-					</p>
-				<?php endif; ?>
-			</section>
+			<?php
+			self::render_header();
+			TransparAI_Setup::render_card();
+			?>
 
 			<form method="post" action="options.php">
 				<?php settings_fields( 'transparai' ); ?>
+				<nav class="nav-tab-wrapper trai-tabs" aria-label="<?php esc_attr_e( 'Settings sections', 'transparai' ); ?>">
+					<?php foreach ( $tabs as $tab_id => $tab_label ) : ?>
+						<a href="<?php echo esc_url( add_query_arg( 'tab', $tab_id, admin_url( 'admin.php?page=' . self::PAGE ) ) ); ?>" class="nav-tab<?php echo $tab_id === $active ? ' nav-tab-active' : ''; ?>" data-tab="<?php echo esc_attr( $tab_id ); ?>"><?php echo esc_html( $tab_label ); ?></a>
+					<?php endforeach; ?>
+				</nav>
 
-				<section class="trai-card">
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'badge', $active ); ?>>
 				<h2 class="trai-card-title"><?php esc_html_e( 'Visible badge', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -420,7 +361,7 @@ th{background:#f6f7f7;}
 				</table>
 				</section>
 
-				<section class="trai-card">
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'text', $active ); ?>>
 				<h2 class="trai-card-title"><?php esc_html_e( 'AI-written text', 'transparai' ); ?></h2>
 				<p class="description"><?php esc_html_e( 'Every post carries an AI level (none, AI-assisted, AI-generated, AI-generated and reviewed), set in the editor sidebar, in Quick Edit or in bulk. AI levels show a note on the post; the shortcode [transparai_notice] and the "AI notice" block place it anywhere by hand.', 'transparai' ); ?></p>
 				<table class="form-table" role="presentation">
@@ -436,9 +377,30 @@ th{background:#f6f7f7;}
 								array(
 									'before' => __( 'Ahead of the content', 'transparai' ),
 									'after'  => __( 'After the content', 'transparai' ),
+									'both'   => __( 'Ahead of and after the content', 'transparai' ),
+									'manual' => __( 'Only where a block or shortcode is placed', 'transparai' ),
+								)
+							);
+							self::select(
+								'content_notice_style',
+								$options['content_notice_style'],
+								array(
+									'block'  => __( 'Block (own line)', 'transparai' ),
+									'inline' => __( 'Inline (inside text)', 'transparai' ),
+									'banner' => __( 'Banner (dismissible)', 'transparai' ),
+									'badge'  => __( 'Badge (small chip)', 'transparai' ),
+									'modal'  => __( 'Modal (button opens a dialog)', 'transparai' ),
 								)
 							);
 							?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Post titles', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'content_title_badge' ); ?>" value="1" <?php checked( $options['content_title_badge'], '1' ); ?> />
+							<?php esc_html_e( 'Append a small AI badge to the title of AI-written posts in lists and archives', 'transparai' ); ?></label>
+							<p class="description"><?php esc_html_e( 'The badge is HTML inside the title. Themes that print titles unescaped inside attributes should leave this off.', 'transparai' ); ?></p>
 						</td>
 					</tr>
 					<tr>
@@ -465,13 +427,15 @@ th{background:#f6f7f7;}
 							<label><input type="checkbox" name="<?php self::name( 'content_excerpt_notice' ); ?>" value="1" <?php checked( $options['content_excerpt_notice'], '1' ); ?> />
 							<?php esc_html_e( 'Append the note as plain text to excerpts (archives, teasers, related posts)', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'feed_notice' ); ?>" value="1" <?php checked( $options['feed_notice'], '1' ); ?> />
-							<?php esc_html_e( 'Add the note to RSS feed items (content, summary and a machine-readable dc:description element)', 'transparai' ); ?></label>
+							<?php esc_html_e( 'Add the note to RSS feed items (content, summary and a machine-readable dc:description element)', 'transparai' ); ?></label><br />
+							<label><input type="checkbox" name="<?php self::name( 'feed_title_prefix' ); ?>" value="1" <?php checked( $options['feed_title_prefix'], '1' ); ?> />
+							<?php esc_html_e( 'Prefix feed item titles of AI-written posts with [AI]', 'transparai' ); ?></label>
 						</td>
 					</tr>
 				</table>
 				</section>
 
-				<section class="trai-card">
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'chatbot', $active ); ?>>
 				<h2 class="trai-card-title"><?php esc_html_e( 'Chatbot disclosure', 'transparai' ); ?></h2>
 				<p class="description"><?php esc_html_e( 'Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false "this is an AI" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server.', 'transparai' ); ?></p>
 				<?php $findings = TransparAI_Chatbot::findings(); ?>
@@ -544,7 +508,43 @@ th{background:#f6f7f7;}
 				</table>
 				</section>
 
-				<section class="trai-card">
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'systems', $active ); ?>>
+				<h2 class="trai-card-title"><?php esc_html_e( 'AI systems in use', 'transparai' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'The plugin matches your installed plugins against a bundled list of known AI tools and lets you declare others by hand. Which of them visitors get told about is decided per system on the AI Systems page; nothing is switched on from a finding alone. The list ships with the plugin, nothing is fetched.', 'transparai' ); ?></p>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Visitor notice', 'transparai' ); ?></th>
+						<td>
+							<label><input type="checkbox" name="<?php self::name( 'systems_notice' ); ?>" value="1" <?php checked( $options['systems_notice'], '1' ); ?> />
+							<?php esc_html_e( 'Show a notice naming the AI systems marked as visible on every page', 'transparai' ); ?></label>
+							<p>
+							<?php
+							self::select(
+								'systems_notice_style',
+								$options['systems_notice_style'],
+								array(
+									'footer' => __( 'Line at the end of the page', 'transparai' ),
+									'badge'  => __( 'Small badge in a corner', 'transparai' ),
+									'banner' => __( 'Banner (dismissible)', 'transparai' ),
+									'manual' => __( 'Only where a block or shortcode is placed', 'transparai' ),
+								)
+							);
+							?>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="trai-systems-notice"><?php esc_html_e( 'Notice text', 'transparai' ); ?></label></th>
+						<td>
+							<input type="text" id="trai-systems-notice" class="regular-text" name="<?php self::name( 'systems_notice_text' ); ?>" value="<?php echo esc_attr( $options['systems_notice_text'] ); ?>" placeholder="<?php /* translators: %s: names of the visible AI systems. */ esc_attr_e( 'This site uses AI systems: %s.', 'transparai' ); ?>" />
+							<p class="description"><?php /* translators: %s is the literal placeholder token shown to the user. */ esc_html_e( 'Leave empty for the translated default. %s is replaced with the names of the visible systems.', 'transparai' ); ?></p>
+							<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=transparai-systems' ) ); ?>"><?php esc_html_e( 'Manage detected and declared AI systems', 'transparai' ); ?></a></p>
+						</td>
+					</tr>
+				</table>
+				</section>
+
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'detection', $active ); ?>>
 				<h2 class="trai-card-title"><?php esc_html_e( 'Automatic detection', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -598,9 +598,10 @@ th{background:#f6f7f7;}
 						</td>
 					</tr>
 				</table>
+				<?php self::render_scan_card( false ); ?>
 				</section>
 
-				<section class="trai-card">
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'files', $active ); ?>>
 				<h2 class="trai-card-title"><?php esc_html_e( 'Machine-readable file metadata', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -645,7 +646,7 @@ th{background:#f6f7f7;}
 				</table>
 				</section>
 
-				<section class="trai-card">
+				<section class="trai-card trai-tab-panel"<?php self::panel( 'uninstall', $active ); ?>>
 				<h2 class="trai-card-title"><?php esc_html_e( 'Uninstall', 'transparai' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -661,6 +662,233 @@ th{background:#f6f7f7;}
 				<p class="submit"><button type="submit" class="trai-btn"><?php esc_html_e( 'Save changes', 'transparai' ); ?></button></p>
 			</form>
 
+			<?php
+			TransparAI_Dashboard::render_disclaimer();
+			self::render_footer();
+			?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * The record keeps TransparAI_Meta::LIMITATIONS in English so the document
+	 * hash is the same in every locale; the print view shows them translated.
+	 */
+	private static function limitation_text( string $limitation ): string {
+		$translated = array(
+			__( 'Detection relies on metadata embedded by generators; files whose metadata was stripped carry no signal.', 'transparai' ),
+			__( 'A declaration records a statement by the site operator; it is not cryptographic proof of origin.', 'transparai' ),
+			__( 'Text disclosure levels are entered by editors; the review fingerprint shows whether content changed since the review, not whether the review was correct.', 'transparai' ),
+			__( 'The readiness score, the self-assessment and the AI literacy checklist summarise the plugin state and the operator\'s own answers; they are not a legal assessment.', 'transparai' ),
+		);
+		$index      = array_search( $limitation, TransparAI_Meta::LIMITATIONS, true );
+		return false === $index ? $limitation : ( $translated[ $index ] ?? $limitation );
+	}
+
+	/**
+	 * Compliance sections of the print view: score, assessment, checklist,
+	 * AI systems, notice status, AI-written content and recent activity.
+	 * Plain HTML, plain words (no glyph entities), everything escaped.
+	 *
+	 * @param array<string, mixed> $report The report record.
+	 */
+	private static function print_compliance_sections( array $report ): void {
+		$c = isset( $report['compliance'] ) && is_array( $report['compliance'] ) ? $report['compliance'] : array();
+		if ( array() === $c ) {
+			return;
+		}
+		$yes    = __( 'Yes', 'transparai' );
+		$no     = __( 'No', 'transparai' );
+		$levels = TransparAI_Notice::level_labels();
+		?>
+<h2><?php esc_html_e( 'Readiness score', 'transparai' ); ?></h2>
+<p><strong><?php echo esc_html( (string) ( $c['score'] ?? 0 ) ); ?> / 100</strong> (<?php echo esc_html( TransparAI_Compliance::traffic_label( (string) ( $c['traffic'] ?? '' ) ) ); ?>)</p>
+<table><thead><tr><th><?php esc_html_e( 'Check', 'transparai' ); ?></th><th><?php esc_html_e( 'Done', 'transparai' ); ?></th></tr></thead><tbody>
+		<?php foreach ( (array) ( $c['factors'] ?? array() ) as $factor ) : ?>
+<tr><td><?php echo esc_html( (string) $factor['label'] ); ?></td><td><?php echo esc_html( ! empty( $factor['met'] ) ? $yes : $no ); ?></td></tr>
+		<?php endforeach; ?>
+</tbody></table>
+
+<h2><?php esc_html_e( 'Self-assessment', 'transparai' ); ?></h2>
+		<?php if ( '' !== (string) ( $c['assessment']['at'] ?? '' ) ) : ?>
+<p><?php echo esc_html( sprintf( '%s: %s, %s', __( 'Saved', 'transparai' ), (string) $c['assessment']['at'], (string) $c['assessment']['by'] ) ); ?></p>
+		<?php endif; ?>
+<table><thead><tr><th><?php esc_html_e( 'Question', 'transparai' ); ?></th><th><?php esc_html_e( 'Answer', 'transparai' ); ?></th><th><?php esc_html_e( 'Articles', 'transparai' ); ?></th></tr></thead><tbody>
+		<?php foreach ( TransparAI_Compliance::questions() as $id => $question ) : ?>
+			<?php $answer = (string) ( $c['assessment']['answers'][ $id ] ?? '' ); ?>
+<tr><td><?php echo esc_html( $question['text'] ); ?></td><td><?php echo esc_html( 'yes' === $answer ? $yes : ( 'no' === $answer ? $no : __( 'not answered', 'transparai' ) ) ); ?></td><td><?php echo esc_html( implode( ', ', $question['articles'] ) ); ?></td></tr>
+		<?php endforeach; ?>
+</tbody></table>
+
+<h2><?php esc_html_e( 'AI literacy checklist (Article 4)', 'transparai' ); ?></h2>
+<p><?php echo esc_html( sprintf( '%d / %d', (int) ( $c['literacy']['done'] ?? 0 ), (int) ( $c['literacy']['total'] ?? 0 ) ) ); ?><?php echo '' !== (string) ( $c['literacy']['at'] ?? '' ) ? esc_html( sprintf( ', %s: %s, %s', __( 'Saved', 'transparai' ), (string) $c['literacy']['at'], (string) $c['literacy']['by'] ) ) : ''; ?></p>
+<table><thead><tr><th><?php esc_html_e( 'Item', 'transparai' ); ?></th><th><?php esc_html_e( 'Done', 'transparai' ); ?></th></tr></thead><tbody>
+		<?php foreach ( TransparAI_Compliance::literacy_items() as $id => $label ) : ?>
+<tr><td><?php echo esc_html( $label ); ?></td><td><?php echo esc_html( ! empty( $c['literacy']['items'][ $id ] ) ? $yes : $no ); ?></td></tr>
+		<?php endforeach; ?>
+</tbody></table>
+
+<h2><?php esc_html_e( 'AI systems in use', 'transparai' ); ?></h2>
+		<?php if ( array() === (array) ( $c['systems'] ?? array() ) ) : ?>
+<p><?php esc_html_e( 'None detected or declared.', 'transparai' ); ?></p>
+		<?php else : ?>
+<table><thead><tr><th><?php esc_html_e( 'System', 'transparai' ); ?></th><th><?php esc_html_e( 'Category', 'transparai' ); ?></th><th><?php esc_html_e( 'Articles', 'transparai' ); ?></th><th><?php esc_html_e( 'Source', 'transparai' ); ?></th><th><?php esc_html_e( 'Visitors told', 'transparai' ); ?></th></tr></thead><tbody>
+			<?php foreach ( (array) $c['systems'] as $system ) : ?>
+<tr><td><?php echo esc_html( (string) $system['name'] ); ?></td><td><?php echo esc_html( TransparAI_Systems::category_labels()[ $system['category'] ] ?? (string) $system['category'] ); ?></td><td><?php echo esc_html( (string) $system['article'] ); ?></td><td><?php echo esc_html( 'manual' === $system['source'] ? __( 'declared by hand', 'transparai' ) : __( 'Detected', 'transparai' ) ); ?></td><td><?php echo esc_html( ! empty( $system['visible'] ) ? $yes : $no ); ?></td></tr>
+			<?php endforeach; ?>
+</tbody></table>
+		<?php endif; ?>
+
+<h2><?php esc_html_e( 'Disclosure notices', 'transparai' ); ?></h2>
+<table><tbody>
+		<?php
+		$notice_labels = array(
+			'content_notice_style'    => __( 'Text note style', 'transparai' ),
+			'content_notice_position' => __( 'Text note position', 'transparai' ),
+			'badge_enabled'           => __( 'Visible badge on labeled media', 'transparai' ),
+			'page_notice'             => __( 'Page notice on pages with labeled media', 'transparai' ),
+			'chatbot_answer'          => __( 'Chatbot question answered with', 'transparai' ),
+			'chatbot_active'          => __( 'Chatbot notice active', 'transparai' ),
+			'systems_notice'          => __( 'AI systems notice', 'transparai' ),
+			'schema_output'           => __( 'Structured data (Schema.org)', 'transparai' ),
+		);
+		foreach ( (array) ( $c['notices'] ?? array() ) as $key => $value ) :
+			?>
+<tr><td><?php echo esc_html( $notice_labels[ $key ] ?? (string) $key ); ?></td><td><?php echo esc_html( is_bool( $value ) ? ( $value ? $yes : $no ) : (string) $value ); ?></td></tr>
+		<?php endforeach; ?>
+</tbody></table>
+
+<h2><?php esc_html_e( 'AI-written content', 'transparai' ); ?></h2>
+<p>
+		<?php
+		foreach ( (array) ( $c['content']['counts'] ?? array() ) as $level => $count ) {
+			echo esc_html( ( $levels[ $level ] ?? (string) $level ) . ': ' . (string) $count ) . ' ';
+		}
+		?>
+</p>
+		<?php if ( array() !== (array) ( $c['content']['items'] ?? array() ) ) : ?>
+<table><thead><tr><th>ID</th><th><?php esc_html_e( 'Title', 'transparai' ); ?></th><th><?php esc_html_e( 'Type', 'transparai' ); ?></th><th><?php esc_html_e( 'Level', 'transparai' ); ?></th><th><?php esc_html_e( 'Reviewed by', 'transparai' ); ?></th><th><?php esc_html_e( 'Reviewed on', 'transparai' ); ?></th><th><?php esc_html_e( 'Review current', 'transparai' ); ?></th></tr></thead><tbody>
+			<?php foreach ( (array) $c['content']['items'] as $item ) : ?>
+<tr><td><?php echo esc_html( (string) $item['ID'] ); ?></td><td><?php echo esc_html( (string) $item['title'] ); ?></td><td><?php echo esc_html( (string) $item['type'] ); ?></td><td><?php echo esc_html( $levels[ $item['level'] ] ?? (string) $item['level'] ); ?></td><td><?php echo esc_html( (string) $item['reviewed_by'] ); ?></td><td><?php echo esc_html( (string) $item['reviewed_on'] ); ?></td><td><?php echo esc_html( '' === (string) $item['reviewed_on'] ? '' : ( ! empty( $item['review_current'] ) ? $yes : $no ) ); ?></td></tr>
+			<?php endforeach; ?>
+</tbody></table>
+		<?php endif; ?>
+
+<h2><?php esc_html_e( 'Recent activity', 'transparai' ); ?></h2>
+<table><thead><tr><th><?php esc_html_e( 'When', 'transparai' ); ?></th><th><?php esc_html_e( 'Event', 'transparai' ); ?></th><th><?php esc_html_e( 'By', 'transparai' ); ?></th></tr></thead><tbody>
+		<?php foreach ( (array) ( $report['log'] ?? array() ) as $entry ) : ?>
+<tr><td><?php echo esc_html( gmdate( 'c', (int) $entry['t'] ) ); ?></td><td><?php echo esc_html( TransparAI_Compliance::event_label( (string) $entry['e'] ) ); ?></td><td><?php echo esc_html( '' !== (string) $entry['n'] ? (string) $entry['n'] : ( (int) $entry['u'] > 0 ? '#' . (int) $entry['u'] : '' ) ); ?></td></tr>
+		<?php endforeach; ?>
+</tbody></table>
+		<?php
+	}
+
+	/**
+	 * Logo header shared by every TransparAI admin screen.
+	 */
+	public static function render_header(): void {
+		?>
+			<h1 class="trai-logo">
+				<?php echo self::logo_mark(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static inline SVG built from constants, no user input. ?>
+				<span class="trai-logo-text">Transpar<span class="trai-logo-ai">AI</span></span>
+			</h1>
+		<?php
+	}
+
+	/**
+	 * Library counters with the review, export and setup links.
+	 */
+	public static function render_status_card(): void {
+		$stats = TransparAI_Scanner::stats();
+		?>
+			<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Library status', 'transparai' ); ?></h2>
+				<div class="trai-stats">
+					<div class="trai-stat">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Media files', 'transparai' ); ?></span>
+					</div>
+					<div class="trai-stat">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['flagged'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Labeled as AI', 'transparai' ); ?></span>
+					</div>
+					<div class="trai-stat<?php echo $stats['detected'] > 0 ? ' trai-stat--action' : ''; ?>">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['detected'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Waiting for review', 'transparai' ); ?></span>
+					</div>
+					<div class="trai-stat">
+						<span class="trai-stat-number"><?php echo esc_html( number_format_i18n( $stats['scanned'] ) ); ?></span>
+						<span class="trai-stat-label"><?php esc_html_e( 'Scanned', 'transparai' ); ?></span>
+					</div>
+				</div>
+				<p class="trai-actions">
+					<?php if ( $stats['detected'] > 0 ) : ?>
+						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
+					<?php endif; ?>
+					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
+						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Print view', 'transparai' ); ?></a>
+						<?php if ( ! TransparAI_Setup::visible() ) : ?>
+							<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( TransparAI_Setup::url() ); ?>"><?php esc_html_e( 'Open setup', 'transparai' ); ?></a>
+						<?php endif; ?>
+				</p>
+				<p class="description"><?php esc_html_e( 'The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report.', 'transparai' ); ?></p>
+			</section>
+		<?php
+	}
+
+	/**
+	 * Batched library scan with progress and the last auto-repair sweep.
+	 *
+	 * @param bool $card Own card (images page) or a block inside the
+	 *                   detection settings tab.
+	 */
+	public static function render_scan_card( bool $card = true ): void {
+		$report = TransparAI_Repair::report();
+		?>
+			<?php if ( $card ) : ?>
+			<section class="trai-card">
+				<h2 class="trai-card-title"><?php esc_html_e( 'Scan existing library', 'transparai' ); ?></h2>
+			<?php else : ?>
+				<h3 class="trai-card-subtitle"><?php esc_html_e( 'Scan existing library', 'transparai' ); ?></h3>
+			<?php endif; ?>
+				<p class="description"><?php esc_html_e( 'Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server.', 'transparai' ); ?></p>
+				<p class="trai-actions">
+					<button type="button" class="trai-btn" id="trai-scan-start" data-mode="missing"><?php esc_html_e( 'Scan new/unscanned media', 'transparai' ); ?></button>
+					<button type="button" class="trai-btn trai-btn--ghost" id="trai-scan-all" data-mode="all"><?php esc_html_e( 'Rescan everything', 'transparai' ); ?></button>
+					<button type="button" class="trai-btn trai-btn--ghost" id="trai-scan-stop" hidden><?php esc_html_e( 'Pause', 'transparai' ); ?></button>
+				</p>
+				<div id="trai-scan-progress" hidden>
+					<div class="trai-progress"><div class="trai-progress-bar" style="width:0"></div></div>
+					<p class="trai-progress-text"></p>
+				</div>
+
+				<?php if ( array() !== $report && isset( $report['completed_at'] ) ) : ?>
+					<p class="trai-report">
+						<?php
+						echo esc_html(
+							sprintf(
+								/* translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff. */
+								__( 'Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago).', 'transparai' ),
+								(int) ( $report['last_checked'] ?? $report['checked'] ?? 0 ),
+								(int) ( $report['last_repaired'] ?? $report['repaired'] ?? 0 ),
+								(int) ( $report['last_failed'] ?? $report['failed'] ?? 0 ),
+								human_time_diff( (int) $report['completed_at'] )
+							)
+						);
+						?>
+					</p>
+				<?php endif; ?>
+			<?php if ( $card ) : ?>
+			</section>
+			<?php endif; ?>
+		<?php
+	}
+
+	/**
+	 * Brand footer shared by every TransparAI admin screen.
+	 */
+	public static function render_footer(): void {
+		?>
 			<footer class="trai-footer">
 				<span class="trai-footer-brand">Transpar<span class="trai-logo-ai">AI</span> <?php echo esc_html( TRANSPARAI_VERSION ); ?></span>
 				<nav class="trai-footer-links" aria-label="<?php esc_attr_e( 'TransparAI links', 'transparai' ); ?>">
@@ -669,7 +897,6 @@ th{background:#f6f7f7;}
 					<a href="https://wordpress.org/support/plugin/transparai/" target="_blank" rel="noopener"><?php esc_html_e( 'Support forum', 'transparai' ); ?></a>
 				</nav>
 			</footer>
-		</div>
 		<?php
 	}
 
@@ -678,8 +905,8 @@ th{background:#f6f7f7;}
 	 * the orange AI corner badge and the scan line underneath. Vector twin of
 	 * the wp.org icon so the brand is identical everywhere.
 	 */
-	private static function logo_mark(): string {
-		return '<svg class="trai-logo-mark" viewBox="0 0 49 46" width="42" height="39" role="img" aria-hidden="true" focusable="false">'
+	public static function logo_mark(): string {
+		return '<svg xmlns="http://www.w3.org/2000/svg" class="trai-logo-mark" viewBox="0 0 49 46" width="42" height="39" role="img" aria-hidden="true" focusable="false">'
 			. '<rect x="3.2" y="4.2" width="41.6" height="31.6" fill="#fffffe" stroke="#1a1a1a" stroke-width="1.6"/>'
 			. '<circle cx="32.8" cy="14" r="3.4" fill="#a0a0a0"/>'
 			. '<path d="M4 35 L19.2 14 L28.8 35 Z" fill="#1a1a1a"/>'
@@ -688,6 +915,13 @@ th{background:#f6f7f7;}
 			. '<rect x="32.3" y="31" width="16.3" height="9.6" rx="1.2" fill="#ff6800"/>'
 			. '<path d="M36.9 38.3 L38.85 33.3 L40.8 38.3 M37.6 36.6 h2.5 M43.7 33.3 v5" fill="none" stroke="#fffffe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'
 			. '</svg>';
+	}
+
+	/**
+	 * Echo the id and hidden state of a settings tab panel.
+	 */
+	private static function panel( string $id, string $active ): void {
+		echo ' id="trai-tab-' . esc_attr( $id ) . '"' . ( $id === $active ? '' : ' hidden' );
 	}
 
 	/**
