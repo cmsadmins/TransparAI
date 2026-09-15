@@ -1,0 +1,1435 @@
+{
+  "_comment": "Bundled list of WordPress plugins with AI features, matched locally against installed plugins. Nothing is fetched. Extend via the transparai_systems_registry filter.",
+  "systems": [
+    {
+      "id": "ai",
+      "name": "AI (WordPress)",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai/",
+      "slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "ai-copilot",
+      "name": "AI Copilot",
+      "category": "assistant",
+      "article": "Art. 50(1), 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-copilot/",
+      "slugs": [
+        "ai-copilot"
+      ]
+    },
+    {
+      "id": "ai-engine",
+      "name": "AI Engine",
+      "category": "assistant",
+      "article": "Art. 50(1), 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-engine/",
+      "slugs": [
+        "ai-engine"
+      ]
+    },
+    {
+      "id": "ai-provider-for-anthropic",
+      "name": "AI Provider for Anthropic",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-provider-for-anthropic/",
+      "slugs": [
+        "ai-provider-for-anthropic"
+      ]
+    },
+    {
+      "id": "ai-provider-for-google",
+      "name": "AI Provider for Google",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-provider-for-google/",
+      "slugs": [
+        "ai-provider-for-google"
+      ]
+    },
+    {
+      "id": "ai-provider-for-openai",
+      "name": "AI Provider for OpenAI",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-provider-for-openai/",
+      "slugs": [
+        "ai-provider-for-openai"
+      ]
+    },
+    {
+      "id": "ai-services",
+      "name": "AI Services",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-services/",
+      "slugs": [
+        "ai-services"
+      ]
+    },
+    {
+      "id": "aibuddy-openai-chatgpt",
+      "name": "AI Bud",
+      "category": "assistant",
+      "article": "Art. 50(1), 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/aibuddy-openai-chatgpt/",
+      "slugs": [
+        "aibuddy-openai-chatgpt"
+      ]
+    },
+    {
+      "id": "angie",
+      "name": "Angie Agentic AI",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/angie/",
+      "slugs": [
+        "angie"
+      ]
+    },
+    {
+      "id": "automatorwp",
+      "name": "AutomatorWP",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/automatorwp/",
+      "slugs": [
+        "automatorwp"
+      ]
+    },
+    {
+      "id": "easy-mcp-ai",
+      "name": "Easy MCP AI",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/easy-mcp-ai/",
+      "slugs": [
+        "easy-mcp-ai"
+      ]
+    },
+    {
+      "id": "gpt3-ai-content-generator",
+      "name": "AI Power (AI Puffer)",
+      "category": "assistant",
+      "article": "Art. 50(1), 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/gpt3-ai-content-generator/",
+      "slugs": [
+        "gpt3-ai-content-generator"
+      ]
+    },
+    {
+      "id": "jetpack",
+      "name": "Jetpack (AI Assistant)",
+      "category": "assistant",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/jetpack/",
+      "slugs": [
+        "jetpack"
+      ]
+    },
+    {
+      "id": "royal-mcp",
+      "name": "Royal MCP",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/royal-mcp/",
+      "slugs": [
+        "royal-mcp"
+      ]
+    },
+    {
+      "id": "sg-ai-studio",
+      "name": "AI Agent by SiteGround",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/sg-ai-studio/",
+      "slugs": [
+        "sg-ai-studio"
+      ]
+    },
+    {
+      "id": "uncanny-automator",
+      "name": "Uncanny Automator",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/uncanny-automator/",
+      "slugs": [
+        "uncanny-automator"
+      ]
+    },
+    {
+      "id": "vibe-ai",
+      "name": "WPVibe MCP Server",
+      "category": "assistant",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/vibe-ai/",
+      "slugs": [
+        "vibe-ai"
+      ]
+    },
+    {
+      "id": "zip-ai",
+      "name": "ZIP AI",
+      "category": "assistant",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/zip-ai/",
+      "slugs": [
+        "zip-ai"
+      ]
+    },
+    {
+      "id": "ai-text-to-speech",
+      "name": "AI Text to Speech",
+      "category": "audio_video",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-text-to-speech/",
+      "slugs": [
+        "ai-text-to-speech"
+      ]
+    },
+    {
+      "id": "gspeech",
+      "name": "GSpeech TTS",
+      "category": "audio_video",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/gspeech/",
+      "slugs": [
+        "gspeech"
+      ]
+    },
+    {
+      "id": "responsivevoice-text-to-speech",
+      "name": "ResponsiveVoice Text To Speech",
+      "category": "audio_video",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/responsivevoice-text-to-speech/",
+      "slugs": [
+        "responsivevoice-text-to-speech"
+      ]
+    },
+    {
+      "id": "speechkit",
+      "name": "BeyondWords",
+      "category": "audio_video",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/speechkit/",
+      "slugs": [
+        "speechkit"
+      ]
+    },
+    {
+      "id": "text-to-audio",
+      "name": "Text To Speech TTS Accessibility",
+      "category": "audio_video",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/text-to-audio/",
+      "slugs": [
+        "text-to-audio"
+      ]
+    },
+    {
+      "id": "trinity-audio",
+      "name": "Trinity Audio",
+      "category": "audio_video",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/trinity-audio/",
+      "slugs": [
+        "trinity-audio"
+      ]
+    },
+    {
+      "id": "vidshop-for-woocommerce",
+      "name": "VidShop",
+      "category": "audio_video",
+      "article": "Art. 50(2), 50(4)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/vidshop-for-woocommerce/",
+      "slugs": [
+        "vidshop-for-woocommerce"
+      ]
+    },
+    {
+      "id": "boei-help",
+      "name": "Boei",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/boei-help/",
+      "slugs": [
+        "boei-help"
+      ]
+    },
+    {
+      "id": "button-contact-vr",
+      "name": "Buttonizer",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/button-contact-vr/",
+      "slugs": [
+        "button-contact-vr"
+      ]
+    },
+    {
+      "id": "chatbot",
+      "name": "WPBot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/chatbot/",
+      "slugs": [
+        "chatbot"
+      ]
+    },
+    {
+      "id": "chatbot-chatgpt",
+      "name": "Kognetiks Chatbot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/chatbot-chatgpt/",
+      "slugs": [
+        "chatbot-chatgpt"
+      ]
+    },
+    {
+      "id": "chatbot-com-ai-platform",
+      "name": "ChatBot.com",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/chatbot-com-ai-platform/",
+      "slugs": [
+        "chatbot-com-ai-platform"
+      ]
+    },
+    {
+      "id": "chatway-live-chat",
+      "name": "Chatway",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/chatway-live-chat/",
+      "slugs": [
+        "chatway-live-chat"
+      ]
+    },
+    {
+      "id": "geeky-bot",
+      "name": "Geeky Bot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/geeky-bot/",
+      "slugs": [
+        "geeky-bot"
+      ]
+    },
+    {
+      "id": "hyve-lite",
+      "name": "Hyve",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/hyve-lite/",
+      "slugs": [
+        "hyve-lite"
+      ]
+    },
+    {
+      "id": "jotform-ai-chatbot",
+      "name": "Jotform AI Chatbot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/jotform-ai-chatbot/",
+      "slugs": [
+        "jotform-ai-chatbot"
+      ]
+    },
+    {
+      "id": "leadin",
+      "name": "HubSpot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/leadin/",
+      "slugs": [
+        "leadin"
+      ]
+    },
+    {
+      "id": "mxchat-basic",
+      "name": "MxChat",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/mxchat-basic/",
+      "slugs": [
+        "mxchat-basic"
+      ]
+    },
+    {
+      "id": "smartsupp-live-chat",
+      "name": "Smartsupp",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/smartsupp-live-chat/",
+      "slugs": [
+        "smartsupp-live-chat"
+      ]
+    },
+    {
+      "id": "support-genix-lite",
+      "name": "Support Genix",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/support-genix-lite/",
+      "slugs": [
+        "support-genix-lite"
+      ]
+    },
+    {
+      "id": "supportcandy",
+      "name": "SupportCandy",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/supportcandy/",
+      "slugs": [
+        "supportcandy"
+      ]
+    },
+    {
+      "id": "tawkto-live-chat",
+      "name": "tawk.to Live Chat",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/tawkto-live-chat/",
+      "slugs": [
+        "tawkto-live-chat"
+      ]
+    },
+    {
+      "id": "tidio-live-chat",
+      "name": "Tidio",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/tidio-live-chat/",
+      "slugs": [
+        "tidio-live-chat"
+      ]
+    },
+    {
+      "id": "typebot",
+      "name": "Typebot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/typebot/",
+      "slugs": [
+        "typebot"
+      ]
+    },
+    {
+      "id": "wise-chat",
+      "name": "Wise Chat",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wise-chat/",
+      "slugs": [
+        "wise-chat"
+      ]
+    },
+    {
+      "id": "woowbot-woocommerce-chatbot",
+      "name": "WoowBot",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/woowbot-woocommerce-chatbot/",
+      "slugs": [
+        "woowbot-woocommerce-chatbot"
+      ]
+    },
+    {
+      "id": "wp-live-chat-software-for-wordpress",
+      "name": "LiveChat",
+      "category": "chatbot",
+      "article": "Art. 50(1)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wp-live-chat-software-for-wordpress/",
+      "slugs": [
+        "wp-live-chat-software-for-wordpress"
+      ]
+    },
+    {
+      "id": "ai-content-generation",
+      "name": "WP Wand",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-content-generation/",
+      "slugs": [
+        "ai-content-generation"
+      ]
+    },
+    {
+      "id": "ai-share-summarize",
+      "name": "Share Buttons and AI Summaries",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-share-summarize/",
+      "slugs": [
+        "ai-share-summarize"
+      ]
+    },
+    {
+      "id": "ai-wp-writer",
+      "name": "AI WP Writer",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-wp-writer/",
+      "slugs": [
+        "ai-wp-writer"
+      ]
+    },
+    {
+      "id": "autopen-ai-writer",
+      "name": "AutoPen AI Content Writer",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/autopen-ai-writer/",
+      "slugs": [
+        "autopen-ai-writer"
+      ]
+    },
+    {
+      "id": "betterdocs",
+      "name": "BetterDocs",
+      "category": "content",
+      "article": "Art. 50(1), 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/betterdocs/",
+      "slugs": [
+        "betterdocs"
+      ]
+    },
+    {
+      "id": "botwriter",
+      "name": "BotWriter",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/botwriter/",
+      "slugs": [
+        "botwriter"
+      ]
+    },
+    {
+      "id": "easy-accordion-free",
+      "name": "Easy Accordion (AI FAQ)",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/easy-accordion-free/",
+      "slugs": [
+        "easy-accordion-free"
+      ]
+    },
+    {
+      "id": "getgenie",
+      "name": "GetGenie",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/getgenie/",
+      "slugs": [
+        "getgenie"
+      ]
+    },
+    {
+      "id": "journalist-ai",
+      "name": "Arvow AI SEO Writer",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/journalist-ai/",
+      "slugs": [
+        "journalist-ai"
+      ]
+    },
+    {
+      "id": "seowriting",
+      "name": "SEOWriting",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/seowriting/",
+      "slugs": [
+        "seowriting"
+      ]
+    },
+    {
+      "id": "simple-tags",
+      "name": "TaxoPress",
+      "category": "content",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/simple-tags/",
+      "slugs": [
+        "simple-tags"
+      ]
+    },
+    {
+      "id": "soro-seo",
+      "name": "Soro",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/soro-seo/",
+      "slugs": [
+        "soro-seo"
+      ]
+    },
+    {
+      "id": "textbuilder",
+      "name": "TextBuilder",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/textbuilder/",
+      "slugs": [
+        "textbuilder"
+      ]
+    },
+    {
+      "id": "wedocs",
+      "name": "weDocs",
+      "category": "content",
+      "article": "Art. 50(1), 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wedocs/",
+      "slugs": [
+        "wedocs"
+      ]
+    },
+    {
+      "id": "wordclever-ai-content-writer",
+      "name": "WordClever AI Content Writer",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wordclever-ai-content-writer/",
+      "slugs": [
+        "wordclever-ai-content-writer"
+      ]
+    },
+    {
+      "id": "wordlift",
+      "name": "WordLift",
+      "category": "content",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wordlift/",
+      "slugs": [
+        "wordlift"
+      ]
+    },
+    {
+      "id": "wpforo",
+      "name": "wpForo Forum",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wpforo/",
+      "slugs": [
+        "wpforo"
+      ]
+    },
+    {
+      "id": "writesonic",
+      "name": "Writesonic",
+      "category": "content",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/writesonic/",
+      "slugs": [
+        "writesonic"
+      ]
+    },
+    {
+      "id": "ylabs-connector-for-wpwriter",
+      "name": "YLabs Connector for WPWriter",
+      "category": "content",
+      "article": "Art. 50(2), 50(4)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ylabs-connector-for-wpwriter/",
+      "slugs": [
+        "ylabs-connector-for-wpwriter"
+      ]
+    },
+    {
+      "id": "ai-alt-text-generator",
+      "name": "AI Alt Text Generator",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-alt-text-generator/",
+      "slugs": [
+        "ai-alt-text-generator"
+      ]
+    },
+    {
+      "id": "ai-image-alt-text",
+      "name": "AI Image Alt Text",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-image-alt-text/",
+      "slugs": [
+        "ai-image-alt-text"
+      ]
+    },
+    {
+      "id": "ai-image-generator",
+      "name": "AI Image Generator",
+      "category": "image",
+      "article": "Art. 50(2), 50(4)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-image-generator/",
+      "slugs": [
+        "ai-image-generator"
+      ]
+    },
+    {
+      "id": "alt-magic-ai-powered-alt-texts",
+      "name": "Alt Magic",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/alt-magic-ai-powered-alt-texts/",
+      "slugs": [
+        "alt-magic-ai-powered-alt-texts"
+      ]
+    },
+    {
+      "id": "alttext-ai",
+      "name": "Alt Text AI",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/alttext-ai/",
+      "slugs": [
+        "alttext-ai"
+      ]
+    },
+    {
+      "id": "auto-alt-text",
+      "name": "Auto Alt Text",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/auto-alt-text/",
+      "slugs": [
+        "auto-alt-text"
+      ]
+    },
+    {
+      "id": "bulk-image-alt-text-with-yoast",
+      "name": "Bulk Auto Image Alt Text",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/bulk-image-alt-text-with-yoast/",
+      "slugs": [
+        "bulk-image-alt-text-with-yoast"
+      ]
+    },
+    {
+      "id": "image-alt-text",
+      "name": "Image Alt Text",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/image-alt-text/",
+      "slugs": [
+        "image-alt-text"
+      ]
+    },
+    {
+      "id": "imageseo",
+      "name": "Image SEO",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/imageseo/",
+      "slugs": [
+        "imageseo"
+      ]
+    },
+    {
+      "id": "imajinn-ai",
+      "name": "Imajinn AI",
+      "category": "image",
+      "article": "Art. 50(2), 50(4)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/imajinn-ai/",
+      "slugs": [
+        "imajinn-ai"
+      ]
+    },
+    {
+      "id": "magic-post-thumbnail",
+      "name": "Magic Post Thumbnail",
+      "category": "image",
+      "article": "Art. 50(2), 50(4)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/magic-post-thumbnail/",
+      "slugs": [
+        "magic-post-thumbnail"
+      ]
+    },
+    {
+      "id": "media-file-renamer",
+      "name": "Media File Renamer",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/media-file-renamer/",
+      "slugs": [
+        "media-file-renamer"
+      ]
+    },
+    {
+      "id": "optimole-wp",
+      "name": "Optimole",
+      "category": "image",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/optimole-wp/",
+      "slugs": [
+        "optimole-wp"
+      ]
+    },
+    {
+      "id": "accessibe",
+      "name": "Web Accessibility by accessiBe",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/accessibe/",
+      "slugs": [
+        "accessibe"
+      ]
+    },
+    {
+      "id": "accessibility-by-audioeye",
+      "name": "Accessibility by AudioEye",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/accessibility-by-audioeye/",
+      "slugs": [
+        "accessibility-by-audioeye"
+      ]
+    },
+    {
+      "id": "akismet",
+      "name": "Akismet Anti-spam",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "minimal",
+      "url": "https://wordpress.org/plugins/akismet/",
+      "slugs": [
+        "akismet"
+      ]
+    },
+    {
+      "id": "allaccessible",
+      "name": "Accessibility by AllAccessible",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/allaccessible/",
+      "slugs": [
+        "allaccessible"
+      ]
+    },
+    {
+      "id": "astra-sites",
+      "name": "Starter Templates",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/astra-sites/",
+      "slugs": [
+        "astra-sites"
+      ]
+    },
+    {
+      "id": "beaver-builder-lite-version",
+      "name": "Beaver Builder",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/beaver-builder-lite-version/",
+      "slugs": [
+        "beaver-builder-lite-version"
+      ]
+    },
+    {
+      "id": "calculated-fields-form",
+      "name": "Calculated Fields Form",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/calculated-fields-form/",
+      "slugs": [
+        "calculated-fields-form"
+      ]
+    },
+    {
+      "id": "cleantalk-spam-protect",
+      "name": "CleanTalk Anti-Spam",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "minimal",
+      "url": "https://wordpress.org/plugins/cleantalk-spam-protect/",
+      "slugs": [
+        "cleantalk-spam-protect"
+      ]
+    },
+    {
+      "id": "elementor",
+      "name": "Elementor",
+      "category": "other",
+      "article": "Art. 50(2), 50(4)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/elementor/",
+      "slugs": [
+        "elementor"
+      ]
+    },
+    {
+      "id": "equalweb",
+      "name": "Equalweb Accessibility",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/equalweb/",
+      "slugs": [
+        "equalweb"
+      ]
+    },
+    {
+      "id": "everest-forms",
+      "name": "Everest Forms",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/everest-forms/",
+      "slugs": [
+        "everest-forms"
+      ]
+    },
+    {
+      "id": "fluentform",
+      "name": "Fluent Forms",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/fluentform/",
+      "slugs": [
+        "fluentform"
+      ]
+    },
+    {
+      "id": "formidable",
+      "name": "Formidable Forms",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/formidable/",
+      "slugs": [
+        "formidable"
+      ]
+    },
+    {
+      "id": "kadence-blocks",
+      "name": "Kadence Blocks",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/kadence-blocks/",
+      "slugs": [
+        "kadence-blocks"
+      ]
+    },
+    {
+      "id": "kubio",
+      "name": "Kubio AI Page Builder",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/kubio/",
+      "slugs": [
+        "kubio"
+      ]
+    },
+    {
+      "id": "oopspam-anti-spam",
+      "name": "OOPSpam Anti-Spam",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "minimal",
+      "url": "https://wordpress.org/plugins/oopspam-anti-spam/",
+      "slugs": [
+        "oopspam-anti-spam"
+      ]
+    },
+    {
+      "id": "otter-blocks",
+      "name": "Otter Blocks",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/otter-blocks/",
+      "slugs": [
+        "otter-blocks"
+      ]
+    },
+    {
+      "id": "pojo-accessibility",
+      "name": "Web Accessibility by Elementor",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/pojo-accessibility/",
+      "slugs": [
+        "pojo-accessibility"
+      ]
+    },
+    {
+      "id": "spectra-blocks",
+      "name": "Spectra Blocks",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/spectra-blocks/",
+      "slugs": [
+        "spectra-blocks"
+      ]
+    },
+    {
+      "id": "sureforms",
+      "name": "SureForms",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/sureforms/",
+      "slugs": [
+        "sureforms"
+      ]
+    },
+    {
+      "id": "templately",
+      "name": "Templately",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/templately/",
+      "slugs": [
+        "templately"
+      ]
+    },
+    {
+      "id": "ultimate-addons-for-gutenberg",
+      "name": "Spectra Legacy",
+      "category": "other",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ultimate-addons-for-gutenberg/",
+      "slugs": [
+        "ultimate-addons-for-gutenberg"
+      ]
+    },
+    {
+      "id": "wpforms-lite",
+      "name": "WPForms",
+      "category": "other",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wpforms-lite/",
+      "slugs": [
+        "wpforms-lite"
+      ]
+    },
+    {
+      "id": "ai-related-products",
+      "name": "Smart Related Products",
+      "category": "personalisation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-related-products/",
+      "slugs": [
+        "ai-related-products"
+      ]
+    },
+    {
+      "id": "directorist",
+      "name": "Directorist",
+      "category": "personalisation",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/directorist/",
+      "slugs": [
+        "directorist"
+      ]
+    },
+    {
+      "id": "dokan-lite",
+      "name": "Dokan",
+      "category": "personalisation",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/dokan-lite/",
+      "slugs": [
+        "dokan-lite"
+      ]
+    },
+    {
+      "id": "mailin",
+      "name": "Brevo",
+      "category": "personalisation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/mailin/",
+      "slugs": [
+        "mailin"
+      ]
+    },
+    {
+      "id": "product-recommendation-quiz-for-ecommerce",
+      "name": "Quiz Builder for WooCommerce",
+      "category": "personalisation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/product-recommendation-quiz-for-ecommerce/",
+      "slugs": [
+        "product-recommendation-quiz-for-ecommerce"
+      ]
+    },
+    {
+      "id": "ai-search",
+      "name": "AI Search",
+      "category": "search",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/ai-search/",
+      "slugs": [
+        "ai-search"
+      ]
+    },
+    {
+      "id": "wp-search-with-algolia",
+      "name": "WP Search with Algolia",
+      "category": "search",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wp-search-with-algolia/",
+      "slugs": [
+        "wp-search-with-algolia"
+      ]
+    },
+    {
+      "id": "all-in-one-seo-pack",
+      "name": "All in One SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/all-in-one-seo-pack/",
+      "slugs": [
+        "all-in-one-seo-pack"
+      ]
+    },
+    {
+      "id": "metasync",
+      "name": "Search Atlas SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/metasync/",
+      "slugs": [
+        "metasync"
+      ]
+    },
+    {
+      "id": "semantic-linkboss",
+      "name": "LinkBoss",
+      "category": "seo",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/semantic-linkboss/",
+      "slugs": [
+        "semantic-linkboss"
+      ]
+    },
+    {
+      "id": "seo-by-rank-math",
+      "name": "Rank Math SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/seo-by-rank-math/",
+      "slugs": [
+        "seo-by-rank-math"
+      ]
+    },
+    {
+      "id": "siteseo",
+      "name": "SiteSEO",
+      "category": "seo",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/siteseo/",
+      "slugs": [
+        "siteseo"
+      ]
+    },
+    {
+      "id": "slim-seo",
+      "name": "Slim SEO",
+      "category": "seo",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/slim-seo/",
+      "slugs": [
+        "slim-seo"
+      ]
+    },
+    {
+      "id": "squirrly-seo",
+      "name": "Squirrly SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/squirrly-seo/",
+      "slugs": [
+        "squirrly-seo"
+      ]
+    },
+    {
+      "id": "thinkrank",
+      "name": "ThinkRank AI SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/thinkrank/",
+      "slugs": [
+        "thinkrank"
+      ]
+    },
+    {
+      "id": "wordpress-seo",
+      "name": "Yoast SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wordpress-seo/",
+      "slugs": [
+        "wordpress-seo"
+      ]
+    },
+    {
+      "id": "wp-seopress",
+      "name": "SEOPress",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wp-seopress/",
+      "slugs": [
+        "wp-seopress"
+      ]
+    },
+    {
+      "id": "xagio-seo",
+      "name": "Xagio SEO",
+      "category": "seo",
+      "article": "Art. 50(2)",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/xagio-seo/",
+      "slugs": [
+        "xagio-seo"
+      ]
+    },
+    {
+      "id": "automatic-translate-addon-for-translatepress",
+      "name": "AI Translation for TranslatePress",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/automatic-translate-addon-for-translatepress/",
+      "slugs": [
+        "automatic-translate-addon-for-translatepress"
+      ]
+    },
+    {
+      "id": "automatic-translations-for-polylang",
+      "name": "AutoPoly",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/automatic-translations-for-polylang/",
+      "slugs": [
+        "automatic-translations-for-polylang"
+      ]
+    },
+    {
+      "id": "automatic-translator-addon-for-loco-translate",
+      "name": "LocoAI",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/automatic-translator-addon-for-loco-translate/",
+      "slugs": [
+        "automatic-translator-addon-for-loco-translate"
+      ]
+    },
+    {
+      "id": "conveythis-translate",
+      "name": "ConveyThis",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/conveythis-translate/",
+      "slugs": [
+        "conveythis-translate"
+      ]
+    },
+    {
+      "id": "gtranslate",
+      "name": "GTranslate",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/gtranslate/",
+      "slugs": [
+        "gtranslate"
+      ]
+    },
+    {
+      "id": "linguise",
+      "name": "Linguise",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/linguise/",
+      "slugs": [
+        "linguise"
+      ]
+    },
+    {
+      "id": "translate-words",
+      "name": "Linguator AI",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/translate-words/",
+      "slugs": [
+        "translate-words"
+      ]
+    },
+    {
+      "id": "translatepress-multilingual",
+      "name": "TranslatePress",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/translatepress-multilingual/",
+      "slugs": [
+        "translatepress-multilingual"
+      ]
+    },
+    {
+      "id": "universally-language-translation-multilingual-tool",
+      "name": "Universally",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/universally-language-translation-multilingual-tool/",
+      "slugs": [
+        "universally-language-translation-multilingual-tool"
+      ]
+    },
+    {
+      "id": "weglot",
+      "name": "Weglot",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/weglot/",
+      "slugs": [
+        "weglot"
+      ]
+    },
+    {
+      "id": "wpdeepl",
+      "name": "Translation with DeepL API",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wpdeepl/",
+      "slugs": [
+        "wpdeepl"
+      ]
+    },
+    {
+      "id": "wplingua",
+      "name": "wpLingua",
+      "category": "translation",
+      "article": "Art. 4",
+      "risk": "limited",
+      "url": "https://wordpress.org/plugins/wplingua/",
+      "slugs": [
+        "wplingua"
+      ]
+    }
+  ]
+}

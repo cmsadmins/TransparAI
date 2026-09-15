@@ -91,9 +91,9 @@ final class ChatbotTest extends TestCase {
 		$trai_test_options['transparai_settings']['chatbot_output'] = 'footer';
 		$this->assertSame( 'footer', TransparAI_Chatbot::effective_output() );
 
-		ob_start();
-		TransparAI_Chatbot::print_footer_notice();
-		$this->assertStringContainsString( 'trai-chat-notice', (string) ob_get_clean() );
+		$this->assertSame( array( 'chat' => 'You are chatting with an AI system.' ), TransparAI_Chatbot::footer_notice( array() ), 'Footer route hands its line to the shared footer notice' );
+		$trai_test_options['transparai_settings']['chatbot_output'] = 'badge';
+		$this->assertSame( array(), TransparAI_Chatbot::footer_notice( array() ), 'Badge route adds no footer line' );
 	}
 
 	public function test_ai_engine_first_message_is_idempotent(): void {

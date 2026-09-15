@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       TransparAI: AI Image Detection, EU AI Act Labeling & SEO
+ * Plugin Name:       TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection
  * Plugin URI:        https://wordpress.org/plugins/transparai/
- * Description:       Detect AI images from C2PA Content Credentials and IPTC metadata, label them with a visible AI badge and a machine-readable EU AI Act disclosure.
- * Version:           1.0.3
+ * Description:       Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track EU AI Act readiness with a score, self-assessment and compliance report.
+ * Version:           1.1.1
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Patrick Schlesinger
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.0.3' );
+defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.1.1' );
 defined( 'TRANSPARAI_PLUGIN_FILE' ) || define( 'TRANSPARAI_PLUGIN_FILE', __FILE__ );
 defined( 'TRANSPARAI_PLUGIN_DIR' ) || define( 'TRANSPARAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'TRANSPARAI_PLUGIN_URL' ) || define( 'TRANSPARAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -46,12 +46,15 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-woocommerce.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-rest.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-chatbot.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-compliance.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-systems.php';
 
 if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-media-library.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-settings.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-content-label.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-setup.php';
+	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-dashboard.php';
 }
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -82,8 +85,11 @@ if ( ! class_exists( 'TransparAI' ) ) {
 			TransparAI_REST::init();
 			TransparAI_Chatbot::init();
 			TransparAI_Integrations::init();
+			TransparAI_Compliance::init();
+			TransparAI_Systems::init();
 
 			if ( is_admin() ) {
+				TransparAI_Dashboard::init();
 				TransparAI_Media_Library::init();
 				TransparAI_Settings::init();
 				TransparAI_Content_Label::init();

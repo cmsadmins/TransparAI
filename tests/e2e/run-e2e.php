@@ -237,6 +237,49 @@ trai_e2e_check( str_contains( $post_html, '"@type":"Article"' ) && str_contains(
 $clean_html = trai_e2e_fetch( home_url( '/?p=999999&nonexist=1' ) );
 trai_e2e_check( ! str_contains( $clean_html, 'trai-page-notice' ), 'pages without labeled media get no page notice' );
 
+/* ---------------------------------------------------------------- compliance module */
+$trai_e2e_cleanup['options']['transparai_compliance'] = get_option( 'transparai_compliance' );
+$trai_e2e_cleanup['options']['transparai_systems']    = get_option( 'transparai_systems' );
+
+trai_e2e_check( is_int( TransparAI_Compliance::score() ), 'readiness score is an integer' );
+TransparAI_Compliance::save_assessment( array_fill_keys( array_keys( TransparAI_Compliance::questions() ), 'yes' ) );
+trai_e2e_check( 6 === count( TransparAI_Compliance::applicable() ), 'assessment with six yes answers lists six obligations' );
+$trai_e2e_report = TransparAI_Meta::report( 'all' );
+trai_e2e_check( isset( $trai_e2e_report['compliance']['score'], $trai_e2e_report['log'] ), 'report carries compliance summary and site log' );
+trai_e2e_check( $trai_e2e_report['document_hash'] === TransparAI_Meta::report( 'all' )['document_hash'], 'report hash stays stable across two calls' );
+
+$trai_e2e_system = TransparAI_Systems::declare( 'E2E Recommender', 'personalisation' );
+TransparAI_Systems::set_visible( array( $trai_e2e_system ) );
+update_option( 'transparai_settings', array_merge( TransparAI_Options::all(), array( 'systems_notice' => '1', 'systems_notice_style' => 'footer' ) ) );
+$trai_e2e_home = trai_e2e_fetch( home_url( '/' ) );
+trai_e2e_check( str_contains( $trai_e2e_home, 'trai-page-notice__systems' ) && str_contains( $trai_e2e_home, 'E2E Recommender' ), 'AI systems notice names the visible system in the shared footer line' );
+TransparAI_Systems::undeclare( $trai_e2e_system );
+trai_e2e_check( ! str_contains( trai_e2e_fetch( home_url( '/' ) ), 'trai-page-notice__systems' ), 'notice disappears with the declaration' );
+
+/* Notice styles, title badge and feed prefix on the AI-written post. */
+update_option(
+	'transparai_settings',
+	array_merge(
+		TransparAI_Options::all(),
+		array(
+			'content_notice_style'    => 'banner',
+			'content_notice_position' => 'both',
+			'content_title_badge'     => '1',
+			'feed_title_prefix'       => '1',
+			'feed_notice'             => '1',
+		)
+	)
+);
+$trai_e2e_post_html = trai_e2e_fetch( get_permalink( $post_id ) );
+trai_e2e_check( 2 === substr_count( $trai_e2e_post_html, 'trai-notice--banner' ) && str_contains( $trai_e2e_post_html, 'trai-notice-dismiss' ), 'banner note on both sides with a dismiss button' );
+trai_e2e_check( str_contains( $trai_e2e_post_html, 'trai-title-badge' ), 'title badge appears on the AI-written post' );
+$trai_e2e_feed = trai_e2e_fetch( get_feed_link() );
+trai_e2e_check( str_contains( $trai_e2e_feed, '[AI] ' ), 'feed item title carries the [AI] prefix' );
+
+/* Public labelling filter for theme markup. */
+$trai_e2e_fragment = apply_filters( 'transparai_label_media', '<div><img class="wp-image-' . $flagged . '" src="' . esc_url( wp_get_attachment_url( $flagged ) ) . '"></div>' );
+trai_e2e_check( str_contains( (string) $trai_e2e_fragment, 'trai-badge' ), 'transparai_label_media filter badges theme-rendered markup' );
+
 /* ---------------------------------------------------------------------------
  * Cleanup
  * ------------------------------------------------------------------------- */

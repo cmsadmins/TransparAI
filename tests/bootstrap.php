@@ -557,6 +557,55 @@ if ( ! function_exists( 'register_rest_route' ) ) {
 		return true;
 	}
 }
+if ( ! function_exists( 'esc_url_raw' ) ) {
+	function esc_url_raw( $url ) {
+		return (string) $url;
+	}
+}
+if ( ! function_exists( 'esc_attr__' ) ) {
+	function esc_attr__( $text, $domain = 'default' ) {
+		return $text;
+	}
+}
+if ( ! function_exists( 'sanitize_title' ) ) {
+	function sanitize_title( $title ) {
+		return trim( (string) preg_replace( '/[^a-z0-9]+/', '-', strtolower( (string) $title ) ), '-' );
+	}
+}
+if ( ! function_exists( 'wp_strip_all_tags' ) ) {
+	function wp_strip_all_tags( $text ) {
+		return trim( strip_tags( (string) $text ) );
+	}
+}
+if ( ! function_exists( 'get_site_option' ) ) {
+	function get_site_option( $name, $default = false ) {
+		global $trai_test_options;
+		return $trai_test_options[ 'site:' . $name ] ?? $default;
+	}
+}
+if ( ! function_exists( 'human_time_diff' ) ) {
+	function human_time_diff( $from, $to = 0 ) {
+		$to   = $to > 0 ? $to : time();
+		$diff = abs( $to - $from );
+		return $diff < 86400 ? (int) ( $diff / 3600 ) . ' hours' : (int) ( $diff / 86400 ) . ' days';
+	}
+}
+if ( ! function_exists( 'date_i18n' ) ) {
+	function date_i18n( $format, $timestamp = null ) {
+		return gmdate( (string) $format, null === $timestamp ? time() : (int) $timestamp );
+	}
+}
+if ( ! function_exists( 'get_post_types' ) ) {
+	function get_post_types( $args = array() ) {
+		return array( 'post', 'page', 'attachment' );
+	}
+}
+if ( ! function_exists( 'get_plugins' ) ) {
+	function get_plugins() {
+		global $trai_test_plugins;
+		return (array) ( $trai_test_plugins ?? array() );
+	}
+}
 if ( ! function_exists( 'get_userdata' ) ) {
 	function get_userdata( $id ) {
 		return false;
@@ -645,14 +694,17 @@ require_once dirname( __DIR__ ) . '/includes/class-rest.php';
 require_once dirname( __DIR__ ) . '/admin/class-setup.php';
 require_once dirname( __DIR__ ) . '/includes/class-chatbot.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
+require_once dirname( __DIR__ ) . '/includes/class-compliance.php';
+require_once dirname( __DIR__ ) . '/includes/class-systems.php';
 
 /**
  * Reset all in-memory stores between tests.
  */
 function trai_test_reset(): void {
 	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http, $trai_test_user_name, $trai_test_posts, $trai_test_blocks, $trai_test_query_posts, $trai_test_query_args, $trai_test_routes;
-	global $trai_test_user_meta;
+	global $trai_test_user_meta, $trai_test_plugins;
 	$trai_test_user_meta    = array();
+	$trai_test_plugins      = array();
 	$trai_test_query_posts  = array();
 	$trai_test_query_args   = array();
 	$trai_test_routes       = array();

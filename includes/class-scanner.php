@@ -364,6 +364,8 @@ final class TransparAI_Scanner {
 			'flagged'  => $count_query( array( 'meta_query' => TransparAI_Meta::meta_query( '1' ) ) ),
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin statistics, cached for 60 s.
 			'detected' => $count_query( array( 'meta_query' => TransparAI_Meta::meta_query( 'detected' ) ) ),
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin statistics, cached for 60 s.
+			'human'    => $count_query( array( 'meta_query' => TransparAI_Meta::meta_query( 'human' ) ) ),
 			'scanned'  => $count_query(
 				array(
 					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin statistics, cached for 60 s.

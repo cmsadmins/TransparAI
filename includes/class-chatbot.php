@@ -42,7 +42,7 @@ final class TransparAI_Chatbot {
 	public static function init(): void {
 		add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue' ) );
 		add_action( 'wp_print_footer_scripts', array( self::class, 'observe_scripts' ), 1 );
-		add_action( 'wp_footer', array( self::class, 'print_footer_notice' ) );
+		add_filter( 'transparai_footer_notices', array( self::class, 'footer_notice' ) );
 		add_filter( 'mwai_chatbot_params', array( self::class, 'ai_engine_params' ), 20 );
 		add_action( 'wp_ajax_transparai_chatbot_seen', array( self::class, 'ajax_seen' ) );
 	}
@@ -410,13 +410,18 @@ final class TransparAI_Chatbot {
 	}
 
 	/**
-	 * Footer variant: a plain, server-rendered line (page-cache safe).
+	 * Footer variant: one line in the shared footer notice printed by
+	 * TransparAI_Frontend (server-rendered, page-cache safe).
+	 *
+	 * @param array<string, string>|mixed $lines Lines keyed by source.
+	 * @return array<string, string>
 	 */
-	public static function print_footer_notice(): void {
-		if ( is_admin() || is_feed() || ! self::active() || 'footer' !== self::effective_output() ) {
-			return;
+	public static function footer_notice( $lines ): array {
+		$lines = is_array( $lines ) ? $lines : array();
+		if ( self::active() && 'footer' === self::effective_output() ) {
+			$lines['chat'] = self::text();
 		}
-		echo '<p class="trai-page-notice trai-chat-notice">' . esc_html( self::text() ) . '</p>' . "\n";
+		return $lines;
 	}
 
 	/**

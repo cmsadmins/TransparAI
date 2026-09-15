@@ -36,5 +36,8 @@ final class AdminLabelsTest extends TestCase {
 	public function test_settings_page_does_not_localize_its_own_label_set(): void {
 		$settings = (string) file_get_contents( dirname( __DIR__, 2 ) . '/admin/class-settings.php' );
 		$this->assertStringNotContainsString( 'wp_localize_script', $settings );
+		$dashboard = (string) file_get_contents( dirname( __DIR__, 2 ) . '/admin/class-dashboard.php' );
+		$this->assertStringNotContainsString( 'wp_localize_script', $dashboard );
+		$this->assertStringContainsString( 'TransparAI_Media_Library::localize_admin()', $dashboard, 'The images screen carries the scan loop and must use the shared label set.' );
 	}
 }

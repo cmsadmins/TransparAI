@@ -4,6 +4,9 @@
 			<key name="badge_text" />
 			<key name="page_notice_text" />
 			<key name="content_notice_text" />
+			<key name="chatbot_notice_text" />
+			<key name="human_badge_text" />
+			<key name="systems_notice_text" />
 		</key>
 	</admin-texts>
 	<custom-fields>

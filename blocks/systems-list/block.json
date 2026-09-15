@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "transparai/systems-list",
+	"title": "AI Systems List",
+	"category": "text",
+	"icon": "editor-ul",
+	"description": "A list of the AI systems marked as visible in the TransparAI registry, each with its category. The building block for an AI transparency statement, kept in sync with the registry: a system you add or hide appears or disappears on every page that carries the list.",
+	"keywords": [ "ai systems", "transparency statement", "registry", "eu ai act", "list" ],
+	"textdomain": "transparai",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "transparai-blocks-editor"
+}
