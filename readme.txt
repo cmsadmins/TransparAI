@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, ai transparency, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -219,6 +219,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.3 =
+* The first-run setup card no longer repeats the badge and file settings that the tabs below it already own. Its second and third step open the matching section instead, so every option exists once on the screen and only one form writes it.
+
 = 1.1.2 =
 * Ten more languages ship with the plugin: Polish, Portuguese, Swedish, Danish, Finnish, Czech, Romanian, Greek, Hungarian and a formal German variant, next to the existing German, French, Spanish, Italian and Dutch.
 * The plugin name and the readme are translated for every one of those languages, so the plugin directory shows them in the reader's own language.
@@ -252,6 +255,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+Fixes the setup card, which showed the badge and file options a second time. Settings are untouched.
 
 = 1.1.2 =
 Adds ten more languages for the plugin interface and the directory listing. Nothing else changes; existing labels and settings carry over.

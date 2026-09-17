@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.3 (2026-09-17)
+
+- Setup card: the first-run card carried its own controls for the badge look and for file writing,
+  directly above the settings tabs that own those very options. Both appeared twice on one screen,
+  and the two forms wrote the same option through different paths (admin-post versus the Settings
+  API), so saving one overwrote the other. Steps two and three now open the matching section, the
+  card keeps the library scan and the finish button, and the setup journal that existed only for
+  those two forms is gone with them.
+
 ## 1.1.2 (2026-09-15)
 
 - Ten more bundled catalogs: pl_PL, pt_PT, sv_SE, da_DK, fi, cs_CZ, ro_RO, el, hu_HU and de_DE_formal,
