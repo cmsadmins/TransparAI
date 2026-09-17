@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.2\n"
+"Project-Id-Version: TransparAI 1.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "POT-Creation-Date: 2026-09-15T07:24:25+00:00\n"
 "PO-Revision-Date: 2026-09-15 07:25+0000\n"
@@ -144,8 +144,7 @@ msgstr "Images IA"
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/class-dashboard.php:107 admin/class-setup.php:324
-#: admin/class-setup.php:344
+#: admin/class-dashboard.php:107
 msgid "Saved."
 msgstr "Enregistré."
 
@@ -889,27 +888,22 @@ msgid "Default (site setting)"
 msgstr "Par défaut (réglage du site)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
-#: admin/class-setup.php:306
 msgid "Top left"
 msgstr "En haut à gauche"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
-#: admin/class-setup.php:307
 msgid "Top right"
 msgstr "En haut à droite"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
-#: admin/class-setup.php:308
 msgid "Bottom left"
 msgstr "En bas à gauche"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
-#: admin/class-setup.php:309
 msgid "Bottom right"
 msgstr "En bas à droite"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
-#: admin/class-setup.php:318
 msgid "Caption line below the image"
 msgstr "Ligne de légende sous l'image"
 
@@ -953,7 +947,7 @@ msgid "hint"
 msgstr "indice"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
-#: admin/class-setup.php:194 includes/class-chatbot.php:357
+#: admin/class-setup.php:112 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
@@ -1295,23 +1289,23 @@ msgstr ""
 msgid "Appearance"
 msgstr "Apparence"
 
-#: admin/class-settings.php:297 admin/class-setup.php:317
+#: admin/class-settings.php:297
 msgid "Overlay on the image"
 msgstr "Superposé à l'image"
 
-#: admin/class-settings.php:315 admin/class-setup.php:292
+#: admin/class-settings.php:315
 msgid "Dark"
 msgstr "Sombre"
 
-#: admin/class-settings.php:316 admin/class-setup.php:293
+#: admin/class-settings.php:316
 msgid "Light"
 msgstr "Clair"
 
-#: admin/class-settings.php:317 admin/class-setup.php:294
+#: admin/class-settings.php:317
 msgid "Outline"
 msgstr "Contour"
 
-#: admin/class-settings.php:318 admin/class-setup.php:295
+#: admin/class-settings.php:318
 msgid "Icon only (short label)"
 msgstr "Icône seule (texte court)"
 
@@ -2079,25 +2073,16 @@ msgstr "Liens TransparAI"
 msgid "Support forum"
 msgstr "Forum d'assistance"
 
-#: admin/class-setup.php:261
+#: admin/class-setup.php:160
 msgid "Setup in three steps"
 msgstr "Configuration en trois étapes"
 
-#: admin/class-setup.php:262
-msgid ""
-"Each step writes something real and can be taken back with the undo button. "
-"Nothing is labeled without your review, and no request leaves your server."
-msgstr ""
-"Chaque étape écrit quelque chose de réel et peut être annulée avec le bouton"
-" d’annulation. Rien n’est étiqueté sans votre relecture, et aucune requête "
-"ne quitte votre serveur."
-
-#: admin/class-setup.php:266
+#: admin/class-setup.php:165
 msgid "1. Scan the existing library"
 msgstr "1. Analyser la médiathèque existante"
 
 #. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:272
+#: admin/class-setup.php:171
 #, php-format
 msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
@@ -2106,71 +2091,23 @@ msgstr ""
 "%1$d fichiers médias, dont %2$d analysés. Les déclarations claires sont "
 "étiquetées, les signaux forts attendent dans la file de relecture."
 
-#: admin/class-setup.php:279
+#: admin/class-setup.php:178
 msgid "Scan now"
 msgstr "Analyser maintenant"
 
-#: admin/class-setup.php:283
+#: admin/class-setup.php:182
 msgid "2. Choose the badge look"
 msgstr "2. Choisir l’apparence du badge"
 
-#: admin/class-setup.php:320
-msgid "Save badge look"
-msgstr "Enregistrer l’apparence du badge"
-
-#: admin/class-setup.php:330
+#: admin/class-setup.php:188
 msgid "3. Decide about the files"
 msgstr "3. Décider pour les fichiers"
 
-#: admin/class-setup.php:335
-msgid ""
-"Write the machine-readable declaration into labeled image files (XMP, all "
-"sizes; merged into existing metadata, removable)"
-msgstr ""
-"Écrire la déclaration lisible par machine dans les fichiers image étiquetés "
-"(XMP, toutes les tailles ; fusionnée aux métadonnées existantes, réversible)"
-
-#: admin/class-setup.php:336
-msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr "La refléter aussi en IPTC-IIM pour les JPEG sans autre bloc IPTC"
-
-#: admin/class-setup.php:337
-msgid ""
-"Also write digitalCapture or digitalCreation for media declared as not AI-"
-"made"
-msgstr ""
-"Écrire aussi digitalCapture ou digitalCreation pour les médias déclarés sans"
-" IA"
-
-#: admin/class-setup.php:338
-msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr ""
-"Restaurer les déclarations supprimées par les optimiseurs d’images (passage "
-"horaire)"
-
-#: admin/class-setup.php:340
-msgid "Save file settings"
-msgstr "Enregistrer les réglages des fichiers"
-
-#: admin/class-setup.php:355
+#: admin/class-setup.php:199
 msgid "Finish setup"
 msgstr "Terminer la configuration"
 
-#. translators: %s: name of the setup step (badge or writing).
-#: admin/class-setup.php:368
-#, php-format
-msgid "Undo last step (%s)"
-msgstr "Annuler la dernière étape (%s)"
-
-#: admin/class-setup.php:369
-msgid "badge look"
-msgstr "apparence du badge"
-
-#: admin/class-setup.php:369
-msgid "file settings"
-msgstr "réglages des fichiers"
-
-#: admin/class-setup.php:381
+#: admin/class-setup.php:206
 msgid "Not now"
 msgstr "Pas maintenant"
 
@@ -3073,3 +3010,38 @@ msgstr "politique de confidentialité"
 msgctxt "block keyword"
 msgid "imprint"
 msgstr "mentions légales"
+
+#: admin/class-setup.php:161
+msgid ""
+"Three things to settle once. Each button opens the section below that does "
+"it. Nothing is labeled without your review, and no request leaves your "
+"server."
+msgstr ""
+"Trois choses à régler une seule fois. Chaque bouton ouvre la section ci-"
+"dessous qui s'en charge. Rien n'est étiqueté sans ta vérification et aucune "
+"requête ne quitte ton serveur."
+
+#: admin/class-setup.php:183
+msgid ""
+"Style, position and placement of the visible badge, with a live preview of "
+"the result."
+msgstr ""
+"Style, position et emplacement du badge visible, avec un aperçu en direct du"
+" résultat."
+
+#: admin/class-setup.php:184
+msgid "Open the badge settings"
+msgstr "Ouvrir les réglages du badge"
+
+#: admin/class-setup.php:189
+msgid ""
+"Whether the machine-readable declaration goes into the image files "
+"themselves, and whether it is restored after an image optimizer strips it."
+msgstr ""
+"Si la déclaration lisible par machine est écrite dans les fichiers image "
+"eux-mêmes et si elle est restaurée après qu'un optimiseur d'images l'a "
+"supprimée."
+
+#: admin/class-setup.php:190
+msgid "Open the file settings"
+msgstr "Ouvrir les réglages de fichiers"

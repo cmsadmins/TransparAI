@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.2\n"
+"Project-Id-Version: TransparAI 1.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "POT-Creation-Date: 2026-09-15T07:24:25+00:00\n"
 "PO-Revision-Date: 2026-09-15 07:25+0000\n"
@@ -144,8 +144,7 @@ msgstr "AI-afbeeldingen"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: admin/class-dashboard.php:107 admin/class-setup.php:324
-#: admin/class-setup.php:344
+#: admin/class-dashboard.php:107
 msgid "Saved."
 msgstr "Opgeslagen."
 
@@ -886,27 +885,22 @@ msgid "Default (site setting)"
 msgstr "Standaard (site-instelling)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
-#: admin/class-setup.php:306
 msgid "Top left"
 msgstr "Linksboven"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
-#: admin/class-setup.php:307
 msgid "Top right"
 msgstr "Rechtsboven"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
-#: admin/class-setup.php:308
 msgid "Bottom left"
 msgstr "Linksonder"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
-#: admin/class-setup.php:309
 msgid "Bottom right"
 msgstr "Rechtsonder"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
-#: admin/class-setup.php:318
 msgid "Caption line below the image"
 msgstr "Bijschriftregel onder de afbeelding"
 
@@ -950,7 +944,7 @@ msgid "hint"
 msgstr "aanwijzing"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
-#: admin/class-setup.php:194 includes/class-chatbot.php:357
+#: admin/class-setup.php:112 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
@@ -1291,23 +1285,23 @@ msgstr ""
 msgid "Appearance"
 msgstr "Weergave"
 
-#: admin/class-settings.php:297 admin/class-setup.php:317
+#: admin/class-settings.php:297
 msgid "Overlay on the image"
 msgstr "Over de afbeelding heen"
 
-#: admin/class-settings.php:315 admin/class-setup.php:292
+#: admin/class-settings.php:315
 msgid "Dark"
 msgstr "Donker"
 
-#: admin/class-settings.php:316 admin/class-setup.php:293
+#: admin/class-settings.php:316
 msgid "Light"
 msgstr "Licht"
 
-#: admin/class-settings.php:317 admin/class-setup.php:294
+#: admin/class-settings.php:317
 msgid "Outline"
 msgstr "Omlijnd"
 
-#: admin/class-settings.php:318 admin/class-setup.php:295
+#: admin/class-settings.php:318
 msgid "Icon only (short label)"
 msgstr "Alleen pictogram (korte tekst)"
 
@@ -2073,25 +2067,16 @@ msgstr "TransparAI-links"
 msgid "Support forum"
 msgstr "Supportforum"
 
-#: admin/class-setup.php:261
+#: admin/class-setup.php:160
 msgid "Setup in three steps"
 msgstr "Installatie in drie stappen"
 
-#: admin/class-setup.php:262
-msgid ""
-"Each step writes something real and can be taken back with the undo button. "
-"Nothing is labeled without your review, and no request leaves your server."
-msgstr ""
-"Elke stap schrijft iets echts en kan met de knop Ongedaan maken worden "
-"teruggedraaid. Niets wordt gelabeld zonder jouw beoordeling en geen enkel "
-"verzoek verlaat je server."
-
-#: admin/class-setup.php:266
+#: admin/class-setup.php:165
 msgid "1. Scan the existing library"
 msgstr "1. Bestaande mediabibliotheek scannen"
 
 #. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:272
+#: admin/class-setup.php:171
 #, php-format
 msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
@@ -2100,72 +2085,23 @@ msgstr ""
 "%1$d mediabestanden, waarvan %2$d gescand. Duidelijke declaraties worden "
 "gelabeld, sterke signalen wachten in de beoordelingswachtrij."
 
-#: admin/class-setup.php:279
+#: admin/class-setup.php:178
 msgid "Scan now"
 msgstr "Nu scannen"
 
-#: admin/class-setup.php:283
+#: admin/class-setup.php:182
 msgid "2. Choose the badge look"
 msgstr "2. Uiterlijk van de badge kiezen"
 
-#: admin/class-setup.php:320
-msgid "Save badge look"
-msgstr "Badge-uiterlijk opslaan"
-
-#: admin/class-setup.php:330
+#: admin/class-setup.php:188
 msgid "3. Decide about the files"
 msgstr "3. Beslissen over de bestanden"
 
-#: admin/class-setup.php:335
-msgid ""
-"Write the machine-readable declaration into labeled image files (XMP, all "
-"sizes; merged into existing metadata, removable)"
-msgstr ""
-"De machineleesbare declaratie in gelabelde afbeeldingsbestanden schrijven "
-"(XMP, alle formaten; samengevoegd met bestaande metadata, verwijderbaar)"
-
-#: admin/class-setup.php:336
-msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr ""
-"Ook spiegelen naar IPTC-IIM voor JPEG-bestanden zonder ander IPTC-blok"
-
-#: admin/class-setup.php:337
-msgid ""
-"Also write digitalCapture or digitalCreation for media declared as not AI-"
-"made"
-msgstr ""
-"Ook digitalCapture of digitalCreation schrijven voor media die als niet door"
-" AI gemaakt zijn gedeclareerd"
-
-#: admin/class-setup.php:338
-msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr ""
-"Declaraties herstellen die afbeeldingsoptimalisatie verwijdert (uurlijkse "
-"controle)"
-
-#: admin/class-setup.php:340
-msgid "Save file settings"
-msgstr "Bestandsinstellingen opslaan"
-
-#: admin/class-setup.php:355
+#: admin/class-setup.php:199
 msgid "Finish setup"
 msgstr "Installatie afronden"
 
-#. translators: %s: name of the setup step (badge or writing).
-#: admin/class-setup.php:368
-#, php-format
-msgid "Undo last step (%s)"
-msgstr "Laatste stap ongedaan maken (%s)"
-
-#: admin/class-setup.php:369
-msgid "badge look"
-msgstr "badge-uiterlijk"
-
-#: admin/class-setup.php:369
-msgid "file settings"
-msgstr "bestandsinstellingen"
-
-#: admin/class-setup.php:381
+#: admin/class-setup.php:206
 msgid "Not now"
 msgstr "Nu niet"
 
@@ -3063,3 +2999,38 @@ msgstr "privacyverklaring"
 msgctxt "block keyword"
 msgid "imprint"
 msgstr "colofon"
+
+#: admin/class-setup.php:161
+msgid ""
+"Three things to settle once. Each button opens the section below that does "
+"it. Nothing is labeled without your review, and no request leaves your "
+"server."
+msgstr ""
+"Drie dingen die je één keer regelt. Elke knop opent het gedeelte hieronder "
+"dat het doet. Niets wordt gelabeld zonder jouw controle en geen enkel "
+"verzoek verlaat je server."
+
+#: admin/class-setup.php:183
+msgid ""
+"Style, position and placement of the visible badge, with a live preview of "
+"the result."
+msgstr ""
+"Stijl, positie en plaatsing van de zichtbare badge, met een live voorbeeld "
+"van het resultaat."
+
+#: admin/class-setup.php:184
+msgid "Open the badge settings"
+msgstr "Badge-instellingen openen"
+
+#: admin/class-setup.php:189
+msgid ""
+"Whether the machine-readable declaration goes into the image files "
+"themselves, and whether it is restored after an image optimizer strips it."
+msgstr ""
+"Of de machineleesbare verklaring in de afbeeldingsbestanden zelf wordt "
+"geschreven en of ze wordt hersteld nadat een afbeeldingsoptimalisatie ze "
+"heeft verwijderd."
+
+#: admin/class-setup.php:190
+msgid "Open the file settings"
+msgstr "Bestandsinstellingen openen"

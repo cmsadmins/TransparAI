@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.2\n"
+"Project-Id-Version: TransparAI 1.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: cs_CZ\n"
@@ -143,8 +143,7 @@ msgstr "Obrázky AI"
 msgid "Settings"
 msgstr "Nastavení"
 
-#: admin/class-dashboard.php:107 admin/class-setup.php:324
-#: admin/class-setup.php:344
+#: admin/class-dashboard.php:107
 msgid "Saved."
 msgstr "Uloženo."
 
@@ -878,27 +877,22 @@ msgid "Default (site setting)"
 msgstr "Výchozí (nastavení webu)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
-#: admin/class-setup.php:306
 msgid "Top left"
 msgstr "Vlevo nahoře"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
-#: admin/class-setup.php:307
 msgid "Top right"
 msgstr "Vpravo nahoře"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
-#: admin/class-setup.php:308
 msgid "Bottom left"
 msgstr "Vlevo dole"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
-#: admin/class-setup.php:309
 msgid "Bottom right"
 msgstr "Vpravo dole"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
-#: admin/class-setup.php:318
 msgid "Caption line below the image"
 msgstr "Řádek popisku pod obrázkem"
 
@@ -942,7 +936,7 @@ msgid "hint"
 msgstr "náznak"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
-#: admin/class-setup.php:194 includes/class-chatbot.php:357
+#: admin/class-setup.php:112 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
@@ -1282,23 +1276,23 @@ msgstr ""
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: admin/class-settings.php:297 admin/class-setup.php:317
+#: admin/class-settings.php:297
 msgid "Overlay on the image"
 msgstr "Překryv na obrázku"
 
-#: admin/class-settings.php:315 admin/class-setup.php:292
+#: admin/class-settings.php:315
 msgid "Dark"
 msgstr "Tmavá"
 
-#: admin/class-settings.php:316 admin/class-setup.php:293
+#: admin/class-settings.php:316
 msgid "Light"
 msgstr "Světlé"
 
-#: admin/class-settings.php:317 admin/class-setup.php:294
+#: admin/class-settings.php:317
 msgid "Outline"
 msgstr "Osnova"
 
-#: admin/class-settings.php:318 admin/class-setup.php:295
+#: admin/class-settings.php:318
 msgid "Icon only (short label)"
 msgstr "Jen ikona (krátké označení)"
 
@@ -2056,24 +2050,16 @@ msgstr "Odkazy TransparAI"
 msgid "Support forum"
 msgstr "Fórum podpory"
 
-#: admin/class-setup.php:261
+#: admin/class-setup.php:160
 msgid "Setup in three steps"
 msgstr "Nastavení ve třech krocích"
 
-#: admin/class-setup.php:262
-msgid ""
-"Each step writes something real and can be taken back with the undo button. "
-"Nothing is labeled without your review, and no request leaves your server."
-msgstr ""
-"Každý krok skutečně něco zapíše a lze jej vzít zpět tlačítkem Zpět. Nic se "
-"neoznačí bez vaší kontroly a žádný požadavek neopouští váš server."
-
-#: admin/class-setup.php:266
+#: admin/class-setup.php:165
 msgid "1. Scan the existing library"
 msgstr "1. Prohledat stávající knihovnu"
 
 #. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:272
+#: admin/class-setup.php:171
 #, php-format
 msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
@@ -2082,71 +2068,23 @@ msgstr ""
 "%1$d mediálních souborů, z toho %2$d prohledáno. Jednoznačné deklarace se "
 "označí, silné signály čekají ve frontě ke kontrole."
 
-#: admin/class-setup.php:279
+#: admin/class-setup.php:178
 msgid "Scan now"
 msgstr "Skenovat nyní"
 
-#: admin/class-setup.php:283
+#: admin/class-setup.php:182
 msgid "2. Choose the badge look"
 msgstr "2. Zvolit vzhled odznaku"
 
-#: admin/class-setup.php:320
-msgid "Save badge look"
-msgstr "Uložit vzhled odznaku"
-
-#: admin/class-setup.php:330
+#: admin/class-setup.php:188
 msgid "3. Decide about the files"
 msgstr "3. Rozhodnout o souborech"
 
-#: admin/class-setup.php:335
-msgid ""
-"Write the machine-readable declaration into labeled image files (XMP, all "
-"sizes; merged into existing metadata, removable)"
-msgstr ""
-"Zapisovat strojově čitelnou deklaraci do označených obrázkových souborů "
-"(XMP, všechny velikosti; sloučí se se stávajícími metadaty, lze odstranit)"
-
-#: admin/class-setup.php:336
-msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr "Zrcadlit ji do IPTC-IIM u souborů JPEG bez jiného bloku IPTC"
-
-#: admin/class-setup.php:337
-msgid ""
-"Also write digitalCapture or digitalCreation for media declared as not AI-"
-"made"
-msgstr ""
-"Zapisovat digitalCapture nebo digitalCreation i u médií deklarovaných jako "
-"nevytvořená AI"
-
-#: admin/class-setup.php:338
-msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr ""
-"Obnovovat deklarace, které odstraní optimalizátory obrázků (hodinový "
-"průchod)"
-
-#: admin/class-setup.php:340
-msgid "Save file settings"
-msgstr "Uložit nastavení souborů"
-
-#: admin/class-setup.php:355
+#: admin/class-setup.php:199
 msgid "Finish setup"
 msgstr "Dokončit nastavení"
 
-#. translators: %s: name of the setup step (badge or writing).
-#: admin/class-setup.php:368
-#, php-format
-msgid "Undo last step (%s)"
-msgstr "Vrátit zpět poslední krok (%s)"
-
-#: admin/class-setup.php:369
-msgid "badge look"
-msgstr "vzhled odznaku"
-
-#: admin/class-setup.php:369
-msgid "file settings"
-msgstr "nastavení souborů"
-
-#: admin/class-setup.php:381
+#: admin/class-setup.php:206
 msgid "Not now"
 msgstr "Teď ne"
 
@@ -3030,3 +2968,35 @@ msgstr "zásady ochrany osobních údajů"
 msgctxt "block keyword"
 msgid "imprint"
 msgstr "tiráž"
+
+#: admin/class-setup.php:161
+msgid ""
+"Three things to settle once. Each button opens the section below that does "
+"it. Nothing is labeled without your review, and no request leaves your "
+"server."
+msgstr ""
+"Tři věci, které jednou nastavíš. Každé tlačítko otevře oddíl níže, který to "
+"udělá. Nic se neoznačí bez tvé kontroly a žádný požadavek neopustí tvůj "
+"server."
+
+#: admin/class-setup.php:183
+msgid ""
+"Style, position and placement of the visible badge, with a live preview of "
+"the result."
+msgstr "Styl, pozice a umístění viditelného štítku s živým náhledem výsledku."
+
+#: admin/class-setup.php:184
+msgid "Open the badge settings"
+msgstr "Otevřít nastavení štítku"
+
+#: admin/class-setup.php:189
+msgid ""
+"Whether the machine-readable declaration goes into the image files "
+"themselves, and whether it is restored after an image optimizer strips it."
+msgstr ""
+"Zda se strojově čitelné prohlášení zapíše přímo do obrazových souborů a zda "
+"se obnoví poté, co jej optimalizátor obrázků odstraní."
+
+#: admin/class-setup.php:190
+msgid "Open the file settings"
+msgstr "Otevřít nastavení souborů"

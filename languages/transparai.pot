@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-15T11:42:42+00:00\n"
+"POT-Creation-Date: 2026-09-16T21:51:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: transparai\n"
@@ -140,8 +140,6 @@ msgid "Settings"
 msgstr ""
 
 #: admin/class-dashboard.php:107
-#: admin/class-setup.php:324
-#: admin/class-setup.php:344
 msgid "Saved."
 msgstr ""
 
@@ -724,31 +722,26 @@ msgstr ""
 
 #: admin/class-media-library.php:137
 #: admin/class-settings.php:305
-#: admin/class-setup.php:306
 msgid "Top left"
 msgstr ""
 
 #: admin/class-media-library.php:138
 #: admin/class-settings.php:306
-#: admin/class-setup.php:307
 msgid "Top right"
 msgstr ""
 
 #: admin/class-media-library.php:139
 #: admin/class-settings.php:307
-#: admin/class-setup.php:308
 msgid "Bottom left"
 msgstr ""
 
 #: admin/class-media-library.php:140
 #: admin/class-settings.php:308
-#: admin/class-setup.php:309
 msgid "Bottom right"
 msgstr ""
 
 #: admin/class-media-library.php:141
 #: admin/class-settings.php:298
-#: admin/class-setup.php:318
 msgid "Caption line below the image"
 msgstr ""
 
@@ -786,7 +779,7 @@ msgstr ""
 
 #: admin/class-media-library.php:288
 #: admin/class-media-library.php:329
-#: admin/class-setup.php:194
+#: admin/class-setup.php:112
 #: includes/class-chatbot.php:357
 #: includes/class-delivery.php:66
 #: includes/class-scanner.php:233
@@ -1104,27 +1097,22 @@ msgid "Appearance"
 msgstr ""
 
 #: admin/class-settings.php:297
-#: admin/class-setup.php:317
 msgid "Overlay on the image"
 msgstr ""
 
 #: admin/class-settings.php:315
-#: admin/class-setup.php:292
 msgid "Dark"
 msgstr ""
 
 #: admin/class-settings.php:316
-#: admin/class-setup.php:293
 msgid "Light"
 msgstr ""
 
 #: admin/class-settings.php:317
-#: admin/class-setup.php:294
 msgid "Outline"
 msgstr ""
 
 #: admin/class-settings.php:318
-#: admin/class-setup.php:295
 msgid "Icon only (short label)"
 msgstr ""
 
@@ -1714,79 +1702,57 @@ msgstr ""
 msgid "Support forum"
 msgstr ""
 
-#: admin/class-setup.php:261
+#: admin/class-setup.php:160
 msgid "Setup in three steps"
 msgstr ""
 
-#: admin/class-setup.php:262
-msgid "Each step writes something real and can be taken back with the undo button. Nothing is labeled without your review, and no request leaves your server."
+#: admin/class-setup.php:161
+msgid "Three things to settle once. Each button opens the section below that does it. Nothing is labeled without your review, and no request leaves your server."
 msgstr ""
 
-#: admin/class-setup.php:266
+#: admin/class-setup.php:165
 msgid "1. Scan the existing library"
 msgstr ""
 
 #. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:272
+#: admin/class-setup.php:171
 #, php-format
 msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
 msgstr ""
 
-#: admin/class-setup.php:279
+#: admin/class-setup.php:178
 msgid "Scan now"
 msgstr ""
 
-#: admin/class-setup.php:283
+#: admin/class-setup.php:182
 msgid "2. Choose the badge look"
 msgstr ""
 
-#: admin/class-setup.php:320
-msgid "Save badge look"
+#: admin/class-setup.php:183
+msgid "Style, position and placement of the visible badge, with a live preview of the result."
 msgstr ""
 
-#: admin/class-setup.php:330
+#: admin/class-setup.php:184
+msgid "Open the badge settings"
+msgstr ""
+
+#: admin/class-setup.php:188
 msgid "3. Decide about the files"
 msgstr ""
 
-#: admin/class-setup.php:335
-msgid "Write the machine-readable declaration into labeled image files (XMP, all sizes; merged into existing metadata, removable)"
+#: admin/class-setup.php:189
+msgid "Whether the machine-readable declaration goes into the image files themselves, and whether it is restored after an image optimizer strips it."
 msgstr ""
 
-#: admin/class-setup.php:336
-msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
+#: admin/class-setup.php:190
+msgid "Open the file settings"
 msgstr ""
 
-#: admin/class-setup.php:337
-msgid "Also write digitalCapture or digitalCreation for media declared as not AI-made"
-msgstr ""
-
-#: admin/class-setup.php:338
-msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr ""
-
-#: admin/class-setup.php:340
-msgid "Save file settings"
-msgstr ""
-
-#: admin/class-setup.php:355
+#: admin/class-setup.php:199
 msgid "Finish setup"
 msgstr ""
 
-#. translators: %s: name of the setup step (badge or writing).
-#: admin/class-setup.php:368
-#, php-format
-msgid "Undo last step (%s)"
-msgstr ""
-
-#: admin/class-setup.php:369
-msgid "badge look"
-msgstr ""
-
-#: admin/class-setup.php:369
-msgid "file settings"
-msgstr ""
-
-#: admin/class-setup.php:381
+#: admin/class-setup.php:206
 msgid "Not now"
 msgstr ""
 

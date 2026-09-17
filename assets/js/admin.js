@@ -440,5 +440,16 @@
 			event.preventDefault();
 			activateTab(link.getAttribute('data-tab'));
 		});
+
+		/* Setup card: its buttons open the matching section instead of
+		   repeating those controls a second time on the same screen. */
+		document.querySelectorAll('.trai-setup-jump').forEach(function (button) {
+			button.addEventListener('click', function () {
+				activateTab(button.getAttribute('data-tab'));
+				if (tabs.scrollIntoView) {
+					tabs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		});
 	}
 })();

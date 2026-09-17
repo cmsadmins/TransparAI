@@ -588,19 +588,9 @@
 	background: linear-gradient(135deg, #d9d9d9, #8a8a8a);
 }
 
-.trai-setup-choice {
-	margin-right: 12px;
-}
-
 .trai-setup-inline {
 	display: inline-block;
 	margin-right: 8px;
-}
-
-.trai-setup-done {
-	margin-left: 8px;
-	color: var(--trai-primary, #FF6800);
-	font-weight: 600;
 }
 
 /* Post list: AI text level chip and the Quick Edit field. */

@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.2\n"
+"Project-Id-Version: TransparAI 1.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: ro_RO\n"
@@ -143,8 +143,7 @@ msgstr "Imagini IA"
 msgid "Settings"
 msgstr "Setări"
 
-#: admin/class-dashboard.php:107 admin/class-setup.php:324
-#: admin/class-setup.php:344
+#: admin/class-dashboard.php:107
 msgid "Saved."
 msgstr "Salvat."
 
@@ -888,27 +887,22 @@ msgid "Default (site setting)"
 msgstr "Implicit (setarea site-ului)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:305
-#: admin/class-setup.php:306
 msgid "Top left"
 msgstr "Sus stânga"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:306
-#: admin/class-setup.php:307
 msgid "Top right"
 msgstr "Sus dreapta"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:307
-#: admin/class-setup.php:308
 msgid "Bottom left"
 msgstr "Jos stânga"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:308
-#: admin/class-setup.php:309
 msgid "Bottom right"
 msgstr "Jos dreapta"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:298
-#: admin/class-setup.php:318
 msgid "Caption line below the image"
 msgstr "Linie de legendă sub imagine"
 
@@ -952,7 +946,7 @@ msgid "hint"
 msgstr "indiciu"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
-#: admin/class-setup.php:194 includes/class-chatbot.php:357
+#: admin/class-setup.php:112 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
@@ -1293,23 +1287,23 @@ msgstr ""
 msgid "Appearance"
 msgstr "Aspect"
 
-#: admin/class-settings.php:297 admin/class-setup.php:317
+#: admin/class-settings.php:297
 msgid "Overlay on the image"
 msgstr "Suprapusă pe imagine"
 
-#: admin/class-settings.php:315 admin/class-setup.php:292
+#: admin/class-settings.php:315
 msgid "Dark"
 msgstr "Întunecat"
 
-#: admin/class-settings.php:316 admin/class-setup.php:293
+#: admin/class-settings.php:316
 msgid "Light"
 msgstr "Deschis"
 
-#: admin/class-settings.php:317 admin/class-setup.php:294
+#: admin/class-settings.php:317
 msgid "Outline"
 msgstr "Contur"
 
-#: admin/class-settings.php:318 admin/class-setup.php:295
+#: admin/class-settings.php:318
 msgid "Icon only (short label)"
 msgstr "Numai pictogramă (etichetă scurtă)"
 
@@ -2072,25 +2066,16 @@ msgstr "Linkuri TransparAI"
 msgid "Support forum"
 msgstr "Forum de suport"
 
-#: admin/class-setup.php:261
+#: admin/class-setup.php:160
 msgid "Setup in three steps"
 msgstr "Configurare în trei pași"
 
-#: admin/class-setup.php:262
-msgid ""
-"Each step writes something real and can be taken back with the undo button. "
-"Nothing is labeled without your review, and no request leaves your server."
-msgstr ""
-"Fiecare pas scrie ceva real și poate fi anulat cu butonul de anulare. Nimic "
-"nu este etichetat fără verificarea ta și nicio cerere nu părăsește serverul "
-"tău."
-
-#: admin/class-setup.php:266
+#: admin/class-setup.php:165
 msgid "1. Scan the existing library"
 msgstr "1. Scanează biblioteca existentă"
 
 #. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:272
+#: admin/class-setup.php:171
 #, php-format
 msgid ""
 "%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
@@ -2099,72 +2084,23 @@ msgstr ""
 "%1$d fișiere media, %2$d dintre ele scanate. Declarațiile clare sunt "
 "etichetate, semnalele puternice așteaptă în coada de verificare."
 
-#: admin/class-setup.php:279
+#: admin/class-setup.php:178
 msgid "Scan now"
 msgstr "Scanează acum"
 
-#: admin/class-setup.php:283
+#: admin/class-setup.php:182
 msgid "2. Choose the badge look"
 msgstr "2. Alege aspectul insignei"
 
-#: admin/class-setup.php:320
-msgid "Save badge look"
-msgstr "Salvează aspectul insignei"
-
-#: admin/class-setup.php:330
+#: admin/class-setup.php:188
 msgid "3. Decide about the files"
 msgstr "3. Decide despre fișiere"
 
-#: admin/class-setup.php:335
-msgid ""
-"Write the machine-readable declaration into labeled image files (XMP, all "
-"sizes; merged into existing metadata, removable)"
-msgstr ""
-"Scrie declarația care poate fi citită automat în fișierele imagine "
-"etichetate (XMP, toate dimensiunile; îmbinată în metadatele existente, se "
-"poate elimina)"
-
-#: admin/class-setup.php:336
-msgid "Mirror it into IPTC-IIM for JPEG files without another IPTC block"
-msgstr "Oglindește-o în IPTC-IIM pentru fișierele JPEG fără alt bloc IPTC"
-
-#: admin/class-setup.php:337
-msgid ""
-"Also write digitalCapture or digitalCreation for media declared as not AI-"
-"made"
-msgstr ""
-"Scrie digitalCapture sau digitalCreation și pentru media declarate ca "
-"nefiind create de IA"
-
-#: admin/class-setup.php:338
-msgid "Restore declarations that image optimizers strip (hourly sweep)"
-msgstr ""
-"Restaurează declarațiile pe care optimizatoarele de imagini le elimină "
-"(verificare orară)"
-
-#: admin/class-setup.php:340
-msgid "Save file settings"
-msgstr "Salvează setările pentru fișiere"
-
-#: admin/class-setup.php:355
+#: admin/class-setup.php:199
 msgid "Finish setup"
 msgstr "Încheie configurarea"
 
-#. translators: %s: name of the setup step (badge or writing).
-#: admin/class-setup.php:368
-#, php-format
-msgid "Undo last step (%s)"
-msgstr "Anulează ultimul pas (%s)"
-
-#: admin/class-setup.php:369
-msgid "badge look"
-msgstr "aspectul insignei"
-
-#: admin/class-setup.php:369
-msgid "file settings"
-msgstr "setările pentru fișiere"
-
-#: admin/class-setup.php:381
+#: admin/class-setup.php:206
 msgid "Not now"
 msgstr "Nu acum"
 
@@ -3059,3 +2995,38 @@ msgstr "politica de confidențialitate"
 msgctxt "block keyword"
 msgid "imprint"
 msgstr "informații legale"
+
+#: admin/class-setup.php:161
+msgid ""
+"Three things to settle once. Each button opens the section below that does "
+"it. Nothing is labeled without your review, and no request leaves your "
+"server."
+msgstr ""
+"Trei lucruri pe care le stabilești o singură dată. Fiecare buton deschide "
+"secțiunea de mai jos care se ocupă de asta. Nimic nu este etichetat fără "
+"verificarea ta și nicio cerere nu îți părăsește serverul."
+
+#: admin/class-setup.php:183
+msgid ""
+"Style, position and placement of the visible badge, with a live preview of "
+"the result."
+msgstr ""
+"Stilul, poziția și amplasarea insignei vizibile, cu o previzualizare live a "
+"rezultatului."
+
+#: admin/class-setup.php:184
+msgid "Open the badge settings"
+msgstr "Deschide setările insignei"
+
+#: admin/class-setup.php:189
+msgid ""
+"Whether the machine-readable declaration goes into the image files "
+"themselves, and whether it is restored after an image optimizer strips it."
+msgstr ""
+"Dacă declarația care poate fi citită de mașini este scrisă în fișierele "
+"imagine propriu-zise și dacă este restaurată după ce un optimizator de "
+"imagini o elimină."
+
+#: admin/class-setup.php:190
+msgid "Open the file settings"
+msgstr "Deschide setările de fișiere"

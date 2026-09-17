@@ -49,12 +49,15 @@ function trai_e2e_check( bool $ok, string $label ): void {
  *
  * The site URL carries the host-mapped port (e.g. localhost:8094) which does
  * not exist inside the container, so the request goes to the local Apache on
- * port 80 with the original host preserved as a Host header.
+ * port 80 with the original host preserved as a Host header. The target stays
+ * the host name "localhost": a stack that defines WP_HTTP_BLOCK_EXTERNAL
+ * blocks a request to 127.0.0.1, while localhost and the site's own host are
+ * always let through.
  */
 function trai_e2e_fetch( string $url ): string {
 	$host     = (string) wp_parse_url( home_url(), PHP_URL_HOST );
 	$port     = wp_parse_url( home_url(), PHP_URL_PORT );
-	$loopback = (string) preg_replace( '#^https?://[^/]+#', 'http://127.0.0.1', $url );
+	$loopback = (string) preg_replace( '#^https?://[^/]+#', 'http://localhost', $url );
 	$response = wp_remote_get(
 		$loopback,
 		array(
