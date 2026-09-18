@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: pt_PT\n"
@@ -716,42 +716,6 @@ msgstr ""
 "de auditoria, API REST e WP-CLI, tudo no seu próprio servidor, sem um único "
 "pedido externo."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr ""
-"Vista de impressão do relatório de conformidade com o hash do documento"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Estilos de aviso no front-end num artigo escrito por IA: banner, selo e selo"
-" no título"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"Sistemas de IA em uso: plugins detetados, sugestões e a visibilidade por "
-"sistema para o aviso aos visitantes"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Autoavaliação com as obrigações que se aplicam ao site e a lista de "
-"verificação de literacia em IA do artigo 4.º"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"Painel do TransparAI com a pontuação de prontidão, verificações em aberto, "
-"contadores e o cronograma do EU AI Act"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1119,22 +1083,6 @@ msgstr "A marcação sobrevive à minha CDN?"
 msgid "Where can I see what was written into a file?"
 msgstr "Onde posso ver o que foi escrito num ficheiro?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Definições com separadores, estatísticas da biblioteca, a análise em lotes e"
-" a exportação de auditoria"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Detalhes do anexo: caixa de seleção da etiqueta, evidências de deteção, "
-"ações de revisão e a inspeção do ficheiro com o seu pacote XMP em bruto"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1415,16 +1363,6 @@ msgstr "Serviços externos"
 msgid "For developers"
 msgstr "Para programadores"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Selo no front-end numa imagem etiquetada"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Grelha da biblioteca de multimédia com selos de IA, um estado de revisão e "
-"etiquetagem em lote"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1655,3 +1593,132 @@ msgstr ""
 "dinamarquês, finlandês, checo, romeno, grego, húngaro e uma variante alemã "
 "formal, a par do alemão, francês, espanhol, italiano e neerlandês já "
 "existentes."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Cronologia do Regulamento da IA e o registo de atividade que anota cada "
+"alteração"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Ecrã de imagens de IA: estado da biblioteca, análise por lotes, exportação "
+"de auditoria e listas de multimédia"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "Os dois widgets do painel: preparação e números"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Configuração em três passos: analisar a biblioteca, escolher o selo, decidir"
+" sobre os ficheiros"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Definições: aspeto do selo com pré-visualização em direto, texto "
+"alternativo, o selo sem IA e o aviso de página"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Editor de blocos: o painel TransparAI com o nível, a pessoa responsável e o "
+"carimbo de revisão"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Lista de artigos com a coluna de texto de IA, o filtro de nível e a edição "
+"rápida"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"Os deveres que decorrem das respostas, mais a lista de literacia em IA do "
+"artigo 4.º"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Autoavaliação: as seis perguntas que determinam quais deveres de "
+"transparência se aplicam"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Parte pública: selo no título, o aviso acima de um texto escrito por IA e o "
+"selo numa imagem gerada"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Lista de multimédia filtrada pela fila de revisão, com a coluna de IA e as "
+"ações em massa"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Detalhes do anexo: etiqueta, prova de deteção, a declaração em cada tamanho "
+"de imagem e o pacote XMP em bruto"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Grelha da biblioteca de multimédia: selos de IA, o selo dos ficheiros "
+"declarados sem IA e o filtro de estado de IA"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Painel com a pontuação de preparação, a verificação em aberto, os cinco "
+"passos por ordem e os contadores"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr ""
+"Relatório de conformidade em vista de impressão com o hash do documento"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"Sistemas de IA em uso: plugins detetados, uma sugestão para declarar e a "
+"visibilidade do aviso ao visitante"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"O cartão de configuração do primeiro arranque deixou de repetir as "
+"definições de selo e de ficheiros que já pertencem aos separadores abaixo. O"
+" segundo e o terceiro passo abrem agora a secção correspondente, para que "
+"cada opção exista uma única vez no ecrã e só um formulário a escreva."

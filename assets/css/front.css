@@ -53,9 +53,12 @@ p .trai-wrap {
 	margin-bottom: 0;
 }
 
-/* Neutral by design: the badge renders on our users' websites, so it stays
-   black/white/outline and inherits no brand color. Open Sans leads the stack
-   but is never loaded remotely (no external requests). */
+/* Neutral by default: the badge renders on our users' websites, so out of the
+   box it stays black/white/outline and inherits no brand color. Sites that
+   want it to match their design set a color in the settings, which arrives as
+   the custom properties below; while they are unset every fallback here is the
+   value the badge has always had. Open Sans leads the stack but is never
+   loaded remotely (no external requests). */
 .trai-badge {
 	position: absolute;
 	/* Above typical theme chrome (hover overlays, gallery zoom icons, sale
@@ -63,8 +66,9 @@ p .trai-wrap {
 	   shines through an opened lightbox. The custom property inherits, so
 	   themes can tune it globally or per container without new CSS rules. */
 	z-index: var(--trai-badge-z, 30);
-	background: rgba(0, 0, 0, 0.7);
-	color: #fff;
+	background: var(--trai-badge-bg, rgba(0, 0, 0, 0.7));
+	color: var(--trai-badge-fg, #fff);
+	opacity: var(--trai-badge-opacity, 1);
 	font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	font-size: 11px;
 	font-weight: 400;
@@ -118,11 +122,13 @@ p .trai-wrap {
 	display: none;
 }
 
-/* Declared not AI: same placement, inverted tone, so it never reads as the AI badge. */
+/* Declared not AI: same placement, inverted tone, so it never reads as the AI
+   badge. Follows a custom color too, otherwise a colored site would show two
+   badges in two unrelated looks. */
 .trai-badge.trai-badge--human {
-	background: rgba(255, 255, 255, 0.85);
-	color: #111;
-	border: 1px solid rgba(0, 0, 0, 0.25);
+	background: var(--trai-badge-bg, rgba(255, 255, 255, 0.85));
+	color: var(--trai-badge-fg, #111);
+	border: 1px solid var(--trai-badge-fg, rgba(0, 0, 0, 0.25));
 }
 
 .trai-mode-overlay .trai-badge {
@@ -157,14 +163,16 @@ p .trai-wrap {
 
 /* Styles */
 .trai-style-light .trai-badge {
-	background: rgba(255, 255, 254, 0.88);
-	color: #000;
+	background: var(--trai-badge-bg, rgba(255, 255, 254, 0.88));
+	color: var(--trai-badge-fg, #000);
 }
 
+/* Outline keeps no fill by definition, so a custom background does not apply
+   here; the text color carries the outline instead. */
 .trai-style-outline .trai-badge {
 	background: transparent;
-	color: #fff;
-	border: 1px solid rgba(255, 255, 254, 0.9);
+	color: var(--trai-badge-fg, #fff);
+	border: 1px solid var(--trai-badge-fg, rgba(255, 255, 254, 0.9));
 	text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
@@ -202,11 +210,13 @@ p .trai-wrap {
 	position: static;
 	display: block;
 	background: transparent;
-	color: inherit;
+	color: var(--trai-badge-fg, inherit);
 	font-size: 12px;
 	line-height: 1.4;
 	padding: 2px 0 0;
-	opacity: 0.75;
+	/* This rule outranks .trai-badge, so the custom property has to be repeated
+	   here or the opacity setting would never reach a caption. */
+	opacity: var(--trai-badge-opacity, 0.75);
 	white-space: normal;
 	max-width: none;
 	overflow: visible;

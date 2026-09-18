@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: hu_HU\n"
@@ -724,41 +724,6 @@ msgstr ""
 "nyomvonal, REST API és WP-CLI, mindez a saját szerverén, egyetlen külső "
 "kérés nélkül."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr "A megfelelőségi jelentés nyomtatási nézete a dokumentum-hashsel"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Tájékoztató stílusok a látogatói oldalon egy MI által írt bejegyzésen: "
-"szalag, jelvény és címjelvény"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"Használt MI-rendszerek: felismert bővítmények, javaslatok és a "
-"rendszerenkénti láthatóság a látogatói tájékoztatóhoz"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Önértékelés a webhelyre vonatkozó kötelezettségekkel és a 4. cikk szerinti "
-"MI-jártassági ellenőrzőlistával"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"A TransparAI vezérlőpultja a felkészültségi pontszámmal, a nyitott "
-"ellenőrzésekkel, a számlálókkal és az EU AI Act ütemtervével"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1125,22 +1090,6 @@ msgstr "Túléli a jelölés a CDN-emet?"
 msgid "Where can I see what was written into a file?"
 msgstr "Hol láthatom, mi került beírásra egy fájlba?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Beállítások fülekkel, médiatár-statisztika, a kötegelt átvizsgálás és az "
-"auditexport"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Csatolmány részletei: címke jelölőnégyzet, felismerési bizonyíték, "
-"ellenőrzési műveletek és a fájlvizsgálat a nyers XMP-csomaggal"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1421,16 +1370,6 @@ msgstr "Külső szolgáltatások"
 msgid "For developers"
 msgstr "Fejlesztőknek"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Jelvény a látogatói oldalon egy címkézett képen"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Médiatár rácsnézete MI-jelvényekkel, ellenőrzési állapottal és tömeges "
-"címkézéssel"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1661,3 +1600,132 @@ msgstr ""
 "Tíz további nyelv érkezik a bővítménnyel: lengyel, portugál, svéd, dán, "
 "finn, cseh, román, görög, magyar és a német magazódó változata, a meglévő "
 "német, francia, spanyol, olasz és holland mellett."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"A mesterségesintelligencia-rendelet ütemterve és a tevékenységnapló, amely "
+"minden változást rögzít"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Az MI-képek képernyője: a médiatár állapota, kötegelt vizsgálat, auditexport"
+" és a médialisták"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "A vezérlőpult két kismodulja: felkészültség és számok"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Beállítás három lépésben: a médiatár átvizsgálása, a jelvény kiválasztása, "
+"döntés a fájlokról"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Beállítások: a jelvény megjelenése élő előnézettel, alternatív szöveg, a nem"
+" MI jelvény és az oldaljegyzet"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Blokkszerkesztő: a TransparAI panel a szinttel, a felelős személlyel és az "
+"ellenőrzés bélyegzőjével"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Bejegyzéslista az MI-szöveg oszlopával, a szintszűrővel és a "
+"gyorsszerkesztéssel"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"A válaszokból következő kötelezettségek, valamint a 4. cikk szerinti MI-"
+"jártassági ellenőrzőlista"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Önértékelés: az a hat kérdés, amely eldönti, mely átláthatósági "
+"kötelezettségek vonatkoznak rád"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Webhely: címjelvény, az MI által írt szöveg feletti jegyzet és a jelvény a "
+"generált képen"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Az ellenőrzési sorra szűrt médialista az MI-oszloppal és a tömeges "
+"műveletekkel"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"A fájl részletei: címke, az észlelés bizonyítéka, a nyilatkozat minden "
+"képméretben és a nyers XMP-csomag"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"A médiatár rácsnézete: MI-jelvények, a nem MI-ként bejelentett médiumok "
+"jelvénye és az MI-állapotszűrő"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Vezérlőpult a felkészültségi pontszámmal, a nyitott ellenőrzéssel, az öt "
+"lépéssel sorrendben és a számlálókkal"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr ""
+"Megfelelőségi jelentés nyomtatási nézetben, a dokumentum hasítóértékével"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"Használt MI-rendszerek: észlelt bővítmények, javaslat a bejelentésre és a "
+"láthatóság a látogatói jegyzethez"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Az első indításkor megjelenő beállítókártya már nem ismétli meg a jelvény és"
+" a fájlok beállításait, amelyek amúgy is az alatta lévő fülekhez tartoznak. "
+"A második és a harmadik lépése immár a megfelelő szakaszt nyitja meg, így "
+"minden beállítás egyszer szerepel a képernyőn, és csak egy űrlap írja."

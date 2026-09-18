@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: el\n"
@@ -726,41 +726,6 @@ msgstr ""
 "δεδομένα για SEO, ελεγκτικό ίχνος, REST API και WP-CLI, όλα στον δικό σας "
 "διακομιστή, χωρίς ούτε ένα εξωτερικό αίτημα."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr "Προβολή εκτύπωσης της αναφοράς συμμόρφωσης με το hash εγγράφου"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Στυλ σημειώσεων στο front end σε άρθρο γραμμένο από AI: banner, σήμα και "
-"σήμα τίτλου"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"Συστήματα AI σε χρήση: πρόσθετα που εντοπίστηκαν, προτάσεις και η ορατότητα "
-"ανά σύστημα για τη σημείωση προς τον επισκέπτη"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Αυτοαξιολόγηση με τις υποχρεώσεις που ισχύουν για τον ιστότοπο και τη λίστα "
-"ελέγχου γραμματισμού στην AI του άρθρου 4"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"Πίνακας ελέγχου TransparAI με τη βαθμολογία ετοιμότητας, τους ανοιχτούς "
-"ελέγχους, τους μετρητές και το χρονοδιάγραμμα του EU AI Act"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1130,22 +1095,6 @@ msgstr "Επιβιώνει η σήμανση από το CDN μου;"
 msgid "Where can I see what was written into a file?"
 msgstr "Πού μπορώ να δω τι γράφτηκε μέσα σε ένα αρχείο;"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Ρυθμίσεις με καρτέλες, στατιστικά βιβλιοθήκης, η σάρωση σε παρτίδες και η "
-"εξαγωγή επιθεώρησης"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Λεπτομέρειες συνημμένου: πλαίσιο ελέγχου ετικέτας, στοιχεία ανίχνευσης, "
-"ενέργειες ελέγχου και η επιθεώρηση αρχείου με το ακατέργαστο πακέτο XMP της"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1431,16 +1380,6 @@ msgstr "Εξωτερικές υπηρεσίες"
 msgid "For developers"
 msgstr "Για προγραμματιστές"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Σήμα στο front end σε εικόνα με ετικέτα"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Πλέγμα βιβλιοθήκης πολυμέσων με σήματα AI, κατάσταση ελέγχου και μαζική "
-"σήμανση"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1674,3 +1613,131 @@ msgstr ""
 "δανικά, φινλανδικά, τσέχικα, ρουμανικά, ελληνικά, ουγγρικά και μια επίσημη "
 "παραλλαγή των γερμανικών, δίπλα στα υπάρχοντα γερμανικά, γαλλικά, ισπανικά, "
 "ιταλικά και ολλανδικά."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Χρονολόγιο του κανονισμού για την ΤΝ και το αρχείο δραστηριότητας που "
+"καταγράφει κάθε αλλαγή"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Οθόνη εικόνων ΤΝ: κατάσταση βιβλιοθήκης, σάρωση κατά παρτίδες, εξαγωγή "
+"ελέγχου και λίστες πολυμέσων"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "Οι δύο μικροεφαρμογές του πίνακα ελέγχου: ετοιμότητα και αριθμοί"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Ρύθμιση σε τρία βήματα: σάρωση της βιβλιοθήκης, επιλογή σήματος, απόφαση για"
+" τα αρχεία"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Ρυθμίσεις: εμφάνιση σήματος με ζωντανή προεπισκόπηση, εναλλακτικό κείμενο, "
+"σήμα χωρίς ΤΝ και σημείωση σελίδας"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Επεξεργαστής μπλοκ: ο πίνακας TransparAI με επίπεδο, υπεύθυνο πρόσωπο και "
+"σφραγίδα ελέγχου"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Λίστα άρθρων με τη στήλη κειμένου ΤΝ, το φίλτρο επιπέδου και τη γρήγορη "
+"επεξεργασία"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"Οι υποχρεώσεις που προκύπτουν από τις απαντήσεις, μαζί με τη λίστα ελέγχου "
+"γραμματισμού στην ΤΝ του άρθρου 4"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Αυτοαξιολόγηση: οι έξι ερωτήσεις που κρίνουν ποιες υποχρεώσεις διαφάνειας "
+"ισχύουν"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Ιστότοπος: σήμα τίτλου, η σημείωση πάνω από κείμενο γραμμένο από ΤΝ και το "
+"σήμα σε παραγόμενη εικόνα"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Λίστα πολυμέσων φιλτραρισμένη στην ουρά ελέγχου, με τη στήλη ΤΝ και τις "
+"μαζικές ενέργειες"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Λεπτομέρειες αρχείου: ετικέτα, τεκμήριο ανίχνευσης, η δήλωση σε κάθε μέγεθος"
+" εικόνας και το ακατέργαστο πακέτο XMP"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Πλέγμα βιβλιοθήκης πολυμέσων: σήματα ΤΝ, το σήμα των αρχείων που δηλώθηκαν "
+"χωρίς ΤΝ και το φίλτρο κατάστασης"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Πίνακας ελέγχου με τη βαθμολογία ετοιμότητας, τον ανοιχτό έλεγχο, τα πέντε "
+"βήματα με τη σειρά και τους μετρητές"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr "Έκθεση συμμόρφωσης σε προβολή εκτύπωσης με το hash του εγγράφου"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"Συστήματα ΤΝ σε χρήση: πρόσθετα που εντοπίστηκαν, πρόταση δήλωσης και "
+"ορατότητα για τη σημείωση προς τους επισκέπτες"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Η κάρτα ρύθμισης της πρώτης εκκίνησης δεν επαναλαμβάνει πλέον τις ρυθμίσεις "
+"σήματος και αρχείων που ανήκουν ήδη στις καρτέλες από κάτω. Το δεύτερο και "
+"το τρίτο βήμα ανοίγουν τώρα την αντίστοιχη ενότητα, ώστε κάθε επιλογή να "
+"υπάρχει μία φορά στην οθόνη και να τη γράφει μία μόνο φόρμα."

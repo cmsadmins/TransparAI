@@ -3,7 +3,7 @@
  * Plugin Name:       TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection
  * Plugin URI:        https://wordpress.org/plugins/transparai/
  * Description:       Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track EU AI Act readiness with a score, self-assessment and compliance report.
- * Version:           1.1.3
+ * Version:           1.1.4
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Patrick Schlesinger
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.1.3' );
+defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.1.4' );
 defined( 'TRANSPARAI_PLUGIN_FILE' ) || define( 'TRANSPARAI_PLUGIN_FILE', __FILE__ );
 defined( 'TRANSPARAI_PLUGIN_DIR' ) || define( 'TRANSPARAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'TRANSPARAI_PLUGIN_URL' ) || define( 'TRANSPARAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

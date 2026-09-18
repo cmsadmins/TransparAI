@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: fi\n"
@@ -717,41 +717,6 @@ msgstr ""
 "kirjausketju, REST API ja WP-CLI, kaikki omalla palvelimellasi ilman "
 "yhtäkään ulkoista pyyntöä."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr "Vaatimustenmukaisuusraportin tulostusnäkymä dokumenttitiivisteineen"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Huomautustyylit tekoälyn kirjoittamassa artikkelissa: palkki, merkki ja "
-"otsikkomerkki"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"Käytössä olevat tekoälyjärjestelmät: tunnistetut lisäosat, ehdotukset ja "
-"järjestelmäkohtainen näkyvyys kävijöiden huomautuksessa"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Itsearviointi, sivustoa koskevat velvoitteet ja 4 artiklan tekoälylukutaidon"
-" tarkistuslista"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"TransparAI:n ohjausnäkymä: valmiuspisteet, avoimet tarkistukset, laskurit ja"
-" EU AI Act -aikajana"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1117,22 +1082,6 @@ msgstr "Säilyykö merkintä CDN:ni läpi?"
 msgid "Where can I see what was written into a file?"
 msgstr "Mistä näen, mitä tiedostoon kirjoitettiin?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Välilehdelliset asetukset, kirjaston tilastot, erissä tehtävä skannaus ja "
-"tarkastusvienti"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Liitetiedoston tiedot: merkinnän valintaruutu, tunnistuksen todisteet, "
-"tarkistustoiminnot ja tiedoston tarkastelu raakoine XMP-paketteineen"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1411,16 +1360,6 @@ msgstr "Ulkoiset palvelut"
 msgid "For developers"
 msgstr "Kehittäjille"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Näkyvä merkki merkityssä kuvassa julkisella puolella"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Mediakirjaston ruudukko tekoälymerkkeineen, tarkistustiloineen ja "
-"massamerkintöineen"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1654,3 +1593,131 @@ msgstr ""
 "tanska, suomi, tšekki, romania, kreikka, unkari ja saksan teitittelevä "
 "muunnelma nykyisten saksan, ranskan, espanjan, italian ja hollannin "
 "rinnalle."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Tekoälyasetuksen aikajana ja tapahtumaloki, joka kirjaa jokaisen muutoksen"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Tekoälykuvien näkymä: kirjaston tila, erissä tehtävä tarkistus, "
+"auditointivienti ja medialistat"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "Ohjausnäkymän kaksi vimpainta: valmius ja luvut"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Käyttöönotto kolmessa vaiheessa: tarkista kirjasto, valitse merkki, päätä "
+"tiedostoista"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Asetukset: merkin ulkoasu esikatselulla, vaihtoehtoinen teksti, ei-"
+"tekoälymerkki ja sivuilmoitus"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Lohkomuokkain: TransparAI-paneeli tasolla, vastuuhenkilöllä ja "
+"tarkastusmerkinnällä"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Artikkelilista tekoälytekstin sarakkeella, tasosuodattimella ja "
+"pikamuokkauksella"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"Vastauksista seuraavat velvoitteet sekä 4 artiklan tekoälylukutaidon "
+"tarkistuslista"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Itsearviointi: kuusi kysymystä, jotka ratkaisevat sovellettavat "
+"avoimuusvelvoitteet"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Sivusto: otsikkomerkki, ilmoitus tekoälyn kirjoittaman tekstin yläpuolella "
+"ja merkki luodussa kuvassa"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Medialista suodatettuna tarkistusjonoon, tekoälysarakkeella ja "
+"massatoiminnoilla"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Tiedoston tiedot: merkintä, tunnistuksen todiste, ilmoitus jokaisessa "
+"kuvakoossa ja raaka XMP-paketti"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Mediakirjaston ruudukko: tekoälymerkit, ei-tekoälyksi ilmoitettujen merkki "
+"ja tekoälytilan suodatin"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Ohjausnäkymä valmiuspisteillä, avoimella tarkistuksella, viidellä vaiheella "
+"järjestyksessä ja laskureilla"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr ""
+"Vaatimustenmukaisuusraportti tulostusnäkymässä asiakirjan tiivisteellä"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"Käytössä olevat tekoälyjärjestelmät: havaitut lisäosat, ehdotus "
+"ilmoitettavaksi ja näkyvyys kävijäilmoituksessa"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Ensimmäisen käynnistyksen asetuskortti ei enää toista merkin ja tiedostojen "
+"asetuksia, jotka kuuluvat jo alla oleviin välilehtiin. Sen toinen ja kolmas "
+"vaihe avaavat nyt vastaavan osion, joten jokainen asetus on ruudulla kerran "
+"ja vain yksi lomake kirjoittaa sen."

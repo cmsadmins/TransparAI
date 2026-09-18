@@ -99,6 +99,24 @@ final class OptionsTest extends TestCase {
 		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_from_date' => '2026-09-01<script>' ) )['badge_from_date'] );
 	}
 
+	public function test_badge_colors_accept_only_full_hex(): void {
+		$this->assertSame( '#ff6800', TransparAI_Options::sanitize( array( 'badge_color' => '#FF6800' ) )['badge_color'], 'Case is normalised' );
+		$this->assertSame( '#123abc', TransparAI_Options::sanitize( array( 'badge_text_color' => '  #123abc  ' ) )['badge_text_color'] );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_color' => '' ) )['badge_color'] );
+		$this->assertSame( '', TransparAI_Options::sanitize( array() )['badge_color'], 'Missing key stays empty' );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_color' => '#fff' ) )['badge_color'], 'Shorthand is rejected' );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_color' => 'red' ) )['badge_color'] );
+		$this->assertSame( '', TransparAI_Options::sanitize( array( 'badge_color' => '#ff6800;}body{display:none' ) )['badge_color'], 'No way out of the CSS declaration' );
+	}
+
+	public function test_badge_opacity_is_clamped_to_percent(): void {
+		$this->assertSame( '100', TransparAI_Options::sanitize( array() )['badge_opacity'], 'Missing key keeps the badge fully opaque' );
+		$this->assertSame( '70', TransparAI_Options::sanitize( array( 'badge_opacity' => '70' ) )['badge_opacity'] );
+		$this->assertSame( '0', TransparAI_Options::sanitize( array( 'badge_opacity' => '-5' ) )['badge_opacity'] );
+		$this->assertSame( '100', TransparAI_Options::sanitize( array( 'badge_opacity' => '500' ) )['badge_opacity'] );
+		$this->assertSame( '100', TransparAI_Options::sanitize( array( 'badge_opacity' => 'abc' ) )['badge_opacity'], 'Unreadable input keeps the default' );
+	}
+
 	public function test_get_survives_foreign_value_types(): void {
 		global $trai_test_options;
 		// WP-CLI, migrations and other plugins can write non-strings.

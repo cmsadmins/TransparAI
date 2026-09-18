@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection 1.1.2\n"
+"Project-Id-Version: TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-16T21:51:46+00:00\n"
+"POT-Creation-Date: 2026-09-18T10:58:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: transparai\n"
@@ -196,7 +196,7 @@ msgid "The EU AI Act asks for three things on a website: visitors must know when
 msgstr ""
 
 #: admin/class-dashboard.php:223
-#: admin/class-settings.php:705
+#: admin/class-settings.php:746
 msgid "Readiness score"
 msgstr ""
 
@@ -219,8 +219,8 @@ msgstr ""
 
 #: admin/class-dashboard.php:255
 #: admin/class-dashboard.php:259
-#: admin/class-settings.php:707
-#: admin/class-settings.php:726
+#: admin/class-settings.php:748
+#: admin/class-settings.php:767
 msgid "Done"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgstr ""
 
 #: admin/class-dashboard.php:316
 #: admin/class-dashboard.php:1020
-#: admin/class-settings.php:778
+#: admin/class-settings.php:819
 msgid "Recent activity"
 msgstr ""
 
@@ -255,12 +255,12 @@ msgid "Nothing recorded yet. Scans, settings changes, bulk actions and declarati
 msgstr ""
 
 #: admin/class-dashboard.php:322
-#: admin/class-settings.php:779
+#: admin/class-settings.php:820
 msgid "When"
 msgstr ""
 
 #: admin/class-dashboard.php:323
-#: admin/class-settings.php:779
+#: admin/class-settings.php:820
 msgid "Event"
 msgstr ""
 
@@ -269,7 +269,7 @@ msgid "Details"
 msgstr ""
 
 #: admin/class-dashboard.php:325
-#: admin/class-settings.php:779
+#: admin/class-settings.php:820
 msgid "By"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgid "The first-run setup is not finished yet."
 msgstr ""
 
 #: admin/class-dashboard.php:378
-#: admin/class-settings.php:832
+#: admin/class-settings.php:873
 msgid "Open setup"
 msgstr ""
 
@@ -302,20 +302,20 @@ msgstr ""
 
 #: admin/class-dashboard.php:398
 #: admin/class-dashboard.php:957
-#: admin/class-settings.php:818
+#: admin/class-settings.php:859
 msgid "Waiting for review"
 msgstr ""
 
 #: admin/class-dashboard.php:402
 #: admin/class-dashboard.php:961
-#: admin/class-settings.php:224
+#: admin/class-settings.php:232
 msgid "AI systems"
 msgstr ""
 
 #: admin/class-dashboard.php:406
 #: admin/class-dashboard.php:432
 #: admin/class-dashboard.php:935
-#: admin/class-settings.php:713
+#: admin/class-settings.php:754
 msgid "Self-assessment"
 msgstr ""
 
@@ -330,7 +330,7 @@ msgid "Compliance report"
 msgstr ""
 
 #: admin/class-dashboard.php:409
-#: admin/class-settings.php:829
+#: admin/class-settings.php:870
 msgid "Export audit CSV"
 msgstr ""
 
@@ -343,14 +343,14 @@ msgid "Stored on this site only, nothing is sent anywhere. Come back and update 
 msgstr ""
 
 #: admin/class-dashboard.php:444
-#: admin/class-settings.php:475
-#: admin/class-settings.php:701
+#: admin/class-settings.php:516
+#: admin/class-settings.php:742
 msgid "Yes"
 msgstr ""
 
 #: admin/class-dashboard.php:445
-#: admin/class-settings.php:476
-#: admin/class-settings.php:702
+#: admin/class-settings.php:517
+#: admin/class-settings.php:743
 msgid "No"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgid "Use of AI"
 msgstr ""
 
 #: admin/class-dashboard.php:475
-#: admin/class-settings.php:717
+#: admin/class-settings.php:758
 msgid "What the AI Act says"
 msgstr ""
 
@@ -423,8 +423,8 @@ msgid "Both parts of this screen end up in the compliance report, the document y
 msgstr ""
 
 #: admin/class-dashboard.php:602
-#: admin/class-settings.php:513
-#: admin/class-settings.php:732
+#: admin/class-settings.php:554
+#: admin/class-settings.php:773
 msgid "AI systems in use"
 msgstr ""
 
@@ -451,18 +451,18 @@ msgid "Visible"
 msgstr ""
 
 #: admin/class-dashboard.php:627
-#: admin/class-settings.php:736
+#: admin/class-settings.php:777
 msgid "System"
 msgstr ""
 
 #: admin/class-dashboard.php:628
 #: admin/class-dashboard.php:676
-#: admin/class-settings.php:736
+#: admin/class-settings.php:777
 msgid "Category"
 msgstr ""
 
 #: admin/class-dashboard.php:629
-#: admin/class-settings.php:736
+#: admin/class-settings.php:777
 msgid "Articles"
 msgstr ""
 
@@ -520,7 +520,7 @@ msgid "Declare"
 msgstr ""
 
 #: admin/class-dashboard.php:762
-#: admin/class-settings.php:762
+#: admin/class-settings.php:803
 msgid "AI-written content"
 msgstr ""
 
@@ -558,7 +558,7 @@ msgstr ""
 
 #: admin/class-dashboard.php:840
 #: admin/class-dashboard.php:956
-#: admin/class-settings.php:814
+#: admin/class-settings.php:855
 msgid "Labeled as AI"
 msgstr ""
 
@@ -721,27 +721,27 @@ msgid "Default (site setting)"
 msgstr ""
 
 #: admin/class-media-library.php:137
-#: admin/class-settings.php:305
+#: admin/class-settings.php:316
 msgid "Top left"
 msgstr ""
 
 #: admin/class-media-library.php:138
-#: admin/class-settings.php:306
+#: admin/class-settings.php:317
 msgid "Top right"
 msgstr ""
 
 #: admin/class-media-library.php:139
-#: admin/class-settings.php:307
+#: admin/class-settings.php:318
 msgid "Bottom left"
 msgstr ""
 
 #: admin/class-media-library.php:140
-#: admin/class-settings.php:308
+#: admin/class-settings.php:319
 msgid "Bottom right"
 msgstr ""
 
 #: admin/class-media-library.php:141
-#: admin/class-settings.php:298
+#: admin/class-settings.php:309
 msgid "Caption line below the image"
 msgstr ""
 
@@ -1017,742 +1017,778 @@ msgstr ""
 msgid "Media audit list"
 msgstr ""
 
-#: admin/class-settings.php:221
-#: admin/class-settings.php:254
+#: admin/class-settings.php:229
+#: admin/class-settings.php:262
 msgid "Visible badge"
 msgstr ""
 
-#: admin/class-settings.php:222
-#: admin/class-settings.php:366
+#: admin/class-settings.php:230
+#: admin/class-settings.php:407
 #: includes/class-compliance.php:65
 msgid "AI-written text"
 msgstr ""
 
-#: admin/class-settings.php:223
-#: admin/class-settings.php:440
+#: admin/class-settings.php:231
+#: admin/class-settings.php:481
 msgid "Chatbot disclosure"
 msgstr ""
 
-#: admin/class-settings.php:225
-#: admin/class-settings.php:549
+#: admin/class-settings.php:233
+#: admin/class-settings.php:590
 msgid "Automatic detection"
 msgstr ""
 
-#: admin/class-settings.php:226
+#: admin/class-settings.php:234
 msgid "File metadata"
 msgstr ""
 
-#: admin/class-settings.php:227
-#: admin/class-settings.php:651
+#: admin/class-settings.php:235
+#: admin/class-settings.php:692
 msgid "Uninstall"
 msgstr ""
 
-#: admin/class-settings.php:235
+#: admin/class-settings.php:243
 msgid "Settings saved."
 msgstr ""
 
-#: admin/class-settings.php:247
+#: admin/class-settings.php:255
 msgid "Settings sections"
 msgstr ""
 
-#: admin/class-settings.php:257
+#: admin/class-settings.php:265
 msgid "Show badge"
 msgstr ""
 
-#: admin/class-settings.php:260
+#: admin/class-settings.php:268
 msgid "Show a visible badge on labeled media in the front end"
 msgstr ""
 
-#: admin/class-settings.php:264
+#: admin/class-settings.php:272
 msgid "Start date"
 msgstr ""
 
-#: admin/class-settings.php:267
+#: admin/class-settings.php:275
 msgid "Only media uploaded on or after this date get the front-end badge; earlier media stay labeled in the admin only. Leave empty to badge all labeled media."
 msgstr ""
 
-#: admin/class-settings.php:271
+#: admin/class-settings.php:279
 msgid "Badge text"
 msgstr ""
 
-#: admin/class-settings.php:273
+#: admin/class-settings.php:281
 #: includes/class-frontend.php:229
 #: includes/class-frontend.php:234
 #: includes/class-notice.php:154
 msgid "AI-generated"
 msgstr ""
 
-#: admin/class-settings.php:275
+#: admin/class-settings.php:283
 msgid "Leave empty for the translated default label."
 msgstr ""
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site} placeholder (do not translate), 3: example template.
-#: admin/class-settings.php:279
+#: admin/class-settings.php:287
 #, php-format
 msgid "Placeholders: %1$s (detected or manually set generator) and %2$s (site title), e.g. %3$s. Images without a known generator fall back to the default label."
 msgstr ""
 
-#: admin/class-settings.php:289
+#: admin/class-settings.php:297
 msgid "Appearance"
 msgstr ""
 
-#: admin/class-settings.php:297
+#: admin/class-settings.php:308
 msgid "Overlay on the image"
 msgstr ""
 
-#: admin/class-settings.php:315
+#: admin/class-settings.php:326
 msgid "Dark"
 msgstr ""
 
-#: admin/class-settings.php:316
+#: admin/class-settings.php:327
 msgid "Light"
 msgstr ""
 
-#: admin/class-settings.php:317
+#: admin/class-settings.php:328
 msgid "Outline"
 msgstr ""
 
-#: admin/class-settings.php:318
+#: admin/class-settings.php:329
 msgid "Icon only (short label)"
 msgstr ""
 
-#: admin/class-settings.php:325
+#: admin/class-settings.php:336
 msgid "Small"
 msgstr ""
 
-#: admin/class-settings.php:326
+#: admin/class-settings.php:337
 msgid "Medium"
 msgstr ""
 
-#: admin/class-settings.php:327
+#: admin/class-settings.php:338
 msgid "Large"
 msgstr ""
 
-#: admin/class-settings.php:334
-msgid "Extras"
-msgstr ""
-
-#: admin/class-settings.php:337
-msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
-msgstr ""
-
-#: admin/class-settings.php:339
-msgid "Append the label to the image alt text (screen readers)"
-msgstr ""
-
-#: admin/class-settings.php:341
-msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
-msgstr ""
-
-#: admin/class-settings.php:343
-msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
-msgstr ""
-
-#: admin/class-settings.php:347
-msgid "Not AI"
+#: admin/class-settings.php:346
+msgid "Background"
 msgstr ""
 
 #: admin/class-settings.php:350
+msgid "Text"
+msgstr ""
+
+#: admin/class-settings.php:354
+msgid "Opacity"
+msgstr ""
+
+#: admin/class-settings.php:362
+msgid "Readable"
+msgstr ""
+
+#: admin/class-settings.php:363
+msgid "Borderline"
+msgstr ""
+
+#: admin/class-settings.php:364
+msgid "Hard to read"
+msgstr ""
+
+#: admin/class-settings.php:365
+msgid "Depends on what is behind it"
+msgstr ""
+
+#: admin/class-settings.php:367
+msgid "Badge text is small, so WCAG asks for a contrast of at least 4.5 to 1. A see-through badge is rated for the worst case, a photo far lighter or darker than the badge itself."
+msgstr ""
+
+#: admin/class-settings.php:370
+msgid "Both colours are optional: while they are empty the badge keeps the colours of the style above, exactly as before. The text colour also draws the border, and the outline style has no fill of its own, so a background colour does not show there."
+msgstr ""
+
+#: admin/class-settings.php:375
+msgid "Extras"
+msgstr ""
+
+#: admin/class-settings.php:378
+msgid "Show the detected generator in the badge (e.g. \"AI-generated · Midjourney\"; ignored when the badge text contains {generator})"
+msgstr ""
+
+#: admin/class-settings.php:380
+msgid "Append the label to the image alt text (screen readers)"
+msgstr ""
+
+#: admin/class-settings.php:382
+msgid "Automatically move a badge to another corner, or below the image, if a theme overlay covers it (recommended, needs JavaScript)"
+msgstr ""
+
+#: admin/class-settings.php:384
+msgid "Also label images printed without an attachment ID (ACF fields, sliders, builders) and CSS backgrounds (experimental, needs JavaScript)"
+msgstr ""
+
+#: admin/class-settings.php:388
+msgid "Not AI"
+msgstr ""
+
+#: admin/class-settings.php:391
 msgid "Also show a badge on media declared as camera photo or human work (the structured data carries the declaration either way)"
 msgstr ""
 
-#: admin/class-settings.php:351
+#: admin/class-settings.php:392
 #: includes/class-frontend.php:207
 msgid "Human made"
 msgstr ""
 
-#: admin/class-settings.php:355
+#: admin/class-settings.php:396
 msgid "Page notice"
 msgstr ""
 
-#: admin/class-settings.php:358
+#: admin/class-settings.php:399
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 
-#: admin/class-settings.php:359
-#: includes/class-frontend.php:782
+#: admin/class-settings.php:400
+#: includes/class-frontend.php:837
 msgid "This page contains AI-generated media."
 msgstr ""
 
-#: admin/class-settings.php:367
+#: admin/class-settings.php:408
 msgid "Every post carries an AI level (none, AI-assisted, AI-generated, AI-generated and reviewed), set in the editor sidebar, in Quick Edit or in bulk. AI levels show a note on the post; the shortcode [transparai_notice] and the \"AI notice\" block place it anywhere by hand."
 msgstr ""
 
-#: admin/class-settings.php:370
+#: admin/class-settings.php:411
 msgid "Note text"
 msgstr ""
 
-#: admin/class-settings.php:372
+#: admin/class-settings.php:413
 #: includes/class-notice.php:140
 msgid "This text was generated by AI."
 msgstr ""
 
-#: admin/class-settings.php:373
+#: admin/class-settings.php:414
 msgid "Leave empty for a translated wording per level (\"created with the help of AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
 msgstr ""
 
-#: admin/class-settings.php:379
+#: admin/class-settings.php:420
 msgid "Ahead of the content"
 msgstr ""
 
-#: admin/class-settings.php:380
+#: admin/class-settings.php:421
 msgid "After the content"
 msgstr ""
 
-#: admin/class-settings.php:381
+#: admin/class-settings.php:422
 msgid "Ahead of and after the content"
 msgstr ""
 
-#: admin/class-settings.php:382
-#: admin/class-settings.php:530
+#: admin/class-settings.php:423
+#: admin/class-settings.php:571
 msgid "Only where a block or shortcode is placed"
 msgstr ""
 
-#: admin/class-settings.php:389
+#: admin/class-settings.php:430
 #: includes/class-notice.php:629
 msgid "Block (own line)"
 msgstr ""
 
-#: admin/class-settings.php:390
+#: admin/class-settings.php:431
 #: includes/class-notice.php:630
 msgid "Inline (inside text)"
 msgstr ""
 
-#: admin/class-settings.php:391
-#: admin/class-settings.php:529
+#: admin/class-settings.php:432
+#: admin/class-settings.php:570
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
 msgstr ""
 
-#: admin/class-settings.php:392
+#: admin/class-settings.php:433
 #: includes/class-notice.php:632
 msgid "Badge (small chip)"
 msgstr ""
 
-#: admin/class-settings.php:393
+#: admin/class-settings.php:434
 #: includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
 msgstr ""
 
-#: admin/class-settings.php:400
+#: admin/class-settings.php:441
 msgid "Post titles"
 msgstr ""
 
-#: admin/class-settings.php:403
+#: admin/class-settings.php:444
 msgid "Append a small AI badge to the title of AI-written posts in lists and archives"
 msgstr ""
 
-#: admin/class-settings.php:404
+#: admin/class-settings.php:445
 msgid "The badge is HTML inside the title. Themes that print titles unescaped inside attributes should leave this off."
 msgstr ""
 
-#: admin/class-settings.php:408
+#: admin/class-settings.php:449
 msgid "Review"
 msgstr ""
 
-#: admin/class-settings.php:410
+#: admin/class-settings.php:451
 msgid "Name of the person responsible"
 msgstr ""
 
-#: admin/class-settings.php:411
+#: admin/class-settings.php:452
 msgid "Default for the \"responsible person\" of reviewed texts; each post can name someone else. The reviewer, date and a fingerprint of the reviewed text are recorded with the post."
 msgstr ""
 
-#: admin/class-settings.php:413
+#: admin/class-settings.php:454
 msgid "Name the reviewer and the review date in the public note and in the structured data"
 msgstr ""
 
-#: admin/class-settings.php:417
+#: admin/class-settings.php:458
 msgid "New posts"
 msgstr ""
 
-#: admin/class-settings.php:422
+#: admin/class-settings.php:463
 msgid "Preselected level for posts created from now on. Existing posts are never reclassified."
 msgstr ""
 
-#: admin/class-settings.php:426
+#: admin/class-settings.php:467
 msgid "Excerpts and feeds"
 msgstr ""
 
-#: admin/class-settings.php:429
+#: admin/class-settings.php:470
 msgid "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
 
-#: admin/class-settings.php:431
+#: admin/class-settings.php:472
 msgid "Add the note to RSS feed items (content, summary and a machine-readable dc:description element)"
 msgstr ""
 
-#: admin/class-settings.php:433
+#: admin/class-settings.php:474
 msgid "Prefix feed item titles of AI-written posts with [AI]"
 msgstr ""
 
-#: admin/class-settings.php:441
+#: admin/class-settings.php:482
 msgid "Visitors must be told when they talk to an AI system, at the latest when the conversation starts. Your answer decides; what the plugin finds on the site only informs it, because most chat widgets are live chats where a person answers and a false \"this is an AI\" would mislead visitors. Detection is local: active plugins, theme snippets, the scripts a page registers, and what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
 
-#: admin/class-settings.php:445
+#: admin/class-settings.php:486
 msgid "Found on this site"
 msgstr ""
 
-#: admin/class-settings.php:448
+#: admin/class-settings.php:489
 msgid "No known chat or chatbot widget found so far. Open a few pages of your site while logged in; the check runs in your browser and reports here."
 msgstr ""
 
-#: admin/class-settings.php:453
+#: admin/class-settings.php:494
 msgid "a bot answers"
 msgstr ""
 
-#: admin/class-settings.php:454
+#: admin/class-settings.php:495
 msgid "people answer"
 msgstr ""
 
-#: admin/class-settings.php:455
+#: admin/class-settings.php:496
 msgid "live chat with optional bot"
 msgstr ""
 
-#: admin/class-settings.php:456
+#: admin/class-settings.php:497
 msgid "staffing unknown"
 msgstr ""
 
-#: admin/class-settings.php:467
+#: admin/class-settings.php:508
 msgid "Does this site run a chat?"
 msgstr ""
 
-#: admin/class-settings.php:474
+#: admin/class-settings.php:515
 msgid "Not decided yet"
 msgstr ""
 
-#: admin/class-settings.php:483
+#: admin/class-settings.php:524
 msgid "An AI answers"
 msgstr ""
 
-#: admin/class-settings.php:484
+#: admin/class-settings.php:525
 msgid "People answer, an AI sometimes"
 msgstr ""
 
-#: admin/class-settings.php:485
+#: admin/class-settings.php:526
 msgid "Only people answer"
 msgstr ""
 
-#: admin/class-settings.php:489
+#: admin/class-settings.php:530
 msgid "The notice appears only with \"Yes\" and an AI that answers at least sometimes."
 msgstr ""
 
-#: admin/class-settings.php:493
+#: admin/class-settings.php:534
 msgid "Notice"
 msgstr ""
 
-#: admin/class-settings.php:495
+#: admin/class-settings.php:536
 #: includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
 msgstr ""
 
-#: admin/class-settings.php:501
+#: admin/class-settings.php:542
 msgid "As the first message of the bot (AI Engine; otherwise next to the widget)"
 msgstr ""
 
-#: admin/class-settings.php:502
+#: admin/class-settings.php:543
 msgid "Next to the chat widget"
 msgstr ""
 
-#: admin/class-settings.php:503
+#: admin/class-settings.php:544
 msgid "As a line at the end of every page"
 msgstr ""
 
-#: admin/class-settings.php:514
+#: admin/class-settings.php:555
 msgid "The plugin matches your installed plugins against a bundled list of known AI tools and lets you declare others by hand. Which of them visitors get told about is decided per system on the AI Systems page; nothing is switched on from a finding alone. The list ships with the plugin, nothing is fetched."
 msgstr ""
 
-#: admin/class-settings.php:517
+#: admin/class-settings.php:558
 msgid "Visitor notice"
 msgstr ""
 
-#: admin/class-settings.php:520
+#: admin/class-settings.php:561
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
 
-#: admin/class-settings.php:527
+#: admin/class-settings.php:568
 msgid "Line at the end of the page"
 msgstr ""
 
-#: admin/class-settings.php:528
+#: admin/class-settings.php:569
 msgid "Small badge in a corner"
 msgstr ""
 
-#: admin/class-settings.php:538
+#: admin/class-settings.php:579
 msgid "Notice text"
 msgstr ""
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
-#: admin/class-settings.php:540
+#: admin/class-settings.php:581
 #: includes/class-systems.php:458
 #, php-format
 msgid "This site uses AI systems: %s."
 msgstr ""
 
 #. translators: %s is the literal placeholder token shown to the user.
-#: admin/class-settings.php:541
+#: admin/class-settings.php:582
 #, php-format
 msgid "Leave empty for the translated default. %s is replaced with the names of the visible systems."
 msgstr ""
 
 #. translators: %s is the literal placeholder token shown to the user.
-#: admin/class-settings.php:542
+#: admin/class-settings.php:583
 msgid "Manage detected and declared AI systems"
 msgstr ""
 
-#: admin/class-settings.php:552
+#: admin/class-settings.php:593
 msgid "Detect on upload"
 msgstr ""
 
-#: admin/class-settings.php:555
+#: admin/class-settings.php:596
 msgid "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
 
-#: admin/class-settings.php:559
+#: admin/class-settings.php:600
 msgid "Standard declarations"
 msgstr ""
 
-#: admin/class-settings.php:566
-#: admin/class-settings.php:583
+#: admin/class-settings.php:607
+#: admin/class-settings.php:624
 msgid "Label automatically"
 msgstr ""
 
-#: admin/class-settings.php:567
-#: admin/class-settings.php:584
+#: admin/class-settings.php:608
+#: admin/class-settings.php:625
 msgid "Put into review queue"
 msgstr ""
 
-#: admin/class-settings.php:568
-#: admin/class-settings.php:585
+#: admin/class-settings.php:609
+#: admin/class-settings.php:626
 msgid "Ignore"
 msgstr ""
 
-#: admin/class-settings.php:572
+#: admin/class-settings.php:613
 msgid "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration)."
 msgstr ""
 
-#: admin/class-settings.php:576
+#: admin/class-settings.php:617
 msgid "Generator signatures"
 msgstr ""
 
-#: admin/class-settings.php:589
+#: admin/class-settings.php:630
 msgid "Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
 msgstr ""
 
-#: admin/class-settings.php:593
+#: admin/class-settings.php:634
 msgid "More sources"
 msgstr ""
 
-#: admin/class-settings.php:596
+#: admin/class-settings.php:637
 msgid "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
 
-#: admin/class-settings.php:598
+#: admin/class-settings.php:639
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
 
-#: admin/class-settings.php:606
+#: admin/class-settings.php:647
 msgid "Machine-readable file metadata"
 msgstr ""
 
-#: admin/class-settings.php:609
+#: admin/class-settings.php:650
 msgid "Write into files"
 msgstr ""
 
-#: admin/class-settings.php:612
+#: admin/class-settings.php:653
 msgid "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and AVIF files (all size variants)"
 msgstr ""
 
-#: admin/class-settings.php:614
+#: admin/class-settings.php:655
 msgid "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC block)"
 msgstr ""
 
-#: admin/class-settings.php:616
+#: admin/class-settings.php:657
 msgid "Also write digitalCapture or digitalCreation into media you declared as not AI-made, but never over a declaration another tool or a camera already wrote"
 msgstr ""
 
-#: admin/class-settings.php:620
+#: admin/class-settings.php:661
 msgid "Auto-repair"
 msgstr ""
 
-#: admin/class-settings.php:623
+#: admin/class-settings.php:664
 msgid "Restore the metadata when image optimizers or regeneration strip it (hourly integrity sweep)"
 msgstr ""
 
-#: admin/class-settings.php:627
+#: admin/class-settings.php:668
 msgid "Delivery check"
 msgstr ""
 
-#: admin/class-settings.php:630
+#: admin/class-settings.php:671
 msgid "Allow checking whether the declaration survives delivery"
 msgstr ""
 
-#: admin/class-settings.php:631
+#: admin/class-settings.php:672
 msgid "Adds a button to the attachment details and here. On click, the plugin fetches that image over its own public URL and compares the delivered bytes with the file on disk, which is the only way to notice that an optimizing CDN re-encodes your images and drops the declaration on the way out. The request goes to your own site and nowhere else, and it only ever happens when you press the button."
 msgstr ""
 
-#: admin/class-settings.php:634
+#: admin/class-settings.php:675
 msgid "Check a sample of five files"
 msgstr ""
 
-#: admin/class-settings.php:641
+#: admin/class-settings.php:682
 msgid "Structured data"
 msgstr ""
 
-#: admin/class-settings.php:644
+#: admin/class-settings.php:685
 msgid "Add Schema.org JSON-LD with the IPTC digital source type for the labeled media of each page (search engines read it without opening the files)"
 msgstr ""
 
-#: admin/class-settings.php:654
+#: admin/class-settings.php:695
 msgid "Data removal"
 msgstr ""
 
-#: admin/class-settings.php:657
+#: admin/class-settings.php:698
 msgid "Delete all plugin data (labels, detection results, settings) when the plugin is uninstalled"
 msgstr ""
 
-#: admin/class-settings.php:663
+#: admin/class-settings.php:704
 msgid "Save changes"
 msgstr ""
 
-#: admin/class-settings.php:680
+#: admin/class-settings.php:721
 msgid "Detection relies on metadata embedded by generators; files whose metadata was stripped carry no signal."
 msgstr ""
 
-#: admin/class-settings.php:681
+#: admin/class-settings.php:722
 msgid "A declaration records a statement by the site operator; it is not cryptographic proof of origin."
 msgstr ""
 
-#: admin/class-settings.php:682
+#: admin/class-settings.php:723
 msgid "Text disclosure levels are entered by editors; the review fingerprint shows whether content changed since the review, not whether the review was correct."
 msgstr ""
 
-#: admin/class-settings.php:683
+#: admin/class-settings.php:724
 msgid "The readiness score, the self-assessment and the AI literacy checklist summarise the plugin state and the operator's own answers; they are not a legal assessment."
 msgstr ""
 
-#: admin/class-settings.php:707
+#: admin/class-settings.php:748
 msgid "Check"
 msgstr ""
 
-#: admin/class-settings.php:715
-#: admin/class-settings.php:725
+#: admin/class-settings.php:756
+#: admin/class-settings.php:766
 msgid "Saved"
 msgstr ""
 
-#: admin/class-settings.php:717
+#: admin/class-settings.php:758
 msgid "Question"
 msgstr ""
 
-#: admin/class-settings.php:717
+#: admin/class-settings.php:758
 msgid "Answer"
 msgstr ""
 
-#: admin/class-settings.php:720
+#: admin/class-settings.php:761
 msgid "not answered"
 msgstr ""
 
-#: admin/class-settings.php:724
+#: admin/class-settings.php:765
 msgid "AI literacy checklist (Article 4)"
 msgstr ""
 
-#: admin/class-settings.php:726
+#: admin/class-settings.php:767
 msgid "Item"
 msgstr ""
 
-#: admin/class-settings.php:734
+#: admin/class-settings.php:775
 msgid "None detected or declared."
 msgstr ""
 
-#: admin/class-settings.php:736
+#: admin/class-settings.php:777
 msgid "Source"
 msgstr ""
 
-#: admin/class-settings.php:736
+#: admin/class-settings.php:777
 msgid "Visitors told"
 msgstr ""
 
-#: admin/class-settings.php:738
+#: admin/class-settings.php:779
 #: includes/class-systems.php:354
 msgid "declared by hand"
 msgstr ""
 
-#: admin/class-settings.php:738
+#: admin/class-settings.php:779
 msgid "Detected"
 msgstr ""
 
-#: admin/class-settings.php:743
+#: admin/class-settings.php:784
 msgid "Disclosure notices"
 msgstr ""
 
-#: admin/class-settings.php:747
+#: admin/class-settings.php:788
 msgid "Text note style"
 msgstr ""
 
-#: admin/class-settings.php:748
+#: admin/class-settings.php:789
 msgid "Text note position"
 msgstr ""
 
-#: admin/class-settings.php:749
+#: admin/class-settings.php:790
 msgid "Visible badge on labeled media"
 msgstr ""
 
-#: admin/class-settings.php:750
+#: admin/class-settings.php:791
 msgid "Page notice on pages with labeled media"
 msgstr ""
 
-#: admin/class-settings.php:751
+#: admin/class-settings.php:792
 msgid "Chatbot question answered with"
 msgstr ""
 
-#: admin/class-settings.php:752
+#: admin/class-settings.php:793
 msgid "Chatbot notice active"
 msgstr ""
 
-#: admin/class-settings.php:753
+#: admin/class-settings.php:794
 msgid "AI systems notice"
 msgstr ""
 
-#: admin/class-settings.php:754
+#: admin/class-settings.php:795
 msgid "Structured data (Schema.org)"
 msgstr ""
 
-#: admin/class-settings.php:771
+#: admin/class-settings.php:812
 msgid "Title"
 msgstr ""
 
-#: admin/class-settings.php:771
+#: admin/class-settings.php:812
 msgid "Type"
 msgstr ""
 
-#: admin/class-settings.php:771
+#: admin/class-settings.php:812
 msgid "Level"
 msgstr ""
 
-#: admin/class-settings.php:771
+#: admin/class-settings.php:812
 msgid "Reviewed by"
 msgstr ""
 
-#: admin/class-settings.php:771
+#: admin/class-settings.php:812
 msgid "Reviewed on"
 msgstr ""
 
-#: admin/class-settings.php:771
+#: admin/class-settings.php:812
 msgid "Review current"
 msgstr ""
 
-#: admin/class-settings.php:806
+#: admin/class-settings.php:847
 msgid "Library status"
 msgstr ""
 
-#: admin/class-settings.php:810
+#: admin/class-settings.php:851
 msgid "Media files"
 msgstr ""
 
-#: admin/class-settings.php:822
+#: admin/class-settings.php:863
 msgid "Scanned"
 msgstr ""
 
-#: admin/class-settings.php:827
+#: admin/class-settings.php:868
 msgid "Open review queue"
 msgstr ""
 
-#: admin/class-settings.php:830
+#: admin/class-settings.php:871
 msgid "Print view"
 msgstr ""
 
-#: admin/class-settings.php:835
+#: admin/class-settings.php:876
 msgid "The export lists every labeled, declared and pending file with its detection source, confidence, full history and the person behind each change. The print view adds a document hash over the facts, the guidance basis and the stated limitations; the same record is available at /wp-json/transparai/v1/report."
 msgstr ""
 
-#: admin/class-settings.php:851
-#: admin/class-settings.php:853
+#: admin/class-settings.php:892
+#: admin/class-settings.php:894
 msgid "Scan existing library"
 msgstr ""
 
-#: admin/class-settings.php:855
+#: admin/class-settings.php:896
 msgid "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator signatures) in small batches. Nothing leaves your server."
 msgstr ""
 
-#: admin/class-settings.php:857
+#: admin/class-settings.php:898
 msgid "Scan new/unscanned media"
 msgstr ""
 
-#: admin/class-settings.php:858
+#: admin/class-settings.php:899
 msgid "Rescan everything"
 msgstr ""
 
-#: admin/class-settings.php:859
+#: admin/class-settings.php:900
 msgid "Pause"
 msgstr ""
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human time diff.
-#: admin/class-settings.php:872
+#: admin/class-settings.php:913
 #, php-format
 msgid "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, %3$d failed (%4$s ago)."
 msgstr ""
 
-#: admin/class-settings.php:895
+#: admin/class-settings.php:936
 msgid "TransparAI links"
 msgstr ""
 
-#: admin/class-settings.php:898
+#: admin/class-settings.php:939
 msgid "Support forum"
 msgstr ""
 
-#: admin/class-setup.php:160
+#: admin/class-setup.php:165
 msgid "Setup in three steps"
 msgstr ""
 
-#: admin/class-setup.php:161
+#: admin/class-setup.php:166
 msgid "Three things to settle once. Each button opens the section below that does it. Nothing is labeled without your review, and no request leaves your server."
 msgstr ""
 
-#: admin/class-setup.php:165
+#: admin/class-setup.php:170
 msgid "1. Scan the existing library"
 msgstr ""
 
 #. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:171
+#: admin/class-setup.php:176
 #, php-format
 msgid "%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue."
 msgstr ""
 
-#: admin/class-setup.php:178
+#: admin/class-setup.php:183
 msgid "Scan now"
 msgstr ""
 
-#: admin/class-setup.php:182
+#: admin/class-setup.php:187
 msgid "2. Choose the badge look"
 msgstr ""
 
-#: admin/class-setup.php:183
+#: admin/class-setup.php:188
 msgid "Style, position and placement of the visible badge, with a live preview of the result."
 msgstr ""
 
-#: admin/class-setup.php:184
+#: admin/class-setup.php:189
 msgid "Open the badge settings"
 msgstr ""
 
-#: admin/class-setup.php:188
+#: admin/class-setup.php:193
 msgid "3. Decide about the files"
 msgstr ""
 
-#: admin/class-setup.php:189
+#: admin/class-setup.php:194
 msgid "Whether the machine-readable declaration goes into the image files themselves, and whether it is restored after an image optimizer strips it."
 msgstr ""
 
-#: admin/class-setup.php:190
+#: admin/class-setup.php:195
 msgid "Open the file settings"
 msgstr ""
 
-#: admin/class-setup.php:199
+#: admin/class-setup.php:204
 msgid "Finish setup"
 msgstr ""
 
-#: admin/class-setup.php:206
+#: admin/class-setup.php:211
 msgid "Not now"
 msgstr ""
 

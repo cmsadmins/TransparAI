@@ -276,6 +276,57 @@ final class TransparAI_Frontend {
 	}
 
 	/**
+	 * The custom properties that carry the optional badge colours.
+	 *
+	 * Colour and opacity travel as inherited custom properties rather than as
+	 * an inline style on the wrapper: front.js clones badges by class name
+	 * only (lightbox layers, WooCommerce variation swaps, background images),
+	 * so an inline style would not reach those copies. Every property is left
+	 * out when the setting is on its default, which keeps the neutral look
+	 * byte for byte as it was before the colours existed.
+	 *
+	 * @return array<string, string> Property name => value, empty when nothing is customised.
+	 */
+	public static function badge_css_vars(): array {
+		$vars    = array();
+		$colors  = array(
+			'--trai-badge-bg' => TransparAI_Options::get( 'badge_color' ),
+			'--trai-badge-fg' => TransparAI_Options::get( 'badge_text_color' ),
+		);
+		$opacity = (int) TransparAI_Options::get( 'badge_opacity' );
+
+		foreach ( $colors as $property => $value ) {
+			/* Re-checked here, not just on save: the option can also be written by WP-CLI, an import or by hand. */
+			if ( 1 === preg_match( '/^#[0-9a-f]{6}$/i', $value ) ) {
+				$vars[ $property ] = strtolower( $value );
+			}
+		}
+		if ( $opacity >= 0 && $opacity < 100 ) {
+			$vars['--trai-badge-opacity'] = rtrim( rtrim( number_format( $opacity / 100, 2, '.', '' ), '0' ), '.' );
+		}
+
+		return $vars;
+	}
+
+	/**
+	 * The badge colours as a :root rule, or an empty string when the badge
+	 * uses the colours that come with its style.
+	 */
+	private static function badge_css(): string {
+		$vars = self::badge_css_vars();
+		if ( array() === $vars ) {
+			return '';
+		}
+
+		$declarations = '';
+		foreach ( $vars as $property => $value ) {
+			$declarations .= $property . ':' . $value . ';';
+		}
+
+		return ':root{' . $declarations . '}';
+	}
+
+	/**
 	 * Wrapper CSS classes from the badge settings, honoring the per-image
 	 * override where the attachment is known (0 = shared JS labeling template).
 	 */
@@ -331,6 +382,10 @@ final class TransparAI_Frontend {
 			return;
 		}
 		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
+		$badge_css = self::badge_css();
+		if ( '' !== $badge_css ) {
+			wp_add_inline_style( 'transparai-front', $badge_css );
+		}
 		wp_enqueue_script( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/js/front.js', array(), TRANSPARAI_VERSION, true );
 
 		$data = array(

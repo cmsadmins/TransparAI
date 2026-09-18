@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: cs_CZ\n"
@@ -693,41 +693,6 @@ msgstr ""
 "stopa, REST API a WP-CLI, vše na vašem vlastním serveru, bez jediného "
 "externího požadavku."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr "Tisková verze zprávy o souladu s hashem dokumentu"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Styly upozornění ve front-endu u příspěvku napsaného AI: banner, odznak a "
-"odznak u názvu"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"Používané systémy AI: zjištěné pluginy, návrhy a viditelnost jednotlivých "
-"systémů v upozornění pro návštěvníky"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Sebehodnocení s povinnostmi, které se vztahují na web, a kontrolní seznam "
-"gramotnosti v oblasti AI podle článku 4"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"Nástěnka TransparAI se skóre připravenosti, otevřenými kontrolami, počítadly"
-" a časovou osou EU AI Act"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1080,22 +1045,6 @@ msgstr "Přežije označení moji CDN?"
 msgid "Where can I see what was written into a file?"
 msgstr "Kde uvidím, co bylo do souboru zapsáno?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Nastavení se záložkami, statistikami knihovny, dávkovým skenem a exportem "
-"auditu"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Podrobnosti přílohy: zaškrtávací pole označení, detekční důkazy, akce "
-"kontroly a inspekce souboru se surovým paketem XMP"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1368,15 +1317,6 @@ msgstr "Externí služby"
 msgid "For developers"
 msgstr "Pro vývojáře"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Odznak ve front-endu na označeném obrázku"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Mřížka knihovny médií s odznaky AI, stavem kontroly a hromadným označováním"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1606,3 +1546,130 @@ msgstr ""
 "švédština, dánština, finština, čeština, rumunština, řečtina, maďarština a "
 "formální varianta němčiny, vedle stávající němčiny, francouzštiny, "
 "španělštiny, italštiny a nizozemštiny."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Časová osa aktu o umělé inteligenci a protokol aktivit, který zaznamenává "
+"každou změnu"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Obrazovka obrázků s AI: stav knihovny, dávkové skenování, export auditu a "
+"seznamy médií"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "Dva widgety nástěnky: připravenost a čísla"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Nastavení ve třech krocích: prohledat knihovnu, vybrat odznak, rozhodnout o "
+"souborech"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Nastavení: vzhled odznaku s živým náhledem, alternativní text, odznak bez AI"
+" a poznámka na stránce"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Blokový editor: panel TransparAI s úrovní, odpovědnou osobou a razítkem "
+"kontroly"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Seznam příspěvků se sloupcem textu od AI, filtrem úrovně a rychlými úpravami"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"Povinnosti vyplývající z odpovědí a k tomu kontrolní seznam gramotnosti v "
+"oblasti AI podle článku 4"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Sebehodnocení: šest otázek, které rozhodují, jaké povinnosti "
+"transparentnosti platí"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Web: odznak u nadpisu, poznámka nad textem napsaným AI a odznak na "
+"vygenerovaném obrázku"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Seznam médií filtrovaný na frontu ke kontrole, se sloupcem AI a hromadnými "
+"akcemi"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Podrobnosti přílohy: označení, důkaz detekce, deklarace v každé velikosti "
+"obrázku a surový balíček XMP"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Mřížka knihovny médií: odznaky AI, odznak médií prohlášených za bez AI a "
+"filtr stavu AI"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Nástěnka se skóre připravenosti, otevřenou kontrolou, pěti kroky po sobě a "
+"počitadly"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr "Zpráva o souladu v tiskovém zobrazení s hashem dokumentu"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"Používané systémy AI: nalezené pluginy, návrh k prohlášení a viditelnost pro"
+" poznámku návštěvníkům"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Úvodní karta nastavení už neopakuje nastavení odznaku a souborů, která "
+"stejně patří kartám pod ní. Její druhý a třetí krok nyní otevřou příslušnou "
+"sekci, takže každá volba je na obrazovce jen jednou a zapisuje ji jediný "
+"formulář."

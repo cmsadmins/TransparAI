@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: ro_RO\n"
@@ -715,43 +715,6 @@ msgstr ""
 "etichetare, date structurate pentru SEO, pistă de audit, API REST și WP-CLI,"
 " totul pe propriul tău server, fără nicio cerere externă."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr ""
-"Vizualizarea pentru tipărire a raportului de conformitate, cu hash-ul "
-"documentului"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Stiluri de notă în partea publică pe un articol scris cu IA: banner, insignă"
-" și insignă la titlu"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"Sisteme IA în uz: module detectate, sugestii și vizibilitatea per sistem "
-"pentru notificarea vizitatorilor"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Autoevaluare cu obligațiile care se aplică site-ului și lista de verificare "
-"pentru alfabetizarea IA din articolul 4"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"Panoul de control TransparAI cu scorul de pregătire, verificările deschise, "
-"contoarele și cronologia EU AI Act"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1113,23 +1076,6 @@ msgstr "Marcarea supraviețuiește CDN-ului meu?"
 msgid "Where can I see what was written into a file?"
 msgstr "Unde pot vedea ce a fost scris într-un fișier?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Setări cu file, statistici ale bibliotecii, scanarea pe loturi și exportul "
-"de audit"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Detaliile atașamentului: caseta de bifat pentru etichetă, dovezile de "
-"detectare, acțiunile de verificare și inspecția fișierului cu pachetul XMP "
-"brut"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1408,16 +1354,6 @@ msgstr "Servicii externe"
 msgid "For developers"
 msgstr "Pentru dezvoltatori"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Insigna în partea publică pe o imagine etichetată"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Grila bibliotecii media cu insigne IA, o stare de verificare și etichetare "
-"în masă"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1649,3 +1585,133 @@ msgstr ""
 "daneză, finlandeză, cehă, română, greacă, maghiară și o variantă germană "
 "formală, alături de germana, franceza, spaniola, italiana și neerlandeza "
 "existente."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Cronologia Regulamentului privind IA și jurnalul de activitate care notează "
+"fiecare modificare"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Ecranul imaginilor IA: starea bibliotecii, scanare pe loturi, export de "
+"audit și listele media"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "Cele două widgeturi din panou: pregătirea și cifrele"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Configurare în trei pași: scanează biblioteca, alege insigna, decide despre "
+"fișiere"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Setări: aspectul insignei cu previzualizare live, text alternativ, insigna "
+"fără IA și nota de pagină"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Editorul de blocuri: panoul TransparAI cu nivelul, persoana responsabilă și "
+"marcajul de verificare"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Lista articolelor cu coloana textului IA, filtrul de nivel și editarea "
+"rapidă"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"Obligațiile care decurg din răspunsuri, plus lista de verificare a "
+"competențelor IA din articolul 4"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Autoevaluare: cele șase întrebări care stabilesc ce obligații de "
+"transparență se aplică"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Site public: insigna din titlu, nota de deasupra unui text scris de IA și "
+"insigna de pe o imagine generată"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Lista media filtrată pe coada de verificare, cu coloana IA și acțiunile în "
+"masă"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Detaliile fișierului: eticheta, dovada detectării, declarația în fiecare "
+"dimensiune de imagine și pachetul XMP brut"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Grila bibliotecii media: insigne IA, insigna fișierelor declarate fără IA și"
+" filtrul de stare IA"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Panoul cu scorul de pregătire, verificarea deschisă, cei cinci pași în "
+"ordine și contoarele"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr ""
+"Raportul de conformitate în vizualizare pentru tipărire, cu hashul "
+"documentului"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"Sisteme IA în uz: pluginuri detectate, o sugestie de declarare și "
+"vizibilitatea pentru nota către vizitatori"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Cardul de configurare de la prima pornire nu mai repetă setările de insignă "
+"și de fișiere care aparțin oricum filelor de dedesubt. Al doilea și al "
+"treilea pas deschid acum secțiunea corespunzătoare, astfel încât fiecare "
+"opțiune apare o singură dată pe ecran și o scrie un singur formular."

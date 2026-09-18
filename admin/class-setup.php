@@ -136,9 +136,14 @@ final class TransparAI_Setup {
 	 * @param array<string, string> $options Current options.
 	 */
 	public static function preview( array $options ): void {
+		/* Same custom properties the front end emits on :root, here scoped to the sample so the rest of the admin keeps its own colours. */
+		$style = '';
+		foreach ( TransparAI_Frontend::badge_css_vars() as $property => $value ) {
+			$style .= $property . ':' . $value . ';';
+		}
 		?>
 		<div class="trai-setup-preview-wrap">
-			<span class="trai-badge-preview trai-wrap trai-pos-<?php echo esc_attr( $options['badge_position'] ); ?> trai-size-<?php echo esc_attr( $options['badge_size'] ); ?> trai-style-<?php echo esc_attr( $options['badge_style'] ); ?> trai-mode-<?php echo esc_attr( $options['badge_mode'] ); ?>">
+			<span class="trai-badge-preview trai-wrap trai-pos-<?php echo esc_attr( $options['badge_position'] ); ?> trai-size-<?php echo esc_attr( $options['badge_size'] ); ?> trai-style-<?php echo esc_attr( $options['badge_style'] ); ?> trai-mode-<?php echo esc_attr( $options['badge_mode'] ); ?>"<?php echo '' === $style ? '' : ' style="' . esc_attr( $style ) . '"'; ?>>
 				<span class="trai-setup-sample" aria-hidden="true"></span>
 				<span class="trai-badge" role="note" data-trai-short="<?php echo esc_attr( TransparAI_Frontend::badge_short_label() ); ?>"><?php echo esc_html( TransparAI_Frontend::badge_label() ); ?></span>
 			</span>

@@ -37,6 +37,9 @@ final class TransparAI_Options {
 			'badge_position'          => 'bottom-right', /* top-left | top-right | bottom-left | bottom-right. */
 			'badge_style'             => 'dark', /* dark | light | outline | icon-only. */
 			'badge_size'              => 'medium', /* small | medium | large. */
+			'badge_color'             => '', /* Hex #rrggbb background. Empty = the colour that comes with the chosen style. */
+			'badge_text_color'        => '', /* Hex #rrggbb text (and border). Empty = the colour that comes with the chosen style. */
+			'badge_opacity'           => '100', /* 0-100 percent, applied to the whole badge. 100 = the style's own opacity. */
 			'badge_from_date'         => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
 			'badge_show_source'       => '0', /* Append detected generator name to the badge. */
 			'badge_alt_append'        => '1', /* Append note to image alt text (screen readers get the disclosure too). */
@@ -188,6 +191,17 @@ final class TransparAI_Options {
 			if ( isset( $enums[ $key ] ) ) {
 				$value         = isset( $raw[ $key ] ) ? sanitize_key( (string) $raw[ $key ] ) : $default;
 				$clean[ $key ] = in_array( $value, $enums[ $key ], true ) ? $value : $default;
+				continue;
+			}
+			if ( in_array( $key, array( 'badge_color', 'badge_text_color' ), true ) ) {
+				/* Not sanitize_hex_color(): that one ships with the customizer and is not loaded on every request. Shorthand (#fff) is rejected on purpose, the colour picker always submits the long form. */
+				$value         = isset( $raw[ $key ] ) ? trim( (string) $raw[ $key ] ) : '';
+				$clean[ $key ] = 1 === preg_match( '/^#[0-9a-f]{6}$/i', $value ) ? strtolower( $value ) : '';
+				continue;
+			}
+			if ( 'badge_opacity' === $key ) {
+				$value         = isset( $raw[ $key ] ) && is_numeric( $raw[ $key ] ) ? (int) $raw[ $key ] : 100;
+				$clean[ $key ] = (string) min( 100, max( 0, $value ) );
 				continue;
 			}
 			if ( 'badge_from_date' === $key ) {

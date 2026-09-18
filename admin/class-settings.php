@@ -205,7 +205,15 @@ th{background:#f6f7f7;}
 		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
 		/* The setup card previews the badge with the real front-end styles. */
 		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
-		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION, true );
+		/* Core picker, so an empty colour stays possible (its clear button) and
+		   the field looks like the rest of the admin. Enqueued on its own and
+		   before our script rather than relying on the dependency below: the
+		   media modal registers the transparai-admin handle first on this
+		   screen, and a second wp_enqueue_script() for a handle that already
+		   exists keeps the first dependency list. */
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'wp-color-picker' ), TRANSPARAI_VERSION, true );
 		TransparAI_Media_Library::localize_admin();
 	}
 
@@ -290,6 +298,9 @@ th{background:#f6f7f7;}
 						<td>
 							<?php
 							TransparAI_Setup::preview( $options );
+							?>
+							<span class="trai-badge-styles">
+							<?php
 							self::select(
 								'badge_mode',
 								$options['badge_mode'],
@@ -328,6 +339,36 @@ th{background:#f6f7f7;}
 								)
 							);
 							?>
+							</span>
+							<?php /* The labels sit outside the inputs on purpose: the colour picker moves its field into a wrapper that starts out hidden, and a wrapping label would travel with it. */ ?>
+							<span class="trai-badge-colors">
+								<span class="trai-badge-field">
+									<label for="trai-badge-color"><?php esc_html_e( 'Background', 'transparai' ); ?></label>
+									<input type="text" id="trai-badge-color" class="trai-color-field" data-trai-var="--trai-badge-bg" name="<?php self::name( 'badge_color' ); ?>" value="<?php echo esc_attr( $options['badge_color'] ); ?>" />
+								</span>
+								<span class="trai-badge-field">
+									<label for="trai-badge-text-color"><?php esc_html_e( 'Text', 'transparai' ); ?></label>
+									<input type="text" id="trai-badge-text-color" class="trai-color-field" data-trai-var="--trai-badge-fg" name="<?php self::name( 'badge_text_color' ); ?>" value="<?php echo esc_attr( $options['badge_text_color'] ); ?>" />
+								</span>
+								<span class="trai-badge-field">
+									<label for="trai-badge-opacity"><?php esc_html_e( 'Opacity', 'transparai' ); ?></label>
+									<span class="trai-badge-opacity">
+										<input type="range" id="trai-badge-opacity" min="0" max="100" step="5" data-trai-var="--trai-badge-opacity" name="<?php self::name( 'badge_opacity' ); ?>" value="<?php echo esc_attr( $options['badge_opacity'] ); ?>" />
+										<output for="trai-badge-opacity"><?php echo esc_html( $options['badge_opacity'] ); ?>%</output>
+									</span>
+								</span>
+							</span>
+							<p class="trai-contrast" role="status" hidden
+								data-label-pass="<?php esc_attr_e( 'Readable', 'transparai' ); ?>"
+								data-label-warn="<?php esc_attr_e( 'Borderline', 'transparai' ); ?>"
+								data-label-fail="<?php esc_attr_e( 'Hard to read', 'transparai' ); ?>"
+								data-label-none="<?php esc_attr_e( 'Depends on what is behind it', 'transparai' ); ?>">
+								<span class="trai-traffic"></span>
+								<span class="trai-contrast-hint"><?php esc_html_e( 'Badge text is small, so WCAG asks for a contrast of at least 4.5 to 1. A see-through badge is rated for the worst case, a photo far lighter or darker than the badge itself.', 'transparai' ); ?></span>
+							</p>
+							<p class="description">
+								<?php esc_html_e( 'Both colours are optional: while they are empty the badge keeps the colours of the style above, exactly as before. The text colour also draws the border, and the outline style has no fill of its own, so a background colour does not show there.', 'transparai' ); ?>
+							</p>
 						</td>
 					</tr>
 					<tr>

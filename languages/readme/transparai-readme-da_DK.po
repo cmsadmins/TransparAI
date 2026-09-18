@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: da_DK\n"
@@ -691,41 +691,6 @@ msgstr ""
 "revisionsspor, REST API og WP-CLI, alt sammen på din egen server, uden en "
 "eneste ekstern forespørgsel."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr "Printvisning af compliance-rapporten med dokument-hashen"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Notestilarter i frontend på et AI-skrevet indlæg: banner, badge og "
-"titelbadge"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"AI-systemer i brug: fundne plugins, forslag og synlighed pr. system for "
-"noten til besøgende"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Selvevaluering med de forpligtelser, der gælder for webstedet, og tjeklisten"
-" til artikel 4 om AI-færdigheder"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"TransparAI-kontrolpanel med parathedsscoren, åbne tjek, tællere og EU AI "
-"Act-tidslinjen"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1080,22 +1045,6 @@ msgstr "Overlever mærkningen mit CDN?"
 msgid "Where can I see what was written into a file?"
 msgstr "Hvor kan jeg se, hvad der blev skrevet ind i en fil?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Indstillinger med faner, biblioteksstatistik, den portionsvise scanning og "
-"revisionseksporten"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Vedhæftningsdetaljer: afkrydsningsfelt til mærkning, dokumentation for "
-"genkendelsen, gennemgangshandlinger og filinspektionen med dens rå XMP-pakke"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1371,16 +1320,6 @@ msgstr "Eksterne tjenester"
 msgid "For developers"
 msgstr "Til udviklere"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Frontend-badge på et mærket billede"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Mediebibliotekets gittervisning med AI-badges, en gennemgangstilstand og "
-"massemærkning"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1604,3 +1543,130 @@ msgstr ""
 "Ti yderligere sprog følger med pluginet: polsk, portugisisk, svensk, dansk, "
 "finsk, tjekkisk, rumænsk, græsk, ungarsk og en formel tysk variant ved siden"
 " af de eksisterende tysk, fransk, spansk, italiensk og hollandsk."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Tidslinje for EU's AI-forordning og aktivitetsloggen, der noterer hver "
+"ændring"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Skærmen for AI-billeder: bibliotekets status, scanning i etaper, "
+"revisionseksport og medielisterne"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "De to widgets på kontrolpanelet: parathed og nøgletal"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Opsætning i tre trin: scan biblioteket, vælg badget, tag stilling til "
+"filerne"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Indstillinger: badgets udseende med live-forhåndsvisning, alt-tekst, badget "
+"for ikke-AI og sidenotitsen"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Blokredigeringen: TransparAI-panelet med niveau, ansvarlig person og "
+"gennemgangsstempel"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Indlægslisten med kolonnen for AI-tekst, niveaufilteret og Hurtig redigering"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"De pligter, der følger af svarene, samt tjeklisten for AI-færdigheder i "
+"artikel 4"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Selvevaluering: de seks spørgsmål, der afgør hvilke gennemsigtighedskrav der"
+" gælder"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Websitet: titelbadge, notitsen over en AI-skrevet tekst og badget på et "
+"genereret billede"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Medielisten filtreret til gennemgangskøen, med AI-kolonnen og "
+"massehandlingerne"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Filens detaljer: etiket, bevis for registreringen, erklæringen i hver "
+"billedstørrelse og den rå XMP-pakke"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Mediebibliotekets gittervisning: AI-badges, badget for medier erklæret som "
+"ikke-AI og AI-statusfilteret"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Kontrolpanelet med parathedsscoren, den åbne kontrol, de fem trin i "
+"rækkefølge og tællerne"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr "Overholdelsesrapporten i udskriftsvisning med dokumentets hash"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"AI-systemer i brug: fundne plugins, et forslag til erklæring og synligheden "
+"for besøgsnotitsen"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Opsætningskortet ved første start gentager ikke længere de badge- og "
+"filindstillinger, som i forvejen hører til fanerne nedenunder. Andet og "
+"tredje trin åbner nu det tilsvarende afsnit, så hver indstilling findes en "
+"gang på skærmen, og kun en formular skriver den."

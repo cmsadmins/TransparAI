@@ -593,6 +593,81 @@
 	margin-right: 8px;
 }
 
+/* Badge appearance controls: the four style selects on one wrapping row, the
+   optional colours on the next. Both are flex rows on the same 8px grid, so
+   they break evenly instead of leaving a single select stranded on its own
+   line. */
+.trai-badge-styles,
+.trai-badge-colors {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+}
+
+.trai-badge-styles {
+	align-items: center;
+}
+
+/* Stretch, not flex-end: the picker renders taller than a slider, and letting
+   the fields match heights keeps the three labels on one line without
+   hard-coding whatever height the core picker happens to have. */
+.trai-badge-colors {
+	align-items: stretch;
+	margin-top: 16px;
+}
+
+/* Label above its control: the colour picker replaces the field with a button
+   of its own and would swallow a wrapping label, and stacked labels keep the
+   three controls readable no matter how wide the picker renders. */
+.trai-badge-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.trai-badge-field > label {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--trai-muted, #646970);
+}
+
+.trai-badge-opacity {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	gap: 8px;
+}
+
+.trai-badge-opacity input[type="range"] {
+	width: 160px;
+	margin: 0;
+	accent-color: var(--trai-primary, #FF6800);
+}
+
+.trai-badge-opacity output {
+	min-width: 42px;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Contrast readout under the colour fields. Reuses the compliance traffic
+   light, and never leaves the colour to carry the message on its own: the
+   chip always spells the verdict out. */
+.trai-settings .trai-contrast {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px 12px;
+	margin: 12px 0 0;
+}
+
+.trai-contrast-hint {
+	flex: 1 1 340px;
+	max-width: 52em;
+	font-size: 12px;
+	line-height: 1.5;
+	color: var(--trai-muted, #646970);
+}
+
 /* Post list: AI text level chip and the Quick Edit field. */
 .trai-level-chip {
 	display: inline-block;

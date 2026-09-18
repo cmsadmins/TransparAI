@@ -434,6 +434,44 @@ final class FrontendTest extends TestCase {
 		$this->assertSame( $html, TransparAI_Frontend::filter_bricks_element( $html, null ), 'Untouched inside the Bricks builder' );
 	}
 
+	/**
+	 * The whole point of the colour settings is that they are opt-in: an
+	 * installation that never touches them must not get a single extra
+	 * declaration, otherwise the neutral look would shift under people who
+	 * never asked for colours.
+	 */
+	public function test_badge_css_vars_stay_empty_on_the_defaults(): void {
+		$this->assertSame( array(), TransparAI_Frontend::badge_css_vars() );
+
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = TransparAI_Options::defaults();
+		$this->assertSame( array(), TransparAI_Frontend::badge_css_vars(), 'Saved defaults behave like no settings at all' );
+	}
+
+	public function test_badge_css_vars_map_the_settings(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array(
+			'badge_color'      => '#FF6800',
+			'badge_text_color' => '#ffffff',
+			'badge_opacity'    => '70',
+		);
+		$this->assertSame(
+			array(
+				'--trai-badge-bg'      => '#ff6800',
+				'--trai-badge-fg'      => '#ffffff',
+				'--trai-badge-opacity' => '0.7',
+			),
+			TransparAI_Frontend::badge_css_vars()
+		);
+
+		$trai_test_options['transparai_settings'] = array( 'badge_opacity' => '0' );
+		$this->assertSame( array( '--trai-badge-opacity' => '0' ), TransparAI_Frontend::badge_css_vars(), 'Fully transparent is a real setting, not an empty one' );
+
+		// Written straight into the option by WP-CLI, an import or by hand.
+		$trai_test_options['transparai_settings'] = array( 'badge_color' => 'red;}body{display:none' );
+		$this->assertSame( array(), TransparAI_Frontend::badge_css_vars(), 'A value that never went through sanitize() is still checked' );
+	}
+
 	public function test_human_badge_is_not_rewrapped_on_repeated_runs(): void {
 		global $trai_test_options;
 		$trai_test_options['transparai_settings'] = array( 'badge_enabled' => '1', 'human_badge' => '1' );

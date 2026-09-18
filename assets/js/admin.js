@@ -127,12 +127,115 @@
 	jQuery('.trai-badge-preview').each(function () {
 		var preview = this;
 		var prefixes = { badge_style: 'trai-style-', badge_position: 'trai-pos-', badge_mode: 'trai-mode-', badge_size: 'trai-size-' };
-		jQuery(preview.closest('form')).on('change', 'select, input[type="radio"]', function () {
+		var form = preview.closest('form');
+		jQuery(form).on('change', 'select, input[type="radio"]', function () {
 			var key = this.name.replace(/^.*\[(\w+)\]$/, '$1');
 			if (prefixes[key]) {
 				preview.className = preview.className.replace(new RegExp('\\b' + prefixes[key] + '[a-z-]+'), prefixes[key] + this.value);
 			}
 		});
+
+		/* Colour and opacity are values, not classes: they go onto the preview
+		   as the same custom properties the front end puts on :root. An empty
+		   colour removes the property again, which falls the badge back to the
+		   colours of its style. */
+		var paint = function (field, override) {
+			var input = jQuery(field)[0];
+			var property = input.getAttribute('data-trai-var');
+			var value = undefined === override ? input.value : override;
+			if ('--trai-badge-opacity' === property) {
+				jQuery(input).siblings('output').text(value + '%');
+				value = 100 === Number(value) ? '' : String(Number(value) / 100);
+			}
+			if (value) {
+				preview.style.setProperty(property, value);
+			} else {
+				preview.style.removeProperty(property);
+			}
+			contrast();
+		};
+
+		/* Contrast readout. Colours come from the rendered preview badge, not
+		   from the two fields, so the styles' own colours and a half-filled
+		   pair are covered without repeating any value from the stylesheet.
+		   Badge fills are see-through by default (the dark style is 70%), so a
+		   plain foreground/background ratio would flatter them: the badge is
+		   composited onto white and onto black, standing in for the lightest
+		   and darkest photo it can land on, and the worse of the two counts. */
+		var readout = form ? form.querySelector('.trai-contrast') : null;
+
+		var channels = function (value) {
+			var parts = String(value).match(/[\d.]+/g) || [];
+			return { r: Number(parts[0]) || 0, g: Number(parts[1]) || 0, b: Number(parts[2]) || 0, a: undefined === parts[3] ? 1 : Number(parts[3]) };
+		};
+		var onto = function (colour, ground, alpha) {
+			return [colour.r, colour.g, colour.b].map(function (v) { return v * alpha + ground * (1 - alpha); });
+		};
+		var luminance = function (rgb) {
+			var linear = rgb.map(function (v) {
+				v = v / 255;
+				return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+			});
+			return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+		};
+		var ratio = function (a, b) {
+			var one = luminance(a), two = luminance(b);
+			return (Math.max(one, two) + 0.05) / (Math.min(one, two) + 0.05);
+		};
+
+		var contrast = function () {
+			if (!readout) {
+				return;
+			}
+			var badge = preview.querySelector('.trai-badge');
+			var styles = window.getComputedStyle(badge);
+			var text = channels(styles.color);
+			var fill = channels(styles.backgroundColor);
+			var opacity = parseFloat(styles.opacity);
+			var chip = readout.querySelector('.trai-traffic');
+			var worst = Infinity;
+			var state, level;
+
+			if (0 === fill.a * opacity) {
+				/* Outline style, or a caption line: nothing but the page or the
+				   photo behind the letters, and we cannot know what that is. */
+				state = 'none';
+				level = 'attention';
+				chip.textContent = readout.getAttribute('data-label-none');
+			} else {
+				[255, 0].forEach(function (ground) {
+					worst = Math.min(worst, ratio(onto(text, ground, text.a * opacity), onto(fill, ground, fill.a * opacity)));
+				});
+				state = worst >= 4.5 ? 'pass' : (worst >= 3 ? 'warn' : 'fail');
+				level = 'pass' === state ? 'good' : ('warn' === state ? 'attention' : 'action');
+				chip.textContent = worst.toFixed(1) + ':1 ' + readout.getAttribute('data-label-' + state);
+			}
+
+			chip.className = 'trai-traffic trai-traffic--' + level;
+			readout.hidden = false;
+		};
+
+		jQuery(form).on('change', 'select', contrast);
+		jQuery(form).on('input', 'input[type="range"][data-trai-var]', function () { paint(this); });
+		/* The colour picker owns the field while iris is open and reports
+		   through its own callbacks, so a delegated change event is too late.
+		   Both callbacks run with the field as jQuery object; the change one
+		   gets the new colour before the input itself is updated.
+		   Deferred to ready(): the media modal puts this script into the queue
+		   ahead of the picker, so at this point wpColorPicker does not exist
+		   yet and only the footer is guaranteed to have run it. */
+		jQuery(function () {
+			if (!jQuery.fn.wpColorPicker) {
+				return;
+			}
+			jQuery(form).find('.trai-color-field').wpColorPicker({
+				defaultColor: false,
+				change: function (event, ui) { paint(this, ui && ui.color ? ui.color.toString() : undefined); },
+				clear: function () { paint(this, ''); }
+			});
+		});
+
+		contrast();
 	});
 
 	/* =====================================================================

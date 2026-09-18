@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, ai transparency, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,7 +38,7 @@ Detection parses the real file containers (JPEG segments, PNG chunks, RIFF, MP4 
 
 **The visible AI label**
 
-A configurable AI badge marks labeled media in the front end: overlay or caption line, four positions, three sizes, dark, light, outline or icon-only, optional generator name, alt text note for screen readers and start date so older content is not badged retroactively. It renders server-side, so it survives page caching, and it works with the block editor, the classic editor, template images, widgets, Elementor free and Pro including Theme Builder, WPBakery Page Builder, Bricks Builder and WooCommerce, where the badge follows variation swaps and reappears inside the zoom and lightbox. A guard checks the real paint order and moves a badge that a theme overlay covers to a free corner or below the image. Per-image overrides and CSS utility classes give theme builders full control, markup a theme renders itself goes through the `transparai_label_media` filter, and an optional script also labels images printed without an attachment ID and CSS backgrounds. Page-cache plugins are told to refresh whenever a label changes.
+A configurable AI badge marks labeled media in the front end: overlay or caption line, four positions, three sizes, dark, light, outline or icon-only, your own background and text colour with an opacity of your choosing, optional generator name, alt text note for screen readers and start date so older content is not badged retroactively. It renders server-side, so it survives page caching, and it works with the block editor, the classic editor, template images, widgets, Elementor free and Pro including Theme Builder, WPBakery Page Builder, Bricks Builder and WooCommerce, where the badge follows variation swaps and reappears inside the zoom and lightbox. A guard checks the real paint order and moves a badge that a theme overlay covers to a free corner or below the image. Per-image overrides and CSS utility classes give theme builders full control, markup a theme renders itself goes through the `transparai_label_media` filter, and an optional script also labels images printed without an attachment ID and CSS backgrounds. Page-cache plugins are told to refresh whenever a label changes.
 
 **Machine-readable AI labeling, structured data and SEO**
 
@@ -156,6 +156,14 @@ Modern cameras embed C2PA Content Credentials into real photos. A C2PA manifest 
 
 The visible badge covers the block editor (every image-bearing block incl. cover, media-text, galleries, inline images in text, video and audio), the classic editor, template images, text widgets, Elementor free and Pro (image, galleries, carousels, slides, image box, hotspot, flip box, call to action, posts, Theme Builder), WPBakery Page Builder (single images, galleries, carousels, row and column backgrounds, parallax, grids) and Bricks Builder (every element that prints an image tag). Inside the builders' own editing screens badges are deliberately not injected. Markup a theme renders itself can be passed through `apply_filters( 'transparai_label_media', $html )`. For images a theme prints without an attachment ID (ACF URL or array fields) and for CSS backgrounds enable the option under Extras: a small script matches those images against your labeled files. The machine-readable XMP labeling is independent of any builder and always works.
 
+= Can the badge match my design? =
+
+Yes. Under Settings, Visible badge you pick a background colour, a text colour and an opacity next to the four styles. Both colour fields are empty out of the box, and while they are empty the badge looks exactly as it always has, so an update changes nothing on a site that is happy with the neutral look. The text colour also draws the border, which is what the outline style and the "Human made" badge use; outline has no fill of its own, so a background colour does not show there. If you would rather set the colours in your stylesheet, the three CSS custom properties `--trai-badge-bg`, `--trai-badge-fg` and `--trai-badge-opacity` do the same job and can be scoped to a single container.
+
+= Will my own colours make the badge hard to read? =
+
+The settings tell you before your visitors find out. A traffic light next to the colour fields rates the contrast between the badge text and its fill while you pick, against the WCAG threshold of 4.5 to 1 that applies at the badge's text size, and it spells the verdict out in words rather than leaving the colour to say it. Because a badge fill is see-through (the dark style is 70 per cent by default) and lands on photos nobody can predict, the rating assumes the worst case: the badge is measured on a white photo and on a black one, and the poorer of the two results is the one you see. A disclosure only works if people can read it, and a light badge colour on white text is the quickest way to lose that.
+
 = My theme puts overlays on images; does the badge disappear under them? =
 
 Usually not, and never silently. Badges sit above typical theme layers (hover effects, zoom icons, sale badges), and a small script additionally checks the real paint order: a badge that is still covered is raised, moved to a free corner or, as the last resort, shown as a caption line below the image (this guard can be turned off under Visible badge, Extras). For manual control, give any container one of the utility classes `trai-badge-top-left`, `trai-badge-top-right`, `trai-badge-bottom-left`, `trai-badge-bottom-right`, `trai-badge-below` or `trai-badge-hidden`, or pick a position for a single image in its attachment details ("Badge position"). Both ways switch the guard off for those badges, and `trai-badge-manual` does the same without changing the position, for the rare case where the guard misjudges your layout. Hiding the visible badge of one image never touches the machine-readable file metadata or the structured data in the page; that part of the disclosure stays intact.
@@ -187,7 +195,7 @@ Everything below is stable API surface; hooks and options use the `transparai_` 
 
 **Hooks:** `do_action( 'transparai_mark_ai', $id, 'My Generator' )` labels media from your code, `echo apply_filters( 'transparai_label_media', $html )` badges the AI images in markup your theme renders; filters `transparai_signatures`, `transparai_detection_result`, `transparai_badge_html`, `transparai_badge_wrap_classes`, `transparai_notice_text`, `transparai_notice_html`, `transparai_chatbot_vendors`, `transparai_chatbot_notice`, `transparai_systems_registry`, `transparai_systems_notice`.
 
-**Shortcode and blocks:** `[transparai_notice type="content|media|systems|chatbot" style="block|inline|banner|badge|modal" text="" id=""]` and the five blocks (AI Notice, AI Image Label, AI Systems Notice, AI Systems List, Chatbot AI Notice) render only what is declared. **REST** (`/wp-json/transparai/v1/`, authenticated): `GET /media`, `GET|POST /media/{id}`, `POST /media/{id}/scan`, `GET /report` with `document_hash`, `compliance` and `log`. **WP-CLI** (`wp transparai`): `scan`, `flag`, `unflag`, `human`, `status`, `score`, `content`, `assessment`, `systems`, `systems-declare`, `systems-undeclare`, `systems-visible`, `report`, `write-meta`, `verify-meta`, `verify-delivery`. **Theme control:** container classes `trai-badge-top-left` to `trai-badge-hidden` and `trai-badge-manual`, stacking via `--trai-badge-z`.
+**Shortcode and blocks:** `[transparai_notice type="content|media|systems|chatbot" style="block|inline|banner|badge|modal" text="" id=""]` and the five blocks (AI Notice, AI Image Label, AI Systems Notice, AI Systems List, Chatbot AI Notice) render only what is declared. **REST** (`/wp-json/transparai/v1/`, authenticated): `GET /media`, `GET|POST /media/{id}`, `POST /media/{id}/scan`, `GET /report` with `document_hash`, `compliance` and `log`. **WP-CLI** (`wp transparai`): `scan`, `flag`, `unflag`, `human`, `status`, `score`, `content`, `assessment`, `systems`, `systems-declare`, `systems-undeclare`, `systems-visible`, `report`, `write-meta`, `verify-meta`, `verify-delivery`. **Theme control:** container classes `trai-badge-top-left` to `trai-badge-hidden` and `trai-badge-manual`, stacking via `--trai-badge-z`, colours via `--trai-badge-bg`, `--trai-badge-fg` and `--trai-badge-opacity`.
 
 == External services ==
 None. The plugin makes no request to any external service and never sends media or site data anywhere. The list of AI tools it matches installed plugins against is a file inside the plugin. The only HTTP request it can make is the optional delivery check, which fetches one image from your own site to see whether a CDN strips the declaration; it is off by default, runs only on click, and stops if the image is served from another host.
@@ -218,6 +226,10 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 16. EU AI Act timeline and the activity log that records every change
 
 == Changelog ==
+
+= 1.1.4 =
+* The visible badge takes your own background colour, text colour and opacity next to the four styles it already had. Both colour fields start out empty, and while they are empty the badge looks exactly as before, so nothing changes on a site that keeps the neutral look.
+* A contrast rating next to the colour fields rates your choice against the WCAG threshold of 4.5 to 1 while you pick and says in words whether the badge stays readable, so a disclosure never disappears into its own colour.
 
 = 1.1.3 =
 * The first-run setup card no longer repeats the badge and file settings that the tabs below it already own. Its second and third step open the matching section instead, so every option exists once on the screen and only one form writes it.
@@ -255,6 +267,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.4 =
+Adds your own badge colours and opacity with a contrast rating. Existing settings and the badge look are unchanged.
 
 = 1.1.3 =
 Fixes the setup card, which showed the badge and file options a second time. Settings are untouched.

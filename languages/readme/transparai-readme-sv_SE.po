@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.2\n"
+"Project-Id-Version: TransparAI readme 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: sv_SE\n"
@@ -694,41 +694,6 @@ msgstr ""
 "revisionsspår, REST-API och WP-CLI, allt på din egen server, utan ett enda "
 "externt anrop."
 
-#. Screenshot description.
-msgid "Compliance report print view with the document hash"
-msgstr "Efterlevnadsrapportens utskriftsvy med dokumenthashen"
-
-#. Screenshot description.
-msgid ""
-"Front-end notice styles on an AI-written post: banner, badge and title badge"
-msgstr ""
-"Notisstilar i frontend på ett AI-skrivet inlägg: banner, märke och "
-"rubrikmärke"
-
-#. Screenshot description.
-msgid ""
-"AI systems in use: detected plugins, suggestions and the per-system "
-"visibility for the visitor notice"
-msgstr ""
-"AI-system som används: upptäckta tillägg, förslag och synligheten per system"
-" för besökarnotisen"
-
-#. Screenshot description.
-msgid ""
-"Self-assessment with the obligations that apply to the site and the Article "
-"4 AI literacy checklist"
-msgstr ""
-"Självbedömning med de skyldigheter som gäller för webbplatsen och "
-"checklistan för AI-kunnighet enligt artikel 4"
-
-#. Screenshot description.
-msgid ""
-"TransparAI dashboard with the readiness score, open checks, counters and the"
-" EU AI Act timeline"
-msgstr ""
-"TransparAI-adminpanelen med beredskapspoängen, öppna kontroller, räknare och"
-" tidslinjen för EU AI Act"
-
 #. Found in faq paragraph.
 msgid ""
 "Yes. Every post and page has an AI level in the editor sidebar (no AI used, "
@@ -1081,22 +1046,6 @@ msgstr "Överlever märkningen mitt CDN?"
 msgid "Where can I see what was written into a file?"
 msgstr "Var kan jag se vad som skrevs i en fil?"
 
-#. Screenshot description.
-msgid ""
-"Settings with tabs, library statistics, the batched scan and the audit "
-"export"
-msgstr ""
-"Inställningar med flikar, biblioteksstatistik, den omgångsvisa skanningen "
-"och revisionsexporten"
-
-#. Screenshot description.
-msgid ""
-"Attachment details: label checkbox, detection evidence, review actions and "
-"the file inspection with its raw XMP packet"
-msgstr ""
-"Bilagedetaljer: kryssruta för märkning, detekteringsbevis, "
-"granskningsåtgärder och filinspektionen med dess råa XMP-paket"
-
 #. Found in faq paragraph.
 msgid ""
 "Post in the support forum here on wordpress.org, or write to TransparAI@cms-"
@@ -1372,16 +1321,6 @@ msgstr "Externa tjänster"
 msgid "For developers"
 msgstr "För utvecklare"
 
-#. Screenshot description.
-msgid "Front-end badge on a labeled image"
-msgstr "Märke i frontend på en märkt bild"
-
-#. Screenshot description.
-msgid "Media library grid with AI badges, a review state and bulk labeling"
-msgstr ""
-"Mediabibliotekets rutnät med AI-märken, en granskningsstatus och "
-"massmärkning"
-
 #. Found in changelog list item.
 msgid ""
 "Settings page under the new menu with tabs; footer notices print as one "
@@ -1606,3 +1545,127 @@ msgstr ""
 "danska, finska, tjeckiska, rumänska, grekiska, ungerska och en formell tysk "
 "variant, vid sidan av befintliga tyska, franska, spanska, italienska och "
 "nederländska."
+
+#. Screenshot description.
+msgid "EU AI Act timeline and the activity log that records every change"
+msgstr ""
+"Tidslinje för EU:s AI-förordning och aktivitetsloggen som noterar varje "
+"ändring"
+
+#. Screenshot description.
+msgid ""
+"AI images screen: library status, batched scan, audit export and the media "
+"lists"
+msgstr ""
+"Skärmen för AI-bilder: bibliotekets status, skanning i omgångar, "
+"revisionsexport och medielistorna"
+
+#. Screenshot description.
+msgid "The two dashboard widgets: readiness and numbers"
+msgstr "De två panelwidgetarna: beredskap och nyckeltal"
+
+#. Screenshot description.
+msgid ""
+"Setup in three steps: scan the library, choose the badge, decide about the "
+"files"
+msgstr ""
+"Installation i tre steg: skanna biblioteket, välj märket, bestäm om filerna"
+
+#. Screenshot description.
+msgid ""
+"Settings: badge look with a live preview, alt text, the not-AI badge and the"
+" page notice"
+msgstr ""
+"Inställningar: märkets utseende med direktförhandsvisning, alt-text, märket "
+"för icke-AI och sidnotisen"
+
+#. Screenshot description.
+msgid ""
+"Block editor: the TransparAI panel with level, responsible person and review"
+" stamp"
+msgstr ""
+"Blockredigeraren: TransparAI-panelen med nivå, ansvarig person och "
+"granskningsstämpel"
+
+#. Screenshot description.
+msgid "Post list with the AI text column, the level filter and Quick Edit"
+msgstr ""
+"Inläggslistan med kolumnen för AI-text, nivåfiltret och snabbredigering"
+
+#. Screenshot description.
+msgid ""
+"The duties that follow from the answers, plus the Article 4 AI literacy "
+"checklist"
+msgstr ""
+"De skyldigheter som följer av svaren, plus checklistan för AI-kunnighet i "
+"artikel 4"
+
+#. Screenshot description.
+msgid ""
+"Self-assessment: the six questions that decide which transparency duties "
+"apply"
+msgstr ""
+"Självskattning: de sex frågor som avgör vilka transparenskrav som gäller"
+
+#. Screenshot description.
+msgid ""
+"Front end: title badge, the note above an AI-written text and the badge on a"
+" generated image"
+msgstr ""
+"Webbplatsen: titelmärke, notisen ovanför en AI-skriven text och märket på en"
+" genererad bild"
+
+#. Screenshot description.
+msgid ""
+"Media list filtered to the review queue, with the AI column and the bulk "
+"actions"
+msgstr ""
+"Medielistan filtrerad på granskningskön, med AI-kolumnen och massåtgärderna"
+
+#. Screenshot description.
+msgid ""
+"Attachment details: label, detection evidence, the declaration in every file"
+" size and the raw XMP packet"
+msgstr ""
+"Filens detaljer: etikett, bevis för upptäckten, deklarationen i varje "
+"bildstorlek och det råa XMP-paketet"
+
+#. Screenshot description.
+msgid ""
+"Media library grid: AI badges, the badge for media declared as not AI and "
+"the AI status filter"
+msgstr ""
+"Mediebibliotekets rutnät: AI-märken, märket för medier som förklarats icke-"
+"AI och AI-statusfiltret"
+
+#. Screenshot description.
+msgid ""
+"Dashboard with the readiness score, the open check, the five steps in order "
+"and the counters"
+msgstr ""
+"Panelen med beredskapspoängen, den öppna kontrollen, de fem stegen i ordning"
+" och räknarna"
+
+#. Screenshot description.
+msgid "Compliance report in print view with the document hash"
+msgstr "Efterlevnadsrapporten i utskriftsvy med dokumentets hash"
+
+#. Screenshot description.
+msgid ""
+"AI systems in use: detected plugins, a suggestion to declare and the "
+"visibility for the visitor notice"
+msgstr ""
+"AI-system i bruk: upptäckta tillägg, ett förslag att deklarera och "
+"synligheten för besökarnotisen"
+
+#. Found in changelog list item.
+msgid ""
+"The first-run setup card no longer repeats the badge and file settings that "
+"the tabs below it already own. Its second and third step open the matching "
+"section instead, so every option exists once on the screen and only one form"
+" writes it."
+msgstr ""
+"Installationskortet vid första starten upprepar inte längre de märkes- och "
+"filinställningar som redan hör hemma i flikarna nedanför. Dess andra och "
+"tredje steg öppnar i stället rätt avsnitt, så att varje inställning finns en"
+" gång på skärmen och bara ett formulär skriver den."

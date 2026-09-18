@@ -105,7 +105,18 @@ This sets the confirmed label, records the generator name and, with file writing
 * `trai-badge-hidden`: no visible badge inside this container. File metadata and structured data stay untouched.
 * `trai-badge-manual`: keep the position as configured and switch the automatic overlay guard off for this subtree.
 
-The first six switch the guard off by themselves, since a placement you chose should not be second-guessed. The stacking level of all badges is the CSS custom property `--trai-badge-z` (default `30`, raised to `99` only where the guard found a real overlap); it inherits, so a theme can tune it globally or per container with a single declaration and without touching the stylesheet. The markup is one wrapper `span` carrying the state classes plus `span.trai-badge` directly after the media element.
+The first six switch the guard off by themselves, since a placement you chose should not be second-guessed. The markup is one wrapper `span` carrying the state classes plus `span.trai-badge` directly after the media element.
+
+Four CSS custom properties steer the look. They inherit, so a theme can tune them globally or per container with a single declaration and without touching the stylesheet:
+
+| Property | Default | Set by |
+|---|---|---|
+| `--trai-badge-z` | `30`, raised to `99` only where the guard found a real overlap | the plugin |
+| `--trai-badge-bg` | the background of the chosen style | the "Background" colour setting |
+| `--trai-badge-fg` | the text and border colour of the chosen style | the "Text" colour setting |
+| `--trai-badge-opacity` | `1` (`0.75` for a caption line) | the "Opacity" setting |
+
+The three colour properties are only emitted when the setting differs from its default, so a badge that was never recoloured carries no declaration at all. They ride on `:root` rather than on the markup because the script clones badges by class name (lightbox layers, WooCommerce variation swaps, CSS background images) and an inline style would not reach those copies.
 
 ### Compliance module
 

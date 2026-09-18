@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.4 (2026-09-18)
+
+- The visible badge takes a background colour, a text colour and an opacity, next to the four
+  styles it already had. Both colour fields start out empty, and an empty field means the badge
+  keeps the colour of its style, so an existing site looks exactly as before until someone picks
+  a colour. The text colour also draws the border (outline style, "Human made" badge), the values
+  reach the front end as the custom properties `--trai-badge-bg`, `--trai-badge-fg` and
+  `--trai-badge-opacity`, and nothing is emitted at all while the settings are on their defaults.
+- A contrast rating sits next to the colour fields, because a disclosure nobody can read is not a
+  disclosure. It rates the badge text against its fill while you pick, using the WCAG threshold of
+  4.5 to 1 for the badge's text size, and names the verdict in words instead of leaving the colour
+  to carry it. Badge fills are see-through and land on photos that cannot be known in advance, so
+  the badge is rated on a white photo and on a black one and the worse of the two counts.
+
 ## 1.1.3 (2026-09-17)
 
 - Setup card: the first-run card carried its own controls for the badge look and for file writing,
