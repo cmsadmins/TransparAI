@@ -823,7 +823,7 @@ msgstr "%1$s (în %2$s)"
 
 #: admin/class-media-library.php:74
 msgid "Media is AI-generated"
-msgstr "Media este generată de IA"
+msgstr "Media este generată de AI"
 
 #: admin/class-media-library.php:84 admin/class-media-library.php:377
 msgid "no declaration"
@@ -852,7 +852,7 @@ msgstr ""
 
 #: admin/class-media-library.php:103
 msgid "Confirm AI label"
-msgstr "Confirmă eticheta IA"
+msgstr "Confirmă eticheta AI"
 
 #: admin/class-media-library.php:104
 msgid "Not AI, dismiss"
@@ -860,7 +860,7 @@ msgstr "Nu este IA, respinge"
 
 #: admin/class-media-library.php:109
 msgid "Re-check file metadata"
-msgstr "Verifică din nou metadatele fișierului"
+msgstr "Reverifică metadatele fișierului"
 
 #: admin/class-media-library.php:114
 msgid "Check delivery"
@@ -884,23 +884,23 @@ msgstr ""
 
 #: admin/class-media-library.php:136
 msgid "Default (site setting)"
-msgstr "Implicit (setarea site-ului)"
+msgstr "Implicit (setare site)"
 
 #: admin/class-media-library.php:137 admin/class-settings.php:316
 msgid "Top left"
-msgstr "Sus stânga"
+msgstr "Stânga sus"
 
 #: admin/class-media-library.php:138 admin/class-settings.php:317
 msgid "Top right"
-msgstr "Sus dreapta"
+msgstr "Dreapta sus"
 
 #: admin/class-media-library.php:139 admin/class-settings.php:318
 msgid "Bottom left"
-msgstr "Jos stânga"
+msgstr "Stânga jos"
 
 #: admin/class-media-library.php:140 admin/class-settings.php:319
 msgid "Bottom right"
-msgstr "Jos dreapta"
+msgstr "Dreapta jos"
 
 #: admin/class-media-library.php:141 admin/class-settings.php:309
 msgid "Caption line below the image"
@@ -908,11 +908,11 @@ msgstr "Linie de legendă sub imagine"
 
 #: admin/class-media-library.php:142
 msgid "Hide the visible badge on this image"
-msgstr "Ascunde insigna vizibilă pe această imagine"
+msgstr "Ascunde insigna vizibilă în această imagine"
 
 #: admin/class-media-library.php:151
 msgid "Badge position"
-msgstr "Poziția insignei"
+msgstr "Poziție insignă"
 
 #: admin/class-media-library.php:154
 msgid ""
@@ -923,7 +923,7 @@ msgstr ""
 
 #: admin/class-media-library.php:158
 msgid "AI generator"
-msgstr "Generator IA"
+msgstr "Generator AI"
 
 #: admin/class-media-library.php:162
 msgid ""
@@ -935,7 +935,7 @@ msgstr ""
 
 #: admin/class-media-library.php:182
 msgid "certain"
-msgstr "cert"
+msgstr "sigur"
 
 #: admin/class-media-library.php:183
 msgid "likely"
@@ -943,14 +943,14 @@ msgstr "probabil"
 
 #: admin/class-media-library.php:184
 msgid "hint"
-msgstr "indiciu"
+msgstr "sugestie"
 
 #: admin/class-media-library.php:288 admin/class-media-library.php:329
 #: admin/class-setup.php:112 includes/class-chatbot.php:357
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
-msgstr "Nu ai permisiunea să faci acest lucru."
+msgstr "Nu ai voie să faci asta."
 
 #: admin/class-media-library.php:293 includes/class-rest.php:243
 msgid "Unknown action."
@@ -1053,7 +1053,7 @@ msgstr "Detectate, necesită verificare"
 
 #: admin/class-media-library.php:488 admin/class-media-library.php:555
 msgid "Without AI label"
-msgstr "Fără etichetă IA"
+msgstr "Fără etichetă AI"
 
 #: admin/class-media-library.php:489 admin/class-media-library.php:554
 msgid "Declared not AI (camera, human work)"
@@ -1061,7 +1061,7 @@ msgstr "Declarate ca nefiind IA (aparat foto, lucrare umană)"
 
 #: admin/class-media-library.php:490 admin/class-media-library.php:596
 msgid "Mark as AI-generated"
-msgstr "Marchează ca generat de IA"
+msgstr "Marchează ca generat de AI"
 
 #: admin/class-media-library.php:491 admin/class-media-library.php:597
 msgid "Remove AI label"
@@ -1069,11 +1069,11 @@ msgstr "Elimină eticheta IA"
 
 #: admin/class-media-library.php:492
 msgid "Please select media first."
-msgstr "Selectează mai întâi fișiere media."
+msgstr "Te rog să selectezi mai întâi elementul Media."
 
 #: admin/class-media-library.php:493
 msgid "Updating the AI label failed."
-msgstr "Actualizarea etichetei IA a eșuat."
+msgstr "Actualizarea etichetei AI a eșuat."
 
 #: admin/class-media-library.php:494
 msgid "Result"
@@ -1113,24 +1113,25 @@ msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
 "(already decided)."
 msgstr ""
-"%1$d scanate, %2$d etichetate automat, %3$d trimise la verificare, %4$d "
-"omise (deja decise)."
+"%1$d scanate, %2$d etichetate automat, %3$d în coada de așteptare pentru "
+"verificare, %4$d omise (deja decise)."
 
 #: admin/class-media-library.php:503
 msgid "Scan complete."
-msgstr "Scanare finalizată."
+msgstr "Scanarea este finalizată."
 
 #: admin/class-media-library.php:504
 msgid "Scan request failed. You can restart to continue."
-msgstr "Cererea de scanare a eșuat. Poți reporni pentru a continua."
+msgstr ""
+"Cererea pentru scanare a eșuat. Pentru a continua, poți să o repornești."
 
 #: admin/class-media-library.php:515 includes/class-notice.php:305
 msgid "AI"
-msgstr "IA"
+msgstr "AI"
 
 #: admin/class-media-library.php:598
 msgid "Confirm detected AI label"
-msgstr "Confirmă eticheta IA detectată"
+msgstr "Confirmă eticheta AI detectată"
 
 #: admin/class-media-library.php:599
 msgid "Dismiss detected AI label"
