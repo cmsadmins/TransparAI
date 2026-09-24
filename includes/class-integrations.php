@@ -8,6 +8,7 @@
  *  - AI Power         (post meta `_aipkit_generated_image` = '1')
  *  - WordPress AI     (post meta `ai_generated` = '1')
  *  - Elementor AI     (upload during the `ai_upload_image` AJAX action)
+ *  - Divi AI          (upload during the `et_ai_upload_image` AJAX action)
  *
  * Public API for any other producer:
  *  do_action( 'transparai_mark_ai', $attachment_id, 'My Generator' );
@@ -80,6 +81,10 @@ final class TransparAI_Integrations {
 		$action = isset( $_REQUEST['action'] ) ? sanitize_key( wp_unslash( (string) $_REQUEST['action'] ) ) : '';
 		if ( 'ai_upload_image' === $action ) {
 			self::mark( $attachment_id, 'Elementor AI' );
+		}
+		/* Divi AI sideloads the generated image and then replaces it with a JPEG copy; both attachments pass through here during the same action. */
+		if ( 'et_ai_upload_image' === $action ) {
+			self::mark( $attachment_id, 'Divi AI' );
 		}
 	}
 

@@ -131,6 +131,17 @@ final class TransparAI_Frontend {
 			return false;
 		}
 
+		/* Divi Visual Builder and Backend Builder. The latter loads the front end into an iframe, so the is_admin() check above never sees it. */
+		if ( function_exists( 'et_core_is_fb_enabled' ) && et_core_is_fb_enabled() ) {
+			return false;
+		}
+		if ( function_exists( 'et_fb_is_enabled' ) && et_fb_is_enabled() ) {
+			return false;
+		}
+		if ( isset( $_GET['et_fb'] ) || isset( $_GET['et_bfb'] ) || isset( $_GET['et_pb_preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only detection of a builder editing context.
+			return false;
+		}
+
 		return true;
 	}
 

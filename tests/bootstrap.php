@@ -307,7 +307,8 @@ if ( ! function_exists( 'is_feed' ) ) {
 }
 if ( ! function_exists( 'wp_doing_ajax' ) ) {
 	function wp_doing_ajax() {
-		return false;
+		global $trai_test_doing_ajax;
+		return ! empty( $trai_test_doing_ajax );
 	}
 }
 if ( ! function_exists( 'get_attached_file' ) ) {
@@ -702,7 +703,8 @@ require_once dirname( __DIR__ ) . '/includes/class-systems.php';
  */
 function trai_test_reset(): void {
 	global $trai_test_options, $trai_test_meta, $trai_test_filters, $trai_test_transients, $trai_test_can, $trai_test_current_post, $trai_test_cron, $trai_test_user, $trai_test_http, $trai_test_user_name, $trai_test_posts, $trai_test_blocks, $trai_test_query_posts, $trai_test_query_args, $trai_test_routes;
-	global $trai_test_user_meta, $trai_test_plugins;
+	global $trai_test_user_meta, $trai_test_plugins, $trai_test_doing_ajax;
+	$trai_test_doing_ajax   = false;
 	$trai_test_user_meta    = array();
 	$trai_test_plugins      = array();
 	$trai_test_query_posts  = array();

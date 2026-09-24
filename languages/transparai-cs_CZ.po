@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.4\n"
+"Project-Id-Version: TransparAI 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: cs_CZ\n"
@@ -1251,8 +1251,8 @@ msgstr ""
 msgid "Badge text"
 msgstr "Text odznaku"
 
-#: admin/class-settings.php:281 includes/class-frontend.php:229
-#: includes/class-frontend.php:234 includes/class-notice.php:154
+#: admin/class-settings.php:281 includes/class-frontend.php:240
+#: includes/class-frontend.php:245 includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "Vygenerováno AI"
 
@@ -1352,7 +1352,7 @@ msgstr ""
 "Zobrazovat odznak i u médií deklarovaných jako fotografie z fotoaparátu nebo"
 " lidská tvorba (strukturovaná data nesou deklaraci tak či tak)"
 
-#: admin/class-settings.php:392 includes/class-frontend.php:207
+#: admin/class-settings.php:392 includes/class-frontend.php:218
 msgid "Human made"
 msgstr "Vytvořeno člověkem"
 
@@ -1365,7 +1365,7 @@ msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 "Přidat krátkou poznámku na konec stránek, které obsahují označená média"
 
-#: admin/class-settings.php:400 includes/class-frontend.php:837
+#: admin/class-settings.php:400 includes/class-frontend.php:848
 msgid "This page contains AI-generated media."
 msgstr "Tato stránka obsahuje média vygenerovaná AI."
 
@@ -2643,13 +2643,13 @@ msgstr "Nepodařilo se stáhnout"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
-#: includes/class-frontend.php:215
+#: includes/class-frontend.php:226
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Člověk"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:246
+#: includes/class-frontend.php:257
 msgctxt "short badge label"
 msgid "AI"
 msgstr "Umělá inteligence"

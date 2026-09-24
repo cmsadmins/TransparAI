@@ -205,12 +205,10 @@ th{background:#f6f7f7;}
 		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
 		/* The setup card previews the badge with the real front-end styles. */
 		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
-		/* Core picker, so an empty colour stays possible (its clear button) and
-		   the field looks like the rest of the admin. Enqueued on its own and
-		   before our script rather than relying on the dependency below: the
-		   media modal registers the transparai-admin handle first on this
-		   screen, and a second wp_enqueue_script() for a handle that already
-		   exists keeps the first dependency list. */
+		/* Core picker, so an empty colour stays possible (its clear button) and the field looks like the rest of the admin.
+		Enqueued on its own and before our script rather than relying on the dependency below: the media modal registers the
+		transparai-admin handle first on this screen, and a second wp_enqueue_script() for a handle that already exists keeps
+		the first dependency list. */
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'wp-color-picker' ), TRANSPARAI_VERSION, true );

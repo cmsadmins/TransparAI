@@ -294,6 +294,20 @@ final class FrontendTest extends TestCase {
 		$this->assertSame( $html, TransparAI_Frontend::filter_content( $html ), 'No badges inside the WPBakery editor' );
 		unset( $_REQUEST['vc_editable'] );
 
+		$_GET['et_fb'] = '1';
+		$this->assertSame( $html, TransparAI_Frontend::filter_content( $html ), 'No badges inside the Divi Visual Builder' );
+		unset( $_GET['et_fb'] );
+
+		/* The Divi Backend Builder loads the front end into an iframe, so the
+		   is_admin() check never sees it. */
+		$_GET['et_bfb'] = '1';
+		$this->assertSame( $html, TransparAI_Frontend::filter_content( $html ), 'No badges inside the Divi Backend Builder' );
+		unset( $_GET['et_bfb'] );
+
+		$_GET['et_pb_preview'] = 'true';
+		$this->assertSame( $html, TransparAI_Frontend::filter_content( $html ), 'No badges inside the Divi module preview' );
+		unset( $_GET['et_pb_preview'] );
+
 		$this->assertStringContainsString( 'trai-badge', TransparAI_Frontend::filter_content( $html ) );
 	}
 

@@ -29,6 +29,15 @@ p .trai-wrap {
 	left: 0;
 }
 
+/* Divi's image containers zero their line height and expect the image as
+   their only child. An inline-block wrapper in that spot moves the baseline
+   of the container above it and opens a gap below the image, so there the
+   wrapper stands in for the image as a block. */
+.et_pb_image_wrap > .trai-wrap:only-child,
+.et_pb_slide_image > .trai-wrap:only-child {
+	display: block;
+}
+
 /* Themes only constrain images they know (wp-image-*). Plain images that the
    optional script wraps (ACF url returns, sliders) may carry no max-width at
    all and would overflow the layout, so the wrapper constrains its own child. */

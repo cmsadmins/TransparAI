@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.4\n"
+"Project-Id-Version: TransparAI 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: fi\n"
@@ -1259,8 +1259,8 @@ msgstr ""
 msgid "Badge text"
 msgstr "Merkin teksti"
 
-#: admin/class-settings.php:281 includes/class-frontend.php:229
-#: includes/class-frontend.php:234 includes/class-notice.php:154
+#: admin/class-settings.php:281 includes/class-frontend.php:240
+#: includes/class-frontend.php:245 includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "Tekoälyn luoma"
 
@@ -1362,7 +1362,7 @@ msgstr ""
 "Näytä merkki myös mediatiedostoissa, jotka on ilmoitettu kameravalokuviksi "
 "tai ihmisen työksi (rakenteinen data sisältää ilmoituksen joka tapauksessa)"
 
-#: admin/class-settings.php:392 includes/class-frontend.php:207
+#: admin/class-settings.php:392 includes/class-frontend.php:218
 msgid "Human made"
 msgstr "Ihmisen tekemä"
 
@@ -1375,7 +1375,7 @@ msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 "Lisää lyhyt huomautus niiden sivujen loppuun, joilla on merkittyä mediaa"
 
-#: admin/class-settings.php:400 includes/class-frontend.php:837
+#: admin/class-settings.php:400 includes/class-frontend.php:848
 msgid "This page contains AI-generated media."
 msgstr "Tämä sivu sisältää tekoälyn luomaa mediaa."
 
@@ -2669,13 +2669,13 @@ msgstr "Ei voitu hakea"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
-#: includes/class-frontend.php:215
+#: includes/class-frontend.php:226
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Ihminen"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:246
+#: includes/class-frontend.php:257
 msgctxt "short badge label"
 msgid "AI"
 msgstr "AI"

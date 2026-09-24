@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: TransparAI 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
-"Language-Team: de_DE_formal\n"
-"Language: de\n"
+"Language-Team: de_AT\n"
+"Language: de_AT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,20 +157,20 @@ msgid ""
 " provided without warranty of any kind, and the author accepts no liability "
 "for its use or for decisions based on it."
 msgstr ""
-"TransparAI ist ein technisches Werkzeug, keine Rechtsberatung. Es hilft "
-"Ihnen, den KI-Einsatz auf dieser Website zu erkennen, zu kennzeichnen und zu"
-" dokumentieren; es kann Ihnen nicht sagen, ob Ihre Website den EU AI Act "
-"oder ein anderes Gesetz einhält. Der Readiness-Score, die Selbsteinschätzung"
-" und jeder Hinweis geben ausschließlich die eigenen Prüfungen des Plugins "
-"und Ihre Antworten wieder, nicht mehr. Rechtliche Pflichten hängen von Ihrer"
-" Situation ab und bleiben Ihre Verantwortung; für eine rechtliche Bewertung "
-"wenden Sie sich an einen Anwalt. Das Plugin wird ohne jede Gewährleistung "
+"TransparAI ist ein technisches Werkzeug, keine Rechtsberatung. Es hilft dir,"
+" den KI-Einsatz auf dieser Website zu erkennen, zu kennzeichnen und zu "
+"dokumentieren; es kann dir nicht sagen, ob deine Website den EU AI Act oder "
+"ein anderes Gesetz einhält. Der Readiness-Score, die Selbsteinschätzung und "
+"jeder Hinweis geben ausschließlich die eigenen Prüfungen des Plugins und "
+"deine Antworten wieder, nicht mehr. Rechtliche Pflichten hängen von deiner "
+"Situation ab und bleiben deine Verantwortung; für eine rechtliche Bewertung "
+"wende dich an einen Anwalt. Das Plugin wird ohne jede Gewährleistung "
 "bereitgestellt, und der Autor übernimmt keine Haftung für seine Nutzung oder"
 " für Entscheidungen, die darauf beruhen."
 
 #: admin/class-dashboard.php:133
 msgid "Please read before you rely on anything here."
-msgstr "Bitte lesen, bevor Sie sich auf irgendetwas hier verlassen."
+msgstr "Bitte lesen, bevor du dich auf irgendetwas hier verlässt."
 
 #: admin/class-dashboard.php:137
 msgid "I understand: no legal advice, no liability"
@@ -183,7 +183,7 @@ msgstr "Keine Rechtsberatung, keine Haftung"
 #: admin/class-dashboard.php:156 admin/class-dashboard.php:507
 #: admin/class-dashboard.php:577 admin/class-dashboard.php:726
 msgid "You are not allowed to do this."
-msgstr "Dafür fehlt Ihnen die Berechtigung."
+msgstr "Dafür fehlt dir die Berechtigung."
 
 #: admin/class-dashboard.php:170
 msgid ""
@@ -208,26 +208,25 @@ msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
 msgstr ""
-"Beantworten Sie, ob auf der Website ein Chat läuft und wer darin antwortet; "
-"der Chatbot-Hinweis folgt Ihrer Antwort."
+"Beantworte, ob auf der Website ein Chat läuft und wer darin antwortet; der "
+"Chatbot-Hinweis folgt deiner Antwort."
 
 #: admin/class-dashboard.php:173
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
 msgstr ""
-"Prüfen Sie die KI-Systeme, die das Plugin unter Ihren Plugins gefunden hat, "
-"deklarieren Sie weitere und entscheiden Sie, über welche Besucher informiert"
-" werden."
+"Prüfe die KI-Systeme, die das Plugin unter deinen Plugins gefunden hat, "
+"deklariere weitere und entscheide, über welche Besucher informiert werden."
 
 #: admin/class-dashboard.php:174
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
 msgstr ""
-"Beantworten Sie die sechs Fragen der Selbsteinschätzung und haken Sie die "
-"Artikel-4-Checkliste ab, exportieren Sie dann den Compliance-Bericht für "
-"Ihre Unterlagen."
+"Beantworte die sechs Fragen der Selbsteinschätzung und hake die "
+"Artikel-4-Checkliste ab, exportiere dann den Compliance-Bericht für deine "
+"Unterlagen."
 
 #: admin/class-dashboard.php:178
 msgid "How TransparAI works"
@@ -246,9 +245,9 @@ msgstr ""
 " wenn sie mit einer KI sprechen, KI-generierte Medien müssen eine "
 "maschinenlesbare Markierung tragen, und KI-generierte Texte zu Themen von "
 "öffentlichem Interesse müssen offengelegt werden. Dieses Plugin deckt die "
-"technische Seite aller drei ab und dokumentiert, was Sie entschieden haben. "
-"Arbeiten Sie die Schritte in dieser Reihenfolge durch; der Readiness-Score "
-"oben zieht mit."
+"technische Seite aller drei ab und dokumentiert, was du entschieden hast. "
+"Arbeite die Schritte in dieser Reihenfolge durch; der Readiness-Score oben "
+"zieht mit."
 
 #: admin/class-dashboard.php:223 admin/class-settings.php:746
 msgid "Readiness score"
@@ -398,12 +397,12 @@ msgstr ""
 "Welche Transparenzpflichten des EU AI Act für eine Website gelten, hängt "
 "davon ab, wie sie KI tatsächlich einsetzt: Eine Website ohne Chatbot muss "
 "nichts über Chatbots offenlegen, eine Website mit KI-geschriebenen Artikeln "
-"schon. Beantworten Sie die sechs Fragen mit Ja oder Nein nach dem heutigen "
-"Stand; die Beispiele unter jeder Frage zeigen, was zählt, und wenn Sie "
-"unsicher sind, fragen Sie die Personen, die die Inhalte erstellen. Das "
-"Ergebnis unten sagt zu jedem bestätigten Einsatz, was der AI Act von wem "
-"verlangt und welche Plugin-Seite das abdeckt; vollständige Antworten zählen "
-"zum Readiness-Score und stehen im Compliance-Bericht."
+"schon. Beantworte die sechs Fragen mit Ja oder Nein nach dem heutigen Stand;"
+" die Beispiele unter jeder Frage zeigen, was zählt, und wenn du unsicher "
+"bist, frag die Personen, die die Inhalte erstellen. Das Ergebnis unten sagt "
+"zu jedem bestätigten Einsatz, was der AI Act von wem verlangt und welche "
+"Plugin-Seite das abdeckt; vollständige Antworten zählen zum Readiness-Score "
+"und stehen im Compliance-Bericht."
 
 #: admin/class-dashboard.php:436
 msgid ""
@@ -448,9 +447,9 @@ msgid ""
 "starts using AI; the Article 4 checklist below still documents your "
 "awareness."
 msgstr ""
-"Sie haben jede Frage mit Nein beantwortet. Halten Sie die Antworten aktuell,"
-" sobald die Website KI einsetzt; die Artikel-4-Checkliste unten dokumentiert"
-" Ihre Sensibilisierung dennoch."
+"Du hast jede Frage mit Nein beantwortet. Halte die Antworten aktuell, sobald"
+" die Website KI einsetzt; die Artikel-4-Checkliste unten dokumentiert deine "
+"Sensibilisierung dennoch."
 
 #: admin/class-dashboard.php:474
 msgid "Use of AI"
@@ -501,14 +500,14 @@ msgid ""
 "of the last save."
 msgstr ""
 "Artikel 4 gilt seit dem 2. Februar 2025 für jeden Anbieter und Betreiber, "
-"unabhängig von Ihren Antworten oben: Sie ergreifen Maßnahmen, soweit es "
-"Ihnen möglich ist, damit die Personen, die in Ihrem Auftrag KI-Systeme "
-"bedienen oder nutzen, über ein ausreichendes Maß an KI-Kompetenz verfügen, "
-"unter Berücksichtigung ihres Hintergrunds und des Einsatzkontexts. Die "
-"Verordnung schreibt keine bestimmte Schulung und kein Zertifikat vor; diese "
-"Checkliste hält die Maßnahmen fest, die üblicherweise als Nachweis dienen. "
-"Sie fließt in den Readiness-Score ein und erscheint im Compliance-Bericht "
-"mit Name und Datum der letzten Speicherung."
+"unabhängig von deinen Antworten oben: Du ergreifst Maßnahmen, soweit es dir "
+"möglich ist, damit die Personen, die in deinem Auftrag KI-Systeme bedienen "
+"oder nutzen, über ein ausreichendes Maß an KI-Kompetenz verfügen, unter "
+"Berücksichtigung ihres Hintergrunds und des Einsatzkontexts. Die Verordnung "
+"schreibt keine bestimmte Schulung und kein Zertifikat vor; diese Checkliste "
+"hält die Maßnahmen fest, die üblicherweise als Nachweis dienen. Sie fließt "
+"in den Readiness-Score ein und erscheint im Compliance-Bericht mit Name und "
+"Datum der letzten Speicherung."
 
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:533
@@ -525,8 +524,8 @@ msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
 msgstr ""
-"Beide Teile dieser Seite landen im Compliance-Bericht, dem Dokument, das Sie"
-" für Ihre Unterlagen aufbewahren oder auf Nachfrage vorlegen."
+"Beide Teile dieser Seite landen im Compliance-Bericht, dem Dokument, das du "
+"für deine Unterlagen aufbewahrst oder auf Nachfrage vorlegst."
 
 #: admin/class-dashboard.php:602 admin/class-settings.php:554
 #: admin/class-settings.php:773
@@ -628,7 +627,7 @@ msgid ""
 "API your theme calls."
 msgstr ""
 "Für Werkzeuge, die keine WordPress-Plugins sind: ein externer Dienst, ein "
-"Skript, eine API, die Ihr Theme aufruft."
+"Skript, eine API, die dein Theme aufruft."
 
 #: admin/class-dashboard.php:708
 msgid "Name of the system"
@@ -746,9 +745,9 @@ msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
 msgstr ""
-"Alle Prüfungen, die das Plugin selbst durchführen kann, sind erledigt. "
-"Halten Sie die Antworten aktuell, wenn die Website KI neu einsetzt oder "
-"nicht mehr einsetzt."
+"Alle Prüfungen, die das Plugin selbst durchführen kann, sind erledigt. Halte"
+" die Antworten aktuell, wenn die Website KI neu einsetzt oder nicht mehr "
+"einsetzt."
 
 #: admin/class-dashboard.php:916
 msgid "Still open"
@@ -949,7 +948,7 @@ msgstr "Hinweis"
 #: includes/class-delivery.php:66 includes/class-scanner.php:233
 #: includes/class-scanner.php:309
 msgid "You are not allowed to do that."
-msgstr "Dazu sind Sie nicht berechtigt."
+msgstr "Dazu bist du nicht berechtigt."
 
 #: admin/class-media-library.php:293 includes/class-rest.php:243
 msgid "Unknown action."
@@ -1158,7 +1157,7 @@ msgstr[1] "KI-Kennzeichnung für %d Mediendateien aktualisiert."
 
 #: admin/class-settings.php:47 admin/class-settings.php:97
 msgid "You are not allowed to export this."
-msgstr "Sie dürfen diesen Export nicht abrufen."
+msgstr "Du darfst diesen Export nicht abrufen."
 
 #: admin/class-settings.php:65
 msgid "The export could not be started."
@@ -1316,6 +1315,57 @@ msgstr "Mittel"
 #: admin/class-settings.php:338
 msgid "Large"
 msgstr "Groß"
+
+#: admin/class-settings.php:346
+msgid "Background"
+msgstr "Hintergrund"
+
+#: admin/class-settings.php:350
+msgid "Text"
+msgstr "Text"
+
+#: admin/class-settings.php:354
+msgid "Opacity"
+msgstr "Deckkraft"
+
+#: admin/class-settings.php:362
+msgid "Readable"
+msgstr "Gut lesbar"
+
+#: admin/class-settings.php:363
+msgid "Borderline"
+msgstr "Grenzwertig"
+
+#: admin/class-settings.php:364
+msgid "Hard to read"
+msgstr "Schwer lesbar"
+
+#: admin/class-settings.php:365
+msgid "Depends on what is behind it"
+msgstr "Hängt vom Untergrund ab"
+
+#: admin/class-settings.php:367
+msgid ""
+"Badge text is small, so WCAG asks for a contrast of at least 4.5 to 1. A "
+"see-through badge is rated for the worst case, a photo far lighter or darker"
+" than the badge itself."
+msgstr ""
+"Der Badge-Text ist klein, deshalb verlangt die WCAG hier einen Kontrast von "
+"mindestens 4,5 zu 1. Ein durchscheinendes Badge wird für den schlechtesten "
+"Fall bewertet, also für ein Foto, das deutlich heller oder dunkler ist als "
+"das Badge selbst."
+
+#: admin/class-settings.php:370
+msgid ""
+"Both colours are optional: while they are empty the badge keeps the colours "
+"of the style above, exactly as before. The text colour also draws the "
+"border, and the outline style has no fill of its own, so a background colour"
+" does not show there."
+msgstr ""
+"Beide Farben sind optional: solange sie leer bleiben, behält das Badge die "
+"Farben der Darstellung darüber, genau wie bisher. Die Textfarbe zeichnet "
+"auch den Rahmen, und der Umriss hat keine eigene Fläche, dort wirkt eine "
+"Hintergrundfarbe also nicht."
 
 #: admin/class-settings.php:375
 msgid "Extras"
@@ -1536,11 +1586,11 @@ msgid ""
 "what your own browser saw as an administrator. No request leaves the server."
 msgstr ""
 "Besucher müssen erfahren, wenn sie mit einem KI-System sprechen, spätestens "
-"zu Beginn des Gesprächs. Ihre Antwort entscheidet; was das Plugin auf der "
+"zu Beginn des Gesprächs. Deine Antwort entscheidet; was das Plugin auf der "
 "Website findet, dient nur der Information, denn die meisten Chat-Widgets "
 "sind Live-Chats, in denen ein Mensch antwortet, und ein falsches „Das ist "
 "eine KI“ würde Besucher in die Irre führen. Die Erkennung läuft lokal: "
-"aktive Plugins, Theme-Schnipsel, die Skripte einer Seite und das, was Ihr "
+"aktive Plugins, Theme-Schnipsel, die Skripte einer Seite und das, was dein "
 "eigener Browser als Administrator gesehen hat. Keine Anfrage verlässt den "
 "Server."
 
@@ -1553,9 +1603,9 @@ msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
 msgstr ""
-"Bisher kein bekanntes Chat- oder Chatbot-Widget gefunden. Öffnen Sie ein "
-"paar Seiten Ihrer Website im eingeloggten Zustand; die Prüfung läuft in "
-"Ihrem Browser und meldet sich hier."
+"Bisher kein bekanntes Chat- oder Chatbot-Widget gefunden. Öffne ein paar "
+"Seiten deiner Website im eingeloggten Zustand; die Prüfung läuft in deinem "
+"Browser und meldet sich hier."
 
 #: admin/class-settings.php:494
 msgid "a bot answers"
@@ -1607,7 +1657,7 @@ msgstr "Hinweis"
 
 #: admin/class-settings.php:536 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
-msgstr "Sie chatten mit einem KI-System."
+msgstr "Du chattest mit einem KI-System."
 
 #: admin/class-settings.php:542
 msgid ""
@@ -1769,8 +1819,8 @@ msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
 msgstr ""
-"Auch digitalCapture oder digitalCreation in Medien schreiben, die Sie als "
-"nicht KI-erzeugt deklariert haben, aber nie über eine Deklaration, die ein "
+"Auch digitalCapture oder digitalCreation in Medien schreiben, die du als "
+"nicht KI-erzeugt deklariert hast, aber nie über eine Deklaration, die ein "
 "anderes Werkzeug oder eine Kamera bereits geschrieben hat"
 
 #: admin/class-settings.php:661
@@ -1805,9 +1855,9 @@ msgstr ""
 "Fügt hier und in den Anhang-Details eine Schaltfläche hinzu. Auf Klick lädt "
 "das Plugin das Bild über seine eigene öffentliche URL und vergleicht die "
 "ausgelieferten Bytes mit der Datei auf der Festplatte. Nur so fällt auf, "
-"dass ein optimierendes CDN Ihre Bilder neu kodiert und die Angabe dabei "
-"entfernt. Die Anfrage geht ausschließlich an Ihre eigene Website und nur, "
-"wenn Sie die Schaltfläche drücken."
+"dass ein optimierendes CDN deine Bilder neu kodiert und die Angabe dabei "
+"entfernt. Die Anfrage geht ausschließlich an deine eigene Website und nur, "
+"wenn du die Schaltfläche drückst."
 
 #: admin/class-settings.php:675
 msgid "Check a sample of five files"
@@ -2029,8 +2079,8 @@ msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
 msgstr ""
-"Liest die Metadaten Ihrer vorhandenen Mediendateien (C2PA, XMP/IPTC, "
-"Generator-Signaturen) in kleinen Paketen. Nichts verlässt Ihren Server."
+"Liest die Metadaten deiner vorhandenen Mediendateien (C2PA, XMP/IPTC, "
+"Generator-Signaturen) in kleinen Paketen. Nichts verlässt deinen Server."
 
 #: admin/class-settings.php:898
 msgid "Scan new/unscanned media"
@@ -2067,6 +2117,16 @@ msgstr "Support-Forum"
 msgid "Setup in three steps"
 msgstr "Einrichtung in drei Schritten"
 
+#: admin/class-setup.php:166
+msgid ""
+"Three things to settle once. Each button opens the section below that does "
+"it. Nothing is labeled without your review, and no request leaves your "
+"server."
+msgstr ""
+"Drei Dinge, die du einmal festlegst. Jeder Knopf öffnet den Abschnitt "
+"darunter, der das erledigt. Nichts wird ohne deine Prüfung gekennzeichnet, "
+"und keine Anfrage verlässt deinen Server."
+
 #: admin/class-setup.php:170
 msgid "1. Scan the existing library"
 msgstr "1. Bestehende Mediathek scannen"
@@ -2089,9 +2149,34 @@ msgstr "Jetzt scannen"
 msgid "2. Choose the badge look"
 msgstr "2. Aussehen des Badges wählen"
 
+#: admin/class-setup.php:188
+msgid ""
+"Style, position and placement of the visible badge, with a live preview of "
+"the result."
+msgstr ""
+"Stil, Position und Platzierung des sichtbaren Badges, mit einer Live-"
+"Vorschau des Ergebnisses."
+
+#: admin/class-setup.php:189
+msgid "Open the badge settings"
+msgstr "Badge-Einstellungen öffnen"
+
 #: admin/class-setup.php:193
 msgid "3. Decide about the files"
 msgstr "3. Über die Dateien entscheiden"
+
+#: admin/class-setup.php:194
+msgid ""
+"Whether the machine-readable declaration goes into the image files "
+"themselves, and whether it is restored after an image optimizer strips it."
+msgstr ""
+"Ob die maschinenlesbare Deklaration in die Bilddateien selbst geschrieben "
+"wird und ob sie wiederhergestellt wird, nachdem ein Bildoptimierer sie "
+"entfernt hat."
+
+#: admin/class-setup.php:195
+msgid "Open the file settings"
+msgstr "Datei-Einstellungen öffnen"
 
 #: admin/class-setup.php:204
 msgid "Finish setup"
@@ -2109,7 +2194,7 @@ msgstr "Chatbot oder Assistent"
 msgid ""
 "Does your site run a chatbot or virtual assistant that talks to visitors?"
 msgstr ""
-"Läuft auf Ihrer Website ein Chatbot oder virtueller Assistent, der mit "
+"Läuft auf deiner Website ein Chatbot oder virtueller Assistent, der mit "
 "Besuchern spricht?"
 
 #: includes/class-compliance.php:59
@@ -2127,23 +2212,23 @@ msgid ""
 "and the notice appears on your pages, so it is set up here."
 msgstr ""
 "Art. 50 Abs. 1 verpflichtet den Anbieter des Chat-Systems, die KI-"
-"Interaktion spätestens beim ersten Austausch kenntlich zu machen. Sie setzen"
-" das System ein, und der Hinweis erscheint auf Ihren Seiten, deshalb wird er"
+"Interaktion spätestens beim ersten Austausch kenntlich zu machen. Du setzt "
+"das System ein, und der Hinweis erscheint auf deinen Seiten, deshalb wird er"
 " hier eingerichtet."
 
 #: includes/class-compliance.php:61
 msgid ""
 "Answer the chatbot question in the settings; the notice follows your answer."
 msgstr ""
-"Beantworten Sie die Chatbot-Frage in den Einstellungen; der Hinweis folgt "
-"Ihrer Antwort."
+"Beantworte die Chatbot-Frage in den Einstellungen; der Hinweis folgt deiner "
+"Antwort."
 
 #: includes/class-compliance.php:66
 msgid ""
 "Does your site publish text that was generated or substantially assisted by "
 "AI?"
 msgstr ""
-"Veröffentlicht Ihre Website Texte, die von KI generiert oder wesentlich "
+"Veröffentlicht deine Website Texte, die von KI generiert oder wesentlich "
 "unterstützt wurden?"
 
 #: includes/class-compliance.php:67
@@ -2164,12 +2249,12 @@ msgid ""
 "and someone holds editorial responsibility. Other AI-written text carries no"
 " duty under Article 50; the AI level documents your practice either way."
 msgstr ""
-"Art. 50 Abs. 4 verpflichtet Sie als Betreiber, KI-geschriebene Texte "
+"Art. 50 Abs. 4 verpflichtet dich als Betreiber, KI-geschriebene Texte "
 "offenzulegen, die die Öffentlichkeit über Angelegenheiten von öffentlichem "
 "Interesse informieren, es sei denn, eine Person hat sie geprüft und jemand "
 "trägt die redaktionelle Verantwortung. Andere KI-geschriebene Texte lösen "
-"keine Pflicht nach Artikel 50 aus; die KI-Stufe dokumentiert Ihre Praxis in "
-"jedem Fall."
+"keine Pflicht nach Artikel 50 aus; die KI-Stufe dokumentiert deine Praxis in"
+" jedem Fall."
 
 #: includes/class-compliance.php:69
 msgid ""
@@ -2186,7 +2271,7 @@ msgstr "KI-generierte Bilder und Medien"
 #: includes/class-compliance.php:74
 msgid "Does your site use AI-generated images or other AI-generated media?"
 msgstr ""
-"Nutzt Ihre Website KI-generierte Bilder oder andere KI-generierte Medien?"
+"Nutzt deine Website KI-generierte Bilder oder andere KI-generierte Medien?"
 
 #: includes/class-compliance.php:75
 msgid ""
@@ -2206,8 +2291,8 @@ msgid ""
 "carry no disclosure duty of their own."
 msgstr ""
 "Art. 50 Abs. 2 verpflichtet den Anbieter des Generators, die Ausgabe "
-"maschinenlesbar zu markieren; das Plugin erhält diese Markierung in Ihren "
-"Dateien. Art. 50 Abs. 4 verpflichtet Sie als Betreiber, Deepfakes "
+"maschinenlesbar zu markieren; das Plugin erhält diese Markierung in deinen "
+"Dateien. Art. 50 Abs. 4 verpflichtet dich als Betreiber, Deepfakes "
 "offenzulegen: Inhalte, die wie reale Personen, Orte oder Ereignisse aussehen"
 " und als echt durchgehen würden. Andere KI-Bilder lösen keine eigene "
 "Offenlegungspflicht aus."
@@ -2229,8 +2314,8 @@ msgid ""
 "Does your site generate or host synthetic audio, video or deepfake-style "
 "content?"
 msgstr ""
-"Erzeugt oder hostet Ihre Website synthetische Audio- oder Videoinhalte oder "
-"Deepfake-artige Inhalte?"
+"Erzeugt oder hostet deine Website synthetische Audio- oder Videoinhalte oder"
+" Deepfake-artige Inhalte?"
 
 #: includes/class-compliance.php:83
 msgid ""
@@ -2247,7 +2332,7 @@ msgid ""
 " an avatar of a real person is; a generic synthetic voice is not."
 msgstr ""
 "Art. 50 Abs. 2 verpflichtet den Anbieter des Generators, die Ausgabe zu "
-"markieren. Art. 50 Abs. 4 verpflichtet Sie als Betreiber, Deepfakes "
+"markieren. Art. 50 Abs. 4 verpflichtet dich als Betreiber, Deepfakes "
 "offenzulegen; eine geklonte Stimme oder ein Avatar einer realen Person ist "
 "einer, eine generische synthetische Stimme nicht."
 
@@ -2269,7 +2354,7 @@ msgid ""
 "Does your site use AI for personalisation, recommendations or audience "
 "targeting?"
 msgstr ""
-"Nutzt Ihre Website KI für Personalisierung, Empfehlungen oder Zielgruppen-"
+"Nutzt deine Website KI für Personalisierung, Empfehlungen oder Zielgruppen-"
 "Targeting?"
 
 #: includes/class-compliance.php:91
@@ -2288,9 +2373,9 @@ msgid ""
 "Services Act and the GDPR, outside the AI Act."
 msgstr ""
 "Keine Pflicht nach Artikel 50. Artikel 4 gilt für das Tool wie für jedes KI-"
-"System, das Sie einsetzen, deshalb gehört es ins Inventar. "
-"Empfehlungssysteme auf Online-Plattformen und Profiling haben eigene Regeln "
-"im Digital Services Act und in der DSGVO, außerhalb des AI Act."
+"System, das du einsetzt, deshalb gehört es ins Inventar. Empfehlungssysteme "
+"auf Online-Plattformen und Profiling haben eigene Regeln im Digital Services"
+" Act und in der DSGVO, außerhalb des AI Act."
 
 #: includes/class-compliance.php:93
 msgid ""
@@ -2307,7 +2392,7 @@ msgstr "KI-Übersetzung"
 #: includes/class-compliance.php:98
 msgid "Does your site use AI translation to serve content in other languages?"
 msgstr ""
-"Nutzt Ihre Website KI-Übersetzung, um Inhalte in anderen Sprachen "
+"Nutzt deine Website KI-Übersetzung, um Inhalte in anderen Sprachen "
 "anzubieten?"
 
 #: includes/class-compliance.php:99
@@ -2534,8 +2619,8 @@ msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
 msgstr ""
-"Setzen Sie die KI-Stufe an Ihren KI-geschriebenen Beiträgen oder beantworten"
-" Sie die Text-Frage mit Nein."
+"Setze die KI-Stufe an deinen KI-geschriebenen Beiträgen oder beantworte die "
+"Text-Frage mit Nein."
 
 #: includes/class-compliance.php:451
 msgid ""
@@ -2716,7 +2801,7 @@ msgid ""
 "Choose a file from the media library in the block settings. Only labeled "
 "files show a label."
 msgstr ""
-"Wählen Sie in den Block-Einstellungen eine Datei aus der Mediathek. Nur "
+"Wähle in den Block-Einstellungen eine Datei aus der Mediathek. Nur "
 "gekennzeichnete Dateien zeigen ein Label."
 
 #: includes/class-notice.php:590
@@ -2724,8 +2809,8 @@ msgid ""
 "This file carries no label, so nothing shows. Label it in the media library "
 "or choose another file."
 msgstr ""
-"Diese Datei trägt keine Kennzeichnung, deshalb erscheint nichts. "
-"Kennzeichnen Sie sie in der Mediathek oder wählen Sie eine andere Datei."
+"Diese Datei trägt keine Kennzeichnung, deshalb erscheint nichts. Kennzeichne"
+" sie in der Mediathek oder wähle eine andere Datei."
 
 #: includes/class-notice.php:593
 msgid ""
@@ -2733,14 +2818,14 @@ msgid ""
 "TransparAI, AI Systems."
 msgstr ""
 "Noch kein KI-System ist als sichtbar markiert, deshalb erscheint nichts. "
-"Markieren Sie Systeme unter TransparAI, KI-Systeme."
+"Markiere Systeme unter TransparAI, KI-Systeme."
 
 #: includes/class-notice.php:596
 msgid ""
 "The chatbot notice is off, so nothing shows. Answer the chatbot question in "
 "the TransparAI settings."
 msgstr ""
-"Der Chatbot-Hinweis ist aus, deshalb erscheint nichts. Beantworten Sie die "
+"Der Chatbot-Hinweis ist aus, deshalb erscheint nichts. Beantworte die "
 "Chatbot-Frage in den TransparAI-Einstellungen."
 
 #: includes/class-notice.php:599
@@ -2944,8 +3029,8 @@ msgid ""
 msgstr ""
 "Eine Liste der KI-Systeme, die im TransparAI-Register als sichtbar markiert "
 "sind, jeweils mit Kategorie. Der Baustein für eine KI-Transparenzerklärung, "
-"immer synchron mit dem Register: Ein System, das Sie hinzufügen oder "
-"verbergen, erscheint oder verschwindet auf jeder Seite mit dieser Liste."
+"immer synchron mit dem Register: Ein System, das du hinzufügst oder "
+"verbirgst, erscheint oder verschwindet auf jeder Seite mit dieser Liste."
 
 #: blocks/systems-list/block.json blocks/systems-notice/block.json
 msgctxt "block keyword"
@@ -2994,89 +3079,3 @@ msgstr "datenschutzerklärung"
 msgctxt "block keyword"
 msgid "imprint"
 msgstr "impressum"
-
-#: admin/class-setup.php:166
-msgid ""
-"Three things to settle once. Each button opens the section below that does "
-"it. Nothing is labeled without your review, and no request leaves your "
-"server."
-msgstr ""
-"Drei Dinge, die Sie einmal festlegen. Jeder Knopf öffnet den Abschnitt "
-"darunter, der das erledigt. Nichts wird ohne Ihre Prüfung gekennzeichnet, "
-"und keine Anfrage verlässt Ihren Server."
-
-#: admin/class-setup.php:188
-msgid ""
-"Style, position and placement of the visible badge, with a live preview of "
-"the result."
-msgstr ""
-"Stil, Position und Platzierung des sichtbaren Badges, mit einer Live-"
-"Vorschau des Ergebnisses."
-
-#: admin/class-setup.php:189
-msgid "Open the badge settings"
-msgstr "Badge-Einstellungen öffnen"
-
-#: admin/class-setup.php:194
-msgid ""
-"Whether the machine-readable declaration goes into the image files "
-"themselves, and whether it is restored after an image optimizer strips it."
-msgstr ""
-"Ob die maschinenlesbare Deklaration in die Bilddateien selbst geschrieben "
-"wird und ob sie wiederhergestellt wird, nachdem ein Bildoptimierer sie "
-"entfernt hat."
-
-#: admin/class-setup.php:195
-msgid "Open the file settings"
-msgstr "Datei-Einstellungen öffnen"
-
-#: admin/class-settings.php:346
-msgid "Background"
-msgstr "Hintergrund"
-
-#: admin/class-settings.php:350
-msgid "Text"
-msgstr "Text"
-
-#: admin/class-settings.php:354
-msgid "Opacity"
-msgstr "Deckkraft"
-
-#: admin/class-settings.php:370
-msgid ""
-"Both colours are optional: while they are empty the badge keeps the colours "
-"of the style above, exactly as before. The text colour also draws the "
-"border, and the outline style has no fill of its own, so a background colour"
-" does not show there."
-msgstr ""
-"Beide Farben sind optional: solange sie leer bleiben, behält das Badge die "
-"Farben der Darstellung darüber, genau wie bisher. Die Textfarbe zeichnet "
-"auch den Rahmen, und der Umriss hat keine eigene Fläche, dort wirkt eine "
-"Hintergrundfarbe also nicht."
-
-#: admin/class-settings.php:362
-msgid "Readable"
-msgstr "Gut lesbar"
-
-#: admin/class-settings.php:363
-msgid "Borderline"
-msgstr "Grenzwertig"
-
-#: admin/class-settings.php:364
-msgid "Hard to read"
-msgstr "Schwer lesbar"
-
-#: admin/class-settings.php:365
-msgid "Depends on what is behind it"
-msgstr "Hängt vom Untergrund ab"
-
-#: admin/class-settings.php:367
-msgid ""
-"Badge text is small, so WCAG asks for a contrast of at least 4.5 to 1. A "
-"see-through badge is rated for the worst case, a photo far lighter or darker"
-" than the badge itself."
-msgstr ""
-"Der Badge-Text ist klein, deshalb verlangt die WCAG hier einen Kontrast von "
-"mindestens 4,5 zu 1. Ein durchscheinendes Badge wird für den schlechtesten "
-"Fall bewertet, also für ein Foto, das deutlich heller oder dunkler ist als "
-"das Badge selbst."

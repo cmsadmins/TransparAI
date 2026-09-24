@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.4\n"
+"Project-Id-Version: TransparAI 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: el\n"
@@ -1262,8 +1262,8 @@ msgstr ""
 msgid "Badge text"
 msgstr "Κείμενο σήματος"
 
-#: admin/class-settings.php:281 includes/class-frontend.php:229
-#: includes/class-frontend.php:234 includes/class-notice.php:154
+#: admin/class-settings.php:281 includes/class-frontend.php:240
+#: includes/class-frontend.php:245 includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "Δημιουργημένο από AI"
 
@@ -1367,7 +1367,7 @@ msgstr ""
 "Εμφάνιση σήματος και στα πολυμέσα που έχουν δηλωθεί ως φωτογραφία κάμερας ή "
 "ανθρώπινη δημιουργία (τα δομημένα δεδομένα φέρουν τη δήλωση ούτως ή άλλως)"
 
-#: admin/class-settings.php:392 includes/class-frontend.php:207
+#: admin/class-settings.php:392 includes/class-frontend.php:218
 msgid "Human made"
 msgstr "Ανθρώπινης δημιουργίας"
 
@@ -1381,7 +1381,7 @@ msgstr ""
 "Προσθήκη σύντομης σημείωσης στο τέλος των σελίδων που περιέχουν πολυμέσα με "
 "ετικέτα"
 
-#: admin/class-settings.php:400 includes/class-frontend.php:837
+#: admin/class-settings.php:400 includes/class-frontend.php:848
 msgid "This page contains AI-generated media."
 msgstr "Αυτή η σελίδα περιέχει πολυμέσα δημιουργημένα από AI."
 
@@ -2681,13 +2681,13 @@ msgstr "Δεν ήταν δυνατή η λήψη"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
-#: includes/class-frontend.php:215
+#: includes/class-frontend.php:226
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Άνθρωπος"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:246
+#: includes/class-frontend.php:257
 msgctxt "short badge label"
 msgid "AI"
 msgstr "AI"
