@@ -58,4 +58,33 @@ final class IntegrationsTest extends TestCase {
 		TransparAI_Integrations::on_foreign_meta( 1, 45, 'unrelated_key', '1' );
 		$this->assertFalse( TransparAI_Meta::is_flagged( 45 ) );
 	}
+
+	/**
+	 * Elementor AI and Divi AI write no meta of their own; the AJAX action
+	 * that carries the upload is the only signal.
+	 */
+	public function test_upload_context_matching(): void {
+		global $trai_test_doing_ajax;
+		$trai_test_doing_ajax = true;
+
+		$_REQUEST['action'] = 'ai_upload_image';
+		TransparAI_Integrations::on_upload_context( 50 );
+		$this->assertSame( 'Elementor AI', TransparAI_Meta::get_generator( 50 ) );
+
+		$_REQUEST['action'] = 'et_ai_upload_image';
+		TransparAI_Integrations::on_upload_context( 51 );
+		$this->assertSame( 'Divi AI', TransparAI_Meta::get_generator( 51 ) );
+
+		$_REQUEST['action'] = 'upload-attachment';
+		TransparAI_Integrations::on_upload_context( 52 );
+		$this->assertFalse( TransparAI_Meta::is_flagged( 52 ), 'A plain media upload is not a producer' );
+
+		/* Outside an AJAX request the action parameter means nothing. */
+		$trai_test_doing_ajax = false;
+		$_REQUEST['action']   = 'et_ai_upload_image';
+		TransparAI_Integrations::on_upload_context( 53 );
+		$this->assertFalse( TransparAI_Meta::is_flagged( 53 ) );
+
+		unset( $_REQUEST['action'] );
+	}
 }

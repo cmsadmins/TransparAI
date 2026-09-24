@@ -358,10 +358,15 @@
 
 	function labelBackgrounds() {
 		/* Inline styles, block covers, Elementor sections/containers (their
-		   backgrounds live in compiled CSS, hence getComputedStyle) and
-		   WPBakery rows/columns with design-options fills or parallax. */
+		   backgrounds live in compiled CSS, hence getComputedStyle),
+		   WPBakery rows/columns with design-options fills or parallax, and
+		   Divi, which writes its backgrounds into a generated stylesheet
+		   rather than onto the element. Divi allows a background on every
+		   module, and it puts `et_pb_module` on each one, so that single
+		   class covers all of them at one node per module instead of the
+		   dozens an et_pb_ catch-all would resolve styles for. */
 		var candidates = document.querySelectorAll(
-			'[style*="background-image"], .wp-block-cover, .elementor-section, .e-con, .elementor-widget-wrap, .elementor-column-wrap, .swiper-slide-bg, .vc_row-has-fill, .vc_column-inner, [data-vc-parallax-image], [data-thumbnail]'
+			'[style*="background-image"], .wp-block-cover, .elementor-section, .e-con, .elementor-widget-wrap, .elementor-column-wrap, .swiper-slide-bg, .vc_row-has-fill, .vc_column-inner, [data-vc-parallax-image], [data-thumbnail], .et_pb_section, .et_pb_row, .et_pb_row_inner, .et_pb_column, .et_pb_column_inner, .et_pb_module, .et_pb_slide'
 		);
 		candidates.forEach(function (element) {
 			if (element.getAttribute('data-trai-bg')) {
@@ -382,6 +387,13 @@
 			if (!url) {
 				return;
 			}
+			/* Divi paints parallax into an absolutely positioned layer inside
+			   the section. Hosting the badge there would force position:
+			   relative onto that layer and drop it out of place, so the badge
+			   goes to the section, which is the visible surface anyway. */
+			if (element.classList.contains('et_parallax_bg')) {
+				element = element.closest('.et_pb_section, .et_pb_row, .et_pb_column, .et_pb_slide, .et_pb_fullwidth_header') || element;
+			}
 			var key = normalizePath(url);
 			if (!flagged[key]) {
 				return;
@@ -391,8 +403,10 @@
 			   items pair a background layer with an <img> of the same file.
 			   Surfaces showing a different labeled file still get their own. */
 			var marker = '[data-trai-bg="' + key.replace(/(["\\])/g, '\\$1') + '"]';
-			var host = element.closest('[data-trai-bg]');
-			if ((host && host.getAttribute('data-trai-bg') === key) || element.querySelector(marker)) {
+			/* closest() takes the selector itself: a nearer ancestor carrying a
+			   different file must not hide one further up that carries this one.
+			   Divi nests section, row and column, so that case is common. */
+			if (element.closest(marker) || element.querySelector(marker)) {
 				return;
 			}
 			var surface = element.getBoundingClientRect();
@@ -421,7 +435,12 @@
 					element.classList.add(cls);
 				}
 			});
-			element.appendChild(makeBadge());
+			/* First child, not last: builders drop the trailing margin of the
+			   last element in a container via :last-child (Divi does it for
+			   every module), and appending would silently put that margin
+			   back. The badge is positioned absolutely, so where it sits in
+			   the child order changes nothing about how it renders. */
+			element.insertBefore(makeBadge(), element.firstChild);
 		});
 	}
 

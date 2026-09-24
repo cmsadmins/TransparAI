@@ -165,6 +165,10 @@ echo apply_filters( 'transparai_label_media', $html );
 Same rules as `the_content`: badge switched on, no builder editor, no feed. No
 `function_exists()` guard is needed, an inactive plugin leaves the filter unregistered.
 Bricks Builder output is handled automatically through `bricks/frontend/render_element`.
+Divi needs no hook of its own: it renders its modules as shortcodes inside `the_content`,
+so the finished markup reaches the content filter. Its section, row, column and module
+background images live in a generated stylesheet and are picked up by the optional
+front-end script instead.
 
 ### WP-CLI
 
