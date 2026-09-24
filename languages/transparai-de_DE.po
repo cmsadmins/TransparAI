@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.4\n"
+"Project-Id-Version: TransparAI 1.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "POT-Creation-Date: 2026-09-15T07:24:25+00:00\n"
 "PO-Revision-Date: 2026-09-15 07:25+0000\n"
@@ -1260,8 +1260,8 @@ msgstr ""
 msgid "Badge text"
 msgstr "Badge-Text"
 
-#: admin/class-settings.php:281 includes/class-frontend.php:229
-#: includes/class-frontend.php:234 includes/class-notice.php:154
+#: admin/class-settings.php:281 includes/class-frontend.php:240
+#: includes/class-frontend.php:245 includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "KI-generiert"
 
@@ -1362,7 +1362,7 @@ msgstr ""
 "Auch auf Medien, die als Kamerafoto oder menschliche Arbeit deklariert sind,"
 " ein Badge zeigen (die strukturierten Daten tragen die Deklaration ohnehin)"
 
-#: admin/class-settings.php:392 includes/class-frontend.php:207
+#: admin/class-settings.php:392 includes/class-frontend.php:218
 msgid "Human made"
 msgstr "Von Menschen gemacht"
 
@@ -1375,7 +1375,7 @@ msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 "Kurzen Hinweis am Ende von Seiten mit gekennzeichneten Medien anzeigen"
 
-#: admin/class-settings.php:400 includes/class-frontend.php:837
+#: admin/class-settings.php:400 includes/class-frontend.php:848
 msgid "This page contains AI-generated media."
 msgstr "Diese Seite enthält KI-generierte Medien."
 
@@ -2669,13 +2669,13 @@ msgstr "Konnte nicht geladen werden"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
-#: includes/class-frontend.php:215
+#: includes/class-frontend.php:226
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Mensch"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:246
+#: includes/class-frontend.php:257
 msgctxt "short badge label"
 msgid "AI"
 msgstr "KI"
