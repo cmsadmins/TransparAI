@@ -559,6 +559,11 @@ if ( ! function_exists( 'register_rest_route' ) ) {
 	}
 }
 if ( ! function_exists( 'esc_url_raw' ) ) {
+	function esc_url( $url ) {
+		return str_replace( array( '&', '"', "'" ), array( '&#038;', '&quot;', '&#039;' ), (string) $url );
+	}
+}
+if ( ! function_exists( 'esc_url_raw' ) ) {
 	function esc_url_raw( $url ) {
 		return (string) $url;
 	}
@@ -698,6 +703,7 @@ require_once dirname( __DIR__ ) . '/includes/class-chatbot.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 require_once dirname( __DIR__ ) . '/includes/class-compliance.php';
 require_once dirname( __DIR__ ) . '/includes/class-systems.php';
+require_once dirname( __DIR__ ) . '/includes/class-privacy.php';
 
 /**
  * Reset all in-memory stores between tests.

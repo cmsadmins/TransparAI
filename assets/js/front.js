@@ -311,12 +311,32 @@
 		flagged[normalizePath(path)] = true;
 	});
 
+	/* Same markup as TransparAI_Frontend::badge_element(): plain text, or the
+	   EU icon image plus the text for screen readers and caption lines. */
+	function setLabel(badge, label, icon) {
+		if (!icon) {
+			badge.textContent = label;
+			return;
+		}
+		badge.textContent = '';
+		var img = document.createElement('img');
+		img.className = 'trai-eu';
+		img.src = icon;
+		img.alt = '';
+		img.setAttribute('aria-hidden', 'true');
+		var text = document.createElement('span');
+		text.className = 'trai-badge-text';
+		text.textContent = label;
+		badge.appendChild(img);
+		badge.appendChild(text);
+	}
+
 	function makeBadge() {
 		var badge = document.createElement('span');
 		badge.className = 'trai-badge';
 		badge.setAttribute('role', 'note');
 		badge.setAttribute('data-trai-short', config.short);
-		badge.textContent = config.label;
+		setLabel(badge, config.label, config.icon);
 		return badge;
 	}
 
@@ -489,7 +509,7 @@
 
 	function badgeFor(entry) {
 		var badge = makeBadge();
-		badge.textContent = entry.label;
+		setLabel(badge, entry.label, entry.human ? '' : (entry.icon || ''));
 		badge.setAttribute('data-trai-short', entry.short || config.short);
 		if (entry.human) {
 			badge.classList.add('trai-badge--human');

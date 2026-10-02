@@ -325,6 +325,23 @@ th{background:#f6f7f7;}
 									'light'     => __( 'Light', 'transparai' ),
 									'outline'   => __( 'Outline', 'transparai' ),
 									'icon-only' => __( 'Icon only (short label)', 'transparai' ),
+									'eu-icon'   => __( 'Official EU icon (Commission, June 2026)', 'transparai' ),
+								)
+							);
+							self::select(
+								'badge_eu_icon',
+								$options['badge_eu_icon'],
+								array(
+									'type'  => __( 'EU icon by label: Fully AI-generated / Partially AI-modified', 'transparai' ),
+									'basic' => __( 'EU icon: basic AI icon for every label', 'transparai' ),
+								)
+							);
+							self::select(
+								'badge_eu_color',
+								$options['badge_eu_color'],
+								array(
+									'black' => __( 'EU icon: black', 'transparai' ),
+									'white' => __( 'EU icon: white', 'transparai' ),
 								)
 							);
 							self::select(
@@ -366,6 +383,9 @@ th{background:#f6f7f7;}
 							</p>
 							<p class="description">
 								<?php esc_html_e( 'Both colours are optional: while they are empty the badge keeps the colours of the style above, exactly as before. The text colour also draws the border, and the outline style has no fill of its own, so a background colour does not show there.', 'transparai' ); ?>
+							</p>
+							<p class="description">
+								<?php esc_html_e( 'The EU icon style uses the icons the European Commission published on 10 June 2026 with the Code of Practice on transparency, unchanged and in the two official colours; the colour fields above do not apply to them, the opacity does. The Commission allows anyone to use the icons free of charge and without attribution. Showing them does not make your site a signatory of the Code of Practice and is no statement of compliance.', 'transparai' ); ?>
 							</p>
 						</td>
 					</tr>

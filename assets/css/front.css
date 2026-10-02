@@ -207,6 +207,49 @@ p .trai-wrap {
 	letter-spacing: 0.03em;
 }
 
+/* EU icon: the Commission's own label graphic (assets/img/eu/SOURCE.md). The
+   icon brings its own pill shape and colours, so the badge box, the colour
+   settings and the short text label step back; the full text stays in the
+   DOM for screen readers and comes back as a caption line. */
+.trai-style-eu-icon .trai-badge {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	border-radius: 0;
+	line-height: 0;
+	text-shadow: none;
+	max-width: none;
+	font-size: 0;
+}
+
+.trai-style-eu-icon .trai-badge::after,
+.trai-style-eu-icon .trai-badge--mini::after {
+	content: none;
+}
+
+.trai-eu {
+	display: block;
+	height: 22px;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	border: 0;
+	box-shadow: none;
+}
+
+.trai-size-small .trai-eu { height: 16px; }
+.trai-size-large .trai-eu { height: 30px; }
+.trai-badge--mini .trai-eu { height: 14px; }
+
+.trai-badge-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+}
+
 /* Caption mode: static line below the media instead of an overlay. Video and
    audio always use it (an overlay badge would collide with the player
    controls), and trai-badge-below forces it for everything inside a container
@@ -269,6 +312,35 @@ p .trai-wrap {
 .trai-avwrap .trai-badge::after,
 .trai-badge-below .trai-badge::after {
 	content: none;
+}
+
+/* In a caption line the EU icon sits inline before the readable text. */
+.trai-mode-caption .trai-eu,
+.trai-avwrap .trai-eu,
+.trai-badge-below .trai-eu {
+	display: inline-block;
+	height: 18px;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+.trai-mode-caption .trai-badge-text,
+.trai-avwrap .trai-badge-text,
+.trai-badge-below .trai-badge-text {
+	position: static;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	clip: auto;
+	white-space: normal;
+	vertical-align: middle;
+}
+
+.trai-mode-caption.trai-style-eu-icon .trai-badge,
+.trai-style-eu-icon .trai-badge-below .trai-badge,
+.trai-badge-below.trai-style-eu-icon .trai-badge {
+	font-size: 12px;
+	line-height: 1.4;
 }
 
 /* Manual badge placement: one of these classes on ANY container (every

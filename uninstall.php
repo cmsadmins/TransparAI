@@ -46,6 +46,7 @@ function transparai_uninstall_site(): void {
 	delete_option( 'transparai_systems' );
 	delete_metadata( 'user', 0, 'transparai_setup_skipped', '', true );
 	delete_metadata( 'user', 0, 'transparai_legal_ack', '', true );
+	delete_metadata( 'user', 0, 'transparai_review_hint_dismissed', '', true );
 
 	global $wpdb;
 
@@ -80,7 +81,12 @@ function transparai_uninstall_site(): void {
 }
 
 if ( is_multisite() ) {
-	$transparai_site_ids = get_sites( array( 'fields' => 'ids' ) );
+	$transparai_site_ids = get_sites(
+		array(
+			'fields' => 'ids',
+			'number' => 0, /* Every site; the default stops at 100. */
+		)
+	);
 	foreach ( $transparai_site_ids as $transparai_site_id ) {
 		switch_to_blog( (int) $transparai_site_id );
 		transparai_uninstall_site();

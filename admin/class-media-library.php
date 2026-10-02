@@ -35,6 +35,7 @@ final class TransparAI_Media_Library {
 		add_action( 'wp_enqueue_media', array( self::class, 'enqueue_media_assets' ) );
 
 		add_filter( 'manage_media_columns', array( self::class, 'media_column' ) );
+		add_filter( 'manage_upload_sortable_columns', array( self::class, 'sortable_column' ) );
 		add_action( 'manage_media_custom_column', array( self::class, 'media_column_content' ), 10, 2 );
 		add_action( 'restrict_manage_posts', array( self::class, 'list_filter_dropdown' ) );
 		add_action( 'pre_get_posts', array( self::class, 'list_filter_query' ) );
@@ -43,6 +44,42 @@ final class TransparAI_Media_Library {
 		add_filter( 'bulk_actions-upload', array( self::class, 'bulk_actions' ) );
 		add_filter( 'handle_bulk_actions-upload', array( self::class, 'handle_bulk' ), 10, 3 );
 		add_action( 'admin_notices', array( self::class, 'bulk_notice' ) );
+		add_action( 'admin_notices', array( self::class, 'review_hint' ) );
+		add_action( 'admin_post_transparai_review_hint', array( self::class, 'dismiss_review_hint' ) );
+	}
+
+	public const USER_REVIEW_HINT = 'transparai_review_hint_dismissed';
+
+	/**
+	 * Above the review queue: the three questions that decide whether a
+	 * detected image needs a label at all. Shown until the user hides it.
+	 */
+	public static function review_hint(): void {
+		if ( 'detected' !== ( $_GET['transparai_filter'] ?? '' ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only hint on the list filter.
+			return;
+		}
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( ! $screen || 'upload' !== $screen->id || '1' === (string) get_user_meta( get_current_user_id(), self::USER_REVIEW_HINT, true ) ) {
+			return;
+		}
+		$dismiss = wp_nonce_url( admin_url( 'admin-post.php?action=transparai_review_hint' ), 'transparai_review_hint' );
+		echo '<div class="notice notice-info trai-review-hint"><p><strong>' . esc_html__( 'Does this image need a label?', 'transparai' ) . '</strong> '
+			. esc_html__( 'Article 50(4) of the EU AI Act asks deployers to disclose deepfakes: AI images that look like real people, places, objects or events and could pass for genuine, including realistic product shots and stock-style photos. Three questions help: Does it look like a photograph of something real? Was it published on or after 2 August 2026? Is it more than an obvious illustration or cartoon? Labeling never hurts, and the machine-readable marking is written either way; this hint is not legal advice.', 'transparai' )
+			. ' <a href="' . esc_url( $dismiss ) . '">' . esc_html__( 'Hide this note', 'transparai' ) . '</a></p></div>';
+	}
+
+	/**
+	 * Remember that this user has read the review hint.
+	 */
+	public static function dismiss_review_hint(): void {
+		if ( ! current_user_can( 'upload_files' ) ) {
+			wp_die( esc_html__( 'You are not allowed to do that.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_review_hint' );
+		update_user_meta( get_current_user_id(), self::USER_REVIEW_HINT, '1' );
+		$referer = (string) wp_get_referer();
+		wp_safe_redirect( '' !== $referer ? $referer : admin_url( 'upload.php?mode=list&transparai_filter=detected' ) );
+		exit;
 	}
 
 	/**
@@ -634,16 +671,76 @@ final class TransparAI_Media_Library {
 	 * Apply the list filter to the main query.
 	 */
 	public static function list_filter_query( WP_Query $query ): void {
-		if ( ! is_admin() || ! $query->is_main_query() ) {
+		if ( ! is_admin() || ! $query->is_main_query() || 'attachment' !== $query->get( 'post_type' ) ) {
 			return;
 		}
-		if ( 'attachment' !== $query->get( 'post_type' ) || ! isset( $_GET['transparai_filter'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter.
-			return;
+		$filter = null;
+		if ( isset( $_GET['transparai_filter'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter.
+			$filter = TransparAI_Meta::meta_query( sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- see above.
 		}
-		$meta_query = TransparAI_Meta::meta_query( sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- see above.
+
+		/*
+		 * Sorting by the AI column: the flags are deleted rather than set to
+		 * '0', so a plain meta_key sort would drop every unlabeled file from
+		 * the list. Named clauses joined with OR keep them (NULL sorts first
+		 * ascending, last descending).
+		 */
+		$sort = null;
+		if ( 'transparai' === $query->get( 'orderby' ) ) {
+			$sort  = array(
+				'relation'       => 'OR',
+				'transparai_ai'  => array(
+					'key'     => TransparAI_Meta::KEY_FLAG,
+					'compare' => 'EXISTS',
+				),
+				'transparai_det' => array(
+					'key'     => TransparAI_Meta::KEY_DETECTED,
+					'compare' => 'EXISTS',
+				),
+				'transparai_hum' => array(
+					'key'     => TransparAI_Meta::KEY_HUMAN,
+					'compare' => 'EXISTS',
+				),
+				'transparai_any' => array(
+					'key'     => TransparAI_Meta::KEY_FLAG,
+					'compare' => 'NOT EXISTS',
+				),
+			);
+			$order = 'ASC' === strtoupper( (string) $query->get( 'order' ) ) ? 'ASC' : 'DESC';
+			$query->set(
+				'orderby',
+				array(
+					'transparai_ai'  => $order,
+					'transparai_det' => $order,
+					'transparai_hum' => $order,
+					'date'           => 'DESC',
+				)
+			);
+		}
+
+		if ( null !== $filter && null !== $sort ) {
+			$meta_query = array(
+				'relation' => 'AND',
+				$filter,
+				$sort,
+			);
+		} else {
+			$meta_query = $filter ?? $sort;
+		}
 		if ( null !== $meta_query ) {
-			$query->set( 'meta_query', $meta_query ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- user-requested library filter.
+			$query->set( 'meta_query', $meta_query ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- user-requested library filter or sort.
 		}
+	}
+
+	/**
+	 * The AI column sorts by label state.
+	 *
+	 * @param array<string, string> $columns Sortable columns.
+	 * @return array<string, string>
+	 */
+	public static function sortable_column( array $columns ): array {
+		$columns['transparai'] = 'transparai';
+		return $columns;
 	}
 
 	/**
