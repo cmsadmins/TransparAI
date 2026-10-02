@@ -57,6 +57,7 @@ if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-settings.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-content-label.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-setup.php';
+	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-wizard.php';
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-dashboard.php';
 }
 
@@ -97,6 +98,7 @@ if ( ! class_exists( 'TransparAI' ) ) {
 				TransparAI_Settings::init();
 				TransparAI_Content_Label::init();
 				TransparAI_Setup::init();
+				TransparAI_Wizard::init();
 				TransparAI_Privacy::init();
 			}
 

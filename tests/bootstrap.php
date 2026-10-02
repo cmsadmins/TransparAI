@@ -700,6 +700,7 @@ require_once dirname( __DIR__ ) . '/includes/class-notice.php';
 require_once dirname( __DIR__ ) . '/includes/class-woocommerce.php';
 require_once dirname( __DIR__ ) . '/includes/class-rest.php';
 require_once dirname( __DIR__ ) . '/admin/class-setup.php';
+require_once dirname( __DIR__ ) . '/admin/class-wizard.php';
 require_once dirname( __DIR__ ) . '/includes/class-chatbot.php';
 require_once dirname( __DIR__ ) . '/includes/class-delivery.php';
 require_once dirname( __DIR__ ) . '/includes/class-compliance.php';

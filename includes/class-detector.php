@@ -473,7 +473,7 @@ final class TransparAI_Detector {
 	 * matches the bytes. Memoised per file state because the detector and
 	 * the scanner both ask for it in one request.
 	 *
-	 * @return array{hash:string, reason:string, alg:string, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int, own_mark:bool, file:string}|null
+	 * @return array{hash:string, reason:string, alg:string, sig:string, sig_reason:string, issuer:string, tst:string, tsa:string, tsa_trusted:bool, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int, own_mark:bool, file:string}|null
 	 */
 	public static function c2pa_info( string $path ): ?array {
 		if ( $path === self::$c2pa_memo_path ) {
