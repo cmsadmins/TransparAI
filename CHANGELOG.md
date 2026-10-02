@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.1.6 (unreleased)
+
+- Content Credentials are read in full. A new `TransparAI_C2PA` class walks the JUMBF manifest
+  store with a minimal CBOR decoder, checks the `c2pa.hash.data` assertion against the file bytes
+  and reads the signer's certificate subject, the claim generator and the first action time. The
+  plugin's own XMP and IIM additions are taken out of the bytes before hashing, so the verdict is
+  the same before and after a file is labeled or unlabeled (`TransparAI_Writer::without_own_marks()`).
+  A manifest whose hash does not cover the bytes no longer labels automatically but goes to the
+  review queue. The facts are stored per attachment in `_transparai_c2pa` independent of the
+  label state, and shown in the attachment panel, the media list, REST (`c2pa`) and WP-CLI, always
+  as "according to the manifest, not verified". No COSE signature, certificate chain or trust list
+  is checked, on purpose: that needs PHP 8.3 or a large library.
+- The attachment panel names how many size variants lost the Content Credentials of the original
+  (`inspect()` reports `c2pa` per file), and a scan fingerprint (`_transparai_scan_fp`) marks
+  attachments whose files changed since the detector last looked at them.
+- Badge style "Official EU icon": the Commission's SVGs from 10 June 2026, bundled unchanged under
+  `assets/img/eu/` with source, checksum and terms in `SOURCE.md`. Fully AI-generated or Partially
+  AI-modified by label type, or the basic icon, in black or white. Referenced as images because the
+  SVGs carry their own stylesheets with generic class names; the readable text stays in the markup
+  for screen readers and caption lines.
+- The AI column in the media list is sortable; named `meta_query` clauses joined with OR keep
+  unlabeled files in the list.
+- Privacy policy guide entry (`TransparAI_Privacy`), network activation and `wp_initialize_site`
+  schedule the repair sweep, uninstall queries all sites instead of the first 100.
+- Dismissible note above the review queue with the three questions that decide whether a detected
+  image needs a visible label.
+- Three real signed fixtures (c2patool test certificate) under `tests/fixtures/c2pa/` back the
+  new tests.
+
 ## 1.1.5 (2026-09-24)
 
 - Divi support. Divi renders its modules as shortcodes inside `the_content`, so the badge already

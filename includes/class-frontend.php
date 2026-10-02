@@ -291,12 +291,13 @@ final class TransparAI_Frontend {
 	 * style, the Commission's icon with the text kept for screen readers and
 	 * caption lines.
 	 *
-	 * @param string $label The full label.
-	 * @param string $short The short label for the mini variant.
-	 * @param string $type  generated|composite, decides between the Fully AI-generated and Partially AI-modified icon.
+	 * @param string $label      The full label.
+	 * @param string $short      The short label for the mini variant.
+	 * @param string $type       generated|composite, decides between the Fully AI-generated and Partially AI-modified icon.
+	 * @param bool   $force_icon Include the icon whatever the style setting (the settings preview switches styles live).
 	 */
-	public static function badge_element( string $label, string $short, string $type = 'generated' ): string {
-		$icon = self::eu_icon_url( $type );
+	public static function badge_element( string $label, string $short, string $type = 'generated', bool $force_icon = false ): string {
+		$icon = self::eu_icon_url( $type, $force_icon );
 		$html = '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( $short ) . '">';
 		if ( '' === $icon ) {
 			return $html . esc_html( $label ) . '</span>';
@@ -313,8 +314,8 @@ final class TransparAI_Frontend {
 	 * stylesheet with generic class names that would collide once two icons sit
 	 * in one document.
 	 */
-	public static function eu_icon_url( string $type ): string {
-		if ( 'eu-icon' !== TransparAI_Options::get( 'badge_style' ) ) {
+	public static function eu_icon_url( string $type, bool $force = false ): string {
+		if ( ! $force && 'eu-icon' !== TransparAI_Options::get( 'badge_style' ) ) {
 			return '';
 		}
 		if ( 'basic' === TransparAI_Options::get( 'badge_eu_icon' ) ) {
