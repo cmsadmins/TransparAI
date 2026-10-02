@@ -42,6 +42,10 @@ final class TransparAI_Meta {
 	public const KEY_CONTENT_AI  = '_transparai_content_ai';
 	public const KEY_HISTORY     = '_transparai_history';
 	public const KEY_DELIVERY    = '_transparai_delivery';
+	/* What the C2PA manifest says about the file (JSON), independent of the label state. */
+	public const KEY_C2PA = '_transparai_c2pa';
+	/* size+mtime per file at the last detection scan. */
+	public const KEY_SCAN_FP = '_transparai_scan_fp';
 	/* Active non-AI declaration: digitalCapture (camera photo) or digitalCreation (human digital work). */
 	public const KEY_HUMAN = '_transparai_human';
 
@@ -601,6 +605,41 @@ final class TransparAI_Meta {
 		update_post_meta( $attachment_id, self::KEY_GENERATOR, sanitize_text_field( (string) ( $result['generator'] ?? '' ) ) );
 		update_post_meta( $attachment_id, self::KEY_CONFIDENCE, sanitize_key( (string) ( $result['confidence'] ?? '' ) ) );
 		update_post_meta( $attachment_id, self::KEY_EVIDENCE, sanitize_textarea_field( mb_substr( (string) ( $result['evidence'] ?? '' ), 0, 500 ) ) );
+	}
+
+	/**
+	 * Persist (or clear) what the C2PA manifest says about the file.
+	 *
+	 * @param int        $attachment_id Attachment ID.
+	 * @param array|null $info          TransparAI_Detector::c2pa_info() result, null when the file carries no manifest.
+	 */
+	public static function store_c2pa( int $attachment_id, ?array $info ): void {
+		if ( null === $info ) {
+			delete_post_meta( $attachment_id, self::KEY_C2PA );
+			return;
+		}
+		$clean = array( 'v' => 1 );
+		foreach ( array( 'hash', 'reason', 'alg', 'signer_cn', 'signer_o', 'generator', 'when', 'file' ) as $key ) {
+			$clean[ $key ] = sanitize_text_field( (string) ( $info[ $key ] ?? '' ) );
+		}
+		$clean['manifests'] = (int) ( $info['manifests'] ?? 0 );
+		$clean['own_mark']  = ! empty( $info['own_mark'] );
+		$clean['at']        = time();
+		update_post_meta( $attachment_id, self::KEY_C2PA, wp_json_encode( $clean ) );
+	}
+
+	/**
+	 * The stored C2PA facts of an attachment, null without a manifest.
+	 *
+	 * @return array<string, mixed>|null
+	 */
+	public static function c2pa( int $attachment_id ): ?array {
+		$raw = get_post_meta( $attachment_id, self::KEY_C2PA, true );
+		if ( ! is_string( $raw ) || '' === $raw ) {
+			return null;
+		}
+		$info = json_decode( $raw, true );
+		return is_array( $info ) ? $info : null;
 	}
 
 	/**

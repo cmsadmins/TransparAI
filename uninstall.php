@@ -69,6 +69,8 @@ function transparai_uninstall_site(): void {
 		'_transparai_content_review',
 		'_transparai_history',
 		'_transparai_delivery',
+		'_transparai_c2pa',
+		'_transparai_scan_fp',
 		'_transparai_human',
 	);
 

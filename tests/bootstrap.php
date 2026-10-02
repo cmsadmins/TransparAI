@@ -683,6 +683,7 @@ if ( ! class_exists( 'WP_Post' ) ) {
 require_once dirname( __DIR__ ) . '/includes/class-options.php';
 require_once dirname( __DIR__ ) . '/includes/class-meta.php';
 require_once dirname( __DIR__ ) . '/includes/class-parsers.php';
+require_once dirname( __DIR__ ) . '/includes/class-c2pa.php';
 require_once dirname( __DIR__ ) . '/includes/class-detector.php';
 require_once dirname( __DIR__ ) . '/includes/class-scanner.php';
 require_once dirname( __DIR__ ) . '/includes/class-integrations.php';
@@ -731,6 +732,9 @@ function trai_test_reset(): void {
  */
 function trai_fixture( string $name ): string {
 	$path = __DIR__ . '/fixtures/generated/' . $name;
+	if ( ! file_exists( $path ) && file_exists( __DIR__ . '/fixtures/c2pa/' . $name ) ) {
+		return __DIR__ . '/fixtures/c2pa/' . $name; /* Real signed files, checked in. */
+	}
 	if ( ! file_exists( $path ) ) {
 		fwrite( STDERR, "Fixture missing: {$name}, run `php tests/fixtures/make-fixtures.php` first.\n" );
 		exit( 1 );

@@ -338,6 +338,29 @@ final class TransparAI_Media_Library {
 	}
 
 	/**
+	 * Human-readable data hash state.
+	 */
+	public static function c2pa_hash_label( string $hash, string $reason ): string {
+		switch ( $hash ) {
+			case 'match':
+				return __( 'yes, the manifest was written for exactly these bytes', 'transparai' );
+			case 'mismatch':
+				return __( 'no, the image was changed after signing or the manifest was copied from another file', 'transparai' );
+		}
+		switch ( $reason ) {
+			case 'no_hash_data':
+				return __( 'not checkable, the manifest has no data hash (an update manifest)', 'transparai' );
+			case 'unknown_alg':
+				return __( 'not checkable, unknown hash algorithm', 'transparai' );
+			case 'bmff':
+				return __( 'not checked for video and ISO-BMFF containers', 'transparai' );
+			case 'too_large':
+				return __( 'not checked, the file is larger than 64 MB', 'transparai' );
+		}
+		return __( 'not checkable, the manifest could not be read completely', 'transparai' );
+	}
+
+	/**
 	 * Escaped markup of the inspection panel.
 	 */
 	private static function inspect_html( int $attachment_id ): string {
@@ -378,12 +401,52 @@ final class TransparAI_Media_Library {
 				$tone  = 'na';
 			}
 			$html .= '<li><code>' . esc_html( $file['name'] ) . '</code>'
-				. '<span class="trai-inspect-state trai-inspect-state--' . esc_attr( $tone ) . '">' . esc_html( $state ) . '</span></li>';
+				. '<span class="trai-inspect-state trai-inspect-state--' . esc_attr( $tone ) . '">' . esc_html( $state ) . '</span>'
+				. ( $file['c2pa'] ? '<span class="trai-inspect-state trai-inspect-state--cc">' . esc_html__( 'Content Credentials', 'transparai' ) . '</span>' : '' )
+				. '</li>';
 		}
 		if ( array() === $data['files'] ) {
 			$html .= '<li>' . esc_html__( 'No readable file found for this attachment.', 'transparai' ) . '</li>';
 		}
-		$html .= '</ul></div>';
+		$html .= '</ul>';
+
+		/*
+		 * WordPress re-encodes every size variant, which drops the C2PA
+		 * manifest of the original. That loss is a fact worth knowing for an
+		 * Article 50 record, so it is named here instead of hiding in the list.
+		 */
+		$with_cc = count( array_filter( array_column( $data['files'], 'c2pa' ) ) );
+		if ( $with_cc > 0 && $with_cc < count( $data['files'] ) ) {
+			$html .= '<p class="trai-inspect-note">' . esc_html(
+				sprintf(
+					/* translators: 1: number of files without Content Credentials, 2: total number of files. */
+					__( 'Content Credentials are present in the original, but %1$d of %2$d files (the size variants WordPress generates) do not carry the manifest. The digital source type this plugin writes into every file is not affected.', 'transparai' ),
+					count( $data['files'] ) - $with_cc,
+					count( $data['files'] )
+				)
+			) . '</p>';
+		}
+		if ( true === TransparAI_Repair::changed_since_scan( $attachment_id ) ) {
+			$html .= '<p class="trai-inspect-note trai-inspect-note--warn">' . esc_html__( 'The files changed since the last detection scan. Use Re-check to look at them again.', 'transparai' ) . '</p>';
+		}
+		$html .= '</div>';
+
+		$c2pa = TransparAI_Meta::c2pa( $attachment_id );
+		if ( null !== $c2pa ) {
+			$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Content Credentials (C2PA)', 'transparai' ) . '</h4><ul class="trai-inspect-c2pa">';
+			$html .= '<li>' . esc_html__( 'Manifest matches the file bytes:', 'transparai' ) . ' <strong>' . esc_html( self::c2pa_hash_label( (string) ( $c2pa['hash'] ?? '' ), (string) ( $c2pa['reason'] ?? '' ) ) ) . '</strong></li>';
+			foreach ( array(
+				'signer_cn' => __( 'Signer', 'transparai' ),
+				'signer_o'  => __( 'Organisation', 'transparai' ),
+				'generator' => __( 'Claim generator', 'transparai' ),
+				'when'      => __( 'Action time in the manifest', 'transparai' ),
+			) as $key => $label ) {
+				if ( '' !== (string) ( $c2pa[ $key ] ?? '' ) ) {
+					$html .= '<li>' . esc_html( $label ) . ': ' . esc_html( (string) $c2pa[ $key ] ) . '</li>';
+				}
+			}
+			$html .= '</ul><p class="trai-inspect-note">' . esc_html__( 'According to the manifest. The signature and the signer\'s certificate are not verified; the check only tells whether the manifest describes exactly this file.', 'transparai' ) . '</p></div>';
+		}
 
 		$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Digital source type in the main file', 'transparai' ) . '</h4>';
 		if ( array() === $data['terms'] ) {
@@ -536,6 +599,17 @@ final class TransparAI_Media_Library {
 			echo '<span class="trai-list-badge trai-list-badge--review" title="' . esc_attr__( 'Detected, needs review', 'transparai' ) . '">' . esc_html( TransparAI_Frontend::badge_short_label() ) . '?</span>';
 		} elseif ( TransparAI_Meta::is_human( $id ) ) {
 			echo '<span class="trai-list-badge trai-list-badge--human" title="' . esc_attr( TransparAI_Meta::human_type( $id ) ) . '">' . esc_html( TransparAI_Frontend::human_short_label() ) . '</span>';
+		}
+
+		$c2pa = TransparAI_Meta::c2pa( $id );
+		if ( null !== $c2pa ) {
+			$hash  = (string) ( $c2pa['hash'] ?? '' );
+			$title = trim( implode( ' · ', array_filter( array( (string) ( $c2pa['signer_cn'] ?? '' ), (string) ( $c2pa['signer_o'] ?? '' ), (string) ( $c2pa['generator'] ?? '' ) ) ) ) );
+			echo '<span class="trai-list-c2pa trai-list-c2pa--' . esc_attr( in_array( $hash, array( 'match', 'mismatch' ), true ) ? $hash : 'unsupported' ) . '" title="'
+				. esc_attr( self::c2pa_hash_label( $hash, (string) ( $c2pa['reason'] ?? '' ) ) . ( '' !== $title ? ' (' . $title . ')' : '' ) ) . '">C2PA</span>';
+		}
+		if ( true === TransparAI_Repair::changed_since_scan( $id ) ) {
+			echo '<span class="trai-list-changed" title="' . esc_attr__( 'The files changed since the last detection scan.', 'transparai' ) . '">' . esc_html__( 'changed', 'transparai' ) . '</span>';
 		}
 	}
 

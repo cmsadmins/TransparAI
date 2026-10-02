@@ -128,6 +128,10 @@ final class TransparAI_CLI {
 		$status = TransparAI_Scanner::planned_status( $id, $result );
 		$label  = '' !== $result['generator'] ? $result['generator'] : $result['source'];
 		WP_CLI::log( sprintf( '#%d would be %s: %s (%s)', $id, $status, $label, $result['evidence'] ) );
+		$c2pa = TransparAI_Detector::c2pa_info( $file );
+		if ( null !== $c2pa ) {
+			WP_CLI::log( sprintf( '#%d C2PA: data hash %s%s, signer %s, generator %s (per manifest, not verified)', $id, $c2pa['hash'], '' !== $c2pa['reason'] ? ' (' . $c2pa['reason'] . ')' : '', '' !== $c2pa['signer_cn'] ? $c2pa['signer_cn'] : '-', '' !== $c2pa['generator'] ? $c2pa['generator'] : '-' ) );
+		}
 		return $status;
 	}
 
@@ -685,8 +689,20 @@ final class TransparAI_CLI {
 
 		$missing  = 0;
 		$repaired = 0;
+		$lost     = 0;
+		$changed  = 0;
 		foreach ( $this->flagged_ids() as $id ) {
 			$id = (int) $id;
+			if ( true === TransparAI_Repair::changed_since_scan( $id ) ) {
+				++$changed;
+				WP_CLI::log( sprintf( '#%d files changed since the last scan, re-check with `wp transparai scan --all`.', $id ) );
+			}
+			$files   = TransparAI_Writer::inspect( $id )['files'];
+			$with_cc = count( array_filter( array_column( $files, 'c2pa' ) ) );
+			if ( $with_cc > 0 && $with_cc < count( $files ) ) {
+				++$lost;
+				WP_CLI::log( sprintf( '#%d Content Credentials in the original only: %d of %d files lack the manifest.', $id, count( $files ) - $with_cc, count( $files ) ) );
+			}
 			foreach ( TransparAI_Writer::attachment_files( $id ) as $path ) {
 				if ( TransparAI_Writer::file_is_marked( $path ) ) {
 					continue;
@@ -703,6 +719,9 @@ final class TransparAI_CLI {
 			}
 		}
 
+		if ( $lost > 0 || $changed > 0 ) {
+			WP_CLI::log( sprintf( '%d attachment(s) lost Content Credentials in size variants, %d changed since their last scan.', $lost, $changed ) );
+		}
 		if ( 0 === $missing ) {
 			WP_CLI::success( 'All labeled attachments carry their in-file metadata.' );
 			return;

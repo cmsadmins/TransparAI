@@ -95,6 +95,7 @@ final class TransparAI_Scanner {
 		delete_post_meta( $attachment_id, TransparAI_Meta::KEY_UNREADABLE );
 
 		$result = TransparAI_Detector::detect_file( $file );
+		$c2pa   = TransparAI_Detector::c2pa_info( $file );
 
 		/*
 		 * WordPress' big-image scaling re-encodes large uploads into the
@@ -102,16 +103,24 @@ final class TransparAI_Scanner {
 		 * optimizers strip it from the attached file too. The untouched
 		 * pre-scale original next to it still carries the declaration.
 		 */
-		if ( null === $result ) {
+		if ( null === $result || null === $c2pa ) {
 			$original = wp_get_original_image_path( $attachment_id );
 			if ( is_string( $original ) && $original !== $file && is_readable( $original ) ) {
-				$result = TransparAI_Detector::detect_file( $original );
-				if ( null !== $result ) {
-					$result['evidence'] = mb_substr( $result['evidence'] . ' [from the pre-scale original ' . wp_basename( $original ) . ']', 0, 500 );
+				if ( null === $result ) {
+					$result = TransparAI_Detector::detect_file( $original );
+					if ( null !== $result ) {
+						$result['evidence'] = mb_substr( $result['evidence'] . ' [from the pre-scale original ' . wp_basename( $original ) . ']', 0, 500 );
+					}
+				}
+				if ( null === $c2pa ) {
+					$c2pa = TransparAI_Detector::c2pa_info( $original );
 				}
 			}
 		}
 
+		/* A file fact, not a label: stored whatever the detection decides. */
+		TransparAI_Meta::store_c2pa( $attachment_id, $c2pa );
+		TransparAI_Repair::remember_scan( $attachment_id );
 		update_post_meta( $attachment_id, TransparAI_Meta::KEY_SCANNED, (string) time() );
 
 		if ( null === $result || empty( $result['is_ai'] ) ) {
