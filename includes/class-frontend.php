@@ -987,5 +987,13 @@ final class TransparAI_Frontend {
 		if ( has_action( 'wphb_clear_page_cache' ) ) {
 			do_action( 'wphb_clear_page_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Hummingbird's own purge hook.
 		}
+		/*
+		 * Elementor's element cache stores the rendered widget HTML, badge
+		 * included, per post; without clearing it a changed badge style only
+		 * reaches Elementor pages once that cache expires.
+		 */
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			delete_post_meta_by_key( '_elementor_element_cache' );
+		}
 	}
 }

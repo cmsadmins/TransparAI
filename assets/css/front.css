@@ -160,6 +160,14 @@ p .trai-wrap {
 	pointer-events: auto;
 }
 
+/* Builders position the direct children of their rows: WPBakery's parallax
+   rows set .vc_parallax > * { position: relative }, loaded after this file,
+   which pulled the background badge into the flow as a full-width line on
+   top of the row. A badge that is a host's own overlay stays absolute. */
+.trai-bg-host.trai-mode-overlay:not(.trai-badge-below) > .trai-badge {
+	position: absolute;
+}
+
 /* Positions */
 .trai-pos-bottom-right .trai-badge { right: 8px; bottom: 8px; }
 .trai-pos-bottom-left .trai-badge { left: 8px; bottom: 8px; }
@@ -211,7 +219,7 @@ p .trai-wrap {
    icon brings its own pill shape and colours, so the badge box, the colour
    settings and the short text label step back; the full text stays in the
    DOM for screen readers and comes back as a caption line. */
-.trai-style-eu-icon .trai-badge {
+.trai-style-eu-icon .trai-badge:not(.trai-badge--human) {
 	background: transparent;
 	border: 0;
 	padding: 0;
@@ -222,8 +230,8 @@ p .trai-wrap {
 	font-size: 0;
 }
 
-.trai-style-eu-icon .trai-badge::after,
-.trai-style-eu-icon .trai-badge--mini::after {
+.trai-style-eu-icon .trai-badge:not(.trai-badge--human)::after,
+.trai-style-eu-icon .trai-badge--mini:not(.trai-badge--human)::after {
 	content: none;
 }
 
@@ -246,6 +254,28 @@ p .trai-wrap {
 .trai-style-eu-icon.trai-size-small .trai-eu { height: 16px; }
 .trai-style-eu-icon.trai-size-large .trai-eu { height: 30px; }
 .trai-style-eu-icon .trai-badge--mini .trai-eu { height: 14px; }
+
+/* Theme and block styles size every img inside content, gallery blocks even
+   with max-width: 100% !important. Inside a shrink-to-fit badge that resolves
+   to zero and the icon disappears, so its box is pinned here: the doubled
+   class outranks those selectors, !important answers theirs. */
+.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu {
+	width: auto !important;
+	min-width: 0 !important;
+	max-width: none !important;
+	height: 22px !important;
+	max-height: none !important;
+	object-fit: contain !important;
+	flex: none !important;
+	position: static !important;
+	transform: none !important;
+	opacity: 1 !important;
+}
+
+.trai-style-eu-icon.trai-size-small .trai-badge img.trai-eu.trai-eu { height: 16px !important; }
+.trai-style-eu-icon.trai-size-large .trai-badge img.trai-eu.trai-eu { height: 30px !important; }
+/* Small media: the mini icon wins over every size setting. */
+.trai-style-eu-icon .trai-badge.trai-badge--mini img.trai-eu.trai-eu { height: 14px !important; }
 
 .trai-style-eu-icon .trai-badge-text {
 	position: absolute;
@@ -331,6 +361,13 @@ p .trai-wrap {
 	height: 18px;
 	vertical-align: middle;
 	margin-right: 6px;
+}
+
+.trai-mode-caption.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu,
+.trai-avwrap.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu,
+.trai-badge-below.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu,
+.trai-badge-below .trai-style-eu-icon .trai-badge img.trai-eu.trai-eu {
+	height: 18px !important;
 }
 
 .trai-mode-caption.trai-style-eu-icon .trai-badge-text,

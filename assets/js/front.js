@@ -11,7 +11,9 @@
 			if (badge.closest('.trai-avwrap, .trai-badge-below, .trai-badge-hidden')) {
 				return; /* Static caption lines and hidden badges are never minified. */
 			}
-			var img = badge.parentElement ? badge.parentElement.querySelector('img, video') : null;
+			/* The badge's own EU icon is an img too, and a background badge sits
+			   before the content, so the icon must never be taken for the media. */
+			var img = badge.parentElement ? badge.parentElement.querySelector('img:not(.trai-eu), video') : null;
 			var width = img ? img.clientWidth : 0;
 			if (!width) {
 				return; /* Not rendered yet (lazyload); the load handler re-runs this. */
@@ -173,7 +175,22 @@
 	   covered. */
 	function guardSolved(badge) {
 		var point = badgePoint(badge);
-		return !!point && !isCovered(badge, point);
+		if (!point || isCovered(badge, point)) {
+			return false;
+		}
+		/* A round zoom button or a sale flash can sit on one end of a wide
+		   badge (the EU icon at its large size) while the center stays free;
+		   both ends have to be visible too. Points outside the viewport are
+		   skipped, the center already decided that the badge is judgeable. */
+		var rect = badge.getBoundingClientRect();
+		return [0.1, 0.3, 0.7, 0.9].map(function (share) {
+			return rect.left + rect.width * share;
+		}).every(function (x) {
+			if (x < 0 || x >= window.innerWidth) {
+				return true;
+			}
+			return !isCovered(badge, { x: x, y: point.y });
+		});
 	}
 
 	function runGuard(badge, host) {
@@ -351,8 +368,11 @@
 			if (/(?:^|\s)wp-image-\d+(?:\s|$)/.test(img.className)) {
 				return; /* Handled server-side when labeled. */
 			}
-			if (img.closest('.trai-wrap, .trai-thumbwrap, .trai-avwrap, .trai-bg-host')) {
-				return;
+			if (img.closest('.trai-wrap, .trai-thumbwrap, .trai-avwrap, .trai-bg-host, .pswp, .wp-lightbox-overlay')) {
+				return; /* Already badged, or a lightbox clone that decorateLightbox() handles. */
+			}
+			if (img.classList.contains('zoomImg')) {
+				return; /* WooCommerce hover zoom: an invisible layer over the badged gallery image; a wrapper would shift its absolute position. */
 			}
 			var src = img.currentSrc || img.src || img.getAttribute('data-src') || '';
 			if (!src || !flagged[normalizePath(src)]) {
@@ -497,9 +517,11 @@
 			}
 			var key = normalizePath(src);
 			if (!known[key]) {
+				var icon = badge.querySelector('.trai-eu');
 				known[key] = {
 					classes: wrap.className.replace(/\btrai-thumbwrap\b/, 'trai-wrap').replace(/\btrai-wrap--fill\b/, '').replace(/\btrai-lightbox\b/, ''),
 					label: badge.textContent,
+					icon: icon ? icon.getAttribute('src') : '',
 					short: badge.getAttribute('data-trai-short') || config.short,
 					human: badge.classList.contains('trai-badge--human')
 				};
@@ -532,6 +554,18 @@
 		var layer = document.createElement('span');
 		layer.className = entry.classes + ' trai-lightbox trai-badge-manual';
 		layer.appendChild(badgeFor(entry));
+		/* PhotoSwipe's zoom wrapper spans the whole viewport while the image
+		   inside it is smaller; the layer takes the image's own box (layout
+		   values, unaffected by the wrapper's transform) so the badge sits on
+		   the picture and not in a corner of the screen. */
+		if (img.offsetWidth && img.offsetHeight && img.offsetParent === host) {
+			layer.style.left = img.offsetLeft + 'px';
+			layer.style.top = img.offsetTop + 'px';
+			layer.style.width = img.offsetWidth + 'px';
+			layer.style.height = img.offsetHeight + 'px';
+			layer.style.right = 'auto';
+			layer.style.bottom = 'auto';
+		}
 		host.appendChild(layer);
 	}
 
@@ -546,6 +580,9 @@
 			return;
 		}
 		var handle = function (img) {
+			if (img.classList.contains('trai-eu')) {
+				return; /* Our own badge icon, not a lightbox image. */
+			}
 			var host = img.closest(lightboxHosts);
 			if (!host) {
 				return;
@@ -616,18 +653,24 @@
 			}
 			galleryImage.setAttribute('data-trai-woo', '1');
 			var original = known[normalizePath(galleryImage.currentSrc || galleryImage.src || '')] || null;
+			/* WooCommerce can replace the gallery image element with a copy on a
+			   variation swap, so the image is looked up again at every event; a
+			   reference kept from page load would point to a detached node. */
+			var currentImage = function () {
+				return scope.querySelector('.woocommerce-product-gallery__image .wp-post-image, .woocommerce-product-gallery__image--placeholder .wp-post-image') || galleryImage;
+			};
 			window.jQuery(form).on('found_variation', function (event, variation) {
 				var entry = variation && variation.transparai ? variation.transparai : null;
 				if (entry && entry.path) {
 					known[entry.path] = entry; /* Lightbox of the variation image. */
 				}
 				window.requestAnimationFrame(function () {
-					setGalleryBadge(galleryImage, entry);
+					setGalleryBadge(currentImage(), entry);
 				});
 			});
 			window.jQuery(form).on('reset_data', function () {
 				window.requestAnimationFrame(function () {
-					setGalleryBadge(galleryImage, original);
+					setGalleryBadge(currentImage(), original);
 				});
 			});
 		});
