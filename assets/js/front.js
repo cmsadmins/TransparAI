@@ -101,8 +101,8 @@
 	}
 
 	function opaqueCoverer(element, badge) {
-		if (element === badge || element.contains(badge) || stickyLayer(element)) {
-			return false; /* The badge itself, one of its ancestors, or page chrome. */
+		if (element === badge || element.contains(badge) || badge.contains(element) || stickyLayer(element)) {
+			return false; /* The badge itself, its own content (the EU icon image), one of its ancestors, or page chrome. */
 		}
 		var style = getComputedStyle(element);
 		if (style.visibility === 'hidden' || parseFloat(style.opacity) <= 0.05) {

@@ -674,62 +674,48 @@ final class TransparAI_Media_Library {
 		if ( ! is_admin() || ! $query->is_main_query() || 'attachment' !== $query->get( 'post_type' ) ) {
 			return;
 		}
-		$filter = null;
 		if ( isset( $_GET['transparai_filter'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter.
-			$filter = TransparAI_Meta::meta_query( sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- see above.
+			$meta_query = TransparAI_Meta::meta_query( sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- see above.
+			if ( null !== $meta_query ) {
+				$query->set( 'meta_query', $meta_query ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- user-requested library filter.
+			}
 		}
-
-		/*
-		 * Sorting by the AI column: the flags are deleted rather than set to
-		 * '0', so a plain meta_key sort would drop every unlabeled file from
-		 * the list. Named clauses joined with OR keep them (NULL sorts first
-		 * ascending, last descending).
-		 */
-		$sort = null;
 		if ( 'transparai' === $query->get( 'orderby' ) ) {
-			$sort  = array(
-				'relation'       => 'OR',
-				'transparai_ai'  => array(
-					'key'     => TransparAI_Meta::KEY_FLAG,
-					'compare' => 'EXISTS',
-				),
-				'transparai_det' => array(
-					'key'     => TransparAI_Meta::KEY_DETECTED,
-					'compare' => 'EXISTS',
-				),
-				'transparai_hum' => array(
-					'key'     => TransparAI_Meta::KEY_HUMAN,
-					'compare' => 'EXISTS',
-				),
-				'transparai_any' => array(
-					'key'     => TransparAI_Meta::KEY_FLAG,
-					'compare' => 'NOT EXISTS',
-				),
-			);
-			$order = 'ASC' === strtoupper( (string) $query->get( 'order' ) ) ? 'ASC' : 'DESC';
-			$query->set(
-				'orderby',
-				array(
-					'transparai_ai'  => $order,
-					'transparai_det' => $order,
-					'transparai_hum' => $order,
-					'date'           => 'DESC',
-				)
-			);
+			add_filter( 'posts_clauses', array( self::class, 'sort_clauses' ), 10, 2 );
 		}
+	}
 
-		if ( null !== $filter && null !== $sort ) {
-			$meta_query = array(
-				'relation' => 'AND',
-				$filter,
-				$sort,
-			);
-		} else {
-			$meta_query = $filter ?? $sort;
+	/**
+	 * Sort by label state: labeled, in review, declared not AI, nothing.
+	 *
+	 * The flags are deleted rather than set to '0', so a meta_key sort would
+	 * drop every unlabeled file from the list, and meta_query EXISTS clauses
+	 * join without the key and order by whichever meta row comes first. Three
+	 * keyed LEFT JOINs give every attachment one rank instead.
+	 *
+	 * @param array<string, string> $clauses Query clauses.
+	 * @param WP_Query              $query   The query.
+	 * @return array<string, string>
+	 */
+	public static function sort_clauses( array $clauses, WP_Query $query ): array {
+		global $wpdb;
+		remove_filter( 'posts_clauses', array( self::class, 'sort_clauses' ), 10 );
+		if ( ! $query->is_main_query() ) {
+			return $clauses;
 		}
-		if ( null !== $meta_query ) {
-			$query->set( 'meta_query', $meta_query ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- user-requested library filter or sort.
-		}
+		$order = 'ASC' === strtoupper( (string) $query->get( 'order' ) ) ? 'ASC' : 'DESC';
+
+		$clauses['join']   .= $wpdb->prepare(
+			" LEFT JOIN {$wpdb->postmeta} AS trai_ai ON ( trai_ai.post_id = {$wpdb->posts}.ID AND trai_ai.meta_key = %s )"
+			. " LEFT JOIN {$wpdb->postmeta} AS trai_det ON ( trai_det.post_id = {$wpdb->posts}.ID AND trai_det.meta_key = %s )"
+			. " LEFT JOIN {$wpdb->postmeta} AS trai_hum ON ( trai_hum.post_id = {$wpdb->posts}.ID AND trai_hum.meta_key = %s )",
+			TransparAI_Meta::KEY_FLAG,
+			TransparAI_Meta::KEY_DETECTED,
+			TransparAI_Meta::KEY_HUMAN
+		);
+		$clauses['groupby'] = "{$wpdb->posts}.ID";
+		$clauses['orderby'] = "CASE WHEN trai_ai.meta_id IS NOT NULL THEN 3 WHEN trai_det.meta_id IS NOT NULL THEN 2 WHEN trai_hum.meta_id IS NOT NULL THEN 1 ELSE 0 END {$order}, {$wpdb->posts}.post_date DESC";
+		return $clauses;
 	}
 
 	/**
