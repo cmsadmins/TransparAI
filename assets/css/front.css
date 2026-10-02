@@ -29,6 +29,13 @@ p .trai-wrap {
 	left: 0;
 }
 
+/* Set by front.js where the wrapper would change the size of an image that
+   fills its container (percent sizes, object-fit): the wrapper leaves the
+   layout and the badge anchors to the theme's positioned container. */
+.trai-wrap.trai-wrap--contents {
+	display: contents;
+}
+
 /* Divi's image containers zero their line height and expect the image as
    their only child. An inline-block wrapper in that spot moves the baseline
    of the container above it and opens a gap below the image, so there the

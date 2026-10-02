@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, ai transparency, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,11 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.7 =
+* Fixed: themes that let a hero or card image fill its container (sizes in percent, object-fit: cover) showed the image too small, with an empty strip beside it, once the image was labeled. Where the badge wrapper would change the size of such an image it now steps out of the layout, and the image looks exactly as without the plugin.
+* Fixed: a badge in a corner that the site's own content covers, such as a call-to-action box laid over a hero image, was lifted on top of that content. It now moves to a free corner first and is only raised when every corner is covered. Panels drawn with pseudo elements and images that ignore the mouse count too.
+* The overlay check runs again after scroll-in animations (AOS, entrance effects) have finished, so it judges the final layout.
+
 = 1.1.6 =
 * Content Credentials are read in full: the plugin walks the C2PA manifest, checks whether its data hash still covers the file bytes, and shows the signer, the claim generator and the action time in the attachment panel, the media list, the REST API and WP-CLI, marked as "according to the manifest, not verified". A manifest that does not match the file (copied, or the image was edited after signing) goes to the review queue instead of labeling automatically. The check gives the same answer before and after the plugin writes its own declaration into a file.
 * The attachment panel names how many size variants lost the Content Credentials of the original, and marks attachments whose files changed since the last detection scan.
@@ -304,6 +309,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.7 =
+Fixes images that fill their container in hero sections and badges that lay on top of call-to-action boxes. Settings are untouched.
 
 = 1.1.6 =
 Reads C2PA manifests in full (data hash check, signer), adds the official EU icons as a badge style and a sortable AI column. Existing settings and the badge look are unchanged; run a rescan to fill the new manifest facts.

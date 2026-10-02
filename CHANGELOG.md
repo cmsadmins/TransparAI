@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.1.7 (2026-10-02)
+
+- Fill images: themes that size an image against its container (`width/height` in percent,
+  `object-fit: cover`, a positioned frame such as a hero) lost that sizing to our wrapper, which
+  became the image's parent; the image shrank to its own aspect ratio and left an empty strip.
+  `fitWraps()` in `front.js` compares the image box with and without the wrapper and, for exactly
+  that pattern (the unwrapped image covers its positioned parent), switches the wrapper to
+  `display: contents` (`trai-wrap--contents`). The badge then anchors to the theme's frame.
+  Found on datapart-factoring.de.
+- Overlay guard order: free corners first, raising second, caption line last. Raising first put
+  badges on top of site content that covers one corner (a call-to-action box over a hero image).
+  An image badge now also counts as covered when an opaque panel smaller than the image lies
+  between it and the image, including panels drawn in `::before`/`::after` and images with
+  `pointer-events: none` (the first element containing the image ends the search).
+- The guard re-runs after `transitionend` and `animationend`, so scroll-reveal animations (AOS)
+  no longer leave it judging a layout that is still moving.
+
 ## 1.1.6 (2026-10-02)
 
 - Content Credentials are read in full. A new `TransparAI_C2PA` class walks the JUMBF manifest

@@ -36,13 +36,53 @@
 		});
 	}
 
-	scaleBadges();
-	window.addEventListener('load', scaleBadges);
+	/* Themes that let an image fill its container (hero images, card
+	   thumbnails: width and height in percent, object-fit: cover) size the
+	   image against its parent. Our wrapper sits in between and becomes that
+	   parent, so the image shrinks to its own aspect ratio and the layout
+	   breaks. Where the wrapper changes the image's box, it steps out of the
+	   layout (display: contents); the badge then anchors to the theme's own
+	   positioned container, which is exactly the image area in that pattern.
+	   ponytail: compares one box per wrap and needs a positioned parent; a
+	   fill image inside a static parent keeps the normal wrapper. */
+	function fitWraps() {
+		document.querySelectorAll('.trai-wrap:not(.trai-wrap--fill):not(.trai-lightbox)').forEach(function (wrap) {
+			var img = wrap.querySelector(':scope > img:not(.trai-eu), :scope > picture > img');
+			var parent = wrap.parentElement;
+			if (!img || !parent || !img.complete || !img.naturalWidth) {
+				return;
+			}
+			wrap.classList.remove('trai-wrap--contents');
+			if (getComputedStyle(parent).position === 'static') {
+				return;
+			}
+			var boxed = img.getBoundingClientRect();
+			wrap.classList.add('trai-wrap--contents');
+			var bare = img.getBoundingClientRect();
+			var moved = Math.abs(boxed.width - bare.width) > 1 || Math.abs(boxed.height - bare.height) > 1
+				|| Math.abs(boxed.left - bare.left) > 1 || Math.abs(boxed.top - bare.top) > 1;
+			/* Only the fill pattern: unwrapped, the image covers its positioned
+			   parent, so that parent's corners are the image's corners. */
+			var frame = parent.getBoundingClientRect();
+			var fills = Math.abs(bare.width - frame.width) <= 2 && Math.abs(bare.height - frame.height) <= Math.max(6, frame.height * 0.02);
+			if (!moved || !fills) {
+				wrap.classList.remove('trai-wrap--contents');
+			}
+		});
+	}
+
+	function layoutBadges() {
+		fitWraps();
+		scaleBadges();
+	}
+
+	layoutBadges();
+	window.addEventListener('load', layoutBadges);
 
 	var resizeTimer;
 	function scaleBadgesSoon() {
 		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(scaleBadges, 150);
+		resizeTimer = setTimeout(layoutBadges, 150);
 	}
 	window.addEventListener('resize', scaleBadgesSoon);
 
@@ -62,7 +102,7 @@
 	   cover the badge regardless of the badge's own z-index. Instead of
 	   guessing stacking contexts, elementsFromPoint() reveals the real paint
 	   order at the badge's center; only a badge that is actually covered is
-	   escalated: raise it, try the other corners, and as the last resort turn
+	   escalated: try the other corners, raise it, and as the last resort turn
 	   it into the static caption line below the image, which nothing stacked
 	   on the image can reach. Manual placements (trai-badge-manual from the
 	   per-attachment override, or a trai-badge-* utility class on a container)
@@ -113,6 +153,11 @@
 		if (/^(img|svg|video|canvas|picture|iframe|embed|object)$/i.test(element.tagName) || element.ownerSVGElement) {
 			return true;
 		}
+		return paints(style);
+	}
+
+	/* Whether a computed style paints a visible background of its own. */
+	function paints(style) {
 		var bg = style.backgroundColor;
 		if (bg && bg !== 'transparent') {
 			var parts = /^rgba?\(([^)]+)\)$/.exec(bg);
@@ -122,6 +167,16 @@
 			}
 		}
 		return !!(style.backgroundImage && style.backgroundImage !== 'none');
+	}
+
+	/* Content panels laid over an image often draw their box in a pseudo
+	   element (a skewed or clipped shape), which hit testing never returns. */
+	function paintsPseudo(element) {
+		return ['::before', '::after'].some(function (pseudo) {
+			var style = getComputedStyle(element, pseudo);
+			return style.content !== 'none' && style.content !== 'normal' && style.display !== 'none'
+				&& parseFloat(style.opacity) > 0.05 && paints(style);
+		});
 	}
 
 	/* The badge's center in viewport coordinates, or null while the badge
@@ -150,11 +205,41 @@
 		var stack = document.elementsFromPoint(point.x, point.y);
 		badge.style.pointerEvents = prior;
 		var index = stack.indexOf(badge);
-		if (index <= 0) {
-			return false; /* Topmost already, or not testable at this point. */
+		if (index < 0) {
+			return false; /* Not testable at this point. */
 		}
 		for (var i = 0; i < index; i++) {
 			if (opaqueCoverer(stack[i], badge)) {
+				return true;
+			}
+		}
+		/* An image badge must also not lie on top of the site's own content
+		   that sits over the picture (a call-to-action box, a caption panel):
+		   anything opaque between the badge and its image counts, the badge
+		   would hide it. Background badges skip this, the content of a
+		   section is supposed to sit on its background. */
+		var host = badge.closest('.trai-wrap');
+		var media = host ? host.querySelector('img:not(.trai-eu), video') : null;
+		/* The image itself may be missing from the stack (themes set
+		   pointer-events: none on hero images); the first element that is or
+		   contains the image marks the bottom of the layers to check. */
+		var mediaIndex = -1;
+		for (var k = index + 1; media && k < stack.length; k++) {
+			if (stack[k] === media || stack[k].contains(media)) {
+				mediaIndex = k;
+				break;
+			}
+		}
+		var mediaRect = media ? media.getBoundingClientRect() : null;
+		var mediaArea = mediaRect ? mediaRect.width * mediaRect.height : 0;
+		for (var j = index + 1; j < mediaIndex; j++) {
+			/* Layers as large as the image (a cover block's dim overlay, a
+			   tint) are part of the picture; only smaller panels count. */
+			var layer = stack[j].getBoundingClientRect();
+			if (mediaArea && layer.width * layer.height >= mediaArea * 0.9) {
+				continue;
+			}
+			if (!badge.contains(stack[j]) && (opaqueCoverer(stack[j], badge) || (!stack[j].contains(badge) && paintsPseudo(stack[j])))) {
 				return true;
 			}
 		}
@@ -206,10 +291,10 @@
 		if (guardSolved(badge)) {
 			return true;
 		}
-		badge.classList.add('trai-badge--raised');
-		if (guardSolved(badge)) {
-			return true;
-		}
+		/* A free corner first: what covers one corner is often the site's own
+		   content (a call-to-action box or a caption panel laid over the
+		   image), and lifting the badge above it would put it on top of that
+		   content. */
 		var current = base;
 		for (var i = 0; i < GUARD_CORNERS.length; i++) {
 			if (GUARD_CORNERS[i] === base) {
@@ -222,11 +307,17 @@
 				return true;
 			}
 		}
-		/* Every corner is covered (full scrim, or a stacking context the badge
-		   cannot leave): the static line below the media is out of reach of
-		   anything stacked on the image. */
 		host.classList.remove('trai-pos-' + current);
 		host.classList.add('trai-pos-' + base);
+		/* Every corner is covered: a scrim or hover layer over the whole
+		   image. Raising the badge in its own corner lifts it above that. */
+		badge.classList.add('trai-badge--raised');
+		if (guardSolved(badge)) {
+			return true;
+		}
+		/* Still covered (a stacking context the badge cannot leave): the
+		   static line below the media is out of reach of anything stacked on
+		   the image. */
 		badge.classList.remove('trai-badge--raised', 'trai-badge--mini');
 		host.classList.add('trai-badge-below');
 		return true;
@@ -290,6 +381,11 @@
 		   event; lazyloaded images settle even later, on their own load. */
 		window.addEventListener('load', reguardSoon);
 		window.addEventListener('resize', reguardSoon);
+		/* Scroll-reveal libraries (AOS, Elementor entrance animations) slide
+		   whole sections into place after the load event; a badge judged
+		   mid-animation is judged against boxes that are still moving. */
+		document.addEventListener('transitionend', reguardSoon, true);
+		document.addEventListener('animationend', reguardSoon, true);
 		document.addEventListener('load', function (event) {
 			if (event.target && event.target.tagName === 'IMG' && event.target.closest('.trai-wrap, .trai-thumbwrap')) {
 				reguardSoon();
