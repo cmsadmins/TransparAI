@@ -36,6 +36,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-options.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-meta.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-parsers.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-c2pa.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-c2pa-verify.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-detector.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-writer.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-scanner.php';

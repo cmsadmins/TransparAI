@@ -689,6 +689,7 @@ require_once dirname( __DIR__ ) . '/includes/class-options.php';
 require_once dirname( __DIR__ ) . '/includes/class-meta.php';
 require_once dirname( __DIR__ ) . '/includes/class-parsers.php';
 require_once dirname( __DIR__ ) . '/includes/class-c2pa.php';
+require_once dirname( __DIR__ ) . '/includes/class-c2pa-verify.php';
 require_once dirname( __DIR__ ) . '/includes/class-detector.php';
 require_once dirname( __DIR__ ) . '/includes/class-scanner.php';
 require_once dirname( __DIR__ ) . '/includes/class-integrations.php';

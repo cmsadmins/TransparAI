@@ -619,12 +619,13 @@ final class TransparAI_Meta {
 			return;
 		}
 		$clean = array( 'v' => 1 );
-		foreach ( array( 'hash', 'reason', 'alg', 'signer_cn', 'signer_o', 'generator', 'when', 'file' ) as $key ) {
+		foreach ( array( 'hash', 'reason', 'alg', 'sig', 'sig_reason', 'issuer', 'tst', 'tsa', 'signer_cn', 'signer_o', 'generator', 'when', 'file' ) as $key ) {
 			$clean[ $key ] = sanitize_text_field( (string) ( $info[ $key ] ?? '' ) );
 		}
-		$clean['manifests'] = (int) ( $info['manifests'] ?? 0 );
-		$clean['own_mark']  = ! empty( $info['own_mark'] );
-		$clean['at']        = time();
+		$clean['tsa_trusted'] = ! empty( $info['tsa_trusted'] );
+		$clean['manifests']   = (int) ( $info['manifests'] ?? 0 );
+		$clean['own_mark']    = ! empty( $info['own_mark'] );
+		$clean['at']          = time();
 		update_post_meta( $attachment_id, self::KEY_C2PA, wp_json_encode( $clean ) );
 	}
 
