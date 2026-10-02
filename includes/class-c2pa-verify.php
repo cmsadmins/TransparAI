@@ -368,7 +368,7 @@ final class TransparAI_C2PA_Verify {
 		}
 
 		$key = openssl_pkey_get_public( self::pem( $leaf ) );
-		if ( false === $key || strlen( $signature ) % 2 ) {
+		if ( false === $key || strlen( $signature ) % 2 || ! self::key_is( $key, OPENSSL_KEYTYPE_EC ) ) {
 			return false;
 		}
 		$half = intdiv( strlen( $signature ), 2 );
@@ -507,11 +507,96 @@ final class TransparAI_C2PA_Verify {
 		if ( ! is_array( $issuer_info ) || $issuer_info['subject'] !== $info['issuer'] ) {
 			return false;
 		}
-		$key = openssl_pkey_get_public( $issuer );
-		if ( false === $key ) {
+		return self::cert_signed_by( self::der( $cert ), self::der( $issuer ) );
+	}
+
+	/**
+	 * Whether a certificate's signature verifies with the issuer's key.
+	 *
+	 * Done by hand rather than with openssl_x509_verify(): on PHP 7.4 that
+	 * function knows RSA keys only and raises a warning for every EC, PSS or
+	 * Ed25519 key, while C2PA chains use all of them.
+	 */
+	private static function cert_signed_by( string $cert, string $issuer ): bool {
+		$outer = self::tlv( $cert, 0, strlen( $cert ) );
+		$parts = null === $outer ? array() : self::children( $cert, $outer['start'], $outer['end'] );
+		if ( count( $parts ) < 3 || 0x03 !== $parts[2]['tag'] ) {
 			return false;
 		}
-		return 1 === openssl_x509_verify( $cert, $key );
+		$tbs       = substr( $cert, $parts[0]['offset'], $parts[0]['end'] - $parts[0]['offset'] );
+		$alg       = self::children( $cert, $parts[1]['start'], $parts[1]['end'] );
+		$oid       = isset( $alg[0] ) ? self::content( $cert, $alg[0] ) : '';
+		$signature = substr( $cert, $parts[2]['start'] + 1, $parts[2]['end'] - $parts[2]['start'] - 1 );
+
+		$ecdsa = array(
+			"\x2a\x86\x48\xce\x3d\x04\x03\x02" => 'sha256',
+			"\x2a\x86\x48\xce\x3d\x04\x03\x03" => 'sha384',
+			"\x2a\x86\x48\xce\x3d\x04\x03\x04" => 'sha512',
+		);
+		$rsa   = array(
+			"\x2a\x86\x48\x86\xf7\x0d\x01\x01\x0b" => 'sha256',
+			"\x2a\x86\x48\x86\xf7\x0d\x01\x01\x0c" => 'sha384',
+			"\x2a\x86\x48\x86\xf7\x0d\x01\x01\x0d" => 'sha512',
+		);
+
+		if ( isset( $ecdsa[ $oid ] ) || isset( $rsa[ $oid ] ) ) {
+			$key = openssl_pkey_get_public( self::pem( $issuer ) );
+			if ( false === $key ) {
+				return false;
+			}
+			/* Names repeat across CAs; a key of another type is simply not the issuer (PHP 7.4 would warn). */
+			if ( ! self::key_is( $key, isset( $ecdsa[ $oid ] ) ? OPENSSL_KEYTYPE_EC : OPENSSL_KEYTYPE_RSA ) ) {
+				return false;
+			}
+			return 1 === openssl_verify( $tbs, $signature, $key, $ecdsa[ $oid ] ?? $rsa[ $oid ] );
+		}
+		if ( "\x2a\x86\x48\x86\xf7\x0d\x01\x01\x0a" === $oid ) {
+			/* RSASSA-PSS: the hash sits in the parameters ([0] hashAlgorithm). */
+			$hash = '';
+			if ( isset( $alg[1] ) ) {
+				foreach ( self::children( $cert, $alg[1]['start'], $alg[1]['end'] ) as $param ) {
+					if ( 0xA0 === $param['tag'] ) {
+						$hash_alg = self::tlv( $cert, $param['start'], $param['end'] );
+						$hash_oid = null === $hash_alg ? array() : self::children( $cert, $hash_alg['start'], $hash_alg['end'] );
+						$hash     = isset( $hash_oid[0] ) ? ( self::DIGEST_OIDS[ self::content( $cert, $hash_oid[0] ) ] ?? '' ) : '';
+					}
+				}
+			}
+			return in_array( $hash, array( 'sha256', 'sha384', 'sha512' ), true ) && self::verify_pss( $tbs, $signature, $issuer, $hash );
+		}
+		if ( "\x2b\x65\x70" === $oid ) {
+			$spki = self::spki( $issuer );
+			if ( null === $spki || ! function_exists( 'sodium_crypto_sign_verify_detached' ) || 64 !== strlen( $signature ) ) {
+				return false;
+			}
+			try {
+				return sodium_crypto_sign_verify_detached( $signature, $tbs, substr( $spki['key'], -32 ) );
+			} catch ( Throwable $e ) {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * PEM certificate to DER (DER passes through).
+	 */
+	private static function der( string $cert ): string {
+		if ( ! str_starts_with( $cert, '-----BEGIN' ) ) {
+			return $cert;
+		}
+		return (string) base64_decode( (string) preg_replace( '/-----[^-]+-----|\s+/', '', $cert ), true ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode -- PEM decoding of a certificate.
+	}
+
+	/**
+	 * Whether an OpenSSL key is of the given type (OPENSSL_KEYTYPE_*).
+	 *
+	 * @param resource|OpenSSLAsymmetricKey $key  Public key.
+	 * @param int                           $type Expected type.
+	 */
+	private static function key_is( $key, int $type ): bool {
+		$details = openssl_pkey_get_details( $key );
+		return is_array( $details ) && $type === (int) $details['type'];
 	}
 
 	/**
@@ -741,9 +826,12 @@ final class TransparAI_C2PA_Verify {
 		$signed_attrs = "\x31" . substr( $token, $signer[ $attrs ]['offset'] + 1, $signer[ $attrs ]['end'] - $signer[ $attrs ]['offset'] - 1 );
 		$signature    = self::content( $token, $signer[ $attrs + 2 ] );
 		$tsa_cert     = null;
+		$sig_alg      = self::children( $token, $signer[ $attrs + 1 ]['start'], $signer[ $attrs + 1 ]['end'] );
+		$sig_oid      = isset( $sig_alg[0] ) ? self::content( $token, $sig_alg[0] ) : '';
+		$key_type     = str_starts_with( $sig_oid, '*HÎ=' ) ? OPENSSL_KEYTYPE_EC : OPENSSL_KEYTYPE_RSA;
 		foreach ( $certs as $cert ) {
 			$key = openssl_pkey_get_public( self::pem( $cert ) );
-			if ( false !== $key && 1 === openssl_verify( $signed_attrs, $signature, $key, $digest ) ) {
+			if ( false !== $key && self::key_is( $key, $key_type ) && 1 === openssl_verify( $signed_attrs, $signature, $key, $digest ) ) {
 				$tsa_cert = $cert;
 				break;
 			}

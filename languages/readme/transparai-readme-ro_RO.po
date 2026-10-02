@@ -2092,3 +2092,27 @@ msgstr ""
 "(copiat, sau imaginea a fost editată după semnare) ajunge în coada de "
 "verificare în loc să eticheteze automat. Verificarea dă același rezultat "
 "înainte și după ce modulul își scrie propria declarație în fișier."
+
+#. Found in changelog list item.
+msgid ""
+"The overlay check runs again after scroll-in animations (AOS, entrance "
+"effects) have finished, so it judges the final layout."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Fixed: a badge in a corner that the site's own content covers, such as a "
+"call-to-action box laid over a hero image, was lifted on top of that "
+"content. It now moves to a free corner first and is only raised when every "
+"corner is covered. Panels drawn with pseudo elements and images that ignore "
+"the mouse count too."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Fixed: themes that let a hero or card image fill its container (sizes in "
+"percent, object-fit: cover) showed the image too small, with an empty strip "
+"beside it, once the image was labeled. Where the badge wrapper would change "
+"the size of such an image it now steps out of the layout, and the image "
+"looks exactly as without the plugin."
+msgstr ""

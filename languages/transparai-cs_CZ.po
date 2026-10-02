@@ -265,12 +265,13 @@ msgstr ""
 "stavem. Jde o technickou vlastní kontrolu, ne o právní posouzení."
 
 #: admin/class-dashboard.php:243 admin/class-dashboard.php:247
-#: admin/class-dashboard.php:920
+#: admin/class-dashboard.php:920 admin/class-wizard.php:563
 msgid "Open"
 msgstr "Otevřít"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
 #: admin/class-settings.php:766 admin/class-settings.php:785
+#: admin/class-wizard.php:75
 msgid "Done"
 msgstr "Hotovo"
 
@@ -327,7 +328,7 @@ msgstr "Podrobnosti"
 msgid "By"
 msgstr "Autor"
 
-#: admin/class-dashboard.php:333 admin/class-media-library.php:509
+#: admin/class-dashboard.php:333 admin/class-media-library.php:556
 msgid "system"
 msgstr "systém"
 
@@ -408,12 +409,12 @@ msgstr ""
 "aktualizujte, kdykoli web začne nebo přestane AI takto používat."
 
 #: admin/class-dashboard.php:444 admin/class-settings.php:534
-#: admin/class-settings.php:760
+#: admin/class-settings.php:760 admin/class-wizard.php:336
 msgid "Yes"
 msgstr "Ano"
 
 #: admin/class-dashboard.php:445 admin/class-settings.php:535
-#: admin/class-settings.php:761
+#: admin/class-settings.php:761 admin/class-wizard.php:337
 msgid "No"
 msgstr "Ne"
 
@@ -816,7 +817,7 @@ msgstr "%1$s (za %2$s)"
 msgid "Media is AI-generated"
 msgstr "Médium je vygenerováno AI"
 
-#: admin/class-media-library.php:122 admin/class-media-library.php:438
+#: admin/class-media-library.php:122 admin/class-media-library.php:473
 msgid "no declaration"
 msgstr "bez deklarace"
 
@@ -856,7 +857,7 @@ msgstr "Znovu zkontrolovat metadata souboru"
 msgid "Check delivery"
 msgstr "Zkontrolovat doručení"
 
-#: admin/class-media-library.php:162 admin/class-media-library.php:597
+#: admin/class-media-library.php:162 admin/class-media-library.php:644
 msgid "Show file metadata"
 msgstr "Zobrazit metadata souboru"
 
@@ -877,22 +878,27 @@ msgid "Default (site setting)"
 msgstr "Výchozí (nastavení webu)"
 
 #: admin/class-media-library.php:175 admin/class-settings.php:314
+#: admin/class-wizard.php:388
 msgid "Top left"
 msgstr "Vlevo nahoře"
 
 #: admin/class-media-library.php:176 admin/class-settings.php:315
+#: admin/class-wizard.php:387
 msgid "Top right"
 msgstr "Vpravo nahoře"
 
 #: admin/class-media-library.php:177 admin/class-settings.php:316
+#: admin/class-wizard.php:386
 msgid "Bottom left"
 msgstr "Vlevo dole"
 
 #: admin/class-media-library.php:178 admin/class-settings.php:317
+#: admin/class-wizard.php:385
 msgid "Bottom right"
 msgstr "Vpravo dole"
 
 #: admin/class-media-library.php:179 admin/class-settings.php:307
+#: admin/class-wizard.php:395
 msgid "Caption line below the image"
 msgstr "Řádek popisku pod obrázkem"
 
@@ -936,9 +942,10 @@ msgid "hint"
 msgstr "náznak"
 
 #: admin/class-media-library.php:77 admin/class-media-library.php:326
-#: admin/class-media-library.php:367 admin/class-setup.php:112
-#: includes/class-chatbot.php:357 includes/class-delivery.php:66
-#: includes/class-scanner.php:242 includes/class-scanner.php:318
+#: admin/class-media-library.php:367 admin/class-setup.php:113
+#: admin/class-wizard.php:120 includes/class-chatbot.php:357
+#: includes/class-delivery.php:66 includes/class-scanner.php:242
+#: includes/class-scanner.php:318
 msgid "You are not allowed to do that."
 msgstr "Nemáte oprávnění to provést."
 
@@ -952,7 +959,7 @@ msgid "Invalid attachment."
 msgstr "Neplatná příloha."
 
 #. translators: %s: IPTC digital source type token.
-#: admin/class-media-library.php:419
+#: admin/class-media-library.php:454
 #, php-format
 msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
@@ -961,7 +968,7 @@ msgstr ""
 "Tato příloha je deklarována jako nevytvořená AI (%s). Deklarace se zapisuje "
 "do souborů, které nenesou jiný typ digitálního zdroje."
 
-#: admin/class-media-library.php:421
+#: admin/class-media-library.php:456
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
@@ -969,7 +976,7 @@ msgstr ""
 "Tato příloha je označena jako vygenerovaná AI, takže každý soubor níže by "
 "měl nést deklaraci."
 
-#: admin/class-media-library.php:422
+#: admin/class-media-library.php:457
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
@@ -977,103 +984,103 @@ msgstr ""
 "Tato příloha není označena jako vygenerovaná AI. Do jejích souborů se nic "
 "nezapisuje a níže se žádná deklarace neočekává."
 
-#: admin/class-media-library.php:426
+#: admin/class-media-library.php:461 admin/class-wizard.php:73
 msgid "Files"
 msgstr "Soubory"
 
-#: admin/class-media-library.php:429
+#: admin/class-media-library.php:464
 msgid "format cannot carry the declaration"
 msgstr "formát nedokáže deklaraci nést"
 
-#: admin/class-media-library.php:432
+#: admin/class-media-library.php:467
 msgid "declaration present"
 msgstr "deklarace přítomna"
 
-#: admin/class-media-library.php:435
+#: admin/class-media-library.php:470
 msgid "declaration missing"
 msgstr "deklarace chybí"
 
-#: admin/class-media-library.php:447
+#: admin/class-media-library.php:482
 msgid "No readable file found for this attachment."
 msgstr "Pro tuto přílohu nebyl nalezen žádný čitelný soubor."
 
-#: admin/class-media-library.php:489
+#: admin/class-media-library.php:536
 msgid "Digital source type in the main file"
 msgstr "Typ digitálního zdroje v hlavním souboru"
 
-#: admin/class-media-library.php:491
+#: admin/class-media-library.php:538
 msgid "None declared."
 msgstr "Nic deklarováno."
 
-#: admin/class-media-library.php:499
+#: admin/class-media-library.php:546
 msgid "Detection evidence"
 msgstr "Důkazy detekce"
 
-#: admin/class-media-library.php:505
+#: admin/class-media-library.php:552
 msgid "History"
 msgstr "Dějiny"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
-#: admin/class-media-library.php:518
+#: admin/class-media-library.php:565
 #, php-format
 msgid "from %s"
 msgstr "z %s"
 
-#: admin/class-media-library.php:531
+#: admin/class-media-library.php:578
 msgid "XMP packet of the main file"
 msgstr "Paket XMP hlavního souboru"
 
-#: admin/class-media-library.php:533
+#: admin/class-media-library.php:580
 msgid "This file carries no XMP block."
 msgstr "Tento soubor neobsahuje žádný blok XMP."
 
-#: admin/class-media-library.php:586 admin/class-media-library.php:663
+#: admin/class-media-library.php:633 admin/class-media-library.php:717
 msgid "AI status: all"
 msgstr "Stav AI: vše"
 
-#: admin/class-media-library.php:587 admin/class-media-library.php:664
+#: admin/class-media-library.php:634 admin/class-media-library.php:718
 msgid "Only AI-labeled"
 msgstr "Jen označené jako AI"
 
-#: admin/class-media-library.php:588 admin/class-media-library.php:637
-#: admin/class-media-library.php:665
+#: admin/class-media-library.php:635 admin/class-media-library.php:684
+#: admin/class-media-library.php:719
 msgid "Detected, needs review"
 msgstr "Zjištěno, vyžaduje kontrolu"
 
-#: admin/class-media-library.php:589 admin/class-media-library.php:667
+#: admin/class-media-library.php:636 admin/class-media-library.php:721
 msgid "Without AI label"
 msgstr "Bez označení AI"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:666
+#: admin/class-media-library.php:637 admin/class-media-library.php:720
 msgid "Declared not AI (camera, human work)"
 msgstr "Deklarováno jako bez AI (fotoaparát, lidská tvorba)"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:754
+#: admin/class-media-library.php:638 admin/class-media-library.php:808
 msgid "Mark as AI-generated"
 msgstr "Označit jako vygenerované AI"
 
-#: admin/class-media-library.php:592 admin/class-media-library.php:755
+#: admin/class-media-library.php:639 admin/class-media-library.php:809
 msgid "Remove AI label"
 msgstr "Odebrat označení AI"
 
-#: admin/class-media-library.php:593
+#: admin/class-media-library.php:640
 msgid "Please select media first."
 msgstr "Nejprve vyberte média."
 
-#: admin/class-media-library.php:594
+#: admin/class-media-library.php:641
 msgid "Updating the AI label failed."
 msgstr "Aktualizace označení AI se nezdařila."
 
-#: admin/class-media-library.php:595
+#: admin/class-media-library.php:642
 msgid "Result"
 msgstr "Výsledek"
 
-#: admin/class-media-library.php:596
+#: admin/class-media-library.php:643
 msgid "No AI provenance signals found in the file."
 msgstr "V souboru nebyly nalezeny žádné signály o původu z AI."
 
-#: admin/class-media-library.php:598
+#: admin/class-media-library.php:645
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
@@ -1081,13 +1088,13 @@ msgstr ""
 "Označení bylo nastaveno, ale metadata se do souboru nepodařilo zapsat. "
 "Zkontrolujte oprávnění k zápisu do adresáře s nahranými soubory."
 
-#: admin/class-media-library.php:599
+#: admin/class-media-library.php:646
 msgid "Hide file metadata"
 msgstr "Skrýt metadata souboru"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
-#: admin/class-media-library.php:601
+#: admin/class-media-library.php:648
 #, php-format
 msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
@@ -1098,7 +1105,7 @@ msgstr ""
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
-#: admin/class-media-library.php:603
+#: admin/class-media-library.php:650
 #, php-format
 msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
@@ -1107,40 +1114,40 @@ msgstr ""
 "Prohledáno %1$d, automaticky označeno %2$d, zařazeno ke kontrole %3$d, "
 "přeskočeno %4$d (již rozhodnuto)."
 
-#: admin/class-media-library.php:604
+#: admin/class-media-library.php:651
 msgid "Scan complete."
 msgstr "Sken dokončen."
 
-#: admin/class-media-library.php:605
+#: admin/class-media-library.php:652
 msgid "Scan request failed. You can restart to continue."
 msgstr "Požadavek na sken selhal. Pokračovat můžete opětovným spuštěním."
 
-#: admin/class-media-library.php:616 includes/class-notice.php:305
+#: admin/class-media-library.php:663 includes/class-notice.php:305
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:756
+#: admin/class-media-library.php:810
 msgid "Confirm detected AI label"
 msgstr "Potvrdit zjištěné označení AI"
 
-#: admin/class-media-library.php:757
+#: admin/class-media-library.php:811
 msgid "Dismiss detected AI label"
 msgstr "Zamítnout zjištěné označení AI"
 
-#: admin/class-media-library.php:758
+#: admin/class-media-library.php:812
 msgid "Declare as camera photo (not AI)"
 msgstr "Deklarovat jako fotografii z fotoaparátu (bez AI)"
 
-#: admin/class-media-library.php:759
+#: admin/class-media-library.php:813
 msgid "Declare as human work (not AI)"
 msgstr "Deklarovat jako lidskou tvorbu (bez AI)"
 
-#: admin/class-media-library.php:760
+#: admin/class-media-library.php:814
 msgid "Remove \"not AI\" declaration"
 msgstr "Odebrat deklaraci „bez AI“"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:802
+#: admin/class-media-library.php:856
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -1276,35 +1283,38 @@ msgstr ""
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: admin/class-settings.php:306
+#: admin/class-settings.php:306 admin/class-wizard.php:394
 msgid "Overlay on the image"
 msgstr "Překryv na obrázku"
 
-#: admin/class-settings.php:324
+#: admin/class-settings.php:324 admin/class-wizard.php:376
+#: admin/class-wizard.php:512
 msgid "Dark"
 msgstr "Tmavá"
 
-#: admin/class-settings.php:325
+#: admin/class-settings.php:325 admin/class-wizard.php:377
+#: admin/class-wizard.php:513
 msgid "Light"
 msgstr "Světlé"
 
-#: admin/class-settings.php:326
+#: admin/class-settings.php:326 admin/class-wizard.php:378
+#: admin/class-wizard.php:514
 msgid "Outline"
 msgstr "Osnova"
 
-#: admin/class-settings.php:327
+#: admin/class-settings.php:327 admin/class-wizard.php:379
 msgid "Icon only (short label)"
 msgstr "Jen ikona (krátké označení)"
 
-#: admin/class-settings.php:351
+#: admin/class-settings.php:351 admin/class-wizard.php:401
 msgid "Small"
 msgstr "Malý"
 
-#: admin/class-settings.php:352
+#: admin/class-settings.php:352 admin/class-wizard.php:402
 msgid "Medium"
 msgstr "Střední velikost"
 
-#: admin/class-settings.php:353
+#: admin/class-settings.php:353 admin/class-wizard.php:403
 msgid "Large"
 msgstr "Grande"
 
@@ -1570,7 +1580,7 @@ msgstr "Provozuje tento web chat?"
 msgid "Not decided yet"
 msgstr "Zatím nerozhodnuto"
 
-#: admin/class-settings.php:542
+#: admin/class-settings.php:542 admin/class-wizard.php:489
 msgid "An AI answers"
 msgstr "Odpovídá AI"
 
@@ -2050,41 +2060,11 @@ msgstr "Odkazy TransparAI"
 msgid "Support forum"
 msgstr "Fórum podpory"
 
-#: admin/class-setup.php:165
-msgid "Setup in three steps"
-msgstr "Nastavení ve třech krocích"
-
-#: admin/class-setup.php:170
-msgid "1. Scan the existing library"
-msgstr "1. Prohledat stávající knihovnu"
-
-#. translators: 1: number of media files, 2: number already scanned.
-#: admin/class-setup.php:176
-#, php-format
-msgid ""
-"%1$d media files, %2$d of them scanned. Clear declarations are labeled, "
-"strong signals wait in the review queue."
-msgstr ""
-"%1$d mediálních souborů, z toho %2$d prohledáno. Jednoznačné deklarace se "
-"označí, silné signály čekají ve frontě ke kontrole."
-
-#: admin/class-setup.php:183
-msgid "Scan now"
-msgstr "Skenovat nyní"
-
-#: admin/class-setup.php:187
-msgid "2. Choose the badge look"
-msgstr "2. Zvolit vzhled odznaku"
-
-#: admin/class-setup.php:193
-msgid "3. Decide about the files"
-msgstr "3. Rozhodnout o souborech"
-
-#: admin/class-setup.php:204
+#: admin/class-wizard.php:295
 msgid "Finish setup"
 msgstr "Dokončit nastavení"
 
-#: admin/class-setup.php:211
+#: admin/class-setup.php:187
 msgid "Not now"
 msgstr "Teď ne"
 
@@ -2969,38 +2949,6 @@ msgctxt "block keyword"
 msgid "imprint"
 msgstr "tiráž"
 
-#: admin/class-setup.php:166
-msgid ""
-"Three things to settle once. Each button opens the section below that does "
-"it. Nothing is labeled without your review, and no request leaves your "
-"server."
-msgstr ""
-"Tři věci, které jednou nastavíš. Každé tlačítko otevře oddíl níže, který to "
-"udělá. Nic se neoznačí bez tvé kontroly a žádný požadavek neopustí tvůj "
-"server."
-
-#: admin/class-setup.php:188
-msgid ""
-"Style, position and placement of the visible badge, with a live preview of "
-"the result."
-msgstr "Styl, pozice a umístění viditelného štítku s živým náhledem výsledku."
-
-#: admin/class-setup.php:189
-msgid "Open the badge settings"
-msgstr "Otevřít nastavení štítku"
-
-#: admin/class-setup.php:194
-msgid ""
-"Whether the machine-readable declaration goes into the image files "
-"themselves, and whether it is restored after an image optimizer strips it."
-msgstr ""
-"Zda se strojově čitelné prohlášení zapíše přímo do obrazových souborů a zda "
-"se obnoví poté, co jej optimalizátor obrázků odstraní."
-
-#: admin/class-setup.php:195
-msgid "Open the file settings"
-msgstr "Otevřít nastavení souborů"
-
 #: admin/class-settings.php:361
 msgid "Background"
 msgstr "Pozadí"
@@ -3077,11 +3025,11 @@ msgstr ""
 msgid "Hide this note"
 msgstr "Skrýt tuto poznámku"
 
-#: admin/class-media-library.php:384
+#: admin/class-media-library.php:419
 msgid "yes, the manifest was written for exactly these bytes"
 msgstr "ano, manifest byl zapsán přesně pro tyto bajty"
 
-#: admin/class-media-library.php:386
+#: admin/class-media-library.php:421
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
@@ -3089,33 +3037,33 @@ msgstr ""
 "ne, obrázek byl po podepsání změněn nebo byl manifest zkopírován z jiného "
 "souboru"
 
-#: admin/class-media-library.php:390
+#: admin/class-media-library.php:425
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr "nelze ověřit, manifest nemá hash dat (aktualizační manifest)"
 
-#: admin/class-media-library.php:392
+#: admin/class-media-library.php:427
 msgid "not checkable, unknown hash algorithm"
 msgstr "nelze ověřit, neznámý hashovací algoritmus"
 
-#: admin/class-media-library.php:394
+#: admin/class-media-library.php:429
 msgid "not checked for video and ISO-BMFF containers"
 msgstr "u videa a kontejnerů ISO-BMFF se nekontroluje"
 
-#: admin/class-media-library.php:396
+#: admin/class-media-library.php:431
 msgid "not checked, the file is larger than 64 MB"
 msgstr "nekontrolováno, soubor je větší než 64 MB"
 
-#: admin/class-media-library.php:398
+#: admin/class-media-library.php:433
 msgid "not checkable, the manifest could not be read completely"
 msgstr "nelze ověřit, manifest se nepodařilo přečíst celý"
 
-#: admin/class-media-library.php:443
+#: admin/class-media-library.php:478
 msgid "Content Credentials"
 msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
-#: admin/class-media-library.php:461
+#: admin/class-media-library.php:496
 #, php-format
 msgid ""
 "Content Credentials are present in the original, but %1$d of %2$d files (the"
@@ -3126,7 +3074,7 @@ msgstr ""
 "varianty, které generuje WordPress) manifest nenese. Typ digitálního zdroje,"
 " který tento plugin zapisuje do každého souboru, tím není dotčen."
 
-#: admin/class-media-library.php:468
+#: admin/class-media-library.php:503
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
@@ -3134,48 +3082,39 @@ msgstr ""
 "Soubory se od poslední detekční kontroly změnily. Tlačítkem „Znovu "
 "zkontrolovat metadata souboru“ je prověříte znovu."
 
-#: admin/class-media-library.php:474
+#: admin/class-media-library.php:509
 msgid "Content Credentials (C2PA)"
 msgstr "Content Credentials (C2PA)"
 
-#: admin/class-media-library.php:475
+#: admin/class-media-library.php:511
 msgid "Manifest matches the file bytes:"
 msgstr "Manifest odpovídá bajtům souboru:"
 
-#: admin/class-media-library.php:477
+#: admin/class-media-library.php:513
 msgid "Signer"
 msgstr "Podepisující"
 
-#: admin/class-media-library.php:478
+#: admin/class-media-library.php:514
 msgid "Organisation"
 msgstr "Organizace"
 
-#: admin/class-media-library.php:479
+#: admin/class-media-library.php:516
 msgid "Claim generator"
 msgstr "Generátor deklarace"
 
-#: admin/class-media-library.php:480
+#: admin/class-media-library.php:517
 msgid "Action time in the manifest"
 msgstr "Čas akce v manifestu"
 
-#: admin/class-media-library.php:486
-msgid ""
-"According to the manifest. The signature and the signer's certificate are "
-"not verified; the check only tells whether the manifest describes exactly "
-"this file."
-msgstr ""
-"Podle manifestu. Podpis ani certifikát podepisujícího se neověřují, kontrola"
-" jen zjišťuje, zda manifest popisuje přesně tento soubor."
-
-#: admin/class-media-library.php:650
+#: admin/class-media-library.php:704
 msgid "The files changed since the last detection scan."
 msgstr "Soubory se od poslední detekční kontroly změnily."
 
-#: admin/class-media-library.php:650
+#: admin/class-media-library.php:704
 msgid "changed"
 msgstr "změněno"
 
-#: admin/class-settings.php:328
+#: admin/class-settings.php:328 admin/class-wizard.php:375
 msgid "Official EU icon (Commission, June 2026)"
 msgstr "Oficiální ikona EU (Komise, červen 2026)"
 
@@ -3246,3 +3185,392 @@ msgstr ""
 "nesbírají žádná data a nenastavují se žádné cookies. Jediný HTTP požadavek, "
 "který plugin může provést, je volitelná kontrola doručení, která stáhne "
 "jeden obrázek přímo z tohoto webu, aby ověřila, že CDN deklaraci zachovává."
+
+#: admin/class-media-library.php:384
+msgid "valid, signed with a certificate on the C2PA trust list"
+msgstr ""
+
+#: admin/class-media-library.php:386
+msgid ""
+"valid, but the signer is not on the C2PA trust list (a test, self-made or "
+"unlisted certificate)"
+msgstr ""
+
+#: admin/class-media-library.php:390
+msgid "invalid, the signature does not match the manifest"
+msgstr ""
+
+#: admin/class-media-library.php:394
+msgid "invalid, a part of the manifest was changed after signing"
+msgstr ""
+
+#: admin/class-media-library.php:396
+msgid "invalid, the certificate was not valid at the time of signing"
+msgstr ""
+
+#: admin/class-media-library.php:398
+msgid "invalid, the certificate is not allowed to sign Content Credentials"
+msgstr ""
+
+#: admin/class-media-library.php:400
+msgid "invalid, the time stamp does not hold"
+msgstr ""
+
+#: admin/class-media-library.php:402
+msgid "invalid, the certificate chain does not hold"
+msgstr ""
+
+#: admin/class-media-library.php:405
+msgid "not checkable, unknown signature algorithm"
+msgstr ""
+
+#: admin/class-media-library.php:408
+msgid "not checkable, the server lacks the OpenSSL or sodium functions"
+msgstr ""
+
+#: admin/class-media-library.php:410
+msgid "not checked"
+msgstr ""
+
+#: admin/class-media-library.php:510
+msgid "Signature:"
+msgstr ""
+
+#: admin/class-media-library.php:515
+msgid "Certificate issued by"
+msgstr ""
+
+#. translators: 1: date and time (UTC), 2: name of the time stamp authority.
+#: admin/class-media-library.php:527
+#, php-format
+msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
+msgstr ""
+
+#. translators: 1: date and time (UTC), 2: name of the time stamp authority.
+#: admin/class-media-library.php:527
+#, php-format
+msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
+msgstr ""
+
+#: admin/class-media-library.php:533
+msgid ""
+"Checked on your server: the signature, the hashes of every part of the "
+"manifest, the certificate chain against the C2PA trust list and a time "
+"stamp. Certificate revocation is not checked."
+msgstr ""
+
+#: admin/class-setup.php:166 admin/class-wizard.php:47
+#: admin/class-wizard.php:242
+msgid "Setup assistant"
+msgstr ""
+
+#: admin/class-setup.php:167
+msgid ""
+"Six short steps through what matters once: what your site uses, the scan of "
+"the existing library, the look of the visible label, the file metadata and, "
+"where relevant, AI-written text and the chatbot. Nothing is labeled without "
+"your review, and no request leaves your server."
+msgstr ""
+
+#. translators: 1: number of media files, 2: number already scanned.
+#: admin/class-setup.php:173
+#, php-format
+msgid "%1$d media files, %2$d of them scanned."
+msgstr ""
+
+#: admin/class-setup.php:181
+msgid "Open the setup assistant"
+msgstr ""
+
+#: admin/class-wizard.php:48
+msgid "Setup"
+msgstr ""
+
+#: admin/class-wizard.php:69 admin/class-wizard.php:295
+msgid "Start"
+msgstr ""
+
+#: admin/class-wizard.php:70
+msgid "Your site"
+msgstr ""
+
+#: admin/class-wizard.php:71
+msgid "Images"
+msgstr ""
+
+#: admin/class-wizard.php:72
+msgid "Visible label"
+msgstr ""
+
+#: admin/class-wizard.php:74
+msgid "Text and chat"
+msgstr ""
+
+#: admin/class-wizard.php:244
+msgid "Setup steps"
+msgstr ""
+
+#: admin/class-wizard.php:295
+msgid "Save and continue"
+msgstr ""
+
+#: admin/class-wizard.php:299
+msgid "Back"
+msgstr ""
+
+#: admin/class-wizard.php:303
+msgid "Not now, I will set it up myself"
+msgstr ""
+
+#: admin/class-wizard.php:314
+msgid "Welcome to TransparAI"
+msgstr ""
+
+#: admin/class-wizard.php:315
+msgid ""
+"In six short steps the assistant sets up what the EU AI Act asks of a "
+"website that uses AI: it finds the AI images already in your media library, "
+"adds a visible label where one is due, keeps the machine-readable marking in"
+" your files and, if your site has them, sets up the notes for AI-written "
+"text and for a chatbot."
+msgstr ""
+
+#: admin/class-wizard.php:317
+msgid ""
+"Everything runs on your server. No account, no telemetry, no request to an "
+"outside service."
+msgstr ""
+
+#: admin/class-wizard.php:318
+msgid ""
+"Every choice can be changed later in the settings; nothing here is final."
+msgstr ""
+
+#: admin/class-wizard.php:319
+msgid ""
+"The plugin is a technical tool and gives no legal advice. Whether a duty "
+"applies to your site is your decision."
+msgstr ""
+
+#: admin/class-wizard.php:330
+msgid "What does your site use?"
+msgstr ""
+
+#: admin/class-wizard.php:331
+msgid ""
+"Six questions decide which of the following steps matter for you. The "
+"answers also appear in the self-assessment and in the compliance report."
+msgstr ""
+
+#: admin/class-wizard.php:351
+msgid "Find the AI images in your library"
+msgstr ""
+
+#: admin/class-wizard.php:352
+msgid ""
+"The plugin reads the provenance data AI generators leave in their files: "
+"Content Credentials (C2PA, signature checked), the IPTC digital source type "
+"and the generation parameters of local tools. It never guesses from image "
+"size, file size or file name."
+msgstr ""
+
+#: admin/class-wizard.php:354
+msgid "What should happen with a clear AI declaration?"
+msgstr ""
+
+#: admin/class-wizard.php:355
+msgid ""
+"Label it right away; only uncertain findings wait in the review queue "
+"(recommended)"
+msgstr ""
+
+#: admin/class-wizard.php:356
+msgid "Put every finding into the review queue; I confirm each one myself"
+msgstr ""
+
+#: admin/class-wizard.php:361
+msgid ""
+"The scan runs in small batches while this page is open and can be paused; "
+"you can also continue and scan later from the AI Images screen. New uploads "
+"are checked automatically from now on."
+msgstr ""
+
+#: admin/class-wizard.php:373
+msgid "Look"
+msgstr ""
+
+#: admin/class-wizard.php:383
+msgid "Position"
+msgstr ""
+
+#: admin/class-wizard.php:392
+msgid "Placement"
+msgstr ""
+
+#: admin/class-wizard.php:399
+msgid "Size"
+msgstr ""
+
+#: admin/class-wizard.php:408
+msgid "How should the visible label look?"
+msgstr ""
+
+#: admin/class-wizard.php:409
+msgid ""
+"The EU AI Act asks for a label that is noticeable at the first look, on or "
+"right next to the image. The badge appears on every labeled image, in the "
+"content, in featured images, in page builders and in WooCommerce."
+msgstr ""
+
+#: admin/class-wizard.php:424
+msgid "Show the visible badge"
+msgstr ""
+
+#: admin/class-wizard.php:425
+msgid ""
+"Only for media uploaded since 2 August 2026, when Article 50 started to "
+"apply (older content is not covered retroactively; the file metadata is "
+"written either way)"
+msgstr ""
+
+#: admin/class-wizard.php:437
+msgid ""
+"Write the IPTC digital source type into labeled files (XMP, every image "
+"size). Search engines and other tools read it, and it travels with the "
+"image."
+msgstr ""
+
+#: admin/class-wizard.php:438
+msgid ""
+"Also mirror it into the classic IPTC block of JPEG files, for older tools."
+msgstr ""
+
+#: admin/class-wizard.php:439
+msgid ""
+"Restore the declaration when an image optimizer or a regenerated thumbnail "
+"strips it (hourly check)."
+msgstr ""
+
+#: admin/class-wizard.php:440
+msgid ""
+"Add structured data (Schema.org digitalSourceType) for labeled media to the "
+"page, for search engines and AI answer engines."
+msgstr ""
+
+#: admin/class-wizard.php:443
+msgid "Machine-readable marking"
+msgstr ""
+
+#: admin/class-wizard.php:444
+msgid ""
+"The marking in the file is what lets other systems recognise AI content "
+"without looking at your page. Existing metadata is kept; removing a label "
+"removes exactly what the plugin wrote."
+msgstr ""
+
+#: admin/class-wizard.php:461
+msgid "AI-written text and chatbots"
+msgstr ""
+
+#: admin/class-wizard.php:463
+msgid ""
+"According to your answers your site publishes no AI-written text and runs no"
+" chatbot, so there is nothing to set up here. Both can be switched on later "
+"in the settings."
+msgstr ""
+
+#: admin/class-wizard.php:468
+msgid "Where should the note on AI-written posts appear?"
+msgstr ""
+
+#: admin/class-wizard.php:469
+msgid ""
+"Each post gets an AI level (no AI, assisted, generated, generated and "
+"reviewed) in the editor; the note follows that level."
+msgstr ""
+
+#: admin/class-wizard.php:472
+msgid "Before the text"
+msgstr ""
+
+#: admin/class-wizard.php:473
+msgid "After the text"
+msgstr ""
+
+#: admin/class-wizard.php:474
+msgid "Before and after"
+msgstr ""
+
+#: admin/class-wizard.php:475
+msgid "Only where I place the block or shortcode"
+msgstr ""
+
+#: admin/class-wizard.php:485
+msgid "Who answers in your chat?"
+msgstr ""
+
+#: admin/class-wizard.php:486
+msgid ""
+"Visitors must know when they talk to an AI. The notice appears in the chat "
+"or next to it, depending on the chat plugin."
+msgstr ""
+
+#: admin/class-wizard.php:490
+msgid "An AI first, a person takes over when needed"
+msgstr ""
+
+#: admin/class-wizard.php:491
+msgid "Only people answer (no AI notice)"
+msgstr ""
+
+#: admin/class-wizard.php:511
+msgid "Official EU icon"
+msgstr ""
+
+#: admin/class-wizard.php:515
+msgid "Icon only"
+msgstr ""
+
+#: admin/class-wizard.php:518
+msgid "Your setup"
+msgstr ""
+
+#. translators: 1: number of scanned media files, 2: number of media files.
+#: admin/class-wizard.php:525
+#, php-format
+msgid "Media library: %1$d of %2$d files scanned."
+msgstr ""
+
+#. translators: %s: badge style name.
+#: admin/class-wizard.php:537
+#, php-format
+msgid "Visible badge: on, style \"%s\"."
+msgstr ""
+
+#: admin/class-wizard.php:538
+msgid "Visible badge: off."
+msgstr ""
+
+#: admin/class-wizard.php:542
+msgid "File metadata: written into labeled files."
+msgstr ""
+
+#: admin/class-wizard.php:542
+msgid "File metadata: not written."
+msgstr ""
+
+#. translators: %d: readiness score from 0 to 100.
+#: admin/class-wizard.php:548
+#, php-format
+msgid "Readiness score: %d of 100."
+msgstr ""
+
+#: admin/class-wizard.php:557
+msgid "What your answers make relevant"
+msgstr ""
+
+#: admin/class-wizard.php:568
+msgid ""
+"The dashboard keeps the score and the open steps in view. This assistant "
+"stays available from the dashboard and the settings."
+msgstr ""
