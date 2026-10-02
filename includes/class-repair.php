@@ -77,6 +77,28 @@ final class TransparAI_Repair {
 	}
 
 	/**
+	 * Store the file fingerprint as of the last detection scan.
+	 *
+	 * Kept apart from the writer's fingerprint: the writer refreshes its own
+	 * after every write, while this one answers "did anything touch the files
+	 * since the detector last looked at them".
+	 */
+	public static function remember_scan( int $attachment_id ): void {
+		update_post_meta( $attachment_id, TransparAI_Meta::KEY_SCAN_FP, self::fingerprint( $attachment_id ) );
+	}
+
+	/**
+	 * Whether the files changed since the last detection scan, null when no scan fingerprint exists.
+	 */
+	public static function changed_since_scan( int $attachment_id ): ?bool {
+		$stored = get_post_meta( $attachment_id, TransparAI_Meta::KEY_SCAN_FP, true );
+		if ( ! is_array( $stored ) || array() === $stored ) {
+			return null;
+		}
+		return self::fingerprint( $attachment_id ) !== $stored;
+	}
+
+	/**
 	 * size+mtime per file, cheap change detection without re-parsing.
 	 *
 	 * @return array<string, array{size:int, mtime:int}>

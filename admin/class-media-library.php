@@ -35,6 +35,7 @@ final class TransparAI_Media_Library {
 		add_action( 'wp_enqueue_media', array( self::class, 'enqueue_media_assets' ) );
 
 		add_filter( 'manage_media_columns', array( self::class, 'media_column' ) );
+		add_filter( 'manage_upload_sortable_columns', array( self::class, 'sortable_column' ) );
 		add_action( 'manage_media_custom_column', array( self::class, 'media_column_content' ), 10, 2 );
 		add_action( 'restrict_manage_posts', array( self::class, 'list_filter_dropdown' ) );
 		add_action( 'pre_get_posts', array( self::class, 'list_filter_query' ) );
@@ -43,6 +44,43 @@ final class TransparAI_Media_Library {
 		add_filter( 'bulk_actions-upload', array( self::class, 'bulk_actions' ) );
 		add_filter( 'handle_bulk_actions-upload', array( self::class, 'handle_bulk' ), 10, 3 );
 		add_action( 'admin_notices', array( self::class, 'bulk_notice' ) );
+		add_action( 'admin_notices', array( self::class, 'review_hint' ) );
+		add_action( 'admin_post_transparai_review_hint', array( self::class, 'dismiss_review_hint' ) );
+	}
+
+	public const USER_REVIEW_HINT = 'transparai_review_hint_dismissed';
+
+	/**
+	 * Above the review queue: the three questions that decide whether a
+	 * detected image needs a label at all. Shown until the user hides it.
+	 */
+	public static function review_hint(): void {
+		$filter = isset( $_GET['transparai_filter'] ) ? sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only hint on the list filter.
+		if ( 'detected' !== $filter ) {
+			return;
+		}
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( ! $screen || 'upload' !== $screen->id || '1' === (string) get_user_meta( get_current_user_id(), self::USER_REVIEW_HINT, true ) ) {
+			return;
+		}
+		$dismiss = wp_nonce_url( admin_url( 'admin-post.php?action=transparai_review_hint' ), 'transparai_review_hint' );
+		echo '<div class="notice notice-info trai-review-hint"><p><strong>' . esc_html__( 'Does this image need a label?', 'transparai' ) . '</strong> '
+			. esc_html__( 'Article 50(4) of the EU AI Act asks deployers to disclose deepfakes: AI images that look like real people, places, objects or events and could pass for genuine, including realistic product shots and stock-style photos. Three questions help: Does it look like a photograph of something real? Was it published on or after 2 August 2026? Is it more than an obvious illustration or cartoon? Labeling never hurts, and the machine-readable marking is written either way; this hint is not legal advice.', 'transparai' )
+			. ' <a href="' . esc_url( $dismiss ) . '">' . esc_html__( 'Hide this note', 'transparai' ) . '</a></p></div>';
+	}
+
+	/**
+	 * Remember that this user has read the review hint.
+	 */
+	public static function dismiss_review_hint(): void {
+		if ( ! current_user_can( 'upload_files' ) ) {
+			wp_die( esc_html__( 'You are not allowed to do that.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_review_hint' );
+		update_user_meta( get_current_user_id(), self::USER_REVIEW_HINT, '1' );
+		$referer = (string) wp_get_referer();
+		wp_safe_redirect( '' !== $referer ? $referer : admin_url( 'upload.php?mode=list&transparai_filter=detected' ) );
+		exit;
 	}
 
 	/**
@@ -338,6 +376,29 @@ final class TransparAI_Media_Library {
 	}
 
 	/**
+	 * Human-readable data hash state.
+	 */
+	public static function c2pa_hash_label( string $hash, string $reason ): string {
+		switch ( $hash ) {
+			case 'match':
+				return __( 'yes, the manifest was written for exactly these bytes', 'transparai' );
+			case 'mismatch':
+				return __( 'no, the image was changed after signing or the manifest was copied from another file', 'transparai' );
+		}
+		switch ( $reason ) {
+			case 'no_hash_data':
+				return __( 'not checkable, the manifest has no data hash (an update manifest)', 'transparai' );
+			case 'unknown_alg':
+				return __( 'not checkable, unknown hash algorithm', 'transparai' );
+			case 'bmff':
+				return __( 'not checked for video and ISO-BMFF containers', 'transparai' );
+			case 'too_large':
+				return __( 'not checked, the file is larger than 64 MB', 'transparai' );
+		}
+		return __( 'not checkable, the manifest could not be read completely', 'transparai' );
+	}
+
+	/**
 	 * Escaped markup of the inspection panel.
 	 */
 	private static function inspect_html( int $attachment_id ): string {
@@ -378,12 +439,52 @@ final class TransparAI_Media_Library {
 				$tone  = 'na';
 			}
 			$html .= '<li><code>' . esc_html( $file['name'] ) . '</code>'
-				. '<span class="trai-inspect-state trai-inspect-state--' . esc_attr( $tone ) . '">' . esc_html( $state ) . '</span></li>';
+				. '<span class="trai-inspect-state trai-inspect-state--' . esc_attr( $tone ) . '">' . esc_html( $state ) . '</span>'
+				. ( $file['c2pa'] ? '<span class="trai-inspect-state trai-inspect-state--cc">' . esc_html__( 'Content Credentials', 'transparai' ) . '</span>' : '' )
+				. '</li>';
 		}
 		if ( array() === $data['files'] ) {
 			$html .= '<li>' . esc_html__( 'No readable file found for this attachment.', 'transparai' ) . '</li>';
 		}
-		$html .= '</ul></div>';
+		$html .= '</ul>';
+
+		/*
+		 * WordPress re-encodes every size variant, which drops the C2PA
+		 * manifest of the original. That loss is a fact worth knowing for an
+		 * Article 50 record, so it is named here instead of hiding in the list.
+		 */
+		$with_cc = count( array_filter( array_column( $data['files'], 'c2pa' ) ) );
+		if ( $with_cc > 0 && $with_cc < count( $data['files'] ) ) {
+			$html .= '<p class="trai-inspect-note">' . esc_html(
+				sprintf(
+					/* translators: 1: number of files without Content Credentials, 2: total number of files. */
+					__( 'Content Credentials are present in the original, but %1$d of %2$d files (the size variants WordPress generates) do not carry the manifest. The digital source type this plugin writes into every file is not affected.', 'transparai' ),
+					count( $data['files'] ) - $with_cc,
+					count( $data['files'] )
+				)
+			) . '</p>';
+		}
+		if ( true === TransparAI_Repair::changed_since_scan( $attachment_id ) ) {
+			$html .= '<p class="trai-inspect-note trai-inspect-note--warn">' . esc_html__( 'The files changed since the last detection scan. Use Re-check to look at them again.', 'transparai' ) . '</p>';
+		}
+		$html .= '</div>';
+
+		$c2pa = TransparAI_Meta::c2pa( $attachment_id );
+		if ( null !== $c2pa ) {
+			$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Content Credentials (C2PA)', 'transparai' ) . '</h4><ul class="trai-inspect-c2pa">';
+			$html .= '<li>' . esc_html__( 'Manifest matches the file bytes:', 'transparai' ) . ' <strong>' . esc_html( self::c2pa_hash_label( (string) ( $c2pa['hash'] ?? '' ), (string) ( $c2pa['reason'] ?? '' ) ) ) . '</strong></li>';
+			foreach ( array(
+				'signer_cn' => __( 'Signer', 'transparai' ),
+				'signer_o'  => __( 'Organisation', 'transparai' ),
+				'generator' => __( 'Claim generator', 'transparai' ),
+				'when'      => __( 'Action time in the manifest', 'transparai' ),
+			) as $key => $label ) {
+				if ( '' !== (string) ( $c2pa[ $key ] ?? '' ) ) {
+					$html .= '<li>' . esc_html( $label ) . ': ' . esc_html( (string) $c2pa[ $key ] ) . '</li>';
+				}
+			}
+			$html .= '</ul><p class="trai-inspect-note">' . esc_html__( 'According to the manifest. The signature and the signer\'s certificate are not verified; the check only tells whether the manifest describes exactly this file.', 'transparai' ) . '</p></div>';
+		}
 
 		$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Digital source type in the main file', 'transparai' ) . '</h4>';
 		if ( array() === $data['terms'] ) {
@@ -537,6 +638,17 @@ final class TransparAI_Media_Library {
 		} elseif ( TransparAI_Meta::is_human( $id ) ) {
 			echo '<span class="trai-list-badge trai-list-badge--human" title="' . esc_attr( TransparAI_Meta::human_type( $id ) ) . '">' . esc_html( TransparAI_Frontend::human_short_label() ) . '</span>';
 		}
+
+		$c2pa = TransparAI_Meta::c2pa( $id );
+		if ( null !== $c2pa ) {
+			$hash  = (string) ( $c2pa['hash'] ?? '' );
+			$title = trim( implode( ' · ', array_filter( array( (string) ( $c2pa['signer_cn'] ?? '' ), (string) ( $c2pa['signer_o'] ?? '' ), (string) ( $c2pa['generator'] ?? '' ) ) ) ) );
+			echo '<span class="trai-list-c2pa trai-list-c2pa--' . esc_attr( in_array( $hash, array( 'match', 'mismatch' ), true ) ? $hash : 'unsupported' ) . '" title="'
+				. esc_attr( self::c2pa_hash_label( $hash, (string) ( $c2pa['reason'] ?? '' ) ) . ( '' !== $title ? ' (' . $title . ')' : '' ) ) . '">C2PA</span>';
+		}
+		if ( true === TransparAI_Repair::changed_since_scan( $id ) ) {
+			echo '<span class="trai-list-changed" title="' . esc_attr__( 'The files changed since the last detection scan.', 'transparai' ) . '">' . esc_html__( 'changed', 'transparai' ) . '</span>';
+		}
 	}
 
 	/**
@@ -560,16 +672,62 @@ final class TransparAI_Media_Library {
 	 * Apply the list filter to the main query.
 	 */
 	public static function list_filter_query( WP_Query $query ): void {
-		if ( ! is_admin() || ! $query->is_main_query() ) {
+		if ( ! is_admin() || ! $query->is_main_query() || 'attachment' !== $query->get( 'post_type' ) ) {
 			return;
 		}
-		if ( 'attachment' !== $query->get( 'post_type' ) || ! isset( $_GET['transparai_filter'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter.
-			return;
+		if ( isset( $_GET['transparai_filter'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter.
+			$meta_query = TransparAI_Meta::meta_query( sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- see above.
+			if ( null !== $meta_query ) {
+				$query->set( 'meta_query', $meta_query ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- user-requested library filter.
+			}
 		}
-		$meta_query = TransparAI_Meta::meta_query( sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- see above.
-		if ( null !== $meta_query ) {
-			$query->set( 'meta_query', $meta_query ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- user-requested library filter.
+		if ( 'transparai' === $query->get( 'orderby' ) ) {
+			add_filter( 'posts_clauses', array( self::class, 'sort_clauses' ), 10, 2 );
 		}
+	}
+
+	/**
+	 * Sort by label state: labeled, in review, declared not AI, nothing.
+	 *
+	 * The flags are deleted rather than set to '0', so a meta_key sort would
+	 * drop every unlabeled file from the list, and meta_query EXISTS clauses
+	 * join without the key and order by whichever meta row comes first. Three
+	 * keyed LEFT JOINs give every attachment one rank instead.
+	 *
+	 * @param array<string, string> $clauses Query clauses.
+	 * @param WP_Query              $query   The query.
+	 * @return array<string, string>
+	 */
+	public static function sort_clauses( array $clauses, WP_Query $query ): array {
+		global $wpdb;
+		remove_filter( 'posts_clauses', array( self::class, 'sort_clauses' ), 10 );
+		if ( ! $query->is_main_query() ) {
+			return $clauses;
+		}
+		$order = 'ASC' === strtoupper( (string) $query->get( 'order' ) ) ? 'ASC' : 'DESC';
+
+		$clauses['join']   .= $wpdb->prepare(
+			" LEFT JOIN {$wpdb->postmeta} AS trai_ai ON ( trai_ai.post_id = {$wpdb->posts}.ID AND trai_ai.meta_key = %s )"
+			. " LEFT JOIN {$wpdb->postmeta} AS trai_det ON ( trai_det.post_id = {$wpdb->posts}.ID AND trai_det.meta_key = %s )"
+			. " LEFT JOIN {$wpdb->postmeta} AS trai_hum ON ( trai_hum.post_id = {$wpdb->posts}.ID AND trai_hum.meta_key = %s )",
+			TransparAI_Meta::KEY_FLAG,
+			TransparAI_Meta::KEY_DETECTED,
+			TransparAI_Meta::KEY_HUMAN
+		);
+		$clauses['groupby'] = "{$wpdb->posts}.ID";
+		$clauses['orderby'] = "CASE WHEN trai_ai.meta_id IS NOT NULL THEN 3 WHEN trai_det.meta_id IS NOT NULL THEN 2 WHEN trai_hum.meta_id IS NOT NULL THEN 1 ELSE 0 END {$order}, {$wpdb->posts}.post_date DESC";
+		return $clauses;
+	}
+
+	/**
+	 * The AI column sorts by label state.
+	 *
+	 * @param array<string, string> $columns Sortable columns.
+	 * @return array<string, string>
+	 */
+	public static function sortable_column( array $columns ): array {
+		$columns['transparai'] = 'transparai';
+		return $columns;
 	}
 
 	/**

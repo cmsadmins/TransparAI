@@ -160,6 +160,14 @@ p .trai-wrap {
 	pointer-events: auto;
 }
 
+/* Builders position the direct children of their rows: WPBakery's parallax
+   rows set .vc_parallax > * { position: relative }, loaded after this file,
+   which pulled the background badge into the flow as a full-width line on
+   top of the row. A badge that is a host's own overlay stays absolute. */
+.trai-bg-host.trai-mode-overlay:not(.trai-badge-below) > .trai-badge {
+	position: absolute;
+}
+
 /* Positions */
 .trai-pos-bottom-right .trai-badge { right: 8px; bottom: 8px; }
 .trai-pos-bottom-left .trai-badge { left: 8px; bottom: 8px; }
@@ -205,6 +213,77 @@ p .trai-wrap {
 	line-height: 1;
 	font-weight: 700;
 	letter-spacing: 0.03em;
+}
+
+/* EU icon: the Commission's own label graphic (assets/img/eu/SOURCE.md). The
+   icon brings its own pill shape and colours, so the badge box, the colour
+   settings and the short text label step back; the full text stays in the
+   DOM for screen readers and comes back as a caption line. */
+.trai-style-eu-icon .trai-badge:not(.trai-badge--human) {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	border-radius: 0;
+	line-height: 0;
+	text-shadow: none;
+	max-width: none;
+	font-size: 0;
+}
+
+.trai-style-eu-icon .trai-badge:not(.trai-badge--human)::after,
+.trai-style-eu-icon .trai-badge--mini:not(.trai-badge--human)::after {
+	content: none;
+}
+
+/* The icon element exists only with this style (and in the settings preview,
+   which switches styles live), so it is hidden unless the style is active. */
+.trai-eu {
+	display: none;
+}
+
+.trai-style-eu-icon .trai-eu {
+	display: block;
+	height: 22px;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	border: 0;
+	box-shadow: none;
+}
+
+.trai-style-eu-icon.trai-size-small .trai-eu { height: 16px; }
+.trai-style-eu-icon.trai-size-large .trai-eu { height: 30px; }
+.trai-style-eu-icon .trai-badge--mini .trai-eu { height: 14px; }
+
+/* Theme and block styles size every img inside content, gallery blocks even
+   with max-width: 100% !important. Inside a shrink-to-fit badge that resolves
+   to zero and the icon disappears, so its box is pinned here: the doubled
+   class outranks those selectors, !important answers theirs. */
+.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu {
+	width: auto !important;
+	min-width: 0 !important;
+	max-width: none !important;
+	height: 22px !important;
+	max-height: none !important;
+	object-fit: contain !important;
+	flex: none !important;
+	position: static !important;
+	transform: none !important;
+	opacity: 1 !important;
+}
+
+.trai-style-eu-icon.trai-size-small .trai-badge img.trai-eu.trai-eu { height: 16px !important; }
+.trai-style-eu-icon.trai-size-large .trai-badge img.trai-eu.trai-eu { height: 30px !important; }
+/* Small media: the mini icon wins over every size setting. */
+.trai-style-eu-icon .trai-badge.trai-badge--mini img.trai-eu.trai-eu { height: 14px !important; }
+
+.trai-style-eu-icon .trai-badge-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
 }
 
 /* Caption mode: static line below the media instead of an overlay. Video and
@@ -269,6 +348,47 @@ p .trai-wrap {
 .trai-avwrap .trai-badge::after,
 .trai-badge-below .trai-badge::after {
 	content: none;
+}
+
+/* In a caption line the EU icon sits inline before the readable text. The
+   style class is on the wrapper, the caption context on the wrapper itself
+   or on a container above it. */
+.trai-mode-caption.trai-style-eu-icon .trai-eu,
+.trai-avwrap.trai-style-eu-icon .trai-eu,
+.trai-badge-below.trai-style-eu-icon .trai-eu,
+.trai-badge-below .trai-style-eu-icon .trai-eu {
+	display: inline-block;
+	height: 18px;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+.trai-mode-caption.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu,
+.trai-avwrap.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu,
+.trai-badge-below.trai-style-eu-icon .trai-badge img.trai-eu.trai-eu,
+.trai-badge-below .trai-style-eu-icon .trai-badge img.trai-eu.trai-eu {
+	height: 18px !important;
+}
+
+.trai-mode-caption.trai-style-eu-icon .trai-badge-text,
+.trai-avwrap.trai-style-eu-icon .trai-badge-text,
+.trai-badge-below.trai-style-eu-icon .trai-badge-text,
+.trai-badge-below .trai-style-eu-icon .trai-badge-text {
+	position: static;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	clip: auto;
+	white-space: normal;
+	vertical-align: middle;
+}
+
+.trai-mode-caption.trai-style-eu-icon .trai-badge,
+.trai-avwrap.trai-style-eu-icon .trai-badge,
+.trai-badge-below.trai-style-eu-icon .trai-badge,
+.trai-badge-below .trai-style-eu-icon .trai-badge {
+	font-size: 12px;
+	line-height: 1.4;
 }
 
 /* Manual badge placement: one of these classes on ANY container (every

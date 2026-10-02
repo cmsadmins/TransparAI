@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.5\n"
+"Project-Id-Version: TransparAI 1.1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: ro_RO\n"
@@ -248,7 +248,7 @@ msgstr ""
 "și documentează ce ai decis. Parcurge pașii în această ordine; scorul de "
 "pregătire de mai sus se actualizează pe parcurs."
 
-#: admin/class-dashboard.php:223 admin/class-settings.php:746
+#: admin/class-dashboard.php:223 admin/class-settings.php:764
 msgid "Readiness score"
 msgstr "Scor de pregătire"
 
@@ -272,7 +272,7 @@ msgid "Open"
 msgstr "Deschise"
 
 #: admin/class-dashboard.php:255 admin/class-dashboard.php:259
-#: admin/class-settings.php:748 admin/class-settings.php:767
+#: admin/class-settings.php:766 admin/class-settings.php:785
 msgid "Done"
 msgstr "Finalizate"
 
@@ -301,7 +301,7 @@ msgstr ""
 "adoptat. Amendamentele le pot schimba."
 
 #: admin/class-dashboard.php:316 admin/class-dashboard.php:1020
-#: admin/class-settings.php:819
+#: admin/class-settings.php:837
 msgid "Recent activity"
 msgstr "Activitate recentă"
 
@@ -313,11 +313,11 @@ msgstr ""
 "Nimic înregistrat încă. Scanările, modificările setărilor, acțiunile în masă"
 " și declarările apar aici."
 
-#: admin/class-dashboard.php:322 admin/class-settings.php:820
+#: admin/class-dashboard.php:322 admin/class-settings.php:838
 msgid "When"
 msgstr "Când"
 
-#: admin/class-dashboard.php:323 admin/class-settings.php:820
+#: admin/class-dashboard.php:323 admin/class-settings.php:838
 msgid "Event"
 msgstr "Eveniment"
 
@@ -325,11 +325,11 @@ msgstr "Eveniment"
 msgid "Details"
 msgstr "Detalii"
 
-#: admin/class-dashboard.php:325 admin/class-settings.php:820
+#: admin/class-dashboard.php:325 admin/class-settings.php:838
 msgid "By"
 msgstr "De către"
 
-#: admin/class-dashboard.php:333 admin/class-media-library.php:408
+#: admin/class-dashboard.php:333 admin/class-media-library.php:509
 msgid "system"
 msgstr "sistem"
 
@@ -337,7 +337,7 @@ msgstr "sistem"
 msgid "The first-run setup is not finished yet."
 msgstr "Configurarea inițială nu este încă finalizată."
 
-#: admin/class-dashboard.php:378 admin/class-settings.php:873
+#: admin/class-dashboard.php:378 admin/class-settings.php:891
 msgid "Open setup"
 msgstr "Deschide configurarea"
 
@@ -354,17 +354,17 @@ msgid "Labeled media"
 msgstr "Media etichetate"
 
 #: admin/class-dashboard.php:398 admin/class-dashboard.php:957
-#: admin/class-settings.php:859
+#: admin/class-settings.php:877
 msgid "Waiting for review"
 msgstr "În așteptarea verificării"
 
 #: admin/class-dashboard.php:402 admin/class-dashboard.php:961
-#: admin/class-settings.php:232
+#: admin/class-settings.php:230
 msgid "AI systems"
 msgstr "Sisteme IA"
 
 #: admin/class-dashboard.php:406 admin/class-dashboard.php:432
-#: admin/class-dashboard.php:935 admin/class-settings.php:754
+#: admin/class-dashboard.php:935 admin/class-settings.php:772
 msgid "Self-assessment"
 msgstr "Autoevaluare"
 
@@ -377,7 +377,7 @@ msgstr "Listă de verificare pentru alfabetizarea IA"
 msgid "Compliance report"
 msgstr "Raport de conformitate"
 
-#: admin/class-dashboard.php:409 admin/class-settings.php:870
+#: admin/class-dashboard.php:409 admin/class-settings.php:888
 msgid "Export audit CSV"
 msgstr "Exportă auditul CSV"
 
@@ -412,13 +412,13 @@ msgstr ""
 "actualizează răspunsurile ori de câte ori site-ul începe sau încetează să "
 "folosească IA într-unul dintre aceste moduri."
 
-#: admin/class-dashboard.php:444 admin/class-settings.php:516
-#: admin/class-settings.php:742
+#: admin/class-dashboard.php:444 admin/class-settings.php:534
+#: admin/class-settings.php:760
 msgid "Yes"
 msgstr "Da"
 
-#: admin/class-dashboard.php:445 admin/class-settings.php:517
-#: admin/class-settings.php:743
+#: admin/class-dashboard.php:445 admin/class-settings.php:535
+#: admin/class-settings.php:761
 msgid "No"
 msgstr "Nu"
 
@@ -454,7 +454,7 @@ msgstr ""
 msgid "Use of AI"
 msgstr "Utilizarea IA"
 
-#: admin/class-dashboard.php:475 admin/class-settings.php:758
+#: admin/class-dashboard.php:475 admin/class-settings.php:776
 msgid "What the AI Act says"
 msgstr "Ce spune AI Act"
 
@@ -526,8 +526,8 @@ msgstr ""
 "Ambele părți ale acestui ecran ajung în raportul de conformitate, documentul"
 " pe care îl păstrezi pentru arhiva ta sau îl dai celui care îl cere."
 
-#: admin/class-dashboard.php:602 admin/class-settings.php:554
-#: admin/class-settings.php:773
+#: admin/class-dashboard.php:602 admin/class-settings.php:572
+#: admin/class-settings.php:791
 msgid "AI systems in use"
 msgstr "Sisteme IA în uz"
 
@@ -562,16 +562,16 @@ msgstr "Niciun sistem IA detectat sau declarat încă."
 msgid "Visible"
 msgstr "Vizibil"
 
-#: admin/class-dashboard.php:627 admin/class-settings.php:777
+#: admin/class-dashboard.php:627 admin/class-settings.php:795
 msgid "System"
 msgstr "Sistem"
 
 #: admin/class-dashboard.php:628 admin/class-dashboard.php:676
-#: admin/class-settings.php:777
+#: admin/class-settings.php:795
 msgid "Category"
 msgstr "Categorie"
 
-#: admin/class-dashboard.php:629 admin/class-settings.php:777
+#: admin/class-dashboard.php:629 admin/class-settings.php:795
 msgid "Articles"
 msgstr "Articole AI Act"
 
@@ -636,7 +636,7 @@ msgstr "Numele sistemului"
 msgid "Declare"
 msgstr "Declară"
 
-#: admin/class-dashboard.php:762 admin/class-settings.php:803
+#: admin/class-dashboard.php:762 admin/class-settings.php:821
 msgid "AI-written content"
 msgstr "Conținut scris cu IA"
 
@@ -695,7 +695,7 @@ msgstr ""
 "respingere, declarare ca fotografie de aparat foto sau ca lucrare umană)."
 
 #: admin/class-dashboard.php:840 admin/class-dashboard.php:956
-#: admin/class-settings.php:855
+#: admin/class-settings.php:873
 msgid "Labeled as AI"
 msgstr "Etichetate ca IA"
 
@@ -821,27 +821,27 @@ msgstr "din %1$s (%2$s)"
 msgid "%1$s (in %2$s)"
 msgstr "%1$s (în %2$s)"
 
-#: admin/class-media-library.php:74
+#: admin/class-media-library.php:112
 msgid "Media is AI-generated"
 msgstr "Media este generată de AI"
 
-#: admin/class-media-library.php:84 admin/class-media-library.php:377
+#: admin/class-media-library.php:122 admin/class-media-library.php:438
 msgid "no declaration"
 msgstr "fără declarație"
 
-#: admin/class-media-library.php:85
+#: admin/class-media-library.php:123
 msgid "camera photo (digitalCapture)"
 msgstr "fotografie de aparat foto (digitalCapture)"
 
-#: admin/class-media-library.php:86
+#: admin/class-media-library.php:124
 msgid "human digital work (digitalCreation)"
 msgstr "lucrare digitală umană (digitalCreation)"
 
-#: admin/class-media-library.php:88
+#: admin/class-media-library.php:126
 msgid "Not AI:"
 msgstr "Nu este IA:"
 
-#: admin/class-media-library.php:97
+#: admin/class-media-library.php:135
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
@@ -850,31 +850,31 @@ msgstr ""
 "scris). Starea etichetei în WordPress și metadatele din fișier pot să "
 "difere."
 
-#: admin/class-media-library.php:103
+#: admin/class-media-library.php:141
 msgid "Confirm AI label"
 msgstr "Confirmă eticheta AI"
 
-#: admin/class-media-library.php:104
+#: admin/class-media-library.php:142
 msgid "Not AI, dismiss"
 msgstr "Nu este IA, respinge"
 
-#: admin/class-media-library.php:109
+#: admin/class-media-library.php:147
 msgid "Re-check file metadata"
 msgstr "Reverifică metadatele fișierului"
 
-#: admin/class-media-library.php:114
+#: admin/class-media-library.php:152
 msgid "Check delivery"
 msgstr "Verifică livrarea"
 
-#: admin/class-media-library.php:124 admin/class-media-library.php:496
+#: admin/class-media-library.php:162 admin/class-media-library.php:597
 msgid "Show file metadata"
 msgstr "Arată metadatele fișierului"
 
-#: admin/class-media-library.php:127
+#: admin/class-media-library.php:165
 msgid "AI content"
 msgstr "Conținut IA"
 
-#: admin/class-media-library.php:130
+#: admin/class-media-library.php:168
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
@@ -882,50 +882,50 @@ msgstr ""
 "Controlează insigna din partea publică, metadatele fișierului care pot fi "
 "citite automat și filtrul din biblioteca media."
 
-#: admin/class-media-library.php:136
+#: admin/class-media-library.php:174
 msgid "Default (site setting)"
 msgstr "Implicit (setare site)"
 
-#: admin/class-media-library.php:137 admin/class-settings.php:316
+#: admin/class-media-library.php:175 admin/class-settings.php:314
 msgid "Top left"
 msgstr "Stânga sus"
 
-#: admin/class-media-library.php:138 admin/class-settings.php:317
+#: admin/class-media-library.php:176 admin/class-settings.php:315
 msgid "Top right"
 msgstr "Dreapta sus"
 
-#: admin/class-media-library.php:139 admin/class-settings.php:318
+#: admin/class-media-library.php:177 admin/class-settings.php:316
 msgid "Bottom left"
 msgstr "Stânga jos"
 
-#: admin/class-media-library.php:140 admin/class-settings.php:319
+#: admin/class-media-library.php:178 admin/class-settings.php:317
 msgid "Bottom right"
 msgstr "Dreapta jos"
 
-#: admin/class-media-library.php:141 admin/class-settings.php:309
+#: admin/class-media-library.php:179 admin/class-settings.php:307
 msgid "Caption line below the image"
 msgstr "Linie de legendă sub imagine"
 
-#: admin/class-media-library.php:142
+#: admin/class-media-library.php:180
 msgid "Hide the visible badge on this image"
 msgstr "Ascunde insigna vizibilă în această imagine"
 
-#: admin/class-media-library.php:151
+#: admin/class-media-library.php:189
 msgid "Badge position"
 msgstr "Poziție insignă"
 
-#: admin/class-media-library.php:154
+#: admin/class-media-library.php:192
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
 "Se aplică numai acestei imagini. Folosește-o dacă un strat al temei acoperă "
 "insigna aici."
 
-#: admin/class-media-library.php:158
+#: admin/class-media-library.php:196
 msgid "AI generator"
 msgstr "Generator AI"
 
-#: admin/class-media-library.php:162
+#: admin/class-media-library.php:200
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
@@ -933,36 +933,36 @@ msgstr ""
 "Numele instrumentului IA, de exemplu „Midjourney”. Este afișat de opțiunea "
 "de sursă a insignei și de substituentul {generator}."
 
-#: admin/class-media-library.php:182
+#: admin/class-media-library.php:220
 msgid "certain"
 msgstr "sigur"
 
-#: admin/class-media-library.php:183
+#: admin/class-media-library.php:221
 msgid "likely"
 msgstr "probabil"
 
-#: admin/class-media-library.php:184
+#: admin/class-media-library.php:222
 msgid "hint"
 msgstr "sugestie"
 
-#: admin/class-media-library.php:288 admin/class-media-library.php:329
-#: admin/class-setup.php:112 includes/class-chatbot.php:357
-#: includes/class-delivery.php:66 includes/class-scanner.php:233
-#: includes/class-scanner.php:309
+#: admin/class-media-library.php:77 admin/class-media-library.php:326
+#: admin/class-media-library.php:367 admin/class-setup.php:112
+#: includes/class-chatbot.php:357 includes/class-delivery.php:66
+#: includes/class-scanner.php:242 includes/class-scanner.php:318
 msgid "You are not allowed to do that."
 msgstr "Nu ai voie să faci asta."
 
-#: admin/class-media-library.php:293 includes/class-rest.php:243
+#: admin/class-media-library.php:331 includes/class-rest.php:243
 msgid "Unknown action."
 msgstr "Acțiune necunoscută."
 
-#: admin/class-media-library.php:334 includes/class-delivery.php:73
-#: includes/class-scanner.php:313
+#: admin/class-media-library.php:372 includes/class-delivery.php:73
+#: includes/class-scanner.php:322
 msgid "Invalid attachment."
 msgstr "Atașament nevalid."
 
 #. translators: %s: IPTC digital source type token.
-#: admin/class-media-library.php:358
+#: admin/class-media-library.php:419
 #, php-format
 msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
@@ -971,7 +971,7 @@ msgstr ""
 "Acest atașament este declarat ca nefiind creat de IA (%s). Declarația este "
 "scrisă în fișierele care nu poartă alt tip de sursă digitală."
 
-#: admin/class-media-library.php:360
+#: admin/class-media-library.php:421
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
@@ -979,7 +979,7 @@ msgstr ""
 "Acest atașament este etichetat ca generat de IA, deci fiecare fișier de mai "
 "jos ar trebui să poarte declarația."
 
-#: admin/class-media-library.php:361
+#: admin/class-media-library.php:422
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
@@ -987,103 +987,103 @@ msgstr ""
 "Acest atașament nu este etichetat ca generat de IA. Nu se scrie nimic în "
 "fișierele lui și nu se așteaptă nicio declarație mai jos."
 
-#: admin/class-media-library.php:365
+#: admin/class-media-library.php:426
 msgid "Files"
 msgstr "Fișiere"
 
-#: admin/class-media-library.php:368
+#: admin/class-media-library.php:429
 msgid "format cannot carry the declaration"
 msgstr "formatul nu poate purta declarația"
 
-#: admin/class-media-library.php:371
+#: admin/class-media-library.php:432
 msgid "declaration present"
 msgstr "declarație prezentă"
 
-#: admin/class-media-library.php:374
+#: admin/class-media-library.php:435
 msgid "declaration missing"
 msgstr "declarație lipsă"
 
-#: admin/class-media-library.php:384
+#: admin/class-media-library.php:447
 msgid "No readable file found for this attachment."
 msgstr "Nu s-a găsit niciun fișier lizibil pentru acest atașament."
 
-#: admin/class-media-library.php:388
+#: admin/class-media-library.php:489
 msgid "Digital source type in the main file"
 msgstr "Tipul de sursă digitală din fișierul principal"
 
-#: admin/class-media-library.php:390
+#: admin/class-media-library.php:491
 msgid "None declared."
 msgstr "Niciunul declarat."
 
-#: admin/class-media-library.php:398
+#: admin/class-media-library.php:499
 msgid "Detection evidence"
 msgstr "Dovezi de detectare"
 
-#: admin/class-media-library.php:404
+#: admin/class-media-library.php:505
 msgid "History"
 msgstr "Istoric"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
-#: admin/class-media-library.php:417
+#: admin/class-media-library.php:518
 #, php-format
 msgid "from %s"
 msgstr "de la %s"
 
-#: admin/class-media-library.php:430
+#: admin/class-media-library.php:531
 msgid "XMP packet of the main file"
 msgstr "Pachetul XMP al fișierului principal"
 
-#: admin/class-media-library.php:432
+#: admin/class-media-library.php:533
 msgid "This file carries no XMP block."
 msgstr "Acest fișier nu conține niciun bloc XMP."
 
-#: admin/class-media-library.php:485 admin/class-media-library.php:551
+#: admin/class-media-library.php:586 admin/class-media-library.php:663
 msgid "AI status: all"
 msgstr "Stare IA: toate"
 
-#: admin/class-media-library.php:486 admin/class-media-library.php:552
+#: admin/class-media-library.php:587 admin/class-media-library.php:664
 msgid "Only AI-labeled"
 msgstr "Doar etichetate ca IA"
 
-#: admin/class-media-library.php:487 admin/class-media-library.php:536
-#: admin/class-media-library.php:553
+#: admin/class-media-library.php:588 admin/class-media-library.php:637
+#: admin/class-media-library.php:665
 msgid "Detected, needs review"
 msgstr "Detectate, necesită verificare"
 
-#: admin/class-media-library.php:488 admin/class-media-library.php:555
+#: admin/class-media-library.php:589 admin/class-media-library.php:667
 msgid "Without AI label"
 msgstr "Fără etichetă AI"
 
-#: admin/class-media-library.php:489 admin/class-media-library.php:554
+#: admin/class-media-library.php:590 admin/class-media-library.php:666
 msgid "Declared not AI (camera, human work)"
 msgstr "Declarate ca nefiind IA (aparat foto, lucrare umană)"
 
-#: admin/class-media-library.php:490 admin/class-media-library.php:596
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Mark as AI-generated"
 msgstr "Marchează ca generat de AI"
 
-#: admin/class-media-library.php:491 admin/class-media-library.php:597
+#: admin/class-media-library.php:592 admin/class-media-library.php:755
 msgid "Remove AI label"
 msgstr "Elimină eticheta IA"
 
-#: admin/class-media-library.php:492
+#: admin/class-media-library.php:593
 msgid "Please select media first."
 msgstr "Te rog să selectezi mai întâi elementul Media."
 
-#: admin/class-media-library.php:493
+#: admin/class-media-library.php:594
 msgid "Updating the AI label failed."
 msgstr "Actualizarea etichetei AI a eșuat."
 
-#: admin/class-media-library.php:494
+#: admin/class-media-library.php:595
 msgid "Result"
 msgstr "Rezultat"
 
-#: admin/class-media-library.php:495
+#: admin/class-media-library.php:596
 msgid "No AI provenance signals found in the file."
 msgstr "Nu s-au găsit semnale de proveniență IA în fișier."
 
-#: admin/class-media-library.php:497
+#: admin/class-media-library.php:598
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
@@ -1091,13 +1091,13 @@ msgstr ""
 "Eticheta a fost setată, dar metadatele nu au putut fi scrise în fișier. "
 "Verifică permisiunile de scriere ale directorului de încărcări."
 
-#: admin/class-media-library.php:498
+#: admin/class-media-library.php:599
 msgid "Hide file metadata"
 msgstr "Ascunde metadatele fișierului"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
-#: admin/class-media-library.php:500
+#: admin/class-media-library.php:601
 #, php-format
 msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
@@ -1107,7 +1107,7 @@ msgstr ""
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
-#: admin/class-media-library.php:502
+#: admin/class-media-library.php:603
 #, php-format
 msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
@@ -1116,41 +1116,41 @@ msgstr ""
 "%1$d scanate, %2$d etichetate automat, %3$d în coada de așteptare pentru "
 "verificare, %4$d omise (deja decise)."
 
-#: admin/class-media-library.php:503
+#: admin/class-media-library.php:604
 msgid "Scan complete."
 msgstr "Scanarea este finalizată."
 
-#: admin/class-media-library.php:504
+#: admin/class-media-library.php:605
 msgid "Scan request failed. You can restart to continue."
 msgstr ""
 "Cererea pentru scanare a eșuat. Pentru a continua, poți să o repornești."
 
-#: admin/class-media-library.php:515 includes/class-notice.php:305
+#: admin/class-media-library.php:616 includes/class-notice.php:305
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:598
+#: admin/class-media-library.php:756
 msgid "Confirm detected AI label"
 msgstr "Confirmă eticheta AI detectată"
 
-#: admin/class-media-library.php:599
+#: admin/class-media-library.php:757
 msgid "Dismiss detected AI label"
 msgstr "Respinge eticheta IA detectată"
 
-#: admin/class-media-library.php:600
+#: admin/class-media-library.php:758
 msgid "Declare as camera photo (not AI)"
 msgstr "Declară ca fotografie de aparat foto (nu este IA)"
 
-#: admin/class-media-library.php:601
+#: admin/class-media-library.php:759
 msgid "Declare as human work (not AI)"
 msgstr "Declară ca lucrare umană (nu este IA)"
 
-#: admin/class-media-library.php:602
+#: admin/class-media-library.php:760
 msgid "Remove \"not AI\" declaration"
 msgstr "Elimină declarația „nu este IA”"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:644
+#: admin/class-media-library.php:802
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -1202,53 +1202,53 @@ msgstr "Tipărește sau salvează ca PDF"
 msgid "Media audit list"
 msgstr "Listă de audit a fișierelor media"
 
-#: admin/class-settings.php:229 admin/class-settings.php:262
+#: admin/class-settings.php:227 admin/class-settings.php:260
 msgid "Visible badge"
 msgstr "Insignă vizibilă"
 
-#: admin/class-settings.php:230 admin/class-settings.php:407
+#: admin/class-settings.php:228 admin/class-settings.php:425
 #: includes/class-compliance.php:65
 msgid "AI-written text"
 msgstr "Text scris cu IA"
 
-#: admin/class-settings.php:231 admin/class-settings.php:481
+#: admin/class-settings.php:229 admin/class-settings.php:499
 msgid "Chatbot disclosure"
 msgstr "Declararea chatbotului"
 
-#: admin/class-settings.php:233 admin/class-settings.php:590
+#: admin/class-settings.php:231 admin/class-settings.php:608
 msgid "Automatic detection"
 msgstr "Detectare automată"
 
-#: admin/class-settings.php:234
+#: admin/class-settings.php:232
 msgid "File metadata"
 msgstr "Metadatele fișierului"
 
-#: admin/class-settings.php:235 admin/class-settings.php:692
+#: admin/class-settings.php:233 admin/class-settings.php:710
 msgid "Uninstall"
 msgstr "Dezinstalare"
 
-#: admin/class-settings.php:243
+#: admin/class-settings.php:241
 msgid "Settings saved."
 msgstr "Setări salvate."
 
-#: admin/class-settings.php:255
+#: admin/class-settings.php:253
 msgid "Settings sections"
 msgstr "Secțiuni de setări"
 
-#: admin/class-settings.php:265
+#: admin/class-settings.php:263
 msgid "Show badge"
 msgstr "Arată insigna"
 
-#: admin/class-settings.php:268
+#: admin/class-settings.php:266
 msgid "Show a visible badge on labeled media in the front end"
 msgstr ""
 "Arată o insignă vizibilă pe media etichetate în partea publică a site-ului"
 
-#: admin/class-settings.php:272
+#: admin/class-settings.php:270
 msgid "Start date"
 msgstr "Dată de început"
 
-#: admin/class-settings.php:275
+#: admin/class-settings.php:273
 msgid ""
 "Only media uploaded on or after this date get the front-end badge; earlier "
 "media stay labeled in the admin only. Leave empty to badge all labeled "
@@ -1258,22 +1258,22 @@ msgstr ""
 "din partea publică; media mai vechi rămân etichetate numai în administrare. "
 "Lasă gol pentru a marca toate fișierele etichetate."
 
-#: admin/class-settings.php:279
+#: admin/class-settings.php:277
 msgid "Badge text"
 msgstr "Textul insignei"
 
-#: admin/class-settings.php:281 includes/class-frontend.php:240
-#: includes/class-frontend.php:245 includes/class-notice.php:154
+#: admin/class-settings.php:279 includes/class-frontend.php:241
+#: includes/class-frontend.php:246 includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "Generat de IA"
 
-#: admin/class-settings.php:283
+#: admin/class-settings.php:281
 msgid "Leave empty for the translated default label."
 msgstr "Lasă gol pentru eticheta implicită tradusă."
 
 #. translators: 1: {generator} placeholder (do not translate), 2: {site}
 #. placeholder (do not translate), 3: example template.
-#: admin/class-settings.php:287
+#: admin/class-settings.php:285
 #, php-format
 msgid ""
 "Placeholders: %1$s (detected or manually set generator) and %2$s (site "
@@ -1284,47 +1284,47 @@ msgstr ""
 "site-ului), de exemplu %3$s. Imaginile fără un generator cunoscut revin la "
 "eticheta implicită."
 
-#: admin/class-settings.php:297
+#: admin/class-settings.php:295
 msgid "Appearance"
 msgstr "Aspect"
 
-#: admin/class-settings.php:308
+#: admin/class-settings.php:306
 msgid "Overlay on the image"
 msgstr "Suprapusă pe imagine"
 
-#: admin/class-settings.php:326
+#: admin/class-settings.php:324
 msgid "Dark"
 msgstr "Întunecat"
 
-#: admin/class-settings.php:327
+#: admin/class-settings.php:325
 msgid "Light"
 msgstr "Deschis"
 
-#: admin/class-settings.php:328
+#: admin/class-settings.php:326
 msgid "Outline"
 msgstr "Contur"
 
-#: admin/class-settings.php:329
+#: admin/class-settings.php:327
 msgid "Icon only (short label)"
 msgstr "Numai pictogramă (etichetă scurtă)"
 
-#: admin/class-settings.php:336
+#: admin/class-settings.php:351
 msgid "Small"
 msgstr "Mic"
 
-#: admin/class-settings.php:337
+#: admin/class-settings.php:352
 msgid "Medium"
 msgstr "Mediu"
 
-#: admin/class-settings.php:338
+#: admin/class-settings.php:353
 msgid "Large"
 msgstr "Mare"
 
-#: admin/class-settings.php:375
+#: admin/class-settings.php:393
 msgid "Extras"
 msgstr "Extra"
 
-#: admin/class-settings.php:378
+#: admin/class-settings.php:396
 msgid ""
 "Show the detected generator in the badge (e.g. \"AI-generated · "
 "Midjourney\"; ignored when the badge text contains {generator})"
@@ -1332,11 +1332,11 @@ msgstr ""
 "Arată generatorul detectat în insignă (de exemplu „Generat de IA · "
 "Midjourney”; ignorat când textul insignei conține {generator})"
 
-#: admin/class-settings.php:380
+#: admin/class-settings.php:398
 msgid "Append the label to the image alt text (screen readers)"
 msgstr "Adaugă eticheta la textul alternativ al imaginii (cititoare de ecran)"
 
-#: admin/class-settings.php:382
+#: admin/class-settings.php:400
 msgid ""
 "Automatically move a badge to another corner, or below the image, if a theme"
 " overlay covers it (recommended, needs JavaScript)"
@@ -1344,7 +1344,7 @@ msgstr ""
 "Mută automat o insignă în alt colț sau sub imagine, dacă un strat al temei o"
 " acoperă (recomandat, necesită JavaScript)"
 
-#: admin/class-settings.php:384
+#: admin/class-settings.php:402
 msgid ""
 "Also label images printed without an attachment ID (ACF fields, sliders, "
 "builders) and CSS backgrounds (experimental, needs JavaScript)"
@@ -1353,11 +1353,11 @@ msgstr ""
 " constructori de pagini) și fundalurile CSS (experimental, necesită "
 "JavaScript)"
 
-#: admin/class-settings.php:388
+#: admin/class-settings.php:406
 msgid "Not AI"
 msgstr "Nu este IA"
 
-#: admin/class-settings.php:391
+#: admin/class-settings.php:409
 msgid ""
 "Also show a badge on media declared as camera photo or human work (the "
 "structured data carries the declaration either way)"
@@ -1365,24 +1365,24 @@ msgstr ""
 "Arată o insignă și pe media declarate ca fotografie de aparat foto sau ca "
 "lucrare umană (datele structurate poartă declarația în ambele cazuri)"
 
-#: admin/class-settings.php:392 includes/class-frontend.php:218
+#: admin/class-settings.php:410 includes/class-frontend.php:219
 msgid "Human made"
 msgstr "Realizat de om"
 
-#: admin/class-settings.php:396
+#: admin/class-settings.php:414
 msgid "Page notice"
 msgstr "Notă de pagină"
 
-#: admin/class-settings.php:399
+#: admin/class-settings.php:417
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 "Adaugă o notă scurtă la finalul paginilor care conțin media etichetate"
 
-#: admin/class-settings.php:400 includes/class-frontend.php:848
+#: admin/class-settings.php:418 includes/class-frontend.php:891
 msgid "This page contains AI-generated media."
 msgstr "Această pagină conține media generate de IA."
 
-#: admin/class-settings.php:408
+#: admin/class-settings.php:426
 msgid ""
 "Every post carries an AI level (none, AI-assisted, AI-generated, AI-"
 "generated and reviewed), set in the editor sidebar, in Quick Edit or in "
@@ -1394,15 +1394,15 @@ msgstr ""
 " rapidă sau în masă. Nivelurile IA afișează o notă pe articol; shortcode-ul "
 "[transparai_notice] și blocul „Notă IA” o plasează manual oriunde."
 
-#: admin/class-settings.php:411
+#: admin/class-settings.php:429
 msgid "Note text"
 msgstr "Textul notei"
 
-#: admin/class-settings.php:413 includes/class-notice.php:140
+#: admin/class-settings.php:431 includes/class-notice.php:140
 msgid "This text was generated by AI."
 msgstr "Acest text a fost generat de IA."
 
-#: admin/class-settings.php:414
+#: admin/class-settings.php:432
 msgid ""
 "Leave empty for a translated wording per level (\"created with the help of "
 "AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
@@ -1410,48 +1410,48 @@ msgstr ""
 "Lasă gol pentru o formulare tradusă per nivel („creat cu ajutorul IA”, "
 "„generat de IA”, „generat de IA și verificat de o persoană”)."
 
-#: admin/class-settings.php:420
+#: admin/class-settings.php:438
 msgid "Ahead of the content"
 msgstr "Înaintea conținutului"
 
-#: admin/class-settings.php:421
+#: admin/class-settings.php:439
 msgid "After the content"
 msgstr "După conținut"
 
-#: admin/class-settings.php:422
+#: admin/class-settings.php:440
 msgid "Ahead of and after the content"
 msgstr "Înaintea și după conținut"
 
-#: admin/class-settings.php:423 admin/class-settings.php:571
+#: admin/class-settings.php:441 admin/class-settings.php:589
 msgid "Only where a block or shortcode is placed"
 msgstr "Numai acolo unde este plasat un bloc sau un shortcode"
 
-#: admin/class-settings.php:430 includes/class-notice.php:629
+#: admin/class-settings.php:448 includes/class-notice.php:629
 msgid "Block (own line)"
 msgstr "Bloc (pe propria linie)"
 
-#: admin/class-settings.php:431 includes/class-notice.php:630
+#: admin/class-settings.php:449 includes/class-notice.php:630
 msgid "Inline (inside text)"
 msgstr "Inline (în interiorul textului)"
 
-#: admin/class-settings.php:432 admin/class-settings.php:570
+#: admin/class-settings.php:450 admin/class-settings.php:588
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
 msgstr "Banner (care poate fi închis)"
 
-#: admin/class-settings.php:433 includes/class-notice.php:632
+#: admin/class-settings.php:451 includes/class-notice.php:632
 msgid "Badge (small chip)"
 msgstr "Insignă (etichetă mică)"
 
-#: admin/class-settings.php:434 includes/class-notice.php:633
+#: admin/class-settings.php:452 includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
 msgstr "Modal (un buton deschide un dialog)"
 
-#: admin/class-settings.php:441
+#: admin/class-settings.php:459
 msgid "Post titles"
 msgstr "Titluri de articole"
 
-#: admin/class-settings.php:444
+#: admin/class-settings.php:462
 msgid ""
 "Append a small AI badge to the title of AI-written posts in lists and "
 "archives"
@@ -1459,7 +1459,7 @@ msgstr ""
 "Adaugă o insignă IA mică la titlul articolelor scrise cu IA în liste și "
 "arhive"
 
-#: admin/class-settings.php:445
+#: admin/class-settings.php:463
 msgid ""
 "The badge is HTML inside the title. Themes that print titles unescaped "
 "inside attributes should leave this off."
@@ -1467,15 +1467,15 @@ msgstr ""
 "Insigna este HTML în interiorul titlului. Temele care afișează titlurile "
 "neescapate în atribute ar trebui să lase asta dezactivat."
 
-#: admin/class-settings.php:449
+#: admin/class-settings.php:467
 msgid "Review"
 msgstr "Verificare"
 
-#: admin/class-settings.php:451
+#: admin/class-settings.php:469
 msgid "Name of the person responsible"
 msgstr "Numele persoanei responsabile"
 
-#: admin/class-settings.php:452
+#: admin/class-settings.php:470
 msgid ""
 "Default for the \"responsible person\" of reviewed texts; each post can name"
 " someone else. The reviewer, date and a fingerprint of the reviewed text are"
@@ -1485,7 +1485,7 @@ msgstr ""
 "fiecare articol poate numi pe altcineva. Verificatorul, data și o amprentă a"
 " textului verificat sunt înregistrate odată cu articolul."
 
-#: admin/class-settings.php:454
+#: admin/class-settings.php:472
 msgid ""
 "Name the reviewer and the review date in the public note and in the "
 "structured data"
@@ -1493,11 +1493,11 @@ msgstr ""
 "Numește verificatorul și data verificării în nota publică și în datele "
 "structurate"
 
-#: admin/class-settings.php:458
+#: admin/class-settings.php:476
 msgid "New posts"
 msgstr "Articole noi"
 
-#: admin/class-settings.php:463
+#: admin/class-settings.php:481
 msgid ""
 "Preselected level for posts created from now on. Existing posts are never "
 "reclassified."
@@ -1505,17 +1505,17 @@ msgstr ""
 "Nivel preselectat pentru articolele create de acum înainte. Articolele "
 "existente nu sunt niciodată reclasificate."
 
-#: admin/class-settings.php:467
+#: admin/class-settings.php:485
 msgid "Excerpts and feeds"
 msgstr "Rezumate și fluxuri"
 
-#: admin/class-settings.php:470
+#: admin/class-settings.php:488
 msgid ""
 "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
 "Adaugă nota ca text simplu la rezumate (arhive, teasere, articole similare)"
 
-#: admin/class-settings.php:472
+#: admin/class-settings.php:490
 msgid ""
 "Add the note to RSS feed items (content, summary and a machine-readable "
 "dc:description element)"
@@ -1523,11 +1523,11 @@ msgstr ""
 "Adaugă nota la elementele fluxului RSS (conținut, sumar și un element "
 "dc:description care poate fi citit automat)"
 
-#: admin/class-settings.php:474
+#: admin/class-settings.php:492
 msgid "Prefix feed item titles of AI-written posts with [AI]"
 msgstr "Pune prefixul [AI] la titlurile din flux ale articolelor scrise cu IA"
 
-#: admin/class-settings.php:482
+#: admin/class-settings.php:500
 msgid ""
 "Visitors must be told when they talk to an AI system, at the latest when the"
 " conversation starts. Your answer decides; what the plugin finds on the site"
@@ -1545,11 +1545,11 @@ msgstr ""
 "văzut propriul tău browser ca administrator. Nicio cerere nu părăsește "
 "serverul."
 
-#: admin/class-settings.php:486
+#: admin/class-settings.php:504
 msgid "Found on this site"
 msgstr "Găsit pe acest site"
 
-#: admin/class-settings.php:489
+#: admin/class-settings.php:507
 msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
@@ -1558,71 +1558,71 @@ msgstr ""
 "Deschide câteva pagini ale site-ului tău în timp ce ești autentificat; "
 "verificarea rulează în browserul tău și raportează aici."
 
-#: admin/class-settings.php:494
+#: admin/class-settings.php:512
 msgid "a bot answers"
 msgstr "răspunde un bot"
 
-#: admin/class-settings.php:495
+#: admin/class-settings.php:513
 msgid "people answer"
 msgstr "răspund oameni"
 
-#: admin/class-settings.php:496
+#: admin/class-settings.php:514
 msgid "live chat with optional bot"
 msgstr "chat live cu bot opțional"
 
-#: admin/class-settings.php:497
+#: admin/class-settings.php:515
 msgid "staffing unknown"
 msgstr "nu se știe cine răspunde"
 
-#: admin/class-settings.php:508
+#: admin/class-settings.php:526
 msgid "Does this site run a chat?"
 msgstr "Acest site are un chat?"
 
-#: admin/class-settings.php:515
+#: admin/class-settings.php:533
 msgid "Not decided yet"
 msgstr "Încă nedecis"
 
-#: admin/class-settings.php:524
+#: admin/class-settings.php:542
 msgid "An AI answers"
 msgstr "Răspunde o IA"
 
-#: admin/class-settings.php:525
+#: admin/class-settings.php:543
 msgid "People answer, an AI sometimes"
 msgstr "Răspund oameni, uneori o IA"
 
-#: admin/class-settings.php:526
+#: admin/class-settings.php:544
 msgid "Only people answer"
 msgstr "Răspund numai oameni"
 
-#: admin/class-settings.php:530
+#: admin/class-settings.php:548
 msgid ""
 "The notice appears only with \"Yes\" and an AI that answers at least "
 "sometimes."
 msgstr ""
 "Notificarea apare numai cu „Da” și cu o IA care răspunde cel puțin uneori."
 
-#: admin/class-settings.php:534
+#: admin/class-settings.php:552
 msgid "Notice"
 msgstr "Notificare"
 
-#: admin/class-settings.php:536 includes/class-chatbot.php:111
+#: admin/class-settings.php:554 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
 msgstr "Conversezi cu un sistem IA."
 
-#: admin/class-settings.php:542
+#: admin/class-settings.php:560
 msgid ""
 "As the first message of the bot (AI Engine; otherwise next to the widget)"
 msgstr "Ca primul mesaj al botului (AI Engine; altfel lângă widget)"
 
-#: admin/class-settings.php:543
+#: admin/class-settings.php:561
 msgid "Next to the chat widget"
 msgstr "Lângă widgetul de chat"
 
-#: admin/class-settings.php:544
+#: admin/class-settings.php:562
 msgid "As a line at the end of every page"
 msgstr "Ca o linie la finalul fiecărei pagini"
 
-#: admin/class-settings.php:555
+#: admin/class-settings.php:573
 msgid ""
 "The plugin matches your installed plugins against a bundled list of known AI"
 " tools and lets you declare others by hand. Which of them visitors get told "
@@ -1635,37 +1635,37 @@ msgstr ""
 " activează doar pe baza unui rezultat. Lista este livrată împreună cu "
 "modulul, nimic nu este descărcat."
 
-#: admin/class-settings.php:558
+#: admin/class-settings.php:576
 msgid "Visitor notice"
 msgstr "Notificare pentru vizitatori"
 
-#: admin/class-settings.php:561
+#: admin/class-settings.php:579
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
 "Arată pe fiecare pagină o notificare ce numește sistemele IA marcate ca "
 "vizibile"
 
-#: admin/class-settings.php:568
+#: admin/class-settings.php:586
 msgid "Line at the end of the page"
 msgstr "Linie la finalul paginii"
 
-#: admin/class-settings.php:569
+#: admin/class-settings.php:587
 msgid "Small badge in a corner"
 msgstr "Insignă mică într-un colț"
 
-#: admin/class-settings.php:579
+#: admin/class-settings.php:597
 msgid "Notice text"
 msgstr "Textul notificării"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
-#: admin/class-settings.php:581 includes/class-systems.php:458
+#: admin/class-settings.php:599 includes/class-systems.php:458
 #, php-format
 msgid "This site uses AI systems: %s."
 msgstr "Acest site folosește sisteme IA: %s."
 
 #. translators: %s is the literal placeholder token shown to the user.
-#: admin/class-settings.php:582
+#: admin/class-settings.php:600
 #, php-format
 msgid ""
 "Leave empty for the translated default. %s is replaced with the names of the"
@@ -1675,38 +1675,38 @@ msgstr ""
 "sistemelor vizibile."
 
 #. translators: %s is the literal placeholder token shown to the user.
-#: admin/class-settings.php:583
+#: admin/class-settings.php:601
 msgid "Manage detected and declared AI systems"
 msgstr "Gestionează sistemele IA detectate și declarate"
 
-#: admin/class-settings.php:593
+#: admin/class-settings.php:611
 msgid "Detect on upload"
 msgstr "Detectare la încărcare"
 
-#: admin/class-settings.php:596
+#: admin/class-settings.php:614
 msgid ""
 "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
 "Inspectează încărcările noi pentru proveniență IA (C2PA, XMP/IPTC, semnături"
 " de generator)"
 
-#: admin/class-settings.php:600
+#: admin/class-settings.php:618
 msgid "Standard declarations"
 msgstr "Declarații standard"
 
-#: admin/class-settings.php:607 admin/class-settings.php:624
+#: admin/class-settings.php:625 admin/class-settings.php:642
 msgid "Label automatically"
 msgstr "Etichetează automat"
 
-#: admin/class-settings.php:608 admin/class-settings.php:625
+#: admin/class-settings.php:626 admin/class-settings.php:643
 msgid "Put into review queue"
 msgstr "Pune în coada de verificare"
 
-#: admin/class-settings.php:609 admin/class-settings.php:626
+#: admin/class-settings.php:627 admin/class-settings.php:644
 msgid "Ignore"
 msgstr "Ignoră"
 
-#: admin/class-settings.php:613
+#: admin/class-settings.php:631
 msgid ""
 "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in"
 " C2PA, AIGC declaration)."
@@ -1714,11 +1714,11 @@ msgstr ""
 "Fișiere care declară explicit originea IA (IPTC DigitalSourceType, "
 "revendicare IA în C2PA, declarație AIGC)."
 
-#: admin/class-settings.php:617
+#: admin/class-settings.php:635
 msgid "Generator signatures"
 msgstr "Semnături de generator"
 
-#: admin/class-settings.php:630
+#: admin/class-settings.php:648
 msgid ""
 "Strong signals without a formal declaration (Stable Diffusion parameters, "
 "ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
@@ -1727,32 +1727,32 @@ msgstr ""
 "fluxuri de lucru ComfyUI, nume de generatoare în EXIF/XMP, C2PA scris de "
 "aparatul foto)."
 
-#: admin/class-settings.php:634
+#: admin/class-settings.php:652
 msgid "More sources"
 msgstr "Mai multe surse"
 
-#: admin/class-settings.php:637
+#: admin/class-settings.php:655
 msgid ""
 "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
 "Scanează și încărcările video și audio (C2PA în MP4/MOV, declarații AIGC în "
 "MP3)"
 
-#: admin/class-settings.php:639
+#: admin/class-settings.php:657
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
 "Folosește tiparele din numele fișierelor ca indicii pentru verificare (nu "
 "etichetează niciodată automat)"
 
-#: admin/class-settings.php:647
+#: admin/class-settings.php:665
 msgid "Machine-readable file metadata"
 msgstr "Metadate de fișier care pot fi citite automat"
 
-#: admin/class-settings.php:650
+#: admin/class-settings.php:668
 msgid "Write into files"
 msgstr "Scrie în fișiere"
 
-#: admin/class-settings.php:653
+#: admin/class-settings.php:671
 msgid ""
 "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and "
 "AVIF files (all size variants)"
@@ -1760,14 +1760,14 @@ msgstr ""
 "Scrie IPTC DigitalSourceType ca XMP în fișierele etichetate JPEG, PNG, WebP "
 "și AVIF (toate variantele de dimensiune)"
 
-#: admin/class-settings.php:655
+#: admin/class-settings.php:673
 msgid ""
 "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC "
 "block)"
 msgstr ""
 "Oglindește-l și în IPTC-IIM (JPEG, numai când fișierul nu are alt bloc IPTC)"
 
-#: admin/class-settings.php:657
+#: admin/class-settings.php:675
 msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
@@ -1776,11 +1776,11 @@ msgstr ""
 "ca nefiind create de IA, dar niciodată peste o declarație scrisă deja de alt"
 " instrument sau de un aparat foto"
 
-#: admin/class-settings.php:661
+#: admin/class-settings.php:679
 msgid "Auto-repair"
 msgstr "Reparare automată"
 
-#: admin/class-settings.php:664
+#: admin/class-settings.php:682
 msgid ""
 "Restore the metadata when image optimizers or regeneration strip it (hourly "
 "integrity sweep)"
@@ -1788,15 +1788,15 @@ msgstr ""
 "Restaurează metadatele când optimizatoarele de imagini sau regenerarea le "
 "elimină (verificare orară a integrității)"
 
-#: admin/class-settings.php:668
+#: admin/class-settings.php:686
 msgid "Delivery check"
 msgstr "Verificarea livrării"
 
-#: admin/class-settings.php:671
+#: admin/class-settings.php:689
 msgid "Allow checking whether the declaration survives delivery"
 msgstr "Permite verificarea faptului că declarația supraviețuiește livrării"
 
-#: admin/class-settings.php:672
+#: admin/class-settings.php:690
 msgid ""
 "Adds a button to the attachment details and here. On click, the plugin "
 "fetches that image over its own public URL and compares the delivered bytes "
@@ -1812,15 +1812,15 @@ msgstr ""
 "Cererea merge către propriul tău site și nicăieri altundeva, și se întâmplă "
 "numai când apeși butonul."
 
-#: admin/class-settings.php:675
+#: admin/class-settings.php:693
 msgid "Check a sample of five files"
 msgstr "Verifică un eșantion de cinci fișiere"
 
-#: admin/class-settings.php:682
+#: admin/class-settings.php:700
 msgid "Structured data"
 msgstr "Date structurate"
 
-#: admin/class-settings.php:685
+#: admin/class-settings.php:703
 msgid ""
 "Add Schema.org JSON-LD with the IPTC digital source type for the labeled "
 "media of each page (search engines read it without opening the files)"
@@ -1829,11 +1829,11 @@ msgstr ""
 "etichetate din fiecare pagină (motoarele de căutare îl citesc fără să "
 "deschidă fișierele)"
 
-#: admin/class-settings.php:695
+#: admin/class-settings.php:713
 msgid "Data removal"
 msgstr "Ștergerea datelor"
 
-#: admin/class-settings.php:698
+#: admin/class-settings.php:716
 msgid ""
 "Delete all plugin data (labels, detection results, settings) when the plugin"
 " is uninstalled"
@@ -1841,11 +1841,11 @@ msgstr ""
 "Șterge toate datele modulului (etichete, rezultate ale detectării, setări) "
 "la dezinstalarea modulului"
 
-#: admin/class-settings.php:704
+#: admin/class-settings.php:722
 msgid "Save changes"
 msgstr "Salvează modificările"
 
-#: admin/class-settings.php:721
+#: admin/class-settings.php:739
 msgid ""
 "Detection relies on metadata embedded by generators; files whose metadata "
 "was stripped carry no signal."
@@ -1853,7 +1853,7 @@ msgstr ""
 "Detectarea se bazează pe metadatele încorporate de generatoare; fișierele "
 "cărora li s-au eliminat metadatele nu poartă niciun semnal."
 
-#: admin/class-settings.php:722
+#: admin/class-settings.php:740
 msgid ""
 "A declaration records a statement by the site operator; it is not "
 "cryptographic proof of origin."
@@ -1861,7 +1861,7 @@ msgstr ""
 "O declarație consemnează o afirmație a operatorului site-ului; nu este o "
 "dovadă criptografică a originii."
 
-#: admin/class-settings.php:723
+#: admin/class-settings.php:741
 msgid ""
 "Text disclosure levels are entered by editors; the review fingerprint shows "
 "whether content changed since the review, not whether the review was "
@@ -1871,7 +1871,7 @@ msgstr ""
 "verificării arată dacă s-a modificat conținutul după verificare, nu dacă "
 "verificarea a fost corectă."
 
-#: admin/class-settings.php:724
+#: admin/class-settings.php:742
 msgid ""
 "The readiness score, the self-assessment and the AI literacy checklist "
 "summarise the plugin state and the operator's own answers; they are not a "
@@ -1881,135 +1881,135 @@ msgstr ""
 "alfabetizarea IA rezumă starea modulului și răspunsurile proprii ale "
 "operatorului; ele nu sunt o evaluare juridică."
 
-#: admin/class-settings.php:748
+#: admin/class-settings.php:766
 msgid "Check"
 msgstr "Verificare"
 
-#: admin/class-settings.php:756 admin/class-settings.php:766
+#: admin/class-settings.php:774 admin/class-settings.php:784
 msgid "Saved"
 msgstr "Salvat"
 
-#: admin/class-settings.php:758
+#: admin/class-settings.php:776
 msgid "Question"
 msgstr "Întrebare"
 
-#: admin/class-settings.php:758
+#: admin/class-settings.php:776
 msgid "Answer"
 msgstr "Răspuns"
 
-#: admin/class-settings.php:761
+#: admin/class-settings.php:779
 msgid "not answered"
 msgstr "fără răspuns"
 
-#: admin/class-settings.php:765
+#: admin/class-settings.php:783
 msgid "AI literacy checklist (Article 4)"
 msgstr "Listă de verificare pentru alfabetizarea IA (articolul 4)"
 
-#: admin/class-settings.php:767
+#: admin/class-settings.php:785
 msgid "Item"
 msgstr "Element"
 
-#: admin/class-settings.php:775
+#: admin/class-settings.php:793
 msgid "None detected or declared."
 msgstr "Niciunul detectat sau declarat."
 
-#: admin/class-settings.php:777
+#: admin/class-settings.php:795
 msgid "Source"
 msgstr "Sursă"
 
-#: admin/class-settings.php:777
+#: admin/class-settings.php:795
 msgid "Visitors told"
 msgstr "Vizitatori informați"
 
-#: admin/class-settings.php:779 includes/class-systems.php:354
+#: admin/class-settings.php:797 includes/class-systems.php:354
 msgid "declared by hand"
 msgstr "declarat manual"
 
-#: admin/class-settings.php:779
+#: admin/class-settings.php:797
 msgid "Detected"
 msgstr "Detectat"
 
-#: admin/class-settings.php:784
+#: admin/class-settings.php:802
 msgid "Disclosure notices"
 msgstr "Note de declarare"
 
-#: admin/class-settings.php:788
+#: admin/class-settings.php:806
 msgid "Text note style"
 msgstr "Stilul notei de text"
 
-#: admin/class-settings.php:789
+#: admin/class-settings.php:807
 msgid "Text note position"
 msgstr "Poziția notei de text"
 
-#: admin/class-settings.php:790
+#: admin/class-settings.php:808
 msgid "Visible badge on labeled media"
 msgstr "Insignă vizibilă pe media etichetate"
 
-#: admin/class-settings.php:791
+#: admin/class-settings.php:809
 msgid "Page notice on pages with labeled media"
 msgstr "Notă de pagină pe paginile cu media etichetate"
 
-#: admin/class-settings.php:792
+#: admin/class-settings.php:810
 msgid "Chatbot question answered with"
 msgstr "Întrebarea despre chatbot are răspunsul"
 
-#: admin/class-settings.php:793
+#: admin/class-settings.php:811
 msgid "Chatbot notice active"
 msgstr "Notificarea despre chatbot este activă"
 
-#: admin/class-settings.php:794
+#: admin/class-settings.php:812
 msgid "AI systems notice"
 msgstr "Notificare sisteme IA"
 
-#: admin/class-settings.php:795
+#: admin/class-settings.php:813
 msgid "Structured data (Schema.org)"
 msgstr "Date structurate (Schema.org)"
 
-#: admin/class-settings.php:812
+#: admin/class-settings.php:830
 msgid "Title"
 msgstr "Titlu"
 
-#: admin/class-settings.php:812
+#: admin/class-settings.php:830
 msgid "Type"
 msgstr "Tip"
 
-#: admin/class-settings.php:812
+#: admin/class-settings.php:830
 msgid "Level"
 msgstr "Nivel"
 
-#: admin/class-settings.php:812
+#: admin/class-settings.php:830
 msgid "Reviewed by"
 msgstr "Verificat de"
 
-#: admin/class-settings.php:812
+#: admin/class-settings.php:830
 msgid "Reviewed on"
 msgstr "Verificat la"
 
-#: admin/class-settings.php:812
+#: admin/class-settings.php:830
 msgid "Review current"
 msgstr "Verificare la zi"
 
-#: admin/class-settings.php:847
+#: admin/class-settings.php:865
 msgid "Library status"
 msgstr "Starea bibliotecii"
 
-#: admin/class-settings.php:851
+#: admin/class-settings.php:869
 msgid "Media files"
 msgstr "Fișiere media"
 
-#: admin/class-settings.php:863
+#: admin/class-settings.php:881
 msgid "Scanned"
 msgstr "Scanate"
 
-#: admin/class-settings.php:868
+#: admin/class-settings.php:886
 msgid "Open review queue"
 msgstr "Deschide coada de verificare"
 
-#: admin/class-settings.php:871
+#: admin/class-settings.php:889
 msgid "Print view"
 msgstr "Vizualizare pentru tipărire"
 
-#: admin/class-settings.php:876
+#: admin/class-settings.php:894
 msgid ""
 "The export lists every labeled, declared and pending file with its detection"
 " source, confidence, full history and the person behind each change. The "
@@ -2024,11 +2024,11 @@ msgstr ""
 "declarate; aceeași înregistrare este disponibilă la /wp-"
 "json/transparai/v1/report."
 
-#: admin/class-settings.php:892 admin/class-settings.php:894
+#: admin/class-settings.php:910 admin/class-settings.php:912
 msgid "Scan existing library"
 msgstr "Scanează biblioteca existentă"
 
-#: admin/class-settings.php:896
+#: admin/class-settings.php:914
 msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
@@ -2036,21 +2036,21 @@ msgstr ""
 "Citește metadatele fișierelor media existente (C2PA, XMP/IPTC, semnături de "
 "generator) în loturi mici. Nimic nu părăsește serverul tău."
 
-#: admin/class-settings.php:898
+#: admin/class-settings.php:916
 msgid "Scan new/unscanned media"
 msgstr "Scanează media noi/nescanate"
 
-#: admin/class-settings.php:899
+#: admin/class-settings.php:917
 msgid "Rescan everything"
 msgstr "Rescanează tot"
 
-#: admin/class-settings.php:900
+#: admin/class-settings.php:918
 msgid "Pause"
 msgstr "Pauză"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
-#: admin/class-settings.php:913
+#: admin/class-settings.php:931
 #, php-format
 msgid ""
 "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, "
@@ -2059,11 +2059,11 @@ msgstr ""
 "Reparare automată, ultima verificare completă: %1$d fișiere etichetate "
 "verificate, %2$d reparate, %3$d eșuate (acum %4$s)."
 
-#: admin/class-settings.php:936
+#: admin/class-settings.php:954
 msgid "TransparAI links"
 msgstr "Linkuri TransparAI"
 
-#: admin/class-settings.php:939
+#: admin/class-settings.php:957
 msgid "Support forum"
 msgstr "Forum de suport"
 
@@ -2670,13 +2670,13 @@ msgstr "Nu a putut fi descărcat"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
-#: includes/class-frontend.php:226
+#: includes/class-frontend.php:227
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Om"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:257
+#: includes/class-frontend.php:258
 msgctxt "short badge label"
 msgid "AI"
 msgstr "IA"
@@ -3032,19 +3032,19 @@ msgstr ""
 msgid "Open the file settings"
 msgstr "Deschide setările de fișiere"
 
-#: admin/class-settings.php:346
+#: admin/class-settings.php:361
 msgid "Background"
 msgstr "Fundal"
 
-#: admin/class-settings.php:350
+#: admin/class-settings.php:365
 msgid "Text"
 msgstr "Text"
 
-#: admin/class-settings.php:354
+#: admin/class-settings.php:369
 msgid "Opacity"
 msgstr "Opacitate"
 
-#: admin/class-settings.php:370
+#: admin/class-settings.php:385
 msgid ""
 "Both colours are optional: while they are empty the badge keeps the colours "
 "of the style above, exactly as before. The text colour also draws the "
@@ -3056,23 +3056,23 @@ msgstr ""
 "desenează și chenarul, iar conturul nu are umplere proprie, așa că o culoare"
 " de fundal nu se vede acolo."
 
-#: admin/class-settings.php:362
+#: admin/class-settings.php:377
 msgid "Readable"
 msgstr "Lizibil"
 
-#: admin/class-settings.php:363
+#: admin/class-settings.php:378
 msgid "Borderline"
 msgstr "La limită"
 
-#: admin/class-settings.php:364
+#: admin/class-settings.php:379
 msgid "Hard to read"
 msgstr "Greu de citit"
 
-#: admin/class-settings.php:365
+#: admin/class-settings.php:380
 msgid "Depends on what is behind it"
 msgstr "Depinde de ce se află în spate"
 
-#: admin/class-settings.php:367
+#: admin/class-settings.php:382
 msgid ""
 "Badge text is small, so WCAG asks for a contrast of at least 4.5 to 1. A "
 "see-through badge is rated for the worst case, a photo far lighter or darker"
@@ -3082,3 +3082,210 @@ msgstr ""
 "4,5 la 1. O insignă translucidă este evaluată pentru cazul cel mai "
 "defavorabil, adică o fotografie mult mai deschisă sau mai închisă decât "
 "insigna însăși."
+
+#: admin/class-media-library.php:67
+msgid "Does this image need a label?"
+msgstr "Are nevoie această imagine de o etichetă?"
+
+#: admin/class-media-library.php:68
+msgid ""
+"Article 50(4) of the EU AI Act asks deployers to disclose deepfakes: AI "
+"images that look like real people, places, objects or events and could pass "
+"for genuine, including realistic product shots and stock-style photos. Three"
+" questions help: Does it look like a photograph of something real? Was it "
+"published on or after 2 August 2026? Is it more than an obvious illustration"
+" or cartoon? Labeling never hurts, and the machine-readable marking is "
+"written either way; this hint is not legal advice."
+msgstr ""
+"Articolul 50 alineatul (4) din EU AI Act le cere implementatorilor să "
+"dezvăluie deepfake-urile, adică imaginile IA care seamănă cu persoane, "
+"locuri, obiecte sau evenimente reale și ar putea trece drept autentice, "
+"inclusiv fotografiile realiste de produs și imaginile în stil stock. Trei "
+"întrebări te ajută: Arată ca fotografia unui lucru real? A fost publicată pe"
+" 2 august 2026 sau după această dată? Este mai mult decât o ilustrație sau "
+"un desen evident? Eticheta nu strică niciodată, iar marcarea care poate fi "
+"citită automat se scrie oricum. Acest indiciu nu reprezintă consultanță "
+"juridică."
+
+#: admin/class-media-library.php:69
+msgid "Hide this note"
+msgstr "Ascunde această notă"
+
+#: admin/class-media-library.php:384
+msgid "yes, the manifest was written for exactly these bytes"
+msgstr "da, manifestul a fost scris exact pentru acești octeți"
+
+#: admin/class-media-library.php:386
+msgid ""
+"no, the image was changed after signing or the manifest was copied from "
+"another file"
+msgstr ""
+"nu, imaginea a fost modificată după semnare sau manifestul a fost copiat din"
+" alt fișier"
+
+#: admin/class-media-library.php:390
+msgid "not checkable, the manifest has no data hash (an update manifest)"
+msgstr ""
+"nu poate fi verificat, manifestul nu are hash de date (un manifest de "
+"actualizare)"
+
+#: admin/class-media-library.php:392
+msgid "not checkable, unknown hash algorithm"
+msgstr "nu poate fi verificat, algoritm de hash necunoscut"
+
+#: admin/class-media-library.php:394
+msgid "not checked for video and ISO-BMFF containers"
+msgstr "nu se verifică pentru video și containere ISO-BMFF"
+
+#: admin/class-media-library.php:396
+msgid "not checked, the file is larger than 64 MB"
+msgstr "neverificat, fișierul depășește 64 MB"
+
+#: admin/class-media-library.php:398
+msgid "not checkable, the manifest could not be read completely"
+msgstr "nu poate fi verificat, manifestul nu a putut fi citit complet"
+
+#: admin/class-media-library.php:443
+msgid "Content Credentials"
+msgstr "Content Credentials"
+
+#. translators: 1: number of files without Content Credentials, 2: total
+#. number of files.
+#: admin/class-media-library.php:461
+#, php-format
+msgid ""
+"Content Credentials are present in the original, but %1$d of %2$d files (the"
+" size variants WordPress generates) do not carry the manifest. The digital "
+"source type this plugin writes into every file is not affected."
+msgstr ""
+"Originalul conține Content Credentials, dar %1$d din %2$d fișiere "
+"(variantele de dimensiune generate de WordPress) nu poartă manifestul. Tipul"
+" de sursă digitală pe care acest modul îl scrie în fiecare fișier nu este "
+"afectat."
+
+#: admin/class-media-library.php:468
+msgid ""
+"The files changed since the last detection scan. Use Re-check to look at "
+"them again."
+msgstr ""
+"Fișierele s-au schimbat de la ultima scanare de detectare. Folosește "
+"„Reverifică metadatele fișierului” ca să le examinezi din nou."
+
+#: admin/class-media-library.php:474
+msgid "Content Credentials (C2PA)"
+msgstr "Content Credentials (C2PA)"
+
+#: admin/class-media-library.php:475
+msgid "Manifest matches the file bytes:"
+msgstr "Manifestul corespunde octeților fișierului:"
+
+#: admin/class-media-library.php:477
+msgid "Signer"
+msgstr "Semnatar"
+
+#: admin/class-media-library.php:478
+msgid "Organisation"
+msgstr "Organizație"
+
+#: admin/class-media-library.php:479
+msgid "Claim generator"
+msgstr "Generator de declarație"
+
+#: admin/class-media-library.php:480
+msgid "Action time in the manifest"
+msgstr "Momentul acțiunii în manifest"
+
+#: admin/class-media-library.php:486
+msgid ""
+"According to the manifest. The signature and the signer's certificate are "
+"not verified; the check only tells whether the manifest describes exactly "
+"this file."
+msgstr ""
+"Conform manifestului. Semnătura și certificatul semnatarului nu sunt "
+"verificate, verificarea arată doar dacă manifestul descrie exact acest "
+"fișier."
+
+#: admin/class-media-library.php:650
+msgid "The files changed since the last detection scan."
+msgstr "Fișierele s-au schimbat de la ultima scanare de detectare."
+
+#: admin/class-media-library.php:650
+msgid "changed"
+msgstr "modificat"
+
+#: admin/class-settings.php:328
+msgid "Official EU icon (Commission, June 2026)"
+msgstr "Pictograma oficială UE (Comisia, iunie 2026)"
+
+#: admin/class-settings.php:335
+msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
+msgstr ""
+"Pictogramă UE după etichetă: Generat integral de IA / Modificat parțial de "
+"IA"
+
+#: admin/class-settings.php:336
+msgid "EU icon: basic AI icon for every label"
+msgstr "Pictogramă UE: pictograma IA de bază pentru orice etichetă"
+
+#: admin/class-settings.php:343
+msgid "EU icon: black"
+msgstr "Pictogramă UE: neagră"
+
+#: admin/class-settings.php:344
+msgid "EU icon: white"
+msgstr "Pictogramă UE: albă"
+
+#: admin/class-settings.php:388
+msgid ""
+"The EU icon style uses the icons the European Commission published on 10 "
+"June 2026 with the Code of Practice on transparency, unchanged and in the "
+"two official colours; the colour fields above do not apply to them, the "
+"opacity does. The Commission allows anyone to use the icons free of charge "
+"and without attribution. Showing them does not make your site a signatory of"
+" the Code of Practice and is no statement of compliance."
+msgstr ""
+"Stilul „Pictogramă UE” folosește pictogramele publicate de Comisia Europeană"
+" pe 10 iunie 2026 împreună cu Codul de bune practici privind transparența, "
+"nemodificate și în cele două culori oficiale. Câmpurile de culoare de mai "
+"sus nu li se aplică, opacitatea da. Comisia permite oricui să folosească "
+"pictogramele gratuit și fără atribuire. Afișarea lor nu face din site-ul tău"
+" un semnatar al Codului de bune practici și nu este o declarație de "
+"conformitate."
+
+#: includes/class-privacy.php:43
+msgid ""
+"This site uses TransparAI to detect and label AI-generated media and to "
+"document its use of AI systems. The plugin runs entirely on this server: it "
+"does not create accounts, sends no telemetry and makes no request to any "
+"external service. Media files are read locally to find provenance metadata "
+"(such as Content Credentials or the IPTC digital source type) and, when a "
+"file is labeled, that declaration is written into the file."
+msgstr ""
+"Acest site folosește TransparAI pentru a detecta și eticheta conținutul "
+"media generat de IA și pentru a documenta modul în care folosește sisteme "
+"IA. Modulul rulează în întregime pe acest server: nu creează conturi, nu "
+"trimite telemetrie și nu face nicio cerere către vreun serviciu extern. "
+"Fișierele media sunt citite local pentru a găsi metadate de proveniență (cum"
+" ar fi Content Credentials sau tipul de sursă digitală IPTC), iar când un "
+"fișier este etichetat, această declarație este scrisă în fișier."
+
+#: includes/class-privacy.php:45
+msgid ""
+"The plugin stores its results in the WordPress database: per media file the "
+"label state, the detected signals and a history of label decisions that "
+"records the user ID and display name of the editor who made them, plus a "
+"short site log of administrative events. Reviewers of AI-written text are "
+"recorded by name and date. No data about site visitors is collected, and no "
+"cookies are set. The only HTTP request the plugin can make is the optional "
+"delivery check, which fetches one image from this site itself to verify that"
+" a CDN keeps the declaration."
+msgstr ""
+"Modulul își stochează rezultatele în baza de date WordPress: pentru fiecare "
+"fișier media starea etichetei, semnalele detectate și un istoric al "
+"deciziilor de etichetare care înregistrează ID-ul de utilizator și numele "
+"afișat al editorului care le-a luat, plus un scurt jurnal al site-ului cu "
+"evenimentele administrative. Persoanele care verifică textele scrise de IA "
+"sunt înregistrate cu nume și dată. Nu se colectează date despre vizitatorii "
+"site-ului și nu se setează cookie-uri. Singura cerere HTTP pe care o poate "
+"face modulul este verificarea opțională a livrării, care descarcă o imagine "
+"chiar de pe acest site pentru a verifica dacă un CDN păstrează declarația."

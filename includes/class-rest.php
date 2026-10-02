@@ -319,6 +319,8 @@ final class TransparAI_REST {
 		$item['write_error']   = '' !== (string) get_post_meta( $id, TransparAI_Meta::KEY_WRITE_ERROR, true );
 		$item['history']       = TransparAI_Meta::history( $id );
 		$item['expected_type'] = TransparAI_Writer::expected_token( $id );
+		$item['c2pa']          = TransparAI_Meta::c2pa( $id );
+		$item['changed']       = TransparAI_Repair::changed_since_scan( $id );
 
 		if ( $with_files ) {
 			$inspect       = TransparAI_Writer::inspect( $id );

@@ -145,7 +145,7 @@ final class TransparAI_Setup {
 		<div class="trai-setup-preview-wrap">
 			<span class="trai-badge-preview trai-wrap trai-pos-<?php echo esc_attr( $options['badge_position'] ); ?> trai-size-<?php echo esc_attr( $options['badge_size'] ); ?> trai-style-<?php echo esc_attr( $options['badge_style'] ); ?> trai-mode-<?php echo esc_attr( $options['badge_mode'] ); ?>"<?php echo '' === $style ? '' : ' style="' . esc_attr( $style ) . '"'; ?>>
 				<span class="trai-setup-sample" aria-hidden="true"></span>
-				<span class="trai-badge" role="note" data-trai-short="<?php echo esc_attr( TransparAI_Frontend::badge_short_label() ); ?>"><?php echo esc_html( TransparAI_Frontend::badge_label() ); ?></span>
+				<?php echo TransparAI_Frontend::badge_element( TransparAI_Frontend::badge_label(), TransparAI_Frontend::badge_short_label(), 'generated', true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside badge_element(); the icon is always in the preview so the style select can switch to it live. ?>
 			</span>
 		</div>
 		<?php

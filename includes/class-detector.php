@@ -81,6 +81,8 @@ final class TransparAI_Detector {
 	 *         Null when no signal was found or the file is unreadable.
 	 */
 	public static function detect_file( string $path ): ?array {
+		self::$c2pa_memo_path = ''; /* Every detection looks at the file afresh. */
+
 		$head = TransparAI_Parsers::read_head( $path );
 		if ( null === $head || '' === $head ) {
 			return null;
@@ -153,7 +155,7 @@ final class TransparAI_Detector {
 
 		$has_c2pa     = TransparAI_Parsers::jpeg_has_c2pa( $segments );
 		$c2pa_payload = $has_c2pa ? TransparAI_Parsers::jpeg_app11_payload( $segments ) : '';
-		$c2pa         = self::from_c2pa( $has_c2pa, $c2pa_payload );
+		$c2pa         = self::from_c2pa( $has_c2pa, $c2pa_payload, $path );
 		if ( null !== $c2pa && 'certain' === $c2pa['confidence'] ) {
 			return $c2pa;
 		}
@@ -198,7 +200,7 @@ final class TransparAI_Detector {
 		}
 
 		$has_c2pa = TransparAI_Parsers::png_has_c2pa( $chunks );
-		$c2pa     = self::from_c2pa( $has_c2pa, $has_c2pa ? TransparAI_Parsers::png_c2pa_payload( $chunks ) : '' );
+		$c2pa     = self::from_c2pa( $has_c2pa, $has_c2pa ? TransparAI_Parsers::png_c2pa_payload( $chunks ) : '', $path );
 		if ( null !== $c2pa && 'certain' === $c2pa['confidence'] ) {
 			return $c2pa;
 		}
@@ -258,7 +260,7 @@ final class TransparAI_Detector {
 				}
 			}
 		}
-		$c2pa = self::from_c2pa( $has_c2pa, $c2pa_payload );
+		$c2pa = self::from_c2pa( $has_c2pa, $c2pa_payload, $path );
 		if ( null !== $c2pa && 'certain' === $c2pa['confidence'] ) {
 			return $c2pa;
 		}
@@ -428,10 +430,116 @@ final class TransparAI_Detector {
 	 * REAL photos, presence alone is only 'likely'. Only an AI claim
 	 * generator upgrades to 'certain'.
 	 */
-	private static function from_c2pa( bool $present, string $payload ): ?array {
+	private static function from_c2pa( bool $present, string $payload, string $path = '' ): ?array {
 		if ( ! $present ) {
 			return null;
 		}
+		$result = self::from_c2pa_payload( $payload );
+		if ( '' === $path ) {
+			return $result;
+		}
+
+		/*
+		 * A manifest whose data hash does not cover these bytes was copied
+		 * from another file or the image was edited after signing. Its
+		 * declaration is then a question for the review queue, not a label.
+		 */
+		$info = self::c2pa_info( $path );
+		if ( null !== $info && 'mismatch' === $info['hash'] && 'certain' === $result['confidence'] ) {
+			$result['confidence'] = 'likely';
+			$result['evidence']   = mb_substr( $result['evidence'] . '; manifest data hash does not match the file bytes', 0, 500 );
+		}
+		if ( null !== $info && '' === $result['generator'] && '' !== $info['generator'] ) {
+			$result['generator'] = $info['generator'];
+		}
+		return $result;
+	}
+
+	/**
+	 * What the C2PA manifest of a file says, null when it carries none.
+	 *
+	 * Independent of the label decision: stored with every scan so the media
+	 * library can show signer, generator and whether the manifest still
+	 * matches the bytes. Memoised per file state because the detector and
+	 * the scanner both ask for it in one request.
+	 *
+	 * @return array{hash:string, reason:string, alg:string, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int, own_mark:bool, file:string}|null
+	 */
+	public static function c2pa_info( string $path ): ?array {
+		if ( $path === self::$c2pa_memo_path ) {
+			return self::$c2pa_memo;
+		}
+		self::$c2pa_memo_path = $path;
+		self::$c2pa_memo      = self::read_c2pa_info( $path );
+		return self::$c2pa_memo;
+	}
+
+	/**
+	 * Memo of c2pa_info(): path and result of the file detect_file() looked at last.
+	 *
+	 * @var string
+	 */
+	private static $c2pa_memo_path = '';
+
+	/**
+	 * @var array<string, mixed>|null
+	 */
+	private static $c2pa_memo = null;
+
+	/**
+	 * @see c2pa_info()
+	 */
+	private static function read_c2pa_info( string $path ): ?array {
+		if ( ! TransparAI_C2PA::present( $path ) ) {
+			return null;
+		}
+		$head   = TransparAI_Parsers::read_head( $path, 64 );
+		$format = null === $head ? '' : TransparAI_Parsers::sniff( $head );
+		$info   = array(
+			'hash'      => 'unsupported',
+			'reason'    => 'bmff',
+			'alg'       => '',
+			'signer_cn' => '',
+			'signer_o'  => '',
+			'generator' => '',
+			'when'      => '',
+			'manifests' => 0,
+			'own_mark'  => false,
+			'file'      => basename( $path ),
+		);
+		if ( ! in_array( $format, array( 'jpeg', 'png', 'webp' ), true ) ) {
+			return $info; /* ISO-BMFF: presence only, the BMFF hash is out of scope. */
+		}
+		if ( (int) filesize( $path ) > TransparAI_C2PA::MAX_FILE_BYTES ) {
+			$info['reason'] = 'too_large';
+			return $info;
+		}
+		/*
+		 * ponytail: whole file in memory (the writer does the same); stream it
+		 * with exclusion ranges if uploads beyond a few dozen megabytes matter.
+		 */
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local media file, not a remote request.
+		$data = file_get_contents( $path );
+		if ( false === $data ) {
+			$info['reason'] = 'unreadable';
+			return $info;
+		}
+		$stripped = TransparAI_Writer::without_own_marks( $data, $format );
+		if ( null !== $stripped ) {
+			$data             = $stripped;
+			$info['own_mark'] = true;
+		}
+		$summary = TransparAI_C2PA::summary( $data, $format );
+		if ( null === $summary ) {
+			return null;
+		}
+		return array_merge( $info, $summary );
+	}
+
+	/**
+	 * The C2PA rule on raw manifest bytes (no file access).
+	 */
+	private static function from_c2pa_payload( string $payload ): array {
 		$claim = '' !== $payload ? TransparAI_Parsers::c2pa_claim_generator( $payload ) : '';
 
 		/*

@@ -151,6 +151,10 @@ final class TransparAI_Writer {
 		}
 
 		TransparAI_Repair::remember( $attachment_id );
+		/* Our own write is not a change the detector needs to look at again. */
+		if ( null !== TransparAI_Repair::changed_since_scan( $attachment_id ) ) {
+			TransparAI_Repair::remember_scan( $attachment_id );
+		}
 
 		/*
 		 * A failed file write must never stay silent: for a compliance plugin,
@@ -200,7 +204,7 @@ final class TransparAI_Writer {
 	 * panel in the media library: one row per file plus the raw XMP packet of
 	 * the main file. Reading only, nothing is written or repaired here.
 	 *
-	 * @return array{files: array<int, array{name:string, format:string, marked:bool|null, size:int}>, xmp: string, terms: array<int, string>}
+	 * @return array{files: array<int, array{name:string, format:string, marked:bool|null, size:int, c2pa:bool}>, xmp: string, terms: array<int, string>}
 	 */
 	public static function inspect( int $attachment_id ): array {
 		$main  = (string) get_attached_file( $attachment_id );
@@ -214,6 +218,7 @@ final class TransparAI_Writer {
 				/* null: a format this plugin cannot write, so "missing" says nothing. */
 				'marked' => '' === $format ? null : self::file_is_marked( $path ),
 				'size'   => (int) @filesize( $path ), // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a file that vanished mid-read is reported as zero.
+				'c2pa'   => TransparAI_C2PA::present( $path ),
 			);
 		}
 
@@ -605,9 +610,21 @@ final class TransparAI_Writer {
 	}
 
 	private static function jpeg_remove( string $path, string $data ): bool {
+		if ( null === TransparAI_Parsers::jpeg_segments( $data ) ) {
+			return false;
+		}
+		$out = self::jpeg_strip( $data );
+		return null === $out ? true : self::atomic_write( $path, $out, 'jpeg' );
+	}
+
+	/**
+	 * JPEG bytes without this plugin's own XMP packet, description block and
+	 * IIM segment, or null when nothing in them is ours.
+	 */
+	private static function jpeg_strip( string $data ): ?string {
 		$segments = TransparAI_Parsers::jpeg_segments( $data );
 		if ( null === $segments ) {
-			return false;
+			return null;
 		}
 
 		$dirty = false;
@@ -636,10 +653,7 @@ final class TransparAI_Writer {
 			$out[] = $segment;
 		}
 
-		if ( ! $dirty ) {
-			return true;
-		}
-		return self::atomic_write( $path, TransparAI_Parsers::jpeg_build( $out ), 'jpeg' );
+		return $dirty ? TransparAI_Parsers::jpeg_build( $out ) : null;
 	}
 
 	/* --- PNG ----------------------------------------------------------- */
@@ -681,9 +695,20 @@ final class TransparAI_Writer {
 	}
 
 	private static function png_remove( string $path, string $data ): bool {
+		if ( null === TransparAI_Parsers::png_chunks( $data ) ) {
+			return false;
+		}
+		$out = self::png_strip( $data );
+		return null === $out ? true : self::atomic_write( $path, $out, 'png' );
+	}
+
+	/**
+	 * PNG bytes without this plugin's own XMP, or null when nothing is ours.
+	 */
+	private static function png_strip( string $data ): ?string {
 		$chunks = TransparAI_Parsers::png_chunks( $data );
 		if ( null === $chunks ) {
-			return false;
+			return null;
 		}
 
 		$dirty = false;
@@ -706,10 +731,7 @@ final class TransparAI_Writer {
 			$out[] = $chunk;
 		}
 
-		if ( ! $dirty ) {
-			return true;
-		}
-		return self::atomic_write( $path, TransparAI_Parsers::png_build( $out ), 'png' );
+		return $dirty ? TransparAI_Parsers::png_build( $out ) : null;
 	}
 
 	/**
@@ -786,9 +808,25 @@ final class TransparAI_Writer {
 	}
 
 	private static function webp_remove( string $path, string $data ): bool {
+		if ( null === TransparAI_Parsers::webp_chunks( $data ) ) {
+			return false;
+		}
+		$out = self::webp_strip( $data );
+		return null === $out ? true : self::atomic_write( $path, $out, 'webp' );
+	}
+
+	/**
+	 * WebP bytes without this plugin's own XMP, or null when nothing is ours.
+	 *
+	 * A VP8X chunk that carries no flag and serves no other extended chunk
+	 * once our XMP is gone was added by webp_write() and goes too, so the
+	 * bytes return to what they were before the label (a C2PA data hash
+	 * depends on that).
+	 */
+	private static function webp_strip( string $data ): ?string {
 		$chunks = TransparAI_Parsers::webp_chunks( $data );
 		if ( null === $chunks ) {
-			return false;
+			return null;
 		}
 
 		$dirty = false;
@@ -812,22 +850,47 @@ final class TransparAI_Writer {
 		}
 
 		if ( ! $dirty ) {
-			return true;
+			return null;
 		}
 
-		$has_xmp = false;
+		$has_xmp  = false;
+		$extended = false;
 		foreach ( $out as $chunk ) {
 			if ( 'XMP ' === $chunk['fourcc'] ) {
 				$has_xmp = true;
-				break;
+			}
+			if ( in_array( $chunk['fourcc'], array( 'XMP ', 'EXIF', 'ICCP', 'ALPH', 'ANIM', 'ANMF' ), true ) ) {
+				$extended = true;
 			}
 		}
 		$final = self::webp_ensure_vp8x( $out, $has_xmp );
 		if ( null === $final ) {
-			return false;
+			return null;
+		}
+		if ( ! $extended && 'VP8X' === $final[0]['fourcc'] && strlen( $final[0]['data'] ) >= 1 && 0 === ord( $final[0]['data'][0] ) ) {
+			array_shift( $final );
 		}
 
-		return self::atomic_write( $path, TransparAI_Parsers::webp_build( $final ), 'webp' );
+		return TransparAI_Parsers::webp_build( $final );
+	}
+
+	/**
+	 * File bytes with everything this plugin wrote taken out again, or null
+	 * when nothing in them is ours. Pure, nothing is written.
+	 *
+	 * @param string $data   Raw file bytes.
+	 * @param string $format jpeg|png|webp.
+	 */
+	public static function without_own_marks( string $data, string $format ): ?string {
+		switch ( $format ) {
+			case 'jpeg':
+				return self::jpeg_strip( $data );
+			case 'png':
+				return self::png_strip( $data );
+			case 'webp':
+				return self::webp_strip( $data );
+		}
+		return null;
 	}
 
 	/* --- AVIF (ISO-BMFF) ------------------------------------------------ */

@@ -3,7 +3,7 @@
  * Plugin Name:       TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection
  * Plugin URI:        https://wordpress.org/plugins/transparai/
  * Description:       Detect AI images via C2PA and IPTC, disclose AI content and chatbots, track EU AI Act readiness with a score, self-assessment and compliance report.
- * Version:           1.1.5
+ * Version:           1.1.6
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Patrick Schlesinger
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.1.5' );
+defined( 'TRANSPARAI_VERSION' ) || define( 'TRANSPARAI_VERSION', '1.1.6' );
 defined( 'TRANSPARAI_PLUGIN_FILE' ) || define( 'TRANSPARAI_PLUGIN_FILE', __FILE__ );
 defined( 'TRANSPARAI_PLUGIN_DIR' ) || define( 'TRANSPARAI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 defined( 'TRANSPARAI_PLUGIN_URL' ) || define( 'TRANSPARAI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -35,6 +35,7 @@ defined( 'TRANSPARAI_PLUGIN_BASENAME' ) || define( 'TRANSPARAI_PLUGIN_BASENAME',
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-options.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-meta.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-parsers.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-c2pa.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-detector.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-writer.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-scanner.php';
@@ -48,6 +49,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-chatbot.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-compliance.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-systems.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-privacy.php';
 
 if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-media-library.php';
@@ -94,6 +96,11 @@ if ( ! class_exists( 'TransparAI' ) ) {
 				TransparAI_Settings::init();
 				TransparAI_Content_Label::init();
 				TransparAI_Setup::init();
+				TransparAI_Privacy::init();
+			}
+
+			if ( is_multisite() ) {
+				add_action( 'wp_initialize_site', array( self::class, 'initialize_site' ), 20 );
 			}
 
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -102,13 +109,44 @@ if ( ! class_exists( 'TransparAI' ) ) {
 		}
 
 		/**
-		 * Activation: schedule the integrity verification cron.
+		 * Activation: schedule the integrity verification cron, on every site
+		 * of the network when activated network-wide.
+		 *
+		 * @param bool $network_wide Whether the plugin is being activated for the whole network.
 		 */
-		public static function activate(): void {
-			TransparAI_Repair::schedule();
+		public static function activate( bool $network_wide = false ): void {
+			if ( $network_wide && is_multisite() ) {
+				foreach ( get_sites(
+					array(
+						'fields' => 'ids',
+						'number' => 0,
+					)
+				) as $site_id ) {
+					switch_to_blog( (int) $site_id );
+					TransparAI_Repair::schedule();
+					restore_current_blog();
+				}
+			} else {
+				TransparAI_Repair::schedule();
+			}
 			if ( class_exists( 'TransparAI_Setup' ) ) {
 				TransparAI_Setup::flag_redirect();
 			}
+		}
+
+		/**
+		 * A site created while the plugin is network-active gets its cron too.
+		 *
+		 * @param WP_Site $site The new site.
+		 */
+		public static function initialize_site( WP_Site $site ): void {
+			$network_plugins = (array) get_site_option( 'active_sitewide_plugins', array() );
+			if ( ! isset( $network_plugins[ TRANSPARAI_PLUGIN_BASENAME ] ) ) {
+				return;
+			}
+			switch_to_blog( (int) $site->blog_id );
+			TransparAI_Repair::schedule();
+			restore_current_blog();
 		}
 
 		/**

@@ -35,7 +35,9 @@ final class TransparAI_Options {
 			'badge_mode'              => 'overlay', /* overlay | caption. */
 			'badge_text'              => '', /* Empty = translated default label. */
 			'badge_position'          => 'bottom-right', /* top-left | top-right | bottom-left | bottom-right. */
-			'badge_style'             => 'dark', /* dark | light | outline | icon-only. */
+			'badge_style'             => 'dark', /* dark | light | outline | icon-only | eu-icon. */
+			'badge_eu_icon'           => 'type', /* eu-icon style: type (Fully AI-generated / Partially AI-modified by label type) | basic. */
+			'badge_eu_color'          => 'black', /* eu-icon style: black | white (the Commission's two colour variants). */
 			'badge_size'              => 'medium', /* small | medium | large. */
 			'badge_color'             => '', /* Hex #rrggbb background. Empty = the colour that comes with the chosen style. */
 			'badge_text_color'        => '', /* Hex #rrggbb text (and border). Empty = the colour that comes with the chosen style. */
@@ -143,7 +145,9 @@ final class TransparAI_Options {
 		$enums    = array(
 			'badge_mode'              => array( 'overlay', 'caption' ),
 			'badge_position'          => array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ),
-			'badge_style'             => array( 'dark', 'light', 'outline', 'icon-only' ),
+			'badge_style'             => array( 'dark', 'light', 'outline', 'icon-only', 'eu-icon' ),
+			'badge_eu_icon'           => array( 'type', 'basic' ),
+			'badge_eu_color'          => array( 'black', 'white' ),
 			'badge_size'              => array( 'small', 'medium', 'large' ),
 			'mode_certain'            => array( 'flag', 'queue', 'off' ),
 			'mode_likely'             => array( 'flag', 'queue', 'off' ),

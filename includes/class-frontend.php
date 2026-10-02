@@ -193,7 +193,7 @@ final class TransparAI_Frontend {
 	 * WooCommerce variation swaps and lightbox clones happen after the
 	 * server-side markup was printed. Null when nothing is shown.
 	 *
-	 * @return array{kind:string, label:string, short:string, classes:string, path:string, human:bool}|null
+	 * @return array{kind:string, label:string, short:string, classes:string, path:string, human:bool, icon:string}|null
 	 */
 	public static function public_label( int $attachment_id ): ?array {
 		if ( ! self::should_filter() || ! self::renders_badge( $attachment_id ) ) {
@@ -207,6 +207,7 @@ final class TransparAI_Frontend {
 			'classes' => self::wrap_classes( 'trai-wrap', $attachment_id ),
 			'path'    => self::normalize_upload_path( (string) get_post_meta( $attachment_id, '_wp_attached_file', true ) ),
 			'human'   => $human,
+			'icon'    => $human ? '' : self::eu_icon_url( TransparAI_Meta::get_type( $attachment_id ) ),
 		);
 	}
 
@@ -274,8 +275,7 @@ final class TransparAI_Frontend {
 				$label .= ' · ' . $generator;
 			}
 		}
-		$html = '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( self::badge_short_label() ) . '">'
-			. esc_html( $label ) . '</span>';
+		$html = self::badge_element( $label, self::badge_short_label(), TransparAI_Meta::get_type( $attachment_id ) );
 
 		/**
 		 * Filters the badge markup of one attachment.
@@ -284,6 +284,47 @@ final class TransparAI_Frontend {
 		 * @param int    $attachment_id Attachment ID.
 		 */
 		return (string) apply_filters( 'transparai_badge_html', $html, $attachment_id );
+	}
+
+	/**
+	 * The badge element for an AI label: plain text, or, with the EU icon
+	 * style, the Commission's icon with the text kept for screen readers and
+	 * caption lines.
+	 *
+	 * @param string $label      The full label.
+	 * @param string $short      The short label for the mini variant.
+	 * @param string $type       generated|composite, decides between the Fully AI-generated and Partially AI-modified icon.
+	 * @param bool   $force_icon Include the icon whatever the style setting (the settings preview switches styles live).
+	 */
+	public static function badge_element( string $label, string $short, string $type = 'generated', bool $force_icon = false ): string {
+		$icon = self::eu_icon_url( $type, $force_icon );
+		$html = '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( $short ) . '">';
+		if ( '' === $icon ) {
+			return $html . esc_html( $label ) . '</span>';
+		}
+		return $html . '<img class="trai-eu" src="' . esc_url( $icon ) . '" alt="" aria-hidden="true" />'
+			. '<span class="trai-badge-text">' . esc_html( $label ) . '</span></span>';
+	}
+
+	/**
+	 * URL of the official EU icon for a label type, '' unless the EU icon style is active.
+	 *
+	 * The icons are the Commission's own SVGs (assets/img/eu/SOURCE.md). They
+	 * are referenced as images rather than inlined: each file carries its own
+	 * stylesheet with generic class names that would collide once two icons sit
+	 * in one document.
+	 */
+	public static function eu_icon_url( string $type, bool $force = false ): string {
+		if ( ! $force && 'eu-icon' !== TransparAI_Options::get( 'badge_style' ) ) {
+			return '';
+		}
+		if ( 'basic' === TransparAI_Options::get( 'badge_eu_icon' ) ) {
+			$name = 'basic';
+		} else {
+			$name = 'composite' === $type ? 'modified' : 'generated';
+		}
+		$color = 'white' === TransparAI_Options::get( 'badge_eu_color' ) ? 'white' : 'black';
+		return TRANSPARAI_PLUGIN_URL . 'assets/img/eu/ai-' . $name . '-' . $color . '.svg';
 	}
 
 	/**
@@ -403,6 +444,8 @@ final class TransparAI_Frontend {
 			/* Background badges carry no attachment ID, so {generator} templates fall back to the default label here. */
 			'label'      => self::badge_label(),
 			'short'      => self::badge_short_label(),
+			/* Images labeled by the script carry no type, so they get the "generated" icon. */
+			'icon'       => self::eu_icon_url( 'generated' ),
 			'guard'      => TransparAI_Options::enabled( 'badge_guard' ) ? '1' : '',
 			'classesBg'  => self::wrap_classes( 'trai-bg-host' ),
 			'classesImg' => self::wrap_classes( 'trai-wrap' ),
@@ -943,6 +986,14 @@ final class TransparAI_Frontend {
 		}
 		if ( has_action( 'wphb_clear_page_cache' ) ) {
 			do_action( 'wphb_clear_page_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Hummingbird's own purge hook.
+		}
+		/*
+		 * Elementor's element cache stores the rendered widget HTML, badge
+		 * included, per post; without clearing it a changed badge style only
+		 * reaches Elementor pages once that cache expires.
+		 */
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			delete_post_meta_by_key( '_elementor_element_cache' );
 		}
 	}
 }
