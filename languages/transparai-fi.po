@@ -3225,68 +3225,74 @@ msgstr ""
 #: admin/class-media-library.php:384
 msgid "valid, signed with a certificate on the C2PA trust list"
 msgstr ""
+"kelvollinen, allekirjoitettu C2PA-luottamuslistalla olevalla varmenteella"
 
 #: admin/class-media-library.php:386
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
 msgstr ""
+"kelvollinen, mutta allekirjoittaja ei ole C2PA-luottamuslistalla "
+"(testivarmenne, itse tehty tai listaamaton varmenne)"
 
 #: admin/class-media-library.php:390
 msgid "invalid, the signature does not match the manifest"
-msgstr ""
+msgstr "virheellinen, allekirjoitus ei vastaa manifestia"
 
 #: admin/class-media-library.php:394
 msgid "invalid, a part of the manifest was changed after signing"
-msgstr ""
+msgstr "virheellinen, osaa manifestista on muutettu allekirjoituksen jälkeen"
 
 #: admin/class-media-library.php:396
 msgid "invalid, the certificate was not valid at the time of signing"
-msgstr ""
+msgstr "virheellinen, varmenne ei ollut voimassa allekirjoitushetkellä"
 
 #: admin/class-media-library.php:398
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
 msgstr ""
+"virheellinen, varmenteella ei saa allekirjoittaa Content Credentials "
+"-tietoja"
 
 #: admin/class-media-library.php:400
 msgid "invalid, the time stamp does not hold"
-msgstr ""
+msgstr "virheellinen, aikaleima ei pidä"
 
 #: admin/class-media-library.php:402
 msgid "invalid, the certificate chain does not hold"
-msgstr ""
+msgstr "virheellinen, varmenneketju ei pidä"
 
 #: admin/class-media-library.php:405
 msgid "not checkable, unknown signature algorithm"
-msgstr ""
+msgstr "ei tarkistettavissa, tuntematon allekirjoitusalgoritmi"
 
 #: admin/class-media-library.php:408
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
 msgstr ""
+"ei tarkistettavissa, palvelimelta puuttuvat OpenSSL- tai sodium-funktiot"
 
 #: admin/class-media-library.php:410
 msgid "not checked"
-msgstr ""
+msgstr "ei tarkistettu"
 
 #: admin/class-media-library.php:510
 msgid "Signature:"
-msgstr ""
+msgstr "Allekirjoitus:"
 
 #: admin/class-media-library.php:515
 msgid "Certificate issued by"
-msgstr ""
+msgstr "Varmenteen myöntäjä"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
-msgstr ""
+msgstr "Aikaleima: %1$s UTC, myöntäjä %2$s (C2PA-aikaleimalistalla)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
-msgstr ""
+msgstr "Aikaleima: %1$s UTC, myöntäjä %2$s (ei C2PA-aikaleimalistalla)"
 
 #: admin/class-media-library.php:533
 msgid ""
@@ -3294,11 +3300,14 @@ msgid ""
 "manifest, the certificate chain against the C2PA trust list and a time "
 "stamp. Certificate revocation is not checked."
 msgstr ""
+"Tarkistettu omalla palvelimellasi: allekirjoitus, manifestin jokaisen osan "
+"tiivisteet, varmenneketju C2PA-luottamuslistaa vasten ja aikaleima. "
+"Varmenteiden sulkemista ei tarkisteta."
 
 #: admin/class-setup.php:166 admin/class-wizard.php:47
 #: admin/class-wizard.php:242
 msgid "Setup assistant"
-msgstr ""
+msgstr "Ohjattu käyttöönotto"
 
 #: admin/class-setup.php:167
 msgid ""
@@ -3307,60 +3316,65 @@ msgid ""
 "where relevant, AI-written text and the chatbot. Nothing is labeled without "
 "your review, and no request leaves your server."
 msgstr ""
+"Kuusi lyhyttä vaihetta asioihin, jotka asetetaan kerran: mitä sivustosi "
+"käyttää, olemassa olevan kirjaston skannaus, näkyvän merkinnän ulkoasu, "
+"tiedostojen metatiedot sekä tarvittaessa tekoälyn kirjoittama teksti ja "
+"chatbot. Mitään ei merkitä ilman tarkistustasi, eikä yksikään pyyntö lähde "
+"palvelimeltasi."
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:173
 #, php-format
 msgid "%1$d media files, %2$d of them scanned."
-msgstr ""
+msgstr "Mediatiedostoja: %1$d, joista skannattu: %2$d."
 
 #: admin/class-setup.php:181
 msgid "Open the setup assistant"
-msgstr ""
+msgstr "Avaa ohjattu käyttöönotto"
 
 #: admin/class-wizard.php:48
 msgid "Setup"
-msgstr ""
+msgstr "Käyttöönotto"
 
 #: admin/class-wizard.php:69 admin/class-wizard.php:295
 msgid "Start"
-msgstr ""
+msgstr "Aloitus"
 
 #: admin/class-wizard.php:70
 msgid "Your site"
-msgstr ""
+msgstr "Sivustosi"
 
 #: admin/class-wizard.php:71
 msgid "Images"
-msgstr ""
+msgstr "Kuvat"
 
 #: admin/class-wizard.php:72
 msgid "Visible label"
-msgstr ""
+msgstr "Näkyvä merkintä"
 
 #: admin/class-wizard.php:74
 msgid "Text and chat"
-msgstr ""
+msgstr "Teksti ja chat"
 
 #: admin/class-wizard.php:244
 msgid "Setup steps"
-msgstr ""
+msgstr "Käyttöönoton vaiheet"
 
 #: admin/class-wizard.php:295
 msgid "Save and continue"
-msgstr ""
+msgstr "Tallenna ja jatka"
 
 #: admin/class-wizard.php:299
 msgid "Back"
-msgstr ""
+msgstr "Takaisin"
 
 #: admin/class-wizard.php:303
 msgid "Not now, I will set it up myself"
-msgstr ""
+msgstr "Ei nyt, asetan sen itse"
 
 #: admin/class-wizard.php:314
 msgid "Welcome to TransparAI"
-msgstr ""
+msgstr "Tervetuloa TransparAI:hin"
 
 #: admin/class-wizard.php:315
 msgid ""
@@ -3370,37 +3384,51 @@ msgid ""
 " your files and, if your site has them, sets up the notes for AI-written "
 "text and for a chatbot."
 msgstr ""
+"Kuudessa lyhyessä vaiheessa ohjattu käyttöönotto määrittää sen, mitä EU:n "
+"tekoälyasetus edellyttää tekoälyä käyttävältä sivustolta: se löytää "
+"mediakirjastossasi jo olevat tekoälykuvat, lisää näkyvän merkinnän sinne, "
+"missä sitä tarvitaan, säilyttää koneluettavan merkinnän tiedostoissasi ja, "
+"jos sivustollasi niitä on, määrittää huomautukset tekoälyn kirjoittamalle "
+"tekstille ja chatbotille."
 
 #: admin/class-wizard.php:317
 msgid ""
 "Everything runs on your server. No account, no telemetry, no request to an "
 "outside service."
 msgstr ""
+"Kaikki toimii omalla palvelimellasi. Ei tiliä, ei telemetriaa, ei pyyntöjä "
+"ulkoisiin palveluihin."
 
 #: admin/class-wizard.php:318
 msgid ""
 "Every choice can be changed later in the settings; nothing here is final."
 msgstr ""
+"Jokaista valintaa voi muuttaa myöhemmin asetuksissa; mikään tässä ei ole "
+"lopullista."
 
 #: admin/class-wizard.php:319
 msgid ""
 "The plugin is a technical tool and gives no legal advice. Whether a duty "
 "applies to your site is your decision."
 msgstr ""
+"Lisäosa on tekninen työkalu eikä anna oikeudellista neuvontaa. Sinä päätät, "
+"koskeeko jokin velvoite sivustoasi."
 
 #: admin/class-wizard.php:330
 msgid "What does your site use?"
-msgstr ""
+msgstr "Mitä sivustosi käyttää?"
 
 #: admin/class-wizard.php:331
 msgid ""
 "Six questions decide which of the following steps matter for you. The "
 "answers also appear in the self-assessment and in the compliance report."
 msgstr ""
+"Kuusi kysymystä ratkaisee, mitkä seuraavista vaiheista koskevat sinua. "
+"Vastaukset näkyvät myös itsearvioinnissa ja vaatimustenmukaisuusraportissa."
 
 #: admin/class-wizard.php:351
 msgid "Find the AI images in your library"
-msgstr ""
+msgstr "Löydä kirjastosi tekoälykuvat"
 
 #: admin/class-wizard.php:352
 msgid ""
@@ -3409,20 +3437,27 @@ msgid ""
 "and the generation parameters of local tools. It never guesses from image "
 "size, file size or file name."
 msgstr ""
+"Lisäosa lukee alkuperätiedot, jotka tekoälygeneraattorit jättävät "
+"tiedostoihinsa: Content Credentials (C2PA, allekirjoitus tarkistettu), "
+"IPTC:n digitaalisen lähdetyypin ja paikallisten työkalujen "
+"generointiparametrit. Se ei koskaan arvaa kuvan mittojen, tiedostokoon tai "
+"tiedostonimen perusteella."
 
 #: admin/class-wizard.php:354
 msgid "What should happen with a clear AI declaration?"
-msgstr ""
+msgstr "Mitä tehdään, kun tekoälyilmoitus on yksiselitteinen?"
 
 #: admin/class-wizard.php:355
 msgid ""
 "Label it right away; only uncertain findings wait in the review queue "
 "(recommended)"
 msgstr ""
+"Merkitse heti; vain epävarmat löydökset odottavat tarkistusjonossa "
+"(suositus)"
 
 #: admin/class-wizard.php:356
 msgid "Put every finding into the review queue; I confirm each one myself"
-msgstr ""
+msgstr "Siirrä jokainen löydös tarkistusjonoon; vahvistan jokaisen itse"
 
 #: admin/class-wizard.php:361
 msgid ""
@@ -3430,26 +3465,29 @@ msgid ""
 "you can also continue and scan later from the AI Images screen. New uploads "
 "are checked automatically from now on."
 msgstr ""
+"Skannaus etenee pienissä erissä niin kauan kuin tämä sivu on auki, ja sen "
+"voi keskeyttää; voit myös jatkaa ja skannata myöhemmin Tekoälykuvat-"
+"näkymässä. Uudet lähetykset tarkistetaan tästä lähtien automaattisesti."
 
 #: admin/class-wizard.php:373
 msgid "Look"
-msgstr ""
+msgstr "Ulkoasu"
 
 #: admin/class-wizard.php:383
 msgid "Position"
-msgstr ""
+msgstr "Sijainti"
 
 #: admin/class-wizard.php:392
 msgid "Placement"
-msgstr ""
+msgstr "Sijoittelu"
 
 #: admin/class-wizard.php:399
 msgid "Size"
-msgstr ""
+msgstr "Koko"
 
 #: admin/class-wizard.php:408
 msgid "How should the visible label look?"
-msgstr ""
+msgstr "Miltä näkyvän merkinnän pitäisi näyttää?"
 
 #: admin/class-wizard.php:409
 msgid ""
@@ -3457,10 +3495,14 @@ msgid ""
 "right next to the image. The badge appears on every labeled image, in the "
 "content, in featured images, in page builders and in WooCommerce."
 msgstr ""
+"EU:n tekoälyasetus edellyttää merkintää, joka huomataan heti "
+"ensisilmäyksellä, kuvan päällä tai aivan sen vieressä. Merkki näkyy "
+"jokaisessa merkityssä kuvassa: sisällössä, artikkelikuvissa, "
+"sivunrakentajissa ja WooCommercessa."
 
 #: admin/class-wizard.php:424
 msgid "Show the visible badge"
-msgstr ""
+msgstr "Näytä näkyvä merkki"
 
 #: admin/class-wizard.php:425
 msgid ""
@@ -3468,6 +3510,9 @@ msgid ""
 "apply (older content is not covered retroactively; the file metadata is "
 "written either way)"
 msgstr ""
+"Vain 2.8.2026 alkaen lähetetyille mediatiedostoille, jolloin 50 artiklaa "
+"alettiin soveltaa (vanhempaa sisältöä ei kateta taannehtivasti; tiedoston "
+"metatiedot kirjoitetaan joka tapauksessa)"
 
 #: admin/class-wizard.php:437
 msgid ""
@@ -3475,27 +3520,36 @@ msgid ""
 "size). Search engines and other tools read it, and it travels with the "
 "image."
 msgstr ""
+"Kirjoita IPTC:n digitaalinen lähdetyyppi merkittyihin tiedostoihin (XMP, "
+"jokainen kuvakoko). Hakukoneet ja muut työkalut lukevat sen, ja se kulkee "
+"kuvan mukana."
 
 #: admin/class-wizard.php:438
 msgid ""
 "Also mirror it into the classic IPTC block of JPEG files, for older tools."
 msgstr ""
+"Peilaa se myös JPEG-tiedostojen perinteiseen IPTC-lohkoon vanhempia "
+"työkaluja varten."
 
 #: admin/class-wizard.php:439
 msgid ""
 "Restore the declaration when an image optimizer or a regenerated thumbnail "
 "strips it (hourly check)."
 msgstr ""
+"Palauta ilmoitus, kun kuvanoptimoija tai uudelleen luotu pienoiskuva poistaa"
+" sen (tarkistus tunneittain)."
 
 #: admin/class-wizard.php:440
 msgid ""
 "Add structured data (Schema.org digitalSourceType) for labeled media to the "
 "page, for search engines and AI answer engines."
 msgstr ""
+"Lisää sivulle rakenteista dataa (Schema.org digitalSourceType) merkityistä "
+"mediatiedostoista hakukoneita ja tekoälypohjaisia vastauspalveluja varten."
 
 #: admin/class-wizard.php:443
 msgid "Machine-readable marking"
-msgstr ""
+msgstr "Koneluettava merkintä"
 
 #: admin/class-wizard.php:444
 msgid ""
@@ -3503,10 +3557,13 @@ msgid ""
 "without looking at your page. Existing metadata is kept; removing a label "
 "removes exactly what the plugin wrote."
 msgstr ""
+"Tiedostossa olevan merkinnän ansiosta muut järjestelmät tunnistavat "
+"tekoälysisällön katsomatta sivuasi. Olemassa olevat metatiedot säilyvät; "
+"merkinnän poistaminen poistaa täsmälleen sen, minkä lisäosa kirjoitti."
 
 #: admin/class-wizard.php:461
 msgid "AI-written text and chatbots"
-msgstr ""
+msgstr "Tekoälyn kirjoittama teksti ja chatbotit"
 
 #: admin/class-wizard.php:463
 msgid ""
@@ -3514,99 +3571,108 @@ msgid ""
 " chatbot, so there is nothing to set up here. Both can be switched on later "
 "in the settings."
 msgstr ""
+"Vastaustesi mukaan sivustosi ei julkaise tekoälyn kirjoittamaa tekstiä eikä "
+"käytä chatbotia, joten tässä ei ole mitään määritettävää. Molemmat voi ottaa"
+" käyttöön myöhemmin asetuksissa."
 
 #: admin/class-wizard.php:468
 msgid "Where should the note on AI-written posts appear?"
-msgstr ""
+msgstr "Missä tekoälyn kirjoittamien artikkelien huomautus näytetään?"
 
 #: admin/class-wizard.php:469
 msgid ""
 "Each post gets an AI level (no AI, assisted, generated, generated and "
 "reviewed) in the editor; the note follows that level."
 msgstr ""
+"Jokainen artikkeli saa editorissa tekoälytason (ei tekoälyä, avustettu, "
+"luotu, luotu ja tarkistettu); huomautus määräytyy tason mukaan."
 
 #: admin/class-wizard.php:472
 msgid "Before the text"
-msgstr ""
+msgstr "Ennen tekstiä"
 
 #: admin/class-wizard.php:473
 msgid "After the text"
-msgstr ""
+msgstr "Tekstin jälkeen"
 
 #: admin/class-wizard.php:474
 msgid "Before and after"
-msgstr ""
+msgstr "Ennen ja jälkeen"
 
 #: admin/class-wizard.php:475
 msgid "Only where I place the block or shortcode"
-msgstr ""
+msgstr "Vain siellä, mihin sijoitan lohkon tai lyhytkoodin"
 
 #: admin/class-wizard.php:485
 msgid "Who answers in your chat?"
-msgstr ""
+msgstr "Kuka vastaa chatissasi?"
 
 #: admin/class-wizard.php:486
 msgid ""
 "Visitors must know when they talk to an AI. The notice appears in the chat "
 "or next to it, depending on the chat plugin."
 msgstr ""
+"Kävijöiden on tiedettävä, milloin he keskustelevat tekoälyn kanssa. Ilmoitus"
+" näkyy chatissa tai sen vieressä chat-lisäosasta riippuen."
 
 #: admin/class-wizard.php:490
 msgid "An AI first, a person takes over when needed"
-msgstr ""
+msgstr "Ensin tekoäly, ihminen jatkaa tarvittaessa"
 
 #: admin/class-wizard.php:491
 msgid "Only people answer (no AI notice)"
-msgstr ""
+msgstr "Vain ihmiset vastaavat (ei tekoälyilmoitusta)"
 
 #: admin/class-wizard.php:511
 msgid "Official EU icon"
-msgstr ""
+msgstr "Virallinen EU-kuvake"
 
 #: admin/class-wizard.php:515
 msgid "Icon only"
-msgstr ""
+msgstr "Vain kuvake"
 
 #: admin/class-wizard.php:518
 msgid "Your setup"
-msgstr ""
+msgstr "Asetuksesi"
 
 #. translators: 1: number of scanned media files, 2: number of media files.
 #: admin/class-wizard.php:525
 #, php-format
 msgid "Media library: %1$d of %2$d files scanned."
-msgstr ""
+msgstr "Mediakirjasto: %1$d/%2$d tiedostoa skannattu."
 
 #. translators: %s: badge style name.
 #: admin/class-wizard.php:537
 #, php-format
 msgid "Visible badge: on, style \"%s\"."
-msgstr ""
+msgstr "Näkyvä merkki: päällä, tyyli ”%s”."
 
 #: admin/class-wizard.php:538
 msgid "Visible badge: off."
-msgstr ""
+msgstr "Näkyvä merkki: pois."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: written into labeled files."
-msgstr ""
+msgstr "Tiedoston metatiedot: kirjoitetaan merkittyihin tiedostoihin."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: not written."
-msgstr ""
+msgstr "Tiedoston metatiedot: ei kirjoiteta."
 
 #. translators: %d: readiness score from 0 to 100.
 #: admin/class-wizard.php:548
 #, php-format
 msgid "Readiness score: %d of 100."
-msgstr ""
+msgstr "Valmiuspisteet: %d/100."
 
 #: admin/class-wizard.php:557
 msgid "What your answers make relevant"
-msgstr ""
+msgstr "Mitä vastauksesi tekevät olennaiseksi"
 
 #: admin/class-wizard.php:568
 msgid ""
 "The dashboard keeps the score and the open steps in view. This assistant "
 "stays available from the dashboard and the settings."
 msgstr ""
+"Ohjausnäkymä pitää pisteet ja avoimet vaiheet näkyvillä. Ohjattu "
+"käyttöönotto on edelleen käytettävissä ohjausnäkymästä ja asetuksista."

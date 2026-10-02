@@ -3227,69 +3227,75 @@ msgstr ""
 
 #: admin/class-media-library.php:384
 msgid "valid, signed with a certificate on the C2PA trust list"
-msgstr ""
+msgstr "valid, semnat cu un certificat de pe lista de încredere C2PA"
 
 #: admin/class-media-library.php:386
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
 msgstr ""
+"valid, dar semnatarul nu este pe lista de încredere C2PA (certificat de "
+"test, creat de autor sau nelistat)"
 
 #: admin/class-media-library.php:390
 msgid "invalid, the signature does not match the manifest"
-msgstr ""
+msgstr "nevalid, semnătura nu corespunde manifestului"
 
 #: admin/class-media-library.php:394
 msgid "invalid, a part of the manifest was changed after signing"
-msgstr ""
+msgstr "nevalid, o parte a manifestului a fost modificată după semnare"
 
 #: admin/class-media-library.php:396
 msgid "invalid, the certificate was not valid at the time of signing"
-msgstr ""
+msgstr "nevalid, certificatul nu era valabil în momentul semnării"
 
 #: admin/class-media-library.php:398
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
-msgstr ""
+msgstr "nevalid, certificatul nu are dreptul să semneze Content Credentials"
 
 #: admin/class-media-library.php:400
 msgid "invalid, the time stamp does not hold"
-msgstr ""
+msgstr "nevalid, marca temporală nu se confirmă"
 
 #: admin/class-media-library.php:402
 msgid "invalid, the certificate chain does not hold"
-msgstr ""
+msgstr "nevalid, lanțul de certificate nu se confirmă"
 
 #: admin/class-media-library.php:405
 msgid "not checkable, unknown signature algorithm"
-msgstr ""
+msgstr "nu poate fi verificat, algoritm de semnătură necunoscut"
 
 #: admin/class-media-library.php:408
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
 msgstr ""
+"nu poate fi verificat, serverului îi lipsesc funcțiile OpenSSL sau sodium"
 
 #: admin/class-media-library.php:410
 msgid "not checked"
-msgstr ""
+msgstr "neverificat"
 
 #: admin/class-media-library.php:510
 msgid "Signature:"
-msgstr ""
+msgstr "Semnătură:"
 
 #: admin/class-media-library.php:515
 msgid "Certificate issued by"
-msgstr ""
+msgstr "Certificat emis de"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
 msgstr ""
+"Marcă temporală: %1$s UTC de la %2$s (pe lista de mărci temporale C2PA)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
 msgstr ""
+"Marcă temporală: %1$s UTC de la %2$s (nu este pe lista de mărci temporale "
+"C2PA)"
 
 #: admin/class-media-library.php:533
 msgid ""
@@ -3297,11 +3303,14 @@ msgid ""
 "manifest, the certificate chain against the C2PA trust list and a time "
 "stamp. Certificate revocation is not checked."
 msgstr ""
+"Verificat pe serverul tău: semnătura, hash-urile fiecărei părți a "
+"manifestului, lanțul de certificate față de lista de încredere C2PA și o "
+"marcă temporală. Revocarea certificatului nu este verificată."
 
 #: admin/class-setup.php:166 admin/class-wizard.php:47
 #: admin/class-wizard.php:242
 msgid "Setup assistant"
-msgstr ""
+msgstr "Asistent de configurare"
 
 #: admin/class-setup.php:167
 msgid ""
@@ -3310,60 +3319,65 @@ msgid ""
 "where relevant, AI-written text and the chatbot. Nothing is labeled without "
 "your review, and no request leaves your server."
 msgstr ""
+"Șase pași scurți prin ce trebuie stabilit o singură dată: ce folosește site-"
+"ul tău, scanarea bibliotecii existente, aspectul etichetei vizibile, "
+"metadatele fișierelor și, unde e cazul, textul scris cu IA și chatbotul. "
+"Nimic nu este etichetat fără verificarea ta și nicio cerere nu părăsește "
+"serverul tău."
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:173
 #, php-format
 msgid "%1$d media files, %2$d of them scanned."
-msgstr ""
+msgstr "Fișiere media: %1$d, dintre care scanate: %2$d."
 
 #: admin/class-setup.php:181
 msgid "Open the setup assistant"
-msgstr ""
+msgstr "Deschide asistentul de configurare"
 
 #: admin/class-wizard.php:48
 msgid "Setup"
-msgstr ""
+msgstr "Configurare"
 
 #: admin/class-wizard.php:69 admin/class-wizard.php:295
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: admin/class-wizard.php:70
 msgid "Your site"
-msgstr ""
+msgstr "Site-ul tău"
 
 #: admin/class-wizard.php:71
 msgid "Images"
-msgstr ""
+msgstr "Imagini"
 
 #: admin/class-wizard.php:72
 msgid "Visible label"
-msgstr ""
+msgstr "Etichetă vizibilă"
 
 #: admin/class-wizard.php:74
 msgid "Text and chat"
-msgstr ""
+msgstr "Text și chat"
 
 #: admin/class-wizard.php:244
 msgid "Setup steps"
-msgstr ""
+msgstr "Pașii configurării"
 
 #: admin/class-wizard.php:295
 msgid "Save and continue"
-msgstr ""
+msgstr "Salvează și continuă"
 
 #: admin/class-wizard.php:299
 msgid "Back"
-msgstr ""
+msgstr "Înapoi"
 
 #: admin/class-wizard.php:303
 msgid "Not now, I will set it up myself"
-msgstr ""
+msgstr "Nu acum, mă ocup eu de configurare"
 
 #: admin/class-wizard.php:314
 msgid "Welcome to TransparAI"
-msgstr ""
+msgstr "Bun venit în TransparAI"
 
 #: admin/class-wizard.php:315
 msgid ""
@@ -3373,37 +3387,50 @@ msgid ""
 " your files and, if your site has them, sets up the notes for AI-written "
 "text and for a chatbot."
 msgstr ""
+"În șase pași scurți, asistentul configurează ce cere EU AI Act unui site "
+"care folosește IA: găsește imaginile IA aflate deja în biblioteca ta media, "
+"adaugă o etichetă vizibilă acolo unde este necesară, păstrează în fișierele "
+"tale marcajul care poate fi citit automat și, dacă site-ul tău le are, "
+"configurează notele pentru textul scris cu IA și pentru un chatbot."
 
 #: admin/class-wizard.php:317
 msgid ""
 "Everything runs on your server. No account, no telemetry, no request to an "
 "outside service."
 msgstr ""
+"Totul rulează pe serverul tău. Fără cont, fără telemetrie, fără cereri către"
+" servicii externe."
 
 #: admin/class-wizard.php:318
 msgid ""
 "Every choice can be changed later in the settings; nothing here is final."
 msgstr ""
+"Orice alegere poate fi schimbată ulterior în setări; nimic de aici nu este "
+"definitiv."
 
 #: admin/class-wizard.php:319
 msgid ""
 "The plugin is a technical tool and gives no legal advice. Whether a duty "
 "applies to your site is your decision."
 msgstr ""
+"Modulul este un instrument tehnic și nu oferă consultanță juridică. Tu "
+"decizi dacă o obligație se aplică site-ului tău."
 
 #: admin/class-wizard.php:330
 msgid "What does your site use?"
-msgstr ""
+msgstr "Ce folosește site-ul tău?"
 
 #: admin/class-wizard.php:331
 msgid ""
 "Six questions decide which of the following steps matter for you. The "
 "answers also appear in the self-assessment and in the compliance report."
 msgstr ""
+"Șase întrebări decid care dintre pașii următori contează pentru tine. "
+"Răspunsurile apar și în autoevaluare și în raportul de conformitate."
 
 #: admin/class-wizard.php:351
 msgid "Find the AI images in your library"
-msgstr ""
+msgstr "Găsește imaginile IA din biblioteca ta"
 
 #: admin/class-wizard.php:352
 msgid ""
@@ -3412,20 +3439,28 @@ msgid ""
 "and the generation parameters of local tools. It never guesses from image "
 "size, file size or file name."
 msgstr ""
+"Modulul citește datele de proveniență pe care generatoarele IA le lasă în "
+"fișiere: Content Credentials (C2PA, cu semnătura verificată), tipul de sursă"
+" digitală IPTC și parametrii de generare ai instrumentelor locale. Nu "
+"ghicește niciodată după dimensiunile imaginii, mărimea fișierului sau numele"
+" acestuia."
 
 #: admin/class-wizard.php:354
 msgid "What should happen with a clear AI declaration?"
-msgstr ""
+msgstr "Ce să se întâmple la o declarație IA clară?"
 
 #: admin/class-wizard.php:355
 msgid ""
 "Label it right away; only uncertain findings wait in the review queue "
 "(recommended)"
 msgstr ""
+"Etichetează imediat; doar constatările nesigure așteaptă în coada de "
+"verificare (recomandat)"
 
 #: admin/class-wizard.php:356
 msgid "Put every finding into the review queue; I confirm each one myself"
 msgstr ""
+"Pune fiecare constatare în coada de verificare; le confirm eu una câte una"
 
 #: admin/class-wizard.php:361
 msgid ""
@@ -3433,26 +3468,30 @@ msgid ""
 "you can also continue and scan later from the AI Images screen. New uploads "
 "are checked automatically from now on."
 msgstr ""
+"Scanarea rulează în loturi mici cât timp această pagină este deschisă și "
+"poate fi întreruptă; poți și să continui și să scanezi mai târziu din "
+"ecranul Imagini IA. De acum înainte, încărcările noi sunt verificate "
+"automat."
 
 #: admin/class-wizard.php:373
 msgid "Look"
-msgstr ""
+msgstr "Aspect"
 
 #: admin/class-wizard.php:383
 msgid "Position"
-msgstr ""
+msgstr "Poziție"
 
 #: admin/class-wizard.php:392
 msgid "Placement"
-msgstr ""
+msgstr "Amplasare"
 
 #: admin/class-wizard.php:399
 msgid "Size"
-msgstr ""
+msgstr "Mărime"
 
 #: admin/class-wizard.php:408
 msgid "How should the visible label look?"
-msgstr ""
+msgstr "Cum să arate eticheta vizibilă?"
 
 #: admin/class-wizard.php:409
 msgid ""
@@ -3460,10 +3499,14 @@ msgid ""
 "right next to the image. The badge appears on every labeled image, in the "
 "content, in featured images, in page builders and in WooCommerce."
 msgstr ""
+"EU AI Act cere o etichetă care se observă de la prima privire, pe imagine "
+"sau imediat lângă ea. Insigna apare pe fiecare imagine etichetată: în "
+"conținut, în imaginile reprezentative, în constructoarele de pagini și în "
+"WooCommerce."
 
 #: admin/class-wizard.php:424
 msgid "Show the visible badge"
-msgstr ""
+msgstr "Arată insigna vizibilă"
 
 #: admin/class-wizard.php:425
 msgid ""
@@ -3471,6 +3514,9 @@ msgid ""
 "apply (older content is not covered retroactively; the file metadata is "
 "written either way)"
 msgstr ""
+"Numai pentru media încărcate începând cu 2 august 2026, când a început să se"
+" aplice articolul 50 (conținutul mai vechi nu este acoperit retroactiv; "
+"metadatele fișierului sunt scrise oricum)"
 
 #: admin/class-wizard.php:437
 msgid ""
@@ -3478,27 +3524,37 @@ msgid ""
 "size). Search engines and other tools read it, and it travels with the "
 "image."
 msgstr ""
+"Scrie tipul de sursă digitală IPTC în fișierele etichetate (XMP, fiecare "
+"dimensiune a imaginii). Motoarele de căutare și alte instrumente îl citesc, "
+"iar el călătorește împreună cu imaginea."
 
 #: admin/class-wizard.php:438
 msgid ""
 "Also mirror it into the classic IPTC block of JPEG files, for older tools."
 msgstr ""
+"Oglindește-l și în blocul IPTC clasic al fișierelor JPEG, pentru "
+"instrumentele mai vechi."
 
 #: admin/class-wizard.php:439
 msgid ""
 "Restore the declaration when an image optimizer or a regenerated thumbnail "
 "strips it (hourly check)."
 msgstr ""
+"Restaurează declarația când un optimizator de imagini sau o miniatură "
+"regenerată o elimină (verificare orară)."
 
 #: admin/class-wizard.php:440
 msgid ""
 "Add structured data (Schema.org digitalSourceType) for labeled media to the "
 "page, for search engines and AI answer engines."
 msgstr ""
+"Adaugă în pagină date structurate (Schema.org digitalSourceType) pentru "
+"media etichetate, pentru motoarele de căutare și motoarele de răspuns bazate"
+" pe IA."
 
 #: admin/class-wizard.php:443
 msgid "Machine-readable marking"
-msgstr ""
+msgstr "Marcaj care poate fi citit automat"
 
 #: admin/class-wizard.php:444
 msgid ""
@@ -3506,10 +3562,13 @@ msgid ""
 "without looking at your page. Existing metadata is kept; removing a label "
 "removes exactly what the plugin wrote."
 msgstr ""
+"Marcajul din fișier permite altor sisteme să recunoască conținutul IA fără "
+"să se uite la pagina ta. Metadatele existente sunt păstrate; eliminarea unei"
+" etichete elimină exact ce a scris modulul."
 
 #: admin/class-wizard.php:461
 msgid "AI-written text and chatbots"
-msgstr ""
+msgstr "Text scris cu IA și chatboți"
 
 #: admin/class-wizard.php:463
 msgid ""
@@ -3517,99 +3576,108 @@ msgid ""
 " chatbot, so there is nothing to set up here. Both can be switched on later "
 "in the settings."
 msgstr ""
+"Conform răspunsurilor tale, site-ul tău nu publică text scris cu IA și nu "
+"are un chatbot, așa că aici nu e nimic de configurat. Ambele pot fi activate"
+" ulterior în setări."
 
 #: admin/class-wizard.php:468
 msgid "Where should the note on AI-written posts appear?"
-msgstr ""
+msgstr "Unde să apară nota pentru articolele scrise cu IA?"
 
 #: admin/class-wizard.php:469
 msgid ""
 "Each post gets an AI level (no AI, assisted, generated, generated and "
 "reviewed) in the editor; the note follows that level."
 msgstr ""
+"Fiecare articol primește în editor un nivel IA (fără IA, asistat, generat, "
+"generat și verificat); nota urmează acest nivel."
 
 #: admin/class-wizard.php:472
 msgid "Before the text"
-msgstr ""
+msgstr "Înaintea textului"
 
 #: admin/class-wizard.php:473
 msgid "After the text"
-msgstr ""
+msgstr "După text"
 
 #: admin/class-wizard.php:474
 msgid "Before and after"
-msgstr ""
+msgstr "Înainte și după"
 
 #: admin/class-wizard.php:475
 msgid "Only where I place the block or shortcode"
-msgstr ""
+msgstr "Numai unde plasez blocul sau shortcode-ul"
 
 #: admin/class-wizard.php:485
 msgid "Who answers in your chat?"
-msgstr ""
+msgstr "Cine răspunde în chatul tău?"
 
 #: admin/class-wizard.php:486
 msgid ""
 "Visitors must know when they talk to an AI. The notice appears in the chat "
 "or next to it, depending on the chat plugin."
 msgstr ""
+"Vizitatorii trebuie să știe când vorbesc cu o IA. Nota apare în chat sau "
+"lângă el, în funcție de modulul de chat."
 
 #: admin/class-wizard.php:490
 msgid "An AI first, a person takes over when needed"
-msgstr ""
+msgstr "Întâi o IA, apoi un om preia când e nevoie"
 
 #: admin/class-wizard.php:491
 msgid "Only people answer (no AI notice)"
-msgstr ""
+msgstr "Răspund doar oameni (fără notă IA)"
 
 #: admin/class-wizard.php:511
 msgid "Official EU icon"
-msgstr ""
+msgstr "Pictograma oficială UE"
 
 #: admin/class-wizard.php:515
 msgid "Icon only"
-msgstr ""
+msgstr "Numai pictogramă"
 
 #: admin/class-wizard.php:518
 msgid "Your setup"
-msgstr ""
+msgstr "Configurarea ta"
 
 #. translators: 1: number of scanned media files, 2: number of media files.
 #: admin/class-wizard.php:525
 #, php-format
 msgid "Media library: %1$d of %2$d files scanned."
-msgstr ""
+msgstr "Biblioteca media: %1$d din %2$d fișiere scanate."
 
 #. translators: %s: badge style name.
 #: admin/class-wizard.php:537
 #, php-format
 msgid "Visible badge: on, style \"%s\"."
-msgstr ""
+msgstr "Insignă vizibilă: activată, stil „%s”."
 
 #: admin/class-wizard.php:538
 msgid "Visible badge: off."
-msgstr ""
+msgstr "Insignă vizibilă: dezactivată."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: written into labeled files."
-msgstr ""
+msgstr "Metadatele fișierului: scrise în fișierele etichetate."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: not written."
-msgstr ""
+msgstr "Metadatele fișierului: nu sunt scrise."
 
 #. translators: %d: readiness score from 0 to 100.
 #: admin/class-wizard.php:548
 #, php-format
 msgid "Readiness score: %d of 100."
-msgstr ""
+msgstr "Scor de pregătire: %d din 100."
 
 #: admin/class-wizard.php:557
 msgid "What your answers make relevant"
-msgstr ""
+msgstr "Ce devine relevant în urma răspunsurilor tale"
 
 #: admin/class-wizard.php:568
 msgid ""
 "The dashboard keeps the score and the open steps in view. This assistant "
 "stays available from the dashboard and the settings."
 msgstr ""
+"Panoul de control ține la vedere scorul și pașii rămași. Acest asistent "
+"rămâne disponibil din panoul de control și din setări."

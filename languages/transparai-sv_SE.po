@@ -3195,69 +3195,72 @@ msgstr ""
 
 #: admin/class-media-library.php:384
 msgid "valid, signed with a certificate on the C2PA trust list"
-msgstr ""
+msgstr "giltig, signerad med ett certifikat på C2PA:s förtroendelista"
 
 #: admin/class-media-library.php:386
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
 msgstr ""
+"giltig, men undertecknaren finns inte på C2PA:s förtroendelista (ett test-, "
+"egentillverkat eller olistat certifikat)"
 
 #: admin/class-media-library.php:390
 msgid "invalid, the signature does not match the manifest"
-msgstr ""
+msgstr "ogiltig, signaturen stämmer inte med manifestet"
 
 #: admin/class-media-library.php:394
 msgid "invalid, a part of the manifest was changed after signing"
-msgstr ""
+msgstr "ogiltig, en del av manifestet ändrades efter signeringen"
 
 #: admin/class-media-library.php:396
 msgid "invalid, the certificate was not valid at the time of signing"
-msgstr ""
+msgstr "ogiltig, certifikatet var inte giltigt vid signeringen"
 
 #: admin/class-media-library.php:398
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
-msgstr ""
+msgstr "ogiltig, certifikatet får inte signera Content Credentials"
 
 #: admin/class-media-library.php:400
 msgid "invalid, the time stamp does not hold"
-msgstr ""
+msgstr "ogiltig, tidsstämpeln håller inte"
 
 #: admin/class-media-library.php:402
 msgid "invalid, the certificate chain does not hold"
-msgstr ""
+msgstr "ogiltig, certifikatkedjan håller inte"
 
 #: admin/class-media-library.php:405
 msgid "not checkable, unknown signature algorithm"
-msgstr ""
+msgstr "kan inte kontrolleras, okänd signaturalgoritm"
 
 #: admin/class-media-library.php:408
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
 msgstr ""
+"kan inte kontrolleras, servern saknar OpenSSL- eller sodium-funktionerna"
 
 #: admin/class-media-library.php:410
 msgid "not checked"
-msgstr ""
+msgstr "inte kontrollerad"
 
 #: admin/class-media-library.php:510
 msgid "Signature:"
-msgstr ""
+msgstr "Signatur:"
 
 #: admin/class-media-library.php:515
 msgid "Certificate issued by"
-msgstr ""
+msgstr "Certifikat utfärdat av"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
-msgstr ""
+msgstr "Tidsstämpel: %1$s UTC av %2$s (på C2PA:s tidsstämpellista)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
-msgstr ""
+msgstr "Tidsstämpel: %1$s UTC av %2$s (inte på C2PA:s tidsstämpellista)"
 
 #: admin/class-media-library.php:533
 msgid ""
@@ -3265,11 +3268,14 @@ msgid ""
 "manifest, the certificate chain against the C2PA trust list and a time "
 "stamp. Certificate revocation is not checked."
 msgstr ""
+"Kontrollerat på din server: signaturen, hasharna för varje del av "
+"manifestet, certifikatkedjan mot C2PA:s förtroendelista och en tidsstämpel. "
+"Återkallade certifikat kontrolleras inte."
 
 #: admin/class-setup.php:166 admin/class-wizard.php:47
 #: admin/class-wizard.php:242
 msgid "Setup assistant"
-msgstr ""
+msgstr "Installationsguide"
 
 #: admin/class-setup.php:167
 msgid ""
@@ -3278,60 +3284,65 @@ msgid ""
 "where relevant, AI-written text and the chatbot. Nothing is labeled without "
 "your review, and no request leaves your server."
 msgstr ""
+"Sex korta steg genom det som behöver göras en gång: vad din webbplats "
+"använder, skanningen av det befintliga biblioteket, utseendet på den synliga"
+" märkningen, filernas metadata och, där det är aktuellt, AI-skriven text och"
+" chattboten. Inget märks utan att du har granskat det, och ingen förfrågan "
+"lämnar din server."
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:173
 #, php-format
 msgid "%1$d media files, %2$d of them scanned."
-msgstr ""
+msgstr "%1$d mediefiler, varav %2$d skannade."
 
 #: admin/class-setup.php:181
 msgid "Open the setup assistant"
-msgstr ""
+msgstr "Öppna installationsguiden"
 
 #: admin/class-wizard.php:48
 msgid "Setup"
-msgstr ""
+msgstr "Installation"
 
 #: admin/class-wizard.php:69 admin/class-wizard.php:295
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: admin/class-wizard.php:70
 msgid "Your site"
-msgstr ""
+msgstr "Din webbplats"
 
 #: admin/class-wizard.php:71
 msgid "Images"
-msgstr ""
+msgstr "Bilder"
 
 #: admin/class-wizard.php:72
 msgid "Visible label"
-msgstr ""
+msgstr "Synlig märkning"
 
 #: admin/class-wizard.php:74
 msgid "Text and chat"
-msgstr ""
+msgstr "Text och chatt"
 
 #: admin/class-wizard.php:244
 msgid "Setup steps"
-msgstr ""
+msgstr "Installationssteg"
 
 #: admin/class-wizard.php:295
 msgid "Save and continue"
-msgstr ""
+msgstr "Spara och fortsätt"
 
 #: admin/class-wizard.php:299
 msgid "Back"
-msgstr ""
+msgstr "Tillbaka"
 
 #: admin/class-wizard.php:303
 msgid "Not now, I will set it up myself"
-msgstr ""
+msgstr "Inte nu, jag ställer in det själv"
 
 #: admin/class-wizard.php:314
 msgid "Welcome to TransparAI"
-msgstr ""
+msgstr "Välkommen till TransparAI"
 
 #: admin/class-wizard.php:315
 msgid ""
@@ -3341,37 +3352,49 @@ msgid ""
 " your files and, if your site has them, sets up the notes for AI-written "
 "text and for a chatbot."
 msgstr ""
+"I sex korta steg ställer guiden in det som EU AI Act kräver av en webbplats "
+"som använder AI: den hittar AI-bilderna som redan finns i ditt "
+"mediebibliotek, lägger till en synlig märkning där en sådan krävs, behåller "
+"den maskinläsbara märkningen i dina filer och ställer, om din webbplats har "
+"sådana, in notiserna för AI-skriven text och för en chattbot."
 
 #: admin/class-wizard.php:317
 msgid ""
 "Everything runs on your server. No account, no telemetry, no request to an "
 "outside service."
 msgstr ""
+"Allt körs på din server. Inget konto, ingen telemetri, inga förfrågningar "
+"till externa tjänster."
 
 #: admin/class-wizard.php:318
 msgid ""
 "Every choice can be changed later in the settings; nothing here is final."
 msgstr ""
+"Alla val kan ändras senare i inställningarna; inget här är slutgiltigt."
 
 #: admin/class-wizard.php:319
 msgid ""
 "The plugin is a technical tool and gives no legal advice. Whether a duty "
 "applies to your site is your decision."
 msgstr ""
+"Tillägget är ett tekniskt verktyg och ger ingen juridisk rådgivning. Om en "
+"skyldighet gäller för din webbplats avgör du själv."
 
 #: admin/class-wizard.php:330
 msgid "What does your site use?"
-msgstr ""
+msgstr "Vad använder din webbplats?"
 
 #: admin/class-wizard.php:331
 msgid ""
 "Six questions decide which of the following steps matter for you. The "
 "answers also appear in the self-assessment and in the compliance report."
 msgstr ""
+"Sex frågor avgör vilka av de följande stegen som är viktiga för dig. Svaren "
+"visas också i självbedömningen och i efterlevnadsrapporten."
 
 #: admin/class-wizard.php:351
 msgid "Find the AI images in your library"
-msgstr ""
+msgstr "Hitta AI-bilderna i ditt bibliotek"
 
 #: admin/class-wizard.php:352
 msgid ""
@@ -3380,20 +3403,24 @@ msgid ""
 "and the generation parameters of local tools. It never guesses from image "
 "size, file size or file name."
 msgstr ""
+"Tillägget läser ursprungsdata som AI-generatorer lämnar i sina filer: "
+"Content Credentials (C2PA, signaturen kontrolleras), IPTC:s digitala källtyp"
+" och genereringsparametrarna från lokala verktyg. Det gissar aldrig utifrån "
+"bildstorlek, filstorlek eller filnamn."
 
 #: admin/class-wizard.php:354
 msgid "What should happen with a clear AI declaration?"
-msgstr ""
+msgstr "Vad ska hända vid en tydlig AI-deklaration?"
 
 #: admin/class-wizard.php:355
 msgid ""
 "Label it right away; only uncertain findings wait in the review queue "
 "(recommended)"
-msgstr ""
+msgstr "Märk direkt; bara osäkra fynd väntar i granskningskön (rekommenderas)"
 
 #: admin/class-wizard.php:356
 msgid "Put every finding into the review queue; I confirm each one myself"
-msgstr ""
+msgstr "Lägg alla fynd i granskningskön; jag bekräftar vart och ett själv"
 
 #: admin/class-wizard.php:361
 msgid ""
@@ -3401,26 +3428,29 @@ msgid ""
 "you can also continue and scan later from the AI Images screen. New uploads "
 "are checked automatically from now on."
 msgstr ""
+"Skanningen körs i små omgångar medan den här sidan är öppen och kan pausas; "
+"du kan också fortsätta och skanna senare från skärmen AI-bilder. Nya "
+"uppladdningar kontrolleras automatiskt från och med nu."
 
 #: admin/class-wizard.php:373
 msgid "Look"
-msgstr ""
+msgstr "Utseende"
 
 #: admin/class-wizard.php:383
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: admin/class-wizard.php:392
 msgid "Placement"
-msgstr ""
+msgstr "Placering"
 
 #: admin/class-wizard.php:399
 msgid "Size"
-msgstr ""
+msgstr "Storlek"
 
 #: admin/class-wizard.php:408
 msgid "How should the visible label look?"
-msgstr ""
+msgstr "Hur ska den synliga märkningen se ut?"
 
 #: admin/class-wizard.php:409
 msgid ""
@@ -3428,10 +3458,13 @@ msgid ""
 "right next to the image. The badge appears on every labeled image, in the "
 "content, in featured images, in page builders and in WooCommerce."
 msgstr ""
+"EU AI Act kräver en märkning som syns vid första anblick, på bilden eller "
+"precis bredvid den. Märket visas på varje märkt bild, i innehållet, i "
+"utvalda bilder, i sidbyggare och i WooCommerce."
 
 #: admin/class-wizard.php:424
 msgid "Show the visible badge"
-msgstr ""
+msgstr "Visa det synliga märket"
 
 #: admin/class-wizard.php:425
 msgid ""
@@ -3439,6 +3472,9 @@ msgid ""
 "apply (older content is not covered retroactively; the file metadata is "
 "written either way)"
 msgstr ""
+"Bara för medier som laddats upp sedan 2 augusti 2026, då artikel 50 började "
+"tillämpas (äldre innehåll omfattas inte retroaktivt; filens metadata skrivs "
+"i vilket fall som helst)"
 
 #: admin/class-wizard.php:437
 msgid ""
@@ -3446,27 +3482,35 @@ msgid ""
 "size). Search engines and other tools read it, and it travels with the "
 "image."
 msgstr ""
+"Skriv IPTC:s digitala källtyp i märkta filer (XMP, alla bildstorlekar). "
+"Sökmotorer och andra verktyg läser den, och den följer med bilden."
 
 #: admin/class-wizard.php:438
 msgid ""
 "Also mirror it into the classic IPTC block of JPEG files, for older tools."
 msgstr ""
+"Spegla den även till det klassiska IPTC-blocket i JPEG-filer, för äldre "
+"verktyg."
 
 #: admin/class-wizard.php:439
 msgid ""
 "Restore the declaration when an image optimizer or a regenerated thumbnail "
 "strips it (hourly check)."
 msgstr ""
+"Återställ deklarationen när en bildoptimerare eller en omgenererad miniatyr "
+"tar bort den (kontroll varje timme)."
 
 #: admin/class-wizard.php:440
 msgid ""
 "Add structured data (Schema.org digitalSourceType) for labeled media to the "
 "page, for search engines and AI answer engines."
 msgstr ""
+"Lägg till strukturerade data (Schema.org digitalSourceType) för märkta "
+"medier på sidan, för sökmotorer och AI-svarsmotorer."
 
 #: admin/class-wizard.php:443
 msgid "Machine-readable marking"
-msgstr ""
+msgstr "Maskinläsbar märkning"
 
 #: admin/class-wizard.php:444
 msgid ""
@@ -3474,10 +3518,13 @@ msgid ""
 "without looking at your page. Existing metadata is kept; removing a label "
 "removes exactly what the plugin wrote."
 msgstr ""
+"Märkningen i filen är det som låter andra system känna igen AI-innehåll utan"
+" att titta på din sida. Befintlig metadata behålls; att ta bort en märkning "
+"tar bort exakt det som tillägget skrev."
 
 #: admin/class-wizard.php:461
 msgid "AI-written text and chatbots"
-msgstr ""
+msgstr "AI-skriven text och chattbotar"
 
 #: admin/class-wizard.php:463
 msgid ""
@@ -3485,99 +3532,108 @@ msgid ""
 " chatbot, so there is nothing to set up here. Both can be switched on later "
 "in the settings."
 msgstr ""
+"Enligt dina svar publicerar din webbplats ingen AI-skriven text och har "
+"ingen chattbot, så här finns inget att ställa in. Båda kan slås på senare i "
+"inställningarna."
 
 #: admin/class-wizard.php:468
 msgid "Where should the note on AI-written posts appear?"
-msgstr ""
+msgstr "Var ska notisen om AI-skrivna inlägg visas?"
 
 #: admin/class-wizard.php:469
 msgid ""
 "Each post gets an AI level (no AI, assisted, generated, generated and "
 "reviewed) in the editor; the note follows that level."
 msgstr ""
+"Varje inlägg får en AI-nivå i redigeraren (ingen AI, assisterad, genererad, "
+"genererad och granskad); notisen följer den nivån."
 
 #: admin/class-wizard.php:472
 msgid "Before the text"
-msgstr ""
+msgstr "Före texten"
 
 #: admin/class-wizard.php:473
 msgid "After the text"
-msgstr ""
+msgstr "Efter texten"
 
 #: admin/class-wizard.php:474
 msgid "Before and after"
-msgstr ""
+msgstr "Före och efter"
 
 #: admin/class-wizard.php:475
 msgid "Only where I place the block or shortcode"
-msgstr ""
+msgstr "Bara där jag placerar blocket eller kortkoden"
 
 #: admin/class-wizard.php:485
 msgid "Who answers in your chat?"
-msgstr ""
+msgstr "Vem svarar i din chatt?"
 
 #: admin/class-wizard.php:486
 msgid ""
 "Visitors must know when they talk to an AI. The notice appears in the chat "
 "or next to it, depending on the chat plugin."
 msgstr ""
+"Besökare måste veta när de pratar med en AI. Notisen visas i chatten eller "
+"bredvid den, beroende på chattillägget."
 
 #: admin/class-wizard.php:490
 msgid "An AI first, a person takes over when needed"
-msgstr ""
+msgstr "Först en AI, en människa tar över vid behov"
 
 #: admin/class-wizard.php:491
 msgid "Only people answer (no AI notice)"
-msgstr ""
+msgstr "Bara människor svarar (ingen AI-notis)"
 
 #: admin/class-wizard.php:511
 msgid "Official EU icon"
-msgstr ""
+msgstr "Officiell EU-ikon"
 
 #: admin/class-wizard.php:515
 msgid "Icon only"
-msgstr ""
+msgstr "Endast ikon"
 
 #: admin/class-wizard.php:518
 msgid "Your setup"
-msgstr ""
+msgstr "Din installation"
 
 #. translators: 1: number of scanned media files, 2: number of media files.
 #: admin/class-wizard.php:525
 #, php-format
 msgid "Media library: %1$d of %2$d files scanned."
-msgstr ""
+msgstr "Mediebibliotek: %1$d av %2$d filer skannade."
 
 #. translators: %s: badge style name.
 #: admin/class-wizard.php:537
 #, php-format
 msgid "Visible badge: on, style \"%s\"."
-msgstr ""
+msgstr "Synligt märke: på, stil \"%s\"."
 
 #: admin/class-wizard.php:538
 msgid "Visible badge: off."
-msgstr ""
+msgstr "Synligt märke: av."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: written into labeled files."
-msgstr ""
+msgstr "Filmetadata: skrivs i märkta filer."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: not written."
-msgstr ""
+msgstr "Filmetadata: skrivs inte."
 
 #. translators: %d: readiness score from 0 to 100.
 #: admin/class-wizard.php:548
 #, php-format
 msgid "Readiness score: %d of 100."
-msgstr ""
+msgstr "Beredskapspoäng: %d av 100."
 
 #: admin/class-wizard.php:557
 msgid "What your answers make relevant"
-msgstr ""
+msgstr "Vad dina svar gör relevant"
 
 #: admin/class-wizard.php:568
 msgid ""
 "The dashboard keeps the score and the open steps in view. This assistant "
 "stays available from the dashboard and the settings."
 msgstr ""
+"Adminpanelen håller poängen och de öppna stegen synliga. Guiden finns kvar "
+"via adminpanelen och inställningarna."

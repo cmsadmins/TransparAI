@@ -3243,69 +3243,73 @@ msgstr ""
 
 #: admin/class-media-library.php:384
 msgid "valid, signed with a certificate on the C2PA trust list"
-msgstr ""
+msgstr "έγκυρη, υπογεγραμμένη με πιστοποιητικό από τη λίστα εμπιστοσύνης C2PA"
 
 #: admin/class-media-library.php:386
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
 msgstr ""
+"έγκυρη, αλλά ο υπογράφων δεν βρίσκεται στη λίστα εμπιστοσύνης C2PA "
+"(δοκιμαστικό, αυτοδημιούργητο ή μη καταχωρισμένο πιστοποιητικό)"
 
 #: admin/class-media-library.php:390
 msgid "invalid, the signature does not match the manifest"
-msgstr ""
+msgstr "μη έγκυρη, η υπογραφή δεν αντιστοιχεί στο manifest"
 
 #: admin/class-media-library.php:394
 msgid "invalid, a part of the manifest was changed after signing"
-msgstr ""
+msgstr "μη έγκυρη, ένα τμήμα του manifest άλλαξε μετά την υπογραφή"
 
 #: admin/class-media-library.php:396
 msgid "invalid, the certificate was not valid at the time of signing"
-msgstr ""
+msgstr "μη έγκυρη, το πιστοποιητικό δεν ήταν έγκυρο τη στιγμή της υπογραφής"
 
 #: admin/class-media-library.php:398
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
 msgstr ""
+"μη έγκυρη, το πιστοποιητικό δεν επιτρέπεται να υπογράφει Content Credentials"
 
 #: admin/class-media-library.php:400
 msgid "invalid, the time stamp does not hold"
-msgstr ""
+msgstr "μη έγκυρη, η χρονοσφραγίδα δεν ευσταθεί"
 
 #: admin/class-media-library.php:402
 msgid "invalid, the certificate chain does not hold"
-msgstr ""
+msgstr "μη έγκυρη, η αλυσίδα πιστοποιητικών δεν ευσταθεί"
 
 #: admin/class-media-library.php:405
 msgid "not checkable, unknown signature algorithm"
-msgstr ""
+msgstr "δεν ελέγχεται, άγνωστος αλγόριθμος υπογραφής"
 
 #: admin/class-media-library.php:408
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
 msgstr ""
+"δεν ελέγχεται, ο διακομιστής δεν διαθέτει τις συναρτήσεις OpenSSL ή sodium"
 
 #: admin/class-media-library.php:410
 msgid "not checked"
-msgstr ""
+msgstr "δεν ελέγχθηκε"
 
 #: admin/class-media-library.php:510
 msgid "Signature:"
-msgstr ""
+msgstr "Υπογραφή:"
 
 #: admin/class-media-library.php:515
 msgid "Certificate issued by"
-msgstr ""
+msgstr "Το πιστοποιητικό εκδόθηκε από"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
-msgstr ""
+msgstr "Χρονοσφραγίδα: %1$s UTC από %2$s (στη λίστα χρονοσφραγίδων C2PA)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
-msgstr ""
+msgstr "Χρονοσφραγίδα: %1$s UTC από %2$s (εκτός λίστας χρονοσφραγίδων C2PA)"
 
 #: admin/class-media-library.php:533
 msgid ""
@@ -3313,11 +3317,14 @@ msgid ""
 "manifest, the certificate chain against the C2PA trust list and a time "
 "stamp. Certificate revocation is not checked."
 msgstr ""
+"Ελέγχθηκαν στον διακομιστή σας: η υπογραφή, τα hash κάθε τμήματος του "
+"manifest, η αλυσίδα πιστοποιητικών έναντι της λίστας εμπιστοσύνης C2PA και "
+"μια χρονοσφραγίδα. Η ανάκληση πιστοποιητικών δεν ελέγχεται."
 
 #: admin/class-setup.php:166 admin/class-wizard.php:47
 #: admin/class-wizard.php:242
 msgid "Setup assistant"
-msgstr ""
+msgstr "Οδηγός ρύθμισης"
 
 #: admin/class-setup.php:167
 msgid ""
@@ -3326,60 +3333,65 @@ msgid ""
 "where relevant, AI-written text and the chatbot. Nothing is labeled without "
 "your review, and no request leaves your server."
 msgstr ""
+"Έξι σύντομα βήματα για όσα χρειάζεται να ρυθμίσετε μία φορά: τι χρησιμοποιεί"
+" ο ιστότοπός σας, τη σάρωση της υπάρχουσας βιβλιοθήκης, την εμφάνιση της "
+"ορατής ετικέτας, τα μεταδεδομένα αρχείων και, όπου χρειάζεται, τα κείμενα "
+"γραμμένα από AI και το chatbot. Τίποτα δεν επισημαίνεται χωρίς τον δικό σας "
+"έλεγχο και κανένα αίτημα δεν φεύγει από τον διακομιστή σας."
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:173
 #, php-format
 msgid "%1$d media files, %2$d of them scanned."
-msgstr ""
+msgstr "Αρχεία πολυμέσων: %1$d, σαρωμένα από αυτά: %2$d."
 
 #: admin/class-setup.php:181
 msgid "Open the setup assistant"
-msgstr ""
+msgstr "Άνοιγμα οδηγού ρύθμισης"
 
 #: admin/class-wizard.php:48
 msgid "Setup"
-msgstr ""
+msgstr "Ρύθμιση"
 
 #: admin/class-wizard.php:69 admin/class-wizard.php:295
 msgid "Start"
-msgstr ""
+msgstr "Έναρξη"
 
 #: admin/class-wizard.php:70
 msgid "Your site"
-msgstr ""
+msgstr "Ο ιστότοπός σας"
 
 #: admin/class-wizard.php:71
 msgid "Images"
-msgstr ""
+msgstr "Εικόνες"
 
 #: admin/class-wizard.php:72
 msgid "Visible label"
-msgstr ""
+msgstr "Ορατή ετικέτα"
 
 #: admin/class-wizard.php:74
 msgid "Text and chat"
-msgstr ""
+msgstr "Κείμενο και συνομιλία"
 
 #: admin/class-wizard.php:244
 msgid "Setup steps"
-msgstr ""
+msgstr "Βήματα ρύθμισης"
 
 #: admin/class-wizard.php:295
 msgid "Save and continue"
-msgstr ""
+msgstr "Αποθήκευση και συνέχεια"
 
 #: admin/class-wizard.php:299
 msgid "Back"
-msgstr ""
+msgstr "Πίσω"
 
 #: admin/class-wizard.php:303
 msgid "Not now, I will set it up myself"
-msgstr ""
+msgstr "Όχι τώρα, θα κάνω τη ρύθμιση χειροκίνητα"
 
 #: admin/class-wizard.php:314
 msgid "Welcome to TransparAI"
-msgstr ""
+msgstr "Καλώς ορίσατε στο TransparAI"
 
 #: admin/class-wizard.php:315
 msgid ""
@@ -3389,37 +3401,52 @@ msgid ""
 " your files and, if your site has them, sets up the notes for AI-written "
 "text and for a chatbot."
 msgstr ""
+"Σε έξι σύντομα βήματα ο οδηγός ρυθμίζει όσα ζητά ο κανονισμός EU AI Act από "
+"έναν ιστότοπο που χρησιμοποιεί AI: βρίσκει τις εικόνες AI που υπάρχουν ήδη "
+"στη βιβλιοθήκη πολυμέσων σας, προσθέτει ορατή ετικέτα όπου απαιτείται, "
+"διατηρεί τη μηχαναγνώσιμη σήμανση στα αρχεία σας και, αν ο ιστότοπός σας τα "
+"διαθέτει, ρυθμίζει τις σημειώσεις για κείμενα γραμμένα από AI και για ένα "
+"chatbot."
 
 #: admin/class-wizard.php:317
 msgid ""
 "Everything runs on your server. No account, no telemetry, no request to an "
 "outside service."
 msgstr ""
+"Όλα εκτελούνται στον διακομιστή σας. Χωρίς λογαριασμό, χωρίς τηλεμετρία, "
+"χωρίς αιτήματα προς εξωτερικές υπηρεσίες."
 
 #: admin/class-wizard.php:318
 msgid ""
 "Every choice can be changed later in the settings; nothing here is final."
 msgstr ""
+"Κάθε επιλογή μπορεί να αλλάξει αργότερα στις ρυθμίσεις· τίποτα εδώ δεν είναι"
+" οριστικό."
 
 #: admin/class-wizard.php:319
 msgid ""
 "The plugin is a technical tool and gives no legal advice. Whether a duty "
 "applies to your site is your decision."
 msgstr ""
+"Το πρόσθετο είναι τεχνικό εργαλείο και δεν παρέχει νομικές συμβουλές. Το αν "
+"μια υποχρέωση ισχύει για τον ιστότοπό σας είναι δική σας απόφαση."
 
 #: admin/class-wizard.php:330
 msgid "What does your site use?"
-msgstr ""
+msgstr "Τι χρησιμοποιεί ο ιστότοπός σας;"
 
 #: admin/class-wizard.php:331
 msgid ""
 "Six questions decide which of the following steps matter for you. The "
 "answers also appear in the self-assessment and in the compliance report."
 msgstr ""
+"Έξι ερωτήσεις καθορίζουν ποια από τα επόμενα βήματα σας αφορούν. Οι "
+"απαντήσεις εμφανίζονται επίσης στην αυτοαξιολόγηση και στην αναφορά "
+"συμμόρφωσης."
 
 #: admin/class-wizard.php:351
 msgid "Find the AI images in your library"
-msgstr ""
+msgstr "Βρείτε τις εικόνες AI στη βιβλιοθήκη σας"
 
 #: admin/class-wizard.php:352
 msgid ""
@@ -3428,20 +3455,27 @@ msgid ""
 "and the generation parameters of local tools. It never guesses from image "
 "size, file size or file name."
 msgstr ""
+"Το πρόσθετο διαβάζει τα δεδομένα προέλευσης που αφήνουν οι γεννήτριες AI στα"
+" αρχεία τους: Content Credentials (C2PA, με έλεγχο υπογραφής), τον τύπο "
+"ψηφιακής πηγής IPTC και τις παραμέτρους δημιουργίας τοπικών εργαλείων. Δεν "
+"μαντεύει ποτέ από τις διαστάσεις της εικόνας, το μέγεθος ή το όνομα του "
+"αρχείου."
 
 #: admin/class-wizard.php:354
 msgid "What should happen with a clear AI declaration?"
-msgstr ""
+msgstr "Τι να γίνεται όταν υπάρχει σαφής δήλωση AI;"
 
 #: admin/class-wizard.php:355
 msgid ""
 "Label it right away; only uncertain findings wait in the review queue "
 "(recommended)"
 msgstr ""
+"Άμεση επισήμανση· μόνο τα αβέβαια ευρήματα περιμένουν στην ουρά ελέγχου "
+"(συνιστάται)"
 
 #: admin/class-wizard.php:356
 msgid "Put every finding into the review queue; I confirm each one myself"
-msgstr ""
+msgstr "Όλα τα ευρήματα στην ουρά ελέγχου· τα επιβεβαιώνω ένα ένα"
 
 #: admin/class-wizard.php:361
 msgid ""
@@ -3449,26 +3483,30 @@ msgid ""
 "you can also continue and scan later from the AI Images screen. New uploads "
 "are checked automatically from now on."
 msgstr ""
+"Η σάρωση εκτελείται σε μικρές παρτίδες όσο αυτή η σελίδα είναι ανοιχτή και "
+"μπορεί να τεθεί σε παύση· μπορείτε επίσης να συνεχίσετε και να σαρώσετε "
+"αργότερα από την οθόνη Εικόνες AI. Οι νέες μεταφορτώσεις ελέγχονται πλέον "
+"αυτόματα."
 
 #: admin/class-wizard.php:373
 msgid "Look"
-msgstr ""
+msgstr "Εμφάνιση"
 
 #: admin/class-wizard.php:383
 msgid "Position"
-msgstr ""
+msgstr "Θέση"
 
 #: admin/class-wizard.php:392
 msgid "Placement"
-msgstr ""
+msgstr "Τοποθέτηση"
 
 #: admin/class-wizard.php:399
 msgid "Size"
-msgstr ""
+msgstr "Μέγεθος"
 
 #: admin/class-wizard.php:408
 msgid "How should the visible label look?"
-msgstr ""
+msgstr "Πώς να φαίνεται η ορατή ετικέτα;"
 
 #: admin/class-wizard.php:409
 msgid ""
@@ -3476,10 +3514,14 @@ msgid ""
 "right next to the image. The badge appears on every labeled image, in the "
 "content, in featured images, in page builders and in WooCommerce."
 msgstr ""
+"Ο κανονισμός EU AI Act ζητά ετικέτα που γίνεται αντιληπτή με την πρώτη "
+"ματιά, πάνω στην εικόνα ή ακριβώς δίπλα της. Το σήμα εμφανίζεται σε κάθε "
+"εικόνα με ετικέτα: στο περιεχόμενο, στις επιλεγμένες εικόνες, στους page "
+"builders και στο WooCommerce."
 
 #: admin/class-wizard.php:424
 msgid "Show the visible badge"
-msgstr ""
+msgstr "Εμφάνιση του ορατού σήματος"
 
 #: admin/class-wizard.php:425
 msgid ""
@@ -3487,6 +3529,9 @@ msgid ""
 "apply (older content is not covered retroactively; the file metadata is "
 "written either way)"
 msgstr ""
+"Μόνο για πολυμέσα που μεταφορτώθηκαν από τις 2 Αυγούστου 2026, όταν άρχισε "
+"να εφαρμόζεται το άρθρο 50 (το παλαιότερο περιεχόμενο δεν καλύπτεται "
+"αναδρομικά· τα μεταδεδομένα αρχείου γράφονται σε κάθε περίπτωση)"
 
 #: admin/class-wizard.php:437
 msgid ""
@@ -3494,27 +3539,36 @@ msgid ""
 "size). Search engines and other tools read it, and it travels with the "
 "image."
 msgstr ""
+"Εγγραφή του τύπου ψηφιακής πηγής IPTC στα αρχεία με ετικέτα (XMP, κάθε "
+"μέγεθος εικόνας). Τον διαβάζουν οι μηχανές αναζήτησης και άλλα εργαλεία και "
+"ταξιδεύει μαζί με την εικόνα."
 
 #: admin/class-wizard.php:438
 msgid ""
 "Also mirror it into the classic IPTC block of JPEG files, for older tools."
 msgstr ""
+"Αντιγραφή του και στο κλασικό μπλοκ IPTC των αρχείων JPEG, για παλαιότερα "
+"εργαλεία."
 
 #: admin/class-wizard.php:439
 msgid ""
 "Restore the declaration when an image optimizer or a regenerated thumbnail "
 "strips it (hourly check)."
 msgstr ""
+"Επαναφορά της δήλωσης όταν την αφαιρεί ένας βελτιστοποιητής εικόνων ή μια "
+"αναδημιουργημένη μικρογραφία (ωριαίος έλεγχος)."
 
 #: admin/class-wizard.php:440
 msgid ""
 "Add structured data (Schema.org digitalSourceType) for labeled media to the "
 "page, for search engines and AI answer engines."
 msgstr ""
+"Προσθήκη δομημένων δεδομένων (Schema.org digitalSourceType) στη σελίδα για "
+"πολυμέσα με ετικέτα, για μηχανές αναζήτησης και μηχανές απαντήσεων AI."
 
 #: admin/class-wizard.php:443
 msgid "Machine-readable marking"
-msgstr ""
+msgstr "Μηχαναγνώσιμη σήμανση"
 
 #: admin/class-wizard.php:444
 msgid ""
@@ -3522,10 +3576,14 @@ msgid ""
 "without looking at your page. Existing metadata is kept; removing a label "
 "removes exactly what the plugin wrote."
 msgstr ""
+"Η σήμανση στο αρχείο επιτρέπει σε άλλα συστήματα να αναγνωρίζουν περιεχόμενο"
+" AI χωρίς να κοιτάξουν τη σελίδα σας. Τα υπάρχοντα μεταδεδομένα "
+"διατηρούνται· η αφαίρεση μιας ετικέτας αφαιρεί ακριβώς ό,τι έγραψε το "
+"πρόσθετο."
 
 #: admin/class-wizard.php:461
 msgid "AI-written text and chatbots"
-msgstr ""
+msgstr "Κείμενα γραμμένα από AI και chatbots"
 
 #: admin/class-wizard.php:463
 msgid ""
@@ -3533,99 +3591,110 @@ msgid ""
 " chatbot, so there is nothing to set up here. Both can be switched on later "
 "in the settings."
 msgstr ""
+"Σύμφωνα με τις απαντήσεις σας, ο ιστότοπός σας δεν δημοσιεύει κείμενα "
+"γραμμένα από AI και δεν διαθέτει chatbot, οπότε δεν υπάρχει τίποτα να "
+"ρυθμιστεί εδώ. Και τα δύο μπορούν να ενεργοποιηθούν αργότερα στις ρυθμίσεις."
 
 #: admin/class-wizard.php:468
 msgid "Where should the note on AI-written posts appear?"
-msgstr ""
+msgstr "Πού να εμφανίζεται η σημείωση στα άρθρα γραμμένα από AI;"
 
 #: admin/class-wizard.php:469
 msgid ""
 "Each post gets an AI level (no AI, assisted, generated, generated and "
 "reviewed) in the editor; the note follows that level."
 msgstr ""
+"Κάθε άρθρο λαμβάνει στον επεξεργαστή ένα επίπεδο AI (χωρίς AI, με "
+"υποβοήθηση, δημιουργημένο, δημιουργημένο και ελεγμένο)· η σημείωση ακολουθεί"
+" αυτό το επίπεδο."
 
 #: admin/class-wizard.php:472
 msgid "Before the text"
-msgstr ""
+msgstr "Πριν από το κείμενο"
 
 #: admin/class-wizard.php:473
 msgid "After the text"
-msgstr ""
+msgstr "Μετά το κείμενο"
 
 #: admin/class-wizard.php:474
 msgid "Before and after"
-msgstr ""
+msgstr "Πριν και μετά"
 
 #: admin/class-wizard.php:475
 msgid "Only where I place the block or shortcode"
-msgstr ""
+msgstr "Μόνο όπου τοποθετώ το μπλοκ ή το shortcode"
 
 #: admin/class-wizard.php:485
 msgid "Who answers in your chat?"
-msgstr ""
+msgstr "Ποιος απαντά στη συνομιλία σας;"
 
 #: admin/class-wizard.php:486
 msgid ""
 "Visitors must know when they talk to an AI. The notice appears in the chat "
 "or next to it, depending on the chat plugin."
 msgstr ""
+"Οι επισκέπτες πρέπει να γνωρίζουν πότε μιλούν με AI. Η ειδοποίηση "
+"εμφανίζεται μέσα στη συνομιλία ή δίπλα της, ανάλογα με το πρόσθετο "
+"συνομιλίας."
 
 #: admin/class-wizard.php:490
 msgid "An AI first, a person takes over when needed"
-msgstr ""
+msgstr "Πρώτα μια AI, ένας άνθρωπος αναλαμβάνει όταν χρειάζεται"
 
 #: admin/class-wizard.php:491
 msgid "Only people answer (no AI notice)"
-msgstr ""
+msgstr "Απαντούν μόνο άνθρωποι (χωρίς ειδοποίηση AI)"
 
 #: admin/class-wizard.php:511
 msgid "Official EU icon"
-msgstr ""
+msgstr "Επίσημο εικονίδιο ΕΕ"
 
 #: admin/class-wizard.php:515
 msgid "Icon only"
-msgstr ""
+msgstr "Μόνο εικονίδιο"
 
 #: admin/class-wizard.php:518
 msgid "Your setup"
-msgstr ""
+msgstr "Η ρύθμισή σας"
 
 #. translators: 1: number of scanned media files, 2: number of media files.
 #: admin/class-wizard.php:525
 #, php-format
 msgid "Media library: %1$d of %2$d files scanned."
-msgstr ""
+msgstr "Βιβλιοθήκη πολυμέσων: σαρώθηκαν %1$d από %2$d αρχεία."
 
 #. translators: %s: badge style name.
 #: admin/class-wizard.php:537
 #, php-format
 msgid "Visible badge: on, style \"%s\"."
-msgstr ""
+msgstr "Ορατό σήμα: ενεργό, στυλ «%s»."
 
 #: admin/class-wizard.php:538
 msgid "Visible badge: off."
-msgstr ""
+msgstr "Ορατό σήμα: ανενεργό."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: written into labeled files."
-msgstr ""
+msgstr "Μεταδεδομένα αρχείου: γράφονται στα αρχεία με ετικέτα."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: not written."
-msgstr ""
+msgstr "Μεταδεδομένα αρχείου: δεν γράφονται."
 
 #. translators: %d: readiness score from 0 to 100.
 #: admin/class-wizard.php:548
 #, php-format
 msgid "Readiness score: %d of 100."
-msgstr ""
+msgstr "Βαθμολογία ετοιμότητας: %d από 100."
 
 #: admin/class-wizard.php:557
 msgid "What your answers make relevant"
-msgstr ""
+msgstr "Τι γίνεται σχετικό με βάση τις απαντήσεις σας"
 
 #: admin/class-wizard.php:568
 msgid ""
 "The dashboard keeps the score and the open steps in view. This assistant "
 "stays available from the dashboard and the settings."
 msgstr ""
+"Ο πίνακας ελέγχου κρατά τη βαθμολογία και τα ανοιχτά βήματα σε κοινή θέα. Ο "
+"οδηγός παραμένει διαθέσιμος από τον πίνακα ελέγχου και τις ρυθμίσεις."

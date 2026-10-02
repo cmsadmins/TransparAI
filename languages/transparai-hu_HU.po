@@ -3236,69 +3236,75 @@ msgstr ""
 
 #: admin/class-media-library.php:384
 msgid "valid, signed with a certificate on the C2PA trust list"
-msgstr ""
+msgstr "érvényes, a C2PA bizalmi listáján szereplő tanúsítvánnyal aláírva"
 
 #: admin/class-media-library.php:386
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
 msgstr ""
+"érvényes, de az aláíró nem szerepel a C2PA bizalmi listáján (teszt-, saját "
+"készítésű vagy listán nem szereplő tanúsítvány)"
 
 #: admin/class-media-library.php:390
 msgid "invalid, the signature does not match the manifest"
-msgstr ""
+msgstr "érvénytelen, az aláírás nem egyezik a manifeszttel"
 
 #: admin/class-media-library.php:394
 msgid "invalid, a part of the manifest was changed after signing"
-msgstr ""
+msgstr "érvénytelen, a manifeszt egy részét az aláírás után módosították"
 
 #: admin/class-media-library.php:396
 msgid "invalid, the certificate was not valid at the time of signing"
-msgstr ""
+msgstr "érvénytelen, a tanúsítvány az aláírás időpontjában nem volt érvényes"
 
 #: admin/class-media-library.php:398
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
 msgstr ""
+"érvénytelen, a tanúsítvány nem jogosult Content Credentials aláírására"
 
 #: admin/class-media-library.php:400
 msgid "invalid, the time stamp does not hold"
-msgstr ""
+msgstr "érvénytelen, az időbélyeg nem állja meg a helyét"
 
 #: admin/class-media-library.php:402
 msgid "invalid, the certificate chain does not hold"
-msgstr ""
+msgstr "érvénytelen, a tanúsítványlánc nem állja meg a helyét"
 
 #: admin/class-media-library.php:405
 msgid "not checkable, unknown signature algorithm"
-msgstr ""
+msgstr "nem ellenőrizhető, ismeretlen aláírási algoritmus"
 
 #: admin/class-media-library.php:408
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
 msgstr ""
+"nem ellenőrizhető, a szerveren hiányoznak az OpenSSL- vagy sodium-függvények"
 
 #: admin/class-media-library.php:410
 msgid "not checked"
-msgstr ""
+msgstr "nincs ellenőrizve"
 
 #: admin/class-media-library.php:510
 msgid "Signature:"
-msgstr ""
+msgstr "Aláírás:"
 
 #: admin/class-media-library.php:515
 msgid "Certificate issued by"
-msgstr ""
+msgstr "A tanúsítvány kiállítója"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
 msgstr ""
+"Időbélyeg: %1$s UTC, kiállító: %2$s (szerepel a C2PA időbélyeg-listáján)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
 msgstr ""
+"Időbélyeg: %1$s UTC, kiállító: %2$s (nem szerepel a C2PA időbélyeg-listáján)"
 
 #: admin/class-media-library.php:533
 msgid ""
@@ -3306,11 +3312,14 @@ msgid ""
 "manifest, the certificate chain against the C2PA trust list and a time "
 "stamp. Certificate revocation is not checked."
 msgstr ""
+"Az Ön szerverén ellenőrizve: az aláírás, a manifeszt minden részének hash-e,"
+" a tanúsítványlánc a C2PA bizalmi listájával szemben, valamint egy "
+"időbélyeg. A tanúsítványok visszavonása nincs ellenőrizve."
 
 #: admin/class-setup.php:166 admin/class-wizard.php:47
 #: admin/class-wizard.php:242
 msgid "Setup assistant"
-msgstr ""
+msgstr "Beállítási varázsló"
 
 #: admin/class-setup.php:167
 msgid ""
@@ -3319,60 +3328,65 @@ msgid ""
 "where relevant, AI-written text and the chatbot. Nothing is labeled without "
 "your review, and no request leaves your server."
 msgstr ""
+"Hat rövid lépés azon, amit egyszer kell beállítani: mit használ a webhelye, "
+"a meglévő médiatár átvizsgálása, a látható címke megjelenése, a fájlok "
+"metaadatai, és ahol releváns, az MI által írt szöveg és a chatbot. Az Ön "
+"ellenőrzése nélkül semmi sem kap címkét, és egyetlen kérés sem hagyja el a "
+"szerverét."
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:173
 #, php-format
 msgid "%1$d media files, %2$d of them scanned."
-msgstr ""
+msgstr "Médiafájlok: %1$d, ebből átvizsgálva: %2$d."
 
 #: admin/class-setup.php:181
 msgid "Open the setup assistant"
-msgstr ""
+msgstr "A beállítási varázsló megnyitása"
 
 #: admin/class-wizard.php:48
 msgid "Setup"
-msgstr ""
+msgstr "Beállítás"
 
 #: admin/class-wizard.php:69 admin/class-wizard.php:295
 msgid "Start"
-msgstr ""
+msgstr "Kezdés"
 
 #: admin/class-wizard.php:70
 msgid "Your site"
-msgstr ""
+msgstr "Az Ön webhelye"
 
 #: admin/class-wizard.php:71
 msgid "Images"
-msgstr ""
+msgstr "Képek"
 
 #: admin/class-wizard.php:72
 msgid "Visible label"
-msgstr ""
+msgstr "Látható címke"
 
 #: admin/class-wizard.php:74
 msgid "Text and chat"
-msgstr ""
+msgstr "Szöveg és chat"
 
 #: admin/class-wizard.php:244
 msgid "Setup steps"
-msgstr ""
+msgstr "Beállítási lépések"
 
 #: admin/class-wizard.php:295
 msgid "Save and continue"
-msgstr ""
+msgstr "Mentés és tovább"
 
 #: admin/class-wizard.php:299
 msgid "Back"
-msgstr ""
+msgstr "Vissza"
 
 #: admin/class-wizard.php:303
 msgid "Not now, I will set it up myself"
-msgstr ""
+msgstr "Most nem, magam állítom be"
 
 #: admin/class-wizard.php:314
 msgid "Welcome to TransparAI"
-msgstr ""
+msgstr "Üdvözli a TransparAI"
 
 #: admin/class-wizard.php:315
 msgid ""
@@ -3382,37 +3396,51 @@ msgid ""
 " your files and, if your site has them, sets up the notes for AI-written "
 "text and for a chatbot."
 msgstr ""
+"A varázsló hat rövid lépésben beállítja azt, amit az EU AI Act megkövetel "
+"egy MI-t használó webhelytől: megkeresi a médiatárban már meglévő MI-"
+"képeket, látható címkét tesz oda, ahol az kötelező, megőrzi a gépileg "
+"olvasható jelölést a fájlokban, és ha a webhelyén vannak ilyenek, beállítja "
+"az MI által írt szövegekre és a chatbotra vonatkozó megjegyzéseket."
 
 #: admin/class-wizard.php:317
 msgid ""
 "Everything runs on your server. No account, no telemetry, no request to an "
 "outside service."
 msgstr ""
+"Minden az Ön szerverén fut. Nincs fiók, nincs telemetria, nincs kérés külső "
+"szolgáltatás felé."
 
 #: admin/class-wizard.php:318
 msgid ""
 "Every choice can be changed later in the settings; nothing here is final."
 msgstr ""
+"Minden választás később módosítható a beállításokban; itt semmi sem "
+"végleges."
 
 #: admin/class-wizard.php:319
 msgid ""
 "The plugin is a technical tool and gives no legal advice. Whether a duty "
 "applies to your site is your decision."
 msgstr ""
+"A bővítmény technikai eszköz, és nem ad jogi tanácsot. Az Ön döntése, hogy "
+"egy kötelezettség vonatkozik-e a webhelyére."
 
 #: admin/class-wizard.php:330
 msgid "What does your site use?"
-msgstr ""
+msgstr "Mit használ a webhelye?"
 
 #: admin/class-wizard.php:331
 msgid ""
 "Six questions decide which of the following steps matter for you. The "
 "answers also appear in the self-assessment and in the compliance report."
 msgstr ""
+"Hat kérdés dönti el, hogy a következő lépések közül melyek fontosak az Ön "
+"számára. A válaszok az önértékelésben és a megfelelőségi jelentésben is "
+"megjelennek."
 
 #: admin/class-wizard.php:351
 msgid "Find the AI images in your library"
-msgstr ""
+msgstr "Az MI-képek megkeresése a médiatárban"
 
 #: admin/class-wizard.php:352
 msgid ""
@@ -3421,20 +3449,27 @@ msgid ""
 "and the generation parameters of local tools. It never guesses from image "
 "size, file size or file name."
 msgstr ""
+"A bővítmény kiolvassa azokat az eredetadatokat, amelyeket az MI-generátorok "
+"a fájljaikban hagynak: Content Credentials (C2PA, ellenőrzött aláírással), "
+"az IPTC digitális forrástípus és a helyi eszközök generálási paraméterei. "
+"Soha nem találgat a képméret, a fájlméret vagy a fájlnév alapján."
 
 #: admin/class-wizard.php:354
 msgid "What should happen with a clear AI declaration?"
-msgstr ""
+msgstr "Mi történjen egyértelmű MI-nyilatkozat esetén?"
 
 #: admin/class-wizard.php:355
 msgid ""
 "Label it right away; only uncertain findings wait in the review queue "
 "(recommended)"
 msgstr ""
+"Azonnali címkézés; csak a bizonytalan találatok várnak az ellenőrzési sorban"
+" (ajánlott)"
 
 #: admin/class-wizard.php:356
 msgid "Put every finding into the review queue; I confirm each one myself"
 msgstr ""
+"Minden találat az ellenőrzési sorba kerül; mindegyiket magam erősítem meg"
 
 #: admin/class-wizard.php:361
 msgid ""
@@ -3442,26 +3477,29 @@ msgid ""
 "you can also continue and scan later from the AI Images screen. New uploads "
 "are checked automatically from now on."
 msgstr ""
+"Az átvizsgálás kis kötegekben fut, amíg ez az oldal nyitva van, és "
+"szüneteltethető; továbbléphet, és később az MI-képek képernyőn is "
+"átvizsgálhat. Az új feltöltéseket mostantól automatikusan ellenőrzi."
 
 #: admin/class-wizard.php:373
 msgid "Look"
-msgstr ""
+msgstr "Megjelenés"
 
 #: admin/class-wizard.php:383
 msgid "Position"
-msgstr ""
+msgstr "Pozíció"
 
 #: admin/class-wizard.php:392
 msgid "Placement"
-msgstr ""
+msgstr "Elhelyezés"
 
 #: admin/class-wizard.php:399
 msgid "Size"
-msgstr ""
+msgstr "Méret"
 
 #: admin/class-wizard.php:408
 msgid "How should the visible label look?"
-msgstr ""
+msgstr "Hogyan nézzen ki a látható címke?"
 
 #: admin/class-wizard.php:409
 msgid ""
@@ -3469,10 +3507,13 @@ msgid ""
 "right next to the image. The badge appears on every labeled image, in the "
 "content, in featured images, in page builders and in WooCommerce."
 msgstr ""
+"Az EU AI Act olyan címkét kér, amely első pillantásra észrevehető, a képen "
+"vagy közvetlenül mellette. A jelvény minden címkézett képen megjelenik: a "
+"tartalomban, a kiemelt képeken, az oldalszerkesztőkben és a WooCommerce-ben."
 
 #: admin/class-wizard.php:424
 msgid "Show the visible badge"
-msgstr ""
+msgstr "A látható jelvény megjelenítése"
 
 #: admin/class-wizard.php:425
 msgid ""
@@ -3480,6 +3521,9 @@ msgid ""
 "apply (older content is not covered retroactively; the file metadata is "
 "written either way)"
 msgstr ""
+"Csak a 2026. augusztus 2. óta feltöltött médiánál, amikor az 50. cikk "
+"alkalmazandóvá vált (a régebbi tartalomra visszamenőleg nem vonatkozik; a "
+"fájl metaadatai mindenképp beíródnak)"
 
 #: admin/class-wizard.php:437
 msgid ""
@@ -3487,27 +3531,36 @@ msgid ""
 "size). Search engines and other tools read it, and it travels with the "
 "image."
 msgstr ""
+"Az IPTC digitális forrástípus beírása a címkézett fájlokba (XMP, minden "
+"képméret). A keresőmotorok és más eszközök kiolvassák, és a képpel együtt "
+"utazik."
 
 #: admin/class-wizard.php:438
 msgid ""
 "Also mirror it into the classic IPTC block of JPEG files, for older tools."
 msgstr ""
+"Tükrözés a JPEG-fájlok klasszikus IPTC-blokkjába is, a régebbi eszközök "
+"számára."
 
 #: admin/class-wizard.php:439
 msgid ""
 "Restore the declaration when an image optimizer or a regenerated thumbnail "
 "strips it (hourly check)."
 msgstr ""
+"A nyilatkozat visszaállítása, ha egy képoptimalizáló vagy egy újragenerált "
+"bélyegkép eltávolítja (óránkénti ellenőrzés)."
 
 #: admin/class-wizard.php:440
 msgid ""
 "Add structured data (Schema.org digitalSourceType) for labeled media to the "
 "page, for search engines and AI answer engines."
 msgstr ""
+"Strukturált adatok (Schema.org digitalSourceType) hozzáadása az oldalhoz a "
+"címkézett médiához, a keresőmotorok és az MI-alapú válaszmotorok számára."
 
 #: admin/class-wizard.php:443
 msgid "Machine-readable marking"
-msgstr ""
+msgstr "Gépileg olvasható jelölés"
 
 #: admin/class-wizard.php:444
 msgid ""
@@ -3515,10 +3568,14 @@ msgid ""
 "without looking at your page. Existing metadata is kept; removing a label "
 "removes exactly what the plugin wrote."
 msgstr ""
+"A fájlban lévő jelölés teszi lehetővé, hogy más rendszerek az oldal "
+"megnézése nélkül felismerjék az MI-tartalmat. A meglévő metaadatok "
+"megmaradnak; egy címke eltávolítása pontosan azt távolítja el, amit a "
+"bővítmény beírt."
 
 #: admin/class-wizard.php:461
 msgid "AI-written text and chatbots"
-msgstr ""
+msgstr "MI által írt szöveg és chatbotok"
 
 #: admin/class-wizard.php:463
 msgid ""
@@ -3526,99 +3583,109 @@ msgid ""
 " chatbot, so there is nothing to set up here. Both can be switched on later "
 "in the settings."
 msgstr ""
+"Válaszai szerint a webhelye nem közöl MI által írt szöveget, és nem "
+"üzemeltet chatbotot, így itt nincs mit beállítani. Mindkettő később "
+"bekapcsolható a beállításokban."
 
 #: admin/class-wizard.php:468
 msgid "Where should the note on AI-written posts appear?"
-msgstr ""
+msgstr "Hol jelenjen meg a megjegyzés az MI által írt bejegyzéseknél?"
 
 #: admin/class-wizard.php:469
 msgid ""
 "Each post gets an AI level (no AI, assisted, generated, generated and "
 "reviewed) in the editor; the note follows that level."
 msgstr ""
+"Minden bejegyzés kap egy MI-szintet a szerkesztőben (nincs MI, MI-vel "
+"segített, generált, generált és ellenőrzött); a megjegyzés ehhez a szinthez "
+"igazodik."
 
 #: admin/class-wizard.php:472
 msgid "Before the text"
-msgstr ""
+msgstr "A szöveg előtt"
 
 #: admin/class-wizard.php:473
 msgid "After the text"
-msgstr ""
+msgstr "A szöveg után"
 
 #: admin/class-wizard.php:474
 msgid "Before and after"
-msgstr ""
+msgstr "Előtte és utána"
 
 #: admin/class-wizard.php:475
 msgid "Only where I place the block or shortcode"
-msgstr ""
+msgstr "Csak ott, ahová a blokkot vagy a shortcode-ot elhelyezem"
 
 #: admin/class-wizard.php:485
 msgid "Who answers in your chat?"
-msgstr ""
+msgstr "Ki válaszol a chatben?"
 
 #: admin/class-wizard.php:486
 msgid ""
 "Visitors must know when they talk to an AI. The notice appears in the chat "
 "or next to it, depending on the chat plugin."
 msgstr ""
+"A látogatóknak tudniuk kell, mikor beszélnek egy MI-vel. A tájékoztatás a "
+"chatben vagy mellette jelenik meg, a chatbővítménytől függően."
 
 #: admin/class-wizard.php:490
 msgid "An AI first, a person takes over when needed"
-msgstr ""
+msgstr "Először egy MI, szükség esetén egy ember veszi át"
 
 #: admin/class-wizard.php:491
 msgid "Only people answer (no AI notice)"
-msgstr ""
+msgstr "Csak emberek válaszolnak (nincs MI-tájékoztatás)"
 
 #: admin/class-wizard.php:511
 msgid "Official EU icon"
-msgstr ""
+msgstr "Hivatalos uniós ikon"
 
 #: admin/class-wizard.php:515
 msgid "Icon only"
-msgstr ""
+msgstr "Csak ikon"
 
 #: admin/class-wizard.php:518
 msgid "Your setup"
-msgstr ""
+msgstr "Az Ön beállításai"
 
 #. translators: 1: number of scanned media files, 2: number of media files.
 #: admin/class-wizard.php:525
 #, php-format
 msgid "Media library: %1$d of %2$d files scanned."
-msgstr ""
+msgstr "Médiatár: %1$d / %2$d fájl átvizsgálva."
 
 #. translators: %s: badge style name.
 #: admin/class-wizard.php:537
 #, php-format
 msgid "Visible badge: on, style \"%s\"."
-msgstr ""
+msgstr "Látható jelvény: be, stílus: „%s”."
 
 #: admin/class-wizard.php:538
 msgid "Visible badge: off."
-msgstr ""
+msgstr "Látható jelvény: ki."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: written into labeled files."
-msgstr ""
+msgstr "Fájl metaadatai: beírva a címkézett fájlokba."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: not written."
-msgstr ""
+msgstr "Fájl metaadatai: nincs beírva."
 
 #. translators: %d: readiness score from 0 to 100.
 #: admin/class-wizard.php:548
 #, php-format
 msgid "Readiness score: %d of 100."
-msgstr ""
+msgstr "Felkészültségi pontszám: %d / 100."
 
 #: admin/class-wizard.php:557
 msgid "What your answers make relevant"
-msgstr ""
+msgstr "Amit a válaszai relevánssá tesznek"
 
 #: admin/class-wizard.php:568
 msgid ""
 "The dashboard keeps the score and the open steps in view. This assistant "
 "stays available from the dashboard and the settings."
 msgstr ""
+"A vezérlőpult szem előtt tartja a pontszámot és a nyitott lépéseket. Ez a "
+"varázsló továbbra is elérhető a vezérlőpultról és a beállításokból."

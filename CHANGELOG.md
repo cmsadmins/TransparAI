@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased
+
+- Full C2PA signature verification (`TransparAI_C2PA_Verify`), on PHP 7.4 to 8.5 without libraries:
+  the COSE_Sign1 signature over the claim for ES256/384/512 (OpenSSL), PS256/384/512 (own
+  EMSA-PSS check, PHP's OpenSSL has no PSS mode) and Ed25519 (sodium); the hashes of every
+  referenced assertion; the signer profile (EKU, no CA); the chain up to the bundled C2PA trust
+  list (`data/c2pa/`, CC BY 4.0); RFC 3161 time stamps in `sigTst2` and `sigTst` (also stored as a
+  whole TimeStampResp) with imprint, CMS signature, messageDigest and TSA chain. Certificate
+  signatures are checked by hand because `openssl_x509_verify()` handles RSA only on PHP 7.4.
+  Verdict trusted / untrusted / invalid with reason, stored in `_transparai_c2pa` (`sig`,
+  `sig_reason`, `issuer`, `tst`, `tsa`, `tsa_trusted`), shown in the attachment panel, the media
+  list and WP-CLI; an invalid manifest sends an AI declaration to review. Filters
+  `transparai_c2pa_trust_anchors` and `transparai_c2pa_tsa_anchors` add own anchors. Not
+  checked: revocation, ingredients, BMFF hashes.
+- Setup assistant (`TransparAI_Wizard`, TransparAI, Setup): seven steps, each saved on the server
+  through the regular sanitizer, no JavaScript needed; activation and every "open setup" link
+  lead there, the menu entry disappears once the setup is finished.
+- Tag `content credentials` instead of `ai transparency`.
+
 ## 1.1.7 (2026-10-02)
 
 - Fill images: themes that size an image against its container (`width/height` in percent,

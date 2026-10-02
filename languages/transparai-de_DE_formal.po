@@ -3226,69 +3226,71 @@ msgstr ""
 
 #: admin/class-media-library.php:384
 msgid "valid, signed with a certificate on the C2PA trust list"
-msgstr ""
+msgstr "gültig, signiert mit einem Zertifikat aus der C2PA-Vertrauensliste"
 
 #: admin/class-media-library.php:386
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
 msgstr ""
+"gültig, aber der Unterzeichner steht nicht auf der C2PA-Vertrauensliste (ein"
+" Test-, selbst erstelltes oder nicht gelistetes Zertifikat)"
 
 #: admin/class-media-library.php:390
 msgid "invalid, the signature does not match the manifest"
-msgstr ""
+msgstr "ungültig, die Signatur passt nicht zum Manifest"
 
 #: admin/class-media-library.php:394
 msgid "invalid, a part of the manifest was changed after signing"
-msgstr ""
+msgstr "ungültig, ein Teil des Manifests wurde nach dem Signieren verändert"
 
 #: admin/class-media-library.php:396
 msgid "invalid, the certificate was not valid at the time of signing"
-msgstr ""
+msgstr "ungültig, das Zertifikat war zum Zeitpunkt der Signatur nicht gültig"
 
 #: admin/class-media-library.php:398
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
-msgstr ""
+msgstr "ungültig, das Zertifikat darf keine Content Credentials signieren"
 
 #: admin/class-media-library.php:400
 msgid "invalid, the time stamp does not hold"
-msgstr ""
+msgstr "ungültig, der Zeitstempel hält der Prüfung nicht stand"
 
 #: admin/class-media-library.php:402
 msgid "invalid, the certificate chain does not hold"
-msgstr ""
+msgstr "ungültig, die Zertifikatskette ist nicht schlüssig"
 
 #: admin/class-media-library.php:405
 msgid "not checkable, unknown signature algorithm"
-msgstr ""
+msgstr "nicht prüfbar, unbekannter Signaturalgorithmus"
 
 #: admin/class-media-library.php:408
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
-msgstr ""
+msgstr "nicht prüfbar, dem Server fehlen die OpenSSL- oder sodium-Funktionen"
 
 #: admin/class-media-library.php:410
 msgid "not checked"
-msgstr ""
+msgstr "nicht geprüft"
 
 #: admin/class-media-library.php:510
 msgid "Signature:"
-msgstr ""
+msgstr "Signatur:"
 
 #: admin/class-media-library.php:515
 msgid "Certificate issued by"
-msgstr ""
+msgstr "Zertifikat ausgestellt von"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
-msgstr ""
+msgstr "Zeitstempel: %1$s UTC von %2$s (auf der C2PA-Zeitstempelliste)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
 #: admin/class-media-library.php:527
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
-msgstr ""
+msgstr "Zeitstempel: %1$s UTC von %2$s (nicht auf der C2PA-Zeitstempelliste)"
 
 #: admin/class-media-library.php:533
 msgid ""
@@ -3296,11 +3298,14 @@ msgid ""
 "manifest, the certificate chain against the C2PA trust list and a time "
 "stamp. Certificate revocation is not checked."
 msgstr ""
+"Auf Ihrem Server geprüft: die Signatur, die Hashes aller Teile des "
+"Manifests, die Zertifikatskette gegen die C2PA-Vertrauensliste und ein "
+"Zeitstempel. Ob ein Zertifikat widerrufen wurde, wird nicht geprüft."
 
 #: admin/class-setup.php:166 admin/class-wizard.php:47
 #: admin/class-wizard.php:242
 msgid "Setup assistant"
-msgstr ""
+msgstr "Einrichtungsassistent"
 
 #: admin/class-setup.php:167
 msgid ""
@@ -3309,60 +3314,65 @@ msgid ""
 "where relevant, AI-written text and the chatbot. Nothing is labeled without "
 "your review, and no request leaves your server."
 msgstr ""
+"Sechs kurze Schritte durch das, was einmal geklärt sein muss: was Ihre "
+"Website nutzt, der Scan der bestehenden Mediathek, das Aussehen der "
+"sichtbaren Kennzeichnung, die Datei-Metadaten und, falls relevant, KI-"
+"geschriebene Texte und der Chatbot. Nichts wird ohne Ihre Prüfung "
+"gekennzeichnet, und keine Anfrage verlässt Ihren Server."
 
 #. translators: 1: number of media files, 2: number already scanned.
 #: admin/class-setup.php:173
 #, php-format
 msgid "%1$d media files, %2$d of them scanned."
-msgstr ""
+msgstr "%1$d Mediendateien, davon %2$d gescannt."
 
 #: admin/class-setup.php:181
 msgid "Open the setup assistant"
-msgstr ""
+msgstr "Einrichtungsassistent öffnen"
 
 #: admin/class-wizard.php:48
 msgid "Setup"
-msgstr ""
+msgstr "Einrichtung"
 
 #: admin/class-wizard.php:69 admin/class-wizard.php:295
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: admin/class-wizard.php:70
 msgid "Your site"
-msgstr ""
+msgstr "Ihre Website"
 
 #: admin/class-wizard.php:71
 msgid "Images"
-msgstr ""
+msgstr "Bilder"
 
 #: admin/class-wizard.php:72
 msgid "Visible label"
-msgstr ""
+msgstr "Sichtbare Kennzeichnung"
 
 #: admin/class-wizard.php:74
 msgid "Text and chat"
-msgstr ""
+msgstr "Text und Chat"
 
 #: admin/class-wizard.php:244
 msgid "Setup steps"
-msgstr ""
+msgstr "Einrichtungsschritte"
 
 #: admin/class-wizard.php:295
 msgid "Save and continue"
-msgstr ""
+msgstr "Speichern und weiter"
 
 #: admin/class-wizard.php:299
 msgid "Back"
-msgstr ""
+msgstr "Zurück"
 
 #: admin/class-wizard.php:303
 msgid "Not now, I will set it up myself"
-msgstr ""
+msgstr "Jetzt nicht, ich richte es selbst ein"
 
 #: admin/class-wizard.php:314
 msgid "Welcome to TransparAI"
-msgstr ""
+msgstr "Willkommen bei TransparAI"
 
 #: admin/class-wizard.php:315
 msgid ""
@@ -3372,37 +3382,52 @@ msgid ""
 " your files and, if your site has them, sets up the notes for AI-written "
 "text and for a chatbot."
 msgstr ""
+"In sechs kurzen Schritten richtet der Assistent ein, was der EU AI Act von "
+"einer Website verlangt, die KI nutzt: Er findet die KI-Bilder, die schon in "
+"Ihrer Mediathek liegen, setzt eine sichtbare Kennzeichnung, wo eine fällig "
+"ist, bewahrt die maschinenlesbare Kennzeichnung in Ihren Dateien und "
+"richtet, falls Ihre Website so etwas hat, die Hinweise für KI-geschriebene "
+"Texte und für einen Chatbot ein."
 
 #: admin/class-wizard.php:317
 msgid ""
 "Everything runs on your server. No account, no telemetry, no request to an "
 "outside service."
 msgstr ""
+"Alles läuft auf Ihrem Server. Kein Konto, keine Telemetrie, keine Anfrage an"
+" einen externen Dienst."
 
 #: admin/class-wizard.php:318
 msgid ""
 "Every choice can be changed later in the settings; nothing here is final."
 msgstr ""
+"Jede Auswahl lässt sich später in den Einstellungen ändern, hier ist nichts "
+"endgültig."
 
 #: admin/class-wizard.php:319
 msgid ""
 "The plugin is a technical tool and gives no legal advice. Whether a duty "
 "applies to your site is your decision."
 msgstr ""
+"Das Plugin ist ein technisches Werkzeug und gibt keine Rechtsberatung. Ob "
+"eine Pflicht für Ihre Website gilt, entscheiden Sie."
 
 #: admin/class-wizard.php:330
 msgid "What does your site use?"
-msgstr ""
+msgstr "Was nutzt Ihre Website?"
 
 #: admin/class-wizard.php:331
 msgid ""
 "Six questions decide which of the following steps matter for you. The "
 "answers also appear in the self-assessment and in the compliance report."
 msgstr ""
+"Sechs Fragen entscheiden, welche der folgenden Schritte für Sie wichtig "
+"sind. Die Antworten erscheinen auch in der Selbsteinschätzung und im "
+"Compliance-Bericht."
 
 #: admin/class-wizard.php:351
 msgid "Find the AI images in your library"
-msgstr ""
+msgstr "Die KI-Bilder in Ihrer Mediathek finden"
 
 #: admin/class-wizard.php:352
 msgid ""
@@ -3411,20 +3436,25 @@ msgid ""
 "and the generation parameters of local tools. It never guesses from image "
 "size, file size or file name."
 msgstr ""
+"Das Plugin liest die Herkunftsdaten, die KI-Generatoren in ihren Dateien "
+"hinterlassen: Content Credentials (C2PA, Signatur geprüft), den IPTC Digital"
+" Source Type und die Generierungsparameter lokaler Tools. Es rät nie anhand "
+"von Bildmaßen, Dateigröße oder Dateiname."
 
 #: admin/class-wizard.php:354
 msgid "What should happen with a clear AI declaration?"
-msgstr ""
+msgstr "Was soll bei einer eindeutigen KI-Angabe passieren?"
 
 #: admin/class-wizard.php:355
 msgid ""
 "Label it right away; only uncertain findings wait in the review queue "
 "(recommended)"
 msgstr ""
+"Sofort kennzeichnen, nur unsichere Funde warten in der Prüfliste (empfohlen)"
 
 #: admin/class-wizard.php:356
 msgid "Put every finding into the review queue; I confirm each one myself"
-msgstr ""
+msgstr "Jeden Fund in die Prüfliste legen, ich bestätige jeden selbst"
 
 #: admin/class-wizard.php:361
 msgid ""
@@ -3432,26 +3462,29 @@ msgid ""
 "you can also continue and scan later from the AI Images screen. New uploads "
 "are checked automatically from now on."
 msgstr ""
+"Der Scan läuft in kleinen Paketen, solange diese Seite offen ist, und lässt "
+"sich pausieren. Sie können auch weitergehen und später auf der Seite KI-"
+"Bilder scannen. Neue Uploads werden ab jetzt automatisch geprüft."
 
 #: admin/class-wizard.php:373
 msgid "Look"
-msgstr ""
+msgstr "Aussehen"
 
 #: admin/class-wizard.php:383
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: admin/class-wizard.php:392
 msgid "Placement"
-msgstr ""
+msgstr "Platzierung"
 
 #: admin/class-wizard.php:399
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #: admin/class-wizard.php:408
 msgid "How should the visible label look?"
-msgstr ""
+msgstr "Wie soll die sichtbare Kennzeichnung aussehen?"
 
 #: admin/class-wizard.php:409
 msgid ""
@@ -3459,10 +3492,14 @@ msgid ""
 "right next to the image. The badge appears on every labeled image, in the "
 "content, in featured images, in page builders and in WooCommerce."
 msgstr ""
+"Der EU AI Act verlangt eine Kennzeichnung, die auf den ersten Blick "
+"auffällt, auf dem Bild oder direkt daneben. Das Badge erscheint auf jedem "
+"gekennzeichneten Bild: im Inhalt, in Beitragsbildern, in Page Buildern und "
+"in WooCommerce."
 
 #: admin/class-wizard.php:424
 msgid "Show the visible badge"
-msgstr ""
+msgstr "Sichtbares Badge anzeigen"
 
 #: admin/class-wizard.php:425
 msgid ""
@@ -3470,6 +3507,9 @@ msgid ""
 "apply (older content is not covered retroactively; the file metadata is "
 "written either way)"
 msgstr ""
+"Nur für Medien, die seit dem 2. August 2026 hochgeladen wurden, seit Artikel"
+" 50 gilt (ältere Inhalte werden nicht rückwirkend erfasst, die Datei-"
+"Metadaten werden in jedem Fall geschrieben)"
 
 #: admin/class-wizard.php:437
 msgid ""
@@ -3477,27 +3517,36 @@ msgid ""
 "size). Search engines and other tools read it, and it travels with the "
 "image."
 msgstr ""
+"Den IPTC Digital Source Type in gekennzeichnete Dateien schreiben (XMP, jede"
+" Bildgröße). Suchmaschinen und andere Tools lesen ihn, und er bleibt mit dem"
+" Bild verbunden."
 
 #: admin/class-wizard.php:438
 msgid ""
 "Also mirror it into the classic IPTC block of JPEG files, for older tools."
 msgstr ""
+"Zusätzlich in den klassischen IPTC-Block von JPEG-Dateien übernehmen, für "
+"ältere Tools."
 
 #: admin/class-wizard.php:439
 msgid ""
 "Restore the declaration when an image optimizer or a regenerated thumbnail "
 "strips it (hourly check)."
 msgstr ""
+"Die Angabe wiederherstellen, wenn ein Bildoptimierer oder ein neu erzeugtes "
+"Vorschaubild sie entfernt (stündliche Prüfung)."
 
 #: admin/class-wizard.php:440
 msgid ""
 "Add structured data (Schema.org digitalSourceType) for labeled media to the "
 "page, for search engines and AI answer engines."
 msgstr ""
+"Strukturierte Daten (Schema.org digitalSourceType) für gekennzeichnete "
+"Medien in die Seite einfügen, für Suchmaschinen und KI-Antwortmaschinen."
 
 #: admin/class-wizard.php:443
 msgid "Machine-readable marking"
-msgstr ""
+msgstr "Maschinenlesbare Kennzeichnung"
 
 #: admin/class-wizard.php:444
 msgid ""
@@ -3505,10 +3554,14 @@ msgid ""
 "without looking at your page. Existing metadata is kept; removing a label "
 "removes exactly what the plugin wrote."
 msgstr ""
+"Erst die Kennzeichnung in der Datei lässt andere Systeme KI-Inhalte "
+"erkennen, ohne Ihre Seite anzusehen. Vorhandene Metadaten bleiben erhalten; "
+"das Entfernen einer Kennzeichnung entfernt genau das, was das Plugin "
+"geschrieben hat."
 
 #: admin/class-wizard.php:461
 msgid "AI-written text and chatbots"
-msgstr ""
+msgstr "KI-geschriebene Texte und Chatbots"
 
 #: admin/class-wizard.php:463
 msgid ""
@@ -3516,99 +3569,109 @@ msgid ""
 " chatbot, so there is nothing to set up here. Both can be switched on later "
 "in the settings."
 msgstr ""
+"Laut Ihren Antworten veröffentlicht Ihre Website keine KI-geschriebenen "
+"Texte und betreibt keinen Chatbot, hier gibt es also nichts einzurichten. "
+"Beides lässt sich später in den Einstellungen einschalten."
 
 #: admin/class-wizard.php:468
 msgid "Where should the note on AI-written posts appear?"
-msgstr ""
+msgstr "Wo soll der Hinweis bei KI-geschriebenen Beiträgen erscheinen?"
 
 #: admin/class-wizard.php:469
 msgid ""
 "Each post gets an AI level (no AI, assisted, generated, generated and "
 "reviewed) in the editor; the note follows that level."
 msgstr ""
+"Jeder Beitrag bekommt im Editor eine KI-Stufe (keine KI, unterstützt, "
+"generiert, generiert und geprüft); der Hinweis richtet sich nach dieser "
+"Stufe."
 
 #: admin/class-wizard.php:472
 msgid "Before the text"
-msgstr ""
+msgstr "Vor dem Text"
 
 #: admin/class-wizard.php:473
 msgid "After the text"
-msgstr ""
+msgstr "Nach dem Text"
 
 #: admin/class-wizard.php:474
 msgid "Before and after"
-msgstr ""
+msgstr "Davor und danach"
 
 #: admin/class-wizard.php:475
 msgid "Only where I place the block or shortcode"
-msgstr ""
+msgstr "Nur dort, wo ich den Block oder Shortcode platziere"
 
 #: admin/class-wizard.php:485
 msgid "Who answers in your chat?"
-msgstr ""
+msgstr "Wer antwortet in Ihrem Chat?"
 
 #: admin/class-wizard.php:486
 msgid ""
 "Visitors must know when they talk to an AI. The notice appears in the chat "
 "or next to it, depending on the chat plugin."
 msgstr ""
+"Besucher müssen wissen, wann sie mit einer KI sprechen. Der Hinweis "
+"erscheint je nach Chat-Plugin im Chat oder daneben."
 
 #: admin/class-wizard.php:490
 msgid "An AI first, a person takes over when needed"
-msgstr ""
+msgstr "Zuerst eine KI, bei Bedarf übernimmt ein Mensch"
 
 #: admin/class-wizard.php:491
 msgid "Only people answer (no AI notice)"
-msgstr ""
+msgstr "Nur Menschen antworten (kein KI-Hinweis)"
 
 #: admin/class-wizard.php:511
 msgid "Official EU icon"
-msgstr ""
+msgstr "Offizielles EU-Symbol"
 
 #: admin/class-wizard.php:515
 msgid "Icon only"
-msgstr ""
+msgstr "Nur Symbol"
 
 #: admin/class-wizard.php:518
 msgid "Your setup"
-msgstr ""
+msgstr "Ihre Einrichtung"
 
 #. translators: 1: number of scanned media files, 2: number of media files.
 #: admin/class-wizard.php:525
 #, php-format
 msgid "Media library: %1$d of %2$d files scanned."
-msgstr ""
+msgstr "Mediathek: %1$d von %2$d Dateien gescannt."
 
 #. translators: %s: badge style name.
 #: admin/class-wizard.php:537
 #, php-format
 msgid "Visible badge: on, style \"%s\"."
-msgstr ""
+msgstr "Sichtbares Badge: an, Stil „%s“."
 
 #: admin/class-wizard.php:538
 msgid "Visible badge: off."
-msgstr ""
+msgstr "Sichtbares Badge: aus."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: written into labeled files."
-msgstr ""
+msgstr "Datei-Metadaten: werden in gekennzeichnete Dateien geschrieben."
 
 #: admin/class-wizard.php:542
 msgid "File metadata: not written."
-msgstr ""
+msgstr "Datei-Metadaten: werden nicht geschrieben."
 
 #. translators: %d: readiness score from 0 to 100.
 #: admin/class-wizard.php:548
 #, php-format
 msgid "Readiness score: %d of 100."
-msgstr ""
+msgstr "Readiness-Score: %d von 100."
 
 #: admin/class-wizard.php:557
 msgid "What your answers make relevant"
-msgstr ""
+msgstr "Was durch Ihre Antworten relevant wird"
 
 #: admin/class-wizard.php:568
 msgid ""
 "The dashboard keeps the score and the open steps in view. This assistant "
 "stays available from the dashboard and the settings."
 msgstr ""
+"Das Dashboard behält den Score und die offenen Schritte im Blick. Dieser "
+"Assistent bleibt über das Dashboard und die Einstellungen erreichbar."
