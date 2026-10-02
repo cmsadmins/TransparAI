@@ -1,6 +1,6 @@
 === TransparAI: EU AI Act Compliance, AI Disclosure & AI Image Detection ===
 Contributors: contexlabs
-Tags: eu ai act, ai compliance, ai disclosure, ai transparency, c2pa
+Tags: eu ai act, ai compliance, ai disclosure, content credentials, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
 Stable tag: 1.1.7
