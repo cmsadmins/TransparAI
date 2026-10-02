@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.5\n"
+"Project-Id-Version: TransparAI 1.1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: el\n"
@@ -331,7 +331,7 @@ msgstr "Λεπτομέρειες"
 msgid "By"
 msgstr "Από"
 
-#: admin/class-dashboard.php:333 admin/class-media-library.php:508
+#: admin/class-dashboard.php:333 admin/class-media-library.php:509
 msgid "system"
 msgstr "σύστημα"
 
@@ -822,27 +822,27 @@ msgstr "από %1$s (%2$s)"
 msgid "%1$s (in %2$s)"
 msgstr "%1$s (σε %2$s)"
 
-#: admin/class-media-library.php:111
+#: admin/class-media-library.php:112
 msgid "Media is AI-generated"
 msgstr "Το αρχείο πολυμέσων δημιουργήθηκε από AI"
 
-#: admin/class-media-library.php:121 admin/class-media-library.php:437
+#: admin/class-media-library.php:122 admin/class-media-library.php:438
 msgid "no declaration"
 msgstr "καμία δήλωση"
 
-#: admin/class-media-library.php:122
+#: admin/class-media-library.php:123
 msgid "camera photo (digitalCapture)"
 msgstr "φωτογραφία κάμερας (digitalCapture)"
 
-#: admin/class-media-library.php:123
+#: admin/class-media-library.php:124
 msgid "human digital work (digitalCreation)"
 msgstr "ανθρώπινη ψηφιακή δημιουργία (digitalCreation)"
 
-#: admin/class-media-library.php:125
+#: admin/class-media-library.php:126
 msgid "Not AI:"
 msgstr "Μη AI:"
 
-#: admin/class-media-library.php:134
+#: admin/class-media-library.php:135
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
@@ -851,31 +851,31 @@ msgstr ""
 "είναι εγγράψιμο). Η κατάσταση της ετικέτας στο WordPress και τα μεταδεδομένα"
 " μέσα στο αρχείο μπορεί να διαφέρουν."
 
-#: admin/class-media-library.php:140
+#: admin/class-media-library.php:141
 msgid "Confirm AI label"
 msgstr "Επιβεβαίωση ετικέτας AI"
 
-#: admin/class-media-library.php:141
+#: admin/class-media-library.php:142
 msgid "Not AI, dismiss"
 msgstr "Μη AI, απόρριψη"
 
-#: admin/class-media-library.php:146
+#: admin/class-media-library.php:147
 msgid "Re-check file metadata"
 msgstr "Επανέλεγχος μεταδεδομένων αρχείου"
 
-#: admin/class-media-library.php:151
+#: admin/class-media-library.php:152
 msgid "Check delivery"
 msgstr "Έλεγχος παράδοσης"
 
-#: admin/class-media-library.php:161 admin/class-media-library.php:596
+#: admin/class-media-library.php:162 admin/class-media-library.php:597
 msgid "Show file metadata"
 msgstr "Εμφάνιση μεταδεδομένων αρχείου"
 
-#: admin/class-media-library.php:164
+#: admin/class-media-library.php:165
 msgid "AI content"
 msgstr "Περιεχόμενο AI"
 
-#: admin/class-media-library.php:167
+#: admin/class-media-library.php:168
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
@@ -883,50 +883,50 @@ msgstr ""
 "Ελέγχει το σήμα στο front end, τα μηχαναγνώσιμα μεταδεδομένα του αρχείου και"
 " το φίλτρο της βιβλιοθήκης πολυμέσων."
 
-#: admin/class-media-library.php:173
+#: admin/class-media-library.php:174
 msgid "Default (site setting)"
 msgstr "Προεπιλογή (ρύθμιση ιστότοπου)"
 
-#: admin/class-media-library.php:174 admin/class-settings.php:314
+#: admin/class-media-library.php:175 admin/class-settings.php:314
 msgid "Top left"
 msgstr "Επάνω αριστερά"
 
-#: admin/class-media-library.php:175 admin/class-settings.php:315
+#: admin/class-media-library.php:176 admin/class-settings.php:315
 msgid "Top right"
 msgstr "Επάνω δεξιά"
 
-#: admin/class-media-library.php:176 admin/class-settings.php:316
+#: admin/class-media-library.php:177 admin/class-settings.php:316
 msgid "Bottom left"
 msgstr "Κάτω αριστερά"
 
-#: admin/class-media-library.php:177 admin/class-settings.php:317
+#: admin/class-media-library.php:178 admin/class-settings.php:317
 msgid "Bottom right"
 msgstr "Κάτω δεξιά"
 
-#: admin/class-media-library.php:178 admin/class-settings.php:307
+#: admin/class-media-library.php:179 admin/class-settings.php:307
 msgid "Caption line below the image"
 msgstr "Γραμμή λεζάντας κάτω από την εικόνα"
 
-#: admin/class-media-library.php:179
+#: admin/class-media-library.php:180
 msgid "Hide the visible badge on this image"
 msgstr "Απόκρυψη του ορατού σήματος σε αυτή την εικόνα"
 
-#: admin/class-media-library.php:188
+#: admin/class-media-library.php:189
 msgid "Badge position"
 msgstr "Θέση σήματος"
 
-#: admin/class-media-library.php:191
+#: admin/class-media-library.php:192
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
 "Ισχύει μόνο για αυτή την εικόνα. Χρησιμοποιήστε το αν μια επικάλυψη του "
 "θέματος καλύπτει εδώ το σήμα."
 
-#: admin/class-media-library.php:195
+#: admin/class-media-library.php:196
 msgid "AI generator"
 msgstr "Γεννήτρια AI"
 
-#: admin/class-media-library.php:199
+#: admin/class-media-library.php:200
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
@@ -934,36 +934,36 @@ msgstr ""
 "Όνομα του εργαλείου AI, π.χ. «Midjourney». Εμφανίζεται με την επιλογή "
 "προέλευσης του σήματος και με τη μεταβλητή {generator}."
 
-#: admin/class-media-library.php:219
+#: admin/class-media-library.php:220
 msgid "certain"
 msgstr "βέβαιο"
 
-#: admin/class-media-library.php:220
+#: admin/class-media-library.php:221
 msgid "likely"
 msgstr "πιθανό"
 
-#: admin/class-media-library.php:221
+#: admin/class-media-library.php:222
 msgid "hint"
 msgstr "ένδειξη"
 
-#: admin/class-media-library.php:76 admin/class-media-library.php:325
-#: admin/class-media-library.php:366 admin/class-setup.php:112
+#: admin/class-media-library.php:77 admin/class-media-library.php:326
+#: admin/class-media-library.php:367 admin/class-setup.php:112
 #: includes/class-chatbot.php:357 includes/class-delivery.php:66
 #: includes/class-scanner.php:242 includes/class-scanner.php:318
 msgid "You are not allowed to do that."
 msgstr "Δεν έχετε δικαίωμα να το κάνετε αυτό."
 
-#: admin/class-media-library.php:330 includes/class-rest.php:243
+#: admin/class-media-library.php:331 includes/class-rest.php:243
 msgid "Unknown action."
 msgstr "Άγνωστη ενέργεια."
 
-#: admin/class-media-library.php:371 includes/class-delivery.php:73
+#: admin/class-media-library.php:372 includes/class-delivery.php:73
 #: includes/class-scanner.php:322
 msgid "Invalid attachment."
 msgstr "Μη έγκυρο συνημμένο."
 
 #. translators: %s: IPTC digital source type token.
-#: admin/class-media-library.php:418
+#: admin/class-media-library.php:419
 #, php-format
 msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
@@ -972,7 +972,7 @@ msgstr ""
 "Αυτό το συνημμένο είναι δηλωμένο ως μη δημιουργημένο από AI (%s). Η δήλωση "
 "γράφεται σε αρχεία που δεν φέρουν άλλον τύπο ψηφιακής πηγής."
 
-#: admin/class-media-library.php:420
+#: admin/class-media-library.php:421
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
@@ -980,7 +980,7 @@ msgstr ""
 "Αυτό το συνημμένο φέρει ετικέτα ως δημιουργημένο από AI, οπότε κάθε αρχείο "
 "παρακάτω πρέπει να φέρει τη δήλωση."
 
-#: admin/class-media-library.php:421
+#: admin/class-media-library.php:422
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
@@ -988,103 +988,103 @@ msgstr ""
 "Αυτό το συνημμένο δεν φέρει ετικέτα ως δημιουργημένο από AI. Δεν γράφεται "
 "τίποτα στα αρχεία του και δεν αναμένεται δήλωση παρακάτω."
 
-#: admin/class-media-library.php:425
+#: admin/class-media-library.php:426
 msgid "Files"
 msgstr "Αρχεία"
 
-#: admin/class-media-library.php:428
+#: admin/class-media-library.php:429
 msgid "format cannot carry the declaration"
 msgstr "η μορφή δεν μπορεί να φέρει τη δήλωση"
 
-#: admin/class-media-library.php:431
+#: admin/class-media-library.php:432
 msgid "declaration present"
 msgstr "η δήλωση υπάρχει"
 
-#: admin/class-media-library.php:434
+#: admin/class-media-library.php:435
 msgid "declaration missing"
 msgstr "η δήλωση λείπει"
 
-#: admin/class-media-library.php:446
+#: admin/class-media-library.php:447
 msgid "No readable file found for this attachment."
 msgstr "Δεν βρέθηκε αναγνώσιμο αρχείο για αυτό το συνημμένο."
 
-#: admin/class-media-library.php:488
+#: admin/class-media-library.php:489
 msgid "Digital source type in the main file"
 msgstr "Τύπος ψηφιακής πηγής στο κύριο αρχείο"
 
-#: admin/class-media-library.php:490
+#: admin/class-media-library.php:491
 msgid "None declared."
 msgstr "Δεν έχει δηλωθεί κανένας."
 
-#: admin/class-media-library.php:498
+#: admin/class-media-library.php:499
 msgid "Detection evidence"
 msgstr "Τεκμήρια ανίχνευσης"
 
-#: admin/class-media-library.php:504
+#: admin/class-media-library.php:505
 msgid "History"
 msgstr "Ιστορικό"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
-#: admin/class-media-library.php:517
+#: admin/class-media-library.php:518
 #, php-format
 msgid "from %s"
 msgstr "από %s"
 
-#: admin/class-media-library.php:530
+#: admin/class-media-library.php:531
 msgid "XMP packet of the main file"
 msgstr "Πακέτο XMP του κύριου αρχείου"
 
-#: admin/class-media-library.php:532
+#: admin/class-media-library.php:533
 msgid "This file carries no XMP block."
 msgstr "Αυτό το αρχείο δεν φέρει μπλοκ XMP."
 
-#: admin/class-media-library.php:585 admin/class-media-library.php:662
+#: admin/class-media-library.php:586 admin/class-media-library.php:663
 msgid "AI status: all"
 msgstr "Κατάσταση AI: όλα"
 
-#: admin/class-media-library.php:586 admin/class-media-library.php:663
+#: admin/class-media-library.php:587 admin/class-media-library.php:664
 msgid "Only AI-labeled"
 msgstr "Μόνο με ετικέτα AI"
 
-#: admin/class-media-library.php:587 admin/class-media-library.php:636
-#: admin/class-media-library.php:664
+#: admin/class-media-library.php:588 admin/class-media-library.php:637
+#: admin/class-media-library.php:665
 msgid "Detected, needs review"
 msgstr "Εντοπίστηκαν, χρειάζονται έλεγχο"
 
-#: admin/class-media-library.php:588 admin/class-media-library.php:666
+#: admin/class-media-library.php:589 admin/class-media-library.php:667
 msgid "Without AI label"
 msgstr "Χωρίς ετικέτα AI"
 
-#: admin/class-media-library.php:589 admin/class-media-library.php:665
+#: admin/class-media-library.php:590 admin/class-media-library.php:666
 msgid "Declared not AI (camera, human work)"
 msgstr "Δηλωμένα ως μη AI (κάμερα, ανθρώπινη δημιουργία)"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:753
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Mark as AI-generated"
 msgstr "Σήμανση ως δημιουργημένο από AI"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:754
+#: admin/class-media-library.php:592 admin/class-media-library.php:755
 msgid "Remove AI label"
 msgstr "Αφαίρεση ετικέτας AI"
 
-#: admin/class-media-library.php:592
+#: admin/class-media-library.php:593
 msgid "Please select media first."
 msgstr "Επιλέξτε πρώτα πολυμέσα."
 
-#: admin/class-media-library.php:593
+#: admin/class-media-library.php:594
 msgid "Updating the AI label failed."
 msgstr "Η ενημέρωση της ετικέτας AI απέτυχε."
 
-#: admin/class-media-library.php:594
+#: admin/class-media-library.php:595
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
-#: admin/class-media-library.php:595
+#: admin/class-media-library.php:596
 msgid "No AI provenance signals found in the file."
 msgstr "Δεν βρέθηκαν σήματα προέλευσης AI στο αρχείο."
 
-#: admin/class-media-library.php:597
+#: admin/class-media-library.php:598
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
@@ -1092,13 +1092,13 @@ msgstr ""
 "Η ετικέτα ορίστηκε, αλλά τα μεταδεδομένα δεν μπόρεσαν να γραφτούν στο "
 "αρχείο. Ελέγξτε τα δικαιώματα εγγραφής του καταλόγου μεταφορτώσεων."
 
-#: admin/class-media-library.php:598
+#: admin/class-media-library.php:599
 msgid "Hide file metadata"
 msgstr "Απόκρυψη μεταδεδομένων αρχείου"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
-#: admin/class-media-library.php:600
+#: admin/class-media-library.php:601
 #, php-format
 msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
@@ -1109,7 +1109,7 @@ msgstr ""
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
-#: admin/class-media-library.php:602
+#: admin/class-media-library.php:603
 #, php-format
 msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
@@ -1118,41 +1118,41 @@ msgstr ""
 "Σαρώθηκαν %1$d, %2$d πήραν αυτόματα ετικέτα, %3$d μπήκαν στην ουρά ελέγχου, "
 "%4$d παραλείφθηκαν (έχουν ήδη κριθεί)."
 
-#: admin/class-media-library.php:603
+#: admin/class-media-library.php:604
 msgid "Scan complete."
 msgstr "Η σάρωση ολοκληρώθηκε."
 
-#: admin/class-media-library.php:604
+#: admin/class-media-library.php:605
 msgid "Scan request failed. You can restart to continue."
 msgstr ""
 "Το αίτημα σάρωσης απέτυχε. Μπορείτε να ξεκινήσετε ξανά για να συνεχίσετε."
 
-#: admin/class-media-library.php:615 includes/class-notice.php:305
+#: admin/class-media-library.php:616 includes/class-notice.php:305
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:755
+#: admin/class-media-library.php:756
 msgid "Confirm detected AI label"
 msgstr "Επιβεβαίωση εντοπισμένης ετικέτας AI"
 
-#: admin/class-media-library.php:756
+#: admin/class-media-library.php:757
 msgid "Dismiss detected AI label"
 msgstr "Απόρριψη εντοπισμένης ετικέτας AI"
 
-#: admin/class-media-library.php:757
+#: admin/class-media-library.php:758
 msgid "Declare as camera photo (not AI)"
 msgstr "Δήλωση ως φωτογραφία κάμερας (μη AI)"
 
-#: admin/class-media-library.php:758
+#: admin/class-media-library.php:759
 msgid "Declare as human work (not AI)"
 msgstr "Δήλωση ως ανθρώπινη δημιουργία (μη AI)"
 
-#: admin/class-media-library.php:759
+#: admin/class-media-library.php:760
 msgid "Remove \"not AI\" declaration"
 msgstr "Αφαίρεση δήλωσης «μη AI»"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:801
+#: admin/class-media-library.php:802
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -3098,11 +3098,11 @@ msgstr ""
 "περίπτωση, δηλαδή για φωτογραφία πολύ πιο ανοιχτή ή πιο σκούρα από το ίδιο "
 "το σήμα."
 
-#: admin/class-media-library.php:66
+#: admin/class-media-library.php:67
 msgid "Does this image need a label?"
 msgstr "Χρειάζεται ετικέτα αυτή η εικόνα;"
 
-#: admin/class-media-library.php:67
+#: admin/class-media-library.php:68
 msgid ""
 "Article 50(4) of the EU AI Act asks deployers to disclose deepfakes: AI "
 "images that look like real people, places, objects or events and could pass "
@@ -3122,15 +3122,15 @@ msgstr ""
 "βλάπτει ποτέ, και η μηχαναγνώσιμη σήμανση γράφεται σε κάθε περίπτωση. Η "
 "υπόδειξη αυτή δεν αποτελεί νομική συμβουλή."
 
-#: admin/class-media-library.php:68
+#: admin/class-media-library.php:69
 msgid "Hide this note"
 msgstr "Απόκρυψη αυτής της σημείωσης"
 
-#: admin/class-media-library.php:383
+#: admin/class-media-library.php:384
 msgid "yes, the manifest was written for exactly these bytes"
 msgstr "ναι, το manifest γράφτηκε ακριβώς για αυτά τα bytes"
 
-#: admin/class-media-library.php:385
+#: admin/class-media-library.php:386
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
@@ -3138,34 +3138,34 @@ msgstr ""
 "όχι, η εικόνα άλλαξε μετά την υπογραφή ή το manifest αντιγράφηκε από άλλο "
 "αρχείο"
 
-#: admin/class-media-library.php:389
+#: admin/class-media-library.php:390
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
 "δεν ελέγχεται, το manifest δεν έχει hash δεδομένων (manifest ενημέρωσης)"
 
-#: admin/class-media-library.php:391
+#: admin/class-media-library.php:392
 msgid "not checkable, unknown hash algorithm"
 msgstr "δεν ελέγχεται, άγνωστος αλγόριθμος hash"
 
-#: admin/class-media-library.php:393
+#: admin/class-media-library.php:394
 msgid "not checked for video and ISO-BMFF containers"
 msgstr "δεν ελέγχεται για βίντεο και περιέκτες ISO-BMFF"
 
-#: admin/class-media-library.php:395
+#: admin/class-media-library.php:396
 msgid "not checked, the file is larger than 64 MB"
 msgstr "δεν ελέγχθηκε, το αρχείο είναι μεγαλύτερο από 64 MB"
 
-#: admin/class-media-library.php:397
+#: admin/class-media-library.php:398
 msgid "not checkable, the manifest could not be read completely"
 msgstr "δεν ελέγχεται, το manifest δεν διαβάστηκε ολόκληρο"
 
-#: admin/class-media-library.php:442
+#: admin/class-media-library.php:443
 msgid "Content Credentials"
 msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
-#: admin/class-media-library.php:460
+#: admin/class-media-library.php:461
 #, php-format
 msgid ""
 "Content Credentials are present in the original, but %1$d of %2$d files (the"
@@ -3177,7 +3177,7 @@ msgstr ""
 "τύπος ψηφιακής πηγής που γράφει αυτό το πρόσθετο σε κάθε αρχείο δεν "
 "επηρεάζεται."
 
-#: admin/class-media-library.php:467
+#: admin/class-media-library.php:468
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
@@ -3185,31 +3185,31 @@ msgstr ""
 "Τα αρχεία άλλαξαν από την τελευταία σάρωση εντοπισμού. Πατήστε «Επανέλεγχος "
 "μεταδεδομένων αρχείου» για να τα εξετάσετε ξανά."
 
-#: admin/class-media-library.php:473
+#: admin/class-media-library.php:474
 msgid "Content Credentials (C2PA)"
 msgstr "Content Credentials (C2PA)"
 
-#: admin/class-media-library.php:474
+#: admin/class-media-library.php:475
 msgid "Manifest matches the file bytes:"
 msgstr "Το manifest ταιριάζει με τα bytes του αρχείου:"
 
-#: admin/class-media-library.php:476
+#: admin/class-media-library.php:477
 msgid "Signer"
 msgstr "Υπογράφων"
 
-#: admin/class-media-library.php:477
+#: admin/class-media-library.php:478
 msgid "Organisation"
 msgstr "Οργανισμός"
 
-#: admin/class-media-library.php:478
+#: admin/class-media-library.php:479
 msgid "Claim generator"
 msgstr "Γεννήτρια δήλωσης"
 
-#: admin/class-media-library.php:479
+#: admin/class-media-library.php:480
 msgid "Action time in the manifest"
 msgstr "Χρόνος ενέργειας στο manifest"
 
-#: admin/class-media-library.php:485
+#: admin/class-media-library.php:486
 msgid ""
 "According to the manifest. The signature and the signer's certificate are "
 "not verified; the check only tells whether the manifest describes exactly "
@@ -3219,11 +3219,11 @@ msgstr ""
 " επαληθεύονται. Ο έλεγχος δείχνει μόνο αν το manifest περιγράφει ακριβώς "
 "αυτό το αρχείο."
 
-#: admin/class-media-library.php:649
+#: admin/class-media-library.php:650
 msgid "The files changed since the last detection scan."
 msgstr "Τα αρχεία άλλαξαν από την τελευταία σάρωση εντοπισμού."
 
-#: admin/class-media-library.php:649
+#: admin/class-media-library.php:650
 msgid "changed"
 msgstr "άλλαξε"
 

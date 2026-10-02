@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.6 (unreleased)
+## 1.1.6 (2026-10-02)
 
 - Content Credentials are read in full. A new `TransparAI_C2PA` class walks the JUMBF manifest
   store with a minimal CBOR decoder, checks the `c2pa.hash.data` assertion against the file bytes
