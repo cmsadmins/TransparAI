@@ -1051,11 +1051,11 @@ msgstr "Utan AI-märkning"
 msgid "Declared not AI (camera, human work)"
 msgstr "Deklarerade som inte AI (kamera, mänskligt arbete)"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:767
+#: admin/class-media-library.php:590 admin/class-media-library.php:753
 msgid "Mark as AI-generated"
 msgstr "Märk som AI-genererad"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:768
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Remove AI label"
 msgstr "Ta bort AI-märkning"
 
@@ -1121,28 +1121,28 @@ msgstr "Skanningsbegäran misslyckades. Du kan starta om för att fortsätta."
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:769
+#: admin/class-media-library.php:755
 msgid "Confirm detected AI label"
 msgstr "Bekräfta upptäckt AI-märkning"
 
-#: admin/class-media-library.php:770
+#: admin/class-media-library.php:756
 msgid "Dismiss detected AI label"
 msgstr "Avfärda upptäckt AI-märkning"
 
-#: admin/class-media-library.php:771
+#: admin/class-media-library.php:757
 msgid "Declare as camera photo (not AI)"
 msgstr "Deklarera som kamerafoto (inte AI)"
 
-#: admin/class-media-library.php:772
+#: admin/class-media-library.php:758
 msgid "Declare as human work (not AI)"
 msgstr "Deklarera som mänskligt arbete (inte AI)"
 
-#: admin/class-media-library.php:773
+#: admin/class-media-library.php:759
 msgid "Remove \"not AI\" declaration"
 msgstr "Ta bort deklarationen ”inte AI”"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:815
+#: admin/class-media-library.php:801
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -3059,7 +3059,7 @@ msgstr ""
 
 #: admin/class-media-library.php:66
 msgid "Does this image need a label?"
-msgstr ""
+msgstr "Behöver den här bilden en märkning?"
 
 #: admin/class-media-library.php:67
 msgid ""
@@ -3071,44 +3071,55 @@ msgid ""
 " or cartoon? Labeling never hurts, and the machine-readable marking is "
 "written either way; this hint is not legal advice."
 msgstr ""
+"Artikel 50(4) i AI-förordningen kräver att tillhandahållare upplyser om "
+"deepfakes: AI-bilder som liknar verkliga personer, platser, föremål eller "
+"händelser och skulle kunna tas för äkta, även realistiska produktbilder och "
+"foton i bildbyråstil. Tre frågor hjälper: Ser det ut som ett foto av något "
+"verkligt? Publicerades det den 2 augusti 2026 eller senare? Är det mer än en"
+" uppenbar illustration eller tecknad bild? Att märka skadar aldrig, och den "
+"maskinläsbara märkningen skrivs in oavsett. Den här ledtråden är inte "
+"juridisk rådgivning."
 
 #: admin/class-media-library.php:68
 msgid "Hide this note"
-msgstr ""
+msgstr "Dölj den här notisen"
 
 #: admin/class-media-library.php:383
 msgid "yes, the manifest was written for exactly these bytes"
-msgstr ""
+msgstr "ja, manifestet skrevs för exakt de här byten"
 
 #: admin/class-media-library.php:385
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
 msgstr ""
+"nej, bilden har ändrats efter signeringen eller så har manifestet kopierats "
+"från en annan fil"
 
 #: admin/class-media-library.php:389
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
+"kan inte kontrolleras, manifestet saknar datahash (ett uppdateringsmanifest)"
 
 #: admin/class-media-library.php:391
 msgid "not checkable, unknown hash algorithm"
-msgstr ""
+msgstr "kan inte kontrolleras, okänd hashalgoritm"
 
 #: admin/class-media-library.php:393
 msgid "not checked for video and ISO-BMFF containers"
-msgstr ""
+msgstr "kontrolleras inte för video- och ISO-BMFF-behållare"
 
 #: admin/class-media-library.php:395
 msgid "not checked, the file is larger than 64 MB"
-msgstr ""
+msgstr "inte kontrollerad, filen är större än 64 MB"
 
 #: admin/class-media-library.php:397
 msgid "not checkable, the manifest could not be read completely"
-msgstr ""
+msgstr "kan inte kontrolleras, manifestet kunde inte läsas helt"
 
 #: admin/class-media-library.php:442
 msgid "Content Credentials"
-msgstr ""
+msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
@@ -3119,36 +3130,41 @@ msgid ""
 " size variants WordPress generates) do not carry the manifest. The digital "
 "source type this plugin writes into every file is not affected."
 msgstr ""
+"Originalet har Content Credentials, men %1$d av %2$d filer "
+"(storleksvarianterna som WordPress skapar) bär inte manifestet. Den digitala"
+" källtyp som tillägget skriver in i varje fil påverkas inte."
 
 #: admin/class-media-library.php:467
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
 msgstr ""
+"Filerna har ändrats sedan den senaste detekteringsskanningen. Använd "
+"”Kontrollera filens metadata igen” för att granska dem på nytt."
 
 #: admin/class-media-library.php:473
 msgid "Content Credentials (C2PA)"
-msgstr ""
+msgstr "Content Credentials (C2PA)"
 
 #: admin/class-media-library.php:474
 msgid "Manifest matches the file bytes:"
-msgstr ""
+msgstr "Manifestet stämmer med filens byte:"
 
 #: admin/class-media-library.php:476
 msgid "Signer"
-msgstr ""
+msgstr "Undertecknare"
 
 #: admin/class-media-library.php:477
 msgid "Organisation"
-msgstr ""
+msgstr "Organisation"
 
 #: admin/class-media-library.php:478
 msgid "Claim generator"
-msgstr ""
+msgstr "Claim-generator"
 
 #: admin/class-media-library.php:479
 msgid "Action time in the manifest"
-msgstr ""
+msgstr "Åtgärdstid i manifestet"
 
 #: admin/class-media-library.php:485
 msgid ""
@@ -3156,34 +3172,36 @@ msgid ""
 "not verified; the check only tells whether the manifest describes exactly "
 "this file."
 msgstr ""
+"Enligt manifestet. Signaturen och undertecknarens certifikat verifieras "
+"inte; kontrollen visar bara om manifestet beskriver exakt den här filen."
 
 #: admin/class-media-library.php:649
 msgid "The files changed since the last detection scan."
-msgstr ""
+msgstr "Filerna har ändrats sedan den senaste detekteringsskanningen."
 
 #: admin/class-media-library.php:649
 msgid "changed"
-msgstr ""
+msgstr "ändrad"
 
 #: admin/class-settings.php:328
 msgid "Official EU icon (Commission, June 2026)"
-msgstr ""
+msgstr "Officiell EU-ikon (kommissionen, juni 2026)"
 
 #: admin/class-settings.php:335
 msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
-msgstr ""
+msgstr "EU-ikon efter märkning: Helt AI-genererad / Delvis AI-modifierad"
 
 #: admin/class-settings.php:336
 msgid "EU icon: basic AI icon for every label"
-msgstr ""
+msgstr "EU-ikon: grundläggande AI-ikon för alla märkningar"
 
 #: admin/class-settings.php:343
 msgid "EU icon: black"
-msgstr ""
+msgstr "EU-ikon: svart"
 
 #: admin/class-settings.php:344
 msgid "EU icon: white"
-msgstr ""
+msgstr "EU-ikon: vit"
 
 #: admin/class-settings.php:388
 msgid ""
@@ -3194,6 +3212,12 @@ msgid ""
 "and without attribution. Showing them does not make your site a signatory of"
 " the Code of Practice and is no statement of compliance."
 msgstr ""
+"Utseendet EU-ikon använder de ikoner som Europeiska kommissionen publicerade"
+" den 10 juni 2026 tillsammans med uppförandekoden för transparens, "
+"oförändrade och i de två officiella färgerna. Färgfälten ovan gäller inte "
+"för dem, men opaciteten gör det. Kommissionen låter alla använda ikonerna "
+"kostnadsfritt och utan källangivelse. Att visa dem gör inte din webbplats "
+"till undertecknare av uppförandekoden och är inget intyg om efterlevnad."
 
 #: includes/class-privacy.php:43
 msgid ""
@@ -3204,6 +3228,13 @@ msgid ""
 "(such as Content Credentials or the IPTC digital source type) and, when a "
 "file is labeled, that declaration is written into the file."
 msgstr ""
+"Den här webbplatsen använder TransparAI för att upptäcka och märka AI-"
+"genererade medier och för att dokumentera sin användning av AI-system. "
+"Tillägget körs helt på den här servern: det skapar inga konton, skickar "
+"ingen telemetri och gör inga anrop till externa tjänster. Mediefiler läses "
+"lokalt för att hitta ursprungsmetadata (till exempel Content Credentials "
+"eller IPTC:s digitala källtyp), och när en fil märks skrivs den "
+"deklarationen in i filen."
 
 #: includes/class-privacy.php:45
 msgid ""
@@ -3216,3 +3247,11 @@ msgid ""
 "delivery check, which fetches one image from this site itself to verify that"
 " a CDN keeps the declaration."
 msgstr ""
+"Tillägget sparar sina resultat i WordPress-databasen: för varje mediefil "
+"märkningsstatus, upptäckta signaler och en historik över märkningsbeslut med"
+" användar-ID och visningsnamn för den redaktör som fattade dem, samt en kort"
+" webbplatslogg över administrativa händelser. Den som granskar AI-skriven "
+"text registreras med namn och datum. Inga uppgifter om besökare samlas in "
+"och inga kakor sätts. Den enda HTTP-begäran tillägget kan göra är den "
+"valfria leveranskontrollen, som hämtar en bild från den här webbplatsen "
+"själv för att kontrollera att ett CDN behåller deklarationen."

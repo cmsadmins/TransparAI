@@ -1057,11 +1057,11 @@ msgstr "Ohne KI-Kennzeichnung"
 msgid "Declared not AI (camera, human work)"
 msgstr "Als nicht KI deklariert (Kamera, menschliche Arbeit)"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:767
+#: admin/class-media-library.php:590 admin/class-media-library.php:753
 msgid "Mark as AI-generated"
 msgstr "Als KI-generiert markieren"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:768
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Remove AI label"
 msgstr "KI-Kennzeichnung entfernen"
 
@@ -1127,28 +1127,28 @@ msgstr "Scan-Anfrage fehlgeschlagen. Zum Fortsetzen neu starten."
 msgid "AI"
 msgstr "KI"
 
-#: admin/class-media-library.php:769
+#: admin/class-media-library.php:755
 msgid "Confirm detected AI label"
 msgstr "Erkannte KI-Kennzeichnung bestätigen"
 
-#: admin/class-media-library.php:770
+#: admin/class-media-library.php:756
 msgid "Dismiss detected AI label"
 msgstr "Erkannte KI-Kennzeichnung verwerfen"
 
-#: admin/class-media-library.php:771
+#: admin/class-media-library.php:757
 msgid "Declare as camera photo (not AI)"
 msgstr "Als Kamerafoto deklarieren (keine KI)"
 
-#: admin/class-media-library.php:772
+#: admin/class-media-library.php:758
 msgid "Declare as human work (not AI)"
 msgstr "Als menschliche Arbeit deklarieren (keine KI)"
 
-#: admin/class-media-library.php:773
+#: admin/class-media-library.php:759
 msgid "Remove \"not AI\" declaration"
 msgstr "Deklaration „keine KI“ entfernen"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:815
+#: admin/class-media-library.php:801
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -3082,7 +3082,7 @@ msgstr "impressum"
 
 #: admin/class-media-library.php:66
 msgid "Does this image need a label?"
-msgstr ""
+msgstr "Braucht dieses Bild eine Kennzeichnung?"
 
 #: admin/class-media-library.php:67
 msgid ""
@@ -3094,44 +3094,56 @@ msgid ""
 " or cartoon? Labeling never hurts, and the machine-readable marking is "
 "written either way; this hint is not legal advice."
 msgstr ""
+"Artikel 50 Abs. 4 der EU-KI-Verordnung verlangt von Betreibern, Deepfakes "
+"offenzulegen: KI-Bilder, die wie reale Personen, Orte, Gegenstände oder "
+"Ereignisse aussehen und als echt durchgehen könnten, auch realistische "
+"Produktfotos und Bilder im Stil von Stockfotos. Drei Fragen helfen bei der "
+"Einschätzung: Sieht es aus wie ein Foto von etwas Echtem? Wurde es am 2. "
+"August 2026 oder später veröffentlicht? Ist es mehr als eine offensichtliche"
+" Illustration oder ein Cartoon? Eine Kennzeichnung schadet nie, und die "
+"maschinenlesbare Markierung wird ohnehin geschrieben. Dieser Hinweis ist "
+"keine Rechtsberatung."
 
 #: admin/class-media-library.php:68
 msgid "Hide this note"
-msgstr ""
+msgstr "Hinweis ausblenden"
 
 #: admin/class-media-library.php:383
 msgid "yes, the manifest was written for exactly these bytes"
-msgstr ""
+msgstr "ja, das Manifest wurde für genau diese Bytes geschrieben"
 
 #: admin/class-media-library.php:385
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
 msgstr ""
+"nein, das Bild wurde nach dem Signieren verändert oder das Manifest aus "
+"einer anderen Datei kopiert"
 
 #: admin/class-media-library.php:389
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
+"nicht prüfbar, das Manifest hat keinen Daten-Hash (ein Update-Manifest)"
 
 #: admin/class-media-library.php:391
 msgid "not checkable, unknown hash algorithm"
-msgstr ""
+msgstr "nicht prüfbar, unbekannter Hash-Algorithmus"
 
 #: admin/class-media-library.php:393
 msgid "not checked for video and ISO-BMFF containers"
-msgstr ""
+msgstr "bei Video- und ISO-BMFF-Containern nicht geprüft"
 
 #: admin/class-media-library.php:395
 msgid "not checked, the file is larger than 64 MB"
-msgstr ""
+msgstr "nicht geprüft, die Datei ist größer als 64 MB"
 
 #: admin/class-media-library.php:397
 msgid "not checkable, the manifest could not be read completely"
-msgstr ""
+msgstr "nicht prüfbar, das Manifest konnte nicht vollständig gelesen werden"
 
 #: admin/class-media-library.php:442
 msgid "Content Credentials"
-msgstr ""
+msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
@@ -3142,36 +3154,42 @@ msgid ""
 " size variants WordPress generates) do not carry the manifest. The digital "
 "source type this plugin writes into every file is not affected."
 msgstr ""
+"Im Original sind Content Credentials vorhanden, aber %1$d von %2$d Dateien "
+"(die Größenvarianten, die WordPress erzeugt) enthalten das Manifest nicht. "
+"Den Digital Source Type, den dieses Plugin in jede Datei schreibt, betrifft "
+"das nicht."
 
 #: admin/class-media-library.php:467
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
 msgstr ""
+"Die Dateien haben sich seit dem letzten Erkennungsscan geändert. Prüfe sie "
+"mit „Datei-Metadaten erneut prüfen“ noch einmal."
 
 #: admin/class-media-library.php:473
 msgid "Content Credentials (C2PA)"
-msgstr ""
+msgstr "Content Credentials (C2PA)"
 
 #: admin/class-media-library.php:474
 msgid "Manifest matches the file bytes:"
-msgstr ""
+msgstr "Manifest passt zu den Dateibytes:"
 
 #: admin/class-media-library.php:476
 msgid "Signer"
-msgstr ""
+msgstr "Unterzeichner"
 
 #: admin/class-media-library.php:477
 msgid "Organisation"
-msgstr ""
+msgstr "Organisation"
 
 #: admin/class-media-library.php:478
 msgid "Claim generator"
-msgstr ""
+msgstr "Claim-Generator"
 
 #: admin/class-media-library.php:479
 msgid "Action time in the manifest"
-msgstr ""
+msgstr "Zeitpunkt der Aktion im Manifest"
 
 #: admin/class-media-library.php:485
 msgid ""
@@ -3179,34 +3197,38 @@ msgid ""
 "not verified; the check only tells whether the manifest describes exactly "
 "this file."
 msgstr ""
+"Laut Manifest. Signatur und Zertifikat des Unterzeichners werden nicht "
+"geprüft; die Prüfung sagt nur, ob das Manifest genau diese Datei beschreibt."
 
 #: admin/class-media-library.php:649
 msgid "The files changed since the last detection scan."
-msgstr ""
+msgstr "Die Dateien haben sich seit dem letzten Erkennungsscan geändert."
 
 #: admin/class-media-library.php:649
 msgid "changed"
-msgstr ""
+msgstr "geändert"
 
 #: admin/class-settings.php:328
 msgid "Official EU icon (Commission, June 2026)"
-msgstr ""
+msgstr "Offizielles EU-Symbol (Kommission, Juni 2026)"
 
 #: admin/class-settings.php:335
 msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
 msgstr ""
+"EU-Symbol je nach Kennzeichnung: vollständig KI-generiert / teilweise KI-"
+"verändert"
 
 #: admin/class-settings.php:336
 msgid "EU icon: basic AI icon for every label"
-msgstr ""
+msgstr "EU-Symbol: einfaches KI-Symbol für jede Kennzeichnung"
 
 #: admin/class-settings.php:343
 msgid "EU icon: black"
-msgstr ""
+msgstr "EU-Symbol: schwarz"
 
 #: admin/class-settings.php:344
 msgid "EU icon: white"
-msgstr ""
+msgstr "EU-Symbol: weiß"
 
 #: admin/class-settings.php:388
 msgid ""
@@ -3217,6 +3239,14 @@ msgid ""
 "and without attribution. Showing them does not make your site a signatory of"
 " the Code of Practice and is no statement of compliance."
 msgstr ""
+"Der Stil „EU-Symbol“ verwendet die Symbole, die die Europäische Kommission "
+"am 10. Juni 2026 zusammen mit dem Verhaltenskodex zur Transparenz "
+"veröffentlicht hat, unverändert und in den beiden offiziellen Farben. Die "
+"Farbfelder oben gelten für sie nicht, die Deckkraft schon. Die Kommission "
+"erlaubt allen, die Symbole kostenlos und ohne Quellenangabe zu verwenden. "
+"Durch die Anzeige wird deine Website nicht zum Unterzeichner des "
+"Verhaltenskodex, und sie ist keine Aussage darüber, dass die Vorschriften "
+"eingehalten werden."
 
 #: includes/class-privacy.php:43
 msgid ""
@@ -3227,6 +3257,13 @@ msgid ""
 "(such as Content Credentials or the IPTC digital source type) and, when a "
 "file is labeled, that declaration is written into the file."
 msgstr ""
+"Diese Website nutzt TransparAI, um KI-generierte Medien zu erkennen und zu "
+"kennzeichnen und den eigenen Einsatz von KI-Systemen zu dokumentieren. Das "
+"Plugin läuft vollständig auf diesem Server: Es legt keine Konten an, sendet "
+"keine Telemetrie und stellt keine Anfrage an externe Dienste. Mediendateien "
+"werden lokal gelesen, um Herkunftsmetadaten zu finden (etwa Content "
+"Credentials oder den IPTC Digital Source Type), und wenn eine Datei "
+"gekennzeichnet wird, schreibt das Plugin diese Deklaration in die Datei."
 
 #: includes/class-privacy.php:45
 msgid ""
@@ -3239,3 +3276,13 @@ msgid ""
 "delivery check, which fetches one image from this site itself to verify that"
 " a CDN keeps the declaration."
 msgstr ""
+"Das Plugin speichert seine Ergebnisse in der WordPress-Datenbank: pro "
+"Mediendatei den Kennzeichnungsstatus, die erkannten Signale und einen "
+"Verlauf der Kennzeichnungsentscheidungen mit Benutzer-ID und Anzeigename der"
+" Person, die sie getroffen hat, dazu ein kurzes Website-Protokoll "
+"administrativer Ereignisse. Wer KI-geschriebene Texte prüft, wird mit Name "
+"und Datum festgehalten. Über Besucher der Website werden keine Daten "
+"erhoben, und es werden keine Cookies gesetzt. Die einzige HTTP-Anfrage, die "
+"das Plugin stellen kann, ist die optionale Auslieferungsprüfung: Sie ruft "
+"ein Bild von dieser Website selbst ab, um zu prüfen, ob ein CDN die "
+"Deklaration erhält."

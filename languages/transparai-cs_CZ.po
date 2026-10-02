@@ -1049,11 +1049,11 @@ msgstr "Bez označení AI"
 msgid "Declared not AI (camera, human work)"
 msgstr "Deklarováno jako bez AI (fotoaparát, lidská tvorba)"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:767
+#: admin/class-media-library.php:590 admin/class-media-library.php:753
 msgid "Mark as AI-generated"
 msgstr "Označit jako vygenerované AI"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:768
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Remove AI label"
 msgstr "Odebrat označení AI"
 
@@ -1119,28 +1119,28 @@ msgstr "Požadavek na sken selhal. Pokračovat můžete opětovným spuštěním
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:769
+#: admin/class-media-library.php:755
 msgid "Confirm detected AI label"
 msgstr "Potvrdit zjištěné označení AI"
 
-#: admin/class-media-library.php:770
+#: admin/class-media-library.php:756
 msgid "Dismiss detected AI label"
 msgstr "Zamítnout zjištěné označení AI"
 
-#: admin/class-media-library.php:771
+#: admin/class-media-library.php:757
 msgid "Declare as camera photo (not AI)"
 msgstr "Deklarovat jako fotografii z fotoaparátu (bez AI)"
 
-#: admin/class-media-library.php:772
+#: admin/class-media-library.php:758
 msgid "Declare as human work (not AI)"
 msgstr "Deklarovat jako lidskou tvorbu (bez AI)"
 
-#: admin/class-media-library.php:773
+#: admin/class-media-library.php:759
 msgid "Remove \"not AI\" declaration"
 msgstr "Odebrat deklaraci „bez AI“"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:815
+#: admin/class-media-library.php:801
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -3052,7 +3052,7 @@ msgstr ""
 
 #: admin/class-media-library.php:66
 msgid "Does this image need a label?"
-msgstr ""
+msgstr "Potřebuje tento obrázek označení?"
 
 #: admin/class-media-library.php:67
 msgid ""
@@ -3064,44 +3064,54 @@ msgid ""
 " or cartoon? Labeling never hurts, and the machine-readable marking is "
 "written either way; this hint is not legal advice."
 msgstr ""
+"Čl. 50 odst. 4 EU AI Act ukládá zavádějícím subjektům zveřejňovat deepfaky, "
+"tedy obrázky z AI, které připomínají skutečné osoby, místa, předměty nebo "
+"události a mohly by působit jako pravé. Patří sem i realistické produktové "
+"fotografie a snímky ve stylu fotobank. Pomohou tři otázky: Vypadá obrázek "
+"jako fotografie něčeho skutečného? Byl zveřejněn 2. srpna 2026 nebo později?"
+" Je to víc než zjevná ilustrace nebo kreslený obrázek? Označení nikdy "
+"neuškodí a strojově čitelné označení se zapisuje v každém případě. Tato "
+"nápověda není právní poradenství."
 
 #: admin/class-media-library.php:68
 msgid "Hide this note"
-msgstr ""
+msgstr "Skrýt tuto poznámku"
 
 #: admin/class-media-library.php:383
 msgid "yes, the manifest was written for exactly these bytes"
-msgstr ""
+msgstr "ano, manifest byl zapsán přesně pro tyto bajty"
 
 #: admin/class-media-library.php:385
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
 msgstr ""
+"ne, obrázek byl po podepsání změněn nebo byl manifest zkopírován z jiného "
+"souboru"
 
 #: admin/class-media-library.php:389
 msgid "not checkable, the manifest has no data hash (an update manifest)"
-msgstr ""
+msgstr "nelze ověřit, manifest nemá hash dat (aktualizační manifest)"
 
 #: admin/class-media-library.php:391
 msgid "not checkable, unknown hash algorithm"
-msgstr ""
+msgstr "nelze ověřit, neznámý hashovací algoritmus"
 
 #: admin/class-media-library.php:393
 msgid "not checked for video and ISO-BMFF containers"
-msgstr ""
+msgstr "u videa a kontejnerů ISO-BMFF se nekontroluje"
 
 #: admin/class-media-library.php:395
 msgid "not checked, the file is larger than 64 MB"
-msgstr ""
+msgstr "nekontrolováno, soubor je větší než 64 MB"
 
 #: admin/class-media-library.php:397
 msgid "not checkable, the manifest could not be read completely"
-msgstr ""
+msgstr "nelze ověřit, manifest se nepodařilo přečíst celý"
 
 #: admin/class-media-library.php:442
 msgid "Content Credentials"
-msgstr ""
+msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
@@ -3112,36 +3122,41 @@ msgid ""
 " size variants WordPress generates) do not carry the manifest. The digital "
 "source type this plugin writes into every file is not affected."
 msgstr ""
+"Originál obsahuje Content Credentials, ale %1$d z %2$d souborů (velikostní "
+"varianty, které generuje WordPress) manifest nenese. Typ digitálního zdroje,"
+" který tento plugin zapisuje do každého souboru, tím není dotčen."
 
 #: admin/class-media-library.php:467
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
 msgstr ""
+"Soubory se od poslední detekční kontroly změnily. Tlačítkem „Znovu "
+"zkontrolovat metadata souboru“ je prověříte znovu."
 
 #: admin/class-media-library.php:473
 msgid "Content Credentials (C2PA)"
-msgstr ""
+msgstr "Content Credentials (C2PA)"
 
 #: admin/class-media-library.php:474
 msgid "Manifest matches the file bytes:"
-msgstr ""
+msgstr "Manifest odpovídá bajtům souboru:"
 
 #: admin/class-media-library.php:476
 msgid "Signer"
-msgstr ""
+msgstr "Podepisující"
 
 #: admin/class-media-library.php:477
 msgid "Organisation"
-msgstr ""
+msgstr "Organizace"
 
 #: admin/class-media-library.php:478
 msgid "Claim generator"
-msgstr ""
+msgstr "Generátor deklarace"
 
 #: admin/class-media-library.php:479
 msgid "Action time in the manifest"
-msgstr ""
+msgstr "Čas akce v manifestu"
 
 #: admin/class-media-library.php:485
 msgid ""
@@ -3149,34 +3164,36 @@ msgid ""
 "not verified; the check only tells whether the manifest describes exactly "
 "this file."
 msgstr ""
+"Podle manifestu. Podpis ani certifikát podepisujícího se neověřují, kontrola"
+" jen zjišťuje, zda manifest popisuje přesně tento soubor."
 
 #: admin/class-media-library.php:649
 msgid "The files changed since the last detection scan."
-msgstr ""
+msgstr "Soubory se od poslední detekční kontroly změnily."
 
 #: admin/class-media-library.php:649
 msgid "changed"
-msgstr ""
+msgstr "změněno"
 
 #: admin/class-settings.php:328
 msgid "Official EU icon (Commission, June 2026)"
-msgstr ""
+msgstr "Oficiální ikona EU (Komise, červen 2026)"
 
 #: admin/class-settings.php:335
 msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
-msgstr ""
+msgstr "Ikona EU podle označení: Plně vygenerováno AI / Částečně upraveno AI"
 
 #: admin/class-settings.php:336
 msgid "EU icon: basic AI icon for every label"
-msgstr ""
+msgstr "Ikona EU: základní ikona AI pro každé označení"
 
 #: admin/class-settings.php:343
 msgid "EU icon: black"
-msgstr ""
+msgstr "Ikona EU: černá"
 
 #: admin/class-settings.php:344
 msgid "EU icon: white"
-msgstr ""
+msgstr "Ikona EU: bílá"
 
 #: admin/class-settings.php:388
 msgid ""
@@ -3187,6 +3204,12 @@ msgid ""
 "and without attribution. Showing them does not make your site a signatory of"
 " the Code of Practice and is no statement of compliance."
 msgstr ""
+"Styl „Ikona EU“ používá ikony, které Evropská komise zveřejnila 10. června "
+"2026 spolu s kodexem zásad pro transparentnost, beze změn a ve dvou "
+"oficiálních barvách. Barevná pole výše se na ně nevztahují, krytí ano. "
+"Komise dovoluje komukoli používat ikony zdarma a bez uvedení autora. Jejich "
+"zobrazení z vašeho webu nedělá signatáře kodexu a není prohlášením o "
+"souladu."
 
 #: includes/class-privacy.php:43
 msgid ""
@@ -3197,6 +3220,12 @@ msgid ""
 "(such as Content Credentials or the IPTC digital source type) and, when a "
 "file is labeled, that declaration is written into the file."
 msgstr ""
+"Tento web používá TransparAI k rozpoznávání a označování médií vytvořených "
+"AI a k dokumentaci toho, jak využívá systémy AI. Plugin běží výhradně na "
+"tomto serveru: nezakládá účty, neodesílá telemetrii a nekomunikuje s žádnou "
+"externí službou. Mediální soubory se čtou lokálně kvůli metadatům o původu "
+"(například Content Credentials nebo typu digitálního zdroje IPTC), a když je"
+" soubor označen, zapíše se tato deklarace přímo do souboru."
 
 #: includes/class-privacy.php:45
 msgid ""
@@ -3209,3 +3238,11 @@ msgid ""
 "delivery check, which fetches one image from this site itself to verify that"
 " a CDN keeps the declaration."
 msgstr ""
+"Plugin ukládá výsledky do databáze WordPressu: u každého mediálního souboru "
+"stav označení, zjištěné signály a historii rozhodnutí o označení, která "
+"zaznamenává ID uživatele a zobrazované jméno redaktora, který rozhodl, a k "
+"tomu krátký protokol administrativních událostí webu. Kontroloři textů "
+"napsaných AI se zaznamenávají jménem a datem. O návštěvnících webu se "
+"nesbírají žádná data a nenastavují se žádné cookies. Jediný HTTP požadavek, "
+"který plugin může provést, je volitelná kontrola doručení, která stáhne "
+"jeden obrázek přímo z tohoto webu, aby ověřila, že CDN deklaraci zachovává."

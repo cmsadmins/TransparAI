@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-02T08:17:14+00:00\n"
+"POT-Creation-Date: 2026-10-02T08:28:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: transparai\n"
@@ -972,12 +972,12 @@ msgid "Declared not AI (camera, human work)"
 msgstr ""
 
 #: admin/class-media-library.php:590
-#: admin/class-media-library.php:767
+#: admin/class-media-library.php:753
 msgid "Mark as AI-generated"
 msgstr ""
 
 #: admin/class-media-library.php:591
-#: admin/class-media-library.php:768
+#: admin/class-media-library.php:754
 msgid "Remove AI label"
 msgstr ""
 
@@ -1038,28 +1038,28 @@ msgstr ""
 msgid "changed"
 msgstr ""
 
-#: admin/class-media-library.php:769
+#: admin/class-media-library.php:755
 msgid "Confirm detected AI label"
 msgstr ""
 
-#: admin/class-media-library.php:770
+#: admin/class-media-library.php:756
 msgid "Dismiss detected AI label"
 msgstr ""
 
-#: admin/class-media-library.php:771
+#: admin/class-media-library.php:757
 msgid "Declare as camera photo (not AI)"
 msgstr ""
 
-#: admin/class-media-library.php:772
+#: admin/class-media-library.php:758
 msgid "Declare as human work (not AI)"
 msgstr ""
 
-#: admin/class-media-library.php:773
+#: admin/class-media-library.php:759
 msgid "Remove \"not AI\" declaration"
 msgstr ""
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:815
+#: admin/class-media-library.php:801
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."

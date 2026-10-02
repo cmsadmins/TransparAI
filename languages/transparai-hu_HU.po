@@ -1059,11 +1059,11 @@ msgstr "MI-címke nélkül"
 msgid "Declared not AI (camera, human work)"
 msgstr "Nem MI-ként bejelentve (fényképezőgép, emberi alkotás)"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:767
+#: admin/class-media-library.php:590 admin/class-media-library.php:753
 msgid "Mark as AI-generated"
 msgstr "Megjelölés MI által generáltként"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:768
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Remove AI label"
 msgstr "MI-címke eltávolítása"
 
@@ -1129,28 +1129,28 @@ msgstr "Az átvizsgálási kérés nem sikerült. Az újraindítással folytatha
 msgid "AI"
 msgstr "MI"
 
-#: admin/class-media-library.php:769
+#: admin/class-media-library.php:755
 msgid "Confirm detected AI label"
 msgstr "Felismert MI-címke megerősítése"
 
-#: admin/class-media-library.php:770
+#: admin/class-media-library.php:756
 msgid "Dismiss detected AI label"
 msgstr "Felismert MI-címke elvetése"
 
-#: admin/class-media-library.php:771
+#: admin/class-media-library.php:757
 msgid "Declare as camera photo (not AI)"
 msgstr "Bejelentés fényképként (nem MI)"
 
-#: admin/class-media-library.php:772
+#: admin/class-media-library.php:758
 msgid "Declare as human work (not AI)"
 msgstr "Bejelentés emberi alkotásként (nem MI)"
 
-#: admin/class-media-library.php:773
+#: admin/class-media-library.php:759
 msgid "Remove \"not AI\" declaration"
 msgstr "A „nem MI” nyilatkozat eltávolítása"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:815
+#: admin/class-media-library.php:801
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -3093,7 +3093,7 @@ msgstr ""
 
 #: admin/class-media-library.php:66
 msgid "Does this image need a label?"
-msgstr ""
+msgstr "Kell címke erre a képre?"
 
 #: admin/class-media-library.php:67
 msgid ""
@@ -3105,44 +3105,56 @@ msgid ""
 " or cartoon? Labeling never hurts, and the machine-readable marking is "
 "written either way; this hint is not legal advice."
 msgstr ""
+"Az EU AI Act 50. cikkének (4) bekezdése előírja az alkalmazóknak, hogy "
+"jelöljék a deepfake-eket, vagyis azokat az MI-képeket, amelyek valódi "
+"személyekre, helyekre, tárgyakra vagy eseményekre hasonlítanak, és "
+"hitelesnek tűnhetnek, ideértve a valósághű termékfotókat és a stockfotó-"
+"jellegű képeket is. Három kérdés segít: Úgy néz ki, mint egy valódi dologról"
+" készült fénykép? 2026. augusztus 2-án vagy azt követően jelent meg? Több "
+"egy nyilvánvaló illusztrációnál vagy rajzfilmszerű ábránál? A címkézés soha "
+"nem árt, a gépileg olvasható jelölés pedig mindenképp bekerül a fájlba. Ez a"
+" tipp nem minősül jogi tanácsnak."
 
 #: admin/class-media-library.php:68
 msgid "Hide this note"
-msgstr ""
+msgstr "Megjegyzés elrejtése"
 
 #: admin/class-media-library.php:383
 msgid "yes, the manifest was written for exactly these bytes"
-msgstr ""
+msgstr "igen, a manifeszt pontosan ezekhez a bájtokhoz készült"
 
 #: admin/class-media-library.php:385
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
 msgstr ""
+"nem, a képet aláírás után módosították, vagy a manifesztet egy másik fájlból"
+" másolták át"
 
 #: admin/class-media-library.php:389
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
+"nem ellenőrizhető, a manifesztnek nincs adat-hash-e (frissítési manifeszt)"
 
 #: admin/class-media-library.php:391
 msgid "not checkable, unknown hash algorithm"
-msgstr ""
+msgstr "nem ellenőrizhető, ismeretlen hash-algoritmus"
 
 #: admin/class-media-library.php:393
 msgid "not checked for video and ISO-BMFF containers"
-msgstr ""
+msgstr "videónál és ISO-BMFF-konténereknél nincs ellenőrzés"
 
 #: admin/class-media-library.php:395
 msgid "not checked, the file is larger than 64 MB"
-msgstr ""
+msgstr "nincs ellenőrizve, a fájl nagyobb 64 MB-nál"
 
 #: admin/class-media-library.php:397
 msgid "not checkable, the manifest could not be read completely"
-msgstr ""
+msgstr "nem ellenőrizhető, a manifesztet nem sikerült teljesen beolvasni"
 
 #: admin/class-media-library.php:442
 msgid "Content Credentials"
-msgstr ""
+msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
@@ -3153,36 +3165,41 @@ msgid ""
 " size variants WordPress generates) do not carry the manifest. The digital "
 "source type this plugin writes into every file is not affected."
 msgstr ""
+"Az eredeti fájl tartalmaz Content Credentials adatokat, de %2$d fájlból %1$d"
+" (a WordPress által létrehozott méretváltozatok) nem hordozza a manifesztet."
+" A bővítmény által minden fájlba beírt digitális forrástípust ez nem érinti."
 
 #: admin/class-media-library.php:467
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
 msgstr ""
+"A fájlok a legutóbbi felismerési vizsgálat óta megváltoztak. A „Fájl "
+"metaadatainak újraellenőrzése” gombbal újra átnézheti őket."
 
 #: admin/class-media-library.php:473
 msgid "Content Credentials (C2PA)"
-msgstr ""
+msgstr "Content Credentials (C2PA)"
 
 #: admin/class-media-library.php:474
 msgid "Manifest matches the file bytes:"
-msgstr ""
+msgstr "A manifeszt egyezik a fájl bájtjaival:"
 
 #: admin/class-media-library.php:476
 msgid "Signer"
-msgstr ""
+msgstr "Aláíró"
 
 #: admin/class-media-library.php:477
 msgid "Organisation"
-msgstr ""
+msgstr "Szervezet"
 
 #: admin/class-media-library.php:478
 msgid "Claim generator"
-msgstr ""
+msgstr "Nyilatkozatgenerátor"
 
 #: admin/class-media-library.php:479
 msgid "Action time in the manifest"
-msgstr ""
+msgstr "Művelet ideje a manifesztben"
 
 #: admin/class-media-library.php:485
 msgid ""
@@ -3190,34 +3207,39 @@ msgid ""
 "not verified; the check only tells whether the manifest describes exactly "
 "this file."
 msgstr ""
+"A manifeszt szerint. Az aláírást és az aláíró tanúsítványát a bővítmény nem "
+"ellenőrzi, a vizsgálat csak azt mutatja meg, hogy a manifeszt pontosan ezt a"
+" fájlt írja-e le."
 
 #: admin/class-media-library.php:649
 msgid "The files changed since the last detection scan."
-msgstr ""
+msgstr "A fájlok a legutóbbi felismerési vizsgálat óta megváltoztak."
 
 #: admin/class-media-library.php:649
 msgid "changed"
-msgstr ""
+msgstr "módosult"
 
 #: admin/class-settings.php:328
 msgid "Official EU icon (Commission, June 2026)"
-msgstr ""
+msgstr "Hivatalos uniós ikon (Bizottság, 2026. június)"
 
 #: admin/class-settings.php:335
 msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
 msgstr ""
+"Uniós ikon címke szerint: Teljesen MI által generált / Részben MI-vel "
+"módosított"
 
 #: admin/class-settings.php:336
 msgid "EU icon: basic AI icon for every label"
-msgstr ""
+msgstr "Uniós ikon: alap MI-ikon minden címkéhez"
 
 #: admin/class-settings.php:343
 msgid "EU icon: black"
-msgstr ""
+msgstr "Uniós ikon: fekete"
 
 #: admin/class-settings.php:344
 msgid "EU icon: white"
-msgstr ""
+msgstr "Uniós ikon: fehér"
 
 #: admin/class-settings.php:388
 msgid ""
@@ -3228,6 +3250,13 @@ msgid ""
 "and without attribution. Showing them does not make your site a signatory of"
 " the Code of Practice and is no statement of compliance."
 msgstr ""
+"Az „Uniós ikon” stílus az Európai Bizottság által 2026. június 10-én, az "
+"átláthatóságról szóló gyakorlati kódexszel együtt közzétett ikonokat "
+"használja, változtatás nélkül és a két hivatalos színben. A fenti színmezők "
+"rájuk nem vonatkoznak, az átlátszatlanság igen. A Bizottság bárkinek engedi "
+"az ikonok ingyenes, forrásmegjelölés nélküli használatát. Megjelenítésük nem"
+" teszi a webhelyét a gyakorlati kódex aláírójává, és nem minősül "
+"megfelelőségi nyilatkozatnak."
 
 #: includes/class-privacy.php:43
 msgid ""
@@ -3238,6 +3267,14 @@ msgid ""
 "(such as Content Credentials or the IPTC digital source type) and, when a "
 "file is labeled, that declaration is written into the file."
 msgstr ""
+"Ez a webhely a TransparAI bővítményt használja az MI által generált média "
+"felismerésére és címkézésére, valamint az MI-rendszerek használatának "
+"dokumentálására. A bővítmény teljes egészében ezen a szerveren fut: nem hoz "
+"létre fiókokat, nem küld telemetriát, és semmilyen külső szolgáltatás felé "
+"nem indít kérést. A médiafájlokat helyben olvassa be az eredetre vonatkozó "
+"metaadatok (például a Content Credentials vagy az IPTC digitális "
+"forrástípus) után kutatva, és amikor egy fájl címkét kap, ezt a "
+"nyilatkozatot beírja a fájlba."
 
 #: includes/class-privacy.php:45
 msgid ""
@@ -3250,3 +3287,13 @@ msgid ""
 "delivery check, which fetches one image from this site itself to verify that"
 " a CDN keeps the declaration."
 msgstr ""
+"A bővítmény az eredményeit a WordPress adatbázisában tárolja: "
+"médiafájlonként a címke állapotát, a felismert jeleket és a címkézési "
+"döntések előzményeit, amelyek rögzítik a döntést hozó szerkesztő "
+"felhasználói azonosítóját és megjelenített nevét, továbbá a webhely "
+"adminisztratív eseményeinek rövid naplóját. Az MI által írt szövegek "
+"ellenőreit névvel és dátummal rögzíti. A webhely látogatóiról semmilyen "
+"adatot nem gyűjt, és sütiket sem állít be. Az egyetlen HTTP-kérés, amelyet a"
+" bővítmény indíthat, az opcionális kiszolgálási ellenőrzés, amely egyetlen "
+"képet tölt le magáról a webhelyről, hogy ellenőrizze, megőrzi-e a CDN a "
+"nyilatkozatot."

@@ -1059,11 +1059,11 @@ msgstr "Fără etichetă AI"
 msgid "Declared not AI (camera, human work)"
 msgstr "Declarate ca nefiind IA (aparat foto, lucrare umană)"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:767
+#: admin/class-media-library.php:590 admin/class-media-library.php:753
 msgid "Mark as AI-generated"
 msgstr "Marchează ca generat de AI"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:768
+#: admin/class-media-library.php:591 admin/class-media-library.php:754
 msgid "Remove AI label"
 msgstr "Elimină eticheta IA"
 
@@ -1129,28 +1129,28 @@ msgstr ""
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:769
+#: admin/class-media-library.php:755
 msgid "Confirm detected AI label"
 msgstr "Confirmă eticheta AI detectată"
 
-#: admin/class-media-library.php:770
+#: admin/class-media-library.php:756
 msgid "Dismiss detected AI label"
 msgstr "Respinge eticheta IA detectată"
 
-#: admin/class-media-library.php:771
+#: admin/class-media-library.php:757
 msgid "Declare as camera photo (not AI)"
 msgstr "Declară ca fotografie de aparat foto (nu este IA)"
 
-#: admin/class-media-library.php:772
+#: admin/class-media-library.php:758
 msgid "Declare as human work (not AI)"
 msgstr "Declară ca lucrare umană (nu este IA)"
 
-#: admin/class-media-library.php:773
+#: admin/class-media-library.php:759
 msgid "Remove \"not AI\" declaration"
 msgstr "Elimină declarația „nu este IA”"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:815
+#: admin/class-media-library.php:801
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -3085,7 +3085,7 @@ msgstr ""
 
 #: admin/class-media-library.php:66
 msgid "Does this image need a label?"
-msgstr ""
+msgstr "Are nevoie această imagine de o etichetă?"
 
 #: admin/class-media-library.php:67
 msgid ""
@@ -3097,44 +3097,57 @@ msgid ""
 " or cartoon? Labeling never hurts, and the machine-readable marking is "
 "written either way; this hint is not legal advice."
 msgstr ""
+"Articolul 50 alineatul (4) din EU AI Act le cere implementatorilor să "
+"dezvăluie deepfake-urile, adică imaginile IA care seamănă cu persoane, "
+"locuri, obiecte sau evenimente reale și ar putea trece drept autentice, "
+"inclusiv fotografiile realiste de produs și imaginile în stil stock. Trei "
+"întrebări te ajută: Arată ca fotografia unui lucru real? A fost publicată pe"
+" 2 august 2026 sau după această dată? Este mai mult decât o ilustrație sau "
+"un desen evident? Eticheta nu strică niciodată, iar marcarea care poate fi "
+"citită automat se scrie oricum. Acest indiciu nu reprezintă consultanță "
+"juridică."
 
 #: admin/class-media-library.php:68
 msgid "Hide this note"
-msgstr ""
+msgstr "Ascunde această notă"
 
 #: admin/class-media-library.php:383
 msgid "yes, the manifest was written for exactly these bytes"
-msgstr ""
+msgstr "da, manifestul a fost scris exact pentru acești octeți"
 
 #: admin/class-media-library.php:385
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
 msgstr ""
+"nu, imaginea a fost modificată după semnare sau manifestul a fost copiat din"
+" alt fișier"
 
 #: admin/class-media-library.php:389
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
+"nu poate fi verificat, manifestul nu are hash de date (un manifest de "
+"actualizare)"
 
 #: admin/class-media-library.php:391
 msgid "not checkable, unknown hash algorithm"
-msgstr ""
+msgstr "nu poate fi verificat, algoritm de hash necunoscut"
 
 #: admin/class-media-library.php:393
 msgid "not checked for video and ISO-BMFF containers"
-msgstr ""
+msgstr "nu se verifică pentru video și containere ISO-BMFF"
 
 #: admin/class-media-library.php:395
 msgid "not checked, the file is larger than 64 MB"
-msgstr ""
+msgstr "neverificat, fișierul depășește 64 MB"
 
 #: admin/class-media-library.php:397
 msgid "not checkable, the manifest could not be read completely"
-msgstr ""
+msgstr "nu poate fi verificat, manifestul nu a putut fi citit complet"
 
 #: admin/class-media-library.php:442
 msgid "Content Credentials"
-msgstr ""
+msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
@@ -3145,36 +3158,42 @@ msgid ""
 " size variants WordPress generates) do not carry the manifest. The digital "
 "source type this plugin writes into every file is not affected."
 msgstr ""
+"Originalul conține Content Credentials, dar %1$d din %2$d fișiere "
+"(variantele de dimensiune generate de WordPress) nu poartă manifestul. Tipul"
+" de sursă digitală pe care acest modul îl scrie în fiecare fișier nu este "
+"afectat."
 
 #: admin/class-media-library.php:467
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
 msgstr ""
+"Fișierele s-au schimbat de la ultima scanare de detectare. Folosește "
+"„Reverifică metadatele fișierului” ca să le examinezi din nou."
 
 #: admin/class-media-library.php:473
 msgid "Content Credentials (C2PA)"
-msgstr ""
+msgstr "Content Credentials (C2PA)"
 
 #: admin/class-media-library.php:474
 msgid "Manifest matches the file bytes:"
-msgstr ""
+msgstr "Manifestul corespunde octeților fișierului:"
 
 #: admin/class-media-library.php:476
 msgid "Signer"
-msgstr ""
+msgstr "Semnatar"
 
 #: admin/class-media-library.php:477
 msgid "Organisation"
-msgstr ""
+msgstr "Organizație"
 
 #: admin/class-media-library.php:478
 msgid "Claim generator"
-msgstr ""
+msgstr "Generator de declarație"
 
 #: admin/class-media-library.php:479
 msgid "Action time in the manifest"
-msgstr ""
+msgstr "Momentul acțiunii în manifest"
 
 #: admin/class-media-library.php:485
 msgid ""
@@ -3182,34 +3201,39 @@ msgid ""
 "not verified; the check only tells whether the manifest describes exactly "
 "this file."
 msgstr ""
+"Conform manifestului. Semnătura și certificatul semnatarului nu sunt "
+"verificate, verificarea arată doar dacă manifestul descrie exact acest "
+"fișier."
 
 #: admin/class-media-library.php:649
 msgid "The files changed since the last detection scan."
-msgstr ""
+msgstr "Fișierele s-au schimbat de la ultima scanare de detectare."
 
 #: admin/class-media-library.php:649
 msgid "changed"
-msgstr ""
+msgstr "modificat"
 
 #: admin/class-settings.php:328
 msgid "Official EU icon (Commission, June 2026)"
-msgstr ""
+msgstr "Pictograma oficială UE (Comisia, iunie 2026)"
 
 #: admin/class-settings.php:335
 msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
 msgstr ""
+"Pictogramă UE după etichetă: Generat integral de IA / Modificat parțial de "
+"IA"
 
 #: admin/class-settings.php:336
 msgid "EU icon: basic AI icon for every label"
-msgstr ""
+msgstr "Pictogramă UE: pictograma IA de bază pentru orice etichetă"
 
 #: admin/class-settings.php:343
 msgid "EU icon: black"
-msgstr ""
+msgstr "Pictogramă UE: neagră"
 
 #: admin/class-settings.php:344
 msgid "EU icon: white"
-msgstr ""
+msgstr "Pictogramă UE: albă"
 
 #: admin/class-settings.php:388
 msgid ""
@@ -3220,6 +3244,13 @@ msgid ""
 "and without attribution. Showing them does not make your site a signatory of"
 " the Code of Practice and is no statement of compliance."
 msgstr ""
+"Stilul „Pictogramă UE” folosește pictogramele publicate de Comisia Europeană"
+" pe 10 iunie 2026 împreună cu Codul de bune practici privind transparența, "
+"nemodificate și în cele două culori oficiale. Câmpurile de culoare de mai "
+"sus nu li se aplică, opacitatea da. Comisia permite oricui să folosească "
+"pictogramele gratuit și fără atribuire. Afișarea lor nu face din site-ul tău"
+" un semnatar al Codului de bune practici și nu este o declarație de "
+"conformitate."
 
 #: includes/class-privacy.php:43
 msgid ""
@@ -3230,6 +3261,13 @@ msgid ""
 "(such as Content Credentials or the IPTC digital source type) and, when a "
 "file is labeled, that declaration is written into the file."
 msgstr ""
+"Acest site folosește TransparAI pentru a detecta și eticheta conținutul "
+"media generat de IA și pentru a documenta modul în care folosește sisteme "
+"IA. Modulul rulează în întregime pe acest server: nu creează conturi, nu "
+"trimite telemetrie și nu face nicio cerere către vreun serviciu extern. "
+"Fișierele media sunt citite local pentru a găsi metadate de proveniență (cum"
+" ar fi Content Credentials sau tipul de sursă digitală IPTC), iar când un "
+"fișier este etichetat, această declarație este scrisă în fișier."
 
 #: includes/class-privacy.php:45
 msgid ""
@@ -3242,3 +3280,12 @@ msgid ""
 "delivery check, which fetches one image from this site itself to verify that"
 " a CDN keeps the declaration."
 msgstr ""
+"Modulul își stochează rezultatele în baza de date WordPress: pentru fiecare "
+"fișier media starea etichetei, semnalele detectate și un istoric al "
+"deciziilor de etichetare care înregistrează ID-ul de utilizator și numele "
+"afișat al editorului care le-a luat, plus un scurt jurnal al site-ului cu "
+"evenimentele administrative. Persoanele care verifică textele scrise de IA "
+"sunt înregistrate cu nume și dată. Nu se colectează date despre vizitatorii "
+"site-ului și nu se setează cookie-uri. Singura cerere HTTP pe care o poate "
+"face modulul este verificarea opțională a livrării, care descarcă o imagine "
+"chiar de pe acest site pentru a verifica dacă un CDN păstrează declarația."
