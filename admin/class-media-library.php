@@ -55,7 +55,8 @@ final class TransparAI_Media_Library {
 	 * detected image needs a label at all. Shown until the user hides it.
 	 */
 	public static function review_hint(): void {
-		if ( 'detected' !== ( $_GET['transparai_filter'] ?? '' ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only hint on the list filter.
+		$filter = isset( $_GET['transparai_filter'] ) ? sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only hint on the list filter.
+		if ( 'detected' !== $filter ) {
 			return;
 		}
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
