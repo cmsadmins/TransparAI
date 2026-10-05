@@ -89,4 +89,44 @@ final class ContentLevelTest extends TestCase {
 		$this->assertSame( 'IPTC:DigitalSourceType', $node['additionalProperty']['propertyID'] );
 		$this->assertSame( 'http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia', $node['additionalProperty']['value'] );
 	}
+
+	/** @dataProvider client_review_values */
+	public function test_rest_save_ignores_client_review_and_preserves_other_meta( $client_review ): void {
+		$stored = '{"by":"Server reviewer","on":"2026-01-01","hash":"server"}';
+		update_post_meta( 10, TransparAI_Meta::KEY_CONTENT_REVIEW, $stored );
+		$editable = array(
+			TransparAI_Meta::KEY_CONTENT_AI          => 'assisted',
+			TransparAI_Meta::KEY_CONTENT_RESPONSIBLE => 'Editor',
+			'_other_protected_field'                => 'still subject to Core permissions',
+		);
+		$request = new WP_REST_Request(
+			array(
+				'title' => 'Changed title',
+				'meta'  => array_merge( $editable, array( TransparAI_Meta::KEY_CONTENT_REVIEW => $client_review ) ),
+			)
+		);
+		$post = new stdClass();
+		$this->assertSame( $post, TransparAI_Meta::filter_rest_review_input( $post, $request ) );
+		$this->assertSame( $editable, $request->get_param( 'meta' ) );
+		$this->assertSame( 'Changed title', $request->get_param( 'title' ) );
+		$this->assertSame( $stored, get_post_meta( 10, TransparAI_Meta::KEY_CONTENT_REVIEW, true ) );
+	}
+
+	public function client_review_values(): array {
+		return array(
+			'empty default' => array( '' ),
+			'old stamp'     => array( '{"by":"Old reviewer","on":"2025-01-01"}' ),
+			'forged stamp'  => array( '{"by":"Forged reviewer","on":"2099-01-01"}' ),
+			'deletion'      => array( null ),
+		);
+	}
+
+	public function test_rest_save_without_review_preserves_request_and_preparation_error(): void {
+		foreach ( array( array(), array( 'meta' => array( TransparAI_Meta::KEY_CONTENT_AI => 'none' ) ), array( 'meta' => null ) ) as $params ) {
+			$request = new WP_REST_Request( $params );
+			$error   = new WP_Error( 'test_preparation_error', 'Keep the original error.' );
+			$this->assertSame( $error, TransparAI_Meta::filter_rest_review_input( $error, $request ) );
+			$this->assertSame( $params['meta'] ?? null, $request->get_param( 'meta' ) );
+		}
+	}
 }

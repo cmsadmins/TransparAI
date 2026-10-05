@@ -648,6 +648,12 @@ if ( ! class_exists( 'WP_REST_Request' ) ) {
 		public function __construct( array $params = array() ) {
 			$this->params = $params;
 		}
+		public function get_param( $key ) {
+			return $this->params[ $key ] ?? null;
+		}
+		public function set_param( $key, $value ) {
+			$this->params[ $key ] = $value;
+		}
 		#[\ReturnTypeWillChange]
 		public function offsetExists( $key ) {
 			return isset( $this->params[ $key ] );

@@ -249,7 +249,30 @@ final class TransparAI_Meta {
 				)
 			);
 			add_filter( 'rest_prepare_' . $post_type, array( self::class, 'filter_rest_review' ), 10, 2 );
+			add_filter( 'rest_pre_insert_' . $post_type, array( self::class, 'filter_rest_review_input' ), 10, 2 );
 		}
+	}
+
+	/**
+	 * Ignore client copies of the server-managed review stamp on post saves.
+	 *
+	 * Gutenberg may send the whole meta object, including the empty default
+	 * for a post without a review or an old stamp when the level changes.
+	 * Core would attempt to write that value and reject the entire request.
+	 * Strip only this input before Core updates meta; retain the write denial
+	 * and let on_content_level_change() generate the authoritative stamp.
+	 *
+	 * @param stdClass|WP_Error $prepared_post Prepared post or preparation error.
+	 * @param WP_REST_Request  $request       Current REST request.
+	 * @return stdClass|WP_Error
+	 */
+	public static function filter_rest_review_input( $prepared_post, WP_REST_Request $request ) {
+		$meta = $request->get_param( 'meta' );
+		if ( is_array( $meta ) && array_key_exists( self::KEY_CONTENT_REVIEW, $meta ) ) {
+			unset( $meta[ self::KEY_CONTENT_REVIEW ] );
+			$request->set_param( 'meta', $meta );
+		}
+		return $prepared_post;
 	}
 
 	/**
