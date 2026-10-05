@@ -254,6 +254,25 @@
 }
 
 /* List view */
+.trai-list-actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
+	margin-top: 8px;
+}
+
+.trai-list-actions .button-link {
+	text-align: start;
+	white-space: normal;
+	line-height: 1.5;
+}
+
+.trai-list-feedback {
+	display: block;
+	margin-top: 6px;
+}
+
 .trai-list-badge {
 	display: inline-block;
 	background: rgba(0, 0, 0, 0.85);

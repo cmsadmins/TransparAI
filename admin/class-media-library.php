@@ -32,6 +32,7 @@ final class TransparAI_Media_Library {
 		add_filter( 'ajax_query_attachments_args', array( self::class, 'ajax_filter' ) );
 		add_action( 'wp_ajax_transparai_bulk', array( self::class, 'ajax_bulk' ) );
 		add_action( 'wp_ajax_transparai_inspect', array( self::class, 'ajax_inspect' ) );
+		add_action( 'wp_ajax_transparai_media_action', array( self::class, 'ajax_media_action' ) );
 		add_action( 'wp_enqueue_media', array( self::class, 'enqueue_media_assets' ) );
 
 		add_filter( 'manage_media_columns', array( self::class, 'media_column' ) );
@@ -543,7 +544,7 @@ final class TransparAI_Media_Library {
 	 * Assets + inline data for the media modal / grid.
 	 */
 	public static function enqueue_media_assets(): void {
-		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
+		wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION . '.' . filemtime( TRANSPARAI_PLUGIN_DIR . 'assets/css/admin.css' ) );
 
 		/* The short tile label ("AI"/"KI") is locale-dependent, so it is inlined. */
 		wp_add_inline_style(
@@ -553,7 +554,7 @@ final class TransparAI_Media_Library {
 			. '.attachment.trai-human .thumbnail::after{content:"' . esc_attr( TransparAI_Frontend::human_short_label() ) . '";}'
 		);
 
-		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'media-views' ), TRANSPARAI_VERSION, true );
+		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'media-views' ), TRANSPARAI_VERSION . '.' . filemtime( TRANSPARAI_PLUGIN_DIR . 'assets/js/admin.js' ), true );
 		self::localize_admin();
 	}
 
@@ -592,6 +593,7 @@ final class TransparAI_Media_Library {
 			'bulkOff'        => __( 'Remove AI label', 'transparai' ),
 			'selectFirst'    => __( 'Please select media first.', 'transparai' ),
 			'updateFailed'   => __( 'Updating the AI label failed.', 'transparai' ),
+			'updateDone'     => __( 'Changes saved.' ), // phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- reuse the translated core string.
 			'recheckDone'    => __( 'Result', 'transparai' ),
 			'recheckClean'   => __( 'No AI provenance signals found in the file.', 'transparai' ),
 			'inspectShow'    => __( 'Show file metadata', 'transparai' ),
@@ -649,6 +651,87 @@ final class TransparAI_Media_Library {
 		if ( true === TransparAI_Repair::changed_since_scan( $id ) ) {
 			echo '<span class="trai-list-changed" title="' . esc_attr__( 'The files changed since the last detection scan.', 'transparai' ) . '">' . esc_html__( 'changed', 'transparai' ) . '</span>';
 		}
+		echo self::list_actions( $id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped markup built below.
+	}
+
+	/**
+	 * Per-file controls, sharing decisions with attachment details.
+	 */
+	public static function list_actions( int $id ): string {
+		$mime = (string) get_post_mime_type( $id );
+		if ( 'attachment' !== get_post_type( $id ) || ! current_user_can( 'upload_files' ) || ! current_user_can( 'edit_post', $id )
+			|| ! ( str_starts_with( $mime, 'image/' ) || str_starts_with( $mime, 'video/' ) || str_starts_with( $mime, 'audio/' ) ) ) {
+			return '';
+		}
+		if ( TransparAI_Meta::is_flagged( $id ) ) {
+			$actions = array( 'unflag' => __( 'Remove AI label', 'transparai' ) );
+		} elseif ( TransparAI_Meta::is_detected( $id ) ) {
+			$actions = array(
+				'confirm' => __( 'Confirm AI label', 'transparai' ),
+				'dismiss' => __( 'Not AI, dismiss', 'transparai' ),
+			);
+		} else {
+			$actions = array( 'flag' => __( 'Mark as AI-generated', 'transparai' ) );
+		}
+		if ( TransparAI_Meta::is_human( $id ) ) {
+			$actions['human_remove'] = __( 'Remove "not AI" declaration', 'transparai' );
+		}
+		$html = '<div class="trai-list-actions" data-id="' . esc_attr( (string) $id ) . '">';
+		foreach ( $actions as $op => $label ) {
+			$html .= '<button type="button" class="button-link trai-list-action" data-op="' . esc_attr( $op ) . '">' . esc_html( $label ) . '</button>';
+		}
+		// phpcs:disable WordPress.WP.I18n.MissingArgDomain -- reuse the translated core Edit label.
+		$html .= '<a class="trai-list-edit" href="' . esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ) . '">'
+			. esc_html__( 'Edit' ) . ' (' . esc_html__( 'AI content', 'transparai' ) . ')</a>';
+		// phpcs:enable WordPress.WP.I18n.MissingArgDomain
+		$html .= '<button type="button" class="button-link trai-list-action" data-op="recheck">'
+			. esc_html__( 'Re-check file metadata', 'transparai' ) . '</button></div>';
+		if ( '' !== (string) get_post_meta( $id, TransparAI_Meta::KEY_WRITE_ERROR, true ) ) {
+			$html .= '<span class="trai-write-error">'
+				. esc_html__( 'The file metadata could not be updated (file not writable). The label state in WordPress and the metadata inside the file may differ.', 'transparai' ) . '</span>';
+		}
+		return $html;
+	}
+
+	/** Apply one list decision and return freshly rendered column content. */
+	public static function ajax_media_action(): void {
+		check_ajax_referer( 'transparai_bulk' );
+		if ( ! current_user_can( 'upload_files' ) ) {
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to do that.', 'transparai' ) ), 403 );
+		}
+		$id   = isset( $_POST['attachment'] ) ? absint( wp_unslash( $_POST['attachment'] ) ) : 0;
+		$post = get_post( $id );
+		if ( ! $id || ! $post || 'attachment' !== $post->post_type || ! self::applies( $post ) || ! current_user_can( 'edit_post', $id ) ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid attachment.', 'transparai' ) ), 403 );
+		}
+		$op = isset( $_POST['op'] ) ? sanitize_key( wp_unslash( (string) $_POST['op'] ) ) : '';
+		if ( ! in_array( $op, array( 'flag', 'unflag', 'confirm', 'dismiss', 'human_remove', 'recheck' ), true ) ) {
+			wp_send_json_error( array( 'message' => __( 'Unknown action.', 'transparai' ) ), 400 );
+		}
+		if ( in_array( $op, array( 'confirm', 'dismiss' ), true ) && ! TransparAI_Meta::is_detected( $id ) ) {
+			wp_send_json_error( array( 'message' => __( 'Detected, needs review', 'transparai' ) ), 409 );
+		}
+		if ( 'recheck' === $op ) {
+			// An explicit re-check lifts a previous dismissal, like the details panel.
+			delete_post_meta( $id, TransparAI_Meta::KEY_DISMISSED );
+			$scan = TransparAI_Scanner::scan_attachment( $id );
+			if ( 'unreadable' === $scan['status'] ) {
+				wp_send_json_error( array( 'message' => __( 'Updating the AI label failed.', 'transparai' ) ), 422 );
+			}
+		} else {
+			TransparAI_Meta::bulk_apply( array( $id ), $op );
+		}
+		ob_start();
+		self::media_column_content( 'transparai', $id );
+		$html = (string) ob_get_clean();
+		wp_send_json_success(
+			array(
+				'html'    => $html,
+				'message' => 'recheck' === $op && 'clean' === $scan['status']
+					? __( 'No AI provenance signals found in the file.', 'transparai' )
+					: __( 'Changes saved.' ), // phpcs:ignore WordPress.WP.I18n.MissingArgDomain -- translated core string.
+			)
+		);
 	}
 
 	/**
@@ -736,10 +819,10 @@ final class TransparAI_Media_Library {
 	public static function enqueue_list_assets( string $hook ): void {
 		$is_attachment_edit = 'post.php' === $hook && 'attachment' === get_post_type( absint( $_GET['post'] ?? 0 ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only screen detection.
 		if ( 'upload.php' === $hook || $is_attachment_edit ) {
-			wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION );
+			wp_enqueue_style( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/css/admin.css', array(), TRANSPARAI_VERSION . '.' . filemtime( TRANSPARAI_PLUGIN_DIR . 'assets/css/admin.css' ) );
 		}
-		if ( $is_attachment_edit ) {
-			wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION, true );
+		if ( 'upload.php' === $hook || $is_attachment_edit ) {
+			wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), TRANSPARAI_VERSION . '.' . filemtime( TRANSPARAI_PLUGIN_DIR . 'assets/js/admin.js' ), true );
 			self::localize_admin();
 		}
 	}
