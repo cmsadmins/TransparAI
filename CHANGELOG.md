@@ -1,5 +1,30 @@
 # Changelog
 
+## Unreleased
+
+- Elementor backgrounds are labeled server-side: `elementor/frontend/before_render` notes a labeled
+  classic background image (desktop, tablet or mobile, overlay groups included) on the element wrapper,
+  and `wrap_backgrounds()` in the content filter turns the marker into a badge host with the badge as
+  its first child. Page caches keep the badge, and the optional URL-map script skips hosts labeled this
+  way (`data-trai-bg` carries the upload path it keys on). Needs the "CSS backgrounds" setting, as before.
+- The anchoring rules (`position` of wrapper and badge, fill and contents modes) are repeated in an
+  inline style block next to the stylesheet link. Optimizers that defer, merge or prune `front.css`
+  leave inline styles alone; without those rules the badge drops into the text flow. Filter
+  `transparai_critical_css`, an empty string removes the block.
+- Detection reads WAV: RIFF chunk `C2PA` and the Adobe `_PMX` chunk (XMP) at the top level, same
+  walker as WebP. FLAC files with a leading ID3 tag go through the MP3 branch. The MP3 branch hands the
+  GEOB manifest store to the claim generator rule and accepts ID3v2.4 frame sizes written as plain
+  integers (iTunes). The audio/video scan list adds `audio/wav`, `audio/x-wav`, `audio/flac`, `audio/x-flac`.
+- The block editor's crop and rotate save a new attachment through the image editor, which strips the
+  in-file declaration and knew nothing of the original's label. `wp_edited_image_metadata` now copies
+  the label state (flag, type, source, human declaration, review state); the flag hook writes the new
+  file and the following metadata update writes its sizes, also with auto repair off.
+- ShortPixel, Imagify, Smush and EWWW completion actions trigger the fingerprint check immediately
+  instead of on the next hourly sweep (`transparai_optimizer_hooks` filters the list).
+- Media library list: per-file actions in the AI column (mark, confirm, dismiss, re-check, remove the
+  "not AI" declaration) and a fix for Gutenberg saves rejected with `rest_cannot_update` because the
+  editor sent the server-managed content review stamp back (both by Kai Spriestersbach, PR #4 and #5).
+
 ## 1.1.7 (2026-10-02)
 
 - Fill images: themes that size an image against its container (`width/height` in percent,
