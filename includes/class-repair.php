@@ -33,12 +33,41 @@ final class TransparAI_Repair {
 	private const OPT_REPORT = 'transparai_repair_report';
 
 	/**
+	 * Attachments whose next metadata update must write the sizes even when
+	 * auto repair is off: the copies the block editor's image edits create.
+	 *
+	 * @var array<int, bool>
+	 */
+	private static array $pending = array();
+
+	/**
 	 * Register hooks.
 	 */
 	public static function init(): void {
 		add_filter( 'wp_update_attachment_metadata', array( self::class, 'on_metadata_update' ), PHP_INT_MAX - 10, 2 );
 		add_filter( 'wp_generate_attachment_metadata', array( self::class, 'on_metadata_generate' ), 20, 2 );
+		add_filter( 'wp_edited_image_metadata', array( self::class, 'on_edited_copy' ), 20, 3 );
 		add_action( self::CRON_HOOK, array( self::class, 'verify_batch' ) );
+
+		/**
+		 * Filter the optimizer completion hooks after which the files are
+		 * re-checked immediately instead of on the next hourly sweep.
+		 *
+		 * @param string[] $hooks Action names; each receives the attachment ID (or post) as first argument.
+		 */
+		$optimizer_hooks = apply_filters(
+			'transparai_optimizer_hooks',
+			array(
+				'shortpixel_image_optimised',
+				'after_imagify_optimize_attachment',
+				'image_smushed',
+				'wp_smush_after_attachment_upload',
+				'ewww_image_optimizer_post_optimization',
+			)
+		);
+		foreach ( $optimizer_hooks as $hook ) {
+			add_action( $hook, array( self::class, 'on_optimizer_done' ), 20 );
+		}
 
 		/*
 		 * The activation hook fires once per network-wide activation, so a site
@@ -153,10 +182,77 @@ final class TransparAI_Repair {
 	 * @return array|mixed
 	 */
 	public static function on_metadata_update( $metadata, int $attachment_id ) {
-		if ( self::active() && '' !== TransparAI_Writer::expected_token( $attachment_id ) && self::files_changed( $attachment_id ) ) {
+		$pending = isset( self::$pending[ $attachment_id ] );
+		unset( self::$pending[ $attachment_id ] );
+		if ( ( $pending || self::active() ) && '' !== TransparAI_Writer::expected_token( $attachment_id ) && self::files_changed( $attachment_id ) ) {
 			TransparAI_Writer::sync_attachment( $attachment_id );
 		}
 		return $metadata;
+	}
+
+	/**
+	 * `wp_edited_image_metadata`: the block editor's crop and rotate save a
+	 * new attachment through the image editor, which strips the in-file
+	 * declaration and knows nothing of the original's label. Carry the label
+	 * state over; the flag meta hook writes the main file at once and the
+	 * metadata update that follows writes the sizes.
+	 *
+	 * @param array|mixed $metadata          Metadata of the new attachment.
+	 * @param int         $new_attachment_id New attachment ID.
+	 * @param int         $attachment_id     Edited (source) attachment ID.
+	 * @return array|mixed
+	 */
+	public static function on_edited_copy( $metadata, int $new_attachment_id, int $attachment_id ) {
+		if ( $new_attachment_id === $attachment_id || 'attachment' !== get_post_type( $attachment_id ) ) {
+			return $metadata;
+		}
+		$keys = array(
+			TransparAI_Meta::KEY_TYPE,
+			TransparAI_Meta::KEY_SOURCE,
+			TransparAI_Meta::KEY_GENERATOR,
+			TransparAI_Meta::KEY_CONFIDENCE,
+			TransparAI_Meta::KEY_EVIDENCE,
+			TransparAI_Meta::KEY_MARKED_BY,
+			TransparAI_Meta::KEY_DETECTED,
+			TransparAI_Meta::KEY_DISMISSED,
+			TransparAI_Meta::KEY_HUMAN,
+			TransparAI_Meta::KEY_FLAG, /* last: its meta hook triggers the write */
+		);
+		foreach ( $keys as $key ) {
+			$value = get_post_meta( $attachment_id, $key, true );
+			if ( '' !== $value && null !== $value && false !== $value ) {
+				update_post_meta( $new_attachment_id, $key, $value );
+			}
+		}
+		if ( '' !== TransparAI_Writer::expected_token( $new_attachment_id ) ) {
+			self::$pending[ $new_attachment_id ] = true;
+		}
+		return $metadata;
+	}
+
+	/**
+	 * An optimizer finished re-encoding: check the files now rather than on
+	 * the next hourly sweep.
+	 *
+	 * @param int|WP_Post|array<string, mixed>|mixed $attachment Attachment ID, post or an array carrying one.
+	 */
+	public static function on_optimizer_done( $attachment ): void {
+		$attachment_id = 0;
+		if ( is_numeric( $attachment ) ) {
+			$attachment_id = (int) $attachment;
+		} elseif ( $attachment instanceof WP_Post ) {
+			$attachment_id = (int) $attachment->ID;
+		} elseif ( is_array( $attachment ) ) {
+			foreach ( array( 'attachment_id', 'id', 'ID', 'post_id' ) as $key ) {
+				if ( isset( $attachment[ $key ] ) && is_numeric( $attachment[ $key ] ) ) {
+					$attachment_id = (int) $attachment[ $key ];
+					break;
+				}
+			}
+		}
+		if ( $attachment_id > 0 ) {
+			self::on_metadata_update( null, $attachment_id );
+		}
 	}
 
 	/**

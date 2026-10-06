@@ -93,6 +93,9 @@ final class TransparAI_Parsers {
 		if ( 'RIFF' === substr( $data, 0, 4 ) && 'WEBP' === substr( $data, 8, 4 ) ) {
 			return 'webp';
 		}
+		if ( 'RIFF' === substr( $data, 0, 4 ) && 'WAVE' === substr( $data, 8, 4 ) ) {
+			return 'wav';
+		}
 		if ( 'ftyp' === substr( $data, 4, 4 ) ) {
 			return 'bmff';
 		}
@@ -499,13 +502,16 @@ final class TransparAI_Parsers {
 	 * ------------------------------------------------------------------- */
 
 	/**
-	 * Split a WebP byte stream into RIFF chunks.
+	 * Split a RIFF byte stream (WebP by default, WAV with form 'WAVE') into
+	 * its top-level chunks. Chunks nested in LIST are not descended into:
+	 * C2PA and XMP (`_PMX`) live at the top level per their specifications.
 	 *
-	 * @param bool $tolerate_truncation Return the chunks that fit instead of null.
+	 * @param bool   $tolerate_truncation Return the chunks that fit instead of null.
+	 * @param string $form                RIFF form type the stream must declare.
 	 * @return array<int, array{fourcc:string, data:string}>|null
 	 */
-	public static function webp_chunks( string $data, bool $tolerate_truncation = false ): ?array {
-		if ( strlen( $data ) < 12 || 'RIFF' !== substr( $data, 0, 4 ) || 'WEBP' !== substr( $data, 8, 4 ) ) {
+	public static function webp_chunks( string $data, bool $tolerate_truncation = false, string $form = 'WEBP' ): ?array {
+		if ( strlen( $data ) < 12 || 'RIFF' !== substr( $data, 0, 4 ) || $form !== substr( $data, 8, 4 ) ) {
 			return null;
 		}
 		$chunks = array();
@@ -814,7 +820,13 @@ final class TransparAI_Parsers {
 				break;
 			}
 			$size_raw = substr( $data, $offset + 4, 4 );
-			$size     = $syncsafe4 ? self::syncsafe( $size_raw ) : unpack( 'N', $size_raw )[1];
+			/*
+			 * ID3v2.4 frame sizes are syncsafe, but iTunes and a few taggers
+			 * write plain big-endian integers there. A set high bit cannot
+			 * occur in a syncsafe byte, so it identifies that quirk.
+			 */
+			$plain = ! $syncsafe4 || preg_match( '/[\x80-\xFF]/', $size_raw );
+			$size  = $plain ? unpack( 'N', $size_raw )[1] : self::syncsafe( $size_raw );
 			if ( $size <= 0 || $offset + 10 + $size > $end ) {
 				break;
 			}

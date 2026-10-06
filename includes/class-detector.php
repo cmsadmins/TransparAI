@@ -107,6 +107,9 @@ final class TransparAI_Detector {
 			case 'mp3':
 				$result = self::detect_mp3( $head );
 				break;
+			case 'wav':
+				$result = self::detect_wav( $head );
+				break;
 		}
 
 		if ( null === $result ) {
@@ -282,6 +285,39 @@ final class TransparAI_Detector {
 	}
 
 	/**
+	 * WAV: C2PA lives in a top-level RIFF chunk `C2PA` (same container rule
+	 * as WebP), XMP in the Adobe `_PMX` chunk. Both sit ahead of the sample
+	 * data in files written by the reference tools, so the head suffices.
+	 */
+	private static function detect_wav( string $head ): ?array {
+		$chunks = TransparAI_Parsers::webp_chunks( $head, true, 'WAVE' );
+		if ( null === $chunks ) {
+			return null;
+		}
+
+		$xmp      = null;
+		$has_c2pa = false;
+		foreach ( $chunks as $chunk ) {
+			if ( '_PMX' === $chunk['fourcc'] && null === $xmp ) {
+				$xmp = $chunk['data'];
+			} elseif ( 'C2PA' === $chunk['fourcc'] ) {
+				$has_c2pa = true;
+			}
+		}
+
+		$dst = self::from_dst( $xmp );
+		if ( null !== $dst ) {
+			return $dst;
+		}
+
+		if ( $has_c2pa ) {
+			return self::from_c2pa( true, $head );
+		}
+
+		return null !== $xmp ? self::from_signatures( array( 'xmp' => $xmp ) ) : null;
+	}
+
+	/**
 	 * ISO-BMFF (MP4/MOV/M4A/HEIC/AVIF): C2PA uuid box, XMP uuid box.
 	 */
 	private static function detect_bmff( string $head ): ?array {
@@ -315,12 +351,14 @@ final class TransparAI_Detector {
 
 		$xmp      = null;
 		$has_c2pa = false;
+		$payload  = '';
 		foreach ( $frames as $frame ) {
 			if ( 'TXXX' === $frame['id'] && 'aigc' === strtolower( TransparAI_Parsers::id3_txxx_description( $frame['data'] ) ) ) {
 				return self::result( 'generated', 'id3', '', 'certain', 'ID3v2 TXXX frame "aigc" (GB 45438 AIGC declaration)' );
 			}
 			if ( 'GEOB' === $frame['id'] && ( str_contains( $frame['data'], 'c2pa' ) || str_contains( $frame['data'], 'jumb' ) ) ) {
 				$has_c2pa = true;
+				$payload  = '' === $payload ? $frame['data'] : $payload;
 			}
 			if ( 'PRIV' === $frame['id'] && str_contains( $frame['data'], 'xmpmeta' ) ) {
 				$xmp = $frame['data'];
@@ -332,7 +370,7 @@ final class TransparAI_Detector {
 			return $dst;
 		}
 
-		return self::from_c2pa( $has_c2pa, '' );
+		return self::from_c2pa( $has_c2pa, $payload );
 	}
 
 	/* ---------------------------------------------------------------------

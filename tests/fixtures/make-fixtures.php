@@ -264,6 +264,23 @@ $tag_size   = strlen( $txxx_frame );
 $syncsafe   = chr( ( $tag_size >> 21 ) & 0x7F ) . chr( ( $tag_size >> 14 ) & 0x7F ) . chr( ( $tag_size >> 7 ) & 0x7F ) . chr( $tag_size & 0x7F );
 $write( 'aigc.mp3', 'ID3' . "\x03\x00\x00" . $syncsafe . $txxx_frame . "\xFF\xFB\x90\x00" . str_repeat( "\x00", 32 ) );
 
+// MP3: ID3v2.4 with a GEOB C2PA store whose frame size is written as a plain
+// big-endian integer (iTunes quirk). Padded to 200 bytes so the size field
+// is 00 00 00 C8: a syncsafe reading would cut the frame at 72 bytes.
+$geob_data  = str_pad( "\x00" . "application/c2pa\x00" . "\x00" . "\x00" . c2pa_payload( 'GoogleAI Lyria/2' ), 200, "\x00" );
+$geob_frame = 'GEOB' . pack( 'N', strlen( $geob_data ) ) . "\x00\x00" . $geob_data;
+$quirk_tag  = strlen( $geob_frame );
+$quirk_sync = chr( ( $quirk_tag >> 21 ) & 0x7F ) . chr( ( $quirk_tag >> 14 ) & 0x7F ) . chr( ( $quirk_tag >> 7 ) & 0x7F ) . chr( $quirk_tag & 0x7F );
+$write( 'quirk.mp3', 'ID3' . "\x04\x00\x00" . $quirk_sync . $geob_frame . "\xFF\xFB\x90\x00" . str_repeat( "\x00", 32 ) );
+
+// WAV: RIFF/WAVE with a fmt chunk, then C2PA or Adobe _PMX (XMP) chunk.
+$wave_fmt = 'fmt ' . pack( 'V', 16 ) . pack( 'vvVVvv', 1, 1, 8000, 16000, 2, 16 );
+$wave_pcm = 'data' . pack( 'V', 16 ) . str_repeat( "\x00", 16 );
+$wave     = 'RIFF' . pack( 'V', 4 + strlen( $wave_fmt ) ) . 'WAVE' . $wave_fmt;
+$write( 'c2pa.wav', webp_add_chunk( webp_add_chunk( $wave, 'C2PA', c2pa_payload( 'GoogleAI Lyria/2' ) ), 'data', substr( $wave_pcm, 8 ) ) );
+$write( 'dst.wav', webp_add_chunk( webp_add_chunk( $wave, '_PMX', xmp_packet( 'trainedAlgorithmicMedia' ) ), 'data', substr( $wave_pcm, 8 ) ) );
+$write( 'base.wav', $wave . $wave_pcm );
+
 // Sidecar: plain JPEG accompanied by a .c2pa file.
 $write( 'sidecar.jpg', $base_jpeg );
 $write( 'sidecar.jpg.c2pa', c2pa_payload( 'c2patool/0.9' ) );

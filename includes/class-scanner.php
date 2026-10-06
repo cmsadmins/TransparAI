@@ -49,7 +49,8 @@ final class TransparAI_Scanner {
 	public static function mime_types(): array {
 		$types = array( 'image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/heic' );
 		if ( TransparAI_Options::enabled( 'detect_av' ) ) {
-			$types = array_merge( $types, array( 'video/mp4', 'video/quicktime', 'audio/mpeg', 'audio/mp4' ) );
+			/* FLAC only carries provenance as a leading ID3 tag, read by the MP3 branch. */
+			$types = array_merge( $types, array( 'video/mp4', 'video/quicktime', 'audio/mpeg', 'audio/mp4', 'audio/wav', 'audio/x-wav', 'audio/flac', 'audio/x-flac' ) );
 		}
 		return $types;
 	}

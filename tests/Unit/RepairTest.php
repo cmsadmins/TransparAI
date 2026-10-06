@@ -85,4 +85,40 @@ final class RepairTest extends TestCase {
 		TransparAI_Repair::unschedule();
 		$this->assertArrayNotHasKey( TransparAI_Repair::CRON_HOOK, $trai_test_cron );
 	}
+
+	public function test_edited_copy_carries_label_to_new_attachment(): void {
+		global $trai_test_meta;
+		$trai_test_meta[70] = array(
+			TransparAI_Meta::KEY_FLAG      => '1',
+			TransparAI_Meta::KEY_TYPE      => 'composite',
+			TransparAI_Meta::KEY_SOURCE    => 'c2pa',
+			TransparAI_Meta::KEY_MARKED_BY => 'auto',
+		);
+		$meta = array( 'file' => '2026/10/edited.jpg' );
+
+		$this->assertSame( $meta, TransparAI_Repair::on_edited_copy( $meta, 71, 70 ) );
+		$this->assertSame( '1', get_post_meta( 71, TransparAI_Meta::KEY_FLAG, true ) );
+		$this->assertSame( 'composite', get_post_meta( 71, TransparAI_Meta::KEY_TYPE, true ) );
+		$this->assertSame( 'c2pa', get_post_meta( 71, TransparAI_Meta::KEY_SOURCE, true ) );
+		$this->assertSame( '', get_post_meta( 71, TransparAI_Meta::KEY_HUMAN, true ), 'Absent keys stay absent' );
+	}
+
+	public function test_edited_copy_ignores_unlabeled_source_and_self(): void {
+		global $trai_test_meta;
+		$trai_test_meta[72] = array( TransparAI_Meta::KEY_FLAG => '1' );
+		TransparAI_Repair::on_edited_copy( array(), 72, 72 );
+		TransparAI_Repair::on_edited_copy( array(), 74, 73 );
+		$this->assertArrayNotHasKey( 74, $trai_test_meta );
+	}
+
+	public function test_optimizer_done_accepts_id_post_and_array(): void {
+		global $trai_test_meta;
+		$trai_test_meta[75] = array( TransparAI_Meta::KEY_FLAG => '1' );
+		$post     = new WP_Post();
+		$post->ID = 75;
+		foreach ( array( 75, '75', $post, array( 'attachment_id' => 75 ), array( 'id' => '75' ), 'nonsense', null ) as $argument ) {
+			TransparAI_Repair::on_optimizer_done( $argument );
+		}
+		$this->assertTrue( true, 'No type error for any argument shape' );
+	}
 }

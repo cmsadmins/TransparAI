@@ -41,6 +41,9 @@ final class DetectorTest extends TestCase {
 			'webp xmp dst'             => array( 'xmp.webp', 'xmp-dst', 'certain', 'generated' ),
 			'bmff c2pa uuid'           => array( 'c2pa.mp4', 'c2pa', 'certain', 'generated' ),
 			'id3 aigc declaration'     => array( 'aigc.mp3', 'id3', 'certain', 'generated' ),
+			'id3v2.4 plain-size geob'  => array( 'quirk.mp3', 'c2pa', 'certain', 'generated' ),
+			'wav c2pa chunk'           => array( 'c2pa.wav', 'c2pa', 'certain', 'generated' ),
+			'wav _PMX xmp dst'         => array( 'dst.wav', 'xmp-dst', 'certain', 'generated' ),
 			'c2pa sidecar'             => array( 'sidecar.jpg', 'sidecar', 'likely', 'generated' ),
 		);
 	}
@@ -66,6 +69,7 @@ final class DetectorTest extends TestCase {
 			'plain png'                     => array( 'base.png' ),
 			'plain jpeg'                    => array( 'base.jpg' ),
 			'plain webp'                    => array( 'base.webp' ),
+			'plain wav'                     => array( 'base.wav' ),
 			'spanish "imagenes" com text'   => array( 'negative-imagenes.jpg' ),
 			'camera xmp without dst'        => array( 'negative-camera.jpg' ),
 			'firefly festival / aerospace'  => array( 'negative-firefly.jpg' ),
