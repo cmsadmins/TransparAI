@@ -496,4 +496,72 @@ final class FrontendTest extends TestCase {
 		$this->assertSame( 1, substr_count( $once, 'trai-badge--human' ) );
 		$this->assertSame( $once, $twice, 'The human badge must be as idempotent as the AI badge' );
 	}
+
+	public function test_background_marker_becomes_badge_host(): void {
+		global $trai_test_meta;
+		update_post_meta( 91, TransparAI_Meta::KEY_FLAG, '1' );
+		$trai_test_meta[91]['_test_url'] = 'http://example.test/wp-content/uploads/2026/10/hero.jpg';
+		$html = '<section class="elementor-section" data-id="abc" data-trai-bg-id="91"><div class="inner">Text</div></section>';
+
+		$out = TransparAI_Frontend::wrap_backgrounds( $html );
+
+		$this->assertStringContainsString( '<section class="trai-bg-host trai-pos-', $out );
+		$this->assertStringContainsString( 'data-trai-bg="2026/10/hero.jpg"', $out );
+		$this->assertStringNotContainsString( 'data-trai-bg-id', $out );
+		$this->assertSame( 1, substr_count( $out, 'trai-badge' ) );
+		$this->assertMatchesRegularExpression( '/<section[^>]*><span class="trai-badge/', $out, 'Badge is the first child' );
+		$this->assertSame( $out, TransparAI_Frontend::wrap_backgrounds( $out ), 'Idempotent' );
+		$this->assertSame( $out, TransparAI_Frontend::wrap_images( $out ), 'No image to wrap afterwards' );
+	}
+
+	public function test_background_marker_without_class_and_unlabeled_id(): void {
+		global $trai_test_meta;
+		update_post_meta( 92, TransparAI_Meta::KEY_FLAG, '1' );
+		$trai_test_meta[92]['_test_url'] = 'http://example.test/wp-content/uploads/2026/10/bg.png';
+
+		$out = TransparAI_Frontend::wrap_backgrounds( '<div data-trai-bg-id="92">x</div><div class="c" data-trai-bg-id="93">y</div>' );
+
+		$this->assertStringContainsString( '<div data-trai-bg="2026/10/bg.png" class="trai-bg-host', $out );
+		$this->assertStringContainsString( '<div class="c">y</div>', $out, 'Marker of an unlabeled attachment is dropped' );
+		$this->assertSame( 1, substr_count( $out, 'trai-badge' ) );
+	}
+
+	public function test_elementor_element_gets_marked_for_classic_background(): void {
+		global $trai_test_options;
+		$trai_test_options['transparai_settings'] = array( 'background_badges' => '1' );
+		update_post_meta( 94, TransparAI_Meta::KEY_FLAG, '1' );
+		$element = new class() {
+			/** @var array<string, string> */
+			public array $attributes = array();
+			/** @var array<string, mixed> */
+			public array $settings = array(
+				'background_background'   => 'gradient',
+				'background_image'        => array( 'id' => 94 ),
+				'_background_background'  => 'classic',
+				'_background_image'       => array( 'id' => 0, 'url' => '' ),
+				'_background_image_tablet' => array( 'id' => 94 ),
+			);
+			public function get_settings_for_display( $key ) {
+				return $this->settings[ $key ] ?? null;
+			}
+			public function add_render_attribute( $element, $key, $value ): void {
+				$this->attributes[ $element . ':' . $key ] = $value;
+			}
+		};
+
+		TransparAI_Frontend::mark_elementor_background( $element );
+		$this->assertSame( array( '_wrapper:data-trai-bg-id' => '94' ), $element->attributes, 'Gradient group skipped, tablet image of the classic group found' );
+
+		$element->attributes = array();
+		$element->settings['_background_image_tablet'] = array( 'id' => 95 );
+		TransparAI_Frontend::mark_elementor_background( $element );
+		$this->assertSame( array(), $element->attributes, 'Unlabeled attachment leaves no marker' );
+
+		TransparAI_Frontend::mark_elementor_background( 'not an element' );
+
+		$trai_test_options['transparai_settings'] = array( 'background_badges' => '0' );
+		$element->settings['_background_image_tablet'] = array( 'id' => 94 );
+		TransparAI_Frontend::mark_elementor_background( $element );
+		$this->assertSame( array(), $element->attributes, 'Background badges off leaves no marker' );
+	}
 }

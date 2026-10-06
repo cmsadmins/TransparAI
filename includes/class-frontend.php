@@ -75,6 +75,15 @@ final class TransparAI_Frontend {
 		add_filter( 'elementor/image_size/get_attachment_image_html', array( self::class, 'filter_elementor_image' ), 20, 4 );
 
 		/*
+		 * Elementor section, container and widget backgrounds: the element
+		 * marks its wrapper with the attachment id before it renders, and
+		 * wrap_backgrounds() turns that marker into a badge host inside the
+		 * content filter. Server-rendered, so page caches keep the badge and
+		 * the optional URL-map script finds the host already labeled.
+		 */
+		add_action( 'elementor/frontend/before_render', array( self::class, 'mark_elementor_background' ) );
+
+		/*
 		 * Bricks renders every element through this filter, bottom-up and
 		 * sometimes twice; wrap_images() is idempotent. Without Bricks the
 		 * filter never runs.
@@ -434,6 +443,23 @@ final class TransparAI_Frontend {
 			return;
 		}
 		wp_enqueue_style( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/css/front.css', array(), TRANSPARAI_VERSION );
+		/*
+		 * The anchoring rules once more, inline next to the stylesheet link:
+		 * optimizers that defer, merge or prune the stylesheet leave inline
+		 * styles alone, and without these four rules the badge drops out of
+		 * the image into the text flow.
+		 */
+		$critical = apply_filters(
+			'transparai_critical_css',
+			'.trai-wrap{position:relative;display:inline-block;max-width:100%;line-height:0}'
+			. '.trai-wrap--fill{position:absolute;inset:0}'
+			. '.trai-wrap.trai-wrap--contents{display:contents}'
+			. '.trai-thumbwrap,.trai-avwrap,.trai-bg-host{position:relative}'
+			. '.trai-badge{position:absolute}'
+		);
+		if ( is_string( $critical ) && '' !== $critical ) {
+			wp_add_inline_style( 'transparai-front', $critical );
+		}
 		$badge_css = self::badge_css();
 		if ( '' !== $badge_css ) {
 			wp_add_inline_style( 'transparai-front', $badge_css );
@@ -555,7 +581,79 @@ final class TransparAI_Frontend {
 		if ( ! is_string( $content ) || ! self::should_filter() ) {
 			return $content;
 		}
-		return self::wrap_images( $content );
+		return self::wrap_images( self::wrap_backgrounds( $content ) );
+	}
+
+	/**
+	 * `elementor/frontend/before_render`: note a labeled background image on
+	 * the element wrapper. Classic backgrounds only (gradients, videos and
+	 * slideshows carry no single attachment); the desktop image wins, the
+	 * tablet or mobile one counts when desktop has none.
+	 *
+	 * @param object|mixed $element Elementor element instance.
+	 */
+	public static function mark_elementor_background( $element ): void {
+		if ( ! is_object( $element ) || ! method_exists( $element, 'get_settings_for_display' ) || ! method_exists( $element, 'add_render_attribute' ) ) {
+			return;
+		}
+		if ( ! TransparAI_Options::enabled( 'background_badges' ) || ! self::should_filter() ) {
+			return;
+		}
+		foreach ( array( 'background', '_background', 'background_overlay', '_background_overlay' ) as $group ) {
+			$kind = $element->get_settings_for_display( $group . '_background' );
+			if ( is_string( $kind ) && '' !== $kind && 'classic' !== $kind ) {
+				continue;
+			}
+			foreach ( array( '', '_tablet', '_mobile' ) as $device ) {
+				$image = $element->get_settings_for_display( $group . '_image' . $device );
+				$id    = is_array( $image ) && ! empty( $image['id'] ) ? (int) $image['id'] : 0;
+				if ( $id > 0 && self::renders_badge( $id ) ) {
+					$element->add_render_attribute( '_wrapper', 'data-trai-bg-id', (string) $id );
+					return;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Turn `data-trai-bg-id` markers into badge hosts: host classes on the
+	 * tag, the badge as its first child (builders reset the last child's
+	 * margin, never the first), and the marker rewritten to the upload path
+	 * the front-end script uses, so it skips hosts labeled here.
+	 */
+	public static function wrap_backgrounds( string $content ): string {
+		if ( '' === $content || ! str_contains( $content, 'data-trai-bg-id=' ) ) {
+			return $content;
+		}
+
+		$wrapped = preg_replace_callback(
+			'/<(?:div|section|article|aside|figure|header|footer|main|li|a)\b[^>]*\sdata-trai-bg-id="(\d+)"[^>]*>/i',
+			static function ( array $matches ): string {
+				$tag           = $matches[0];
+				$attachment_id = (int) $matches[1];
+				$marker        = ' data-trai-bg-id="' . $attachment_id . '"';
+				if ( ! self::renders_badge( $attachment_id ) ) {
+					return str_replace( $marker, '', $tag );
+				}
+
+				self::collect( $attachment_id );
+
+				$key     = self::normalize_upload_path( (string) wp_get_attachment_url( $attachment_id ) );
+				$classes = self::wrap_classes( 'trai-bg-host', $attachment_id );
+				$tag     = str_replace( $marker, ' data-trai-bg="' . esc_attr( $key ) . '"', $tag );
+				if ( preg_match( '/\sclass\s*=\s*(["\'])/i', $tag, $class_match, PREG_OFFSET_CAPTURE ) ) {
+					$insert = (int) $class_match[1][1] + 1;
+					$tag    = substr( $tag, 0, $insert ) . esc_attr( $classes ) . ' ' . substr( $tag, $insert );
+				} else {
+					$tag = substr( $tag, 0, -1 ) . ' class="' . esc_attr( $classes ) . '">';
+				}
+
+				return $tag . self::badge_html( $attachment_id );
+			},
+			$content
+		);
+
+		return null === $wrapped ? $content : $wrapped;
 	}
 
 	/**
