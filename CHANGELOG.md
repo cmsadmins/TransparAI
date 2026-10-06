@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Small images with the badge size set to "large" or "small" showed the full label next to the short
+  one and the badge grew wider than the image (author avatars, 100 px). The size rules
+  (`.trai-size-large .trai-badge`) outranked the mini variant, so its `font-size: 0` never applied.
+  The mini and tiny rules now carry the doubled class and win. Found on afaik.de.
+
 ## 1.1.8 (2026-10-06)
 
 - Elementor backgrounds are labeled server-side: `elementor/frontend/before_render` notes a labeled

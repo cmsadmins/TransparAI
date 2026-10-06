@@ -325,8 +325,10 @@ p .trai-wrap {
 
 /* Mini variant for small images: shows only the short label from the data
    attribute. The full text stays in the DOM (screen readers) and appears as
-   a tooltip. Applied via JS based on the rendered image width. */
-.trai-badge--mini {
+   a tooltip. Applied via JS based on the rendered image width. Doubled
+   class so it outranks the size rules (.trai-size-large .trai-badge), which
+   otherwise keep the full text visible next to the short label. */
+.trai-badge.trai-badge--mini {
 	font-size: 0;
 	padding: 2px 4px;
 	border-radius: 3px;
@@ -504,7 +506,7 @@ p .trai-wrap {
 }
 
 .trai-notice--dismissed,
-.trai-badge--tiny {
+.trai-badge.trai-badge--tiny {
 	display: none;
 }
 
