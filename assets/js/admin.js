@@ -11,6 +11,38 @@
 
 	var labels = transparaiAdmin.labels;
 
+	/* Replace just the affected cell, retaining the list filter and scroll position. */
+	jQuery(document).on('click', '.trai-list-action', function () {
+		var button = jQuery(this);
+		var wrap = button.closest('.trai-list-actions');
+		var cell = wrap.closest('td');
+		if (cell.attr('aria-busy') === 'true') {
+			return;
+		}
+		cell.attr('aria-busy', 'true');
+		wrap.find('button').prop('disabled', true);
+		cell.find('.trai-list-feedback').remove();
+		jQuery.post(ajaxurl, {
+			action: 'transparai_media_action',
+			_wpnonce: transparaiAdmin.nonce,
+			attachment: parseInt(wrap.data('id'), 10),
+			op: button.data('op')
+		}).done(function (resp) {
+			if (!resp || !resp.success || !resp.data || typeof resp.data.html !== 'string') {
+				jQuery('<span class="trai-list-feedback" role="status"></span>').text(labels.updateFailed).appendTo(cell);
+				return;
+			}
+			cell.html(resp.data.html);
+			cell.find('.trai-list-edit').trigger('focus');
+			jQuery('<span class="trai-list-feedback" role="status"></span>').text(resp.data.message || labels.updateDone).appendTo(cell);
+		}).fail(function () {
+			jQuery('<span class="trai-list-feedback" role="status"></span>').text(labels.updateFailed).appendTo(cell);
+		}).always(function () {
+			cell.removeAttr('aria-busy');
+			cell.find('.trai-list-actions button').prop('disabled', false);
+		});
+	});
+
 	/* Non-blocking toast. Native alert() freezes the tab (and automation),
 	   so every feedback path goes through this instead. */
 	function notify(message) {
