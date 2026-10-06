@@ -218,7 +218,7 @@ delete_transient( 'transparai_url_map' );
 
 $html = trai_e2e_fetch( get_permalink( (int) $page_id ) );
 trai_e2e_check( '' !== $html, 'block page renders over loopback HTTP' );
-trai_e2e_check( 3 === substr_count( $html, 'trai-badge' ), 'exactly one badge per flagged render (standard, inline, cover), negative stays clean, got ' . substr_count( $html, 'trai-badge' ) );
+trai_e2e_check( 3 === substr_count( $html, 'class="trai-badge' ), 'exactly one badge per flagged render (standard, inline, cover), negative stays clean, got ' . substr_count( $html, 'class="trai-badge' ) );
 trai_e2e_check( ! str_contains( $html, 'wp-image-' . $negative . '"' ) || ! preg_match( '/<span class="trai-wrap[^>]*>\s*<img[^>]*wp-image-' . $negative . '/', $html ), 'negative image is not wrapped' );
 trai_e2e_check( str_contains( $html, 'trai-wrap--fill' ), 'cover background wrap takes the full-bleed role' );
 trai_e2e_check( str_contains( $html, 'trai-page-notice' ), 'site-wide page notice appears' );

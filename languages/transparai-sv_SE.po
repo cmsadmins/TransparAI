@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI 1.1.7\n"
+"Project-Id-Version: TransparAI 1.1.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/transparai\n"
 "Last-Translator: Patrick Schlesinger <transparai@cms-admins.de>\n"
 "Language-Team: sv_SE\n"
@@ -327,7 +327,7 @@ msgstr "Detaljer"
 msgid "By"
 msgstr "Av"
 
-#: admin/class-dashboard.php:333 admin/class-media-library.php:509
+#: admin/class-dashboard.php:333 admin/class-media-library.php:510
 msgid "system"
 msgstr "system"
 
@@ -814,27 +814,27 @@ msgstr "sedan %1$s (%2$s)"
 msgid "%1$s (in %2$s)"
 msgstr "%1$s (om %2$s)"
 
-#: admin/class-media-library.php:112
+#: admin/class-media-library.php:113
 msgid "Media is AI-generated"
 msgstr "Mediet är AI-genererat"
 
-#: admin/class-media-library.php:122 admin/class-media-library.php:438
+#: admin/class-media-library.php:123 admin/class-media-library.php:439
 msgid "no declaration"
 msgstr "ingen deklaration"
 
-#: admin/class-media-library.php:123
+#: admin/class-media-library.php:124
 msgid "camera photo (digitalCapture)"
 msgstr "kamerafoto (digitalCapture)"
 
-#: admin/class-media-library.php:124
+#: admin/class-media-library.php:125
 msgid "human digital work (digitalCreation)"
 msgstr "mänskligt digitalt arbete (digitalCreation)"
 
-#: admin/class-media-library.php:126
+#: admin/class-media-library.php:127
 msgid "Not AI:"
 msgstr "Inte AI:"
 
-#: admin/class-media-library.php:135
+#: admin/class-media-library.php:136 admin/class-media-library.php:691
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
@@ -842,31 +842,31 @@ msgstr ""
 "Filens metadata kunde inte uppdateras (filen är inte skrivbar). "
 "Märkningsstatusen i WordPress och metadata inuti filen kan skilja sig åt."
 
-#: admin/class-media-library.php:141
+#: admin/class-media-library.php:142 admin/class-media-library.php:670
 msgid "Confirm AI label"
 msgstr "Bekräfta AI-märkning"
 
-#: admin/class-media-library.php:142
+#: admin/class-media-library.php:143 admin/class-media-library.php:671
 msgid "Not AI, dismiss"
 msgstr "Inte AI, avfärda"
 
-#: admin/class-media-library.php:147
+#: admin/class-media-library.php:148 admin/class-media-library.php:688
 msgid "Re-check file metadata"
 msgstr "Kontrollera filens metadata igen"
 
-#: admin/class-media-library.php:152
+#: admin/class-media-library.php:153
 msgid "Check delivery"
 msgstr "Kontrollera leveransen"
 
-#: admin/class-media-library.php:162 admin/class-media-library.php:597
+#: admin/class-media-library.php:163 admin/class-media-library.php:599
 msgid "Show file metadata"
 msgstr "Visa filens metadata"
 
-#: admin/class-media-library.php:165
+#: admin/class-media-library.php:166 admin/class-media-library.php:685
 msgid "AI content"
 msgstr "AI-innehåll"
 
-#: admin/class-media-library.php:168
+#: admin/class-media-library.php:169
 msgid ""
 "Controls the front-end badge, the machine-readable file metadata and the "
 "media library filter."
@@ -874,50 +874,50 @@ msgstr ""
 "Styr märket i frontend, den maskinläsbara filmetadatan och filtret i "
 "mediabiblioteket."
 
-#: admin/class-media-library.php:174
+#: admin/class-media-library.php:175
 msgid "Default (site setting)"
 msgstr "Standard (webbplatsens inställning)"
 
-#: admin/class-media-library.php:175 admin/class-settings.php:314
+#: admin/class-media-library.php:176 admin/class-settings.php:314
 msgid "Top left"
 msgstr "Uppe till vänster"
 
-#: admin/class-media-library.php:176 admin/class-settings.php:315
+#: admin/class-media-library.php:177 admin/class-settings.php:315
 msgid "Top right"
 msgstr "Uppe till höger"
 
-#: admin/class-media-library.php:177 admin/class-settings.php:316
+#: admin/class-media-library.php:178 admin/class-settings.php:316
 msgid "Bottom left"
 msgstr "Nere till vänster"
 
-#: admin/class-media-library.php:178 admin/class-settings.php:317
+#: admin/class-media-library.php:179 admin/class-settings.php:317
 msgid "Bottom right"
 msgstr "Nere till höger"
 
-#: admin/class-media-library.php:179 admin/class-settings.php:307
+#: admin/class-media-library.php:180 admin/class-settings.php:307
 msgid "Caption line below the image"
 msgstr "Bildtextrad under bilden"
 
-#: admin/class-media-library.php:180
+#: admin/class-media-library.php:181
 msgid "Hide the visible badge on this image"
 msgstr "Dölj det synliga märket på den här bilden"
 
-#: admin/class-media-library.php:189
+#: admin/class-media-library.php:190
 msgid "Badge position"
 msgstr "Märkets position"
 
-#: admin/class-media-library.php:192
+#: admin/class-media-library.php:193
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
 "Gäller bara den här bilden. Använd det om ett temaöverlägg täcker märket "
 "här."
 
-#: admin/class-media-library.php:196
+#: admin/class-media-library.php:197
 msgid "AI generator"
 msgstr "AI-generator"
 
-#: admin/class-media-library.php:200
+#: admin/class-media-library.php:201
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
@@ -925,36 +925,38 @@ msgstr ""
 "Namnet på AI-verktyget, t.ex. ”Midjourney”. Visas av märkets källalternativ "
 "och platshållaren {generator}."
 
-#: admin/class-media-library.php:220
+#: admin/class-media-library.php:221
 msgid "certain"
 msgstr "säker"
 
-#: admin/class-media-library.php:221
+#: admin/class-media-library.php:222
 msgid "likely"
 msgstr "sannolik"
 
-#: admin/class-media-library.php:222
+#: admin/class-media-library.php:223
 msgid "hint"
 msgstr "indikation"
 
-#: admin/class-media-library.php:77 admin/class-media-library.php:326
-#: admin/class-media-library.php:367 admin/class-setup.php:112
-#: includes/class-chatbot.php:357 includes/class-delivery.php:66
-#: includes/class-scanner.php:242 includes/class-scanner.php:318
+#: admin/class-media-library.php:78 admin/class-media-library.php:327
+#: admin/class-media-library.php:368 admin/class-media-library.php:700
+#: admin/class-setup.php:112 includes/class-chatbot.php:357
+#: includes/class-delivery.php:66 includes/class-scanner.php:243
+#: includes/class-scanner.php:319
 msgid "You are not allowed to do that."
 msgstr "Du har inte behörighet att göra det."
 
-#: admin/class-media-library.php:331 includes/class-rest.php:243
+#: admin/class-media-library.php:332 admin/class-media-library.php:709
+#: includes/class-rest.php:243
 msgid "Unknown action."
 msgstr "Okänd åtgärd."
 
-#: admin/class-media-library.php:372 includes/class-delivery.php:73
-#: includes/class-scanner.php:322
+#: admin/class-media-library.php:373 admin/class-media-library.php:705
+#: includes/class-delivery.php:73 includes/class-scanner.php:323
 msgid "Invalid attachment."
 msgstr "Ogiltig bilaga."
 
 #. translators: %s: IPTC digital source type token.
-#: admin/class-media-library.php:419
+#: admin/class-media-library.php:420
 #, php-format
 msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
@@ -963,7 +965,7 @@ msgstr ""
 "Den här bilagan är deklarerad som inte AI-skapad (%s). Deklarationen skrivs "
 "in i filer som inte bär någon annan digital källtyp."
 
-#: admin/class-media-library.php:421
+#: admin/class-media-library.php:422
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
@@ -971,7 +973,7 @@ msgstr ""
 "Den här bilagan är märkt som AI-genererad, så varje fil nedan bör bära "
 "deklarationen."
 
-#: admin/class-media-library.php:422
+#: admin/class-media-library.php:423
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
@@ -979,103 +981,105 @@ msgstr ""
 "Den här bilagan är inte märkt som AI-genererad. Ingenting skrivs in i dess "
 "filer, och ingen deklaration förväntas nedan."
 
-#: admin/class-media-library.php:426
+#: admin/class-media-library.php:427
 msgid "Files"
 msgstr "Filer"
 
-#: admin/class-media-library.php:429
+#: admin/class-media-library.php:430
 msgid "format cannot carry the declaration"
 msgstr "formatet kan inte bära deklarationen"
 
-#: admin/class-media-library.php:432
+#: admin/class-media-library.php:433
 msgid "declaration present"
 msgstr "deklaration finns"
 
-#: admin/class-media-library.php:435
+#: admin/class-media-library.php:436
 msgid "declaration missing"
 msgstr "deklaration saknas"
 
-#: admin/class-media-library.php:447
+#: admin/class-media-library.php:448
 msgid "No readable file found for this attachment."
 msgstr "Ingen läsbar fil hittades för den här bilagan."
 
-#: admin/class-media-library.php:489
+#: admin/class-media-library.php:490
 msgid "Digital source type in the main file"
 msgstr "Digital källtyp i huvudfilen"
 
-#: admin/class-media-library.php:491
+#: admin/class-media-library.php:492
 msgid "None declared."
 msgstr "Ingen deklarerad."
 
-#: admin/class-media-library.php:499
+#: admin/class-media-library.php:500
 msgid "Detection evidence"
 msgstr "Detekteringsbevis"
 
-#: admin/class-media-library.php:505
+#: admin/class-media-library.php:506
 msgid "History"
 msgstr "Historik"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
-#: admin/class-media-library.php:518
+#: admin/class-media-library.php:519
 #, php-format
 msgid "from %s"
 msgstr "från %s"
 
-#: admin/class-media-library.php:531
+#: admin/class-media-library.php:532
 msgid "XMP packet of the main file"
 msgstr "Huvudfilens XMP-paket"
 
-#: admin/class-media-library.php:533
+#: admin/class-media-library.php:534
 msgid "This file carries no XMP block."
 msgstr "Den här filen bär inget XMP-block."
 
-#: admin/class-media-library.php:586 admin/class-media-library.php:663
+#: admin/class-media-library.php:587 admin/class-media-library.php:746
 msgid "AI status: all"
 msgstr "AI-status: alla"
 
-#: admin/class-media-library.php:587 admin/class-media-library.php:664
+#: admin/class-media-library.php:588 admin/class-media-library.php:747
 msgid "Only AI-labeled"
 msgstr "Endast AI-märkta"
 
-#: admin/class-media-library.php:588 admin/class-media-library.php:637
-#: admin/class-media-library.php:665
+#: admin/class-media-library.php:589 admin/class-media-library.php:639
+#: admin/class-media-library.php:712 admin/class-media-library.php:748
 msgid "Detected, needs review"
 msgstr "Upptäckta, behöver granskas"
 
-#: admin/class-media-library.php:589 admin/class-media-library.php:667
+#: admin/class-media-library.php:590 admin/class-media-library.php:750
 msgid "Without AI label"
 msgstr "Utan AI-märkning"
 
-#: admin/class-media-library.php:590 admin/class-media-library.php:666
+#: admin/class-media-library.php:591 admin/class-media-library.php:749
 msgid "Declared not AI (camera, human work)"
 msgstr "Deklarerade som inte AI (kamera, mänskligt arbete)"
 
-#: admin/class-media-library.php:591 admin/class-media-library.php:754
+#: admin/class-media-library.php:592 admin/class-media-library.php:674
+#: admin/class-media-library.php:837
 msgid "Mark as AI-generated"
 msgstr "Märk som AI-genererad"
 
-#: admin/class-media-library.php:592 admin/class-media-library.php:755
+#: admin/class-media-library.php:593 admin/class-media-library.php:667
+#: admin/class-media-library.php:838
 msgid "Remove AI label"
 msgstr "Ta bort AI-märkning"
 
-#: admin/class-media-library.php:593
+#: admin/class-media-library.php:594
 msgid "Please select media first."
 msgstr "Välj media först."
 
-#: admin/class-media-library.php:594
+#: admin/class-media-library.php:595 admin/class-media-library.php:719
 msgid "Updating the AI label failed."
 msgstr "Det gick inte att uppdatera AI-märkningen."
 
-#: admin/class-media-library.php:595
+#: admin/class-media-library.php:597
 msgid "Result"
 msgstr "Resultat"
 
-#: admin/class-media-library.php:596
+#: admin/class-media-library.php:598 admin/class-media-library.php:731
 msgid "No AI provenance signals found in the file."
 msgstr "Inga signaler om AI-ursprung hittades i filen."
 
-#: admin/class-media-library.php:598
+#: admin/class-media-library.php:600
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
@@ -1083,13 +1087,13 @@ msgstr ""
 "Märkningen sattes, men metadata kunde inte skrivas in i filen. Kontrollera "
 "skrivrättigheterna för uppladdningskatalogen."
 
-#: admin/class-media-library.php:599
+#: admin/class-media-library.php:601
 msgid "Hide file metadata"
 msgstr "Dölj filens metadata"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
-#: admin/class-media-library.php:601
+#: admin/class-media-library.php:603
 #, php-format
 msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
@@ -1100,7 +1104,7 @@ msgstr ""
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
-#: admin/class-media-library.php:603
+#: admin/class-media-library.php:605
 #, php-format
 msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
@@ -1109,40 +1113,40 @@ msgstr ""
 "%1$d skannade, %2$d automatiskt märkta, %3$d köade för granskning, %4$d "
 "överhoppade (redan beslutade)."
 
-#: admin/class-media-library.php:604
+#: admin/class-media-library.php:606
 msgid "Scan complete."
 msgstr "Skanningen är klar."
 
-#: admin/class-media-library.php:605
+#: admin/class-media-library.php:607
 msgid "Scan request failed. You can restart to continue."
 msgstr "Skanningsbegäran misslyckades. Du kan starta om för att fortsätta."
 
-#: admin/class-media-library.php:616 includes/class-notice.php:305
+#: admin/class-media-library.php:618 includes/class-notice.php:305
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:756
+#: admin/class-media-library.php:839
 msgid "Confirm detected AI label"
 msgstr "Bekräfta upptäckt AI-märkning"
 
-#: admin/class-media-library.php:757
+#: admin/class-media-library.php:840
 msgid "Dismiss detected AI label"
 msgstr "Avfärda upptäckt AI-märkning"
 
-#: admin/class-media-library.php:758
+#: admin/class-media-library.php:841
 msgid "Declare as camera photo (not AI)"
 msgstr "Deklarera som kamerafoto (inte AI)"
 
-#: admin/class-media-library.php:759
+#: admin/class-media-library.php:842
 msgid "Declare as human work (not AI)"
 msgstr "Deklarera som mänskligt arbete (inte AI)"
 
-#: admin/class-media-library.php:760
+#: admin/class-media-library.php:677 admin/class-media-library.php:843
 msgid "Remove \"not AI\" declaration"
 msgstr "Ta bort deklarationen ”inte AI”"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:802
+#: admin/class-media-library.php:885
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -1252,8 +1256,8 @@ msgstr ""
 msgid "Badge text"
 msgstr "Märkestext"
 
-#: admin/class-settings.php:279 includes/class-frontend.php:241
-#: includes/class-frontend.php:246 includes/class-notice.php:154
+#: admin/class-settings.php:279 includes/class-frontend.php:250
+#: includes/class-frontend.php:255 includes/class-notice.php:154
 msgid "AI-generated"
 msgstr "AI-genererad"
 
@@ -1354,7 +1358,7 @@ msgstr ""
 "Visa märket även på medier som deklarerats som kamerafoto eller mänskligt "
 "arbete (de strukturerade data bär deklarationen i vilket fall)"
 
-#: admin/class-settings.php:410 includes/class-frontend.php:219
+#: admin/class-settings.php:410 includes/class-frontend.php:228
 msgid "Human made"
 msgstr "Skapad av människa"
 
@@ -1367,7 +1371,7 @@ msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 "Lägg till en kort notis i slutet av sidor som innehåller märkta medier"
 
-#: admin/class-settings.php:418 includes/class-frontend.php:891
+#: admin/class-settings.php:418 includes/class-frontend.php:989
 msgid "This page contains AI-generated media."
 msgstr "Den här sidan innehåller AI-genererade medier."
 
@@ -2648,13 +2652,13 @@ msgstr "Kunde inte hämtas"
 
 #. translators: very short label for media declared as not AI-made, shown on
 #. small thumbnails.
-#: includes/class-frontend.php:227
+#: includes/class-frontend.php:236
 msgctxt "short human badge label"
 msgid "Human"
 msgstr "Människa"
 
 #. translators: very short label shown on small thumbnails, e.g. "AI" or "KI".
-#: includes/class-frontend.php:258
+#: includes/class-frontend.php:267
 msgctxt "short badge label"
 msgid "AI"
 msgstr "AI"
@@ -3057,11 +3061,11 @@ msgstr ""
 "mot 1. Ett genomskinligt märke bedöms utifrån värsta fallet, ett foto som är"
 " betydligt ljusare eller mörkare än märket självt."
 
-#: admin/class-media-library.php:67
+#: admin/class-media-library.php:68
 msgid "Does this image need a label?"
 msgstr "Behöver den här bilden en märkning?"
 
-#: admin/class-media-library.php:68
+#: admin/class-media-library.php:69
 msgid ""
 "Article 50(4) of the EU AI Act asks deployers to disclose deepfakes: AI "
 "images that look like real people, places, objects or events and could pass "
@@ -3080,15 +3084,15 @@ msgstr ""
 "maskinläsbara märkningen skrivs in oavsett. Den här ledtråden är inte "
 "juridisk rådgivning."
 
-#: admin/class-media-library.php:69
+#: admin/class-media-library.php:70
 msgid "Hide this note"
 msgstr "Dölj den här notisen"
 
-#: admin/class-media-library.php:384
+#: admin/class-media-library.php:385
 msgid "yes, the manifest was written for exactly these bytes"
 msgstr "ja, manifestet skrevs för exakt de här byten"
 
-#: admin/class-media-library.php:386
+#: admin/class-media-library.php:387
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
@@ -3096,34 +3100,34 @@ msgstr ""
 "nej, bilden har ändrats efter signeringen eller så har manifestet kopierats "
 "från en annan fil"
 
-#: admin/class-media-library.php:390
+#: admin/class-media-library.php:391
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
 "kan inte kontrolleras, manifestet saknar datahash (ett uppdateringsmanifest)"
 
-#: admin/class-media-library.php:392
+#: admin/class-media-library.php:393
 msgid "not checkable, unknown hash algorithm"
 msgstr "kan inte kontrolleras, okänd hashalgoritm"
 
-#: admin/class-media-library.php:394
+#: admin/class-media-library.php:395
 msgid "not checked for video and ISO-BMFF containers"
 msgstr "kontrolleras inte för video- och ISO-BMFF-behållare"
 
-#: admin/class-media-library.php:396
+#: admin/class-media-library.php:397
 msgid "not checked, the file is larger than 64 MB"
 msgstr "inte kontrollerad, filen är större än 64 MB"
 
-#: admin/class-media-library.php:398
+#: admin/class-media-library.php:399
 msgid "not checkable, the manifest could not be read completely"
 msgstr "kan inte kontrolleras, manifestet kunde inte läsas helt"
 
-#: admin/class-media-library.php:443
+#: admin/class-media-library.php:444
 msgid "Content Credentials"
 msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
-#: admin/class-media-library.php:461
+#: admin/class-media-library.php:462
 #, php-format
 msgid ""
 "Content Credentials are present in the original, but %1$d of %2$d files (the"
@@ -3134,7 +3138,7 @@ msgstr ""
 "(storleksvarianterna som WordPress skapar) bär inte manifestet. Den digitala"
 " källtyp som tillägget skriver in i varje fil påverkas inte."
 
-#: admin/class-media-library.php:468
+#: admin/class-media-library.php:469
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
@@ -3142,31 +3146,31 @@ msgstr ""
 "Filerna har ändrats sedan den senaste detekteringsskanningen. Använd "
 "”Kontrollera filens metadata igen” för att granska dem på nytt."
 
-#: admin/class-media-library.php:474
+#: admin/class-media-library.php:475
 msgid "Content Credentials (C2PA)"
 msgstr "Content Credentials (C2PA)"
 
-#: admin/class-media-library.php:475
+#: admin/class-media-library.php:476
 msgid "Manifest matches the file bytes:"
 msgstr "Manifestet stämmer med filens byte:"
 
-#: admin/class-media-library.php:477
+#: admin/class-media-library.php:478
 msgid "Signer"
 msgstr "Undertecknare"
 
-#: admin/class-media-library.php:478
+#: admin/class-media-library.php:479
 msgid "Organisation"
 msgstr "Organisation"
 
-#: admin/class-media-library.php:479
+#: admin/class-media-library.php:480
 msgid "Claim generator"
 msgstr "Claim-generator"
 
-#: admin/class-media-library.php:480
+#: admin/class-media-library.php:481
 msgid "Action time in the manifest"
 msgstr "Åtgärdstid i manifestet"
 
-#: admin/class-media-library.php:486
+#: admin/class-media-library.php:487
 msgid ""
 "According to the manifest. The signature and the signer's certificate are "
 "not verified; the check only tells whether the manifest describes exactly "
@@ -3175,11 +3179,11 @@ msgstr ""
 "Enligt manifestet. Signaturen och undertecknarens certifikat verifieras "
 "inte; kontrollen visar bara om manifestet beskriver exakt den här filen."
 
-#: admin/class-media-library.php:650
+#: admin/class-media-library.php:652
 msgid "The files changed since the last detection scan."
 msgstr "Filerna har ändrats sedan den senaste detekteringsskanningen."
 
-#: admin/class-media-library.php:650
+#: admin/class-media-library.php:652
 msgid "changed"
 msgstr "ändrad"
 

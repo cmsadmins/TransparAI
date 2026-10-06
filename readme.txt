@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, content credentials, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,14 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.8 =
+* Elementor section, container and widget backgrounds (classic background image, desktop, tablet or mobile, overlay included) get their badge on the server. Page caches keep it, no JavaScript needed; the "CSS backgrounds" setting switches it on as before.
+* The badge positioning rules are repeated in a small inline style block, so optimizers that defer, merge or prune the plugin stylesheet no longer push the badge out of the image. Filter transparai_critical_css removes the block.
+* Detection reads WAV files (Content Credentials in the C2PA chunk, IPTC digital source type in the XMP chunk) and FLAC files with a leading ID3 tag, hands MP3 manifest stores to the claim generator rule and accepts ID3v2.4 frames whose sizes iTunes writes as plain integers.
+* Crop and rotate in the block editor save a new attachment; it now inherits the label state of the original and gets the declaration written into its file right away.
+* Files re-encoded by ShortPixel, Imagify, Smush or EWWW are checked immediately after the optimizer finishes instead of on the next hourly sweep.
+* Media library list: mark, confirm, dismiss, re-check or remove the "not AI" declaration of a single file straight from the AI column; a Gutenberg save no longer fails with rest_cannot_update when the editor sends the content review stamp back. Both contributed by Kai Spriestersbach.
+
 = 1.1.7 =
 * Fixed: themes that let a hero or card image fill its container (sizes in percent, object-fit: cover) showed the image too small, with an empty strip beside it, once the image was labeled. Where the badge wrapper would change the size of such an image it now steps out of the layout, and the image looks exactly as without the plugin.
 * Fixed: a badge in a corner that the site's own content covers, such as a call-to-action box laid over a hero image, was lifted on top of that content. It now moves to a free corner first and is only raised when every corner is covered. Panels drawn with pseudo elements and images that ignore the mouse count too.
@@ -309,6 +317,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.8 =
+Elementor backgrounds are labeled server-side, WAV and FLAC are detected, edited copies keep their label, and the media list gets per-file actions. Settings are untouched.
 
 = 1.1.7 =
 Fixes images that fill their container in hero sections and badges that lay on top of call-to-action boxes. Settings are untouched.

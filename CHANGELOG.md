@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.8 (2026-10-06)
 
 - Elementor backgrounds are labeled server-side: `elementor/frontend/before_render` notes a labeled
   classic background image (desktop, tablet or mobile, overlay groups included) on the element wrapper,
