@@ -68,7 +68,7 @@ Contact: TransparAI@cms-admins.de
 
 == Installation ==
 
-1. Install the plugin from the WordPress plugin directory (Plugins, Add New, search for "TransparAI") or upload the ZIP, then activate it. The activation opens the **setup assistant**: six short steps through what your site uses, the scan of the existing library, the look of the visible label (official EU icon included, with a live preview), the file metadata and, where your answers make it relevant, AI-written text and the chatbot. Every step saves on its own and can be changed later; "Not now" hides the assistant until you open it again from the dashboard.
+1. Install the plugin from the WordPress plugin directory (Plugins, Add New, search for "TransparAI") or upload the ZIP, then activate it. The activation opens the **setup assistant**: three screens through what your site uses, the look of the visible label (official EU icon included, with a live preview) together with the detection and file options, and the scan of the existing library. Every screen saves on its own and can be changed later; "Not now" hides the assistant until you open it again from the dashboard.
 2. New uploads are checked automatically from now on.
 3. Click **Scan new/unscanned media** (on the AI Images screen or in the setup) to go through your existing library in small batches, pausable at any time.
 4. Clear declarations are labeled right away; strong signals land in the review queue. Follow the **Open review queue** link and confirm or dismiss each item, single or in bulk. A camera photo with Content Credentials shows up here on purpose; dismiss it once and it stays dismissed. Media you have already decided on yourself is reported as skipped in the scan summary and is never overruled.

@@ -14,10 +14,12 @@
   list and WP-CLI; an invalid manifest sends an AI declaration to review. Filters
   `transparai_c2pa_trust_anchors` and `transparai_c2pa_tsa_anchors` add own anchors. Not
   checked: revocation, ingredients, BMFF hashes.
-- Setup assistant (`TransparAI_Wizard`, TransparAI, Setup): three screens (what your site uses, the visible label with detection and file options, scan and summary), each saved on the server
-  through the regular sanitizer, no JavaScript needed; activation and every "open setup" link
-  lead there, the menu entry disappears once the setup is finished.
-- Tag `content credentials` instead of `ai transparency`.
+- Setup assistant (`TransparAI_Wizard`, TransparAI, Setup): three screens instead of the settings card.
+  What the site uses (the six assessment questions, the chatbot answer follows), the visible label
+  with live preview, the detection policy and the file options folded away, then the library scan
+  with a summary. Each screen is saved on the server through the regular sanitizer, no JavaScript
+  needed; activation and every "open setup" link lead there, the menu entry disappears once the
+  setup is finished. Everything the assistant does not ask about keeps its default.
 - Small images with the badge size set to "large" or "small" showed the full label next to the short
   one and the badge grew wider than the image (author avatars, 100 px). The size rules
   (`.trai-size-large .trai-badge`) outranked the mini variant, so its `font-size: 0` never applied.

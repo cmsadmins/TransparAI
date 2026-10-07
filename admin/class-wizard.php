@@ -1,9 +1,10 @@
 <?php
 /**
- * Setup assistant: a guided first run in seven steps, one screen each,
- * every step saved on the server before the next one opens. It writes the
- * same options and answers the settings, assessment and images screens
- * write, so nothing it sets is hidden from the regular screens later.
+ * Setup assistant: a guided first run in three screens, each saved on the
+ * server before the next one opens. It writes the same options and answers
+ * the settings, assessment and images screens write, so nothing it sets is
+ * hidden from the regular screens later. Everything it does not ask about
+ * keeps its default, which is the recommended value.
  *
  * @package   TransparAI
  * @author    Patrick Schlesinger
@@ -25,7 +26,7 @@ final class TransparAI_Wizard {
 	public const PAGE   = 'transparai-setup';
 	private const NONCE = 'transparai_wizard';
 
-	/* Start of the Article 50 obligations; the badge start date offered in step 4. */
+	/* Start of the Article 50 obligations; the badge start date offered on the label screen. */
 	private const AI_ACT_DATE = '2026-08-02';
 
 	/**
@@ -66,13 +67,9 @@ final class TransparAI_Wizard {
 	 */
 	public static function steps(): array {
 		return array(
-			'welcome'    => __( 'Start', 'transparai' ),
-			'assessment' => __( 'Your site', 'transparai' ),
-			'images'     => __( 'Images', 'transparai' ),
-			'badge'      => __( 'Visible label', 'transparai' ),
-			'files'      => __( 'Files', 'transparai' ),
-			'text'       => __( 'Text and chat', 'transparai' ),
-			'done'       => __( 'Done', 'transparai' ),
+			'start' => __( 'Your site', 'transparai' ),
+			'label' => __( 'AI images', 'transparai' ),
+			'done'  => __( 'Scan and finish', 'transparai' ),
 		);
 	}
 
@@ -152,59 +149,38 @@ final class TransparAI_Wizard {
 	 */
 	public static function save_step( string $step, array $raw ): void {
 		switch ( $step ) {
-			case 'assessment':
-				TransparAI_Compliance::save_assessment( (array) ( $raw['assessment'] ?? array() ) );
+			case 'start':
+				$answers = (array) ( $raw['assessment'] ?? array() );
+				TransparAI_Compliance::save_assessment( $answers );
+				/*
+				 * The chatbot notice follows the chatbot answer directly: there is
+				 * no separate chat screen, and "unknown" would keep the notice off.
+				 */
+				$chat = (string) ( $answers['chatbot'] ?? '' );
+				if ( in_array( $chat, array( 'yes', 'no' ), true ) ) {
+					self::save_options( array( 'chatbot_answer' => $chat ) );
+				}
 				return;
 
-			case 'images':
+			case 'label':
 				$review = 'review' === ( $raw['detection'] ?? '' );
 				self::save_options(
 					array(
-						'autodetect'   => '1',
-						'mode_certain' => $review ? 'queue' : 'flag',
-						'mode_likely'  => 'queue',
-					)
-				);
-				return;
-
-			case 'badge':
-				self::save_options(
-					array(
+						'autodetect'      => '1',
+						'mode_certain'    => $review ? 'queue' : 'flag',
+						'mode_likely'     => 'queue',
 						'badge_enabled'   => empty( $raw['badge_enabled'] ) ? '0' : '1',
 						'badge_style'     => (string) ( $raw['badge_style'] ?? '' ),
 						'badge_position'  => (string) ( $raw['badge_position'] ?? '' ),
 						'badge_mode'      => (string) ( $raw['badge_mode'] ?? '' ),
 						'badge_size'      => (string) ( $raw['badge_size'] ?? '' ),
 						'badge_from_date' => empty( $raw['from_ai_act'] ) ? '' : self::AI_ACT_DATE,
+						'write_xmp'       => empty( $raw['write_xmp'] ) ? '0' : '1',
+						'write_iim'       => empty( $raw['write_iim'] ) ? '0' : '1',
+						'auto_repair'     => empty( $raw['auto_repair'] ) ? '0' : '1',
+						'schema_output'   => empty( $raw['schema_output'] ) ? '0' : '1',
 					)
 				);
-				return;
-
-			case 'files':
-				self::save_options(
-					array(
-						'write_xmp'     => empty( $raw['write_xmp'] ) ? '0' : '1',
-						'write_iim'     => empty( $raw['write_iim'] ) ? '0' : '1',
-						'auto_repair'   => empty( $raw['auto_repair'] ) ? '0' : '1',
-						'schema_output' => empty( $raw['schema_output'] ) ? '0' : '1',
-					)
-				);
-				return;
-
-			case 'text':
-				$values = array();
-				if ( isset( $raw['content_notice_position'] ) ) {
-					$values['content_notice_position'] = (string) $raw['content_notice_position'];
-				}
-				if ( isset( $raw['chatbot_staffing'] ) ) {
-					$values['chatbot_answer']   = 'yes';
-					$values['chatbot_staffing'] = (string) $raw['chatbot_staffing'];
-				} elseif ( 'no' === ( TransparAI_Compliance::assessment()['chatbot'] ?? '' ) ) {
-					$values['chatbot_answer'] = 'no';
-				}
-				if ( array() !== $values ) {
-					self::save_options( $values );
-				}
 				return;
 		}
 	}
@@ -230,9 +206,9 @@ final class TransparAI_Wizard {
 			return;
 		}
 		$steps = self::steps();
-		$step  = isset( $_GET['step'] ) ? sanitize_key( wp_unslash( (string) $_GET['step'] ) ) : 'welcome'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only step switch.
+		$step  = isset( $_GET['step'] ) ? sanitize_key( wp_unslash( (string) $_GET['step'] ) ) : 'start'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only step switch.
 		if ( ! isset( $steps[ $step ] ) ) {
-			$step = 'welcome';
+			$step = 'start';
 		}
 		$options = TransparAI_Options::all();
 		$index   = (int) array_search( $step, array_keys( $steps ), true );
@@ -257,26 +233,14 @@ final class TransparAI_Wizard {
 					<input type="hidden" name="step" value="<?php echo esc_attr( $step ); ?>" />
 					<?php
 					switch ( $step ) {
-						case 'assessment':
-							self::step_assessment();
-							break;
-						case 'images':
-							self::step_images( $options );
-							break;
-						case 'badge':
-							self::step_badge( $options );
-							break;
-						case 'files':
-							self::step_files( $options );
-							break;
-						case 'text':
-							self::step_text( $options );
+						case 'label':
+							self::step_label( $options );
 							break;
 						case 'done':
 							self::step_done( $options );
 							break;
 						default:
-							self::step_welcome();
+							self::step_start();
 					}
 					self::nav( $step );
 					?>
@@ -292,13 +256,17 @@ final class TransparAI_Wizard {
 	 */
 	private static function nav( string $step ): void {
 		$previous = self::previous_step( $step );
-		$label    = 'done' === $step ? __( 'Finish setup', 'transparai' ) : ( 'welcome' === $step ? __( 'Start', 'transparai' ) : __( 'Save and continue', 'transparai' ) );
+		$labels   = array(
+			'start' => __( 'Continue', 'transparai' ),
+			'label' => __( 'Save and scan the library', 'transparai' ),
+			'done'  => __( 'Finish setup', 'transparai' ),
+		);
 		?>
 		<p class="trai-actions trai-wizard-nav">
 			<?php if ( '' !== $previous ) : ?>
 				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( self::url( $previous ) ); ?>"><?php esc_html_e( 'Back', 'transparai' ); ?></a>
 			<?php endif; ?>
-			<button type="submit" class="trai-btn"><?php echo esc_html( $label ); ?></button>
+			<button type="submit" class="trai-btn"><?php echo esc_html( $labels[ $step ] ?? $labels['start'] ); ?></button>
 			<?php if ( 'done' !== $step ) : ?>
 				<button type="submit" name="skip_assistant" value="1" class="button-link trai-wizard-skip"><?php esc_html_e( 'Not now, I will set it up myself', 'transparai' ); ?></button>
 			<?php endif; ?>
@@ -307,28 +275,21 @@ final class TransparAI_Wizard {
 	}
 
 	/**
-	 * Step 1.
+	 * Screen 1: what the assistant does, and the six assessment questions.
 	 */
-	private static function step_welcome(): void {
+	private static function step_start(): void {
+		$answers = TransparAI_Compliance::assessment();
 		?>
 		<h3><?php esc_html_e( 'Welcome to TransparAI', 'transparai' ); ?></h3>
-		<p><?php esc_html_e( 'In six short steps the assistant sets up what the EU AI Act asks of a website that uses AI: it finds the AI images already in your media library, adds a visible label where one is due, keeps the machine-readable marking in your files and, if your site has them, sets up the notes for AI-written text and for a chatbot.', 'transparai' ); ?></p>
+		<p><?php esc_html_e( 'Three screens set up what the EU AI Act asks of a website that uses AI: what your site uses, how AI images are labeled, and a scan of the media library. New uploads are checked automatically from then on.', 'transparai' ); ?></p>
 		<ul class="trai-wizard-facts">
 			<li><?php esc_html_e( 'Everything runs on your server. No account, no telemetry, no request to an outside service.', 'transparai' ); ?></li>
 			<li><?php esc_html_e( 'Every choice can be changed later in the settings; nothing here is final.', 'transparai' ); ?></li>
-			<li><?php esc_html_e( 'The plugin is a technical tool and gives no legal advice. Whether a duty applies to your site is your decision.', 'transparai' ); ?></li>
+			<li><?php esc_html_e( 'The plugin is a technical tool and gives no legal advice. Article 50(4) obliges you to disclose deepfakes, AI images that could pass as real; labeling every AI image is the safe default and the one the plugin starts with.', 'transparai' ); ?></li>
 		</ul>
-		<?php
-	}
 
-	/**
-	 * Step 2: the six assessment questions.
-	 */
-	private static function step_assessment(): void {
-		$answers = TransparAI_Compliance::assessment();
-		?>
 		<h3><?php esc_html_e( 'What does your site use?', 'transparai' ); ?></h3>
-		<p class="description"><?php esc_html_e( 'Six questions decide which of the following steps matter for you. The answers also appear in the self-assessment and in the compliance report.', 'transparai' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Six yes/no questions decide what matters for you. The answers also feed the self-assessment and the compliance report.', 'transparai' ); ?></p>
 		<?php foreach ( TransparAI_Compliance::questions() as $id => $question ) : ?>
 			<fieldset class="trai-wizard-question">
 				<legend><strong><?php echo esc_html( $question['text'] ); ?></strong></legend>
@@ -341,33 +302,13 @@ final class TransparAI_Wizard {
 	}
 
 	/**
-	 * Step 3: detection mode and the library scan.
+	 * Screen 2: the visible label with a live preview, the detection policy
+	 * and, folded away, what goes into the files.
 	 *
 	 * @param array<string, string> $options Current options.
 	 */
-	private static function step_images( array $options ): void {
-		$review = 'queue' === $options['mode_certain'];
-		?>
-		<h3><?php esc_html_e( 'Find the AI images in your library', 'transparai' ); ?></h3>
-		<p><?php esc_html_e( 'The plugin reads the provenance data AI generators leave in their files: Content Credentials (C2PA, signature checked), the IPTC digital source type and the generation parameters of local tools. It never guesses from image size, file size or file name.', 'transparai' ); ?></p>
-		<fieldset class="trai-wizard-question">
-			<legend><strong><?php esc_html_e( 'What should happen with a clear AI declaration?', 'transparai' ); ?></strong></legend>
-			<label><input type="radio" name="wizard[detection]" value="auto" <?php checked( ! $review ); ?> /> <?php esc_html_e( 'Label it right away; only uncertain findings wait in the review queue (recommended)', 'transparai' ); ?></label><br />
-			<label><input type="radio" name="wizard[detection]" value="review" <?php checked( $review ); ?> /> <?php esc_html_e( 'Put every finding into the review queue; I confirm each one myself', 'transparai' ); ?></label>
-		</fieldset>
-		<?php
-		TransparAI_Settings::render_scan_card( false );
-		?>
-		<p class="description"><?php esc_html_e( 'The scan runs in small batches while this page is open and can be paused; you can also continue and scan later from the AI Images screen. New uploads are checked automatically from now on.', 'transparai' ); ?></p>
-		<?php
-	}
-
-	/**
-	 * Step 4: the visible badge with a live preview.
-	 *
-	 * @param array<string, string> $options Current options.
-	 */
-	private static function step_badge( array $options ): void {
+	private static function step_label( array $options ): void {
+		$review  = 'queue' === $options['mode_certain'];
 		$selects = array(
 			'badge_style'    => array(
 				__( 'Look', 'transparai' ),
@@ -404,9 +345,15 @@ final class TransparAI_Wizard {
 				),
 			),
 		);
+		$toggles = array(
+			'write_xmp'     => __( 'Write the IPTC digital source type into labeled files (XMP, every image size). Search engines and other tools read it, and it travels with the image.', 'transparai' ),
+			'write_iim'     => __( 'Also mirror it into the classic IPTC block of JPEG files, for older tools.', 'transparai' ),
+			'auto_repair'   => __( 'Restore the declaration when an image optimizer or a regenerated thumbnail strips it (hourly check).', 'transparai' ),
+			'schema_output' => __( 'Add structured data (Schema.org digitalSourceType) for labeled media to the page, for search engines and AI answer engines.', 'transparai' ),
+		);
 		?>
-		<h3><?php esc_html_e( 'How should the visible label look?', 'transparai' ); ?></h3>
-		<p><?php esc_html_e( 'The EU AI Act asks for a label that is noticeable at the first look, on or right next to the image. The badge appears on every labeled image, in the content, in featured images, in page builders and in WooCommerce.', 'transparai' ); ?></p>
+		<h3><?php esc_html_e( 'How should AI images be labeled?', 'transparai' ); ?></h3>
+		<p><?php esc_html_e( 'The EU AI Act asks for a label that is noticeable at the first look, on or right next to the image. The badge appears on every labeled image, in the content, in featured images, in page builders and in WooCommerce. Change the look below and watch the preview.', 'transparai' ); ?></p>
 		<?php TransparAI_Setup::preview( $options ); ?>
 		<div class="trai-wizard-grid">
 			<?php foreach ( $selects as $key => $select ) : ?>
@@ -424,82 +371,26 @@ final class TransparAI_Wizard {
 			<label><input type="checkbox" name="wizard[badge_enabled]" value="1" <?php checked( '1', $options['badge_enabled'] ); ?> /> <?php esc_html_e( 'Show the visible badge', 'transparai' ); ?></label><br />
 			<label><input type="checkbox" name="wizard[from_ai_act]" value="1" <?php checked( self::AI_ACT_DATE, $options['badge_from_date'] ); ?> /> <?php esc_html_e( 'Only for media uploaded since 2 August 2026, when Article 50 started to apply (older content is not covered retroactively; the file metadata is written either way)', 'transparai' ); ?></label>
 		</p>
+
+		<fieldset class="trai-wizard-question">
+			<legend><strong><?php esc_html_e( 'What should happen with a clear AI declaration?', 'transparai' ); ?></strong></legend>
+			<p class="description"><?php esc_html_e( 'The plugin reads the provenance data AI generators leave in their files: Content Credentials (C2PA, signature checked), the IPTC digital source type and the generation parameters of local tools. It never guesses from image size, file size or file name.', 'transparai' ); ?></p>
+			<label><input type="radio" name="wizard[detection]" value="auto" <?php checked( ! $review ); ?> /> <?php esc_html_e( 'Label it right away; only uncertain findings wait in the review queue (recommended)', 'transparai' ); ?></label><br />
+			<label><input type="radio" name="wizard[detection]" value="review" <?php checked( $review ); ?> /> <?php esc_html_e( 'Put every finding into the review queue; I confirm each one myself', 'transparai' ); ?></label>
+		</fieldset>
+
+		<details class="trai-wizard-details">
+			<summary><?php esc_html_e( 'Advanced: machine-readable marking in the files', 'transparai' ); ?></summary>
+			<p class="description"><?php esc_html_e( 'The marking in the file is what lets other systems recognise AI content without looking at your page. Existing metadata is kept; removing a label removes exactly what the plugin wrote. The defaults below are the recommended ones.', 'transparai' ); ?></p>
+			<?php foreach ( $toggles as $key => $label ) : ?>
+				<p><label><input type="checkbox" name="wizard[<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( '1', $options[ $key ] ); ?> /> <?php echo esc_html( $label ); ?></label></p>
+			<?php endforeach; ?>
+		</details>
 		<?php
 	}
 
 	/**
-	 * Step 5: what goes into the files.
-	 *
-	 * @param array<string, string> $options Current options.
-	 */
-	private static function step_files( array $options ): void {
-		$toggles = array(
-			'write_xmp'     => __( 'Write the IPTC digital source type into labeled files (XMP, every image size). Search engines and other tools read it, and it travels with the image.', 'transparai' ),
-			'write_iim'     => __( 'Also mirror it into the classic IPTC block of JPEG files, for older tools.', 'transparai' ),
-			'auto_repair'   => __( 'Restore the declaration when an image optimizer or a regenerated thumbnail strips it (hourly check).', 'transparai' ),
-			'schema_output' => __( 'Add structured data (Schema.org digitalSourceType) for labeled media to the page, for search engines and AI answer engines.', 'transparai' ),
-		);
-		?>
-		<h3><?php esc_html_e( 'Machine-readable marking', 'transparai' ); ?></h3>
-		<p><?php esc_html_e( 'The marking in the file is what lets other systems recognise AI content without looking at your page. Existing metadata is kept; removing a label removes exactly what the plugin wrote.', 'transparai' ); ?></p>
-		<?php foreach ( $toggles as $key => $label ) : ?>
-			<p><label><input type="checkbox" name="wizard[<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( '1', $options[ $key ] ); ?> /> <?php echo esc_html( $label ); ?></label></p>
-		<?php endforeach; ?>
-		<?php
-	}
-
-	/**
-	 * Step 6: only what the assessment made relevant.
-	 *
-	 * @param array<string, string> $options Current options.
-	 */
-	private static function step_text( array $options ): void {
-		$answers = TransparAI_Compliance::assessment();
-		$text    = 'yes' === ( $answers['ai_text'] ?? '' );
-		$chat    = 'yes' === ( $answers['chatbot'] ?? '' );
-		?>
-		<h3><?php esc_html_e( 'AI-written text and chatbots', 'transparai' ); ?></h3>
-		<?php if ( ! $text && ! $chat ) : ?>
-			<p><?php esc_html_e( 'According to your answers your site publishes no AI-written text and runs no chatbot, so there is nothing to set up here. Both can be switched on later in the settings.', 'transparai' ); ?></p>
-		<?php endif; ?>
-
-		<?php if ( $text ) : ?>
-			<fieldset class="trai-wizard-question">
-				<legend><strong><?php esc_html_e( 'Where should the note on AI-written posts appear?', 'transparai' ); ?></strong></legend>
-				<p class="description"><?php esc_html_e( 'Each post gets an AI level (no AI, assisted, generated, generated and reviewed) in the editor; the note follows that level.', 'transparai' ); ?></p>
-				<?php
-				foreach ( array(
-					'before' => __( 'Before the text', 'transparai' ),
-					'after'  => __( 'After the text', 'transparai' ),
-					'both'   => __( 'Before and after', 'transparai' ),
-					'manual' => __( 'Only where I place the block or shortcode', 'transparai' ),
-				) as $value => $label ) :
-					?>
-					<label><input type="radio" name="wizard[content_notice_position]" value="<?php echo esc_attr( $value ); ?>" <?php checked( $options['content_notice_position'], $value ); ?> /> <?php echo esc_html( $label ); ?></label><br />
-				<?php endforeach; ?>
-			</fieldset>
-		<?php endif; ?>
-
-		<?php if ( $chat ) : ?>
-			<fieldset class="trai-wizard-question">
-				<legend><strong><?php esc_html_e( 'Who answers in your chat?', 'transparai' ); ?></strong></legend>
-				<p class="description"><?php esc_html_e( 'Visitors must know when they talk to an AI. The notice appears in the chat or next to it, depending on the chat plugin.', 'transparai' ); ?></p>
-				<?php
-				foreach ( array(
-					'ai'    => __( 'An AI answers', 'transparai' ),
-					'mixed' => __( 'An AI first, a person takes over when needed', 'transparai' ),
-					'human' => __( 'Only people answer (no AI notice)', 'transparai' ),
-				) as $value => $label ) :
-					?>
-					<label><input type="radio" name="wizard[chatbot_staffing]" value="<?php echo esc_attr( $value ); ?>" <?php checked( $options['chatbot_staffing'], $value ); ?> /> <?php echo esc_html( $label ); ?></label><br />
-				<?php endforeach; ?>
-			</fieldset>
-		<?php endif; ?>
-		<?php
-	}
-
-	/**
-	 * Step 7: what was set, the score and what is left.
+	 * Screen 3: the library scan, what was set, the score and what is left.
 	 *
 	 * @param array<string, string> $options Current options.
 	 */
@@ -515,6 +406,10 @@ final class TransparAI_Wizard {
 			'icon-only' => __( 'Icon only', 'transparai' ),
 		);
 		?>
+		<h3><?php esc_html_e( 'Scan the media library', 'transparai' ); ?></h3>
+		<?php TransparAI_Settings::render_scan_card( false ); ?>
+		<p class="description"><?php esc_html_e( 'The scan runs in small batches while this page is open and can be paused; you can also finish now and scan later from the AI Images screen. New uploads are checked automatically from now on.', 'transparai' ); ?></p>
+
 		<h3><?php esc_html_e( 'Your setup', 'transparai' ); ?></h3>
 		<ul class="trai-wizard-facts">
 			<li>

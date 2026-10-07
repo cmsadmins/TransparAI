@@ -164,7 +164,7 @@ final class TransparAI_Setup {
 		?>
 		<section class="trai-card trai-setup">
 			<h2 class="trai-card-title"><?php esc_html_e( 'Setup assistant', 'transparai' ); ?></h2>
-			<p class="description"><?php esc_html_e( 'Six short steps through what matters once: what your site uses, the scan of the existing library, the look of the visible label, the file metadata and, where relevant, AI-written text and the chatbot. Nothing is labeled without your review, and no request leaves your server.', 'transparai' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Three screens through what matters once: what your site uses, the look of the visible label with the detection and file options, and the scan of the existing library. Clear AI declarations are labeled right away, uncertain findings wait for your review, and no request leaves your server.', 'transparai' ); ?></p>
 			<p>
 				<?php
 				echo esc_html(
