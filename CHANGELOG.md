@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add an opt-in native browser tooltip showing the full label on icon-only image overlays. Server-rendered badges work without JavaScript; custom labels, generator names and human-made labels are preserved. Caption lines and explicit below/hidden placements are excluded.
+
 ## 1.1.9 (2026-10-07)
 
 - Full C2PA signature verification (`TransparAI_C2PA_Verify`), on PHP 7.4 to 8.5 without libraries:

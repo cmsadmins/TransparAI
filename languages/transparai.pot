@@ -2814,3 +2814,12 @@ msgstr ""
 msgctxt "block keyword"
 msgid "imprint"
 msgstr ""
+
+
+#: admin/class-settings.php
+msgid "Show the full label as a native browser tooltip on icon-only image overlays (no JavaScript required)"
+msgstr ""
+
+#: admin/class-settings.php
+msgid "Applies to Overlay on the image and Icon only (short label). Native tooltips appear on mouse hover; touch and keyboard support depends on the browser. The full label remains available to screen readers."
+msgstr ""
