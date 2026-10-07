@@ -1,9 +1,9 @@
 <?php
 /**
- * First-run setup: one card on the settings page that names the three things
- * worth doing once and points at the section that does each of them. The
- * controls themselves live in the settings tabs below, so no option is
- * offered twice on the same screen.
+ * First-run setup: the activation redirect into the setup assistant
+ * (TransparAI_Wizard), the badge preview shared by the assistant and the
+ * settings, and a short card on the settings page that points at the
+ * assistant until the setup is finished or hidden.
  *
  * @package   TransparAI
  * @author    Patrick Schlesinger
@@ -99,7 +99,8 @@ final class TransparAI_Setup {
 	 * Settings page URL with the setup card open.
 	 */
 	public static function url( string $extra = '' ): string {
-		return admin_url( 'admin.php?page=transparai-settings&setup=1' . $extra );
+		unset( $extra );
+		return TransparAI_Wizard::url();
 	}
 
 	/**
@@ -162,47 +163,22 @@ final class TransparAI_Setup {
 		$action = esc_url( admin_url( 'admin-post.php' ) );
 		?>
 		<section class="trai-card trai-setup">
-			<h2 class="trai-card-title"><?php esc_html_e( 'Setup in three steps', 'transparai' ); ?></h2>
-			<p class="description"><?php esc_html_e( 'Three things to settle once. Each button opens the section below that does it. Nothing is labeled without your review, and no request leaves your server.', 'transparai' ); ?></p>
-
-			<ol class="trai-setup-steps">
-				<li class="trai-setup-step">
-					<h3><?php esc_html_e( '1. Scan the existing library', 'transparai' ); ?></h3>
-					<p>
-						<?php
-						echo esc_html(
-							sprintf(
-								/* translators: 1: number of media files, 2: number already scanned. */
-								__( '%1$d media files, %2$d of them scanned. Clear declarations are labeled, strong signals wait in the review queue.', 'transparai' ),
-								(int) $stats['total'],
-								(int) $stats['scanned']
-							)
-						);
-						?>
-					</p>
-					<p><button type="button" class="trai-btn trai-setup-scan"><?php esc_html_e( 'Scan now', 'transparai' ); ?></button></p>
-				</li>
-
-				<li class="trai-setup-step">
-					<h3><?php esc_html_e( '2. Choose the badge look', 'transparai' ); ?></h3>
-					<p><?php esc_html_e( 'Style, position and placement of the visible badge, with a live preview of the result.', 'transparai' ); ?></p>
-					<p><button type="button" class="trai-btn trai-btn--ghost trai-setup-jump" data-tab="badge"><?php esc_html_e( 'Open the badge settings', 'transparai' ); ?></button></p>
-				</li>
-
-				<li class="trai-setup-step">
-					<h3><?php esc_html_e( '3. Decide about the files', 'transparai' ); ?></h3>
-					<p><?php esc_html_e( 'Whether the machine-readable declaration goes into the image files themselves, and whether it is restored after an image optimizer strips it.', 'transparai' ); ?></p>
-					<p><button type="button" class="trai-btn trai-btn--ghost trai-setup-jump" data-tab="files"><?php esc_html_e( 'Open the file settings', 'transparai' ); ?></button></p>
-				</li>
-			</ol>
-
+			<h2 class="trai-card-title"><?php esc_html_e( 'Setup assistant', 'transparai' ); ?></h2>
+			<p class="description"><?php esc_html_e( 'Six short steps through what matters once: what your site uses, the scan of the existing library, the look of the visible label, the file metadata and, where relevant, AI-written text and the chatbot. Nothing is labeled without your review, and no request leaves your server.', 'transparai' ); ?></p>
+			<p>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: 1: number of media files, 2: number already scanned. */
+						__( '%1$d media files, %2$d of them scanned.', 'transparai' ),
+						(int) $stats['total'],
+						(int) $stats['scanned']
+					)
+				);
+				?>
+			</p>
 			<p class="trai-actions trai-setup-footer">
-				<form method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>" class="trai-setup-inline">
-					<?php wp_nonce_field( self::NONCE ); ?>
-					<input type="hidden" name="action" value="transparai_setup" />
-					<input type="hidden" name="step" value="finish" />
-					<button type="submit" class="trai-btn"><?php esc_html_e( 'Finish setup', 'transparai' ); ?></button>
-				</form>
+				<a class="trai-btn" href="<?php echo esc_url( TransparAI_Wizard::url() ); ?>"><?php esc_html_e( 'Open the setup assistant', 'transparai' ); ?></a>
 				<?php if ( ! self::done() ) : ?>
 					<form method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>" class="trai-setup-inline">
 						<?php wp_nonce_field( self::NONCE ); ?>

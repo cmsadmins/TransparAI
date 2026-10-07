@@ -487,6 +487,16 @@ final class TransparAI_Detector {
 			$result['confidence'] = 'likely';
 			$result['evidence']   = mb_substr( $result['evidence'] . '; manifest data hash does not match the file bytes', 0, 500 );
 		}
+		/*
+		 * A manifest whose signature, assertion hashes or certificate fail the
+		 * check was tampered with or forged; its declaration goes to review.
+		 */
+		if ( null !== $info && 'invalid' === ( $info['sig'] ?? '' ) && 'certain' === $result['confidence'] ) {
+			$result['confidence'] = 'likely';
+			$result['evidence']   = mb_substr( $result['evidence'] . '; manifest signature check failed (' . $info['sig_reason'] . ')', 0, 500 );
+		} elseif ( null !== $info && 'trusted' === ( $info['sig'] ?? '' ) ) {
+			$result['evidence'] = mb_substr( $result['evidence'] . '; signed by a certificate on the C2PA trust list', 0, 500 );
+		}
 		if ( null !== $info && '' === $result['generator'] && '' !== $info['generator'] ) {
 			$result['generator'] = $info['generator'];
 		}
@@ -501,7 +511,7 @@ final class TransparAI_Detector {
 	 * matches the bytes. Memoised per file state because the detector and
 	 * the scanner both ask for it in one request.
 	 *
-	 * @return array{hash:string, reason:string, alg:string, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int, own_mark:bool, file:string}|null
+	 * @return array{hash:string, reason:string, alg:string, sig:string, sig_reason:string, issuer:string, tst:string, tsa:string, tsa_trusted:bool, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int, own_mark:bool, file:string}|null
 	 */
 	public static function c2pa_info( string $path ): ?array {
 		if ( $path === self::$c2pa_memo_path ) {
@@ -534,22 +544,29 @@ final class TransparAI_Detector {
 		$head   = TransparAI_Parsers::read_head( $path, 64 );
 		$format = null === $head ? '' : TransparAI_Parsers::sniff( $head );
 		$info   = array(
-			'hash'      => 'unsupported',
-			'reason'    => 'bmff',
-			'alg'       => '',
-			'signer_cn' => '',
-			'signer_o'  => '',
-			'generator' => '',
-			'when'      => '',
-			'manifests' => 0,
-			'own_mark'  => false,
-			'file'      => basename( $path ),
+			'hash'        => 'unsupported',
+			'reason'      => 'bmff',
+			'alg'         => '',
+			'sig'         => 'unsupported',
+			'sig_reason'  => 'bmff',
+			'issuer'      => '',
+			'tst'         => '',
+			'tsa'         => '',
+			'tsa_trusted' => false,
+			'signer_cn'   => '',
+			'signer_o'    => '',
+			'generator'   => '',
+			'when'        => '',
+			'manifests'   => 0,
+			'own_mark'    => false,
+			'file'        => basename( $path ),
 		);
 		if ( ! in_array( $format, array( 'jpeg', 'png', 'webp' ), true ) ) {
 			return $info; /* ISO-BMFF: presence only, the BMFF hash is out of scope. */
 		}
 		if ( (int) filesize( $path ) > TransparAI_C2PA::MAX_FILE_BYTES ) {
-			$info['reason'] = 'too_large';
+			$info['reason']     = 'too_large';
+			$info['sig_reason'] = 'too_large';
 			return $info;
 		}
 		/*
@@ -559,7 +576,8 @@ final class TransparAI_Detector {
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local media file, not a remote request.
 		$data = file_get_contents( $path );
 		if ( false === $data ) {
-			$info['reason'] = 'unreadable';
+			$info['reason']     = 'unreadable';
+			$info['sig_reason'] = 'unreadable';
 			return $info;
 		}
 		$stripped = TransparAI_Writer::without_own_marks( $data, $format );

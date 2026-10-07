@@ -66,7 +66,7 @@ final class TransparAI_C2PA {
 	 * @param string $data   Complete file bytes, with this plugin's own XMP/IIM
 	 *                       additions already removed (see TransparAI_Writer::without_own_marks()).
 	 * @param string $format jpeg|png|webp.
-	 * @return array{hash:string, reason:string, alg:string, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int}|null
+	 * @return array{hash:string, reason:string, alg:string, sig:string, sig_reason:string, issuer:string, tst:string, tsa:string, tsa_trusted:bool, signer_cn:string, signer_o:string, generator:string, when:string, manifests:int}|null
 	 *         Null when the file carries no manifest store.
 	 */
 	public static function summary( string $data, string $format ): ?array {
@@ -76,14 +76,20 @@ final class TransparAI_C2PA {
 		}
 
 		$info = array(
-			'hash'      => 'unsupported',
-			'reason'    => '',
-			'alg'       => '',
-			'signer_cn' => '',
-			'signer_o'  => '',
-			'generator' => '',
-			'when'      => '',
-			'manifests' => 0,
+			'hash'        => 'unsupported',
+			'reason'      => '',
+			'alg'         => '',
+			'sig'         => 'unsupported',
+			'sig_reason'  => '',
+			'issuer'      => '',
+			'tst'         => '',
+			'tsa'         => '',
+			'tsa_trusted' => false,
+			'signer_cn'   => '',
+			'signer_o'    => '',
+			'generator'   => '',
+			'when'        => '',
+			'manifests'   => 0,
 		);
 
 		if ( '' === $store ) {
@@ -96,6 +102,14 @@ final class TransparAI_C2PA {
 			$info['reason'] = 'parse_error';
 			return $info;
 		}
+
+		$verdict             = TransparAI_C2PA_Verify::verify( $store );
+		$info['sig']         = $verdict['sig'];
+		$info['sig_reason']  = $verdict['reason'];
+		$info['issuer']      = $verdict['issuer'];
+		$info['tst']         = $verdict['tst'];
+		$info['tsa']         = $verdict['tsa'];
+		$info['tsa_trusted'] = $verdict['tsa_trusted'];
 
 		$info['manifests'] = $parsed['manifests'];
 		$info['generator'] = $parsed['generator'];
@@ -366,7 +380,7 @@ final class TransparAI_C2PA {
 	 * A 'jumb' superbox is returned with the label from its description box
 	 * and a content range that starts after that description box.
 	 *
-	 * @return array<int, array{type:string, label:string, start:int, end:int}>|null
+	 * @return array<int, array{type:string, label:string, offset:int, head:int, start:int, end:int}>|null
 	 */
 	public static function jumbf_boxes( string $data, int $start, int $end ): ?array {
 		$out = array();
@@ -393,7 +407,7 @@ final class TransparAI_C2PA {
 	/**
 	 * Header of one box at $pos.
 	 *
-	 * @return array{type:string, label:string, start:int, end:int}|null
+	 * @return array{type:string, label:string, offset:int, head:int, start:int, end:int}|null
 	 */
 	private static function jumbf_box( string $data, int $pos, int $end ): ?array {
 		if ( $pos + 8 > $end ) {
@@ -420,10 +434,12 @@ final class TransparAI_C2PA {
 			return null;
 		}
 		return array(
-			'type'  => $type,
-			'label' => '',
-			'start' => $pos + $head,
-			'end'   => $pos + $lbox,
+			'type'   => $type,
+			'label'  => '',
+			'offset' => $pos,
+			'head'   => $head,
+			'start'  => $pos + $head,
+			'end'    => $pos + $lbox,
 		);
 	}
 

@@ -377,6 +377,41 @@ final class TransparAI_Media_Library {
 	}
 
 	/**
+	 * Human-readable signature verdict.
+	 */
+	public static function c2pa_signature_label( string $sig, string $reason ): string {
+		switch ( $sig ) {
+			case 'trusted':
+				return __( 'valid, signed with a certificate on the C2PA trust list', 'transparai' );
+			case 'untrusted':
+				return __( 'valid, but the signer is not on the C2PA trust list (a test, self-made or unlisted certificate)', 'transparai' );
+			case 'invalid':
+				switch ( $reason ) {
+					case 'signature':
+						return __( 'invalid, the signature does not match the manifest', 'transparai' );
+					case 'assertion_hash':
+					case 'assertion_missing':
+					case 'assertion_reference':
+						return __( 'invalid, a part of the manifest was changed after signing', 'transparai' );
+					case 'certificate_expired':
+						return __( 'invalid, the certificate was not valid at the time of signing', 'transparai' );
+					case 'certificate_profile':
+						return __( 'invalid, the certificate is not allowed to sign Content Credentials', 'transparai' );
+					case 'time_stamp':
+						return __( 'invalid, the time stamp does not hold', 'transparai' );
+				}
+				return __( 'invalid, the certificate chain does not hold', 'transparai' );
+		}
+		if ( 'unknown_alg' === $reason ) {
+			return __( 'not checkable, unknown signature algorithm', 'transparai' );
+		}
+		if ( 'crypto_unavailable' === $reason ) {
+			return __( 'not checkable, the server lacks the OpenSSL or sodium functions', 'transparai' );
+		}
+		return __( 'not checked', 'transparai' );
+	}
+
+	/**
 	 * Human-readable data hash state.
 	 */
 	public static function c2pa_hash_label( string $hash, string $reason ): string {
@@ -473,10 +508,12 @@ final class TransparAI_Media_Library {
 		$c2pa = TransparAI_Meta::c2pa( $attachment_id );
 		if ( null !== $c2pa ) {
 			$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Content Credentials (C2PA)', 'transparai' ) . '</h4><ul class="trai-inspect-c2pa">';
+			$html .= '<li>' . esc_html__( 'Signature:', 'transparai' ) . ' <strong>' . esc_html( self::c2pa_signature_label( (string) ( $c2pa['sig'] ?? '' ), (string) ( $c2pa['sig_reason'] ?? '' ) ) ) . '</strong></li>';
 			$html .= '<li>' . esc_html__( 'Manifest matches the file bytes:', 'transparai' ) . ' <strong>' . esc_html( self::c2pa_hash_label( (string) ( $c2pa['hash'] ?? '' ), (string) ( $c2pa['reason'] ?? '' ) ) ) . '</strong></li>';
 			foreach ( array(
 				'signer_cn' => __( 'Signer', 'transparai' ),
 				'signer_o'  => __( 'Organisation', 'transparai' ),
+				'issuer'    => __( 'Certificate issued by', 'transparai' ),
 				'generator' => __( 'Claim generator', 'transparai' ),
 				'when'      => __( 'Action time in the manifest', 'transparai' ),
 			) as $key => $label ) {
@@ -484,7 +521,17 @@ final class TransparAI_Media_Library {
 					$html .= '<li>' . esc_html( $label ) . ': ' . esc_html( (string) $c2pa[ $key ] ) . '</li>';
 				}
 			}
-			$html .= '</ul><p class="trai-inspect-note">' . esc_html__( 'According to the manifest. The signature and the signer\'s certificate are not verified; the check only tells whether the manifest describes exactly this file.', 'transparai' ) . '</p></div>';
+			if ( '' !== (string) ( $c2pa['tst'] ?? '' ) ) {
+				$html .= '<li>' . esc_html(
+					sprintf(
+						/* translators: 1: date and time (UTC), 2: name of the time stamp authority. */
+						! empty( $c2pa['tsa_trusted'] ) ? __( 'Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)', 'transparai' ) : __( 'Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)', 'transparai' ),
+						str_replace( array( 'T', 'Z' ), array( ' ', '' ), (string) $c2pa['tst'] ),
+						(string) ( $c2pa['tsa'] ?? '' )
+					)
+				) . '</li>';
+			}
+			$html .= '</ul><p class="trai-inspect-note">' . esc_html__( 'Checked on your server: the signature, the hashes of every part of the manifest, the certificate chain against the C2PA trust list and a time stamp. Certificate revocation is not checked.', 'transparai' ) . '</p></div>';
 		}
 
 		$html .= '<div class="trai-inspect-section"><h4>' . esc_html__( 'Digital source type in the main file', 'transparai' ) . '</h4>';
@@ -644,9 +691,16 @@ final class TransparAI_Media_Library {
 		$c2pa = TransparAI_Meta::c2pa( $id );
 		if ( null !== $c2pa ) {
 			$hash  = (string) ( $c2pa['hash'] ?? '' );
+			$sig   = (string) ( $c2pa['sig'] ?? '' );
+			$state = 'unsupported';
+			if ( 'mismatch' === $hash || 'invalid' === $sig ) {
+				$state = 'mismatch';
+			} elseif ( 'match' === $hash && 'trusted' === $sig ) {
+				$state = 'match';
+			}
 			$title = trim( implode( ' · ', array_filter( array( (string) ( $c2pa['signer_cn'] ?? '' ), (string) ( $c2pa['signer_o'] ?? '' ), (string) ( $c2pa['generator'] ?? '' ) ) ) ) );
-			echo '<span class="trai-list-c2pa trai-list-c2pa--' . esc_attr( in_array( $hash, array( 'match', 'mismatch' ), true ) ? $hash : 'unsupported' ) . '" title="'
-				. esc_attr( self::c2pa_hash_label( $hash, (string) ( $c2pa['reason'] ?? '' ) ) . ( '' !== $title ? ' (' . $title . ')' : '' ) ) . '">C2PA</span>';
+			echo '<span class="trai-list-c2pa trai-list-c2pa--' . esc_attr( $state ) . '" title="'
+				. esc_attr( self::c2pa_signature_label( $sig, (string) ( $c2pa['sig_reason'] ?? '' ) ) . '. ' . self::c2pa_hash_label( $hash, (string) ( $c2pa['reason'] ?? '' ) ) . ( '' !== $title ? ' (' . $title . ')' : '' ) ) . '">C2PA</span>';
 		}
 		if ( true === TransparAI_Repair::changed_since_scan( $id ) ) {
 			echo '<span class="trai-list-changed" title="' . esc_attr__( 'The files changed since the last detection scan.', 'transparai' ) . '">' . esc_html__( 'changed', 'transparai' ) . '</span>';

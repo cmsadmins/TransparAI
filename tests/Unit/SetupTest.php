@@ -39,8 +39,8 @@ final class SetupTest extends TestCase {
 		$this->assertFalse( get_transient( TransparAI_Setup::REDIRECT ), 'Finished setup sets no flag' );
 	}
 
-	public function test_url_points_to_the_settings_screen_under_the_top_level_menu(): void {
-		$this->assertStringContainsString( 'admin.php?page=transparai-settings&setup=1', TransparAI_Setup::url() );
+	public function test_url_points_to_the_setup_assistant_under_the_top_level_menu(): void {
+		$this->assertStringContainsString( 'admin.php?page=transparai-setup', TransparAI_Setup::url() );
 		$this->assertStringNotContainsString( 'upload.php', TransparAI_Setup::url() );
 	}
 
