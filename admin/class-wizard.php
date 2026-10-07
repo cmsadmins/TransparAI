@@ -406,7 +406,6 @@ final class TransparAI_Wizard {
 			'icon-only' => __( 'Icon only', 'transparai' ),
 		);
 		?>
-		<h3><?php esc_html_e( 'Scan the media library', 'transparai' ); ?></h3>
 		<?php TransparAI_Settings::render_scan_card( false ); ?>
 		<p class="description"><?php esc_html_e( 'The scan runs in small batches while this page is open and can be paused; you can also finish now and scan later from the AI Images screen. New uploads are checked automatically from now on.', 'transparai' ); ?></p>
 
