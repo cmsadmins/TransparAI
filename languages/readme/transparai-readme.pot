@@ -1067,6 +1067,52 @@ msgstr ""
 
 #. Found in changelog list item.
 msgid ""
+"Media library list: mark, confirm, dismiss, re-check or remove the \"not "
+"AI\" declaration of a single file straight from the AI column; a Gutenberg "
+"save no longer fails with rest_cannot_update when the editor sends the "
+"content review stamp back. Both contributed by Kai Spriestersbach."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Files re-encoded by ShortPixel, Imagify, Smush or EWWW are checked "
+"immediately after the optimizer finishes instead of on the next hourly "
+"sweep."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Crop and rotate in the block editor save a new attachment; it now inherits "
+"the label state of the original and gets the declaration written into its "
+"file right away."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Detection reads WAV files (Content Credentials in the C2PA chunk, IPTC "
+"digital source type in the XMP chunk) and FLAC files with a leading ID3 tag,"
+" hands MP3 manifest stores to the claim generator rule and accepts ID3v2.4 "
+"frames whose sizes iTunes writes as plain integers."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"The badge positioning rules are repeated in a small inline style block, so "
+"optimizers that defer, merge or prune the plugin stylesheet no longer push "
+"the badge out of the image. Filter transparai_critical_css removes the "
+"block."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Elementor section, container and widget backgrounds (classic background "
+"image, desktop, tablet or mobile, overlay included) get their badge on the "
+"server. Page caches keep it, no JavaScript needed; the \"CSS backgrounds\" "
+"setting switches it on as before."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
 "The overlay check runs again after scroll-in animations (AOS, entrance "
 "effects) have finished, so it judges the final layout."
 msgstr ""
