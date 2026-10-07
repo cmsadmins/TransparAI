@@ -1,0 +1,26 @@
+{
+ "claim_generator_info": [
+  {
+   "name": "TransparAI fixture",
+   "version": "1.0"
+  }
+ ],
+ "assertions": [
+  {
+   "label": "c2pa.actions",
+   "data": {
+    "actions": [
+     {
+      "action": "c2pa.created",
+      "when": "2026-01-01T00:00:00Z",
+      "digitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia",
+      "softwareAgent": "TransparAI fixture 1.0"
+     }
+    ]
+   }
+  }
+ ],
+ "alg": "ed25519",
+ "private_key": "certs/ed25519.pem",
+ "sign_cert": "certs/ed25519.pub"
+}

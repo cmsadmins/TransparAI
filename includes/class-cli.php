@@ -130,7 +130,7 @@ final class TransparAI_CLI {
 		WP_CLI::log( sprintf( '#%d would be %s: %s (%s)', $id, $status, $label, $result['evidence'] ) );
 		$c2pa = TransparAI_Detector::c2pa_info( $file );
 		if ( null !== $c2pa ) {
-			WP_CLI::log( sprintf( '#%d C2PA: data hash %s%s, signer %s, generator %s (per manifest, not verified)', $id, $c2pa['hash'], '' !== $c2pa['reason'] ? ' (' . $c2pa['reason'] . ')' : '', '' !== $c2pa['signer_cn'] ? $c2pa['signer_cn'] : '-', '' !== $c2pa['generator'] ? $c2pa['generator'] : '-' ) );
+			WP_CLI::log( sprintf( '#%d C2PA: signature %s%s, data hash %s%s, signer %s, generator %s%s', $id, $c2pa['sig'], '' !== $c2pa['sig_reason'] ? ' (' . $c2pa['sig_reason'] . ')' : '', $c2pa['hash'], '' !== $c2pa['reason'] ? ' (' . $c2pa['reason'] . ')' : '', '' !== $c2pa['signer_cn'] ? $c2pa['signer_cn'] : '-', '' !== $c2pa['generator'] ? $c2pa['generator'] : '-', '' !== $c2pa['tst'] ? ', time stamp ' . $c2pa['tst'] : '' ) );
 		}
 		return $status;
 	}

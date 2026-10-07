@@ -22,3 +22,19 @@ Manifest definition: `manifest.json` (claim generator "TransparAI fixture 1.0", 
 Regenerate (workspace, not part of the plugin): `scripts/make-c2pa-fixtures.sh`. The c2patool
 binary is downloaded from its GitHub release and run in a throwaway container without network
 access; no timestamp authority is contacted.
+
+## Signature verification fixtures
+
+| File | Purpose |
+|---|---|
+| `alg-es256.jpg` … `alg-ed25519.jpg` | one file per COSE algorithm (ES256/384/512, PS256/384/512, Ed25519), signed with the c2pa-rs test certificates (`m-<alg>.json`) |
+| `tsa-es256.jpg` | ES256 plus an RFC 3161 time stamp from the public DigiCert TSA (`m-tsa.json`, the only fixture made with network access) |
+| `test-roots.pem` | root bundle of the c2pa-rs test certificates; the tests add it as a trust anchor to get "trusted" |
+| `adobe-20220124-C.jpg` | C2PA 1.4 manifest with a `sigTst` time stamp stored as a full TimeStampResp |
+| `adobe-20220124-E-sig-CA.jpg` | tampered signature |
+| `adobe-20220124-E-uri-CA.jpg` | assertion that does not match its hashed URI |
+
+The c2pa-rs test certificates come from https://github.com/contentauth/c2pa-rs (`sdk/tests/fixtures/certs`,
+MIT or Apache-2.0). The `adobe-20220124-*` files are from the C2PA public test files
+(https://github.com/c2pa-org/public-testfiles, `legacy/1.4/image/jpeg`), licensed CC BY-SA 4.0,
+copyright Adobe and the C2PA.
