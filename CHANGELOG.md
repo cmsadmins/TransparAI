@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.9 (2026-10-07)
 
 - Full C2PA signature verification (`TransparAI_C2PA_Verify`), on PHP 7.4 to 8.5 without libraries:
   the COSE_Sign1 signature over the claim for ES256/384/512 (OpenSSL), PS256/384/512 (own

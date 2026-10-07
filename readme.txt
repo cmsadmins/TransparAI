@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, content credentials, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,11 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.9 =
+* Content Credentials are verified the way a C2PA validator does it, on your own server: the manifest signature (ES256/384/512, PS256/384/512, Ed25519), the assertion hashes, the data hash, the certificate chain against the bundled C2PA trust list and RFC 3161 time stamps. A manifest that fails goes to the review queue; the verdict, the signer and the time stamp are shown with the file.
+* The setup assistant replaces the settings card: three screens for what your site uses, how AI images are labeled (live preview, detection policy, file options) and the library scan. Every screen saves on its own; "Not now" hides it until you open it again.
+* Small images with the badge size set to "large" or "small" showed the full label next to the short one and the badge grew wider than the image; the mini variant now wins.
+
 = 1.1.8 =
 * Elementor section, container and widget backgrounds (classic background image, desktop, tablet or mobile, overlay included) get their badge on the server. Page caches keep it, no JavaScript needed; the "CSS backgrounds" setting switches it on as before.
 * The badge positioning rules are repeated in a small inline style block, so optimizers that defer, merge or prune the plugin stylesheet no longer push the badge out of the image. Filter transparai_critical_css removes the block.
@@ -317,6 +322,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.9 =
+Content Credentials are now fully verified on your server, and a three-screen setup assistant guides the first run. Settings are untouched.
 
 = 1.1.8 =
 Elementor backgrounds are labeled server-side, WAV and FLAC are detected, edited copies keep their label, and the media list gets per-file actions. Settings are untouched.
