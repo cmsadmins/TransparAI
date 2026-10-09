@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- C2PA verification checks every issuer on the chain: intermediates and the trust anchor must be
+  CA certificates allowed to sign certificates (basicConstraints, keyUsage keyCertSign, path length)
+  and valid at the verification time. Before, a signer certificate could issue another signer
+  certificate and the result still read trusted, and an expired anchor still vouched. The signer
+  profile now also refuses keyCertSign, anyExtendedKeyUsage, timeStamping and OCSPSigning and
+  non-positive serial numbers; RSA-PSS certificates must use MGF1 with the PSS hash; the RFC 3161
+  TSA certificate must carry the timeStamping usage. Test PKI in `tests/fixtures/c2pa/pki/`.
+- Content Credentials in plain text (C2PA 2.4 section A.8): `.txt` uploads are scanned for the
+  `C2PATXT` wrapper (U+FEFF plus variation selectors), read and verified like image manifests.
+  Emoji selectors stay text, a second wrapper or a length mismatch counts as malformed. Nothing is
+  written into text files.
+- Audit export as JSON: the settings page and the dashboard offer the complete report record
+  (document hash, compliance summary, log) as a download next to the CSV, the same record as
+  `GET /report` and `wp transparai report`.
 - Add an opt-in native browser tooltip showing the full label on icon-only image overlays. Server-rendered badges work without JavaScript; custom labels, generator names and human-made labels are preserved. Caption lines and explicit below/hidden placements are excluded.
 
 ## 1.1.9 (2026-10-07)

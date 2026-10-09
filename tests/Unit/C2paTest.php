@@ -178,6 +178,65 @@ final class C2paTest extends TestCase {
 		$this->assertStringContainsString( 'does not match', $result['evidence'] );
 	}
 
+	/**
+	 * A C2PA 2.4 section A.8 text wrapper around $store, one variation selector per byte.
+	 */
+	private static function text_wrapper( string $store, int $version = 1, ?int $length = null ): string {
+		$bytes = "C2PATXT\0" . chr( $version ) . pack( 'N', $length ?? strlen( $store ) ) . $store;
+		$out   = "\xEF\xBB\xBF";
+		foreach ( str_split( $bytes ) as $char ) {
+			$byte = ord( $char );
+			$out .= $byte < 16 ? "\xEF\xB8" . chr( 0x80 + $byte ) : "\xF3\xA0" . chr( 0x84 + ( ( $byte - 16 ) >> 6 ) ) . chr( 0x80 + ( ( $byte - 16 ) & 0x3F ) );
+		}
+		return $out;
+	}
+
+	private function es256_store(): string {
+		return (string) TransparAI_C2PA::store_from_data( (string) file_get_contents( trai_fixture( 'alg-es256.jpg' ) ), 'jpeg' );
+	}
+
+	public function test_text_wrapper_is_read_and_everything_else_is_text(): void {
+		$store = $this->es256_store();
+		$this->assertGreaterThan( 100, strlen( $store ) );
+
+		$this->assertSame( $store, TransparAI_C2PA::store_from_text( "Written by a model.\n" . self::text_wrapper( $store ) ) );
+		$this->assertSame( $store, TransparAI_C2PA::store_from_data( 'x' . self::text_wrapper( $store ) . "\xEF\xB8\x80\xEF\xB8\x80", 'text' ), 'padding after the store is allowed' );
+
+		$this->assertNull( TransparAI_C2PA::store_from_text( 'Plain text without any marker.' ) );
+		$this->assertNull( TransparAI_C2PA::store_from_text( "\xEF\xBB\xBFA text with a BOM and a heart \xE2\x9D\xA4\xEF\xB8\x8F." ), 'emoji selectors are text' );
+		$this->assertNull( TransparAI_C2PA::store_from_text( self::text_wrapper( $store, 2 ) ), 'unknown version is text' );
+
+		$this->assertSame( '', TransparAI_C2PA::store_from_text( self::text_wrapper( $store ) . ' and ' . self::text_wrapper( $store ) ), 'two wrappers are ambiguous' );
+		$this->assertSame( '', TransparAI_C2PA::store_from_text( self::text_wrapper( $store, 1, strlen( $store ) + 10 ) ), 'length beyond the run' );
+		$this->assertSame( '', TransparAI_C2PA::store_from_text( self::text_wrapper( substr( $store, 0, 40 ), 1 ) ), 'LBox does not match the length field' );
+	}
+
+	public function test_detector_reads_credentials_in_plain_text(): void {
+		$text = "A paragraph from a language model.\n" . self::text_wrapper( $this->es256_store() );
+
+		$path = sys_get_temp_dir() . '/trai-c2pa-' . uniqid() . '.txt';
+		file_put_contents( $path, $text );
+		$this->temp_files[] = $path;
+
+		$result = TransparAI_Detector::detect_file( $path );
+		$this->assertNotNull( $result );
+		$this->assertSame( 'c2pa', $result['source'] );
+		$this->assertSame( 'generated', $result['type'] );
+		$this->assertSame( 'likely', $result['confidence'], 'the store was signed for another asset, its data hash cannot match' );
+
+		$info = TransparAI_Detector::c2pa_info( $path );
+		$this->assertNotNull( $info );
+		$this->assertNotSame( 'match', $info['hash'] );
+		$this->assertSame( 'untrusted', $info['sig'], $info['sig_reason'] );
+		$this->assertTrue( TransparAI_C2PA::present( $path ) );
+
+		/* The same bytes under another name are not read as text. */
+		$other = sys_get_temp_dir() . '/trai-c2pa-' . uniqid() . '.bin';
+		file_put_contents( $other, $text );
+		$this->temp_files[] = $other;
+		$this->assertFalse( TransparAI_C2PA::present( $other ) );
+	}
+
 	public function test_scanner_stores_the_manifest_facts_and_scan_fingerprint(): void {
 		global $trai_test_meta;
 		$path                               = $this->temp_copy( 'signed.png' );

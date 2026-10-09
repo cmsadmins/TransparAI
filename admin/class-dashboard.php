@@ -407,6 +407,7 @@ final class TransparAI_Dashboard {
 				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( self::url( 'transparai-assessment', '#trai-literacy' ) ); ?>"><?php esc_html_e( 'AI literacy checklist', 'transparai' ); ?></a>
 				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Compliance report', 'transparai' ); ?></a>
 				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
+				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all&format=json' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit JSON', 'transparai' ); ?></a>
 				<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( self::url( TransparAI_Settings::PAGE ) ); ?>"><?php esc_html_e( 'Settings', 'transparai' ); ?></a>
 			</p>
 		</section>

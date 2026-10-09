@@ -37,7 +37,9 @@ final class TransparAI_Settings {
 	}
 
 	/**
-	 * Stream the audit export as CSV.
+	 * Stream the audit export as CSV, or with format=json as the full report
+	 * record (document hash, compliance summary, log), the same JSON that
+	 * `wp transparai report` and REST /report return.
 	 *
 	 * Same rows as `wp transparai status --format=csv`, for everyone who does
 	 * not have shell access to the site.
@@ -53,7 +55,15 @@ final class TransparAI_Settings {
 			$status = 'all';
 		}
 
-		$report  = TransparAI_Meta::report( $status );
+		$report = TransparAI_Meta::report( $status );
+		if ( isset( $_GET['format'] ) && 'json' === sanitize_key( wp_unslash( $_GET['format'] ) ) ) {
+			nocache_headers();
+			header( 'Content-Type: application/json; charset=utf-8' );
+			header( 'Content-Disposition: attachment; filename=transparai-audit-' . gmdate( 'Y-m-d' ) . '.json' );
+			echo wp_json_encode( $report, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+			exit;
+		}
+
 		$columns = array_merge( TransparAI_Meta::audit_columns(), array( 'history' ) );
 
 		nocache_headers();
@@ -889,6 +899,7 @@ th{background:#f6f7f7;}
 						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( admin_url( 'upload.php?mode=list&transparai_filter=detected' ) ); ?>"><?php esc_html_e( 'Open review queue', 'transparai' ); ?></a>
 					<?php endif; ?>
 					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit CSV', 'transparai' ); ?></a>
+					<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_export&status=all&format=json' ), 'transparai_export' ) ); ?>"><?php esc_html_e( 'Export audit JSON', 'transparai' ); ?></a>
 						<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=transparai_print&status=all' ), 'transparai_print' ) ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Print view', 'transparai' ); ?></a>
 						<?php if ( ! TransparAI_Setup::visible() ) : ?>
 							<a class="trai-btn trai-btn--ghost" href="<?php echo esc_url( TransparAI_Setup::url() ); ?>"><?php esc_html_e( 'Open setup', 'transparai' ); ?></a>

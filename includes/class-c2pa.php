@@ -148,6 +148,8 @@ final class TransparAI_C2PA {
 				return self::webp_file_has_chunk( $path, 'C2PA' );
 			case 'bmff':
 				return TransparAI_Parsers::bmff_scan( $head )['c2pa'];
+			case '':
+				return self::is_text( $path ) && null !== self::store_from_text( (string) TransparAI_Parsers::read_head( $path, self::MAX_FILE_BYTES ) );
 		}
 		return false;
 	}
@@ -235,8 +237,61 @@ final class TransparAI_C2PA {
 				return self::png_find_chunk( $data, 'caBX' );
 			case 'webp':
 				return self::webp_find_chunk( $data, 'C2PA' );
+			case 'text':
+				return self::store_from_text( $data );
 		}
 		return null;
+	}
+
+	/**
+	 * Whether a file is plain text by name; text has no magic bytes to sniff.
+	 */
+	public static function is_text( string $path ): bool {
+		return 'txt' === strtolower( pathinfo( $path, PATHINFO_EXTENSION ) );
+	}
+
+	/**
+	 * The manifest store of a plain text (C2PA 2.4 section A.8).
+	 *
+	 * The wrapper is U+FEFF followed by one variation selector per byte,
+	 * U+FE00 to U+FE0F for 0 to 15 and U+E0100 to U+E01EF for 16 to 255. The
+	 * bytes spell "C2PATXT", a NUL, version 1, a big-endian length and the
+	 * JUMBF store; padding may follow. A run with another magic is text (emoji
+	 * use selectors too); a second wrapper makes the text ambiguous.
+	 *
+	 * @return string|null Null without a wrapper, '' when a wrapper is malformed or repeated.
+	 */
+	public static function store_from_text( string $data ): ?string {
+		if ( ! str_contains( $data, "\xEF\xBB\xBF" ) ) {
+			return null;
+		}
+		/* Possessive: a long run as a backtracking repeat would exhaust the PCRE JIT stack. */
+		$runs = preg_match_all( '/\xEF\xBB\xBF((?:\xEF\xB8[\x80-\x8F]|\xF3\xA0[\x84-\x86][\x80-\xBF]|\xF3\xA0\x87[\x80-\xAF])++)/', $data, $matches );
+		if ( ! $runs ) {
+			return null;
+		}
+
+		$map = array();
+		for ( $byte = 0; $byte < 256; $byte++ ) {
+			$n           = $byte - 16;
+			$key         = $byte < 16 ? "\xEF\xB8" . chr( 0x80 + $byte ) : "\xF3\xA0" . chr( 0x84 + ( $n >> 6 ) ) . chr( 0x80 + ( $n & 0x3F ) );
+			$map[ $key ] = chr( $byte );
+		}
+
+		$store = null;
+		foreach ( $matches[1] as $run ) {
+			$bytes = strtr( $run, $map );
+			if ( strlen( $bytes ) < 13 || "C2PATXT\0" !== substr( $bytes, 0, 8 ) || 1 !== ord( $bytes[8] ) ) {
+				continue;
+			}
+			if ( null !== $store ) {
+				return '';
+			}
+			$length = (int) unpack( 'N', substr( $bytes, 9, 4 ) )[1];
+			$body   = (string) substr( $bytes, 13, $length );
+			$store  = $length >= 8 && $length <= self::MAX_STORE_BYTES && strlen( $body ) === $length && unpack( 'N', $body )[1] === $length ? $body : '';
+		}
+		return $store;
 	}
 
 	/**
