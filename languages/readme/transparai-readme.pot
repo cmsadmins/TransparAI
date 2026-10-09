@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TransparAI readme 1.1.9\n"
+"Project-Id-Version: TransparAI readme 1.1.10\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -336,8 +336,9 @@ msgid ""
 "every disclosure notice, the AI-marked content, the media audit list and the"
 " recent activity, together with a document hash over the facts, so two "
 "reports of an unchanged site carry the same hash. <code>GET /wp-"
-"json/transparai/v1/report</code> returns the same record as JSON, and the "
-"CSV export lists the media audit rows."
+"json/transparai/v1/report</code> returns the same record as JSON, the CSV "
+"export lists the media audit rows and the JSON download saves the whole "
+"record as a file."
 msgstr ""
 
 #. Found in faq paragraph.
@@ -511,19 +512,20 @@ msgid ""
 "with time, previous state, trigger and the editor's name, plus a site log of"
 " settings changes, scans, sweeps, bulk actions and declarations that the "
 "dashboard shows as recent activity. Export the whole library as a CSV audit "
-"list, or open the compliance report: a print view with the readiness score, "
-"the assessment answers, the Article 4 checklist, the AI systems in use, the "
-"state of every disclosure notice, the AI-written content, the media audit "
-"list and the recent activity, sealed with a document hash over the facts, "
-"the guidance basis and the stated limitations, ready for print-to-PDF. A "
-"REST API under <code>transparai/v1</code> exposes rows, per-file detail, "
-"every action and the same report for headless setups and agency tooling; "
-"nothing in it is public. WP-CLI covers scanning, labeling, declaring, "
-"auditing, the score, the assessment, the AI systems inventory, the AI levels"
-" of posts and the report. Other plugins can label media through an action, "
-"detection rules and the AI systems list are extensible via filters, WPML and"
-" Polylang are configured, and uninstalling cleans up across a multisite "
-"network on request."
+"list or as the complete JSON record, or open the compliance report: a print "
+"view with the readiness score, the assessment answers, the Article 4 "
+"checklist, the AI systems in use, the state of every disclosure notice, the "
+"AI-written content, the media audit list and the recent activity, sealed "
+"with a document hash over the facts, the guidance basis and the stated "
+"limitations, ready for print-to-PDF. A REST API under "
+"<code>transparai/v1</code> exposes rows, per-file detail, every action and "
+"the same report for headless setups and agency tooling; nothing in it is "
+"public. WP-CLI covers scanning, labeling, declaring, auditing, the score, "
+"the assessment, the AI systems inventory, the AI levels of posts and the "
+"report. Other plugins can label media through an action, detection rules and"
+" the AI systems list are extensible via filters, WPML and Polylang are "
+"configured, and uninstalling cleans up across a multisite network on "
+"request."
 msgstr ""
 
 #. Found in description paragraph.
@@ -839,7 +841,8 @@ msgid ""
 "in PNG chunks from Stable Diffusion (AUTOMATIC1111), ComfyUI, NovelAI and "
 "InvokeAI; EXIF and XMP signatures of Flux, Leonardo.Ai, Ideogram, Recraft, "
 "Seedream and Photoshop Generative Fill; JPEG comment markers, C2PA in MP4 "
-"video and AI declarations in MP3 audio."
+"video, AI declarations in MP3 audio and Content Credentials embedded in "
+"plain text files."
 msgstr ""
 
 #. Found in faq paragraph.
@@ -1073,6 +1076,33 @@ msgstr ""
 
 #. Found in description header.
 msgid "For developers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Optional native browser tooltip with the full label on icon-only image "
+"overlays (contributed by Kai Spriestersbach)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"The audit export is also available as a JSON file with the document hash, "
+"next to the CSV."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Content Credentials in plain text files (.txt) are read and verified like "
+"those in images."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Content Credentials verification checks every certificate on the chain: each"
+" issuer, the trust anchor included, must be an authority allowed to sign "
+"certificates and valid at the time of signing. A signing certificate may not"
+" issue other certificates or carry time stamping or catch-all usages, and "
+"the time stamp authority must be certified for time stamps."
 msgstr ""
 
 #. Found in changelog list item.
