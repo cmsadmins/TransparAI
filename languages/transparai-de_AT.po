@@ -3605,3 +3605,12 @@ msgid ""
 msgstr ""
 "Das Dashboard behält den Score und die offenen Schritte im Blick. Dieser "
 "Assistent bleibt über das Dashboard und die Einstellungen erreichbar."
+
+
+#: admin/class-settings.php
+msgid "Show the full label as a native browser tooltip on icon-only image overlays (no JavaScript required)"
+msgstr "Vollständiges Label als nativen Browser-Tooltip bei „Nur Symbol (Kurzlabel)“ im Bild-Overlay anzeigen (ohne JavaScript)"
+
+#: admin/class-settings.php
+msgid "Applies to Overlay on the image and Icon only (short label). Native tooltips appear on mouse hover; touch and keyboard support depends on the browser. The full label remains available to screen readers."
+msgstr "Gilt für „Overlay auf dem Bild“ und „Nur Symbol (Kurzlabel)“. Der native Tooltip erscheint beim Mouseover; die Unterstützung per Touch und Tastatur hängt vom Browser ab. Das vollständige Label bleibt für Screenreader verfügbar."

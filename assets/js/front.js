@@ -30,7 +30,7 @@
 			   collapse every badge to the bare short label. */
 			var mini = width < 140;
 			badge.classList.toggle('trai-badge--mini', mini);
-			if (!badge.title && (mini || badge.scrollWidth > badge.clientWidth)) {
+			if (!badge.title && !badge.closest('.trai-style-icon-only') && (mini || badge.scrollWidth > badge.clientWidth)) {
 				badge.title = badge.textContent;
 			}
 		});
@@ -450,6 +450,9 @@
 		badge.setAttribute('role', 'note');
 		badge.setAttribute('data-trai-short', config.short);
 		setLabel(badge, config.label, config.icon);
+		if (config.shortTooltip) {
+			badge.title = config.label;
+		}
 		return badge;
 	}
 
@@ -628,6 +631,11 @@
 	function badgeFor(entry) {
 		var badge = makeBadge();
 		setLabel(badge, entry.label, entry.human ? '' : (entry.icon || ''));
+		if (config.shortTooltip && entry.classes.indexOf('trai-badge-below') === -1 && entry.classes.indexOf('trai-badge-hidden') === -1) {
+			badge.title = entry.label;
+		} else {
+			badge.removeAttribute('title');
+		}
 		badge.setAttribute('data-trai-short', entry.short || config.short);
 		if (entry.human) {
 			badge.classList.add('trai-badge--human');

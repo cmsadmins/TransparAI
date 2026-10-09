@@ -160,10 +160,25 @@
 		var preview = this;
 		var prefixes = { badge_style: 'trai-style-', badge_position: 'trai-pos-', badge_mode: 'trai-mode-', badge_size: 'trai-size-' };
 		var form = preview.closest('form');
+		var tooltipControl = form.querySelector('input[name="transparai_settings[badge_short_tooltip]"]');
+		var syncTooltip = function () {
+			var badge = preview.querySelector('.trai-badge');
+			if (!badge || !tooltipControl) {
+				return;
+			}
+			if (tooltipControl.checked && preview.classList.contains('trai-style-icon-only') && preview.classList.contains('trai-mode-overlay')) {
+				badge.title = badge.textContent;
+			} else {
+				badge.removeAttribute('title');
+			}
+		};
+		syncTooltip();
+		jQuery(form).on('change', 'input[type="checkbox"]', syncTooltip);
 		jQuery(form).on('change', 'select, input[type="radio"]', function () {
 			var key = this.name.replace(/^.*\[(\w+)\]$/, '$1');
 			if (prefixes[key]) {
 				preview.className = preview.className.replace(new RegExp('\\b' + prefixes[key] + '[a-z-]+'), prefixes[key] + this.value);
+				syncTooltip();
 			}
 		});
 

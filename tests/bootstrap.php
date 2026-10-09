@@ -282,6 +282,11 @@ if ( ! function_exists( 'has_action' ) ) {
 		return false;
 	}
 }
+if ( ! function_exists( 'wp_attachment_is_image' ) ) {
+	function wp_attachment_is_image( $post_id = 0 ) {
+		return $post_id > 0 && 0 === strpos( (string) get_post_mime_type( $post_id ), 'image/' );
+	}
+}
 if ( ! function_exists( 'get_post_mime_type' ) ) {
 	function get_post_mime_type( $post_id = 0 ) {
 		global $trai_test_meta;

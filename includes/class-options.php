@@ -43,6 +43,7 @@ final class TransparAI_Options {
 			'badge_text_color'        => '', /* Hex #rrggbb text (and border). Empty = the colour that comes with the chosen style. */
 			'badge_opacity'           => '100', /* 0-100 percent, applied to the whole badge. 100 = the style's own opacity. */
 			'badge_from_date'         => '', /* Y-m-d; only media uploaded on/after this date get the front-end badge. Empty = all. */
+			'badge_short_tooltip'     => '0', /* Native title on icon-only image overlays. */
 			'badge_show_source'       => '0', /* Append detected generator name to the badge. */
 			'badge_alt_append'        => '1', /* Append note to image alt text (screen readers get the disclosure too). */
 			'badge_guard'             => '1', /* JS: move badges that a theme overlay covers. */
@@ -162,6 +163,7 @@ final class TransparAI_Options {
 		);
 		$booleans = array(
 			'badge_enabled',
+			'badge_short_tooltip',
 			'badge_show_source',
 			'badge_alt_append',
 			'badge_guard',

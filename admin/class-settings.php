@@ -211,7 +211,7 @@ th{background:#f6f7f7;}
 		the first dependency list. */
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'wp-color-picker' ), TRANSPARAI_VERSION, true );
+		wp_enqueue_script( 'transparai-admin', TRANSPARAI_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery', 'wp-color-picker' ), TRANSPARAI_VERSION . '.' . filemtime( TRANSPARAI_PLUGIN_DIR . 'assets/js/admin.js' ), true );
 		TransparAI_Media_Library::localize_admin();
 	}
 
@@ -392,6 +392,9 @@ th{background:#f6f7f7;}
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Extras', 'transparai' ); ?></th>
 						<td>
+							<label><input type="checkbox" name="<?php self::name( 'badge_short_tooltip' ); ?>" value="1" <?php checked( $options['badge_short_tooltip'], '1' ); ?> />
+							<?php esc_html_e( 'Show the full label as a native browser tooltip on icon-only image overlays (no JavaScript required)', 'transparai' ); ?></label><br />
+							<p class="description"><?php esc_html_e( 'Applies to Overlay on the image and Icon only (short label). Native tooltips appear on mouse hover; touch and keyboard support depends on the browser. The full label remains available to screen readers.', 'transparai' ); ?></p>
 							<label><input type="checkbox" name="<?php self::name( 'badge_show_source' ); ?>" value="1" <?php checked( $options['badge_show_source'], '1' ); ?> />
 							<?php esc_html_e( 'Show the detected generator in the badge (e.g. "AI-generated · Midjourney"; ignored when the badge text contains {generator})', 'transparai' ); ?></label><br />
 							<label><input type="checkbox" name="<?php self::name( 'badge_alt_append' ); ?>" value="1" <?php checked( $options['badge_alt_append'], '1' ); ?> />
