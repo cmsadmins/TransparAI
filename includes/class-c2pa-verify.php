@@ -443,10 +443,21 @@ final class TransparAI_C2PA_Verify {
 	 */
 	private static function signer_profile_ok( array $cert ): bool {
 		$extensions = (array) ( $cert['extensions'] ?? array() );
-		if ( str_contains( (string) ( $extensions['basicConstraints'] ?? '' ), 'CA:TRUE' ) ) {
+		if ( str_contains( (string) ( $extensions['basicConstraints'] ?? '' ), 'CA:TRUE' ) || ! self::serial_ok( $cert ) ) {
 			return false;
 		}
+		if ( isset( $extensions['keyUsage'] ) ) {
+			$key_usage = (string) $extensions['keyUsage'];
+			if ( ! str_contains( $key_usage, 'Digital Signature' ) || str_contains( $key_usage, 'Certificate Sign' ) ) {
+				return false;
+			}
+		}
 		$eku = (string) ( $extensions['extendedKeyUsage'] ?? '' );
+		foreach ( array( 'Any Extended Key Usage', 'Time Stamping', 'OCSP Signing' ) as $usage ) {
+			if ( str_contains( $eku, $usage ) ) {
+				return false;
+			}
+		}
 		foreach ( self::SIGNER_EKUS as $usage ) {
 			if ( str_contains( $eku, $usage ) ) {
 				return true;
@@ -456,7 +467,48 @@ final class TransparAI_C2PA_Verify {
 	}
 
 	/**
+	 * A certificate that issues another one must be a CA allowed to sign
+	 * certificates, with room in its path length for the CAs below it.
+	 *
+	 * @param array<string, mixed> $info  openssl_x509_parse() result of the issuer.
+	 * @param int                  $below Intermediate CAs between the issuer and the leaf.
+	 */
+	private static function issuer_profile_ok( array $info, int $below ): bool {
+		$extensions  = (array) ( $info['extensions'] ?? array() );
+		$constraints = (string) ( $extensions['basicConstraints'] ?? '' );
+		if ( ! str_contains( $constraints, 'CA:TRUE' ) || ! str_contains( (string) ( $extensions['keyUsage'] ?? '' ), 'Certificate Sign' ) ) {
+			return false;
+		}
+		if ( preg_match( '/pathlen:(\d+)/', $constraints, $match ) && (int) $match[1] < $below ) {
+			return false;
+		}
+		return self::serial_ok( $info );
+	}
+
+	/**
+	 * RFC 5280 serial numbers are positive integers.
+	 *
+	 * @param array<string, mixed> $info openssl_x509_parse() result.
+	 */
+	private static function serial_ok( array $info ): bool {
+		$serial = (string) ( $info['serialNumber'] ?? '' );
+		return '' !== $serial && '0' !== $serial && '-' !== $serial[0];
+	}
+
+	/**
+	 * Whether a certificate is inside its validity period at $time.
+	 *
+	 * @param array<string, mixed> $info openssl_x509_parse() result.
+	 */
+	private static function valid_at( array $info, int $time ): bool {
+		return $time >= (int) $info['validFrom_time_t'] && $time <= (int) $info['validTo_time_t'];
+	}
+
+	/**
 	 * Walk the chain from the leaf to a trust anchor.
+	 *
+	 * Every issuer on the way, the anchor included, must be valid at $time and
+	 * carry a CA profile; an anchor that fails this simply does not vouch.
 	 *
 	 * @param string[] $chain   DER certificates, leaf first, intermediates after.
 	 * @param string[] $anchors PEM trust anchors.
@@ -472,17 +524,25 @@ final class TransparAI_C2PA_Verify {
 			if ( ! is_array( $info ) ) {
 				return 'broken';
 			}
-			if ( $time < (int) $info['validFrom_time_t'] || $time > (int) $info['validTo_time_t'] ) {
+			if ( ! self::valid_at( $info, $time ) ) {
 				return 'expired';
 			}
 			foreach ( $anchors as $anchor ) {
-				if ( self::same_cert( $current, $anchor ) || self::issued_by( $current, $info, $anchor ) ) {
+				if ( self::same_cert( $current, $anchor ) ) {
+					return 'trusted';
+				}
+				$anchor_info = openssl_x509_parse( $anchor );
+				if ( is_array( $anchor_info ) && self::valid_at( $anchor_info, $time ) && self::issuer_profile_ok( $anchor_info, $depth ) && self::issued_by( $current, $info, $anchor ) ) {
 					return 'trusted';
 				}
 			}
 			$next = null;
 			foreach ( $pool as $index => $candidate ) {
 				if ( self::issued_by( $current, $info, $candidate ) ) {
+					$candidate_info = openssl_x509_parse( $candidate );
+					if ( ! is_array( $candidate_info ) || ! self::issuer_profile_ok( $candidate_info, $depth ) ) {
+						return 'broken';
+					}
 					$next = $candidate;
 					unset( $pool[ $index ] );
 					break;
@@ -551,18 +611,27 @@ final class TransparAI_C2PA_Verify {
 			return 1 === openssl_verify( $tbs, $signature, $key, $ecdsa[ $oid ] ?? $rsa[ $oid ] );
 		}
 		if ( "\x2a\x86\x48\x86\xf7\x0d\x01\x01\x0a" === $oid ) {
-			/* RSASSA-PSS: the hash sits in the parameters ([0] hashAlgorithm). */
-			$hash = '';
+			/*
+			 * RSASSA-PSS: the hash sits in the parameters ([0] hashAlgorithm),
+			 * MGF1 must use the same one ([1] maskGenAlgorithm, SHA-1 if absent).
+			 */
+			$hash     = '';
+			$mgf_hash = 'sha1';
 			if ( isset( $alg[1] ) ) {
 				foreach ( self::children( $cert, $alg[1]['start'], $alg[1]['end'] ) as $param ) {
 					if ( 0xA0 === $param['tag'] ) {
 						$hash_alg = self::tlv( $cert, $param['start'], $param['end'] );
 						$hash_oid = null === $hash_alg ? array() : self::children( $cert, $hash_alg['start'], $hash_alg['end'] );
 						$hash     = isset( $hash_oid[0] ) ? ( self::DIGEST_OIDS[ self::content( $cert, $hash_oid[0] ) ] ?? '' ) : '';
+					} elseif ( 0xA1 === $param['tag'] ) {
+						$mgf      = self::tlv( $cert, $param['start'], $param['end'] );
+						$mgf_alg  = null === $mgf ? array() : self::children( $cert, $mgf['start'], $mgf['end'] );
+						$mgf_oid  = isset( $mgf_alg[1] ) ? self::children( $cert, $mgf_alg[1]['start'], $mgf_alg[1]['end'] ) : array();
+						$mgf_hash = isset( $mgf_oid[0] ) ? ( self::DIGEST_OIDS[ self::content( $cert, $mgf_oid[0] ) ] ?? '' ) : '';
 					}
 				}
 			}
-			return in_array( $hash, array( 'sha256', 'sha384', 'sha512' ), true ) && self::verify_pss( $tbs, $signature, $issuer, $hash );
+			return in_array( $hash, array( 'sha256', 'sha384', 'sha512' ), true ) && $mgf_hash === $hash && self::verify_pss( $tbs, $signature, $issuer, $hash );
 		}
 		if ( "\x2b\x65\x70" === $oid ) {
 			$spki = self::spki( $issuer );
@@ -840,13 +909,18 @@ final class TransparAI_C2PA_Verify {
 			return null;
 		}
 
+		/* RFC 3161 section 2.3: the TSA certificate is dedicated to time stamping. */
+		$subject = openssl_x509_parse( self::pem( $tsa_cert ) );
+		if ( ! is_array( $subject ) || ! str_contains( (string) ( $subject['extensions']['extendedKeyUsage'] ?? '' ), 'Time Stamping' ) ) {
+			return null;
+		}
+
 		$chain = array_merge( array( $tsa_cert ), array_values( array_filter( $certs, static fn( string $cert ): bool => $cert !== $tsa_cert ) ) );
 		$trust = self::chain_trust( $chain, self::anchors( 'tsa' ), $gen_time );
 		if ( 'expired' === $trust || 'broken' === $trust ) {
 			return null;
 		}
-		$subject = openssl_x509_parse( self::pem( $tsa_cert ) );
-		$name    = is_array( $subject ) ? ( $subject['subject']['CN'] ?? $subject['subject']['O'] ?? '' ) : '';
+		$name = $subject['subject']['CN'] ?? $subject['subject']['O'] ?? '';
 		return array(
 			'time'    => $gen_time,
 			'tsa'     => is_array( $name ) ? (string) reset( $name ) : (string) $name,
