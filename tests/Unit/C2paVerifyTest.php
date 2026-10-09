@@ -128,6 +128,56 @@ final class C2paVerifyTest extends TestCase {
 	}
 
 	/**
+	 * Chains from tests/fixtures/c2pa/pki/ (scripts/make-pki-fixtures.sh in the workspace).
+	 *
+	 * @return array<string, array{string[], string, string}> chain (leaf first), anchor, expected verdict.
+	 */
+	public function chains(): array {
+		return array(
+			'valid chain'                     => array( array( 'leaf' ), 'root', 'trusted' ),
+			'issued by a non-CA signer'       => array( array( 'leaf-from-leaf', 'leaf' ), 'root', 'broken' ),
+			'issued by a non-CA, no pool'     => array( array( 'leaf-from-leaf' ), 'leaf', 'untrusted' ),
+			'anchor outside its validity'     => array( array( 'leaf-expired-root' ), 'root-expired', 'untrusted' ),
+			'CA without keyCertSign'          => array( array( 'leaf-no-certsign', 'ca-no-certsign' ), 'root', 'broken' ),
+			'path length exceeded'            => array( array( 'leaf-deep', 'ca-sub', 'ca-pathlen0' ), 'root', 'broken' ),
+			'path length kept by one CA less' => array( array( 'ca-sub', 'ca-pathlen0' ), 'root', 'trusted' ),
+		);
+	}
+
+	/**
+	 * @dataProvider chains
+	 *
+	 * @param string[] $chain Fixture names, leaf first.
+	 */
+	public function test_chain_checks_every_issuer( array $chain, string $anchor, string $expected ): void {
+		$method = new ReflectionMethod( TransparAI_C2PA_Verify::class, 'chain_trust' );
+		$method->setAccessible( true );
+		$der = array_map( fn( string $name ): string => $this->pki_der( $name ), $chain );
+		$this->assertSame( $expected, $method->invoke( null, $der, array( $this->pki_pem( $anchor ) ), time() ) );
+	}
+
+	public function test_signer_profile_rejects_misused_certificates(): void {
+		$method = new ReflectionMethod( TransparAI_C2PA_Verify::class, 'signer_profile_ok' );
+		$method->setAccessible( true );
+		$profile = fn( string $name ): bool => $method->invoke( null, openssl_x509_parse( $this->pki_pem( $name ) ) );
+
+		$this->assertTrue( $profile( 'leaf' ) );
+		$this->assertFalse( $profile( 'root' ), 'a CA is no signer' );
+		$this->assertFalse( $profile( 'leaf-certsign' ), 'keyCertSign on a signer' );
+		$this->assertFalse( $profile( 'leaf-timestamping' ), 'time stamping EKU on a signer' );
+		$this->assertFalse( $profile( 'leaf-any-eku' ), 'anyExtendedKeyUsage on a signer' );
+		$this->assertFalse( $profile( 'leaf-negative' ), 'negative serial number' );
+	}
+
+	private function pki_pem( string $name ): string {
+		return (string) file_get_contents( dirname( __DIR__ ) . "/fixtures/c2pa/pki/{$name}.pem" );
+	}
+
+	private function pki_der( string $name ): string {
+		return (string) base64_decode( (string) preg_replace( '/-----[^-]+-----|\s+/', '', $this->pki_pem( $name ) ) );
+	}
+
+	/**
 	 * The raw COSE signature bytes of the active manifest.
 	 */
 	private function cose_signature( string $store ): string {

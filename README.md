@@ -191,3 +191,7 @@ front-end script instead.
 ### Theme integration
 
  print attachment images through `wp_get_attachment_image()` (or markup carrying the `wp-image-{ID}` class) and the badge is rendered server-side and page-cache safe. For raw URL output and CSS backgrounds there is the optional script described above; it wraps matched images with the same markup (`span.trai-wrap` around the image plus `span.trai-badge`), so any CSS you write applies to both paths.
+
+### Native tooltip for short image labels
+
+In Settings → Visible badge → Extras, enable the full-label browser tooltip when using **Overlay on the image** and **Icon only (short label)**. The option is off by default. The server renders the complete label in the HTML `title` attribute, so the hover tooltip needs no JavaScript. Custom labels and generator names are preserved; the full text also remains in the badge for screen readers. Native tooltip visibility on touch devices and with a keyboard depends on the browser. Caption lines, video/audio, and attachments explicitly placed below the image or hidden are excluded.

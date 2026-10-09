@@ -110,6 +110,9 @@ final class TransparAI_Detector {
 			case 'wav':
 				$result = self::detect_wav( $head );
 				break;
+			case '':
+				$result = TransparAI_C2PA::is_text( $path ) ? self::detect_text( $path ) : null;
+				break;
 		}
 
 		if ( null === $result ) {
@@ -315,6 +318,15 @@ final class TransparAI_Detector {
 		}
 
 		return null !== $xmp ? self::from_signatures( array( 'xmp' => $xmp ) ) : null;
+	}
+
+	/**
+	 * Plain text: a C2PA text wrapper (C2PA 2.4 section A.8), nothing else.
+	 */
+	private static function detect_text( string $path ): ?array {
+		$data  = TransparAI_Parsers::read_head( $path, TransparAI_C2PA::MAX_FILE_BYTES );
+		$store = null === $data ? null : TransparAI_C2PA::store_from_text( $data );
+		return null === $store ? null : self::from_c2pa( true, $store, $path );
 	}
 
 	/**
@@ -543,7 +555,10 @@ final class TransparAI_Detector {
 		}
 		$head   = TransparAI_Parsers::read_head( $path, 64 );
 		$format = null === $head ? '' : TransparAI_Parsers::sniff( $head );
-		$info   = array(
+		if ( '' === $format && TransparAI_C2PA::is_text( $path ) ) {
+			$format = 'text';
+		}
+		$info = array(
 			'hash'        => 'unsupported',
 			'reason'      => 'bmff',
 			'alg'         => '',
@@ -561,7 +576,7 @@ final class TransparAI_Detector {
 			'own_mark'    => false,
 			'file'        => basename( $path ),
 		);
-		if ( ! in_array( $format, array( 'jpeg', 'png', 'webp' ), true ) ) {
+		if ( ! in_array( $format, array( 'jpeg', 'png', 'webp', 'text' ), true ) ) {
 			return $info; /* ISO-BMFF: presence only, the BMFF hash is out of scope. */
 		}
 		if ( (int) filesize( $path ) > TransparAI_C2PA::MAX_FILE_BYTES ) {

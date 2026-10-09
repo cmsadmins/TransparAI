@@ -38,3 +38,17 @@ The c2pa-rs test certificates come from https://github.com/contentauth/c2pa-rs (
 MIT or Apache-2.0). The `adobe-20220124-*` files are from the C2PA public test files
 (https://github.com/c2pa-org/public-testfiles, `legacy/1.4/image/jpeg`), licensed CC BY-SA 4.0,
 copyright Adobe and the C2PA.
+
+## Certificate chain fixtures (`pki/`)
+
+ECDSA P-256 certificates without keys, made with OpenSSL by `scripts/make-pki-fixtures.sh` in the
+workspace. They feed `chain_trust()` and `signer_profile_ok()` directly, no manifest involved.
+
+| File | Purpose |
+|---|---|
+| `root.pem`, `leaf.pem` | valid root and signer, the control case |
+| `root-expired.pem`, `leaf-expired-root.pem` | anchor valid 2020 to 2021 only, it must not vouch |
+| `leaf-from-leaf.pem` | signer issued with the key of another signer (no CA), a forged chain |
+| `ca-no-certsign.pem`, `leaf-no-certsign.pem` | CA whose key usage lacks keyCertSign |
+| `ca-pathlen0.pem`, `ca-sub.pem`, `leaf-deep.pem` | pathlen:0 CA with a CA below it |
+| `leaf-certsign.pem`, `leaf-timestamping.pem`, `leaf-any-eku.pem`, `leaf-negative.pem` | signer profiles C2PA forbids |

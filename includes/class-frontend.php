@@ -268,11 +268,25 @@ final class TransparAI_Frontend {
 	}
 
 	/**
+	 * Native browser tooltip; the full accessible text stays in the span.
+	 */
+	private static function short_tooltip_attributes( int $attachment_id, string $label ): string {
+		if ( ! TransparAI_Options::enabled( 'badge_short_tooltip' )
+			|| 'icon-only' !== TransparAI_Options::get( 'badge_style' )
+			|| 'overlay' !== TransparAI_Options::get( 'badge_mode' )
+			|| ! wp_attachment_is_image( $attachment_id )
+			|| in_array( TransparAI_Meta::get_badge_position( $attachment_id ), array( 'below', 'hidden' ), true ) ) {
+			return '';
+		}
+		return ' title="' . esc_attr( $label ) . '"';
+	}
+
+	/**
 	 * The badge element for an attachment.
 	 */
 	private static function badge_html( int $attachment_id ): string {
 		if ( TransparAI_Meta::is_human( $attachment_id ) && ! TransparAI_Meta::is_flagged( $attachment_id ) ) {
-			$html = '<span class="trai-badge trai-badge--human" role="note" data-trai-short="' . esc_attr( self::human_short_label() ) . '">'
+			$html = '<span class="trai-badge trai-badge--human" role="note" data-trai-short="' . esc_attr( self::human_short_label() ) . '"' . self::short_tooltip_attributes( $attachment_id, self::human_badge_label() ) . '>'
 				. esc_html( self::human_badge_label() ) . '</span>';
 			return (string) apply_filters( 'transparai_badge_html', $html, $attachment_id );
 		}
@@ -284,7 +298,7 @@ final class TransparAI_Frontend {
 				$label .= ' · ' . $generator;
 			}
 		}
-		$html = self::badge_element( $label, self::badge_short_label(), TransparAI_Meta::get_type( $attachment_id ) );
+		$html = self::badge_element( $label, self::badge_short_label(), TransparAI_Meta::get_type( $attachment_id ), false, $attachment_id );
 
 		/**
 		 * Filters the badge markup of one attachment.
@@ -304,10 +318,11 @@ final class TransparAI_Frontend {
 	 * @param string $short      The short label for the mini variant.
 	 * @param string $type       generated|composite, decides between the Fully AI-generated and Partially AI-modified icon.
 	 * @param bool   $force_icon Include the icon whatever the style setting (the settings preview switches styles live).
+	 * @param int    $attachment_id Attachment ID for the optional native tooltip; 0 for previews.
 	 */
-	public static function badge_element( string $label, string $short, string $type = 'generated', bool $force_icon = false ): string {
+	public static function badge_element( string $label, string $short, string $type = 'generated', bool $force_icon = false, int $attachment_id = 0 ): string {
 		$icon = self::eu_icon_url( $type, $force_icon );
-		$html = '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( $short ) . '">';
+		$html = '<span class="trai-badge" role="note" data-trai-short="' . esc_attr( $short ) . '"' . self::short_tooltip_attributes( $attachment_id, $label ) . '>';
 		if ( '' === $icon ) {
 			return $html . esc_html( $label ) . '</span>';
 		}
@@ -464,18 +479,19 @@ final class TransparAI_Frontend {
 		if ( '' !== $badge_css ) {
 			wp_add_inline_style( 'transparai-front', $badge_css );
 		}
-		wp_enqueue_script( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/js/front.js', array(), TRANSPARAI_VERSION, true );
+		wp_enqueue_script( 'transparai-front', TRANSPARAI_PLUGIN_URL . 'assets/js/front.js', array(), TRANSPARAI_VERSION . '.' . filemtime( TRANSPARAI_PLUGIN_DIR . 'assets/js/front.js' ), true );
 
 		$data = array(
 			/* Background badges carry no attachment ID, so {generator} templates fall back to the default label here. */
-			'label'      => self::badge_label(),
-			'short'      => self::badge_short_label(),
+			'label'        => self::badge_label(),
+			'short'        => self::badge_short_label(),
 			/* Images labeled by the script carry no type, so they get the "generated" icon. */
-			'icon'       => self::eu_icon_url( 'generated' ),
-			'guard'      => TransparAI_Options::enabled( 'badge_guard' ) ? '1' : '',
-			'classesBg'  => self::wrap_classes( 'trai-bg-host' ),
-			'classesImg' => self::wrap_classes( 'trai-wrap' ),
-			'bgMap'      => TransparAI_Options::enabled( 'background_badges' ) ? self::background_map() : array(),
+			'icon'         => self::eu_icon_url( 'generated' ),
+			'shortTooltip' => TransparAI_Options::enabled( 'badge_short_tooltip' ) && 'icon-only' === TransparAI_Options::get( 'badge_style' ) && 'overlay' === TransparAI_Options::get( 'badge_mode' ) ? '1' : '',
+			'guard'        => TransparAI_Options::enabled( 'badge_guard' ) ? '1' : '',
+			'classesBg'    => self::wrap_classes( 'trai-bg-host' ),
+			'classesImg'   => self::wrap_classes( 'trai-wrap' ),
+			'bgMap'        => TransparAI_Options::enabled( 'background_badges' ) ? self::background_map() : array(),
 		);
 		wp_localize_script( 'transparai-front', 'transparaiFront', $data );
 	}
