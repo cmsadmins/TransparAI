@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.10 (2026-10-09)
 
 - C2PA verification checks every issuer on the chain: intermediates and the trust anchor must be
   CA certificates allowed to sign certificates (basicConstraints, keyUsage keyCertSign, path length)

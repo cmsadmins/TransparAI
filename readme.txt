@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, content credentials, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,12 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.10 =
+* Content Credentials verification checks every certificate on the chain: each issuer, the trust anchor included, must be an authority allowed to sign certificates and valid at the time of signing. A signing certificate may not issue other certificates or carry time stamping or catch-all usages, and the time stamp authority must be certified for time stamps.
+* Content Credentials in plain text files (.txt) are read and verified like those in images.
+* The audit export is also available as a JSON file with the document hash, next to the CSV.
+* Optional native browser tooltip with the full label on icon-only image overlays (contributed by Kai Spriestersbach).
+
 = 1.1.9 =
 * Content Credentials are verified the way a C2PA validator does it, on your own server: the manifest signature (ES256/384/512, PS256/384/512, Ed25519), the assertion hashes, the data hash, the certificate chain against the bundled C2PA trust list and RFC 3161 time stamps. A manifest that fails goes to the review queue; the verdict, the signer and the time stamp are shown with the file.
 * The setup assistant replaces the settings card: three screens for what your site uses, how AI images are labeled (live preview, detection policy, file options) and the library scan. Every screen saves on its own; "Not now" hides it until you open it again.
@@ -322,6 +328,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.10 =
+Stricter certificate checks for Content Credentials, plain text files are checked too, and the audit export comes as JSON. Settings are untouched.
 
 = 1.1.9 =
 Content Credentials are now fully verified on your server, and a three-screen setup assistant guides the first run. Settings are untouched.
