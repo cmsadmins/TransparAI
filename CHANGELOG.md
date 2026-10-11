@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Three more languages ship with the plugin: Brazilian Portuguese (pt_BR), Swiss German (de_CH, formal,
+  derived from formal German with ss for ß) and Belgian Dutch (nl_BE, derived from Dutch). 19 locales in total.
+
 ## 1.1.10 (2026-10-09)
 
 - C2PA verification checks every issuer on the chain: intermediates and the trust anchor must be
