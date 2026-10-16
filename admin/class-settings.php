@@ -808,6 +808,15 @@ th{background:#f6f7f7;}
 <table><thead><tr><th><?php esc_html_e( 'System', 'transparai' ); ?></th><th><?php esc_html_e( 'Category', 'transparai' ); ?></th><th><?php esc_html_e( 'Articles', 'transparai' ); ?></th><th><?php esc_html_e( 'Source', 'transparai' ); ?></th><th><?php esc_html_e( 'Visitors told', 'transparai' ); ?></th></tr></thead><tbody>
 			<?php foreach ( (array) $c['systems'] as $system ) : ?>
 <tr><td><?php echo esc_html( (string) $system['name'] ); ?></td><td><?php echo esc_html( TransparAI_Systems::category_labels()[ $system['category'] ] ?? (string) $system['category'] ); ?></td><td><?php echo esc_html( (string) $system['article'] ); ?></td><td><?php echo esc_html( 'manual' === $system['source'] ? __( 'declared by hand', 'transparai' ) : __( 'Detected', 'transparai' ) ); ?></td><td><?php echo esc_html( ! empty( $system['visible'] ) ? $yes : $no ); ?></td></tr>
+				<?php if ( array() !== (array) ( $system['context'] ?? array() ) ) : ?>
+<tr><td colspan="5">
+					<?php foreach ( TransparAI_Systems::context_labels() as $field => $text ) : ?>
+						<?php if ( '' !== (string) ( $system['context'][ $field ] ?? '' ) ) : ?>
+<strong><?php echo esc_html( $text['label'] ); ?>:</strong> <?php echo esc_html( (string) $system['context'][ $field ] ); ?><br />
+						<?php endif; ?>
+					<?php endforeach; ?>
+</td></tr>
+				<?php endif; ?>
 			<?php endforeach; ?>
 </tbody></table>
 		<?php endif; ?>

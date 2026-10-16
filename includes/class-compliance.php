@@ -189,6 +189,7 @@ final class TransparAI_Compliance {
 			'systems-declared'    => __( 'AI system declared', 'transparai' ),
 			'systems-undeclared'  => __( 'AI system declaration removed', 'transparai' ),
 			'systems-visibility'  => __( 'AI systems notice visibility changed', 'transparai' ),
+			'systems-context'     => __( 'Operator details of AI systems saved', 'transparai' ),
 		);
 	}
 
@@ -541,12 +542,14 @@ final class TransparAI_Compliance {
 		if ( class_exists( 'TransparAI_Systems' ) ) {
 			foreach ( TransparAI_Systems::all() as $system ) {
 				$systems[] = array(
-					'id'       => $system['id'],
-					'name'     => $system['name'],
-					'category' => $system['category'],
-					'article'  => $system['article'],
-					'source'   => $system['source'],
-					'visible'  => $system['visible'],
+					'id'         => $system['id'],
+					'name'       => $system['name'],
+					'category'   => $system['category'],
+					'article'    => $system['article'],
+					'source'     => $system['source'],
+					'visible'    => $system['visible'],
+					'context'    => $system['context'],
+					'documented' => $system['documented'],
 				);
 			}
 		}

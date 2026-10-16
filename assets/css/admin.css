@@ -1294,3 +1294,27 @@
 .trai-wizard-details[open] summary {
 	margin-bottom: 8px;
 }
+
+/* Operator details under each AI system */
+.trai-context-row > td {
+	padding-top: 0;
+}
+.trai-context summary {
+	cursor: pointer;
+	color: var(--trai-text-muted, #50575e);
+	border-radius: 3px;
+	transition: all 0.2s ease;
+}
+.trai-context summary:focus-visible {
+	outline: 2px solid var(--trai-primary, #FF6800);
+	outline-offset: 2px;
+}
+.trai-context-fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 0 16px;
+	margin-top: 8px;
+}
+.trai-context-fields .description {
+	display: block;
+}

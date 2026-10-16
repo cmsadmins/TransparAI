@@ -26,6 +26,12 @@ final class TransparAI_Systems {
 
 	public const CATEGORIES = array( 'content', 'image', 'chatbot', 'translation', 'personalisation', 'seo', 'search', 'audio_video', 'assistant', 'other' );
 
+	/** Operator details kept per system, free text written by the site owner. */
+	public const CONTEXT_FIELDS = array( 'purpose', 'provider', 'model', 'audience', 'oversight', 'data_use' );
+
+	/** Longest text kept per operator detail. */
+	private const CONTEXT_MAX = 300;
+
 	/**
 	 * Register hooks.
 	 */
@@ -131,6 +137,40 @@ final class TransparAI_Systems {
 		);
 	}
 
+	/**
+	 * Translated labels and help texts of the operator details.
+	 *
+	 * @return array<string, array{label:string, help:string}>
+	 */
+	public static function context_labels(): array {
+		return array(
+			'purpose'   => array(
+				'label' => __( 'Purpose', 'transparai' ),
+				'help'  => __( 'What the system does on this site and for which task.', 'transparai' ),
+			),
+			'provider'  => array(
+				'label' => __( 'Provider', 'transparai' ),
+				'help'  => __( 'Company or person offering the system or the model behind it.', 'transparai' ),
+			),
+			'model'     => array(
+				'label' => __( 'Model', 'transparai' ),
+				'help'  => __( 'Model name, family or version, as far as known.', 'transparai' ),
+			),
+			'audience'  => array(
+				'label' => __( 'Affected people', 'transparai' ),
+				'help'  => __( 'Who sees or receives the output: visitors, customers, staff.', 'transparai' ),
+			),
+			'oversight' => array(
+				'label' => __( 'Human review', 'transparai' ),
+				'help'  => __( 'Who checks the output before it is published or acted on, and who can stop the system.', 'transparai' ),
+			),
+			'data_use'  => array(
+				'label' => __( 'Data processed', 'transparai' ),
+				'help'  => __( 'Which personal or business data reach the system and where they are processed.', 'transparai' ),
+			),
+		);
+	}
+
 	/* ---------------------------------------------------------------------
 	 * State
 	 * ------------------------------------------------------------------- */
@@ -138,7 +178,7 @@ final class TransparAI_Systems {
 	/**
 	 * The stored state, normalised.
 	 *
-	 * @return array{detected:array<string, string>, manual:array<string, array{name:string, category:string, slug:string}>, visible:array<string, bool>, scanned_at:int}
+	 * @return array{detected:array<string, string>, manual:array<string, array{name:string, category:string, slug:string}>, visible:array<string, bool>, context:array<string, array<string, string>>, scanned_at:int}
 	 */
 	public static function state(): array {
 		$raw = get_option( self::OPTION, array() );
@@ -166,12 +206,68 @@ final class TransparAI_Systems {
 				$visible[ sanitize_key( (string) $id ) ] = true;
 			}
 		}
+		$context = array();
+		foreach ( (array) ( $raw['context'] ?? array() ) as $id => $fields ) {
+			$fields = self::clean_context( (array) $fields );
+			if ( array() !== $fields ) {
+				$context[ sanitize_key( (string) $id ) ] = $fields;
+			}
+		}
 		return array(
 			'detected'   => $detected,
 			'manual'     => $manual,
 			'visible'    => $visible,
+			'context'    => $context,
 			'scanned_at' => (int) ( $raw['scanned_at'] ?? 0 ),
 		);
+	}
+
+	/**
+	 * Operator details reduced to the known fields, cleaned and shortened;
+	 * empty fields are dropped.
+	 *
+	 * @param array<mixed> $fields Raw fields.
+	 * @return array<string, string>
+	 */
+	private static function clean_context( array $fields ): array {
+		$clean = array();
+		foreach ( self::CONTEXT_FIELDS as $field ) {
+			$value = trim( mb_substr( sanitize_textarea_field( (string) ( $fields[ $field ] ?? '' ) ), 0, self::CONTEXT_MAX ) );
+			if ( '' !== $value ) {
+				$clean[ $field ] = $value;
+			}
+		}
+		return $clean;
+	}
+
+	/**
+	 * Store the operator details of inventoried systems. Ids not in the
+	 * inventory are dropped; a system without any detail loses its entry.
+	 *
+	 * @param array<string, array<mixed>> $by_id Raw fields keyed by system id.
+	 */
+	public static function set_context( array $by_id ): void {
+		$state = self::state();
+		$known = self::all();
+		$next  = $state['context'];
+		foreach ( $by_id as $id => $fields ) {
+			$id = sanitize_key( (string) $id );
+			if ( ! isset( $known[ $id ] ) ) {
+				continue;
+			}
+			$fields = self::clean_context( (array) $fields );
+			if ( array() === $fields ) {
+				unset( $next[ $id ] );
+			} else {
+				$next[ $id ] = $fields;
+			}
+		}
+		if ( $next === $state['context'] ) {
+			return;
+		}
+		$state['context'] = $next;
+		self::save( $state );
+		TransparAI_Meta::log_site( 'systems-context', array( 'count' => count( $next ) ) );
 	}
 
 	/**
@@ -288,7 +384,7 @@ final class TransparAI_Systems {
 		if ( ! isset( $state['manual'][ $id ] ) ) {
 			return;
 		}
-		unset( $state['manual'][ $id ], $state['visible'][ $id ] );
+		unset( $state['manual'][ $id ], $state['visible'][ $id ], $state['context'][ $id ] );
 		self::save( $state );
 		TransparAI_Meta::log_site( 'systems-undeclared', array( 'id' => $id ) );
 		self::purge();
@@ -322,7 +418,7 @@ final class TransparAI_Systems {
 	/**
 	 * Every detected and declared system with its registry data.
 	 *
-	 * @return array<string, array{id:string, name:string, category:string, article:string, risk:string, url:string, source:string, evidence:string, visible:bool}>
+	 * @return array<string, array{id:string, name:string, category:string, article:string, risk:string, url:string, source:string, evidence:string, visible:bool, context:array<string, string>, documented:bool}>
 	 */
 	public static function all(): array {
 		$state    = self::state();
@@ -354,6 +450,11 @@ final class TransparAI_Systems {
 				'evidence' => __( 'declared by hand', 'transparai' ),
 				'visible'  => isset( $state['visible'][ $id ] ),
 			);
+		}
+		foreach ( $out as $id => $system ) {
+			$context                  = $state['context'][ $id ] ?? array();
+			$out[ $id ]['context']    = $context;
+			$out[ $id ]['documented'] = count( $context ) === count( self::CONTEXT_FIELDS );
 		}
 		return $out;
 	}
