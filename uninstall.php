@@ -50,6 +50,20 @@ function transparai_uninstall_site(): void {
 
 	global $wpdb;
 
+	/* Labelled link preview copies are derived files of this plugin; the originals stay. */
+	$transparai_copies = $wpdb->get_results( $wpdb->prepare( "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = %s", '_transparai_og' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- one-time uninstall cleanup.
+	foreach ( (array) $transparai_copies as $transparai_copy ) {
+		$transparai_dir    = dirname( (string) get_attached_file( (int) $transparai_copy->post_id ) );
+		$transparai_stored = maybe_unserialize( $transparai_copy->meta_value );
+		foreach ( array( 'file', 'previous' ) as $transparai_key ) {
+			$transparai_name = is_array( $transparai_stored ) ? (string) ( $transparai_stored[ $transparai_key ] ?? '' ) : '';
+			if ( '' !== $transparai_name && basename( $transparai_name ) === $transparai_name ) {
+				wp_delete_file( $transparai_dir . '/' . $transparai_name );
+			}
+		}
+	}
+	wp_unschedule_hook( 'transparai_og_generate' );
+
 	$meta_keys = array(
 		'_transparai_ai',
 		'_transparai_detected',
@@ -73,6 +87,8 @@ function transparai_uninstall_site(): void {
 		'_transparai_c2pa',
 		'_transparai_scan_fp',
 		'_transparai_human',
+		'_transparai_og',
+		'_transparai_og_failed',
 	);
 
 	foreach ( $meta_keys as $meta_key ) {

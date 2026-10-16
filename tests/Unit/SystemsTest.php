@@ -94,6 +94,47 @@ final class SystemsTest extends TestCase {
 		$this->assertSame( 'systems-undeclared', $log[ count( $log ) - 1 ]['e'] );
 	}
 
+	public function test_operator_details_are_cleaned_kept_and_reported(): void {
+		global $trai_test_options;
+		$trai_test_options['active_plugins'] = array( 'ai-engine/ai-engine.php' );
+		TransparAI_Systems::scan();
+		$manual = TransparAI_Systems::declare( 'House Recommender', 'personalisation' );
+
+		TransparAI_Systems::set_context(
+			array(
+				'ai-engine' => array(
+					'purpose'  => '  Answers visitor <b>questions</b> ',
+					'provider' => str_repeat( 'p', 400 ),
+					'unknown'  => 'dropped',
+				),
+				$manual     => array_fill_keys( TransparAI_Systems::CONTEXT_FIELDS, 'filled' ),
+				'not-there' => array( 'purpose' => 'ignored' ),
+			)
+		);
+
+		$all = TransparAI_Systems::all();
+		$this->assertSame( 'Answers visitor questions', $all['ai-engine']['context']['purpose'] );
+		$this->assertSame( 300, mb_strlen( $all['ai-engine']['context']['provider'] ) );
+		$this->assertArrayNotHasKey( 'unknown', $all['ai-engine']['context'] );
+		$this->assertFalse( $all['ai-engine']['documented'] );
+		$this->assertTrue( $all[ $manual ]['documented'] );
+		$this->assertArrayNotHasKey( 'not-there', TransparAI_Systems::state()['context'] );
+
+		$log = TransparAI_Meta::site_log();
+		$this->assertSame( 'systems-context', $log[ count( $log ) - 1 ]['e'] );
+
+		$report = TransparAI_Compliance::summary()['systems'];
+		$by_id  = array_column( $report, null, 'id' );
+		$this->assertSame( 'filled', $by_id[ $manual ]['context']['model'] );
+		$this->assertTrue( $by_id[ $manual ]['documented'] );
+
+		TransparAI_Systems::set_context( array( 'ai-engine' => array( 'purpose' => '' ) ) );
+		$this->assertArrayNotHasKey( 'ai-engine', TransparAI_Systems::state()['context'], 'emptied details lose their entry' );
+
+		TransparAI_Systems::undeclare( $manual );
+		$this->assertArrayNotHasKey( $manual, TransparAI_Systems::state()['context'] );
+	}
+
 	public function test_possibly_ai_ranks_by_keywords_and_skips_known_slugs(): void {
 		global $trai_test_options, $trai_test_plugins;
 		$trai_test_options['active_plugins'] = array( 'foo-writer/foo.php', 'contact-form/cf.php', 'ai-engine/ai-engine.php' );

@@ -160,7 +160,7 @@ final class TransparAI_Frontend {
 	 * date stay labeled in the admin only. `post_date` (site timezone) against
 	 * the Y-m-d setting compares correctly as plain strings.
 	 */
-	private static function is_badged( int $attachment_id ): bool {
+	public static function is_badged( int $attachment_id ): bool {
 		if ( ! TransparAI_Meta::is_flagged( $attachment_id ) ) {
 			return false;
 		}
@@ -260,6 +260,23 @@ final class TransparAI_Frontend {
 	}
 
 	/**
+	 * The full text of one attachment's AI badge: the label, plus the
+	 * generator name when the source is shown and the label does not name it
+	 * already.
+	 */
+	public static function badge_text( int $attachment_id ): string {
+		$label = self::badge_label( $attachment_id );
+		if ( TransparAI_Options::enabled( 'badge_show_source' )
+			&& ! str_contains( TransparAI_Options::get( 'badge_text' ), '{generator}' ) ) {
+			$generator = TransparAI_Meta::get_generator( $attachment_id );
+			if ( '' !== $generator ) {
+				$label .= ' · ' . $generator;
+			}
+		}
+		return $label;
+	}
+
+	/**
 	 * Short badge label for small images and library tiles.
 	 */
 	public static function badge_short_label(): string {
@@ -290,15 +307,7 @@ final class TransparAI_Frontend {
 				. esc_html( self::human_badge_label() ) . '</span>';
 			return (string) apply_filters( 'transparai_badge_html', $html, $attachment_id );
 		}
-		$label = self::badge_label( $attachment_id );
-		if ( TransparAI_Options::enabled( 'badge_show_source' )
-			&& ! str_contains( TransparAI_Options::get( 'badge_text' ), '{generator}' ) ) {
-			$generator = TransparAI_Meta::get_generator( $attachment_id );
-			if ( '' !== $generator ) {
-				$label .= ' · ' . $generator;
-			}
-		}
-		$html = self::badge_element( $label, self::badge_short_label(), TransparAI_Meta::get_type( $attachment_id ), false, $attachment_id );
+		$html = self::badge_element( self::badge_text( $attachment_id ), self::badge_short_label(), TransparAI_Meta::get_type( $attachment_id ), false, $attachment_id );
 
 		/**
 		 * Filters the badge markup of one attachment.

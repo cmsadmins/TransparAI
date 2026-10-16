@@ -469,16 +469,17 @@ final class TransparAI_CLI {
 		$rows = array();
 		foreach ( TransparAI_Systems::all() as $system ) {
 			$rows[] = array(
-				'ID'       => $system['id'],
-				'name'     => $system['name'],
-				'category' => $system['category'],
-				'article'  => $system['article'],
-				'source'   => $system['source'],
-				'visible'  => $system['visible'] ? 'yes' : 'no',
-				'evidence' => $system['evidence'],
+				'ID'         => $system['id'],
+				'name'       => $system['name'],
+				'category'   => $system['category'],
+				'article'    => $system['article'],
+				'source'     => $system['source'],
+				'visible'    => $system['visible'] ? 'yes' : 'no',
+				'documented' => $system['documented'] ? 'yes' : 'no',
+				'evidence'   => $system['evidence'],
 			);
 		}
-		self::print_rows( $assoc_args, $rows, array( 'ID', 'name', 'category', 'article', 'source', 'visible', 'evidence' ) );
+		self::print_rows( $assoc_args, $rows, array( 'ID', 'name', 'category', 'article', 'source', 'visible', 'documented', 'evidence' ) );
 	}
 
 	/**

@@ -89,6 +89,7 @@ final class TransparAI_Options {
 			'auto_repair'             => '1', /* Re-write metadata stripped by optimizers. */
 			'delivery_check'          => '0', /* Opt-in: fetch our own image URL to see whether the declaration survives delivery. */
 			'schema_output'           => '1', /* JSON-LD digitalSourceType for labeled media in the page. */
+			'og_image_label'          => '0', /* Opt-in: labelled 1200x630 copy of the featured image as og:image. */
 
 			/* Housekeeping. */
 			'delete_on_uninstall'     => '0',
@@ -185,6 +186,7 @@ final class TransparAI_Options {
 			'auto_repair',
 			'delivery_check',
 			'schema_output',
+			'og_image_label',
 			'delete_on_uninstall',
 		);
 

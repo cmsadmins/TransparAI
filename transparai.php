@@ -51,6 +51,7 @@ require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-integrations.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-compliance.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-systems.php';
 require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-privacy.php';
+require_once TRANSPARAI_PLUGIN_DIR . 'includes/class-og-image.php';
 
 if ( is_admin() ) {
 	require_once TRANSPARAI_PLUGIN_DIR . 'admin/class-media-library.php';
@@ -91,6 +92,7 @@ if ( ! class_exists( 'TransparAI' ) ) {
 			TransparAI_Integrations::init();
 			TransparAI_Compliance::init();
 			TransparAI_Systems::init();
+			TransparAI_Og_Image::init();
 
 			if ( is_admin() ) {
 				TransparAI_Dashboard::init();

@@ -596,10 +596,12 @@ final class TransparAI_Dashboard {
 			return;
 		}
 		TransparAI_Systems::maybe_scan();
-		$systems    = TransparAI_Systems::all();
-		$labels     = TransparAI_Systems::category_labels();
-		$scanned_at = TransparAI_Systems::scanned_at();
-		$action     = esc_url( admin_url( 'admin-post.php' ) );
+		$systems        = TransparAI_Systems::all();
+		$labels         = TransparAI_Systems::category_labels();
+		$scanned_at     = TransparAI_Systems::scanned_at();
+		$context_labels = TransparAI_Systems::context_labels();
+		$documented     = count( array_filter( array_column( $systems, 'documented' ) ) );
+		$action         = esc_url( admin_url( 'admin-post.php' ) );
 		self::open( __( 'AI systems in use', 'transparai' ) );
 		?>
 		<section class="trai-card">
@@ -616,6 +618,20 @@ final class TransparAI_Dashboard {
 			}
 			?>
 			</p>
+			<?php if ( array() !== $systems ) : ?>
+				<p class="description">
+					<?php
+					echo esc_html(
+						sprintf(
+							/* translators: 1: documented systems, 2: all systems. */
+							__( '%1$d of %2$d systems documented. Open the operator details under a system to record purpose, provider, model, affected people, human review and the data processed; they go into the audit report and the JSON export.', 'transparai' ),
+							$documented,
+							count( $systems )
+						)
+					);
+					?>
+				</p>
+			<?php endif; ?>
 			<form method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>">
 				<?php wp_nonce_field( 'transparai_systems' ); ?>
 				<input type="hidden" name="action" value="transparai_systems" />
@@ -651,13 +667,41 @@ final class TransparAI_Dashboard {
 									<?php endif; ?>
 								</td>
 							</tr>
+							<tr class="trai-context-row">
+								<td colspan="6">
+									<details class="trai-context">
+										<summary>
+											<?php
+											echo esc_html(
+												sprintf(
+													/* translators: 1: number of filled fields, 2: number of fields. */
+													__( 'Operator details (%1$d of %2$d filled in)', 'transparai' ),
+													count( $system['context'] ),
+													count( TransparAI_Systems::CONTEXT_FIELDS )
+												)
+											);
+											?>
+										</summary>
+										<div class="trai-context-fields">
+											<?php foreach ( $context_labels as $field => $text ) : ?>
+												<?php $field_id = 'trai-ctx-' . $id . '-' . $field; ?>
+												<p>
+													<label for="<?php echo esc_attr( $field_id ); ?>"><strong><?php echo esc_html( $text['label'] ); ?></strong></label><br />
+													<textarea id="<?php echo esc_attr( $field_id ); ?>" name="context[<?php echo esc_attr( $id ); ?>][<?php echo esc_attr( $field ); ?>]" rows="2" class="large-text" maxlength="300" aria-describedby="<?php echo esc_attr( $field_id ); ?>-help"><?php echo esc_textarea( $system['context'][ $field ] ?? '' ); ?></textarea>
+													<span class="description" id="<?php echo esc_attr( $field_id ); ?>-help"><?php echo esc_html( $text['help'] ); ?></span>
+												</p>
+											<?php endforeach; ?>
+										</div>
+									</details>
+								</td>
+							</tr>
 						<?php endforeach; ?>
 						</tbody>
 					</table>
 				<?php endif; ?>
 				<p class="trai-actions">
 					<?php if ( array() !== $systems ) : ?>
-						<button type="submit" class="trai-btn" name="do" value="visibility"><?php esc_html_e( 'Save visibility', 'transparai' ); ?></button>
+						<button type="submit" class="trai-btn" name="do" value="visibility"><?php esc_html_e( 'Save visibility and details', 'transparai' ); ?></button>
 					<?php endif; ?>
 					<button type="submit" class="trai-btn trai-btn--ghost" name="do" value="rescan"><?php esc_html_e( 'Scan installed plugins again', 'transparai' ); ?></button>
 				</p>
@@ -734,6 +778,8 @@ final class TransparAI_Dashboard {
 		} elseif ( 'visibility' === $do ) {
 			$ids = isset( $_POST['visible'] ) && is_array( $_POST['visible'] ) ? array_map( 'sanitize_key', (array) wp_unslash( $_POST['visible'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized element-wise via array_map.
 			TransparAI_Systems::set_visible( $ids );
+			$context = isset( $_POST['context'] ) && is_array( $_POST['context'] ) ? (array) wp_unslash( $_POST['context'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- every field is sanitized in TransparAI_Systems::set_context().
+			TransparAI_Systems::set_context( $context );
 		} elseif ( 'declare' === $do ) {
 			$name     = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
 			$category = isset( $_POST['category'] ) ? sanitize_key( wp_unslash( $_POST['category'] ) ) : 'other';

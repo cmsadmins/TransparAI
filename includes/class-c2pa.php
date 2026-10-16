@@ -70,10 +70,11 @@ final class TransparAI_C2PA {
 	 *         Null when the file carries no manifest store.
 	 */
 	public static function summary( string $data, string $format ): ?array {
-		$store = self::store_from_data( $data, $format );
-		if ( null === $store ) {
+		$location = self::store_location( $data, $format );
+		if ( null === $location ) {
 			return null;
 		}
+		$store = $location['store'];
 
 		$info = array(
 			'hash'        => 'unsupported',
@@ -122,7 +123,7 @@ final class TransparAI_C2PA {
 			return $info;
 		}
 
-		$check          = self::hash_check( $data, $parsed['hash_data'], $parsed['claim_alg'] );
+		$check          = self::hash_check( $data, $parsed['hash_data'], $parsed['claim_alg'], $location['ranges'], self::allowed_ranges( $data, $format ) );
 		$info['hash']   = $check['state'];
 		$info['reason'] = $check['reason'];
 		$info['alg']    = $check['alg'];
@@ -226,6 +227,19 @@ final class TransparAI_C2PA {
 	 * @return string|null Null without a store, '' when a store is present but cannot be reassembled.
 	 */
 	public static function store_from_data( string $data, string $format ): ?string {
+		$location = self::store_location( $data, $format );
+		return null === $location ? null : $location['store'];
+	}
+
+	/**
+	 * Where the manifest store sits: its bytes and the file ranges of the
+	 * containers that carry it (whole APP11 segments, the whole PNG chunk or
+	 * RIFF chunk, the text wrapper). The data hash has to exclude exactly
+	 * these ranges.
+	 *
+	 * @return array{store:string, ranges:array<int, array{0:int, 1:int}>}|null Null without a store.
+	 */
+	public static function store_location( string $data, string $format ): ?array {
 		switch ( $format ) {
 			case 'jpeg':
 				$segments = TransparAI_Parsers::jpeg_segments( $data );
@@ -238,9 +252,44 @@ final class TransparAI_C2PA {
 			case 'webp':
 				return self::webp_find_chunk( $data, 'C2PA' );
 			case 'text':
-				return self::store_from_text( $data );
+				return self::text_store( $data );
 		}
 		return null;
+	}
+
+	/**
+	 * File ranges a data hash may exclude besides the manifest store.
+	 *
+	 * Only JPEG has any: the payloads of APP1 Exif and XMP segments, which
+	 * some camera firmware rewrites after signing and therefore leaves out of
+	 * the hash. The segment marker and length stay hashed, so the image data
+	 * cannot move. Every other format allows nothing.
+	 *
+	 * @return array<int, array{0:int, 1:int}>
+	 */
+	public static function allowed_ranges( string $data, string $format ): array {
+		if ( 'jpeg' !== $format ) {
+			return array();
+		}
+		$segments = TransparAI_Parsers::jpeg_segments( $data );
+		if ( null === $segments ) {
+			return array();
+		}
+		$ranges = array();
+		$offset = 2;
+		foreach ( $segments as $segment ) {
+			$length = strlen( $segment['bytes'] );
+			if ( 0xE1 === $segment['marker'] ) {
+				foreach ( array( "Exif\0\0", TransparAI_Parsers::XMP_HEADER_JPEG, "http://ns.adobe.com/xmp/extension/\0" ) as $header ) {
+					if ( str_starts_with( $segment['payload'], $header ) ) {
+						$ranges[] = array( $offset + 4, $length - 4 );
+						break;
+					}
+				}
+			}
+			$offset += $length;
+		}
+		return $ranges;
 	}
 
 	/**
@@ -262,11 +311,21 @@ final class TransparAI_C2PA {
 	 * @return string|null Null without a wrapper, '' when a wrapper is malformed or repeated.
 	 */
 	public static function store_from_text( string $data ): ?string {
+		$location = self::text_store( $data );
+		return null === $location ? null : $location['store'];
+	}
+
+	/**
+	 * The text wrapper's store and the byte range of the whole wrapper run.
+	 *
+	 * @return array{store:string, ranges:array<int, array{0:int, 1:int}>}|null
+	 */
+	private static function text_store( string $data ): ?array {
 		if ( ! str_contains( $data, "\xEF\xBB\xBF" ) ) {
 			return null;
 		}
 		/* Possessive: a long run as a backtracking repeat would exhaust the PCRE JIT stack. */
-		$runs = preg_match_all( '/\xEF\xBB\xBF((?:\xEF\xB8[\x80-\x8F]|\xF3\xA0[\x84-\x86][\x80-\xBF]|\xF3\xA0\x87[\x80-\xAF])++)/', $data, $matches );
+		$runs = preg_match_all( '/\xEF\xBB\xBF((?:\xEF\xB8[\x80-\x8F]|\xF3\xA0[\x84-\x86][\x80-\xBF]|\xF3\xA0\x87[\x80-\xAF])++)/', $data, $matches, PREG_OFFSET_CAPTURE );
 		if ( ! $runs ) {
 			return null;
 		}
@@ -279,19 +338,21 @@ final class TransparAI_C2PA {
 		}
 
 		$store = null;
-		foreach ( $matches[1] as $run ) {
-			$bytes = strtr( $run, $map );
+		$range = array();
+		foreach ( $matches[0] as $k => $whole ) {
+			$bytes = strtr( $matches[1][ $k ][0], $map );
 			if ( strlen( $bytes ) < 13 || "C2PATXT\0" !== substr( $bytes, 0, 8 ) || 1 !== ord( $bytes[8] ) ) {
 				continue;
 			}
 			if ( null !== $store ) {
-				return '';
+				return self::location( '' );
 			}
 			$length = (int) unpack( 'N', substr( $bytes, 9, 4 ) )[1];
 			$body   = (string) substr( $bytes, 13, $length );
 			$store  = $length >= 8 && $length <= self::MAX_STORE_BYTES && strlen( $body ) === $length && unpack( 'N', $body )[1] === $length ? $body : '';
+			$range  = array( array( (int) $whole[1], strlen( $whole[0] ) ) );
 		}
-		return $store;
+		return null === $store ? null : self::location( $store, $range );
 	}
 
 	/**
@@ -303,11 +364,14 @@ final class TransparAI_C2PA {
 	 * box. Packets are grouped by En and ordered by Z.
 	 *
 	 * @param array<int, array{marker:int|string, bytes:string, payload:string}> $segments JPEG segments.
-	 * @return string '' when the segments do not form one complete box.
+	 * @return array{store:string, ranges:array<int, array{0:int, 1:int}>} Store '' when the segments do not form one complete box.
 	 */
-	private static function jpeg_app11_store( array $segments ): string {
+	private static function jpeg_app11_store( array $segments ): array {
 		$groups = array();
+		$offset = 2;
 		foreach ( $segments as $segment ) {
+			$start   = $offset;
+			$offset += strlen( $segment['bytes'] );
 			if ( 0xEB !== $segment['marker'] ) {
 				continue;
 			}
@@ -321,12 +385,14 @@ final class TransparAI_C2PA {
 				$groups[ $en ] = array(
 					'head'    => substr( $payload, 8, 8 ),
 					'packets' => array(),
+					'ranges'  => array(),
 				);
 			}
 			$groups[ $en ]['packets'][ $z ] = substr( $payload, 16 );
+			$groups[ $en ]['ranges'][]      = array( $start, strlen( $segment['bytes'] ) );
 		}
 		if ( array() === $groups ) {
-			return '';
+			return self::location( '' );
 		}
 
 		/* The store is the group whose box is a JUMBF superbox; take the first such one. */
@@ -338,17 +404,33 @@ final class TransparAI_C2PA {
 			$store = $group['head'] . implode( '', $group['packets'] );
 			$lbox  = unpack( 'N', substr( $store, 0, 4 ) )[1];
 			if ( $lbox !== strlen( $store ) || $lbox > self::MAX_STORE_BYTES ) {
-				return '';
+				return self::location( '' );
 			}
-			return $store;
+			return self::location( $store, $group['ranges'] );
 		}
-		return '';
+		return self::location( '' );
 	}
 
 	/**
-	 * One PNG chunk's data by type, walking the chunk table without copying image data.
+	 * A store location record.
+	 *
+	 * @param array<int, array{0:int, 1:int}> $ranges File ranges of the carrying containers.
+	 * @return array{store:string, ranges:array<int, array{0:int, 1:int}>}
 	 */
-	private static function png_find_chunk( string $data, string $type ): ?string {
+	private static function location( string $store, array $ranges = array() ): array {
+		return array(
+			'store'  => $store,
+			'ranges' => $ranges,
+		);
+	}
+
+	/**
+	 * One PNG chunk's data by type, walking the chunk table without copying
+	 * image data. The range covers the whole chunk: length, type, data, CRC.
+	 *
+	 * @return array{store:string, ranges:array<int, array{0:int, 1:int}>}|null
+	 */
+	private static function png_find_chunk( string $data, string $type ): ?array {
 		if ( TransparAI_Parsers::PNG_SIGNATURE !== substr( $data, 0, 8 ) ) {
 			return null;
 		}
@@ -358,10 +440,10 @@ final class TransparAI_C2PA {
 			$size = unpack( 'N', substr( $data, $pos, 4 ) )[1];
 			$kind = substr( $data, $pos + 4, 4 );
 			if ( $kind === $type ) {
-				if ( $size > self::MAX_STORE_BYTES || $pos + 8 + $size > $length ) {
-					return '';
+				if ( $size > self::MAX_STORE_BYTES || $pos + 12 + $size > $length ) {
+					return self::location( '' );
 				}
-				return substr( $data, $pos + 8, $size );
+				return self::location( substr( $data, $pos + 8, $size ), array( array( $pos, 12 + $size ) ) );
 			}
 			if ( 'IEND' === $kind ) {
 				break;
@@ -372,9 +454,13 @@ final class TransparAI_C2PA {
 	}
 
 	/**
-	 * One WebP RIFF chunk's data by FourCC ('' when present but cut off or oversized).
+	 * One WebP RIFF chunk's data by FourCC (store '' when present but cut off
+	 * or oversized). The range covers header and data; the pad byte after an
+	 * odd-sized chunk stays hashed, as the reference writer does it.
+	 *
+	 * @return array{store:string, ranges:array<int, array{0:int, 1:int}>}|null
 	 */
-	private static function webp_find_chunk( string $data, string $fourcc ): ?string {
+	private static function webp_find_chunk( string $data, string $fourcc ): ?array {
 		if ( strlen( $data ) < 12 || 'RIFF' !== substr( $data, 0, 4 ) || 'WEBP' !== substr( $data, 8, 4 ) ) {
 			return null;
 		}
@@ -385,9 +471,9 @@ final class TransparAI_C2PA {
 			$size = unpack( 'V', substr( $data, $pos + 4, 4 ) )[1];
 			if ( $kind === $fourcc ) {
 				if ( $size > self::MAX_STORE_BYTES || $pos + 8 + $size > $length ) {
-					return '';
+					return self::location( '' );
 				}
-				return substr( $data, $pos + 8, $size );
+				return self::location( substr( $data, $pos + 8, $size ), array( array( $pos, 8 + $size ) ) );
 			}
 			$pos += 8 + $size + ( $size % 2 );
 		}
@@ -685,12 +771,21 @@ final class TransparAI_C2PA {
 	/**
 	 * Check the c2pa.hash.data assertion against the file bytes.
 	 *
-	 * @param string               $data      Complete file bytes (own marks removed).
-	 * @param array<string, mixed> $hash_data Decoded assertion: alg?, hash, exclusions?[{start,length}].
-	 * @param string               $claim_alg The claim's default algorithm when the assertion names none.
+	 * Besides the hash itself the exclusions are held to C2PA 2.4 section
+	 * 15.12.1: the manifest store must be excluded, an exclusion that holds
+	 * the store holds nothing but the store, any other exclusion lies inside
+	 * a range the format allows, and at least one byte stays hashed. A signer
+	 * could otherwise exclude the image data and bind the manifest to any
+	 * picture.
+	 *
+	 * @param string                          $data           Complete file bytes (own marks removed).
+	 * @param array<string, mixed>            $hash_data      Decoded assertion: alg?, hash, exclusions?[{start,length}].
+	 * @param string                          $claim_alg      The claim's default algorithm when the assertion names none.
+	 * @param array<int, array{0:int, 1:int}> $store_ranges   File ranges of the containers carrying the store.
+	 * @param array<int, array{0:int, 1:int}> $allowed_ranges Ranges the format allows to exclude besides the store.
 	 * @return array{state:string, reason:string, alg:string} state: match|mismatch|unsupported.
 	 */
-	public static function hash_check( string $data, array $hash_data, string $claim_alg ): array {
+	public static function hash_check( string $data, array $hash_data, string $claim_alg, array $store_ranges, array $allowed_ranges = array() ): array {
 		$alg = strtolower( (string) ( is_string( $hash_data['alg'] ?? null ) ? $hash_data['alg'] : $claim_alg ) );
 		if ( '' === $alg ) {
 			$alg = 'sha256';
@@ -729,7 +824,76 @@ final class TransparAI_C2PA {
 		}
 		$actual = hash_final( $ctx, true );
 
+		$broken = self::exclusion_fault( $ranges, $length, $store_ranges, $allowed_ranges );
+		if ( '' !== $broken ) {
+			return self::check_result( 'mismatch', $broken, $alg );
+		}
 		return self::check_result( hash_equals( $expected, $actual ) ? 'match' : 'mismatch', '', $alg );
+	}
+
+	/**
+	 * Which exclusion rule a binding breaks, '' when none.
+	 *
+	 * @param array<int, array{0:int, 1:int}> $ranges         Exclusions, sorted, apart and inside the file.
+	 * @param int                             $length         File length.
+	 * @param array<int, array{0:int, 1:int}> $store_ranges   Ranges of the store containers.
+	 * @param array<int, array{0:int, 1:int}> $allowed_ranges Ranges allowed besides the store.
+	 */
+	private static function exclusion_fault( array $ranges, int $length, array $store_ranges, array $allowed_ranges ): string {
+		if ( array_sum( array_column( $ranges, 1 ) ) >= $length ) {
+			return 'nothing_hashed';
+		}
+
+		/* Adjacent store containers (consecutive APP11 segments) form one block. */
+		usort( $store_ranges, static fn( array $a, array $b ): int => $a[0] <=> $b[0] );
+		$blocks = array();
+		foreach ( $store_ranges as list( $start, $len ) ) {
+			$last = count( $blocks ) - 1;
+			if ( $last >= 0 && $blocks[ $last ][1] === $start ) {
+				$blocks[ $last ][1] = $start + $len;
+			} else {
+				$blocks[] = array( $start, $start + $len );
+			}
+		}
+
+		foreach ( $store_ranges as list( $start, $len ) ) {
+			$covered = false;
+			foreach ( $ranges as list( $ex_start, $ex_len ) ) {
+				if ( $ex_start <= $start && $start + $len <= $ex_start + $ex_len ) {
+					$covered = true;
+					break;
+				}
+			}
+			if ( ! $covered ) {
+				return 'store_not_excluded';
+			}
+		}
+
+		foreach ( $ranges as list( $ex_start, $ex_len ) ) {
+			$ex_end = $ex_start + $ex_len;
+			if ( 0 === $ex_len ) {
+				continue;
+			}
+			$holds_store = false;
+			foreach ( $store_ranges as list( $start, $len ) ) {
+				if ( $ex_start < $start + $len && $start < $ex_end ) {
+					$holds_store = true;
+					break;
+				}
+			}
+			$home = $holds_store ? $blocks : array_map( static fn( array $r ): array => array( $r[0], $r[0] + $r[1] ), $allowed_ranges );
+			$fits = false;
+			foreach ( $home as list( $start, $end ) ) {
+				if ( $start <= $ex_start && $ex_end <= $end ) {
+					$fits = true;
+					break;
+				}
+			}
+			if ( ! $fits ) {
+				return $holds_store ? 'exclusion_beyond_store' : 'exclusion_not_allowed';
+			}
+		}
+		return '';
 	}
 
 	/**

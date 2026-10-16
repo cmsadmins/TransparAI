@@ -106,6 +106,98 @@ final class C2paTest extends TestCase {
 		$this->assertNull( TransparAI_C2PA::summary( (string) file_get_contents( trai_fixture( 'base.jpg' ) ), 'jpeg' ) );
 	}
 
+	/**
+	 * A c2pa.hash.data assertion that matches $data with the given exclusions.
+	 *
+	 * @param array<int, array{0:int, 1:int}> $exclusions Start and length pairs.
+	 * @return array<string, mixed>
+	 */
+	private static function binding( string $data, array $exclusions ): array {
+		usort( $exclusions, static fn( array $a, array $b ): int => $a[0] <=> $b[0] );
+		$hashed = '';
+		$pos    = 0;
+		foreach ( $exclusions as list( $start, $length ) ) {
+			$hashed .= substr( $data, $pos, $start - $pos );
+			$pos     = $start + $length;
+		}
+		$hashed .= substr( $data, $pos );
+		return array(
+			'alg'        => 'sha256',
+			'hash'       => hash( 'sha256', $hashed, true ),
+			'exclusions' => array_map(
+				static fn( array $r ): array => array(
+					'start'  => $r[0],
+					'length' => $r[1],
+				),
+				$exclusions
+			),
+		);
+	}
+
+	/**
+	 * @dataProvider signed_fixtures
+	 */
+	public function test_store_ranges_are_whole_containers( string $fixture, string $format, int $offset ): void {
+		unset( $offset );
+		$data     = (string) file_get_contents( trai_fixture( $fixture ) );
+		$location = TransparAI_C2PA::store_location( $data, $format );
+		$this->assertNotNull( $location );
+		$this->assertNotSame( array(), $location['ranges'] );
+		$first = $location['ranges'][0][0];
+		$this->assertSame( 'jpeg' === $format ? "\xFF\xEB" : ( 'png' === $format ? 'caBX' : 'C2PA' ), substr( $data, 'png' === $format ? $first + 4 : $first, 'jpeg' === $format ? 2 : 4 ) );
+
+		$parsed = TransparAI_C2PA::parse_store( $location['store'] );
+		$ranges = array_map( static fn( array $e ): array => array( $e['start'], $e['length'] ), $parsed['hash_data']['exclusions'] );
+		$this->assertSame( 'match', TransparAI_C2PA::hash_check( $data, $parsed['hash_data'], 'sha256', $location['ranges'] )['state'] );
+		$this->assertNotSame( array(), $ranges );
+	}
+
+	public function test_exclusions_may_not_unbind_the_image(): void {
+		$data   = (string) file_get_contents( trai_fixture( 'signed.jpg' ) );
+		$store  = TransparAI_C2PA::store_location( $data, 'jpeg' );
+		$ranges = $store['ranges'];
+		$first  = $ranges[0][0];
+		$last   = end( $ranges );
+		$block  = array( $first, $last[0] + $last[1] - $first );
+		$length = strlen( $data );
+
+		$check = static fn( array $exclusions, array $allowed = array() ): array => TransparAI_C2PA::hash_check( $data, self::binding( $data, $exclusions ), 'sha256', $ranges, $allowed );
+
+		$this->assertSame( 'match', $check( array( $block ) )['state'], 'the store block alone is a valid binding' );
+
+		$tail = $check( array( array( $first, $length - $first ) ) );
+		$this->assertSame( array( 'mismatch', 'exclusion_beyond_store' ), array( $tail['state'], $tail['reason'] ), 'store plus image data to the end' );
+
+		$all = $check( array( array( 0, $length ) ) );
+		$this->assertSame( array( 'mismatch', 'nothing_hashed' ), array( $all['state'], $all['reason'] ) );
+
+		$none = $check( array() );
+		$this->assertSame( array( 'mismatch', 'store_not_excluded' ), array( $none['state'], $none['reason'] ) );
+
+		$scan = $check( array( $block, array( $length - 40, 20 ) ) );
+		$this->assertSame( array( 'mismatch', 'exclusion_not_allowed' ), array( $scan['state'], $scan['reason'] ), 'a second exclusion in the scan data' );
+
+		$allowed = $check( array( $block, array( $length - 40, 20 ) ), array( array( $length - 50, 40 ) ) );
+		$this->assertSame( 'match', $allowed['state'], 'an exclusion inside an allowed range' );
+	}
+
+	public function test_only_jpeg_exif_and_xmp_payloads_may_be_excluded(): void {
+		$exif = "Exif\0\0" . str_repeat( 'e', 20 );
+		$xmp  = TransparAI_Parsers::XMP_HEADER_JPEG . '<x/>';
+		$com  = 'a comment';
+		$jpeg = "\xFF\xD8"
+			. "\xFF\xE1" . pack( 'n', strlen( $exif ) + 2 ) . $exif
+			. "\xFF\xFE" . pack( 'n', strlen( $com ) + 2 ) . $com
+			. "\xFF\xE1" . pack( 'n', strlen( $xmp ) + 2 ) . $xmp
+			. "\xFF\xDA\0\x02scan\xFF\xD9";
+
+		$this->assertSame(
+			array( array( 6, strlen( $exif ) ), array( 6 + strlen( $exif ) + 4 + strlen( $com ) + 4, strlen( $xmp ) ) ),
+			TransparAI_C2PA::allowed_ranges( $jpeg, 'jpeg' )
+		);
+		$this->assertSame( array(), TransparAI_C2PA::allowed_ranges( (string) file_get_contents( trai_fixture( 'signed.png' ) ), 'png' ) );
+	}
+
 	public function test_cbor_decoder_vectors(): void {
 		$cases = array(
 			array( "\x00", 0 ),
