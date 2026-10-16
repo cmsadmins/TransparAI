@@ -198,6 +198,23 @@ if ( ! function_exists( 'wp_next_scheduled' ) ) {
 		return $trai_test_cron[ $hook ] ?? false;
 	}
 }
+if ( ! function_exists( 'wp_schedule_single_event' ) ) {
+	function wp_schedule_single_event( $timestamp, $hook, $args = array() ) {
+		global $trai_test_cron;
+		$trai_test_cron[ $hook ] = $args;
+		return true;
+	}
+}
+if ( ! function_exists( 'trailingslashit' ) ) {
+	function trailingslashit( $value ) {
+		return rtrim( (string) $value, '/\\' ) . '/';
+	}
+}
+if ( ! function_exists( 'sanitize_file_name' ) ) {
+	function sanitize_file_name( $name ) {
+		return (string) preg_replace( '/[^A-Za-z0-9._-]+/', '-', (string) $name );
+	}
+}
 if ( ! function_exists( 'wp_schedule_event' ) ) {
 	function wp_schedule_event( $timestamp, $recurrence, $hook ) {
 		global $trai_test_cron;
@@ -707,6 +724,7 @@ require_once dirname( __DIR__ ) . '/includes/class-integrations.php';
 require_once dirname( __DIR__ ) . '/includes/class-repair.php';
 require_once dirname( __DIR__ ) . '/includes/class-writer.php';
 require_once dirname( __DIR__ ) . '/includes/class-frontend.php';
+require_once dirname( __DIR__ ) . '/includes/class-og-image.php';
 require_once dirname( __DIR__ ) . '/includes/class-notice.php';
 require_once dirname( __DIR__ ) . '/includes/class-woocommerce.php';
 require_once dirname( __DIR__ ) . '/includes/class-rest.php';

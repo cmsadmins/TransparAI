@@ -23,3 +23,10 @@ own opacity setting instead of bundling them.
 Terms, as stated on the Commission's page: the icons may be used by anyone, free of charge and
 without attribution. Using them does not make a site a signatory of the Code of Practice and must
 not be presented as such, and neither the icons nor this plugin certify compliance with the AI Act.
+
+## PNG copies for preview images
+
+`ai-*-black.png` and `ai-*-white.png` are the same six icons rasterised once at 379 x 120 pixels
+with a transparent background (headless Chrome, 2026-10-16). PHP's GD library cannot read SVG, and
+the link preview image (Settings, Badge, "Label the link preview image") is drawn with GD on the
+server. Nothing else about the icons was changed.

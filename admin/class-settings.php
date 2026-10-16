@@ -431,6 +431,18 @@ th{background:#f6f7f7;}
 							<p><input type="text" class="regular-text" name="<?php self::name( 'page_notice_text' ); ?>" value="<?php echo esc_attr( $options['page_notice_text'] ); ?>" placeholder="<?php esc_attr_e( 'This page contains AI-generated media.', 'transparai' ); ?>" /></p>
 						</td>
 					</tr>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Link preview', 'transparai' ); ?></th>
+						<td>
+							<?php $og_supported = TransparAI_Og_Image::supported(); ?>
+							<label><input type="checkbox" name="<?php self::name( 'og_image_label' ); ?>" value="1" <?php checked( $options['og_image_label'], '1' ); ?> <?php disabled( ! $og_supported ); ?> aria-describedby="trai-og-help" />
+							<?php esc_html_e( 'Label the link preview image of posts whose featured image is AI-labeled', 'transparai' ); ?></label>
+							<p class="description" id="trai-og-help"><?php esc_html_e( 'Social networks and messengers strip the declaration from image files when a link is shared. With this option the plugin draws a 1200 x 630 copy of the featured image with the badge exactly as set above and hands it to them as og:image; the copy also carries the declaration in its file. The original image stays untouched. Works with Yoast SEO, Rank Math and All in One SEO, and on sites without an SEO plugin. Other SEO plugins keep their own preview image.', 'transparai' ); ?></p>
+							<?php if ( ! $og_supported ) : ?>
+								<p class="description"><?php esc_html_e( 'Not available on this server: PHP needs the GD extension with FreeType support.', 'transparai' ); ?></p>
+							<?php endif; ?>
+						</td>
+					</tr>
 				</table>
 				</section>
 
