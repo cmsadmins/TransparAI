@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- Content Credentials: the data hash check now holds the exclusions to C2PA 2.4 section 15.12.1. A
+  manifest whose exclusions leave image data out of the hash (store to end of file, the whole file, a
+  second range outside the allowed Exif and XMP payloads) or do not cover the manifest store is reported
+  as not matching, with its own explanation in the inspection panel. Before, such a manifest matched any
+  picture behind the excluded range.
+- Link preview: an opt-in setting under Badge draws a 1200 x 630 copy of a post's AI-labeled featured
+  image with the badge exactly as configured (text, style, colours, opacity, size, position, EU icon) and
+  hands it to social networks as og:image, through the filters of Yoast SEO, Rank Math and All in One SEO
+  or with its own tags on sites without an SEO plugin. The copy carries the IPTC declaration in its XMP,
+  the original stays untouched. Drawn with GD in a cron event; Open Sans Regular and Bold (SIL OFL 1.1)
+  and PNG copies of the EU icons ship for that.
+- AI systems: operator details per system (purpose, provider, model, affected people, human review, data
+  processed), edited on the AI Systems page and included in the audit report, the JSON export and
+  `wp transparai systems` (column documented).
 - Three more languages ship with the plugin: Brazilian Portuguese (pt_BR), Swiss German (de_CH, formal,
   derived from formal German with ss for ß) and Belgian Dutch (nl_BE, derived from Dutch). 19 locales in total.
 
