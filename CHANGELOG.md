@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.11 (2026-10-16)
 
 - Content Credentials: the data hash check now holds the exclusions to C2PA 2.4 section 15.12.1. A
   manifest whose exclusions leave image data out of the hash (store to end of file, the whole file, a
