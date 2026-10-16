@@ -419,6 +419,9 @@ final class TransparAI_Media_Library {
 			case 'match':
 				return __( 'yes, the manifest was written for exactly these bytes', 'transparai' );
 			case 'mismatch':
+				if ( in_array( $reason, array( 'store_not_excluded', 'exclusion_beyond_store', 'exclusion_not_allowed', 'nothing_hashed' ), true ) ) {
+					return __( 'no, the manifest leaves image data out of its hash, so it does not bind these pixels', 'transparai' );
+				}
 				return __( 'no, the image was changed after signing or the manifest was copied from another file', 'transparai' );
 		}
 		switch ( $reason ) {
