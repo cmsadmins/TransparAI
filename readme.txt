@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, content credentials, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.11
+Stable tag: 1.1.12
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,11 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.12 =
+* Content Credentials: images from Google Gemini are labeled automatically again. The time stamp of their signature was wrongly rejected, so they went to the review queue.
+* Content Credentials: an image whose signature is on the C2PA trust list keeps its label when an image optimizer has re-encoded the file after signing.
+* Detection: the spelling "DALL·E" with a middle dot is recognized.
+
 = 1.1.11 =
 * Link preview: an optional setting under Badge gives posts with an AI-labeled featured image a 1200 x 630 preview image for social networks with the badge drawn in, exactly as it looks on the site. The copy also carries the declaration in its file, the original stays untouched. Works with Yoast SEO, Rank Math and All in One SEO, and on sites without an SEO plugin.
 * Content Credentials: a manifest whose data hash leaves image data out, or does not exclude its own manifest store, no longer counts as matching the file.
@@ -333,6 +338,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.12 =
+Gemini images are labeled automatically again, also after an image optimizer. Run the library scan once to label images waiting in the review queue. Settings are untouched.
 
 = 1.1.11 =
 Optional labeled link preview image for social networks, stricter data hash check for Content Credentials and operator details for AI systems. Settings are untouched.

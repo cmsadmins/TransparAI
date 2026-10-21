@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.12 (2026-10-21)
 
 - Content Credentials: time stamps signed with an EC key (Google's time stamp authority on every Gemini
   image) failed verification, because the OID prefix that selects the key type was stored as UTF-8 text
