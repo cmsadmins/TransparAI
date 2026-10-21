@@ -112,6 +112,12 @@ final class DetectorTest extends TestCase {
 		$this->assertSame( 'ComfyUI', $result['generator'] );
 	}
 
+	public function test_dall_e_with_middle_dot(): void {
+		$result = TransparAI_Detector::detect_file( trai_fixture( 'com-dalle.jpg' ) );
+		$this->assertNotNull( $result );
+		$this->assertSame( 'DALL-E', $result['generator'] );
+	}
+
 	public function test_filename_hints_only_when_enabled(): void {
 		$dir  = sys_get_temp_dir() . '/trai-test-' . uniqid();
 		mkdir( $dir );

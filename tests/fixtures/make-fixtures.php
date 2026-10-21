@@ -230,6 +230,9 @@ $write( 'c2pa-composite.jpg', jpeg_add_segment( $base_jpeg, 0xEB, 'JP' . c2pa_pa
 // JPEG: COM segment naming ComfyUI (signature via comment block).
 $write( 'com-comfyui.jpg', jpeg_add_segment( $base_jpeg, 0xFE, 'Exported from ComfyUI workflow 42' ) );
 
+// JPEG: COM segment with the middle dot spelling of DALL·E (multibyte in the pattern).
+$write( 'com-dalle.jpg', jpeg_add_segment( $base_jpeg, 0xFE, 'Made with DALL·E 3' ) );
+
 // WebP: XMP chunk (spec places it at the end of the file) with dST.
 $write( 'xmp.webp', webp_add_chunk( $base_webp, 'XMP ', xmp_packet( 'trainedAlgorithmicMedia' ) ) );
 

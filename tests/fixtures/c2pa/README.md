@@ -29,6 +29,7 @@ access; no timestamp authority is contacted.
 |---|---|
 | `alg-es256.jpg` … `alg-ed25519.jpg` | one file per COSE algorithm (ES256/384/512, PS256/384/512, Ed25519), signed with the c2pa-rs test certificates (`m-<alg>.json`) |
 | `tsa-es256.jpg` | ES256 plus an RFC 3161 time stamp from the public DigiCert TSA (`m-tsa.json`, the only fixture made with network access) |
+| `gemini-tsa-es256.jpg` | Google Gemini manifest with an ECDSA time stamp from the Google TSA (on the C2PA TSA list); header and APP11 of a real image, image data cut off |
 | `test-roots.pem` | root bundle of the c2pa-rs test certificates; the tests add it as a trust anchor to get "trusted" |
 | `adobe-20220124-C.jpg` | C2PA 1.4 manifest with a `sigTst` time stamp stored as a full TimeStampResp |
 | `adobe-20220124-E-sig-CA.jpg` | tampered signature |

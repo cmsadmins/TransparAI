@@ -493,9 +493,15 @@ final class TransparAI_Detector {
 		 * A manifest whose data hash does not cover these bytes was copied
 		 * from another file or the image was edited after signing. Its
 		 * declaration is then a question for the review queue, not a label.
+		 * Exception: a signature from the C2PA trust list. Image optimizers
+		 * re-encode losslessly (baseline to progressive) and keep APP11, so
+		 * a trusted generator's declaration still holds; copying such a
+		 * manifest onto a camera photo would over-label, never hide AI.
 		 */
 		$info = self::c2pa_info( $path );
-		if ( null !== $info && 'mismatch' === $info['hash'] && 'certain' === $result['confidence'] ) {
+		if ( null !== $info && 'mismatch' === $info['hash'] && 'certain' === $result['confidence'] && 'trusted' === ( $info['sig'] ?? '' ) ) {
+			$result['evidence'] = mb_substr( $result['evidence'] . '; file re-encoded or edited after signing (data hash mismatch)', 0, 500 );
+		} elseif ( null !== $info && 'mismatch' === $info['hash'] && 'certain' === $result['confidence'] ) {
 			$result['confidence'] = 'likely';
 			$result['evidence']   = mb_substr( $result['evidence'] . '; manifest data hash does not match the file bytes', 0, 500 );
 		}
@@ -718,7 +724,7 @@ final class TransparAI_Detector {
 	private static function detect_filename( string $path ): ?array {
 		$name     = strtolower( basename( $path ) );
 		$patterns = array(
-			'/(?<![a-z])dall[-·_ ]?e(?![a-z])/'          => 'DALL-E',
+			'/(?<![a-z])dall(?:[-_ ]|·)?e(?![a-z])/'     => 'DALL-E',
 			'/gemini_generated_image/'                   => 'Google Gemini',
 			'/^generated[-_ ]image/'                     => 'Google Gemini',
 			'/comfyui_\d+/'                              => 'ComfyUI',
@@ -772,7 +778,7 @@ final class TransparAI_Detector {
 				'generator' => 'Midjourney',
 			),
 			array(
-				'pattern'   => '/(?<![a-z])dall[-·]e(?![a-z])/i',
+				'pattern'   => '/(?<![a-z])dall(?:-|·)e(?![a-z])/i',
 				'generator' => 'DALL-E',
 			),
 			array(
