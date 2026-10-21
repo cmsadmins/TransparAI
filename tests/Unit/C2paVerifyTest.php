@@ -79,6 +79,14 @@ final class C2paVerifyTest extends TestCase {
 		$this->assertFalse( $result['tsa_trusted'], 'the public DigiCert TSA is not on the C2PA TSA list' );
 	}
 
+	public function test_ecdsa_time_stamp_from_google(): void {
+		$result = $this->verify_file( 'gemini-tsa-es256.jpg' );
+		$this->assertSame( 'trusted', $result['sig'], $result['reason'] );
+		$this->assertSame( '2026-10-21T03:13:55Z', $result['tst'] );
+		$this->assertSame( 'Google Core Time Stamping Authority T12', $result['tsa'] );
+		$this->assertTrue( $result['tsa_trusted'] );
+	}
+
 	public function test_legacy_manifest_with_time_stamp_response(): void {
 		$result = $this->verify_file( 'adobe-20220124-C.jpg' );
 		$this->assertSame( 'untrusted', $result['sig'], $result['reason'] );

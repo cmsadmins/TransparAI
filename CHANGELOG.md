@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.12 (2026-10-21)
+
+- Content Credentials: time stamps signed with an EC key (Google's time stamp authority on every Gemini
+  image) failed verification, because the OID prefix that selects the key type was stored as UTF-8 text
+  instead of raw bytes. The whole signature counted as invalid and every such image went to the review
+  queue instead of being labeled. Regression fixture `gemini-tsa-es256.jpg`.
+- Content Credentials: a manifest signed by a certificate on the C2PA trust list keeps its declared source
+  type at full confidence when the data hash no longer matches. Image optimizers re-encode JPEGs losslessly
+  (baseline to progressive) and keep the manifest; before, such images went to review. Untrusted or invalid
+  signatures are still demoted. The evidence names the re-encoding.
+- Signatures: "DALL·E" with the middle dot was never matched, the pattern held the two UTF-8 bytes of the
+  dot in a byte character class. Same fix for the opt-in filename hints.
+
 ## 1.1.11 (2026-10-16)
 
 - Content Credentials: the data hash check now holds the exclusions to C2PA 2.4 section 15.12.1. A

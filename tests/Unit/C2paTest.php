@@ -270,6 +270,15 @@ final class C2paTest extends TestCase {
 		$this->assertStringContainsString( 'does not match', $result['evidence'] );
 	}
 
+	public function test_trusted_signature_keeps_certain_on_a_mismatch(): void {
+		/* Header and manifest of a real Gemini image without its scan data: the hash cannot match. */
+		$result = TransparAI_Detector::detect_file( trai_fixture( 'gemini-tsa-es256.jpg' ) );
+		$this->assertNotNull( $result );
+		$this->assertSame( 'certain', $result['confidence'], 'an optimizer re-encode must not demote a trusted declaration' );
+		$this->assertStringContainsString( 're-encoded or edited after signing', $result['evidence'] );
+		$this->assertStringContainsString( 'C2PA trust list', $result['evidence'] );
+	}
+
 	/**
 	 * A C2PA 2.4 section A.8 text wrapper around $store, one variation selector per byte.
 	 */

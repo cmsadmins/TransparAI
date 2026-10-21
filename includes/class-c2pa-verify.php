@@ -897,7 +897,7 @@ final class TransparAI_C2PA_Verify {
 		$tsa_cert     = null;
 		$sig_alg      = self::children( $token, $signer[ $attrs + 1 ]['start'], $signer[ $attrs + 1 ]['end'] );
 		$sig_oid      = isset( $sig_alg[0] ) ? self::content( $token, $sig_alg[0] ) : '';
-		$key_type     = str_starts_with( $sig_oid, '*HÎ=' ) ? OPENSSL_KEYTYPE_EC : OPENSSL_KEYTYPE_RSA;
+		$key_type     = str_starts_with( $sig_oid, "\x2a\x86\x48\xce\x3d" ) ? OPENSSL_KEYTYPE_EC : OPENSSL_KEYTYPE_RSA;
 		foreach ( $certs as $cert ) {
 			$key = openssl_pkey_get_public( self::pem( $cert ) );
 			if ( false !== $key && self::key_is( $key, $key_type ) && 1 === openssl_verify( $signed_attrs, $signature, $key, $digest ) ) {
