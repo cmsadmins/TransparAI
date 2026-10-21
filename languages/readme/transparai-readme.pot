@@ -71,9 +71,9 @@ msgid ""
 "C2PA validator does it, on your own server: the manifest signature, the "
 "hashes of every part of the manifest, the data hash over the file bytes and "
 "its exclusions, the certificate chain against the bundled C2PA trust list "
-"and an RFC 3161 time stamp. A manifest that was copied, edited after signing"
-" or forged does not label automatically but lands in the review queue, and "
-"the signer, the claim generator and the time stamp are shown with the file. "
+"and an RFC 3161 time stamp. A copied or forged manifest lands in the review "
+"queue instead of labeling, a trusted one survives image optimizers, and the "
+"signer, the claim generator and the time stamp are shown with the file. "
 "Findings carry a confidence level: explicit AI declarations are labeled "
 "automatically, strong but informal signals land in a review queue where you "
 "confirm or dismiss them, single or in bulk, right in the media library. New "
@@ -1074,6 +1074,24 @@ msgstr ""
 
 #. Found in description header.
 msgid "For developers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Detection: the spelling \"DALL·E\" with a middle dot is recognized."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Content Credentials: an image whose signature is on the C2PA trust list "
+"keeps its label when an image optimizer has re-encoded the file after "
+"signing."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Content Credentials: images from Google Gemini are labeled automatically "
+"again. The time stamp of their signature was wrongly rejected, so they went "
+"to the review queue."
 msgstr ""
 
 #. Found in changelog list item.
