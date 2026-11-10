@@ -217,14 +217,23 @@ final class C2paVerifyTest extends TestCase {
 	 * Sign with a fresh key on the given curve and verify as COSE ES256.
 	 */
 	private function ecdsa_verdict( string $curve, int $half, string $data ): bool {
-		$key  = openssl_pkey_new(
-			array(
-				'private_key_type' => OPENSSL_KEYTYPE_EC,
-				'curve_name'       => $curve,
-			)
+		/* Own minimal config: PHP builds without a default openssl.cnf (Windows) cannot create a CSR otherwise. */
+		$cnf = (string) tempnam( sys_get_temp_dir(), 'trai-cnf' );
+		file_put_contents( $cnf, "[req]
+default_bits = 2048
+distinguished_name = dn
+[dn]
+" );
+		$opt  = array(
+			'config'           => $cnf,
+			'digest_alg'       => 'sha256',
+			'private_key_type' => OPENSSL_KEYTYPE_EC,
+			'curve_name'       => $curve,
 		);
-		$csr  = openssl_csr_new( array( 'commonName' => 'Curve Test' ), $key, array( 'digest_alg' => 'sha256' ) );
-		$cert = openssl_csr_sign( $csr, null, $key, 1, array( 'digest_alg' => 'sha256' ) );
+		$key  = openssl_pkey_new( $opt );
+		$csr  = openssl_csr_new( array( 'commonName' => 'Curve Test' ), $key, $opt );
+		$cert = openssl_csr_sign( $csr, null, $key, 1, $opt );
+		unlink( $cnf );
 		openssl_x509_export( $cert, $pem );
 		openssl_sign( $data, $der_sig, $key, 'sha256' );
 
