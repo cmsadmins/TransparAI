@@ -174,8 +174,23 @@
 		};
 		syncTooltip();
 		jQuery(form).on('change', 'input[type="checkbox"]', syncTooltip);
+		/* The EU icon and its colour only matter for the EU icon style. Without
+		   JavaScript both stay visible. */
+		var styleSelect = form ? form.querySelector('select[name$="[badge_style]"]') : null;
+		var syncStyleFields = function () {
+			if (!styleSelect) {
+				return;
+			}
+			form.querySelectorAll('[data-trai-style]').forEach(function (field) {
+				field.hidden = field.getAttribute('data-trai-style') !== styleSelect.value;
+			});
+		};
+		syncStyleFields();
 		jQuery(form).on('change', 'select, input[type="radio"]', function () {
 			var key = this.name.replace(/^.*\[(\w+)\]$/, '$1');
+			if ('badge_style' === key) {
+				syncStyleFields();
+			}
 			if (prefixes[key]) {
 				preview.className = preview.className.replace(new RegExp('\\b' + prefixes[key] + '[a-z-]+'), prefixes[key] + this.value);
 				syncTooltip();

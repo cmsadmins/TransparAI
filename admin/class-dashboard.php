@@ -355,7 +355,7 @@ final class TransparAI_Dashboard {
 					</li>
 				<?php endforeach; ?>
 			</ol>
-			<p class="description"><?php esc_html_e( 'Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can move them.', 'transparai' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Dates per Regulation (EU) 2024/1689, Articles 111 and 113, as amended by Regulation (EU) 2026/1744. Later amendments can move them.', 'transparai' ); ?></p>
 		</section>
 		<?php
 	}
@@ -384,7 +384,7 @@ final class TransparAI_Dashboard {
 						<tr>
 							<td><?php echo esc_html( date_i18n( (string) get_option( 'date_format', 'Y-m-d' ) . ' ' . (string) get_option( 'time_format', 'H:i' ), $entry['t'] ) ); ?></td>
 							<td><?php echo esc_html( TransparAI_Compliance::event_label( $entry['e'] ) ); ?></td>
-							<td><?php echo esc_html( self::details_text( $entry['d'] ) ); ?></td>
+							<td><?php self::render_details( $entry['d'] ); ?></td>
 							<td><?php echo esc_html( '' !== $entry['n'] ? $entry['n'] : ( $entry['u'] > 0 ? '#' . $entry['u'] : __( 'system', 'transparai' ) ) ); ?></td>
 						</tr>
 					<?php endforeach; ?>
@@ -396,17 +396,54 @@ final class TransparAI_Dashboard {
 	}
 
 	/**
+	 * Details cell. A settings save lists option keys, which mean nothing to
+	 * most readers: it shows how many settings changed, the keys stay one
+	 * click away for whoever needs them.
+	 *
+	 * @param array<string, mixed> $details Details.
+	 */
+	private static function render_details( array $details ): void {
+		$keys = $details['keys'] ?? null;
+		if ( is_array( $keys ) && array() !== $keys ) {
+			unset( $details['keys'] );
+			$count = count( $keys );
+			?>
+			<details class="trai-log-keys">
+				<summary>
+				<?php
+				/* translators: %d: number of changed settings. */
+				echo esc_html( sprintf( _n( '%d setting changed', '%d settings changed', $count, 'transparai' ), $count ) );
+				?>
+				</summary>
+				<code><?php echo esc_html( implode( ' ', array_map( 'strval', $keys ) ) ); ?></code>
+			</details>
+			<?php
+		}
+		echo esc_html( self::details_text( $details ) );
+	}
+
+	/**
 	 * "key: value, key: value" for small detail arrays.
 	 *
 	 * @param array<string, mixed> $details Details.
 	 */
 	private static function details_text( array $details ): string {
-		$parts = array();
+		$labels = array(
+			'answered' => __( 'Answers', 'transparai' ),
+			'done'     => __( 'Done', 'transparai' ),
+			'count'    => __( 'Number', 'transparai' ),
+			'id'       => __( 'System', 'transparai' ),
+			'total'    => __( 'Files', 'transparai' ),
+			'checked'  => __( 'Checked', 'transparai' ),
+			'repaired' => __( 'Repaired', 'transparai' ),
+			'failed'   => __( 'Failed', 'transparai' ),
+		);
+		$parts  = array();
 		foreach ( $details as $key => $value ) {
 			if ( is_array( $value ) ) {
 				$value = implode( ' ', array_map( 'strval', $value ) );
 			}
-			$parts[] = $key . ': ' . (string) $value;
+			$parts[] = ( $labels[ $key ] ?? $key ) . ': ' . (string) $value;
 		}
 		return implode( ', ', $parts );
 	}
@@ -786,7 +823,7 @@ final class TransparAI_Dashboard {
 								<input type="hidden" name="name" value="<?php echo esc_attr( $suggestion['name'] ); ?>" />
 								<input type="hidden" name="slug" value="<?php echo esc_attr( $suggestion['slug'] ); ?>" />
 								<td><?php echo esc_html( $suggestion['name'] ); ?> <code><?php echo esc_html( $suggestion['slug'] ); ?></code></td>
-								<td><select name="category">
+								<td><select name="category" aria-label="<?php esc_attr_e( 'Category', 'transparai' ); ?>">
 									<?php foreach ( $labels as $value => $label ) : ?>
 										<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 									<?php endforeach; ?>
@@ -806,8 +843,8 @@ final class TransparAI_Dashboard {
 			<form method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>" class="trai-inline-form">
 				<?php wp_nonce_field( 'transparai_systems' ); ?>
 				<input type="hidden" name="action" value="transparai_systems" />
-				<input type="text" name="name" class="regular-text" required maxlength="100" placeholder="<?php esc_attr_e( 'Name of the system', 'transparai' ); ?>" />
-				<select name="category">
+				<input type="text" name="name" class="regular-text" required maxlength="100" placeholder="<?php esc_attr_e( 'Name of the system', 'transparai' ); ?>" aria-label="<?php esc_attr_e( 'Name of the system', 'transparai' ); ?>" />
+				<select name="category" aria-label="<?php esc_attr_e( 'Category', 'transparai' ); ?>">
 					<?php foreach ( $labels as $value => $label ) : ?>
 						<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 					<?php endforeach; ?>
