@@ -3,7 +3,7 @@ Contributors: contexlabs
 Tags: eu ai act, ai compliance, ai disclosure, content credentials, c2pa
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.1.12
+Stable tag: 1.1.13
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,12 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 
 == Changelog ==
 
+= 1.1.13 =
+* EU AI Act: the timeline follows Regulation (EU) 2026/1744. New dates 2 December 2026 (machine-readable marking for generators already on the market, new bans) and 2 December 2027 (high-risk AI in Annex III); high-risk AI in regulated products moves to 2 August 2028. The Article 4 texts describe measures that support AI literacy, without a required level.
+* Content Credentials: the signature check now ties every algorithm to the key it belongs to, as c2patool does.
+* Dashboard: after two weeks of use a short note asks for a rating on wordpress.org; it can be hidden for good.
+* Accessibility: stronger contrast for orange text and buttons, names for every select field, visible labels for the badge controls, larger checkbox targets. The activity log shows how many settings changed instead of internal keys.
+
 = 1.1.12 =
 * Content Credentials: images from Google Gemini are labeled automatically again. The time stamp of their signature was wrongly rejected, so they went to the review queue.
 * Content Credentials: an image whose signature is on the C2PA trust list keeps its label when an image optimizer has re-encoded the file after signing.
@@ -338,6 +344,9 @@ TransparAI is a technical tool, not legal advice, and is provided "as is" withou
 * Initial release: C2PA, XMP/IPTC, PNG-chunk, EXIF, MP4 and MP3 detection with a camera rule and a review queue; visible badge with overlay guard, per-image override and CSS utility classes; IPTC digital source type written as XMP into JPEG, PNG, WebP and AVIF with auto-repair; Schema.org JSON-LD; page-cache purging; WP-CLI; integrations for AI Engine, AI Power, Elementor AI and WordPress AI; no external requests.
 
 == Upgrade Notice ==
+
+= 1.1.13 =
+Timeline and Article 4 texts updated to the AI Act amendment of July 2026, stricter signature check and accessibility fixes in the admin. Settings are untouched.
 
 = 1.1.12 =
 Gemini images are labeled automatically again, also after an image optimizer. Run the library scan once to label images waiting in the review queue. Settings are untouched.

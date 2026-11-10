@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.13 (2026-11-10)
+
+- EU AI Act: timeline per Regulation (EU) 2026/1744 (Articles 111(4) and 113 as amended): 2 December 2026
+  for Article 50(2) marking by generators placed on the market before 2 August 2026 and the new Article 5
+  bans, 2 December 2027 for Annex III high-risk, 2 August 2028 for Annex I high-risk (was 2 August 2027).
+  Article 4 texts follow the new wording: measures that support AI literacy, no specific level required.
+  Readme FAQ names the German supervisory authorities.
+- Content Credentials: ES256/384/512 only with P-256/P-384/P-521 keys (RFC 9053), EdDSA only with an
+  Ed25519 subjectPublicKeyInfo, Ed25519 certificate signatures without parameters (RFC 8410).
+- Dashboard: rating hint two weeks after the first finished scan or setup, a plain link, hideable per user.
+- Admin accessibility (WCAG 2.2 AA): orange text uses a darker step of the same hue, dark text on orange
+  surfaces, darker success green, accessible names for every select, visible labels for the badge controls,
+  EU icon fields only for the EU icon style, attachment fields tied to their labels, 24px checkbox targets.
+  Activity log counts changed settings instead of listing option keys.
+
 ## 1.1.12 (2026-10-21)
 
 - Content Credentials: time stamps signed with an EC key (Google's time stamp authority on every Gemini
