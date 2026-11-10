@@ -18,6 +18,20 @@ msgid ""
 "TransparAI: EU AI Act Compliance, AI Disclosure &amp; AI Image Detection"
 msgstr ""
 
+#. Found in faq paragraph.
+msgid ""
+"Article 50 has applied since 2 August 2026. The Commission published the "
+"final Code of Practice on Transparency of AI-Generated Content together with"
+" the EU icons on 10 June 2026 and its guidelines on Article 50 on 20 July "
+"2026. The Digital Omnibus in force since 27 July 2026 gives providers of "
+"generators that were already on the market until 2 December 2026 to add the "
+"machine-readable marking; there is no such grace period for the visible "
+"disclosure by deployers. High-risk duties now follow on 2 December 2027 "
+"(Annex III) and 2 August 2028 (Annex I). In Germany the Bundesnetzagentur "
+"supervises the AI Act under the KI-MIG; for media services the state media "
+"authorities (Landesmedienanstalten) stay responsible."
+msgstr ""
+
 #. Found in description paragraph.
 msgid ""
 "A list of known AI tools ships with the plugin and is matched against your "
@@ -100,17 +114,6 @@ msgid ""
 "allows anyone to use them free of charge and without attribution. Using the "
 "icons is optional, it does not make your site a signatory of the Code of "
 "Practice, and neither the icons nor the plugin certify compliance."
-msgstr ""
-
-#. Found in faq paragraph.
-msgid ""
-"Article 50 has applied since 2 August 2026. The Commission published the "
-"final Code of Practice on Transparency of AI-Generated Content together with"
-" the EU icons on 10 June 2026 and its guidelines on Article 50 on 20 July "
-"2026. The Digital Omnibus in force since 27 July 2026 gives providers of "
-"generators that were already on the market until 2 December 2026 to add the "
-"machine-readable marking; there is no such grace period for the visible "
-"disclosure by deployers."
 msgstr ""
 
 #. Found in faq paragraph.
@@ -366,15 +369,16 @@ msgstr ""
 
 #. Found in faq paragraph.
 msgid ""
-"Article 4 asks providers and deployers for measures, as far as they can, "
-"toward a sufficient level of AI literacy of the people who operate or use AI"
-" systems on their behalf; it prescribes no training format or certificate. "
-"The five items are the measures that usually serve as evidence: staff know "
-"which AI tools are in use, an internal policy is written down, people who "
-"work with AI tools have had guidance, a review date is set, and the context "
-"of use and the people affected were considered. Tick what applies; the "
-"checklist counts toward the readiness score and is printed in the compliance"
-" report with the name and date of the last save."
+"Article 4 asks providers and deployers to take measures that support the AI "
+"literacy of the people who operate or use AI systems on their behalf. Since "
+"Regulation (EU) 2026/1744 it no longer requires a particular level of "
+"knowledge, and it prescribes no training format or certificate. The five "
+"items are the measures that usually serve as evidence: staff know which AI "
+"tools are in use, an internal policy is written down, people who work with "
+"AI tools have had guidance, a review date is set, and the context of use and"
+" the people affected were considered. Tick what applies; the checklist "
+"counts toward the readiness score and is printed in the compliance report "
+"with the name and date of the last save."
 msgstr ""
 
 #. Found in faq paragraph.
@@ -641,10 +645,10 @@ msgid ""
 " Which paragraph addresses you depends on whether you provide the AI system "
 "or deploy it; the plugin covers the technical side of all of them. Article "
 "4, AI literacy, applies since 2 February 2025: providers and deployers take "
-"measures so that the people who work with AI systems have sufficient AI "
-"literacy, and the plugin's checklist records what your organisation has "
-"done. The dashboard shows the whole timeline with the dates as adopted in "
-"Regulation (EU) 2024/1689."
+"measures that support the AI literacy of the people who work with AI "
+"systems, and the plugin's checklist records what your organisation has done."
+" The dashboard shows the whole timeline with the dates as amended by "
+"Regulation (EU) 2026/1744."
 msgstr ""
 
 #. Found in description paragraph.
@@ -1074,6 +1078,35 @@ msgstr ""
 
 #. Found in description header.
 msgid "For developers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Accessibility: stronger contrast for orange text and buttons, names for "
+"every select field, visible labels for the badge controls, larger checkbox "
+"targets. The activity log shows how many settings changed instead of "
+"internal keys."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Dashboard: after two weeks of use a short note asks for a rating on "
+"wordpress.org; it can be hidden for good."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"Content Credentials: the signature check now ties every algorithm to the key"
+" it belongs to, as c2patool does."
+msgstr ""
+
+#. Found in changelog list item.
+msgid ""
+"EU AI Act: the timeline follows Regulation (EU) 2026/1744. New dates 2 "
+"December 2026 (machine-readable marking for generators already on the "
+"market, new bans) and 2 December 2027 (high-risk AI in Annex III); high-risk"
+" AI in regulated products moves to 2 August 2028. The Article 4 texts "
+"describe measures that support AI literacy, without a required level."
 msgstr ""
 
 #. Found in changelog list item.
