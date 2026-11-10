@@ -177,6 +177,107 @@ final class C2paVerifyTest extends TestCase {
 		$this->assertFalse( $profile( 'leaf-negative' ), 'negative serial number' );
 	}
 
+	public function test_ecdsa_algorithm_must_match_the_key_curve(): void {
+		$data = 'Sig_structure stand-in';
+		$this->assertTrue( $this->ecdsa_verdict( 'prime256v1', 32, $data ), 'ES256 with a P-256 key' );
+		$this->assertFalse( $this->ecdsa_verdict( 'secp384r1', 48, $data ), 'ES256 with a P-384 key' );
+	}
+
+	public function test_eddsa_needs_an_ed25519_key(): void {
+		$pair = sodium_crypto_sign_keypair();
+		$data = 'Sig_structure stand-in';
+		$sig  = sodium_crypto_sign_detached( $data, sodium_crypto_sign_secretkey( $pair ) );
+		$key  = sodium_crypto_sign_publickey( $pair );
+
+		$method = new ReflectionMethod( TransparAI_C2PA_Verify::class, 'verify_signature' );
+		$method->setAccessible( true );
+		$this->assertTrue( $method->invoke( null, -8, $data, $sig, $this->der_cert( self::ED25519_ALG, $key ) ) );
+		$this->assertFalse( $method->invoke( null, -8, $data, $sig, $this->der_cert( self::EC_P256_ALG, $key ) ), 'Ed25519 key bits under an EC key OID' );
+	}
+
+	public function test_ed25519_certificate_signature_carries_no_parameters(): void {
+		$pair   = sodium_crypto_sign_keypair();
+		$issuer = $this->der_cert( self::ED25519_ALG, sodium_crypto_sign_publickey( $pair ) );
+		$tbs    = $this->der_tbs( self::ED25519_ALG, str_repeat( "\x01", 32 ) );
+		$sig    = sodium_crypto_sign_detached( $tbs, sodium_crypto_sign_secretkey( $pair ) );
+
+		$method = new ReflectionMethod( TransparAI_C2PA_Verify::class, 'cert_signed_by' );
+		$method->setAccessible( true );
+		$plain = $this->der( 0x30, $tbs . self::ED25519_ALG . $this->der( 0x03, "\x00" . $sig ) );
+		$this->assertTrue( $method->invoke( null, $plain, $issuer ) );
+		$with_null = $this->der( 0x30, $tbs . $this->der( 0x30, "\x06\x03\x2b\x65\x70" . "\x05\x00" ) . $this->der( 0x03, "\x00" . $sig ) );
+		$this->assertFalse( $method->invoke( null, $with_null, $issuer ), 'NULL parameters after the Ed25519 OID' );
+	}
+
+	/* AlgorithmIdentifier SEQUENCEs: Ed25519 (RFC 8410) and ecPublicKey with P-256. */
+	private const ED25519_ALG = "\x30\x05\x06\x03\x2b\x65\x70";
+	private const EC_P256_ALG = "\x30\x13\x06\x07\x2a\x86\x48\xce\x3d\x02\x01\x06\x08\x2a\x86\x48\xce\x3d\x03\x01\x07";
+
+	/**
+	 * Sign with a fresh key on the given curve and verify as COSE ES256.
+	 */
+	private function ecdsa_verdict( string $curve, int $half, string $data ): bool {
+		/* Own minimal config: PHP builds without a default openssl.cnf (Windows) cannot create a CSR otherwise. */
+		$cnf = (string) tempnam( sys_get_temp_dir(), 'trai-cnf' );
+		file_put_contents( $cnf, "[req]
+default_bits = 2048
+distinguished_name = dn
+[dn]
+" );
+		$opt  = array(
+			'config'           => $cnf,
+			'digest_alg'       => 'sha256',
+			'private_key_type' => OPENSSL_KEYTYPE_EC,
+			'curve_name'       => $curve,
+		);
+		$key  = openssl_pkey_new( $opt );
+		$csr  = openssl_csr_new( array( 'commonName' => 'Curve Test' ), $key, $opt );
+		$cert = openssl_csr_sign( $csr, null, $key, 1, $opt );
+		unlink( $cnf );
+		openssl_x509_export( $cert, $pem );
+		openssl_sign( $data, $der_sig, $key, 'sha256' );
+
+		/* DER SEQUENCE { INTEGER r, INTEGER s } to the fixed-size r||s COSE form. */
+		$raw = '';
+		$pos = 2;
+		for ( $i = 0; $i < 2; $i++ ) {
+			$len  = ord( $der_sig[ $pos + 1 ] );
+			$int  = ltrim( substr( $der_sig, $pos + 2, $len ), "\x00" );
+			$raw .= str_pad( $int, $half, "\x00", STR_PAD_LEFT );
+			$pos += 2 + $len;
+		}
+
+		$method = new ReflectionMethod( TransparAI_C2PA_Verify::class, 'verify_signature' );
+		$method->setAccessible( true );
+		$der = (string) base64_decode( (string) preg_replace( '/-----[^-]+-----|\s+/', '', $pem ) );
+		return (bool) $method->invoke( null, -7, $data, $raw, $der );
+	}
+
+	/**
+	 * A minimal certificate: TBS with the given key, any signature.
+	 */
+	private function der_cert( string $alg, string $key ): string {
+		return $this->der( 0x30, $this->der_tbs( $alg, $key ) . self::ED25519_ALG . $this->der( 0x03, "\x00" . str_repeat( "\x00", 64 ) ) );
+	}
+
+	/**
+	 * TBSCertificate with serial, algorithm, empty names and validity, and the key.
+	 */
+	private function der_tbs( string $alg, string $key ): string {
+		$empty = $this->der( 0x30, '' );
+		$spki  = $this->der( 0x30, $alg . $this->der( 0x03, "\x00" . $key ) );
+		return $this->der( 0x30, $this->der( 0x02, "\x01" ) . self::ED25519_ALG . $empty . $empty . $empty . $spki );
+	}
+
+	/**
+	 * DER TLV with short or long length.
+	 */
+	private function der( int $tag, string $content ): string {
+		$len = strlen( $content );
+		$enc = $len < 0x80 ? chr( $len ) : ( $len < 0x100 ? "\x81" . chr( $len ) : "\x82" . pack( 'n', $len ) );
+		return chr( $tag ) . $enc . $content;
+	}
+
 	private function pki_pem( string $name ): string {
 		return (string) file_get_contents( dirname( __DIR__ ) . "/fixtures/c2pa/pki/{$name}.pem" );
 	}

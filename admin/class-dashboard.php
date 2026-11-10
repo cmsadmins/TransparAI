@@ -31,6 +31,7 @@ final class TransparAI_Dashboard {
 		add_action( 'admin_post_transparai_literacy', array( self::class, 'handle_literacy' ) );
 		add_action( 'admin_post_transparai_systems', array( self::class, 'handle_systems' ) );
 		add_action( 'admin_post_transparai_legal_ack', array( self::class, 'handle_legal_ack' ) );
+		add_action( 'admin_post_transparai_rating_hint', array( self::class, 'handle_rating_hint' ) );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -159,6 +160,60 @@ final class TransparAI_Dashboard {
 		update_user_meta( get_current_user_id(), self::USER_LEGAL_ACK, '1' );
 		$referer = (string) wp_get_referer();
 		wp_safe_redirect( '' !== $referer ? $referer : self::url( self::MENU ) ); /* Back to the screen the button was on. */
+		exit;
+	}
+
+	public const USER_RATING_HINT = 'transparai_rating_hint_dismissed';
+
+	/* Days between the first finished scan or setup and the rating hint. */
+	private const RATING_HINT_DAYS = 14;
+
+	/**
+	 * Whether the dashboard asks the current user for a rating: the site
+	 * finished a scan or the setup at least RATING_HINT_DAYS ago and the user
+	 * has not hidden the hint. Asking only after real use keeps it from
+	 * reading as a nag on a fresh install.
+	 */
+	public static function rating_hint_due( ?int $now = null ): bool {
+		if ( '1' === (string) get_user_meta( get_current_user_id(), self::USER_RATING_HINT, true ) ) {
+			return false;
+		}
+		foreach ( TransparAI_Meta::site_log() as $entry ) {
+			if ( in_array( $entry['e'], array( 'scan-finished', 'setup-finished' ), true ) ) {
+				return $entry['t'] <= ( $now ?? time() ) - self::RATING_HINT_DAYS * DAY_IN_SECONDS;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * One sentence and a plain link to the review form on wordpress.org. The
+	 * browser only goes there when the user clicks; the plugin sends nothing.
+	 */
+	private static function render_rating_hint(): void {
+		if ( ! self::rating_hint_due() ) {
+			return;
+		}
+		$hide = wp_nonce_url( admin_url( 'admin-post.php?action=transparai_rating_hint' ), 'transparai_rating_hint' );
+		?>
+		<div class="notice notice-info trai-rating-hint"><p>
+			<?php esc_html_e( 'Is TransparAI useful on this site? A short rating on wordpress.org helps other site owners find it.', 'transparai' ); ?>
+			<a href="https://wordpress.org/support/plugin/transparai/reviews/#new-post" target="_blank" rel="noopener"><?php esc_html_e( 'Write a rating', 'transparai' ); ?><span class="screen-reader-text"> <?php esc_html_e( '(opens in a new tab)', 'transparai' ); ?></span></a>
+			<a href="<?php echo esc_url( $hide ); ?>"><?php esc_html_e( 'Hide this note', 'transparai' ); ?></a>
+		</p></div>
+		<?php
+	}
+
+	/**
+	 * Remember that this user does not want the rating hint.
+	 */
+	public static function handle_rating_hint(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You are not allowed to do this.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_rating_hint' );
+		update_user_meta( get_current_user_id(), self::USER_RATING_HINT, '1' );
+		wp_safe_redirect( self::url( self::MENU ) );
 		exit;
 	}
 
@@ -300,7 +355,7 @@ final class TransparAI_Dashboard {
 					</li>
 				<?php endforeach; ?>
 			</ol>
-			<p class="description"><?php esc_html_e( 'Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can move them.', 'transparai' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Dates per Regulation (EU) 2024/1689, Articles 111 and 113, as amended by Regulation (EU) 2026/1744. Later amendments can move them.', 'transparai' ); ?></p>
 		</section>
 		<?php
 	}
@@ -329,7 +384,7 @@ final class TransparAI_Dashboard {
 						<tr>
 							<td><?php echo esc_html( date_i18n( (string) get_option( 'date_format', 'Y-m-d' ) . ' ' . (string) get_option( 'time_format', 'H:i' ), $entry['t'] ) ); ?></td>
 							<td><?php echo esc_html( TransparAI_Compliance::event_label( $entry['e'] ) ); ?></td>
-							<td><?php echo esc_html( self::details_text( $entry['d'] ) ); ?></td>
+							<td><?php self::render_details( $entry['d'] ); ?></td>
 							<td><?php echo esc_html( '' !== $entry['n'] ? $entry['n'] : ( $entry['u'] > 0 ? '#' . $entry['u'] : __( 'system', 'transparai' ) ) ); ?></td>
 						</tr>
 					<?php endforeach; ?>
@@ -341,17 +396,54 @@ final class TransparAI_Dashboard {
 	}
 
 	/**
+	 * Details cell. A settings save lists option keys, which mean nothing to
+	 * most readers: it shows how many settings changed, the keys stay one
+	 * click away for whoever needs them.
+	 *
+	 * @param array<string, mixed> $details Details.
+	 */
+	private static function render_details( array $details ): void {
+		$keys = $details['keys'] ?? null;
+		if ( is_array( $keys ) && array() !== $keys ) {
+			unset( $details['keys'] );
+			$count = count( $keys );
+			?>
+			<details class="trai-log-keys">
+				<summary>
+				<?php
+				/* translators: %d: number of changed settings. */
+				echo esc_html( sprintf( _n( '%d setting changed', '%d settings changed', $count, 'transparai' ), $count ) );
+				?>
+				</summary>
+				<code><?php echo esc_html( implode( ' ', array_map( 'strval', $keys ) ) ); ?></code>
+			</details>
+			<?php
+		}
+		echo esc_html( self::details_text( $details ) );
+	}
+
+	/**
 	 * "key: value, key: value" for small detail arrays.
 	 *
 	 * @param array<string, mixed> $details Details.
 	 */
 	private static function details_text( array $details ): string {
-		$parts = array();
+		$labels = array(
+			'answered' => __( 'Answers', 'transparai' ),
+			'done'     => __( 'Done', 'transparai' ),
+			'count'    => __( 'Number', 'transparai' ),
+			'id'       => __( 'System', 'transparai' ),
+			'total'    => __( 'Files', 'transparai' ),
+			'checked'  => __( 'Checked', 'transparai' ),
+			'repaired' => __( 'Repaired', 'transparai' ),
+			'failed'   => __( 'Failed', 'transparai' ),
+		);
+		$parts  = array();
 		foreach ( $details as $key => $value ) {
 			if ( is_array( $value ) ) {
 				$value = implode( ' ', array_map( 'strval', $value ) );
 			}
-			$parts[] = $key . ': ' . (string) $value;
+			$parts[] = ( $labels[ $key ] ?? $key ) . ': ' . (string) $value;
 		}
 		return implode( ', ', $parts );
 	}
@@ -379,6 +471,7 @@ final class TransparAI_Dashboard {
 			</p></div>
 			<?php
 		endif;
+		self::render_rating_hint();
 		self::render_score_card();
 		self::render_steps_card();
 		?>
@@ -525,7 +618,7 @@ final class TransparAI_Dashboard {
 		?>
 		<section class="trai-card" id="trai-literacy">
 			<h2 class="trai-card-title"><?php esc_html_e( 'AI literacy (Article 4)', 'transparai' ); ?></h2>
-			<p class="description"><?php esc_html_e( 'Article 4 applies since 2 February 2025 to every provider and deployer, whatever you answered above: you take measures, as far as you can, so that the people who operate or use AI systems on your behalf have a sufficient level of AI literacy, considering their background and the context of use. The Act prescribes no particular training or certificate; this checklist records the measures that usually serve as evidence. It counts toward the readiness score and appears in the compliance report with the name and date of the last save.', 'transparai' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Article 4 applies to every provider and deployer, whatever you answered above: you take measures that help the people who operate or use AI systems on your behalf understand them, considering their background and the context of use. Since the amendment of July 2026 no particular level of knowledge is required, and the Act prescribes no training or certificate; this checklist records the measures that usually serve as evidence. It counts toward the readiness score and appears in the compliance report with the name and date of the last save.', 'transparai' ); ?></p>
 			<p class="trai-progress-label">
 			<?php
 			echo esc_html(
@@ -730,7 +823,7 @@ final class TransparAI_Dashboard {
 								<input type="hidden" name="name" value="<?php echo esc_attr( $suggestion['name'] ); ?>" />
 								<input type="hidden" name="slug" value="<?php echo esc_attr( $suggestion['slug'] ); ?>" />
 								<td><?php echo esc_html( $suggestion['name'] ); ?> <code><?php echo esc_html( $suggestion['slug'] ); ?></code></td>
-								<td><select name="category">
+								<td><select name="category" aria-label="<?php esc_attr_e( 'Category', 'transparai' ); ?>">
 									<?php foreach ( $labels as $value => $label ) : ?>
 										<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 									<?php endforeach; ?>
@@ -750,8 +843,8 @@ final class TransparAI_Dashboard {
 			<form method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>" class="trai-inline-form">
 				<?php wp_nonce_field( 'transparai_systems' ); ?>
 				<input type="hidden" name="action" value="transparai_systems" />
-				<input type="text" name="name" class="regular-text" required maxlength="100" placeholder="<?php esc_attr_e( 'Name of the system', 'transparai' ); ?>" />
-				<select name="category">
+				<input type="text" name="name" class="regular-text" required maxlength="100" placeholder="<?php esc_attr_e( 'Name of the system', 'transparai' ); ?>" aria-label="<?php esc_attr_e( 'Name of the system', 'transparai' ); ?>" />
+				<select name="category" aria-label="<?php esc_attr_e( 'Category', 'transparai' ); ?>">
 					<?php foreach ( $labels as $value => $label ) : ?>
 						<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 					<?php endforeach; ?>

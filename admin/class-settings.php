@@ -315,7 +315,9 @@ th{background:#f6f7f7;}
 								array(
 									'overlay' => __( 'Overlay on the image', 'transparai' ),
 									'caption' => __( 'Caption line below the image', 'transparai' ),
-								)
+								),
+								__( 'Placement', 'transparai' ),
+								'field'
 							);
 							self::select(
 								'badge_position',
@@ -325,7 +327,9 @@ th{background:#f6f7f7;}
 									'top-right'    => __( 'Top right', 'transparai' ),
 									'bottom-left'  => __( 'Bottom left', 'transparai' ),
 									'bottom-right' => __( 'Bottom right', 'transparai' ),
-								)
+								),
+								__( 'Badge position', 'transparai' ),
+								'field'
 							);
 							self::select(
 								'badge_style',
@@ -336,7 +340,9 @@ th{background:#f6f7f7;}
 									'outline'   => __( 'Outline', 'transparai' ),
 									'icon-only' => __( 'Icon only (short label)', 'transparai' ),
 									'eu-icon'   => __( 'Official EU icon (Commission, June 2026)', 'transparai' ),
-								)
+								),
+								__( 'Style', 'transparai' ),
+								'field'
 							);
 							self::select(
 								'badge_eu_icon',
@@ -344,7 +350,9 @@ th{background:#f6f7f7;}
 								array(
 									'type'  => __( 'EU icon by label: Fully AI-generated / Partially AI-modified', 'transparai' ),
 									'basic' => __( 'EU icon: basic AI icon for every label', 'transparai' ),
-								)
+								),
+								__( 'EU icon', 'transparai' ),
+								'eu-icon'
 							);
 							self::select(
 								'badge_eu_color',
@@ -352,7 +360,9 @@ th{background:#f6f7f7;}
 								array(
 									'black' => __( 'EU icon: black', 'transparai' ),
 									'white' => __( 'EU icon: white', 'transparai' ),
-								)
+								),
+								__( 'EU icon color', 'transparai' ),
+								'eu-icon'
 							);
 							self::select(
 								'badge_size',
@@ -361,7 +371,9 @@ th{background:#f6f7f7;}
 									'small'  => __( 'Small', 'transparai' ),
 									'medium' => __( 'Medium', 'transparai' ),
 									'large'  => __( 'Large', 'transparai' ),
-								)
+								),
+								__( 'Size', 'transparai' ),
+								'field'
 							);
 							?>
 							</span>
@@ -464,7 +476,8 @@ th{background:#f6f7f7;}
 									'after'  => __( 'After the content', 'transparai' ),
 									'both'   => __( 'Ahead of and after the content', 'transparai' ),
 									'manual' => __( 'Only where a block or shortcode is placed', 'transparai' ),
-								)
+								),
+								__( 'Position', 'transparai' )
 							);
 							self::select(
 								'content_notice_style',
@@ -475,7 +488,8 @@ th{background:#f6f7f7;}
 									'banner' => __( 'Banner (dismissible)', 'transparai' ),
 									'badge'  => __( 'Badge (small chip)', 'transparai' ),
 									'modal'  => __( 'Modal (button opens a dialog)', 'transparai' ),
-								)
+								),
+								__( 'Style', 'transparai' )
 							);
 							?>
 						</td>
@@ -501,7 +515,7 @@ th{background:#f6f7f7;}
 						<th scope="row"><?php esc_html_e( 'New posts', 'transparai' ); ?></th>
 						<td>
 							<?php
-							self::select( 'content_default_level', $options['content_default_level'], TransparAI_Notice::level_labels() );
+							self::select( 'content_default_level', $options['content_default_level'], TransparAI_Notice::level_labels(), __( 'New posts', 'transparai' ) );
 							?>
 							<p class="description"><?php esc_html_e( 'Preselected level for posts created from now on. Existing posts are never reclassified.', 'transparai' ); ?></p>
 						</td>
@@ -558,7 +572,8 @@ th{background:#f6f7f7;}
 									'unknown' => __( 'Not decided yet', 'transparai' ),
 									'yes'     => __( 'Yes', 'transparai' ),
 									'no'      => __( 'No', 'transparai' ),
-								)
+								),
+								__( 'Does this site run a chat?', 'transparai' )
 							);
 							self::select(
 								'chatbot_staffing',
@@ -567,7 +582,8 @@ th{background:#f6f7f7;}
 									'ai'    => __( 'An AI answers', 'transparai' ),
 									'mixed' => __( 'People answer, an AI sometimes', 'transparai' ),
 									'human' => __( 'Only people answer', 'transparai' ),
-								)
+								),
+								__( 'Who answers the chat?', 'transparai' )
 							);
 							?>
 							<p class="description"><?php esc_html_e( 'The notice appears only with "Yes" and an AI that answers at least sometimes.', 'transparai' ); ?></p>
@@ -585,7 +601,8 @@ th{background:#f6f7f7;}
 									'chat'   => __( 'As the first message of the bot (AI Engine; otherwise next to the widget)', 'transparai' ),
 									'badge'  => __( 'Next to the chat widget', 'transparai' ),
 									'footer' => __( 'As a line at the end of every page', 'transparai' ),
-								)
+								),
+								__( 'Where the notice appears', 'transparai' )
 							);
 							?>
 						</td>
@@ -612,7 +629,8 @@ th{background:#f6f7f7;}
 									'badge'  => __( 'Small badge in a corner', 'transparai' ),
 									'banner' => __( 'Banner (dismissible)', 'transparai' ),
 									'manual' => __( 'Only where a block or shortcode is placed', 'transparai' ),
-								)
+								),
+								__( 'Visitor notice', 'transparai' )
 							);
 							?>
 							</p>
@@ -650,7 +668,8 @@ th{background:#f6f7f7;}
 									'flag'  => __( 'Label automatically', 'transparai' ),
 									'queue' => __( 'Put into review queue', 'transparai' ),
 									'off'   => __( 'Ignore', 'transparai' ),
-								)
+								),
+								__( 'Standard declarations', 'transparai' )
 							);
 							?>
 							<p class="description"><?php esc_html_e( 'Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in C2PA, AIGC declaration).', 'transparai' ); ?></p>
@@ -667,7 +686,8 @@ th{background:#f6f7f7;}
 									'flag'  => __( 'Label automatically', 'transparai' ),
 									'queue' => __( 'Put into review queue', 'transparai' ),
 									'off'   => __( 'Ignore', 'transparai' ),
-								)
+								),
+								__( 'Generator signatures', 'transparai' )
 							);
 							?>
 							<p class="description"><?php esc_html_e( 'Strong signals without a formal declaration (Stable Diffusion parameters, ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA).', 'transparai' ); ?></p>
@@ -1032,12 +1052,24 @@ th{background:#f6f7f7;}
 	 * @param string                $key     Setting key.
 	 * @param string                $current Current value.
 	 * @param array<string, string> $choices value => label.
+	 * @param string                $label   Accessible name; several selects share one row heading.
+	 * @param string                $field   Non-empty: show $label above the select in a field wrapper; "eu-icon" marks a field that only applies to that badge style.
 	 */
-	private static function select( string $key, string $current, array $choices ): void {
-		echo '<select name="' . esc_attr( TransparAI_Options::OPTION . '[' . $key . ']' ) . '">';
-		foreach ( $choices as $value => $label ) {
-			echo '<option value="' . esc_attr( $value ) . '"' . selected( $current, $value, false ) . '>' . esc_html( $label ) . '</option>';
+	private static function select( string $key, string $current, array $choices, string $label, string $field = '' ): void {
+		$name = TransparAI_Options::OPTION . '[' . $key . ']';
+		if ( '' !== $field ) {
+			$id = 'trai-' . str_replace( '_', '-', $key );
+			echo '<span class="trai-badge-field"' . ( 'eu-icon' === $field ? ' data-trai-style="eu-icon"' : '' ) . '><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
+			echo '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '">';
+		} else {
+			echo '<select name="' . esc_attr( $name ) . '" aria-label="' . esc_attr( $label ) . '">';
+		}
+		foreach ( $choices as $value => $text ) {
+			echo '<option value="' . esc_attr( $value ) . '"' . selected( $current, $value, false ) . '>' . esc_html( $text ) . '</option>';
 		}
 		echo '</select> ';
+		if ( '' !== $field ) {
+			echo '</span>';
+		}
 	}
 }

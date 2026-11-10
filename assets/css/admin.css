@@ -31,6 +31,10 @@
 	--trai-muted: #646970;
 	--trai-text-dark: #1a1a1a;
 	--trai-danger-light: #b32d2e;
+	/* Orange as text on the light admin ground: #FF6800 reaches 2.9:1 on
+	   white, this darker step of the same hue 5.5:1 (WCAG 1.4.3). Text on an
+	   orange surface is dark for the same reason (6:1). */
+	--trai-primary-text: #b34700;
 }
 
 /* Logo header: mark + two-tone wordmark (brand pattern: first part dark on
@@ -118,7 +122,7 @@
 
 .trai-settings .trai-footer-links a:hover,
 .trai-settings .trai-footer-links a:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 	text-decoration: underline;
 }
 
@@ -139,7 +143,7 @@
 }
 
 .trai-stat--action .trai-stat-number {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 	font-weight: 600;
 }
 
@@ -155,7 +159,7 @@
 	display: inline-block;
 	padding: 8px 16px;
 	background: var(--trai-primary, #FF6800);
-	color: #fff;
+	color: var(--trai-text-dark, #1a1a1a);
 	border: 1px solid var(--trai-primary, #FF6800);
 	border-radius: 4px;
 	font-size: 13px;
@@ -169,11 +173,11 @@
 .trai-btn:hover {
 	background: var(--trai-primary-hover, #e05c00);
 	border-color: var(--trai-primary-hover, #e05c00);
-	color: #fff;
+	color: var(--trai-text-dark, #1a1a1a);
 }
 
 .trai-btn:focus {
-	color: #fff;
+	color: var(--trai-text-dark, #1a1a1a);
 	outline: 2px solid var(--trai-primary, #FF6800);
 	outline-offset: 2px;
 	box-shadow: none;
@@ -192,12 +196,12 @@
 
 .trai-btn--ghost:hover {
 	background: transparent;
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 	border-color: var(--trai-primary, #FF6800);
 }
 
 .trai-btn--ghost:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-actions {
@@ -285,6 +289,7 @@
 
 .trai-list-badge--review {
 	background: var(--trai-primary, #FF6800);
+	color: var(--trai-text-dark, #1a1a1a);
 }
 
 .trai-list-badge--human {
@@ -336,7 +341,7 @@
 
 .trai-recheck-wrap .trai-recheck:hover,
 .trai-recheck-wrap .trai-recheck:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-recheck-result {
@@ -354,7 +359,7 @@
 
 .trai-delivery-wrap .trai-delivery:hover,
 .trai-delivery-wrap .trai-delivery:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-delivery-result {
@@ -373,7 +378,7 @@
 
 .trai-inspect-wrap .trai-inspect:hover,
 .trai-inspect-wrap .trai-inspect:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-inspect-out {
@@ -406,7 +411,7 @@
 	font-weight: 700;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-inspect-out p {
@@ -446,7 +451,7 @@
 
 .trai-inspect-state--ok {
 	background: rgba(34, 197, 94, 0.15);
-	color: var(--trai-success-text, #15803d);
+	color: var(--trai-success-text, #166534);
 }
 
 .trai-inspect-state--missing {
@@ -494,7 +499,7 @@
 
 .trai-list-c2pa--match {
 	background: rgba(34, 197, 94, 0.15);
-	color: var(--trai-success-text, #15803d);
+	color: var(--trai-success-text, #166534);
 }
 
 .trai-list-c2pa--mismatch {
@@ -677,7 +682,11 @@
 }
 
 .trai-badge-styles {
-	align-items: center;
+	align-items: flex-end;
+}
+
+.trai-badge-field[hidden] {
+	display: none;
 }
 
 /* Stretch, not flex-end: the picker renders taller than a slider, and letting
@@ -753,7 +762,7 @@
 }
 
 .trai-level-chip--ai {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 	border-color: var(--trai-primary, #FF6800);
 }
 
@@ -775,7 +784,7 @@
 	--trai-success: #22c55e;
 	--trai-warning: #eab308;
 	--trai-danger: #ef4444;
-	--trai-success-text: #15803d;
+	--trai-success-text: #166534;
 	--trai-warning-text: #854d0e;
 }
 
@@ -809,7 +818,7 @@
 	font-size: 48px;
 	font-weight: 700;
 	line-height: 1;
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-score-of {
@@ -833,7 +842,7 @@
 }
 
 .trai-traffic--good {
-	color: var(--trai-success-text, #15803d);
+	color: var(--trai-success-text, #166534);
 	background: rgba(34, 197, 94, 0.15);
 }
 
@@ -886,7 +895,7 @@
 }
 
 .trai-factor--met .trai-factor-state {
-	color: var(--trai-success-text, #15803d);
+	color: var(--trai-success-text, #166534);
 	background: rgba(34, 197, 94, 0.15);
 }
 
@@ -904,7 +913,7 @@
 
 .trai-settings a.trai-stat:hover .trai-stat-number,
 .trai-settings a.trai-stat:focus .trai-stat-number {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 /* Timeline */
@@ -928,7 +937,7 @@
 }
 
 .trai-milestone--past .trai-milestone-date {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-milestone-body {
@@ -993,6 +1002,8 @@
    instead of boxes, orange only as the accent. */
 .trai-widget {
 	--trai-primary: #FF6800;
+	--trai-primary-text: #b34700;
+	--trai-text-dark: #1a1a1a;
 	--trai-muted: #646970;
 	--trai-border-light: #e0e0e0;
 	--trai-danger-light: #b32d2e;
@@ -1051,7 +1062,7 @@
 
 .trai-widget a.trai-factor-text:hover,
 .trai-widget a.trai-factor-text:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-widget-milestone {
@@ -1088,7 +1099,7 @@
 
 .trai-widget a.trai-stat:hover .trai-stat-number,
 .trai-widget a.trai-stat:focus .trai-stat-number {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-widget-facts,
@@ -1128,7 +1139,7 @@
 
 .trai-widget-links a:hover,
 .trai-widget-links a:focus {
-	color: var(--trai-primary, #FF6800);
+	color: var(--trai-primary-text, #b34700);
 }
 
 .trai-widget-disclaimer {
@@ -1212,12 +1223,12 @@
 
 .trai-wizard-steps li.is-current .trai-wizard-num {
 	background: var(--trai-primary, #FF6800);
-	color: #fff;
+	color: var(--trai-text-dark, #1a1a1a);
 }
 
 .trai-wizard-steps li.is-done .trai-wizard-num {
 	background: rgba(34, 197, 94, 0.15);
-	color: var(--trai-success-text, #15803d);
+	color: var(--trai-success-text, #166534);
 }
 
 .trai-wizard-card h3 {
@@ -1317,4 +1328,12 @@
 }
 .trai-context-fields .description {
 	display: block;
+}
+
+/* Checkbox rows in the settings tables: enough room between two boxes that
+   each keeps a 24px target (WCAG 2.5.8), long labels wrap under their text. */
+.trai-settings .form-table td > label {
+	display: inline-block;
+	margin: 4px 0;
+	line-height: 1.6;
 }

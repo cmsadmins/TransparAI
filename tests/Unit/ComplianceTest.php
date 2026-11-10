@@ -126,7 +126,10 @@ final class ComplianceTest extends TestCase {
 		$this->assertSame( $sorted, $dates );
 		$this->assertContains( '2025-02-02', $dates, 'Article 4 literacy and prohibited practices' );
 		$this->assertContains( '2026-08-02', $dates, 'General application including Article 50' );
-		$this->assertContains( '2027-08-02', $dates, 'Annex I high-risk' );
+		$this->assertContains( '2026-12-02', $dates, 'Article 50(2) for generators already on the market' );
+		$this->assertContains( '2027-12-02', $dates, 'Annex III high-risk' );
+		$this->assertContains( '2028-08-02', $dates, 'Annex I high-risk' );
+		$this->assertNotContains( '2027-08-02', $dates, 'Moved by Regulation (EU) 2026/1744' );
 		foreach ( TransparAI_Compliance::milestones() as $milestone ) {
 			$this->assertMatchesRegularExpression( '/^\d{4}-\d{2}-\d{2}$/', $milestone['date'] );
 			$this->assertNotEmpty( $milestone['title'] );

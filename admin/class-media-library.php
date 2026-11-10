@@ -180,7 +180,8 @@ final class TransparAI_Media_Library {
 				'below'        => __( 'Caption line below the image', 'transparai' ),
 				'hidden'       => __( 'Hide the visible badge on this image', 'transparai' ),
 			);
-			$select  = '<select name="attachments[' . $id . '][transparai_badge_pos]">';
+			/* The id matches the label WordPress prints for this field. */
+			$select = '<select id="attachments-' . $id . '-transparai_badge_pos" name="attachments[' . $id . '][transparai_badge_pos]">';
 			foreach ( $choices as $value => $label ) {
 				$select .= '<option value="' . esc_attr( $value ) . '"' . selected( $current, $value, false ) . '>' . esc_html( $label ) . '</option>';
 			}
@@ -196,7 +197,7 @@ final class TransparAI_Media_Library {
 			$fields['transparai_generator'] = array(
 				'label' => __( 'AI generator', 'transparai' ),
 				'input' => 'html',
-				'html'  => '<input type="text" class="widefat" name="attachments[' . $id . '][transparai_generator]" value="'
+				'html'  => '<input type="text" class="widefat" id="attachments-' . $id . '-transparai_generator" name="attachments[' . $id . '][transparai_generator]" value="'
 					. esc_attr( TransparAI_Meta::get_generator( $id ) ) . '" />',
 				'helps' => esc_html__( 'Name of the AI tool, e.g. "Midjourney". Shown by the badge source option and the {generator} placeholder.', 'transparai' ),
 			);
@@ -799,7 +800,7 @@ final class TransparAI_Media_Library {
 			return;
 		}
 		$value = isset( $_GET['transparai_filter'] ) ? sanitize_key( wp_unslash( (string) $_GET['transparai_filter'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter.
-		echo '<select name="transparai_filter">'
+		echo '<select name="transparai_filter" aria-label="' . esc_attr__( 'Filter by AI status', 'transparai' ) . '">'
 			. '<option value=""' . selected( $value, '', false ) . '>' . esc_html__( 'AI status: all', 'transparai' ) . '</option>'
 			. '<option value="1"' . selected( $value, '1', false ) . '>' . esc_html__( 'Only AI-labeled', 'transparai' ) . '</option>'
 			. '<option value="detected"' . selected( $value, 'detected', false ) . '>' . esc_html__( 'Detected, needs review', 'transparai' ) . '</option>'

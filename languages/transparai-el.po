@@ -100,11 +100,11 @@ msgstr "άλλαξε μετά τον έλεγχο"
 msgid "All AI levels"
 msgstr "Όλα τα επίπεδα AI"
 
-#: admin/class-content-label.php:315 admin/class-dashboard.php:836
+#: admin/class-content-label.php:315 admin/class-dashboard.php:929
 msgid "Any AI involvement"
 msgstr "Οποιαδήποτε συμμετοχή AI"
 
-#: admin/class-content-label.php:316 admin/class-dashboard.php:840
+#: admin/class-content-label.php:316 admin/class-dashboard.php:933
 #: includes/class-notice.php:151
 msgid "Not classified"
 msgstr "Χωρίς κατάταξη"
@@ -117,37 +117,37 @@ msgstr "&mdash; Καμία αλλαγή &mdash;"
 msgid "Remove classification"
 msgstr "Αφαίρεση κατάταξης"
 
-#: admin/class-dashboard.php:50 admin/class-dashboard.php:373
-#: admin/class-dashboard.php:981
+#: admin/class-dashboard.php:51 admin/class-dashboard.php:465
+#: admin/class-dashboard.php:1074
 msgid "Dashboard"
 msgstr "Πίνακας ελέγχου"
 
-#: admin/class-dashboard.php:51
+#: admin/class-dashboard.php:52
 msgid "Assessment"
 msgstr "Αξιολόγηση"
 
-#: admin/class-dashboard.php:52 admin/class-dashboard.php:1080
+#: admin/class-dashboard.php:53 admin/class-dashboard.php:1173
 msgid "AI Systems"
 msgstr "Συστήματα AI"
 
-#: admin/class-dashboard.php:53 admin/class-dashboard.php:1079
+#: admin/class-dashboard.php:54 admin/class-dashboard.php:1172
 msgid "AI Content"
 msgstr "Περιεχόμενο AI"
 
-#: admin/class-dashboard.php:54 admin/class-dashboard.php:1078
+#: admin/class-dashboard.php:55 admin/class-dashboard.php:1171
 msgid "AI Images"
 msgstr "Εικόνες AI"
 
-#: admin/class-dashboard.php:59 admin/class-dashboard.php:411
+#: admin/class-dashboard.php:60 admin/class-dashboard.php:504
 #: admin/class-settings.php:188
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: admin/class-dashboard.php:107
+#: admin/class-dashboard.php:108
 msgid "Saved."
 msgstr "Αποθηκεύτηκε."
 
-#: admin/class-dashboard.php:118
+#: admin/class-dashboard.php:119
 msgid ""
 "TransparAI is a technical tool, not legal advice. It helps you detect, label"
 " and document AI use on this site; it cannot tell you whether your site "
@@ -169,24 +169,25 @@ msgstr ""
 "δημιουργός του δεν φέρει ευθύνη για τη χρήση του ή για αποφάσεις που "
 "βασίζονται σε αυτό."
 
-#: admin/class-dashboard.php:133
+#: admin/class-dashboard.php:134
 msgid "Please read before you rely on anything here."
 msgstr "Διαβάστε το προτού βασιστείτε σε οτιδήποτε εδώ."
 
-#: admin/class-dashboard.php:137
+#: admin/class-dashboard.php:138
 msgid "I understand: no legal advice, no liability"
 msgstr "Το κατάλαβα: καμία νομική συμβουλή, καμία ευθύνη"
 
-#: admin/class-dashboard.php:145 admin/class-settings.php:142
+#: admin/class-dashboard.php:146 admin/class-settings.php:142
 msgid "Not legal advice, no liability"
 msgstr "Δεν αποτελεί νομική συμβουλή, καμία ευθύνη"
 
-#: admin/class-dashboard.php:156 admin/class-dashboard.php:508
-#: admin/class-dashboard.php:578 admin/class-dashboard.php:771
+#: admin/class-dashboard.php:157 admin/class-dashboard.php:212
+#: admin/class-dashboard.php:601 admin/class-dashboard.php:671
+#: admin/class-dashboard.php:864
 msgid "You are not allowed to do this."
 msgstr "Δεν έχετε δικαίωμα να το κάνετε αυτό."
 
-#: admin/class-dashboard.php:170
+#: admin/class-dashboard.php:225
 msgid ""
 "Scan the media library, then confirm or dismiss what lands in the review "
 "queue. Labeled files get the visible badge and the machine-readable marking."
@@ -195,7 +196,7 @@ msgstr ""
 "καταλήγει στην ουρά ελέγχου. Τα αρχεία με ετικέτα αποκτούν το ορατό σήμα και"
 " τη μηχαναγνώσιμη σήμανση."
 
-#: admin/class-dashboard.php:171
+#: admin/class-dashboard.php:226
 msgid ""
 "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, "
 "Bulk Edit) so the visitor note appears."
@@ -204,7 +205,7 @@ msgstr ""
 "(πλαϊνή στήλη επεξεργαστή, Γρήγορη επεξεργασία, Μαζική επεξεργασία), ώστε να"
 " εμφανιστεί η σημείωση προς τον επισκέπτη."
 
-#: admin/class-dashboard.php:172
+#: admin/class-dashboard.php:227
 msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
@@ -212,7 +213,7 @@ msgstr ""
 "Απαντήστε αν ο ιστότοπος διαθέτει συνομιλία και ποιος απαντά σε αυτήν. Η "
 "σημείωση για το chatbot ακολουθεί την απάντησή σας."
 
-#: admin/class-dashboard.php:173
+#: admin/class-dashboard.php:228
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
@@ -220,7 +221,7 @@ msgstr ""
 "Ελέγξτε τα συστήματα AI που βρήκε το πρόσθετο ανάμεσα στα πρόσθετά σας, "
 "δηλώστε και άλλα, και αποφασίστε για ποια ενημερώνονται οι επισκέπτες."
 
-#: admin/class-dashboard.php:174
+#: admin/class-dashboard.php:229
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
@@ -229,11 +230,11 @@ msgstr ""
 "ελέγχου του άρθρου 4 και μετά εξαγάγετε την αναφορά συμμόρφωσης για το "
 "αρχείο σας."
 
-#: admin/class-dashboard.php:178
+#: admin/class-dashboard.php:233
 msgid "How TransparAI works"
 msgstr "Πώς λειτουργεί το TransparAI"
 
-#: admin/class-dashboard.php:179
+#: admin/class-dashboard.php:234
 msgid ""
 "The EU AI Act asks for three things on a website: visitors must know when "
 "they talk to an AI, AI-generated media must carry a machine-readable "
@@ -250,17 +251,17 @@ msgstr ""
 " Ακολουθήστε τα βήματα με αυτή τη σειρά, η βαθμολογία ετοιμότητας παραπάνω "
 "ενημερώνεται αντίστοιχα."
 
-#: admin/class-dashboard.php:223 admin/class-settings.php:789
+#: admin/class-dashboard.php:278 admin/class-settings.php:809
 msgid "Readiness score"
 msgstr "Βαθμολογία ετοιμότητας"
 
 #. translators: 1: met checks, 2: total checks.
-#: admin/class-dashboard.php:233 admin/class-dashboard.php:952
+#: admin/class-dashboard.php:288 admin/class-dashboard.php:1045
 #, php-format
 msgid "%1$d of %2$d checks done"
 msgstr "%1$d από %2$d έλεγχοι ολοκληρώθηκαν"
 
-#: admin/class-dashboard.php:241
+#: admin/class-dashboard.php:296
 msgid ""
 "The score counts the checks this plugin can perform on its own state. It is "
 "a technical self-check, not a legal assessment."
@@ -268,46 +269,39 @@ msgstr ""
 "Η βαθμολογία μετράει τους ελέγχους που μπορεί να κάνει το πρόσθετο στη δική "
 "του κατάσταση. Είναι τεχνικός αυτοέλεγχος, όχι νομική αξιολόγηση."
 
-#: admin/class-dashboard.php:243 admin/class-dashboard.php:247
-#: admin/class-dashboard.php:967 admin/class-wizard.php:457
+#: admin/class-dashboard.php:298 admin/class-dashboard.php:302
+#: admin/class-dashboard.php:1060 admin/class-wizard.php:457
 msgid "Open"
 msgstr "Εκκρεμεί"
 
-#: admin/class-dashboard.php:255 admin/class-dashboard.php:259
-#: admin/class-settings.php:791 admin/class-settings.php:810
+#: admin/class-dashboard.php:310 admin/class-dashboard.php:314
+#: admin/class-dashboard.php:433 admin/class-settings.php:811
+#: admin/class-settings.php:830
 msgid "Done"
 msgstr "Ολοκληρώθηκε"
 
-#: admin/class-dashboard.php:276
+#: admin/class-dashboard.php:331
 msgid "EU AI Act timeline"
 msgstr "Χρονοδιάγραμμα του EU AI Act"
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:291
+#: admin/class-dashboard.php:346
 #, php-format
 msgid "in force for %s"
 msgstr "σε ισχύ εδώ και %s"
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:294
+#: admin/class-dashboard.php:349
 #, php-format
 msgid "in %s"
 msgstr "σε %s"
 
-#: admin/class-dashboard.php:303
-msgid ""
-"Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can"
-" move them."
-msgstr ""
-"Ημερομηνίες σύμφωνα με τον Κανονισμό (ΕΕ) 2024/1689, άρθρο 113, όπως "
-"θεσπίστηκε. Τροποποιήσεις μπορούν να τις μετακινήσουν."
-
-#: admin/class-dashboard.php:316 admin/class-dashboard.php:1067
-#: admin/class-settings.php:871
+#: admin/class-dashboard.php:371 admin/class-dashboard.php:1160
+#: admin/class-settings.php:891
 msgid "Recent activity"
 msgstr "Πρόσφατη δραστηριότητα"
 
-#: admin/class-dashboard.php:318
+#: admin/class-dashboard.php:373
 msgid ""
 "Nothing recorded yet. Scans, settings changes, bulk actions and declarations"
 " show up here."
@@ -315,75 +309,75 @@ msgstr ""
 "Δεν έχει καταγραφεί τίποτα ακόμη. Οι σαρώσεις, οι αλλαγές ρυθμίσεων, οι "
 "μαζικές ενέργειες και οι δηλώσεις εμφανίζονται εδώ."
 
-#: admin/class-dashboard.php:322 admin/class-settings.php:872
+#: admin/class-dashboard.php:377 admin/class-settings.php:892
 msgid "When"
 msgstr "Πότε"
 
-#: admin/class-dashboard.php:323 admin/class-settings.php:872
+#: admin/class-dashboard.php:378 admin/class-settings.php:892
 msgid "Event"
 msgstr "Συμβάν"
 
-#: admin/class-dashboard.php:324
+#: admin/class-dashboard.php:379
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: admin/class-dashboard.php:325 admin/class-settings.php:872
+#: admin/class-dashboard.php:380 admin/class-settings.php:892
 msgid "By"
 msgstr "Από"
 
-#: admin/class-dashboard.php:333 admin/class-media-library.php:560
+#: admin/class-dashboard.php:388 admin/class-media-library.php:561
 msgid "system"
 msgstr "σύστημα"
 
-#: admin/class-dashboard.php:377
+#: admin/class-dashboard.php:469
 msgid "The first-run setup is not finished yet."
 msgstr "Η αρχική ρύθμιση δεν έχει ολοκληρωθεί ακόμη."
 
-#: admin/class-dashboard.php:378 admin/class-settings.php:926
+#: admin/class-dashboard.php:470 admin/class-settings.php:946
 msgid "Open setup"
 msgstr "Άνοιγμα ρύθμισης"
 
-#: admin/class-dashboard.php:386
+#: admin/class-dashboard.php:479
 msgid "At a glance"
 msgstr "Με μια ματιά"
 
-#: admin/class-dashboard.php:390 admin/class-dashboard.php:1007
+#: admin/class-dashboard.php:483 admin/class-dashboard.php:1100
 msgid "AI-written posts"
 msgstr "Άρθρα γραμμένα από AI"
 
-#: admin/class-dashboard.php:394
+#: admin/class-dashboard.php:487
 msgid "Labeled media"
 msgstr "Πολυμέσα με ετικέτα"
 
-#: admin/class-dashboard.php:398 admin/class-dashboard.php:1004
-#: admin/class-settings.php:911
+#: admin/class-dashboard.php:491 admin/class-dashboard.php:1097
+#: admin/class-settings.php:931
 msgid "Waiting for review"
 msgstr "Σε αναμονή ελέγχου"
 
-#: admin/class-dashboard.php:402 admin/class-dashboard.php:1008
+#: admin/class-dashboard.php:495 admin/class-dashboard.php:1101
 #: admin/class-settings.php:240
 msgid "AI systems"
 msgstr "Συστήματα AI"
 
-#: admin/class-dashboard.php:406 admin/class-dashboard.php:433
-#: admin/class-dashboard.php:982 admin/class-settings.php:797
+#: admin/class-dashboard.php:499 admin/class-dashboard.php:526
+#: admin/class-dashboard.php:1075 admin/class-settings.php:817
 msgid "Self-assessment"
 msgstr "Αυτοαξιολόγηση"
 
-#: admin/class-dashboard.php:407
+#: admin/class-dashboard.php:500
 msgid "AI literacy checklist"
 msgstr "Λίστα ελέγχου γραμματισμού στην AI"
 
-#: admin/class-dashboard.php:408 admin/class-dashboard.php:567
-#: admin/class-dashboard.php:983
+#: admin/class-dashboard.php:501 admin/class-dashboard.php:660
+#: admin/class-dashboard.php:1076
 msgid "Compliance report"
 msgstr "Αναφορά συμμόρφωσης"
 
-#: admin/class-dashboard.php:409 admin/class-settings.php:922
+#: admin/class-dashboard.php:502 admin/class-settings.php:942
 msgid "Export audit CSV"
 msgstr "Εξαγωγή CSV επιθεώρησης"
 
-#: admin/class-dashboard.php:436
+#: admin/class-dashboard.php:529
 msgid ""
 "Which transparency duties of the EU AI Act apply to a website depends on how"
 " it actually uses AI: a site without a chatbot has nothing to disclose about"
@@ -405,7 +399,7 @@ msgstr ""
 "πλήρεις απαντήσεις μετράνε στη βαθμολογία ετοιμότητας και τυπώνονται στην "
 "αναφορά συμμόρφωσης."
 
-#: admin/class-dashboard.php:437
+#: admin/class-dashboard.php:530
 msgid ""
 "Stored on this site only, nothing is sent anywhere. Come back and update the"
 " answers whenever the site starts or stops using AI in one of these ways."
@@ -414,35 +408,35 @@ msgstr ""
 "Επιστρέψτε και ενημερώστε τις απαντήσεις κάθε φορά που ο ιστότοπος αρχίζει ή"
 " σταματά να χρησιμοποιεί AI με κάποιον από αυτούς τους τρόπους."
 
-#: admin/class-dashboard.php:445 admin/class-settings.php:559
-#: admin/class-settings.php:785 admin/class-wizard.php:297
+#: admin/class-dashboard.php:538 admin/class-settings.php:573
+#: admin/class-settings.php:805 admin/class-wizard.php:297
 msgid "Yes"
 msgstr "Ναι"
 
-#: admin/class-dashboard.php:446 admin/class-settings.php:560
-#: admin/class-settings.php:786 admin/class-wizard.php:298
+#: admin/class-dashboard.php:539 admin/class-settings.php:574
+#: admin/class-settings.php:806 admin/class-wizard.php:298
 msgid "No"
 msgstr "Όχι"
 
-#: admin/class-dashboard.php:449
+#: admin/class-dashboard.php:542
 msgid "Save answers"
 msgstr "Αποθήκευση απαντήσεων"
 
 #. translators: 1: name, 2: date.
-#: admin/class-dashboard.php:457 admin/class-dashboard.php:557
+#: admin/class-dashboard.php:550 admin/class-dashboard.php:650
 #, php-format
 msgid "Last saved by %1$s on %2$s."
 msgstr "Τελευταία αποθήκευση από %1$s στις %2$s."
 
-#: admin/class-dashboard.php:458 admin/class-dashboard.php:558
+#: admin/class-dashboard.php:551 admin/class-dashboard.php:651
 msgid "unknown"
 msgstr "άγνωστο"
 
-#: admin/class-dashboard.php:468 admin/class-dashboard.php:494
+#: admin/class-dashboard.php:561 admin/class-dashboard.php:587
 msgid "Your to-do list"
 msgstr "Η λίστα εργασιών σας"
 
-#: admin/class-dashboard.php:471
+#: admin/class-dashboard.php:564
 msgid ""
 "You answered every question with no. Keep the answers current when the site "
 "starts using AI; the Article 4 checklist below still documents your "
@@ -452,19 +446,19 @@ msgstr ""
 "όταν ο ιστότοπος αρχίσει να χρησιμοποιεί AI. Η λίστα ελέγχου του άρθρου 4 "
 "παρακάτω τεκμηριώνει ούτως ή άλλως την ενημέρωσή σας."
 
-#: admin/class-dashboard.php:475
+#: admin/class-dashboard.php:568
 msgid "Use of AI"
 msgstr "Χρήση AI"
 
-#: admin/class-dashboard.php:476 admin/class-settings.php:801
+#: admin/class-dashboard.php:569 admin/class-settings.php:821
 msgid "What the AI Act says"
 msgstr "Τι λέει ο AI Act"
 
-#: admin/class-dashboard.php:477
+#: admin/class-dashboard.php:570
 msgid "Recommended action"
 msgstr "Προτεινόμενη ενέργεια"
 
-#: admin/class-dashboard.php:490
+#: admin/class-dashboard.php:583
 msgid ""
 "Provider is whoever built or trained the AI system, deployer is whoever uses"
 " it under their own authority; a website operator is usually the deployer. "
@@ -475,7 +469,7 @@ msgstr ""
 "διαχειριστής ενός ιστότοπου είναι συνήθως ο φορέας εφαρμογής. Αυτή η "
 "επισκόπηση είναι τεχνικό βοήθημα, όχι νομική συμβουλή."
 
-#: admin/class-dashboard.php:495
+#: admin/class-dashboard.php:588
 msgid ""
 "This overview appears once all six questions are answered and saved. For "
 "every use you confirmed it says what the AI Act asks and of whom, and which "
@@ -485,42 +479,21 @@ msgstr ""
 "ερωτήσεις. Για κάθε χρήση που επιβεβαιώσατε λέει τι ζητά ο AI Act και από "
 "ποιον, και ποια σελίδα του πρόσθετου το καλύπτει."
 
-#: admin/class-dashboard.php:527
+#: admin/class-dashboard.php:620
 msgid "AI literacy (Article 4)"
 msgstr "Γραμματισμός στην AI (άρθρο 4)"
 
-#: admin/class-dashboard.php:528
-msgid ""
-"Article 4 applies since 2 February 2025 to every provider and deployer, "
-"whatever you answered above: you take measures, as far as you can, so that "
-"the people who operate or use AI systems on your behalf have a sufficient "
-"level of AI literacy, considering their background and the context of use. "
-"The Act prescribes no particular training or certificate; this checklist "
-"records the measures that usually serve as evidence. It counts toward the "
-"readiness score and appears in the compliance report with the name and date "
-"of the last save."
-msgstr ""
-"Το άρθρο 4 ισχύει από τις 2 Φεβρουαρίου 2025 για κάθε πάροχο και φορέα "
-"εφαρμογής, ανεξάρτητα από το τι απαντήσατε παραπάνω: λαμβάνετε μέτρα, στο "
-"μέτρο του δυνατού, ώστε τα άτομα που χειρίζονται ή χρησιμοποιούν συστήματα "
-"AI για λογαριασμό σας να έχουν επαρκές επίπεδο γραμματισμού στην AI, "
-"λαμβάνοντας υπόψη το υπόβαθρό τους και το πλαίσιο χρήσης. Ο κανονισμός δεν "
-"ορίζει συγκεκριμένη εκπαίδευση ούτε πιστοποιητικό. Αυτή η λίστα ελέγχου "
-"καταγράφει τα μέτρα που συνήθως χρησιμεύουν ως τεκμήριο. Μετράει στη "
-"βαθμολογία ετοιμότητας και εμφανίζεται στην αναφορά συμμόρφωσης με το όνομα "
-"και την ημερομηνία της τελευταίας αποθήκευσης."
-
 #. translators: 1: done, 2: total.
-#: admin/class-dashboard.php:534
+#: admin/class-dashboard.php:627
 #, php-format
 msgid "%1$d of %2$d done"
 msgstr "%1$d από %2$d ολοκληρώθηκαν"
 
-#: admin/class-dashboard.php:549
+#: admin/class-dashboard.php:642
 msgid "Save checklist"
 msgstr "Αποθήκευση λίστας ελέγχου"
 
-#: admin/class-dashboard.php:565
+#: admin/class-dashboard.php:658
 msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
@@ -528,12 +501,12 @@ msgstr ""
 "Και τα δύο μέρη αυτής της οθόνης καταλήγουν στην αναφορά συμμόρφωσης, το "
 "έγγραφο που κρατάτε στο αρχείο σας ή παραδίδετε σε όποιον το ζητήσει."
 
-#: admin/class-dashboard.php:605 admin/class-settings.php:597
-#: admin/class-settings.php:816
+#: admin/class-dashboard.php:698 admin/class-settings.php:614
+#: admin/class-settings.php:836
 msgid "AI systems in use"
 msgstr "Συστήματα AI σε χρήση"
 
-#: admin/class-dashboard.php:608
+#: admin/class-dashboard.php:701
 msgid ""
 "Installed plugins are matched against a list of known AI tools that ships "
 "with this plugin; chatbots an AI answers in are included. Nothing is "
@@ -547,53 +520,55 @@ msgstr ""
 " Ρυθμίσεις, Συστήματα AI."
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:613
+#: admin/class-dashboard.php:706
 #, php-format
 msgid "Last scan %s ago."
 msgstr "Τελευταία σάρωση πριν από %s."
 
-#: admin/class-dashboard.php:617
+#: admin/class-dashboard.php:710
 msgid "The visitor notice is currently off."
 msgstr "Η σημείωση προς τον επισκέπτη είναι αυτή τη στιγμή απενεργοποιημένη."
 
-#: admin/class-dashboard.php:639
+#: admin/class-dashboard.php:732
 msgid "No AI system detected or declared yet."
 msgstr "Δεν έχει εντοπιστεί ούτε δηλωθεί κανένα σύστημα AI ακόμη."
 
-#: admin/class-dashboard.php:643
+#: admin/class-dashboard.php:736
 msgid "Visible"
 msgstr "Ορατό"
 
-#: admin/class-dashboard.php:644 admin/class-settings.php:820
+#: admin/class-dashboard.php:435 admin/class-dashboard.php:737
+#: admin/class-settings.php:840
 msgid "System"
 msgstr "Σύστημα"
 
-#: admin/class-dashboard.php:645 admin/class-dashboard.php:721
-#: admin/class-settings.php:820
+#: admin/class-dashboard.php:738 admin/class-dashboard.php:814
+#: admin/class-dashboard.php:826 admin/class-dashboard.php:847
+#: admin/class-settings.php:840
 msgid "Category"
 msgstr "Κατηγορία"
 
-#: admin/class-dashboard.php:646 admin/class-settings.php:820
+#: admin/class-dashboard.php:739 admin/class-settings.php:840
 msgid "Articles"
 msgstr "Άρθρα"
 
-#: admin/class-dashboard.php:647
+#: admin/class-dashboard.php:740
 msgid "Found via"
 msgstr "Εντοπίστηκε μέσω"
 
-#: admin/class-dashboard.php:666 includes/class-notice.php:638
+#: admin/class-dashboard.php:759 includes/class-notice.php:638
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: admin/class-dashboard.php:706
+#: admin/class-dashboard.php:799
 msgid "Scan installed plugins again"
 msgstr "Νέα σάρωση εγκατεστημένων πρόσθετων"
 
-#: admin/class-dashboard.php:713
+#: admin/class-dashboard.php:806
 msgid "Possibly AI"
 msgstr "Πιθανώς AI"
 
-#: admin/class-dashboard.php:714
+#: admin/class-dashboard.php:807
 msgid ""
 "Active plugins the list does not know whose name or description mentions AI."
 " Suggestions only: declare what really is an AI system, ignore the rest."
@@ -602,23 +577,23 @@ msgstr ""
 "περιγραφή αναφέρει AI. Πρόκειται μόνο για προτάσεις: δηλώστε ό,τι είναι "
 "πράγματι σύστημα AI και αγνοήστε τα υπόλοιπα."
 
-#: admin/class-dashboard.php:716
+#: admin/class-dashboard.php:809
 msgid "No further candidates among the active plugins."
 msgstr "Δεν υπάρχουν άλλοι υποψήφιοι ανάμεσα στα ενεργά πρόσθετα."
 
-#: admin/class-dashboard.php:720
+#: admin/class-dashboard.php:813
 msgid "Plugin"
 msgstr "Πρόσθετο"
 
-#: admin/class-dashboard.php:738
+#: admin/class-dashboard.php:831
 msgid "Declare as AI system"
 msgstr "Δήλωση ως σύστημα AI"
 
-#: admin/class-dashboard.php:748
+#: admin/class-dashboard.php:841
 msgid "Declare another system"
 msgstr "Δήλωση άλλου συστήματος"
 
-#: admin/class-dashboard.php:749
+#: admin/class-dashboard.php:842
 msgid ""
 "For tools that are not WordPress plugins: an external service, a script, an "
 "API your theme calls."
@@ -626,19 +601,19 @@ msgstr ""
 "Για εργαλεία που δεν είναι πρόσθετα WordPress: μια εξωτερική υπηρεσία, ένα "
 "script, ένα API που καλεί το θέμα σας."
 
-#: admin/class-dashboard.php:753
+#: admin/class-dashboard.php:846
 msgid "Name of the system"
 msgstr "Όνομα του συστήματος"
 
-#: admin/class-dashboard.php:759
+#: admin/class-dashboard.php:852
 msgid "Declare"
 msgstr "Δήλωση"
 
-#: admin/class-dashboard.php:809 admin/class-settings.php:855
+#: admin/class-dashboard.php:902 admin/class-settings.php:875
 msgid "AI-written content"
 msgstr "Περιεχόμενο γραμμένο από AI"
 
-#: admin/class-dashboard.php:812
+#: admin/class-dashboard.php:905
 msgid ""
 "Every post, page and public custom post type carries an AI level for its "
 "text. The level is set in the editor sidebar, in Quick Edit or for many "
@@ -652,15 +627,15 @@ msgstr ""
 "φιλτραρισμένες ανά επίπεδο, με τα ίδια εργαλεία Γρήγορης και Μαζικής "
 "επεξεργασίας."
 
-#: admin/class-dashboard.php:823
+#: admin/class-dashboard.php:916
 msgid "Post type"
 msgstr "Τύπος περιεχομένου"
 
-#: admin/class-dashboard.php:824
+#: admin/class-dashboard.php:917
 msgid "Open list"
 msgstr "Άνοιγμα λίστας"
 
-#: admin/class-dashboard.php:846
+#: admin/class-dashboard.php:939
 msgid ""
 "To unmark many posts at once, select them in the list, choose Bulk Edit and "
 "set the AI level to \"No AI used\" or clear it. The note wording, position "
@@ -671,19 +646,19 @@ msgstr ""
 "AI» ή καθαρίστε το. Η διατύπωση, η θέση και το στυλ της σημείωσης βρίσκονται"
 " στις Ρυθμίσεις, Κείμενο γραμμένο από AI."
 
-#: admin/class-dashboard.php:848
+#: admin/class-dashboard.php:941
 msgid "Text settings"
 msgstr "Ρυθμίσεις κειμένου"
 
-#: admin/class-dashboard.php:879
+#: admin/class-dashboard.php:972
 msgid "AI images and media"
 msgstr "Εικόνες και πολυμέσα AI"
 
-#: admin/class-dashboard.php:884
+#: admin/class-dashboard.php:977
 msgid "Media lists"
 msgstr "Λίστες πολυμέσων"
 
-#: admin/class-dashboard.php:885
+#: admin/class-dashboard.php:978
 msgid ""
 "The media library list view carries the AI column, the filter and the bulk "
 "actions (label, unlabel, confirm, dismiss, declare as camera photo or human "
@@ -693,29 +668,29 @@ msgstr ""
 "φίλτρο και τις μαζικές ενέργειες (ετικέτα, αφαίρεση ετικέτας, επιβεβαίωση, "
 "απόρριψη, δήλωση ως φωτογραφία κάμερας ή ως ανθρώπινη δημιουργία)."
 
-#: admin/class-dashboard.php:887 admin/class-dashboard.php:1003
-#: admin/class-settings.php:907
+#: admin/class-dashboard.php:980 admin/class-dashboard.php:1096
+#: admin/class-settings.php:927
 msgid "Labeled as AI"
 msgstr "Με ετικέτα AI"
 
-#: admin/class-dashboard.php:888
+#: admin/class-dashboard.php:981
 msgid "Review queue"
 msgstr "Ουρά ελέγχου"
 
-#: admin/class-dashboard.php:889
+#: admin/class-dashboard.php:982
 msgid "Declared as not AI"
 msgstr "Δηλωμένα ως μη AI"
 
-#: admin/class-dashboard.php:890
+#: admin/class-dashboard.php:983
 msgid "Unlabeled"
 msgstr "Χωρίς ετικέτα"
 
-#: admin/class-dashboard.php:891
+#: admin/class-dashboard.php:984
 msgid "Badge settings"
 msgstr "Ρυθμίσεις σήματος"
 
 #. translators: %d: number of dismissed files.
-#: admin/class-dashboard.php:898
+#: admin/class-dashboard.php:991
 #, php-format
 msgid ""
 "%d file was dismissed from the review queue and stays unlabeled until you "
@@ -730,15 +705,15 @@ msgstr[1] ""
 "%d αρχεία απορρίφθηκαν από την ουρά ελέγχου και παραμένουν χωρίς ετικέτα "
 "μέχρι να αποφασίσετε διαφορετικά."
 
-#: admin/class-dashboard.php:923
+#: admin/class-dashboard.php:1016
 msgid "TransparAI: Readiness"
 msgstr "TransparAI: Ετοιμότητα"
 
-#: admin/class-dashboard.php:924
+#: admin/class-dashboard.php:1017
 msgid "TransparAI: Numbers"
 msgstr "TransparAI: Αριθμοί"
 
-#: admin/class-dashboard.php:961
+#: admin/class-dashboard.php:1054
 msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
@@ -747,52 +722,52 @@ msgstr ""
 "απαντήσεις ενημερωμένες όταν ο ιστότοπος αρχίζει ή σταματά να χρησιμοποιεί "
 "AI."
 
-#: admin/class-dashboard.php:963
+#: admin/class-dashboard.php:1056
 msgid "Still open"
 msgstr "Εκκρεμούν"
 
-#: admin/class-dashboard.php:975
+#: admin/class-dashboard.php:1068
 msgid "In force"
 msgstr "Σε ισχύ"
 
-#: admin/class-dashboard.php:975
+#: admin/class-dashboard.php:1068
 msgid "Next deadline"
 msgstr "Επόμενη προθεσμία"
 
-#: admin/class-dashboard.php:985
+#: admin/class-dashboard.php:1078
 msgid ""
 "Technical self-check of the plugin state. Not legal advice, no liability."
 msgstr ""
 "Τεχνικός αυτοέλεγχος της κατάστασης του πρόσθετου. Δεν αποτελεί νομική "
 "συμβουλή, καμία ευθύνη."
 
-#: admin/class-dashboard.php:1005
+#: admin/class-dashboard.php:1098
 msgid "Declared human-made"
 msgstr "Δηλωμένα ως ανθρώπινης δημιουργίας"
 
-#: admin/class-dashboard.php:1006
+#: admin/class-dashboard.php:1099
 msgid "Not scanned yet"
 msgstr "Δεν έχουν σαρωθεί ακόμη"
 
 #. translators: 1: scanned files, 2: files in the library.
-#: admin/class-dashboard.php:1026
+#: admin/class-dashboard.php:1119
 #, php-format
 msgid "Library: %1$s of %2$s files scanned."
 msgstr "Βιβλιοθήκη: σαρώθηκαν %1$s από %2$s αρχεία."
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:1034
+#: admin/class-dashboard.php:1127
 #, php-format
 msgid "Last scan finished %s ago."
 msgstr "Η τελευταία σάρωση ολοκληρώθηκε πριν από %s."
 
-#: admin/class-dashboard.php:1036
+#: admin/class-dashboard.php:1129
 msgid "No scan has finished yet."
 msgstr "Δεν έχει ολοκληρωθεί καμία σάρωση ακόμη."
 
 #. translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated
 #. and reviewed posts.
-#: admin/class-dashboard.php:1045
+#: admin/class-dashboard.php:1138
 #, php-format
 msgid ""
 "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
@@ -801,19 +776,19 @@ msgstr ""
 "δημιουργημένα και ελεγμένα."
 
 #. translators: 1: systems visitors are told about, 2: inventoried systems.
-#: admin/class-dashboard.php:1058
+#: admin/class-dashboard.php:1151
 #, php-format
 msgid "Systems: %1$s of %2$s shown to visitors."
 msgstr "Συστήματα: %1$s από %2$s εμφανίζονται στους επισκέπτες."
 
 #. translators: 1: date, 2: human time difference.
-#: admin/class-dashboard.php:1113
+#: admin/class-dashboard.php:1206
 #, php-format
 msgid "since %1$s (%2$s)"
 msgstr "από %1$s (%2$s)"
 
 #. translators: 1: date, 2: human time difference.
-#: admin/class-dashboard.php:1116
+#: admin/class-dashboard.php:1209
 #, php-format
 msgid "%1$s (in %2$s)"
 msgstr "%1$s (σε %2$s)"
@@ -822,7 +797,7 @@ msgstr "%1$s (σε %2$s)"
 msgid "Media is AI-generated"
 msgstr "Το αρχείο πολυμέσων δημιουργήθηκε από AI"
 
-#: admin/class-media-library.php:123 admin/class-media-library.php:477
+#: admin/class-media-library.php:123 admin/class-media-library.php:478
 msgid "no declaration"
 msgstr "καμία δήλωση"
 
@@ -838,7 +813,7 @@ msgstr "ανθρώπινη ψηφιακή δημιουργία (digitalCreation)
 msgid "Not AI:"
 msgstr "Μη AI:"
 
-#: admin/class-media-library.php:136 admin/class-media-library.php:748
+#: admin/class-media-library.php:136 admin/class-media-library.php:749
 msgid ""
 "The file metadata could not be updated (file not writable). The label state "
 "in WordPress and the metadata inside the file may differ."
@@ -847,15 +822,15 @@ msgstr ""
 "είναι εγγράψιμο). Η κατάσταση της ετικέτας στο WordPress και τα μεταδεδομένα"
 " μέσα στο αρχείο μπορεί να διαφέρουν."
 
-#: admin/class-media-library.php:142 admin/class-media-library.php:727
+#: admin/class-media-library.php:142 admin/class-media-library.php:728
 msgid "Confirm AI label"
 msgstr "Επιβεβαίωση ετικέτας AI"
 
-#: admin/class-media-library.php:143 admin/class-media-library.php:728
+#: admin/class-media-library.php:143 admin/class-media-library.php:729
 msgid "Not AI, dismiss"
 msgstr "Μη AI, απόρριψη"
 
-#: admin/class-media-library.php:148 admin/class-media-library.php:745
+#: admin/class-media-library.php:148 admin/class-media-library.php:746
 msgid "Re-check file metadata"
 msgstr "Επανέλεγχος μεταδεδομένων αρχείου"
 
@@ -863,11 +838,11 @@ msgstr "Επανέλεγχος μεταδεδομένων αρχείου"
 msgid "Check delivery"
 msgstr "Έλεγχος παράδοσης"
 
-#: admin/class-media-library.php:163 admin/class-media-library.php:649
+#: admin/class-media-library.php:163 admin/class-media-library.php:650
 msgid "Show file metadata"
 msgstr "Εμφάνιση μεταδεδομένων αρχείου"
 
-#: admin/class-media-library.php:166 admin/class-media-library.php:742
+#: admin/class-media-library.php:166 admin/class-media-library.php:743
 msgid "AI content"
 msgstr "Περιεχόμενο AI"
 
@@ -883,22 +858,22 @@ msgstr ""
 msgid "Default (site setting)"
 msgstr "Προεπιλογή (ρύθμιση ιστότοπου)"
 
-#: admin/class-media-library.php:176 admin/class-settings.php:324
+#: admin/class-media-library.php:176 admin/class-settings.php:326
 #: admin/class-wizard.php:329
 msgid "Top left"
 msgstr "Επάνω αριστερά"
 
-#: admin/class-media-library.php:177 admin/class-settings.php:325
+#: admin/class-media-library.php:177 admin/class-settings.php:327
 #: admin/class-wizard.php:328
 msgid "Top right"
 msgstr "Επάνω δεξιά"
 
-#: admin/class-media-library.php:178 admin/class-settings.php:326
+#: admin/class-media-library.php:178 admin/class-settings.php:328
 #: admin/class-wizard.php:327
 msgid "Bottom left"
 msgstr "Κάτω αριστερά"
 
-#: admin/class-media-library.php:179 admin/class-settings.php:327
+#: admin/class-media-library.php:179 admin/class-settings.php:329
 #: admin/class-wizard.php:326
 msgid "Bottom right"
 msgstr "Κάτω δεξιά"
@@ -912,22 +887,22 @@ msgstr "Γραμμή λεζάντας κάτω από την εικόνα"
 msgid "Hide the visible badge on this image"
 msgstr "Απόκρυψη του ορατού σήματος σε αυτή την εικόνα"
 
-#: admin/class-media-library.php:190
+#: admin/class-media-library.php:191 admin/class-settings.php:331
 msgid "Badge position"
 msgstr "Θέση σήματος"
 
-#: admin/class-media-library.php:193
+#: admin/class-media-library.php:194
 msgid ""
 "Overrides this image only. Use it if a theme overlay covers the badge here."
 msgstr ""
 "Ισχύει μόνο για αυτή την εικόνα. Χρησιμοποιήστε το αν μια επικάλυψη του "
 "θέματος καλύπτει εδώ το σήμα."
 
-#: admin/class-media-library.php:197
+#: admin/class-media-library.php:198
 msgid "AI generator"
 msgstr "Γεννήτρια AI"
 
-#: admin/class-media-library.php:201
+#: admin/class-media-library.php:202
 msgid ""
 "Name of the AI tool, e.g. \"Midjourney\". Shown by the badge source option "
 "and the {generator} placeholder."
@@ -935,38 +910,38 @@ msgstr ""
 "Όνομα του εργαλείου AI, π.χ. «Midjourney». Εμφανίζεται με την επιλογή "
 "προέλευσης του σήματος και με τη μεταβλητή {generator}."
 
-#: admin/class-media-library.php:221
+#: admin/class-media-library.php:222
 msgid "certain"
 msgstr "βέβαιο"
 
-#: admin/class-media-library.php:222
+#: admin/class-media-library.php:223
 msgid "likely"
 msgstr "πιθανό"
 
-#: admin/class-media-library.php:223
+#: admin/class-media-library.php:224
 msgid "hint"
 msgstr "ένδειξη"
 
-#: admin/class-media-library.php:78 admin/class-media-library.php:327
-#: admin/class-media-library.php:368 admin/class-media-library.php:757
+#: admin/class-media-library.php:78 admin/class-media-library.php:328
+#: admin/class-media-library.php:369 admin/class-media-library.php:758
 #: admin/class-setup.php:113 admin/class-wizard.php:117
 #: includes/class-chatbot.php:357 includes/class-delivery.php:66
 #: includes/class-scanner.php:244 includes/class-scanner.php:320
 msgid "You are not allowed to do that."
 msgstr "Δεν έχετε δικαίωμα να το κάνετε αυτό."
 
-#: admin/class-media-library.php:332 admin/class-media-library.php:766
+#: admin/class-media-library.php:333 admin/class-media-library.php:767
 #: includes/class-rest.php:243
 msgid "Unknown action."
 msgstr "Άγνωστη ενέργεια."
 
-#: admin/class-media-library.php:373 admin/class-media-library.php:762
+#: admin/class-media-library.php:374 admin/class-media-library.php:763
 #: includes/class-delivery.php:73 includes/class-scanner.php:324
 msgid "Invalid attachment."
 msgstr "Μη έγκυρο συνημμένο."
 
 #. translators: %s: IPTC digital source type token.
-#: admin/class-media-library.php:458
+#: admin/class-media-library.php:459
 #, php-format
 msgid ""
 "This attachment is declared as not AI-made (%s). The declaration is written "
@@ -975,7 +950,7 @@ msgstr ""
 "Αυτό το συνημμένο είναι δηλωμένο ως μη δημιουργημένο από AI (%s). Η δήλωση "
 "γράφεται σε αρχεία που δεν φέρουν άλλον τύπο ψηφιακής πηγής."
 
-#: admin/class-media-library.php:460
+#: admin/class-media-library.php:461
 msgid ""
 "This attachment is labeled as AI-generated, so every file below should carry"
 " the declaration."
@@ -983,7 +958,7 @@ msgstr ""
 "Αυτό το συνημμένο φέρει ετικέτα ως δημιουργημένο από AI, οπότε κάθε αρχείο "
 "παρακάτω πρέπει να φέρει τη δήλωση."
 
-#: admin/class-media-library.php:461
+#: admin/class-media-library.php:462
 msgid ""
 "This attachment is not labeled as AI-generated. Nothing is written into its "
 "files, and no declaration is expected below."
@@ -991,105 +966,105 @@ msgstr ""
 "Αυτό το συνημμένο δεν φέρει ετικέτα ως δημιουργημένο από AI. Δεν γράφεται "
 "τίποτα στα αρχεία του και δεν αναμένεται δήλωση παρακάτω."
 
-#: admin/class-media-library.php:465
+#: admin/class-dashboard.php:436 admin/class-media-library.php:466
 msgid "Files"
 msgstr "Αρχεία"
 
-#: admin/class-media-library.php:468
+#: admin/class-media-library.php:469
 msgid "format cannot carry the declaration"
 msgstr "η μορφή δεν μπορεί να φέρει τη δήλωση"
 
-#: admin/class-media-library.php:471
+#: admin/class-media-library.php:472
 msgid "declaration present"
 msgstr "η δήλωση υπάρχει"
 
-#: admin/class-media-library.php:474
+#: admin/class-media-library.php:475
 msgid "declaration missing"
 msgstr "η δήλωση λείπει"
 
-#: admin/class-media-library.php:486
+#: admin/class-media-library.php:487
 msgid "No readable file found for this attachment."
 msgstr "Δεν βρέθηκε αναγνώσιμο αρχείο για αυτό το συνημμένο."
 
-#: admin/class-media-library.php:540
+#: admin/class-media-library.php:541
 msgid "Digital source type in the main file"
 msgstr "Τύπος ψηφιακής πηγής στο κύριο αρχείο"
 
-#: admin/class-media-library.php:542
+#: admin/class-media-library.php:543
 msgid "None declared."
 msgstr "Δεν έχει δηλωθεί κανένας."
 
-#: admin/class-media-library.php:550
+#: admin/class-media-library.php:551
 msgid "Detection evidence"
 msgstr "Τεκμήρια ανίχνευσης"
 
-#: admin/class-media-library.php:556
+#: admin/class-media-library.php:557
 msgid "History"
 msgstr "Ιστορικό"
 
 #. translators: %s: previous declaration state (ai, detected, human,
 #. dismissed).
-#: admin/class-media-library.php:569
+#: admin/class-media-library.php:570
 #, php-format
 msgid "from %s"
 msgstr "από %s"
 
-#: admin/class-media-library.php:582
+#: admin/class-media-library.php:583
 msgid "XMP packet of the main file"
 msgstr "Πακέτο XMP του κύριου αρχείου"
 
-#: admin/class-media-library.php:584
+#: admin/class-media-library.php:585
 msgid "This file carries no XMP block."
 msgstr "Αυτό το αρχείο δεν φέρει μπλοκ XMP."
 
-#: admin/class-media-library.php:637 admin/class-media-library.php:803
+#: admin/class-media-library.php:638 admin/class-media-library.php:804
 msgid "AI status: all"
 msgstr "Κατάσταση AI: όλα"
 
-#: admin/class-media-library.php:638 admin/class-media-library.php:804
+#: admin/class-media-library.php:639 admin/class-media-library.php:805
 msgid "Only AI-labeled"
 msgstr "Μόνο με ετικέτα AI"
 
-#: admin/class-media-library.php:639 admin/class-media-library.php:689
-#: admin/class-media-library.php:769 admin/class-media-library.php:805
+#: admin/class-media-library.php:640 admin/class-media-library.php:690
+#: admin/class-media-library.php:770 admin/class-media-library.php:806
 msgid "Detected, needs review"
 msgstr "Εντοπίστηκαν, χρειάζονται έλεγχο"
 
-#: admin/class-media-library.php:640 admin/class-media-library.php:807
+#: admin/class-media-library.php:641 admin/class-media-library.php:808
 msgid "Without AI label"
 msgstr "Χωρίς ετικέτα AI"
 
-#: admin/class-media-library.php:641 admin/class-media-library.php:806
+#: admin/class-media-library.php:642 admin/class-media-library.php:807
 msgid "Declared not AI (camera, human work)"
 msgstr "Δηλωμένα ως μη AI (κάμερα, ανθρώπινη δημιουργία)"
 
-#: admin/class-media-library.php:642 admin/class-media-library.php:731
-#: admin/class-media-library.php:894
+#: admin/class-media-library.php:643 admin/class-media-library.php:732
+#: admin/class-media-library.php:895
 msgid "Mark as AI-generated"
 msgstr "Σήμανση ως δημιουργημένο από AI"
 
-#: admin/class-media-library.php:643 admin/class-media-library.php:724
-#: admin/class-media-library.php:895
+#: admin/class-media-library.php:644 admin/class-media-library.php:725
+#: admin/class-media-library.php:896
 msgid "Remove AI label"
 msgstr "Αφαίρεση ετικέτας AI"
 
-#: admin/class-media-library.php:644
+#: admin/class-media-library.php:645
 msgid "Please select media first."
 msgstr "Επιλέξτε πρώτα πολυμέσα."
 
-#: admin/class-media-library.php:645 admin/class-media-library.php:776
+#: admin/class-media-library.php:646 admin/class-media-library.php:777
 msgid "Updating the AI label failed."
 msgstr "Η ενημέρωση της ετικέτας AI απέτυχε."
 
-#: admin/class-media-library.php:647
+#: admin/class-media-library.php:648
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
-#: admin/class-media-library.php:648 admin/class-media-library.php:788
+#: admin/class-media-library.php:649 admin/class-media-library.php:789
 msgid "No AI provenance signals found in the file."
 msgstr "Δεν βρέθηκαν σήματα προέλευσης AI στο αρχείο."
 
-#: admin/class-media-library.php:650
+#: admin/class-media-library.php:651
 msgid ""
 "The label was set, but the metadata could not be written into the file. "
 "Check the write permissions of the uploads directory."
@@ -1097,13 +1072,13 @@ msgstr ""
 "Η ετικέτα ορίστηκε, αλλά τα μεταδεδομένα δεν μπόρεσαν να γραφτούν στο "
 "αρχείο. Ελέγξτε τα δικαιώματα εγγραφής του καταλόγου μεταφορτώσεων."
 
-#: admin/class-media-library.php:651
+#: admin/class-media-library.php:652
 msgid "Hide file metadata"
 msgstr "Απόκρυψη μεταδεδομένων αρχείου"
 
 #. translators: 1: number of files checked, 2: intact count, 3: stripped
 #. count, 4: count that could not be compared.
-#: admin/class-media-library.php:653
+#: admin/class-media-library.php:654
 #, php-format
 msgid ""
 "%1$d checked: %2$d delivered with the declaration, %3$d without, %4$d not "
@@ -1114,7 +1089,7 @@ msgstr ""
 
 #. translators: 1: processed count, 2: flagged count, 3: queued count, 4:
 #. skipped count.
-#: admin/class-media-library.php:655
+#: admin/class-media-library.php:656
 #, php-format
 msgid ""
 "%1$d scanned, %2$d auto-labeled, %3$d queued for review, %4$d skipped "
@@ -1123,41 +1098,41 @@ msgstr ""
 "Σαρώθηκαν %1$d, %2$d πήραν αυτόματα ετικέτα, %3$d μπήκαν στην ουρά ελέγχου, "
 "%4$d παραλείφθηκαν (έχουν ήδη κριθεί)."
 
-#: admin/class-media-library.php:656
+#: admin/class-media-library.php:657
 msgid "Scan complete."
 msgstr "Η σάρωση ολοκληρώθηκε."
 
-#: admin/class-media-library.php:657
+#: admin/class-media-library.php:658
 msgid "Scan request failed. You can restart to continue."
 msgstr ""
 "Το αίτημα σάρωσης απέτυχε. Μπορείτε να ξεκινήσετε ξανά για να συνεχίσετε."
 
-#: admin/class-media-library.php:668 includes/class-notice.php:305
+#: admin/class-media-library.php:669 includes/class-notice.php:305
 msgid "AI"
 msgstr "AI"
 
-#: admin/class-media-library.php:896
+#: admin/class-media-library.php:897
 msgid "Confirm detected AI label"
 msgstr "Επιβεβαίωση εντοπισμένης ετικέτας AI"
 
-#: admin/class-media-library.php:897
+#: admin/class-media-library.php:898
 msgid "Dismiss detected AI label"
 msgstr "Απόρριψη εντοπισμένης ετικέτας AI"
 
-#: admin/class-media-library.php:898
+#: admin/class-media-library.php:899
 msgid "Declare as camera photo (not AI)"
 msgstr "Δήλωση ως φωτογραφία κάμερας (μη AI)"
 
-#: admin/class-media-library.php:899
+#: admin/class-media-library.php:900
 msgid "Declare as human work (not AI)"
 msgstr "Δήλωση ως ανθρώπινη δημιουργία (μη AI)"
 
-#: admin/class-media-library.php:734 admin/class-media-library.php:900
+#: admin/class-media-library.php:735 admin/class-media-library.php:901
 msgid "Remove \"not AI\" declaration"
 msgstr "Αφαίρεση δήλωσης «μη AI»"
 
 #. translators: %d: number of updated media files.
-#: admin/class-media-library.php:942
+#: admin/class-media-library.php:943
 #, php-format
 msgid "AI label updated for %d media file."
 msgid_plural "AI label updated for %d media files."
@@ -1212,16 +1187,16 @@ msgstr "Λίστα επιθεώρησης πολυμέσων"
 msgid "Visible badge"
 msgstr "Ορατό σήμα"
 
-#: admin/class-settings.php:238 admin/class-settings.php:450
+#: admin/class-settings.php:238 admin/class-settings.php:462
 #: includes/class-compliance.php:65
 msgid "AI-written text"
 msgstr "Κείμενο γραμμένο από AI"
 
-#: admin/class-settings.php:239 admin/class-settings.php:524
+#: admin/class-settings.php:239 admin/class-settings.php:538
 msgid "Chatbot disclosure"
 msgstr "Γνωστοποίηση chatbot"
 
-#: admin/class-settings.php:241 admin/class-settings.php:633
+#: admin/class-settings.php:241 admin/class-settings.php:651
 msgid "Automatic detection"
 msgstr "Αυτόματη ανίχνευση"
 
@@ -1229,7 +1204,7 @@ msgstr "Αυτόματη ανίχνευση"
 msgid "File metadata"
 msgstr "Μεταδεδομένα αρχείου"
 
-#: admin/class-settings.php:243 admin/class-settings.php:735
+#: admin/class-settings.php:243 admin/class-settings.php:755
 msgid "Uninstall"
 msgstr "Απεγκατάσταση"
 
@@ -1297,42 +1272,42 @@ msgstr "Εμφάνιση"
 msgid "Overlay on the image"
 msgstr "Επικάλυψη πάνω στην εικόνα"
 
-#: admin/class-settings.php:334 admin/class-wizard.php:317
+#: admin/class-settings.php:338 admin/class-wizard.php:317
 #: admin/class-wizard.php:403
 msgid "Dark"
 msgstr "Σκούρο"
 
-#: admin/class-settings.php:335 admin/class-wizard.php:318
+#: admin/class-settings.php:339 admin/class-wizard.php:318
 #: admin/class-wizard.php:404
 msgid "Light"
 msgstr "Ανοιχτό"
 
-#: admin/class-settings.php:336 admin/class-wizard.php:319
+#: admin/class-settings.php:340 admin/class-wizard.php:319
 #: admin/class-wizard.php:405
 msgid "Outline"
 msgstr "Περίγραμμα"
 
-#: admin/class-settings.php:337 admin/class-wizard.php:320
+#: admin/class-settings.php:341 admin/class-wizard.php:320
 msgid "Icon only (short label)"
 msgstr "Μόνο εικονίδιο (σύντομη ετικέτα)"
 
-#: admin/class-settings.php:361 admin/class-wizard.php:342
+#: admin/class-settings.php:371 admin/class-wizard.php:342
 msgid "Small"
 msgstr "Μικρό"
 
-#: admin/class-settings.php:362 admin/class-wizard.php:343
+#: admin/class-settings.php:372 admin/class-wizard.php:343
 msgid "Medium"
 msgstr "Μεσαίο"
 
-#: admin/class-settings.php:363 admin/class-wizard.php:344
+#: admin/class-settings.php:373 admin/class-wizard.php:344
 msgid "Large"
 msgstr "Μεγάλο"
 
-#: admin/class-settings.php:403
+#: admin/class-settings.php:415
 msgid "Extras"
 msgstr "Επιπλέον"
 
-#: admin/class-settings.php:409
+#: admin/class-settings.php:421
 msgid ""
 "Show the detected generator in the badge (e.g. \"AI-generated · "
 "Midjourney\"; ignored when the badge text contains {generator})"
@@ -1340,13 +1315,13 @@ msgstr ""
 "Εμφάνιση της γεννήτριας που εντοπίστηκε στο σήμα (π.χ. «Δημιουργημένο από AI"
 " · Midjourney», αγνοείται όταν το κείμενο του σήματος περιέχει {generator})"
 
-#: admin/class-settings.php:411
+#: admin/class-settings.php:423
 msgid "Append the label to the image alt text (screen readers)"
 msgstr ""
 "Προσθήκη της ετικέτας στο εναλλακτικό κείμενο της εικόνας (αναγνώστες "
 "οθόνης)"
 
-#: admin/class-settings.php:413
+#: admin/class-settings.php:425
 msgid ""
 "Automatically move a badge to another corner, or below the image, if a theme"
 " overlay covers it (recommended, needs JavaScript)"
@@ -1354,7 +1329,7 @@ msgstr ""
 "Αυτόματη μετακίνηση ενός σήματος σε άλλη γωνία ή κάτω από την εικόνα, αν το "
 "καλύπτει επικάλυψη του θέματος (συνιστάται, απαιτεί JavaScript)"
 
-#: admin/class-settings.php:415
+#: admin/class-settings.php:427
 msgid ""
 "Also label images printed without an attachment ID (ACF fields, sliders, "
 "builders) and CSS backgrounds (experimental, needs JavaScript)"
@@ -1363,11 +1338,11 @@ msgstr ""
 " ACF, sliders, builders) καθώς και των φόντων CSS (πειραματικό, απαιτεί "
 "JavaScript)"
 
-#: admin/class-settings.php:419
+#: admin/class-settings.php:431
 msgid "Not AI"
 msgstr "Μη AI"
 
-#: admin/class-settings.php:422
+#: admin/class-settings.php:434
 msgid ""
 "Also show a badge on media declared as camera photo or human work (the "
 "structured data carries the declaration either way)"
@@ -1375,25 +1350,25 @@ msgstr ""
 "Εμφάνιση σήματος και στα πολυμέσα που έχουν δηλωθεί ως φωτογραφία κάμερας ή "
 "ανθρώπινη δημιουργία (τα δομημένα δεδομένα φέρουν τη δήλωση ούτως ή άλλως)"
 
-#: admin/class-settings.php:423 includes/class-frontend.php:228
+#: admin/class-settings.php:435 includes/class-frontend.php:228
 msgid "Human made"
 msgstr "Ανθρώπινης δημιουργίας"
 
-#: admin/class-settings.php:427
+#: admin/class-settings.php:439
 msgid "Page notice"
 msgstr "Σημείωση σελίδας"
 
-#: admin/class-settings.php:430
+#: admin/class-settings.php:442
 msgid "Add a short note at the end of pages that contain labeled media"
 msgstr ""
 "Προσθήκη σύντομης σημείωσης στο τέλος των σελίδων που περιέχουν πολυμέσα με "
 "ετικέτα"
 
-#: admin/class-settings.php:431 includes/class-frontend.php:1014
+#: admin/class-settings.php:443 includes/class-frontend.php:1014
 msgid "This page contains AI-generated media."
 msgstr "Αυτή η σελίδα περιέχει πολυμέσα δημιουργημένα από AI."
 
-#: admin/class-settings.php:451
+#: admin/class-settings.php:463
 msgid ""
 "Every post carries an AI level (none, AI-assisted, AI-generated, AI-"
 "generated and reviewed), set in the editor sidebar, in Quick Edit or in "
@@ -1406,15 +1381,15 @@ msgstr ""
 "σημείωση στο άρθρο. Το shortcode [transparai_notice] και το μπλοκ «Σημείωση "
 "AI» την τοποθετούν χειροκίνητα οπουδήποτε."
 
-#: admin/class-settings.php:454
+#: admin/class-settings.php:466
 msgid "Note text"
 msgstr "Κείμενο σημείωσης"
 
-#: admin/class-settings.php:456 includes/class-notice.php:140
+#: admin/class-settings.php:468 includes/class-notice.php:140
 msgid "This text was generated by AI."
 msgstr "Αυτό το κείμενο δημιουργήθηκε από AI."
 
-#: admin/class-settings.php:457
+#: admin/class-settings.php:469
 msgid ""
 "Leave empty for a translated wording per level (\"created with the help of "
 "AI\", \"generated by AI\", \"generated by AI and reviewed by a person\")."
@@ -1423,48 +1398,48 @@ msgstr ""
 "βοήθεια AI», «δημιουργήθηκε από AI», «δημιουργήθηκε από AI και ελέγχθηκε από"
 " άνθρωπο»)."
 
-#: admin/class-settings.php:463
+#: admin/class-settings.php:475
 msgid "Ahead of the content"
 msgstr "Πριν από το περιεχόμενο"
 
-#: admin/class-settings.php:464
+#: admin/class-settings.php:476
 msgid "After the content"
 msgstr "Μετά το περιεχόμενο"
 
-#: admin/class-settings.php:465
+#: admin/class-settings.php:477
 msgid "Ahead of and after the content"
 msgstr "Πριν και μετά το περιεχόμενο"
 
-#: admin/class-settings.php:466 admin/class-settings.php:614
+#: admin/class-settings.php:478 admin/class-settings.php:631
 msgid "Only where a block or shortcode is placed"
 msgstr "Μόνο εκεί όπου έχει τοποθετηθεί μπλοκ ή shortcode"
 
-#: admin/class-settings.php:473 includes/class-notice.php:629
+#: admin/class-settings.php:486 includes/class-notice.php:629
 msgid "Block (own line)"
 msgstr "Μπλοκ (σε δική του γραμμή)"
 
-#: admin/class-settings.php:474 includes/class-notice.php:630
+#: admin/class-settings.php:487 includes/class-notice.php:630
 msgid "Inline (inside text)"
 msgstr "Ενσωματωμένη (μέσα στο κείμενο)"
 
-#: admin/class-settings.php:475 admin/class-settings.php:613
+#: admin/class-settings.php:488 admin/class-settings.php:630
 #: includes/class-notice.php:631
 msgid "Banner (dismissible)"
 msgstr "Banner (κλείνει)"
 
-#: admin/class-settings.php:476 includes/class-notice.php:632
+#: admin/class-settings.php:489 includes/class-notice.php:632
 msgid "Badge (small chip)"
 msgstr "Σήμα (μικρή ετικέτα)"
 
-#: admin/class-settings.php:477 includes/class-notice.php:633
+#: admin/class-settings.php:490 includes/class-notice.php:633
 msgid "Modal (button opens a dialog)"
 msgstr "Modal (κουμπί που ανοίγει διάλογο)"
 
-#: admin/class-settings.php:484
+#: admin/class-settings.php:498
 msgid "Post titles"
 msgstr "Τίτλοι άρθρων"
 
-#: admin/class-settings.php:487
+#: admin/class-settings.php:501
 msgid ""
 "Append a small AI badge to the title of AI-written posts in lists and "
 "archives"
@@ -1472,7 +1447,7 @@ msgstr ""
 "Προσθήκη μικρού σήματος AI στον τίτλο των άρθρων που γράφτηκαν από AI σε "
 "λίστες και αρχειοθήκες"
 
-#: admin/class-settings.php:488
+#: admin/class-settings.php:502
 msgid ""
 "The badge is HTML inside the title. Themes that print titles unescaped "
 "inside attributes should leave this off."
@@ -1480,15 +1455,15 @@ msgstr ""
 "Το σήμα είναι HTML μέσα στον τίτλο. Τα θέματα που τυπώνουν τίτλους χωρίς "
 "διαφυγή μέσα σε χαρακτηριστικά καλό είναι να το αφήσουν απενεργοποιημένο."
 
-#: admin/class-settings.php:492
+#: admin/class-settings.php:506
 msgid "Review"
 msgstr "Έλεγχος"
 
-#: admin/class-settings.php:494
+#: admin/class-settings.php:508
 msgid "Name of the person responsible"
 msgstr "Όνομα του υπεύθυνου ατόμου"
 
-#: admin/class-settings.php:495
+#: admin/class-settings.php:509
 msgid ""
 "Default for the \"responsible person\" of reviewed texts; each post can name"
 " someone else. The reviewer, date and a fingerprint of the reviewed text are"
@@ -1498,7 +1473,7 @@ msgstr ""
 " να ορίσει άλλο πρόσωπο. Ο ελεγκτής, η ημερομηνία και ένα αποτύπωμα του "
 "ελεγμένου κειμένου καταγράφονται μαζί με το άρθρο."
 
-#: admin/class-settings.php:497
+#: admin/class-settings.php:511
 msgid ""
 "Name the reviewer and the review date in the public note and in the "
 "structured data"
@@ -1506,11 +1481,11 @@ msgstr ""
 "Αναφορά του ελεγκτή και της ημερομηνίας ελέγχου στη δημόσια σημείωση και στα"
 " δομημένα δεδομένα"
 
-#: admin/class-settings.php:501
+#: admin/class-settings.php:515 admin/class-settings.php:518
 msgid "New posts"
 msgstr "Νέα άρθρα"
 
-#: admin/class-settings.php:506
+#: admin/class-settings.php:520
 msgid ""
 "Preselected level for posts created from now on. Existing posts are never "
 "reclassified."
@@ -1518,18 +1493,18 @@ msgstr ""
 "Προεπιλεγμένο επίπεδο για τα άρθρα που δημιουργούνται από εδώ και πέρα. Τα "
 "υπάρχοντα άρθρα δεν κατατάσσονται ποτέ εκ νέου."
 
-#: admin/class-settings.php:510
+#: admin/class-settings.php:524
 msgid "Excerpts and feeds"
 msgstr "Αποσπάσματα και ροές"
 
-#: admin/class-settings.php:513
+#: admin/class-settings.php:527
 msgid ""
 "Append the note as plain text to excerpts (archives, teasers, related posts)"
 msgstr ""
 "Προσθήκη της σημείωσης ως απλό κείμενο στα αποσπάσματα (αρχειοθήκες, "
 "teasers, σχετικά άρθρα)"
 
-#: admin/class-settings.php:515
+#: admin/class-settings.php:529
 msgid ""
 "Add the note to RSS feed items (content, summary and a machine-readable "
 "dc:description element)"
@@ -1537,13 +1512,13 @@ msgstr ""
 "Προσθήκη της σημείωσης στα στοιχεία της ροής RSS (περιεχόμενο, σύνοψη και "
 "ένα μηχαναγνώσιμο στοιχείο dc:description)"
 
-#: admin/class-settings.php:517
+#: admin/class-settings.php:531
 msgid "Prefix feed item titles of AI-written posts with [AI]"
 msgstr ""
 "Πρόθεμα [AI] στους τίτλους των στοιχείων ροής για τα άρθρα που γράφτηκαν από"
 " AI"
 
-#: admin/class-settings.php:525
+#: admin/class-settings.php:539
 msgid ""
 "Visitors must be told when they talk to an AI system, at the latest when the"
 " conversation starts. Your answer decides; what the plugin finds on the site"
@@ -1561,11 +1536,11 @@ msgstr ""
 "όσα είδε ο δικός σας browser ως διαχειριστή. Κανένα αίτημα δεν φεύγει από "
 "τον διακομιστή."
 
-#: admin/class-settings.php:529
+#: admin/class-settings.php:543
 msgid "Found on this site"
 msgstr "Βρέθηκαν σε αυτόν τον ιστότοπο"
 
-#: admin/class-settings.php:532
+#: admin/class-settings.php:546
 msgid ""
 "No known chat or chatbot widget found so far. Open a few pages of your site "
 "while logged in; the check runs in your browser and reports here."
@@ -1574,43 +1549,43 @@ msgstr ""
 "μερικές σελίδες του ιστότοπού σας ενώ είστε συνδεδεμένοι. Ο έλεγχος "
 "εκτελείται στον browser σας και αναφέρει εδώ."
 
-#: admin/class-settings.php:537
+#: admin/class-settings.php:551
 msgid "a bot answers"
 msgstr "απαντά bot"
 
-#: admin/class-settings.php:538
+#: admin/class-settings.php:552
 msgid "people answer"
 msgstr "απαντούν άνθρωποι"
 
-#: admin/class-settings.php:539
+#: admin/class-settings.php:553
 msgid "live chat with optional bot"
 msgstr "live chat με προαιρετικό bot"
 
-#: admin/class-settings.php:540
+#: admin/class-settings.php:554
 msgid "staffing unknown"
 msgstr "άγνωστο ποιος απαντά"
 
-#: admin/class-settings.php:551
+#: admin/class-settings.php:565 admin/class-settings.php:576
 msgid "Does this site run a chat?"
 msgstr "Διαθέτει αυτός ο ιστότοπος συνομιλία;"
 
-#: admin/class-settings.php:558
+#: admin/class-settings.php:572
 msgid "Not decided yet"
 msgstr "Δεν έχει αποφασιστεί ακόμη"
 
-#: admin/class-settings.php:567
+#: admin/class-settings.php:582
 msgid "An AI answers"
 msgstr "Απαντά AI"
 
-#: admin/class-settings.php:568
+#: admin/class-settings.php:583
 msgid "People answer, an AI sometimes"
 msgstr "Απαντούν άνθρωποι, ενίοτε AI"
 
-#: admin/class-settings.php:569
+#: admin/class-settings.php:584
 msgid "Only people answer"
 msgstr "Απαντούν μόνο άνθρωποι"
 
-#: admin/class-settings.php:573
+#: admin/class-settings.php:589
 msgid ""
 "The notice appears only with \"Yes\" and an AI that answers at least "
 "sometimes."
@@ -1618,28 +1593,28 @@ msgstr ""
 "Η σημείωση εμφανίζεται μόνο με «Ναι» και εφόσον απαντά AI τουλάχιστον "
 "ορισμένες φορές."
 
-#: admin/class-settings.php:577
+#: admin/class-settings.php:593
 msgid "Notice"
 msgstr "Σημείωση"
 
-#: admin/class-settings.php:579 includes/class-chatbot.php:111
+#: admin/class-settings.php:595 includes/class-chatbot.php:111
 msgid "You are chatting with an AI system."
 msgstr "Συνομιλείτε με σύστημα AI."
 
-#: admin/class-settings.php:585
+#: admin/class-settings.php:601
 msgid ""
 "As the first message of the bot (AI Engine; otherwise next to the widget)"
 msgstr "Ως πρώτο μήνυμα του bot (AI Engine, αλλιώς δίπλα στο widget)"
 
-#: admin/class-settings.php:586
+#: admin/class-settings.php:602
 msgid "Next to the chat widget"
 msgstr "Δίπλα στο widget συνομιλίας"
 
-#: admin/class-settings.php:587
+#: admin/class-settings.php:603
 msgid "As a line at the end of every page"
 msgstr "Ως γραμμή στο τέλος κάθε σελίδας"
 
-#: admin/class-settings.php:598
+#: admin/class-settings.php:615
 msgid ""
 "The plugin matches your installed plugins against a bundled list of known AI"
 " tools and lets you declare others by hand. Which of them visitors get told "
@@ -1652,37 +1627,37 @@ msgstr ""
 "σύστημα στη σελίδα Συστήματα AI. Τίποτα δεν ενεργοποιείται μόνο και μόνο "
 "επειδή εντοπίστηκε. Η λίστα συνοδεύει το πρόσθετο, δεν γίνεται καμία λήψη."
 
-#: admin/class-settings.php:601
+#: admin/class-settings.php:618 admin/class-settings.php:633
 msgid "Visitor notice"
 msgstr "Σημείωση προς τον επισκέπτη"
 
-#: admin/class-settings.php:604
+#: admin/class-settings.php:621
 msgid "Show a notice naming the AI systems marked as visible on every page"
 msgstr ""
 "Εμφάνιση σε κάθε σελίδα μιας σημείωσης που κατονομάζει τα συστήματα AI που "
 "έχουν σημανθεί ως ορατά"
 
-#: admin/class-settings.php:611
+#: admin/class-settings.php:628
 msgid "Line at the end of the page"
 msgstr "Γραμμή στο τέλος της σελίδας"
 
-#: admin/class-settings.php:612
+#: admin/class-settings.php:629
 msgid "Small badge in a corner"
 msgstr "Μικρό σήμα σε μια γωνία"
 
-#: admin/class-settings.php:622
+#: admin/class-settings.php:640
 msgid "Notice text"
 msgstr "Κείμενο σημείωσης"
 
 #. translators: %s: names of the visible AI systems.
 #. translators: %s: comma-separated names of AI systems.
-#: admin/class-settings.php:624 includes/class-systems.php:559
+#: admin/class-settings.php:642 includes/class-systems.php:559
 #, php-format
 msgid "This site uses AI systems: %s."
 msgstr "Αυτός ο ιστότοπος χρησιμοποιεί συστήματα AI: %s."
 
 #. translators: %s is the literal placeholder token shown to the user.
-#: admin/class-settings.php:625
+#: admin/class-settings.php:643
 #, php-format
 msgid ""
 "Leave empty for the translated default. %s is replaced with the names of the"
@@ -1692,38 +1667,38 @@ msgstr ""
 "ονόματα των ορατών συστημάτων."
 
 #. translators: %s is the literal placeholder token shown to the user.
-#: admin/class-settings.php:626
+#: admin/class-settings.php:644
 msgid "Manage detected and declared AI systems"
 msgstr "Διαχείριση εντοπισμένων και δηλωμένων συστημάτων AI"
 
-#: admin/class-settings.php:636
+#: admin/class-settings.php:654
 msgid "Detect on upload"
 msgstr "Ανίχνευση κατά τη μεταφόρτωση"
 
-#: admin/class-settings.php:639
+#: admin/class-settings.php:657
 msgid ""
 "Inspect new uploads for AI provenance (C2PA, XMP/IPTC, generator signatures)"
 msgstr ""
 "Έλεγχος των νέων μεταφορτώσεων για προέλευση AI (C2PA, XMP/IPTC, υπογραφές "
 "γεννητριών)"
 
-#: admin/class-settings.php:643
+#: admin/class-settings.php:661 admin/class-settings.php:672
 msgid "Standard declarations"
 msgstr "Τυπικές δηλώσεις"
 
-#: admin/class-settings.php:650 admin/class-settings.php:667
+#: admin/class-settings.php:668 admin/class-settings.php:686
 msgid "Label automatically"
 msgstr "Αυτόματη ετικέτα"
 
-#: admin/class-settings.php:651 admin/class-settings.php:668
+#: admin/class-settings.php:669 admin/class-settings.php:687
 msgid "Put into review queue"
 msgstr "Τοποθέτηση στην ουρά ελέγχου"
 
-#: admin/class-settings.php:652 admin/class-settings.php:669
+#: admin/class-settings.php:670 admin/class-settings.php:688
 msgid "Ignore"
 msgstr "Παράβλεψη"
 
-#: admin/class-settings.php:656
+#: admin/class-settings.php:675
 msgid ""
 "Files that explicitly declare AI origin (IPTC DigitalSourceType, AI claim in"
 " C2PA, AIGC declaration)."
@@ -1731,11 +1706,11 @@ msgstr ""
 "Αρχεία που δηλώνουν ρητά προέλευση AI (IPTC DigitalSourceType, δήλωση AI σε "
 "C2PA, δήλωση AIGC)."
 
-#: admin/class-settings.php:660
+#: admin/class-settings.php:679 admin/class-settings.php:690
 msgid "Generator signatures"
 msgstr "Υπογραφές γεννητριών"
 
-#: admin/class-settings.php:673
+#: admin/class-settings.php:693
 msgid ""
 "Strong signals without a formal declaration (Stable Diffusion parameters, "
 "ComfyUI workflows, generator names in EXIF/XMP, camera-written C2PA)."
@@ -1743,32 +1718,32 @@ msgstr ""
 "Ισχυρές ενδείξεις χωρίς επίσημη δήλωση (παράμετροι Stable Diffusion, ροές "
 "εργασίας ComfyUI, ονόματα γεννητριών σε EXIF/XMP, C2PA γραμμένο από κάμερα)."
 
-#: admin/class-settings.php:677
+#: admin/class-settings.php:697
 msgid "More sources"
 msgstr "Περισσότερες πηγές"
 
-#: admin/class-settings.php:680
+#: admin/class-settings.php:700
 msgid ""
 "Also scan video and audio uploads (MP4/MOV C2PA, MP3 AIGC declarations)"
 msgstr ""
 "Σάρωση και των μεταφορτώσεων βίντεο και ήχου (C2PA σε MP4/MOV, δηλώσεις AIGC"
 " σε MP3)"
 
-#: admin/class-settings.php:682
+#: admin/class-settings.php:702
 msgid "Use filename patterns as review hints (never labels automatically)"
 msgstr ""
 "Χρήση μοτίβων ονόματος αρχείου ως ενδείξεις για έλεγχο (δεν βάζει ποτέ "
 "ετικέτα αυτόματα)"
 
-#: admin/class-settings.php:690
+#: admin/class-settings.php:710
 msgid "Machine-readable file metadata"
 msgstr "Μηχαναγνώσιμα μεταδεδομένα αρχείου"
 
-#: admin/class-settings.php:693
+#: admin/class-settings.php:713
 msgid "Write into files"
 msgstr "Εγγραφή στα αρχεία"
 
-#: admin/class-settings.php:696
+#: admin/class-settings.php:716
 msgid ""
 "Write the IPTC DigitalSourceType as XMP into labeled JPEG, PNG, WebP and "
 "AVIF files (all size variants)"
@@ -1776,7 +1751,7 @@ msgstr ""
 "Εγγραφή του IPTC DigitalSourceType ως XMP στα αρχεία JPEG, PNG, WebP και "
 "AVIF με ετικέτα (σε όλες τις παραλλαγές μεγέθους)"
 
-#: admin/class-settings.php:698
+#: admin/class-settings.php:718
 msgid ""
 "Also mirror it into IPTC-IIM (JPEG, only when the file has no other IPTC "
 "block)"
@@ -1784,7 +1759,7 @@ msgstr ""
 "Αντιγραφή του και σε IPTC-IIM (JPEG, μόνο όταν το αρχείο δεν έχει άλλο μπλοκ"
 " IPTC)"
 
-#: admin/class-settings.php:700
+#: admin/class-settings.php:720
 msgid ""
 "Also write digitalCapture or digitalCreation into media you declared as not "
 "AI-made, but never over a declaration another tool or a camera already wrote"
@@ -1793,11 +1768,11 @@ msgstr ""
 " δημιουργημένα από AI, ποτέ όμως πάνω από δήλωση που έγραψε ήδη άλλο "
 "εργαλείο ή κάμερα"
 
-#: admin/class-settings.php:704
+#: admin/class-settings.php:724
 msgid "Auto-repair"
 msgstr "Αυτόματη επιδιόρθωση"
 
-#: admin/class-settings.php:707
+#: admin/class-settings.php:727
 msgid ""
 "Restore the metadata when image optimizers or regeneration strip it (hourly "
 "integrity sweep)"
@@ -1805,15 +1780,15 @@ msgstr ""
 "Αποκατάσταση των μεταδεδομένων όταν τα αφαιρούν οι βελτιστοποιητές εικόνων ή"
 " η αναδημιουργία (ωριαίο πέρασμα ακεραιότητας)"
 
-#: admin/class-settings.php:711
+#: admin/class-settings.php:731
 msgid "Delivery check"
 msgstr "Έλεγχος παράδοσης"
 
-#: admin/class-settings.php:714
+#: admin/class-settings.php:734
 msgid "Allow checking whether the declaration survives delivery"
 msgstr "Να επιτρέπεται ο έλεγχος του αν η δήλωση επιβιώνει της παράδοσης"
 
-#: admin/class-settings.php:715
+#: admin/class-settings.php:735
 msgid ""
 "Adds a button to the attachment details and here. On click, the plugin "
 "fetches that image over its own public URL and compares the delivered bytes "
@@ -1829,15 +1804,15 @@ msgstr ""
 "εικόνες σας και αφαιρεί τη δήλωση στην έξοδο. Το αίτημα πηγαίνει στον δικό "
 "σας ιστότοπο και πουθενά αλλού, και γίνεται μόνο όταν πατήσετε το κουμπί."
 
-#: admin/class-settings.php:718
+#: admin/class-settings.php:738
 msgid "Check a sample of five files"
 msgstr "Έλεγχος δείγματος πέντε αρχείων"
 
-#: admin/class-settings.php:725
+#: admin/class-settings.php:745
 msgid "Structured data"
 msgstr "Δομημένα δεδομένα"
 
-#: admin/class-settings.php:728
+#: admin/class-settings.php:748
 msgid ""
 "Add Schema.org JSON-LD with the IPTC digital source type for the labeled "
 "media of each page (search engines read it without opening the files)"
@@ -1846,11 +1821,11 @@ msgstr ""
 "με ετικέτα κάθε σελίδας (οι μηχανές αναζήτησης το διαβάζουν χωρίς να "
 "ανοίξουν τα αρχεία)"
 
-#: admin/class-settings.php:738
+#: admin/class-settings.php:758
 msgid "Data removal"
 msgstr "Διαγραφή δεδομένων"
 
-#: admin/class-settings.php:741
+#: admin/class-settings.php:761
 msgid ""
 "Delete all plugin data (labels, detection results, settings) when the plugin"
 " is uninstalled"
@@ -1858,11 +1833,11 @@ msgstr ""
 "Διαγραφή όλων των δεδομένων του πρόσθετου (ετικέτες, αποτελέσματα "
 "ανίχνευσης, ρυθμίσεις) κατά την απεγκατάστασή του"
 
-#: admin/class-settings.php:747
+#: admin/class-settings.php:767
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
 
-#: admin/class-settings.php:764
+#: admin/class-settings.php:784
 msgid ""
 "Detection relies on metadata embedded by generators; files whose metadata "
 "was stripped carry no signal."
@@ -1870,7 +1845,7 @@ msgstr ""
 "Η ανίχνευση βασίζεται σε μεταδεδομένα που ενσωματώνουν οι γεννήτριες. Τα "
 "αρχεία των οποίων τα μεταδεδομένα αφαιρέθηκαν δεν φέρουν καμία ένδειξη."
 
-#: admin/class-settings.php:765
+#: admin/class-settings.php:785
 msgid ""
 "A declaration records a statement by the site operator; it is not "
 "cryptographic proof of origin."
@@ -1878,7 +1853,7 @@ msgstr ""
 "Μια δήλωση καταγράφει τη δήλωση του διαχειριστή του ιστότοπου. Δεν αποτελεί "
 "κρυπτογραφική απόδειξη προέλευσης."
 
-#: admin/class-settings.php:766
+#: admin/class-settings.php:786
 msgid ""
 "Text disclosure levels are entered by editors; the review fingerprint shows "
 "whether content changed since the review, not whether the review was "
@@ -1888,7 +1863,7 @@ msgstr ""
 "αποτύπωμα ελέγχου δείχνει αν το περιεχόμενο άλλαξε μετά τον έλεγχο, όχι αν ο"
 " έλεγχος ήταν σωστός."
 
-#: admin/class-settings.php:767
+#: admin/class-settings.php:787
 msgid ""
 "The readiness score, the self-assessment and the AI literacy checklist "
 "summarise the plugin state and the operator's own answers; they are not a "
@@ -1898,135 +1873,135 @@ msgstr ""
 "στην AI συνοψίζουν την κατάσταση του πρόσθετου και τις απαντήσεις του ίδιου "
 "του διαχειριστή. Δεν αποτελούν νομική αξιολόγηση."
 
-#: admin/class-settings.php:791
+#: admin/class-settings.php:811
 msgid "Check"
 msgstr "Έλεγχος"
 
-#: admin/class-settings.php:799 admin/class-settings.php:809
+#: admin/class-settings.php:819 admin/class-settings.php:829
 msgid "Saved"
 msgstr "Αποθηκεύτηκε"
 
-#: admin/class-settings.php:801
+#: admin/class-settings.php:821
 msgid "Question"
 msgstr "Ερώτηση"
 
-#: admin/class-settings.php:801
+#: admin/class-settings.php:821
 msgid "Answer"
 msgstr "Απάντηση"
 
-#: admin/class-settings.php:804
+#: admin/class-settings.php:824
 msgid "not answered"
 msgstr "δεν απαντήθηκε"
 
-#: admin/class-settings.php:808
+#: admin/class-settings.php:828
 msgid "AI literacy checklist (Article 4)"
 msgstr "Λίστα ελέγχου γραμματισμού στην AI (άρθρο 4)"
 
-#: admin/class-settings.php:810
+#: admin/class-settings.php:830
 msgid "Item"
 msgstr "Στοιχείο"
 
-#: admin/class-settings.php:818
+#: admin/class-settings.php:838
 msgid "None detected or declared."
 msgstr "Δεν εντοπίστηκε ούτε δηλώθηκε κανένα."
 
-#: admin/class-settings.php:820
+#: admin/class-settings.php:840
 msgid "Source"
 msgstr "Πηγή"
 
-#: admin/class-settings.php:820
+#: admin/class-settings.php:840
 msgid "Visitors told"
 msgstr "Ενημερώνονται οι επισκέπτες"
 
-#: admin/class-settings.php:822 includes/class-systems.php:450
+#: admin/class-settings.php:842 includes/class-systems.php:450
 msgid "declared by hand"
 msgstr "δηλώθηκε χειροκίνητα"
 
-#: admin/class-settings.php:822
+#: admin/class-settings.php:842
 msgid "Detected"
 msgstr "Εντοπίστηκε"
 
-#: admin/class-settings.php:836
+#: admin/class-settings.php:856
 msgid "Disclosure notices"
 msgstr "Σημειώσεις γνωστοποίησης"
 
-#: admin/class-settings.php:840
+#: admin/class-settings.php:860
 msgid "Text note style"
 msgstr "Στυλ σημείωσης κειμένου"
 
-#: admin/class-settings.php:841
+#: admin/class-settings.php:861
 msgid "Text note position"
 msgstr "Θέση σημείωσης κειμένου"
 
-#: admin/class-settings.php:842
+#: admin/class-settings.php:862
 msgid "Visible badge on labeled media"
 msgstr "Ορατό σήμα στα πολυμέσα με ετικέτα"
 
-#: admin/class-settings.php:843
+#: admin/class-settings.php:863
 msgid "Page notice on pages with labeled media"
 msgstr "Σημείωση σελίδας στις σελίδες με πολυμέσα με ετικέτα"
 
-#: admin/class-settings.php:844
+#: admin/class-settings.php:864
 msgid "Chatbot question answered with"
 msgstr "Η ερώτηση για το chatbot απαντήθηκε με"
 
-#: admin/class-settings.php:845
+#: admin/class-settings.php:865
 msgid "Chatbot notice active"
 msgstr "Ενεργή σημείωση chatbot"
 
-#: admin/class-settings.php:846
+#: admin/class-settings.php:866
 msgid "AI systems notice"
 msgstr "Σημείωση συστημάτων AI"
 
-#: admin/class-settings.php:847
+#: admin/class-settings.php:867
 msgid "Structured data (Schema.org)"
 msgstr "Δομημένα δεδομένα (Schema.org)"
 
-#: admin/class-settings.php:864
+#: admin/class-settings.php:884
 msgid "Title"
 msgstr "Τίτλος"
 
-#: admin/class-settings.php:864
+#: admin/class-settings.php:884
 msgid "Type"
 msgstr "Τύπος"
 
-#: admin/class-settings.php:864
+#: admin/class-settings.php:884
 msgid "Level"
 msgstr "Επίπεδο"
 
-#: admin/class-settings.php:864
+#: admin/class-settings.php:884
 msgid "Reviewed by"
 msgstr "Ελέγχθηκε από"
 
-#: admin/class-settings.php:864
+#: admin/class-settings.php:884
 msgid "Reviewed on"
 msgstr "Ημερομηνία ελέγχου"
 
-#: admin/class-settings.php:864
+#: admin/class-settings.php:884
 msgid "Review current"
 msgstr "Έλεγχος επίκαιρος"
 
-#: admin/class-settings.php:899
+#: admin/class-settings.php:919
 msgid "Library status"
 msgstr "Κατάσταση βιβλιοθήκης"
 
-#: admin/class-settings.php:903
+#: admin/class-settings.php:923
 msgid "Media files"
 msgstr "Αρχεία πολυμέσων"
 
-#: admin/class-settings.php:915
+#: admin/class-settings.php:935
 msgid "Scanned"
 msgstr "Σαρώθηκαν"
 
-#: admin/class-settings.php:920
+#: admin/class-settings.php:940
 msgid "Open review queue"
 msgstr "Άνοιγμα ουράς ελέγχου"
 
-#: admin/class-settings.php:924
+#: admin/class-settings.php:944
 msgid "Print view"
 msgstr "Προβολή εκτύπωσης"
 
-#: admin/class-settings.php:929
+#: admin/class-settings.php:949
 msgid ""
 "The export lists every labeled, declared and pending file with its detection"
 " source, confidence, full history and the person behind each change. The "
@@ -2040,11 +2015,11 @@ msgstr ""
 "δεδομένα, τη βάση καθοδήγησης και τους δηλωμένους περιορισμούς. Η ίδια "
 "εγγραφή είναι διαθέσιμη στο /wp-json/transparai/v1/report."
 
-#: admin/class-settings.php:945 admin/class-settings.php:947
+#: admin/class-settings.php:965 admin/class-settings.php:967
 msgid "Scan existing library"
 msgstr "Σάρωση υπάρχουσας βιβλιοθήκης"
 
-#: admin/class-settings.php:949
+#: admin/class-settings.php:969
 msgid ""
 "Reads the metadata of your existing media files (C2PA, XMP/IPTC, generator "
 "signatures) in small batches. Nothing leaves your server."
@@ -2053,21 +2028,21 @@ msgstr ""
 "XMP/IPTC, υπογραφές γεννητριών) σε μικρές παρτίδες. Τίποτα δεν φεύγει από "
 "τον διακομιστή σας."
 
-#: admin/class-settings.php:951
+#: admin/class-settings.php:971
 msgid "Scan new/unscanned media"
 msgstr "Σάρωση νέων/μη σαρωμένων πολυμέσων"
 
-#: admin/class-settings.php:952
+#: admin/class-settings.php:972
 msgid "Rescan everything"
 msgstr "Νέα σάρωση όλων"
 
-#: admin/class-settings.php:953
+#: admin/class-settings.php:973
 msgid "Pause"
 msgstr "Παύση"
 
 #. translators: 1: checked count, 2: repaired count, 3: failed count, 4: human
 #. time diff.
-#: admin/class-settings.php:966
+#: admin/class-settings.php:986
 #, php-format
 msgid ""
 "Auto-repair, last full sweep: %1$d labeled files checked, %2$d repaired, "
@@ -2076,11 +2051,11 @@ msgstr ""
 "Αυτόματη επιδιόρθωση, τελευταίο πλήρες πέρασμα: ελέγχθηκαν %1$d αρχεία με "
 "ετικέτα, %2$d επιδιορθώθηκαν, %3$d απέτυχαν (πριν από %4$s)."
 
-#: admin/class-settings.php:989
+#: admin/class-settings.php:1009
 msgid "TransparAI links"
 msgstr "Σύνδεσμοι TransparAI"
 
-#: admin/class-settings.php:992
+#: admin/class-settings.php:1012
 msgid "Support forum"
 msgstr "Φόρουμ υποστήριξης"
 
@@ -2327,7 +2302,7 @@ msgstr ""
 "Δηλώστε το εργαλείο μετάφρασης στη σελίδα Συστήματα AI και εξετάστε μια "
 "σημείωση στις μεταφρασμένες σελίδες."
 
-#: includes/class-compliance.php:120
+#: includes/class-compliance.php:121
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
@@ -2335,7 +2310,7 @@ msgstr ""
 "Το προσωπικό και οι συνεργάτες γνωρίζουν ποια εργαλεία AI χρησιμοποιεί αυτός"
 " ο ιστότοπος και για ποιον σκοπό"
 
-#: includes/class-compliance.php:121
+#: includes/class-compliance.php:122
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
@@ -2343,7 +2318,7 @@ msgstr ""
 "Υπάρχει γραπτή εσωτερική πολιτική για τη χρήση AI (τι επιτρέπεται, τι "
 "χρειάζεται έλεγχο)"
 
-#: includes/class-compliance.php:122
+#: includes/class-compliance.php:123
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
@@ -2351,14 +2326,14 @@ msgstr ""
 "Όσοι εργάζονται με εργαλεία AI έχουν λάβει εκπαίδευση ή καθοδήγηση για τις "
 "δυνατότητες και τα όριά τους"
 
-#: includes/class-compliance.php:123
+#: includes/class-compliance.php:124
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
 "Έχει οριστεί ημερομηνία επανεξέτασης της χρήσης των εργαλείων AI, της "
 "πολιτικής και αυτών των δηλώσεων"
 
-#: includes/class-compliance.php:124
+#: includes/class-compliance.php:125
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
@@ -2367,11 +2342,11 @@ msgstr ""
 "επηρεάζει (επισκέπτες, πελάτες) κατά την απόφαση για την καθοδήγηση που "
 "χρειάζεται το προσωπικό"
 
-#: includes/class-compliance.php:138
+#: includes/class-compliance.php:140
 msgid "AI Act enters into force"
 msgstr "Ο AI Act τίθεται σε ισχύ"
 
-#: includes/class-compliance.php:139
+#: includes/class-compliance.php:141
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
@@ -2379,24 +2354,15 @@ msgstr ""
 "Ο Κανονισμός (ΕΕ) 2024/1689 είναι σε ισχύ. Οι υποχρεώσεις του αρχίζουν να "
 "εφαρμόζονται σταδιακά."
 
-#: includes/class-compliance.php:143
+#: includes/class-compliance.php:145
 msgid "General provisions and prohibited practices apply"
 msgstr "Εφαρμόζονται οι γενικές διατάξεις και οι απαγορευμένες πρακτικές"
 
-#: includes/class-compliance.php:144
-msgid ""
-"Chapters I and II: the AI literacy duty for providers and deployers (Article"
-" 4) and the ban on prohibited AI practices (Article 5)."
-msgstr ""
-"Κεφάλαια I και II: η υποχρέωση γραμματισμού στην AI για παρόχους και φορείς "
-"εφαρμογής (άρθρο 4) και η απαγόρευση των απαγορευμένων πρακτικών AI (άρθρο "
-"5)."
-
-#: includes/class-compliance.php:148
+#: includes/class-compliance.php:150
 msgid "General-purpose AI and governance rules apply"
 msgstr "Εφαρμόζονται οι κανόνες για την AI γενικού σκοπού και τη διακυβέρνηση"
 
-#: includes/class-compliance.php:149
+#: includes/class-compliance.php:151
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
@@ -2404,11 +2370,11 @@ msgstr ""
 "Υποχρεώσεις για τους παρόχους μοντέλων AI γενικού σκοπού, κοινοποιούσες "
 "αρχές, διακυβέρνηση και κυρώσεις (κεφάλαια V, VII και XII)."
 
-#: includes/class-compliance.php:153
+#: includes/class-compliance.php:155
 msgid "General application, including Article 50"
 msgstr "Γενική εφαρμογή, συμπεριλαμβανομένου του άρθρου 50"
 
-#: includes/class-compliance.php:154
+#: includes/class-compliance.php:156
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
@@ -2417,11 +2383,11 @@ msgstr ""
 "δημιουργημένο από AI και deepfakes (άρθρο 50) και οι περισσότερες υπόλοιπες "
 "διατάξεις."
 
-#: includes/class-compliance.php:158
+#: includes/class-compliance.php:170
 msgid "High-risk AI in regulated products"
 msgstr "AI υψηλού κινδύνου σε ρυθμιζόμενα προϊόντα"
 
-#: includes/class-compliance.php:159
+#: includes/class-compliance.php:171
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
@@ -2429,91 +2395,91 @@ msgstr ""
 "Υποχρεώσεις για συστήματα AI υψηλού κινδύνου που αποτελούν κατασκευαστικά "
 "στοιχεία ασφάλειας προϊόντων του παραρτήματος I (άρθρο 6(1))."
 
-#: includes/class-compliance.php:171
+#: includes/class-compliance.php:183
 msgid "Settings saved"
 msgstr "Οι ρυθμίσεις αποθηκεύτηκαν"
 
-#: includes/class-compliance.php:172
+#: includes/class-compliance.php:184
 msgid "Library scan started"
 msgstr "Η σάρωση της βιβλιοθήκης ξεκίνησε"
 
-#: includes/class-compliance.php:173
+#: includes/class-compliance.php:185
 msgid "Library scan finished"
 msgstr "Η σάρωση της βιβλιοθήκης ολοκληρώθηκε"
 
-#: includes/class-compliance.php:174
+#: includes/class-compliance.php:186
 msgid "Auto-repair sweep finished"
 msgstr "Το πέρασμα αυτόματης επιδιόρθωσης ολοκληρώθηκε"
 
-#: includes/class-compliance.php:175
+#: includes/class-compliance.php:187
 msgid "Bulk action: labeled as AI"
 msgstr "Μαζική ενέργεια: ετικέτα ως AI"
 
-#: includes/class-compliance.php:176
+#: includes/class-compliance.php:188
 msgid "Bulk action: label removed"
 msgstr "Μαζική ενέργεια: αφαίρεση ετικέτας"
 
-#: includes/class-compliance.php:177
+#: includes/class-compliance.php:189
 msgid "Bulk action: review confirmed"
 msgstr "Μαζική ενέργεια: επιβεβαίωση ελέγχου"
 
-#: includes/class-compliance.php:178
+#: includes/class-compliance.php:190
 msgid "Bulk action: review dismissed"
 msgstr "Μαζική ενέργεια: απόρριψη ελέγχου"
 
-#: includes/class-compliance.php:179
+#: includes/class-compliance.php:191
 msgid "Bulk action: declared as camera photo"
 msgstr "Μαζική ενέργεια: δήλωση ως φωτογραφία κάμερας"
 
-#: includes/class-compliance.php:180
+#: includes/class-compliance.php:192
 msgid "Bulk action: declared as human work"
 msgstr "Μαζική ενέργεια: δήλωση ως ανθρώπινη δημιουργία"
 
-#: includes/class-compliance.php:181
+#: includes/class-compliance.php:193
 msgid "Bulk action: declaration removed"
 msgstr "Μαζική ενέργεια: αφαίρεση δήλωσης"
 
-#: includes/class-compliance.php:182
+#: includes/class-compliance.php:194
 msgid "Setup: badge look chosen"
 msgstr "Ρύθμιση: επιλέχθηκε η εμφάνιση του σήματος"
 
-#: includes/class-compliance.php:183
+#: includes/class-compliance.php:195
 msgid "Setup: file writing chosen"
 msgstr "Ρύθμιση: επιλέχθηκε η εγγραφή στα αρχεία"
 
-#: includes/class-compliance.php:184
+#: includes/class-compliance.php:196
 msgid "Setup: last step undone"
 msgstr "Ρύθμιση: αναιρέθηκε το τελευταίο βήμα"
 
-#: includes/class-compliance.php:185
+#: includes/class-compliance.php:197
 msgid "Setup finished"
 msgstr "Η ρύθμιση ολοκληρώθηκε"
 
-#: includes/class-compliance.php:186
+#: includes/class-compliance.php:198
 msgid "Self-assessment saved"
 msgstr "Η αυτοαξιολόγηση αποθηκεύτηκε"
 
-#: includes/class-compliance.php:187
+#: includes/class-compliance.php:199
 msgid "AI literacy checklist saved"
 msgstr "Η λίστα ελέγχου γραμματισμού στην AI αποθηκεύτηκε"
 
-#: includes/class-compliance.php:188
+#: includes/class-compliance.php:200
 msgid "AI systems scanned"
 msgstr "Σαρώθηκαν τα συστήματα AI"
 
-#: includes/class-compliance.php:189
+#: includes/class-compliance.php:201
 msgid "AI system declared"
 msgstr "Δηλώθηκε σύστημα AI"
 
-#: includes/class-compliance.php:190
+#: includes/class-compliance.php:202
 msgid "AI system declaration removed"
 msgstr "Αφαιρέθηκε δήλωση συστήματος AI"
 
-#: includes/class-compliance.php:191
+#: includes/class-compliance.php:203
 msgid "AI systems notice visibility changed"
 msgstr "Άλλαξε η ορατότητα της σημείωσης συστημάτων AI"
 
-#: includes/class-compliance.php:445
+#: includes/class-compliance.php:457
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
@@ -2521,7 +2487,7 @@ msgstr ""
 "Το κείμενο γραμμένο από AI είναι δηλωμένο: είτε η αξιολόγηση λέει ότι δεν "
 "δημοσιεύεται τέτοιο, είτε τουλάχιστον ένα άρθρο φέρει επίπεδο AI"
 
-#: includes/class-compliance.php:448
+#: includes/class-compliance.php:460
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
@@ -2529,7 +2495,7 @@ msgstr ""
 "Ορίστε το επίπεδο AI στα άρθρα σας που γράφτηκαν από AI ή απαντήστε όχι στην"
 " ερώτηση για το κείμενο."
 
-#: includes/class-compliance.php:452
+#: includes/class-compliance.php:464
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
@@ -2538,7 +2504,7 @@ msgstr ""
 "χρησιμοποιούνται τέτοια, είτε το σήμα είναι ενεργό, τουλάχιστον ένα αρχείο "
 "έχει ετικέτα και δεν περιμένει τίποτα στην ουρά ελέγχου"
 
-#: includes/class-compliance.php:455
+#: includes/class-compliance.php:467
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
@@ -2546,7 +2512,7 @@ msgstr ""
 "Σαρώστε τη βιβλιοθήκη, διεκπεραιώστε την ουρά ελέγχου και κρατήστε ενεργό το"
 " ορατό σήμα."
 
-#: includes/class-compliance.php:459
+#: includes/class-compliance.php:471
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
@@ -2554,22 +2520,22 @@ msgstr ""
 "Η ερώτηση για το chatbot έχει απαντηθεί (ναι ή όχι), οπότε η σημείωση "
 "συνομιλίας ακολουθεί μια απόφαση"
 
-#: includes/class-compliance.php:462
+#: includes/class-compliance.php:474
 msgid "Answer whether the site runs a chat and who answers in it."
 msgstr ""
 "Απαντήστε αν ο ιστότοπος διαθέτει συνομιλία και ποιος απαντά σε αυτήν."
 
-#: includes/class-compliance.php:466
+#: includes/class-compliance.php:478
 msgid "Self-assessment and Article 4 checklist are complete"
 msgstr "Η αυτοαξιολόγηση και η λίστα ελέγχου του άρθρου 4 είναι πλήρεις"
 
-#: includes/class-compliance.php:469
+#: includes/class-compliance.php:481
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
 "Απαντήστε στις έξι ερωτήσεις και σημειώστε τα στοιχεία της λίστας ελέγχου "
 "που ισχύουν."
 
-#: includes/class-compliance.php:478
+#: includes/class-compliance.php:490
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
@@ -2577,7 +2543,7 @@ msgstr ""
 "Τα συστήματα AI έχουν καταγραφεί: η λίστα πρόσθετων σαρώθηκε και κάθε "
 "σύστημα που εντοπίστηκε ή δηλώθηκε έχει απόφαση ορατότητας"
 
-#: includes/class-compliance.php:481
+#: includes/class-compliance.php:493
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
@@ -2585,15 +2551,15 @@ msgstr ""
 "Εκτελέστε τη σάρωση στη σελίδα Συστήματα AI και αποφασίστε για ποια "
 "συστήματα ενημερώνονται οι επισκέπτες."
 
-#: includes/class-compliance.php:515
+#: includes/class-compliance.php:527
 msgid "Good"
 msgstr "Καλή"
 
-#: includes/class-compliance.php:516
+#: includes/class-compliance.php:528
 msgid "Needs attention"
 msgstr "Χρειάζεται προσοχή"
 
-#: includes/class-compliance.php:518
+#: includes/class-compliance.php:530
 msgid "Action required"
 msgstr "Απαιτείται ενέργεια"
 
@@ -2742,6 +2708,7 @@ msgstr ""
 "Αυτό το άρθρο δεν έχει ακόμη επίπεδο AI, οπότε η σημείωση παραμένει κρυφή. "
 "Ορίστε το επίπεδο στην πλαϊνή στήλη εγγράφου, στην ενότητα TransparAI."
 
+#: admin/class-settings.php:344 admin/class-settings.php:492
 #: includes/class-notice.php:628
 msgid "Style"
 msgstr "Στυλ"
@@ -2990,19 +2957,19 @@ msgctxt "block keyword"
 msgid "imprint"
 msgstr "στοιχεία επικοινωνίας"
 
-#: admin/class-settings.php:371
+#: admin/class-settings.php:383
 msgid "Background"
 msgstr "Φόντο"
 
-#: admin/class-settings.php:375
+#: admin/class-settings.php:387
 msgid "Text"
 msgstr "Κείμενο"
 
-#: admin/class-settings.php:379
+#: admin/class-settings.php:391
 msgid "Opacity"
 msgstr "Αδιαφάνεια"
 
-#: admin/class-settings.php:395
+#: admin/class-settings.php:407
 msgid ""
 "Both colours are optional: while they are empty the badge keeps the colours "
 "of the style above, exactly as before. The text colour also draws the "
@@ -3014,23 +2981,23 @@ msgstr ""
 "σχεδιάζει και το πλαίσιο, ενώ το περίγραμμα δεν έχει δικό του γέμισμα, οπότε"
 " ένα χρώμα φόντου δεν φαίνεται εκεί."
 
-#: admin/class-settings.php:387
+#: admin/class-settings.php:399
 msgid "Readable"
 msgstr "Ευανάγνωστο"
 
-#: admin/class-settings.php:388
+#: admin/class-settings.php:400
 msgid "Borderline"
 msgstr "Οριακό"
 
-#: admin/class-settings.php:389
+#: admin/class-settings.php:401
 msgid "Hard to read"
 msgstr "Δυσανάγνωστο"
 
-#: admin/class-settings.php:390
+#: admin/class-settings.php:402
 msgid "Depends on what is behind it"
 msgstr "Εξαρτάται από το τι υπάρχει από πίσω"
 
-#: admin/class-settings.php:392
+#: admin/class-settings.php:404
 msgid ""
 "Badge text is small, so WCAG asks for a contrast of at least 4.5 to 1. A "
 "see-through badge is rated for the worst case, a photo far lighter or darker"
@@ -3065,15 +3032,15 @@ msgstr ""
 "βλάπτει ποτέ, και η μηχαναγνώσιμη σήμανση γράφεται σε κάθε περίπτωση. Η "
 "υπόδειξη αυτή δεν αποτελεί νομική συμβουλή."
 
-#: admin/class-media-library.php:70
+#: admin/class-dashboard.php:202 admin/class-media-library.php:70
 msgid "Hide this note"
 msgstr "Απόκρυψη αυτής της σημείωσης"
 
-#: admin/class-media-library.php:420
+#: admin/class-media-library.php:421
 msgid "yes, the manifest was written for exactly these bytes"
 msgstr "ναι, το manifest γράφτηκε ακριβώς για αυτά τα bytes"
 
-#: admin/class-media-library.php:425
+#: admin/class-media-library.php:426
 msgid ""
 "no, the image was changed after signing or the manifest was copied from "
 "another file"
@@ -3081,34 +3048,34 @@ msgstr ""
 "όχι, η εικόνα άλλαξε μετά την υπογραφή ή το manifest αντιγράφηκε από άλλο "
 "αρχείο"
 
-#: admin/class-media-library.php:429
+#: admin/class-media-library.php:430
 msgid "not checkable, the manifest has no data hash (an update manifest)"
 msgstr ""
 "δεν ελέγχεται, το manifest δεν έχει hash δεδομένων (manifest ενημέρωσης)"
 
-#: admin/class-media-library.php:431
+#: admin/class-media-library.php:432
 msgid "not checkable, unknown hash algorithm"
 msgstr "δεν ελέγχεται, άγνωστος αλγόριθμος hash"
 
-#: admin/class-media-library.php:433
+#: admin/class-media-library.php:434
 msgid "not checked for video and ISO-BMFF containers"
 msgstr "δεν ελέγχεται για βίντεο και περιέκτες ISO-BMFF"
 
-#: admin/class-media-library.php:435
+#: admin/class-media-library.php:436
 msgid "not checked, the file is larger than 64 MB"
 msgstr "δεν ελέγχθηκε, το αρχείο είναι μεγαλύτερο από 64 MB"
 
-#: admin/class-media-library.php:437
+#: admin/class-media-library.php:438
 msgid "not checkable, the manifest could not be read completely"
 msgstr "δεν ελέγχεται, το manifest δεν διαβάστηκε ολόκληρο"
 
-#: admin/class-media-library.php:482
+#: admin/class-media-library.php:483
 msgid "Content Credentials"
 msgstr "Content Credentials"
 
 #. translators: 1: number of files without Content Credentials, 2: total
 #. number of files.
-#: admin/class-media-library.php:500
+#: admin/class-media-library.php:501
 #, php-format
 msgid ""
 "Content Credentials are present in the original, but %1$d of %2$d files (the"
@@ -3120,7 +3087,7 @@ msgstr ""
 "τύπος ψηφιακής πηγής που γράφει αυτό το πρόσθετο σε κάθε αρχείο δεν "
 "επηρεάζεται."
 
-#: admin/class-media-library.php:507
+#: admin/class-media-library.php:508
 msgid ""
 "The files changed since the last detection scan. Use Re-check to look at "
 "them again."
@@ -3128,61 +3095,61 @@ msgstr ""
 "Τα αρχεία άλλαξαν από την τελευταία σάρωση εντοπισμού. Πατήστε «Επανέλεγχος "
 "μεταδεδομένων αρχείου» για να τα εξετάσετε ξανά."
 
-#: admin/class-media-library.php:513
+#: admin/class-media-library.php:514
 msgid "Content Credentials (C2PA)"
 msgstr "Content Credentials (C2PA)"
 
-#: admin/class-media-library.php:515
+#: admin/class-media-library.php:516
 msgid "Manifest matches the file bytes:"
 msgstr "Το manifest ταιριάζει με τα bytes του αρχείου:"
 
-#: admin/class-media-library.php:517
+#: admin/class-media-library.php:518
 msgid "Signer"
 msgstr "Υπογράφων"
 
-#: admin/class-media-library.php:518
+#: admin/class-media-library.php:519
 msgid "Organisation"
 msgstr "Οργανισμός"
 
-#: admin/class-media-library.php:520
+#: admin/class-media-library.php:521
 msgid "Claim generator"
 msgstr "Γεννήτρια δήλωσης"
 
-#: admin/class-media-library.php:521
+#: admin/class-media-library.php:522
 msgid "Action time in the manifest"
 msgstr "Χρόνος ενέργειας στο manifest"
 
-#: admin/class-media-library.php:709
+#: admin/class-media-library.php:710
 msgid "The files changed since the last detection scan."
 msgstr "Τα αρχεία άλλαξαν από την τελευταία σάρωση εντοπισμού."
 
-#: admin/class-media-library.php:709
+#: admin/class-media-library.php:710
 msgid "changed"
 msgstr "άλλαξε"
 
-#: admin/class-settings.php:338 admin/class-wizard.php:316
+#: admin/class-settings.php:342 admin/class-wizard.php:316
 msgid "Official EU icon (Commission, June 2026)"
 msgstr "Επίσημο εικονίδιο ΕΕ (Επιτροπή, Ιούνιος 2026)"
 
-#: admin/class-settings.php:345
+#: admin/class-settings.php:351
 msgid "EU icon by label: Fully AI-generated / Partially AI-modified"
 msgstr ""
 "Εικονίδιο ΕΕ ανά ετικέτα: Πλήρως δημιουργημένο από AI / Μερικώς "
 "τροποποιημένο από AI"
 
-#: admin/class-settings.php:346
+#: admin/class-settings.php:352
 msgid "EU icon: basic AI icon for every label"
 msgstr "Εικονίδιο ΕΕ: βασικό εικονίδιο AI για κάθε ετικέτα"
 
-#: admin/class-settings.php:353
+#: admin/class-settings.php:361
 msgid "EU icon: black"
 msgstr "Εικονίδιο ΕΕ: μαύρο"
 
-#: admin/class-settings.php:354
+#: admin/class-settings.php:362
 msgid "EU icon: white"
 msgstr "Εικονίδιο ΕΕ: λευκό"
 
-#: admin/class-settings.php:398
+#: admin/class-settings.php:410
 msgid ""
 "The EU icon style uses the icons the European Commission published on 10 "
 "June 2026 with the Code of Practice on transparency, unchanged and in the "
@@ -3239,11 +3206,11 @@ msgstr ""
 "είναι ο προαιρετικός έλεγχος παράδοσης, ο οποίος ανακτά μία εικόνα από τον "
 "ίδιο τον ιστότοπο για να επαληθεύσει ότι ένα CDN διατηρεί τη δήλωση."
 
-#: admin/class-media-library.php:385
+#: admin/class-media-library.php:386
 msgid "valid, signed with a certificate on the C2PA trust list"
 msgstr "έγκυρη, υπογεγραμμένη με πιστοποιητικό από τη λίστα εμπιστοσύνης C2PA"
 
-#: admin/class-media-library.php:387
+#: admin/class-media-library.php:388
 msgid ""
 "valid, but the signer is not on the C2PA trust list (a test, self-made or "
 "unlisted certificate)"
@@ -3251,65 +3218,65 @@ msgstr ""
 "έγκυρη, αλλά ο υπογράφων δεν βρίσκεται στη λίστα εμπιστοσύνης C2PA "
 "(δοκιμαστικό, αυτοδημιούργητο ή μη καταχωρισμένο πιστοποιητικό)"
 
-#: admin/class-media-library.php:391
+#: admin/class-media-library.php:392
 msgid "invalid, the signature does not match the manifest"
 msgstr "μη έγκυρη, η υπογραφή δεν αντιστοιχεί στο manifest"
 
-#: admin/class-media-library.php:395
+#: admin/class-media-library.php:396
 msgid "invalid, a part of the manifest was changed after signing"
 msgstr "μη έγκυρη, ένα τμήμα του manifest άλλαξε μετά την υπογραφή"
 
-#: admin/class-media-library.php:397
+#: admin/class-media-library.php:398
 msgid "invalid, the certificate was not valid at the time of signing"
 msgstr "μη έγκυρη, το πιστοποιητικό δεν ήταν έγκυρο τη στιγμή της υπογραφής"
 
-#: admin/class-media-library.php:399
+#: admin/class-media-library.php:400
 msgid "invalid, the certificate is not allowed to sign Content Credentials"
 msgstr ""
 "μη έγκυρη, το πιστοποιητικό δεν επιτρέπεται να υπογράφει Content Credentials"
 
-#: admin/class-media-library.php:401
+#: admin/class-media-library.php:402
 msgid "invalid, the time stamp does not hold"
 msgstr "μη έγκυρη, η χρονοσφραγίδα δεν ευσταθεί"
 
-#: admin/class-media-library.php:403
+#: admin/class-media-library.php:404
 msgid "invalid, the certificate chain does not hold"
 msgstr "μη έγκυρη, η αλυσίδα πιστοποιητικών δεν ευσταθεί"
 
-#: admin/class-media-library.php:406
+#: admin/class-media-library.php:407
 msgid "not checkable, unknown signature algorithm"
 msgstr "δεν ελέγχεται, άγνωστος αλγόριθμος υπογραφής"
 
-#: admin/class-media-library.php:409
+#: admin/class-media-library.php:410
 msgid "not checkable, the server lacks the OpenSSL or sodium functions"
 msgstr ""
 "δεν ελέγχεται, ο διακομιστής δεν διαθέτει τις συναρτήσεις OpenSSL ή sodium"
 
-#: admin/class-media-library.php:411
+#: admin/class-media-library.php:412
 msgid "not checked"
 msgstr "δεν ελέγχθηκε"
 
-#: admin/class-media-library.php:514
+#: admin/class-media-library.php:515
 msgid "Signature:"
 msgstr "Υπογραφή:"
 
-#: admin/class-media-library.php:519
+#: admin/class-media-library.php:520
 msgid "Certificate issued by"
 msgstr "Το πιστοποιητικό εκδόθηκε από"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
-#: admin/class-media-library.php:531
+#: admin/class-media-library.php:532
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (on the C2PA time stamp list)"
 msgstr "Χρονοσφραγίδα: %1$s UTC από %2$s (στη λίστα χρονοσφραγίδων C2PA)"
 
 #. translators: 1: date and time (UTC), 2: name of the time stamp authority.
-#: admin/class-media-library.php:531
+#: admin/class-media-library.php:532
 #, php-format
 msgid "Time stamp: %1$s UTC by %2$s (not on the C2PA time stamp list)"
 msgstr "Χρονοσφραγίδα: %1$s UTC από %2$s (εκτός λίστας χρονοσφραγίδων C2PA)"
 
-#: admin/class-media-library.php:537
+#: admin/class-media-library.php:538
 msgid ""
 "Checked on your server: the signature, the hashes of every part of the "
 "manifest, the certificate chain against the C2PA trust list and a time "
@@ -3441,15 +3408,15 @@ msgstr ""
 msgid "Look"
 msgstr "Εμφάνιση"
 
-#: admin/class-wizard.php:324
+#: admin/class-settings.php:480 admin/class-wizard.php:324
 msgid "Position"
 msgstr "Θέση"
 
-#: admin/class-wizard.php:333
+#: admin/class-settings.php:319 admin/class-wizard.php:333
 msgid "Placement"
 msgstr "Τοποθέτηση"
 
-#: admin/class-wizard.php:340
+#: admin/class-settings.php:375 admin/class-wizard.php:340
 msgid "Size"
 msgstr "Μέγεθος"
 
@@ -3627,11 +3594,11 @@ msgstr ""
 "Ο πίνακας ελέγχου κρατά τη βαθμολογία και τα ανοιχτά βήματα σε κοινή θέα. Ο "
 "οδηγός παραμένει διαθέσιμος από τον πίνακα ελέγχου και τις ρυθμίσεις."
 
-#: admin/class-dashboard.php:410 admin/class-settings.php:923
+#: admin/class-dashboard.php:503 admin/class-settings.php:943
 msgid "Export audit JSON"
 msgstr "Εξαγωγή JSON επιθεώρησης"
 
-#: admin/class-settings.php:406
+#: admin/class-settings.php:418
 msgid ""
 "Show the full label as a native browser tooltip on icon-only image overlays "
 "(no JavaScript required)"
@@ -3639,7 +3606,7 @@ msgstr ""
 "Εμφάνιση της πλήρους ετικέτας ως εγγενής συμβουλή εργαλείου του προγράμματος"
 " περιήγησης στις επικαλύψεις μόνο με εικονίδιο (χωρίς JavaScript)"
 
-#: admin/class-settings.php:407
+#: admin/class-settings.php:419
 msgid ""
 "Applies to Overlay on the image and Icon only (short label). Native tooltips"
 " appear on mouse hover; touch and keyboard support depends on the browser. "
@@ -3651,7 +3618,7 @@ msgstr ""
 "περιήγησης. Η πλήρης ετικέτα παραμένει διαθέσιμη στους αναγνώστες οθόνης."
 
 #. translators: 1: documented systems, 2: all systems.
-#: admin/class-dashboard.php:627
+#: admin/class-dashboard.php:720
 #, php-format
 msgid ""
 "%1$d of %2$d systems documented. Open the operator details under a system to"
@@ -3664,16 +3631,16 @@ msgstr ""
 "επεξεργασία. Περιλαμβάνονται στην αναφορά επιθεώρησης και στην εξαγωγή JSON."
 
 #. translators: 1: number of filled fields, 2: number of fields.
-#: admin/class-dashboard.php:678
+#: admin/class-dashboard.php:771
 #, php-format
 msgid "Operator details (%1$d of %2$d filled in)"
 msgstr "Στοιχεία φορέα λειτουργίας (συμπληρώθηκαν %1$d από %2$d)"
 
-#: admin/class-dashboard.php:704
+#: admin/class-dashboard.php:797
 msgid "Save visibility and details"
 msgstr "Αποθήκευση ορατότητας και στοιχείων"
 
-#: admin/class-media-library.php:423
+#: admin/class-media-library.php:424
 msgid ""
 "no, the manifest leaves image data out of its hash, so it does not bind "
 "these pixels"
@@ -3681,18 +3648,18 @@ msgstr ""
 "όχι, το manifest αφήνει τα δεδομένα εικόνας εκτός του hash του, άρα δεν "
 "δεσμεύει αυτά τα pixel"
 
-#: admin/class-settings.php:435
+#: admin/class-settings.php:447
 msgid "Link preview"
 msgstr "Προεπισκόπηση συνδέσμου"
 
-#: admin/class-settings.php:439
+#: admin/class-settings.php:451
 msgid ""
 "Label the link preview image of posts whose featured image is AI-labeled"
 msgstr ""
 "Σήμανση της εικόνας προεπισκόπησης συνδέσμου σε άρθρα των οποίων η "
 "επιλεγμένη εικόνα έχει ετικέτα AI"
 
-#: admin/class-settings.php:440
+#: admin/class-settings.php:452
 msgid ""
 "Social networks and messengers strip the declaration from image files when a"
 " link is shared. With this option the plugin draws a 1200 x 630 copy of the "
@@ -3711,7 +3678,7 @@ msgstr ""
 "σε ιστότοπους χωρίς πρόσθετο SEO. Τα άλλα πρόσθετα SEO κρατούν τη δική τους "
 "εικόνα προεπισκόπησης."
 
-#: admin/class-settings.php:442
+#: admin/class-settings.php:454
 msgid ""
 "Not available on this server: PHP needs the GD extension with FreeType "
 "support."
@@ -3719,7 +3686,7 @@ msgstr ""
 "Δεν είναι διαθέσιμο σε αυτόν τον διακομιστή: η PHP χρειάζεται την επέκταση "
 "GD με υποστήριξη FreeType."
 
-#: includes/class-compliance.php:192
+#: includes/class-compliance.php:204
 msgid "Operator details of AI systems saved"
 msgstr "Τα στοιχεία φορέα λειτουργίας των συστημάτων AI αποθηκεύτηκαν"
 
@@ -3780,3 +3747,134 @@ msgid ""
 msgstr ""
 "Ποια προσωπικά ή επιχειρηματικά δεδομένα φτάνουν στο σύστημα και πού "
 "υποβάλλονται σε επεξεργασία."
+
+#: admin/class-dashboard.php:621
+msgid ""
+"Article 4 applies to every provider and deployer, whatever you answered "
+"above: you take measures that help the people who operate or use AI systems "
+"on your behalf understand them, considering their background and the context"
+" of use. Since the amendment of July 2026 no particular level of knowledge "
+"is required, and the Act prescribes no training or certificate; this "
+"checklist records the measures that usually serve as evidence. It counts "
+"toward the readiness score and appears in the compliance report with the "
+"name and date of the last save."
+msgstr ""
+"Το άρθρο 4 ισχύει για κάθε πάροχο και φορέα εφαρμογής, ανεξάρτητα από τις "
+"απαντήσεις σας παραπάνω: λαμβάνετε μέτρα που βοηθούν τα άτομα που "
+"χειρίζονται ή χρησιμοποιούν συστήματα AI για λογαριασμό σας να τα κατανοούν,"
+" λαμβάνοντας υπόψη το υπόβαθρό τους και το πλαίσιο χρήσης. Από την "
+"τροποποίηση του Ιουλίου 2026 δεν απαιτείται συγκεκριμένο επίπεδο γνώσεων και"
+" ο κανονισμός δεν προβλέπει εκπαίδευση ή πιστοποιητικό· η λίστα καταγράφει "
+"τα μέτρα που συνήθως χρησιμεύουν ως απόδειξη. Μετρά στη βαθμολογία "
+"ετοιμότητας και εμφανίζεται στην αναφορά συμμόρφωσης με το όνομα και την "
+"ημερομηνία της τελευταίας αποθήκευσης."
+
+#: includes/class-compliance.php:146
+msgid ""
+"Chapters I and II: AI literacy measures by providers and deployers (Article "
+"4) and the ban on prohibited AI practices (Article 5)."
+msgstr ""
+"Κεφάλαια I και II: μέτρα παρόχων και φορέων εφαρμογής για τον γραμματισμό "
+"στην AI (άρθρο 4) και η απαγόρευση των απαγορευμένων πρακτικών AI (άρθρο 5)."
+
+#: includes/class-compliance.php:160
+msgid "Machine-readable marking for older generators"
+msgstr "Μηχανικά αναγνώσιμη σήμανση για παλαιότερους παραγωγούς"
+
+#: includes/class-compliance.php:161
+msgid ""
+"Providers of generators that were on the market before 2 August 2026 must "
+"mark their output in a machine-readable way (Article 50(2), Article 111(4))."
+" New bans on AI that creates intimate images of real people without consent "
+"or child sexual abuse material apply."
+msgstr ""
+"Οι πάροχοι παραγωγών περιεχομένου που διατέθηκαν στην αγορά πριν από τις 2 "
+"Αυγούστου 2026 πρέπει να σημαίνουν τα αποτελέσματά τους σε μηχανικά "
+"αναγνώσιμη μορφή (άρθρο 50(2), άρθρο 111(4)). Ισχύουν νέες απαγορεύσεις για "
+"AI που δημιουργεί χωρίς συναίνεση προσωπικές εικόνες πραγματικών προσώπων ή "
+"υλικό σεξουαλικής κακοποίησης παιδιών."
+
+#: includes/class-compliance.php:165
+msgid "High-risk AI in sensitive areas"
+msgstr "AI υψηλού κινδύνου σε ευαίσθητους τομείς"
+
+#: includes/class-compliance.php:166
+msgid ""
+"Obligations for high-risk AI systems listed in Annex III, such as hiring, "
+"credit scoring and education (Article 6(2))."
+msgstr ""
+"Υποχρεώσεις για συστήματα AI υψηλού κινδύνου του παραρτήματος III, όπως "
+"προσλήψεις, αξιολόγηση πιστοληπτικής ικανότητας και εκπαίδευση (άρθρο 6(2))."
+
+#: admin/class-dashboard.php:200
+msgid ""
+"Is TransparAI useful on this site? A short rating on wordpress.org helps "
+"other site owners find it."
+msgstr ""
+"Είναι χρήσιμο το TransparAI σε αυτόν τον ιστότοπο; Μια σύντομη αξιολόγηση "
+"στο wordpress.org βοηθά άλλους ιδιοκτήτες ιστοτόπων να το βρουν."
+
+#: admin/class-dashboard.php:201
+msgid "Write a rating"
+msgstr "Γράψτε μια αξιολόγηση"
+
+#: admin/class-dashboard.php:201
+msgid "(opens in a new tab)"
+msgstr "(ανοίγει σε νέα καρτέλα)"
+
+#: admin/class-dashboard.php:358
+msgid ""
+"Dates per Regulation (EU) 2024/1689, Articles 111 and 113, as amended by "
+"Regulation (EU) 2026/1744. Later amendments can move them."
+msgstr ""
+"Ημερομηνίες σύμφωνα με τον κανονισμό (ΕΕ) 2024/1689, άρθρα 111 και 113, όπως"
+" τροποποιήθηκε με τον κανονισμό (ΕΕ) 2026/1744. Μεταγενέστερες τροποποιήσεις"
+" μπορεί να τις μετακινήσουν."
+
+#. translators: %d: number of changed settings.
+#: admin/class-dashboard.php:415
+#, php-format
+msgid "%d setting changed"
+msgid_plural "%d settings changed"
+msgstr[0] "%d ρύθμιση άλλαξε"
+msgstr[1] "%d ρυθμίσεις άλλαξαν"
+
+#: admin/class-dashboard.php:432
+msgid "Answers"
+msgstr "Απαντήσεις"
+
+#: admin/class-dashboard.php:434
+msgid "Number"
+msgstr "Αριθμός"
+
+#: admin/class-dashboard.php:437
+msgid "Checked"
+msgstr "Ελέγχθηκαν"
+
+#: admin/class-dashboard.php:438
+msgid "Repaired"
+msgstr "Επισκευάστηκαν"
+
+#: admin/class-dashboard.php:439
+msgid "Failed"
+msgstr "Απέτυχαν"
+
+#: admin/class-media-library.php:803
+msgid "Filter by AI status"
+msgstr "Φιλτράρισμα κατά κατάσταση AI"
+
+#: admin/class-settings.php:354
+msgid "EU icon"
+msgstr "Εικονίδιο ΕΕ"
+
+#: admin/class-settings.php:364
+msgid "EU icon color"
+msgstr "Χρώμα εικονιδίου ΕΕ"
+
+#: admin/class-settings.php:586
+msgid "Who answers the chat?"
+msgstr "Ποιος απαντά στο chat;"
+
+#: admin/class-settings.php:605
+msgid "Where the notice appears"
+msgstr "Πού εμφανίζεται η ειδοποίηση"

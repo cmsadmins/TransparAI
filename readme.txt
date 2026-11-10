@@ -20,7 +20,7 @@ Publishers and bloggers who use AI images or AI-assisted text. WooCommerce shops
 
 **EU AI Act articles covered**
 
-Article 50, the transparency obligations, applies from 2 August 2026: visitors must be told when they talk to an AI system (50(1)), AI-generated content must carry a machine-readable marking (50(2)), and deepfakes as well as AI-written text on matters of public interest must be disclosed (50(4)). Which paragraph addresses you depends on whether you provide the AI system or deploy it; the plugin covers the technical side of all of them. Article 4, AI literacy, applies since 2 February 2025: providers and deployers take measures so that the people who work with AI systems have sufficient AI literacy, and the plugin's checklist records what your organisation has done. The dashboard shows the whole timeline with the dates as adopted in Regulation (EU) 2024/1689.
+Article 50, the transparency obligations, applies from 2 August 2026: visitors must be told when they talk to an AI system (50(1)), AI-generated content must carry a machine-readable marking (50(2)), and deepfakes as well as AI-written text on matters of public interest must be disclosed (50(4)). Which paragraph addresses you depends on whether you provide the AI system or deploy it; the plugin covers the technical side of all of them. Article 4, AI literacy, applies since 2 February 2025: providers and deployers take measures that support the AI literacy of the people who work with AI systems, and the plugin's checklist records what your organisation has done. The dashboard shows the whole timeline with the dates as amended by Regulation (EU) 2026/1744.
 
 **Readiness score, self-assessment and compliance report**
 
@@ -94,7 +94,7 @@ Usually not, and the plugin does not pretend otherwise. As a site operator you a
 
 = Which deadlines apply? =
 
-Article 50 has applied since 2 August 2026. The Commission published the final Code of Practice on Transparency of AI-Generated Content together with the EU icons on 10 June 2026 and its guidelines on Article 50 on 20 July 2026. The Digital Omnibus in force since 27 July 2026 gives providers of generators that were already on the market until 2 December 2026 to add the machine-readable marking; there is no such grace period for the visible disclosure by deployers.
+Article 50 has applied since 2 August 2026. The Commission published the final Code of Practice on Transparency of AI-Generated Content together with the EU icons on 10 June 2026 and its guidelines on Article 50 on 20 July 2026. The Digital Omnibus in force since 27 July 2026 gives providers of generators that were already on the market until 2 December 2026 to add the machine-readable marking; there is no such grace period for the visible disclosure by deployers. High-risk duties now follow on 2 December 2027 (Annex III) and 2 August 2028 (Annex I). In Germany the Bundesnetzagentur supervises the AI Act under the KI-MIG; for media services the state media authorities (Landesmedienanstalten) stay responsible.
 
 = Does the plugin use the official EU icons? =
 
@@ -122,7 +122,7 @@ Six yes-or-no questions about how your site uses AI: chatbot, AI-written text, A
 
 = What is the Article 4 AI literacy checklist? =
 
-Article 4 asks providers and deployers for measures, as far as they can, toward a sufficient level of AI literacy of the people who operate or use AI systems on their behalf; it prescribes no training format or certificate. The five items are the measures that usually serve as evidence: staff know which AI tools are in use, an internal policy is written down, people who work with AI tools have had guidance, a review date is set, and the context of use and the people affected were considered. Tick what applies; the checklist counts toward the readiness score and is printed in the compliance report with the name and date of the last save.
+Article 4 asks providers and deployers to take measures that support the AI literacy of the people who operate or use AI systems on their behalf. Since Regulation (EU) 2026/1744 it no longer requires a particular level of knowledge, and it prescribes no training format or certificate. The five items are the measures that usually serve as evidence: staff know which AI tools are in use, an internal policy is written down, people who work with AI tools have had guidance, a review date is set, and the context of use and the people affected were considered. Tick what applies; the checklist counts toward the readiness score and is printed in the compliance report with the name and date of the last save.
 
 = How are AI systems detected without external requests? =
 
