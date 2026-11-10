@@ -31,6 +31,7 @@ final class TransparAI_Dashboard {
 		add_action( 'admin_post_transparai_literacy', array( self::class, 'handle_literacy' ) );
 		add_action( 'admin_post_transparai_systems', array( self::class, 'handle_systems' ) );
 		add_action( 'admin_post_transparai_legal_ack', array( self::class, 'handle_legal_ack' ) );
+		add_action( 'admin_post_transparai_rating_hint', array( self::class, 'handle_rating_hint' ) );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -159,6 +160,60 @@ final class TransparAI_Dashboard {
 		update_user_meta( get_current_user_id(), self::USER_LEGAL_ACK, '1' );
 		$referer = (string) wp_get_referer();
 		wp_safe_redirect( '' !== $referer ? $referer : self::url( self::MENU ) ); /* Back to the screen the button was on. */
+		exit;
+	}
+
+	public const USER_RATING_HINT = 'transparai_rating_hint_dismissed';
+
+	/* Days between the first finished scan or setup and the rating hint. */
+	private const RATING_HINT_DAYS = 14;
+
+	/**
+	 * Whether the dashboard asks the current user for a rating: the site
+	 * finished a scan or the setup at least RATING_HINT_DAYS ago and the user
+	 * has not hidden the hint. Asking only after real use keeps it from
+	 * reading as a nag on a fresh install.
+	 */
+	public static function rating_hint_due( ?int $now = null ): bool {
+		if ( '1' === (string) get_user_meta( get_current_user_id(), self::USER_RATING_HINT, true ) ) {
+			return false;
+		}
+		foreach ( TransparAI_Meta::site_log() as $entry ) {
+			if ( in_array( $entry['e'], array( 'scan-finished', 'setup-finished' ), true ) ) {
+				return $entry['t'] <= ( $now ?? time() ) - self::RATING_HINT_DAYS * DAY_IN_SECONDS;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * One sentence and a plain link to the review form on wordpress.org. The
+	 * browser only goes there when the user clicks; the plugin sends nothing.
+	 */
+	private static function render_rating_hint(): void {
+		if ( ! self::rating_hint_due() ) {
+			return;
+		}
+		$hide = wp_nonce_url( admin_url( 'admin-post.php?action=transparai_rating_hint' ), 'transparai_rating_hint' );
+		?>
+		<div class="notice notice-info trai-rating-hint"><p>
+			<?php esc_html_e( 'Is TransparAI useful on this site? A short rating on wordpress.org helps other site owners find it.', 'transparai' ); ?>
+			<a href="https://wordpress.org/support/plugin/transparai/reviews/#new-post" target="_blank" rel="noopener"><?php esc_html_e( 'Write a rating', 'transparai' ); ?><span class="screen-reader-text"> <?php esc_html_e( '(opens in a new tab)', 'transparai' ); ?></span></a>
+			<a href="<?php echo esc_url( $hide ); ?>"><?php esc_html_e( 'Hide this note', 'transparai' ); ?></a>
+		</p></div>
+		<?php
+	}
+
+	/**
+	 * Remember that this user does not want the rating hint.
+	 */
+	public static function handle_rating_hint(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You are not allowed to do this.', 'transparai' ), '', array( 'response' => 403 ) );
+		}
+		check_admin_referer( 'transparai_rating_hint' );
+		update_user_meta( get_current_user_id(), self::USER_RATING_HINT, '1' );
+		wp_safe_redirect( self::url( self::MENU ) );
 		exit;
 	}
 
@@ -379,6 +434,7 @@ final class TransparAI_Dashboard {
 			</p></div>
 			<?php
 		endif;
+		self::render_rating_hint();
 		self::render_score_card();
 		self::render_steps_card();
 		?>

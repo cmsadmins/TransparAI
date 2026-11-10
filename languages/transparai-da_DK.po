@@ -98,11 +98,11 @@ msgstr "ændret siden gennemgang"
 msgid "All AI levels"
 msgstr "Alle AI-niveauer"
 
-#: admin/class-content-label.php:315 admin/class-dashboard.php:836
+#: admin/class-content-label.php:315 admin/class-dashboard.php:892
 msgid "Any AI involvement"
 msgstr "Enhver form for AI-brug"
 
-#: admin/class-content-label.php:316 admin/class-dashboard.php:840
+#: admin/class-content-label.php:316 admin/class-dashboard.php:896
 #: includes/class-notice.php:151
 msgid "Not classified"
 msgstr "Ikke klassificeret"
@@ -115,37 +115,37 @@ msgstr "&mdash; Ingen ændring &mdash;"
 msgid "Remove classification"
 msgstr "Fjern klassificering"
 
-#: admin/class-dashboard.php:50 admin/class-dashboard.php:373
-#: admin/class-dashboard.php:981
+#: admin/class-dashboard.php:51 admin/class-dashboard.php:428
+#: admin/class-dashboard.php:1037
 msgid "Dashboard"
 msgstr "Kontrolpanel"
 
-#: admin/class-dashboard.php:51
+#: admin/class-dashboard.php:52
 msgid "Assessment"
 msgstr "Selvevaluering"
 
-#: admin/class-dashboard.php:52 admin/class-dashboard.php:1080
+#: admin/class-dashboard.php:53 admin/class-dashboard.php:1136
 msgid "AI Systems"
 msgstr "AI-systemer"
 
-#: admin/class-dashboard.php:53 admin/class-dashboard.php:1079
+#: admin/class-dashboard.php:54 admin/class-dashboard.php:1135
 msgid "AI Content"
 msgstr "AI-indhold"
 
-#: admin/class-dashboard.php:54 admin/class-dashboard.php:1078
+#: admin/class-dashboard.php:55 admin/class-dashboard.php:1134
 msgid "AI Images"
 msgstr "AI-billeder"
 
-#: admin/class-dashboard.php:59 admin/class-dashboard.php:411
+#: admin/class-dashboard.php:60 admin/class-dashboard.php:467
 #: admin/class-settings.php:188
 msgid "Settings"
 msgstr "Indstillinger"
 
-#: admin/class-dashboard.php:107
+#: admin/class-dashboard.php:108
 msgid "Saved."
 msgstr "Gemt."
 
-#: admin/class-dashboard.php:118
+#: admin/class-dashboard.php:119
 msgid ""
 "TransparAI is a technical tool, not legal advice. It helps you detect, label"
 " and document AI use on this site; it cannot tell you whether your site "
@@ -166,24 +166,25 @@ msgstr ""
 "forfatteren påtager sig intet ansvar for brugen af det eller for "
 "beslutninger truffet på grundlag af det."
 
-#: admin/class-dashboard.php:133
+#: admin/class-dashboard.php:134
 msgid "Please read before you rely on anything here."
 msgstr "Læs dette, før du stoler på noget her."
 
-#: admin/class-dashboard.php:137
+#: admin/class-dashboard.php:138
 msgid "I understand: no legal advice, no liability"
 msgstr "Jeg forstår: ingen juridisk rådgivning, intet ansvar"
 
-#: admin/class-dashboard.php:145 admin/class-settings.php:142
+#: admin/class-dashboard.php:146 admin/class-settings.php:142
 msgid "Not legal advice, no liability"
 msgstr "Ikke juridisk rådgivning, intet ansvar"
 
-#: admin/class-dashboard.php:156 admin/class-dashboard.php:508
-#: admin/class-dashboard.php:578 admin/class-dashboard.php:771
+#: admin/class-dashboard.php:157 admin/class-dashboard.php:212
+#: admin/class-dashboard.php:564 admin/class-dashboard.php:634
+#: admin/class-dashboard.php:827
 msgid "You are not allowed to do this."
 msgstr "Du har ikke tilladelse til at gøre dette."
 
-#: admin/class-dashboard.php:170
+#: admin/class-dashboard.php:225
 msgid ""
 "Scan the media library, then confirm or dismiss what lands in the review "
 "queue. Labeled files get the visible badge and the machine-readable marking."
@@ -192,7 +193,7 @@ msgstr ""
 "gennemgangskøen. Mærkede filer får det synlige badge og den maskinlæsbare "
 "mærkning."
 
-#: admin/class-dashboard.php:171
+#: admin/class-dashboard.php:226
 msgid ""
 "Give AI-written posts and pages their AI level (editor sidebar, Quick Edit, "
 "Bulk Edit) so the visitor note appears."
@@ -200,7 +201,7 @@ msgstr ""
 "Giv AI-skrevne indlæg og sider deres AI-niveau (editorens sidepanel, "
 "Lynrediger, Masserediger), så noten til besøgende vises."
 
-#: admin/class-dashboard.php:172
+#: admin/class-dashboard.php:227
 msgid ""
 "Answer whether the site runs a chat and who answers in it; the chatbot "
 "notice follows your answer."
@@ -208,7 +209,7 @@ msgstr ""
 "Besvar, om webstedet kører en chat, og hvem der svarer i den; chatbot-noten "
 "følger dit svar."
 
-#: admin/class-dashboard.php:173
+#: admin/class-dashboard.php:228
 msgid ""
 "Check the AI systems the plugin found among your plugins, declare others, "
 "and decide which ones visitors are told about."
@@ -216,7 +217,7 @@ msgstr ""
 "Gennemgå de AI-systemer, pluginet fandt blandt dine plugins, erklær andre, "
 "og beslut, hvilke af dem besøgende skal oplyses om."
 
-#: admin/class-dashboard.php:174
+#: admin/class-dashboard.php:229
 msgid ""
 "Answer the six questions of the self-assessment and tick the Article 4 "
 "checklist, then export the compliance report for your records."
@@ -224,11 +225,11 @@ msgstr ""
 "Besvar de seks spørgsmål i selvevalueringen, sæt kryds i tjeklisten til "
 "artikel 4, og eksportér derefter compliance-rapporten til dine optegnelser."
 
-#: admin/class-dashboard.php:178
+#: admin/class-dashboard.php:233
 msgid "How TransparAI works"
 msgstr "Sådan virker TransparAI"
 
-#: admin/class-dashboard.php:179
+#: admin/class-dashboard.php:234
 msgid ""
 "The EU AI Act asks for three things on a website: visitors must know when "
 "they talk to an AI, AI-generated media must carry a machine-readable "
@@ -243,17 +244,17 @@ msgstr ""
 "dækker den tekniske side af alle tre og dokumenterer, hvad du har besluttet."
 " Gennemgå trinnene i denne rækkefølge; parathedsscoren ovenfor følger med."
 
-#: admin/class-dashboard.php:223 admin/class-settings.php:789
+#: admin/class-dashboard.php:278 admin/class-settings.php:789
 msgid "Readiness score"
 msgstr "Parathedsscore"
 
 #. translators: 1: met checks, 2: total checks.
-#: admin/class-dashboard.php:233 admin/class-dashboard.php:952
+#: admin/class-dashboard.php:288 admin/class-dashboard.php:1008
 #, php-format
 msgid "%1$d of %2$d checks done"
 msgstr "%1$d af %2$d tjek udført"
 
-#: admin/class-dashboard.php:241
+#: admin/class-dashboard.php:296
 msgid ""
 "The score counts the checks this plugin can perform on its own state. It is "
 "a technical self-check, not a legal assessment."
@@ -261,33 +262,33 @@ msgstr ""
 "Scoren tæller de tjek, dette plugin selv kan udføre på sin egen tilstand. "
 "Det er et teknisk selvtjek, ikke en juridisk vurdering."
 
-#: admin/class-dashboard.php:243 admin/class-dashboard.php:247
-#: admin/class-dashboard.php:967 admin/class-wizard.php:457
+#: admin/class-dashboard.php:298 admin/class-dashboard.php:302
+#: admin/class-dashboard.php:1023 admin/class-wizard.php:457
 msgid "Open"
 msgstr "Åbne"
 
-#: admin/class-dashboard.php:255 admin/class-dashboard.php:259
+#: admin/class-dashboard.php:310 admin/class-dashboard.php:314
 #: admin/class-settings.php:791 admin/class-settings.php:810
 msgid "Done"
 msgstr "Udført"
 
-#: admin/class-dashboard.php:276
+#: admin/class-dashboard.php:331
 msgid "EU AI Act timeline"
 msgstr "EU AI Act-tidslinje"
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:291
+#: admin/class-dashboard.php:346
 #, php-format
 msgid "in force for %s"
 msgstr "i kraft i %s"
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:294
+#: admin/class-dashboard.php:349
 #, php-format
 msgid "in %s"
 msgstr "om %s"
 
-#: admin/class-dashboard.php:303
+#: admin/class-dashboard.php:358
 msgid ""
 "Dates per Regulation (EU) 2024/1689, Article 113, as adopted. Amendments can"
 " move them."
@@ -295,12 +296,12 @@ msgstr ""
 "Datoer i henhold til forordning (EU) 2024/1689, artikel 113, som vedtaget. "
 "Ændringer kan flytte dem."
 
-#: admin/class-dashboard.php:316 admin/class-dashboard.php:1067
+#: admin/class-dashboard.php:371 admin/class-dashboard.php:1123
 #: admin/class-settings.php:871
 msgid "Recent activity"
 msgstr "Seneste aktivitet"
 
-#: admin/class-dashboard.php:318
+#: admin/class-dashboard.php:373
 msgid ""
 "Nothing recorded yet. Scans, settings changes, bulk actions and declarations"
 " show up here."
@@ -308,75 +309,75 @@ msgstr ""
 "Intet registreret endnu. Scanninger, ændringer i indstillinger, "
 "massehandlinger og erklæringer vises her."
 
-#: admin/class-dashboard.php:322 admin/class-settings.php:872
+#: admin/class-dashboard.php:377 admin/class-settings.php:872
 msgid "When"
 msgstr "Hvornår"
 
-#: admin/class-dashboard.php:323 admin/class-settings.php:872
+#: admin/class-dashboard.php:378 admin/class-settings.php:872
 msgid "Event"
 msgstr "Hændelse"
 
-#: admin/class-dashboard.php:324
+#: admin/class-dashboard.php:379
 msgid "Details"
 msgstr "Detaljer"
 
-#: admin/class-dashboard.php:325 admin/class-settings.php:872
+#: admin/class-dashboard.php:380 admin/class-settings.php:872
 msgid "By"
 msgstr "Af"
 
-#: admin/class-dashboard.php:333 admin/class-media-library.php:560
+#: admin/class-dashboard.php:388 admin/class-media-library.php:560
 msgid "system"
 msgstr "system"
 
-#: admin/class-dashboard.php:377
+#: admin/class-dashboard.php:432
 msgid "The first-run setup is not finished yet."
 msgstr "Opsætningen ved første kørsel er ikke afsluttet endnu."
 
-#: admin/class-dashboard.php:378 admin/class-settings.php:926
+#: admin/class-dashboard.php:433 admin/class-settings.php:926
 msgid "Open setup"
 msgstr "Åbn opsætningen"
 
-#: admin/class-dashboard.php:386
+#: admin/class-dashboard.php:442
 msgid "At a glance"
 msgstr "Overblik"
 
-#: admin/class-dashboard.php:390 admin/class-dashboard.php:1007
+#: admin/class-dashboard.php:446 admin/class-dashboard.php:1063
 msgid "AI-written posts"
 msgstr "AI-skrevne indlæg"
 
-#: admin/class-dashboard.php:394
+#: admin/class-dashboard.php:450
 msgid "Labeled media"
 msgstr "Mærkede medier"
 
-#: admin/class-dashboard.php:398 admin/class-dashboard.php:1004
+#: admin/class-dashboard.php:454 admin/class-dashboard.php:1060
 #: admin/class-settings.php:911
 msgid "Waiting for review"
 msgstr "Venter på gennemgang"
 
-#: admin/class-dashboard.php:402 admin/class-dashboard.php:1008
+#: admin/class-dashboard.php:458 admin/class-dashboard.php:1064
 #: admin/class-settings.php:240
 msgid "AI systems"
 msgstr "AI-systemer"
 
-#: admin/class-dashboard.php:406 admin/class-dashboard.php:433
-#: admin/class-dashboard.php:982 admin/class-settings.php:797
+#: admin/class-dashboard.php:462 admin/class-dashboard.php:489
+#: admin/class-dashboard.php:1038 admin/class-settings.php:797
 msgid "Self-assessment"
 msgstr "Selvevaluering"
 
-#: admin/class-dashboard.php:407
+#: admin/class-dashboard.php:463
 msgid "AI literacy checklist"
 msgstr "Tjekliste om AI-færdigheder"
 
-#: admin/class-dashboard.php:408 admin/class-dashboard.php:567
-#: admin/class-dashboard.php:983
+#: admin/class-dashboard.php:464 admin/class-dashboard.php:623
+#: admin/class-dashboard.php:1039
 msgid "Compliance report"
 msgstr "Compliance-rapport"
 
-#: admin/class-dashboard.php:409 admin/class-settings.php:922
+#: admin/class-dashboard.php:465 admin/class-settings.php:922
 msgid "Export audit CSV"
 msgstr "Eksportér revisions-CSV"
 
-#: admin/class-dashboard.php:436
+#: admin/class-dashboard.php:492
 msgid ""
 "Which transparency duties of the EU AI Act apply to a website depends on how"
 " it actually uses AI: a site without a chatbot has nothing to disclose about"
@@ -397,7 +398,7 @@ msgstr ""
 "der håndterer det; fuldstændige svar tæller med i parathedsscoren og "
 "udskrives i compliance-rapporten."
 
-#: admin/class-dashboard.php:437
+#: admin/class-dashboard.php:493
 msgid ""
 "Stored on this site only, nothing is sent anywhere. Come back and update the"
 " answers whenever the site starts or stops using AI in one of these ways."
@@ -406,35 +407,35 @@ msgstr ""
 "opdatér svarene, hver gang webstedet begynder eller holder op med at bruge "
 "AI på en af disse måder."
 
-#: admin/class-dashboard.php:445 admin/class-settings.php:559
+#: admin/class-dashboard.php:501 admin/class-settings.php:559
 #: admin/class-settings.php:785 admin/class-wizard.php:297
 msgid "Yes"
 msgstr "Ja"
 
-#: admin/class-dashboard.php:446 admin/class-settings.php:560
+#: admin/class-dashboard.php:502 admin/class-settings.php:560
 #: admin/class-settings.php:786 admin/class-wizard.php:298
 msgid "No"
 msgstr "Nej"
 
-#: admin/class-dashboard.php:449
+#: admin/class-dashboard.php:505
 msgid "Save answers"
 msgstr "Gem svar"
 
 #. translators: 1: name, 2: date.
-#: admin/class-dashboard.php:457 admin/class-dashboard.php:557
+#: admin/class-dashboard.php:513 admin/class-dashboard.php:613
 #, php-format
 msgid "Last saved by %1$s on %2$s."
 msgstr "Sidst gemt af %1$s den %2$s."
 
-#: admin/class-dashboard.php:458 admin/class-dashboard.php:558
+#: admin/class-dashboard.php:514 admin/class-dashboard.php:614
 msgid "unknown"
 msgstr "ukendt"
 
-#: admin/class-dashboard.php:468 admin/class-dashboard.php:494
+#: admin/class-dashboard.php:524 admin/class-dashboard.php:550
 msgid "Your to-do list"
 msgstr "Din opgaveliste"
 
-#: admin/class-dashboard.php:471
+#: admin/class-dashboard.php:527
 msgid ""
 "You answered every question with no. Keep the answers current when the site "
 "starts using AI; the Article 4 checklist below still documents your "
@@ -444,19 +445,19 @@ msgstr ""
 " begynder at bruge AI; tjeklisten til artikel 4 nedenfor dokumenterer stadig"
 " din opmærksomhed."
 
-#: admin/class-dashboard.php:475
+#: admin/class-dashboard.php:531
 msgid "Use of AI"
 msgstr "Brug af AI"
 
-#: admin/class-dashboard.php:476 admin/class-settings.php:801
+#: admin/class-dashboard.php:532 admin/class-settings.php:801
 msgid "What the AI Act says"
 msgstr "Hvad AI Act siger"
 
-#: admin/class-dashboard.php:477
+#: admin/class-dashboard.php:533
 msgid "Recommended action"
 msgstr "Anbefalet handling"
 
-#: admin/class-dashboard.php:490
+#: admin/class-dashboard.php:546
 msgid ""
 "Provider is whoever built or trained the AI system, deployer is whoever uses"
 " it under their own authority; a website operator is usually the deployer. "
@@ -467,7 +468,7 @@ msgstr ""
 "idriftsætteren. Dette overblik er en teknisk hjælp, ikke juridisk "
 "rådgivning."
 
-#: admin/class-dashboard.php:495
+#: admin/class-dashboard.php:551
 msgid ""
 "This overview appears once all six questions are answered and saved. For "
 "every use you confirmed it says what the AI Act asks and of whom, and which "
@@ -477,21 +478,21 @@ msgstr ""
 "brug, du har bekræftet, siger det, hvad AI Act kræver og af hvem, og hvilken"
 " side i pluginet der håndterer det."
 
-#: admin/class-dashboard.php:527
+#: admin/class-dashboard.php:583
 msgid "AI literacy (Article 4)"
 msgstr "AI-færdigheder (artikel 4)"
 
 #. translators: 1: done, 2: total.
-#: admin/class-dashboard.php:534
+#: admin/class-dashboard.php:590
 #, php-format
 msgid "%1$d of %2$d done"
 msgstr "%1$d af %2$d udført"
 
-#: admin/class-dashboard.php:549
+#: admin/class-dashboard.php:605
 msgid "Save checklist"
 msgstr "Gem tjekliste"
 
-#: admin/class-dashboard.php:565
+#: admin/class-dashboard.php:621
 msgid ""
 "Both parts of this screen end up in the compliance report, the document you "
 "keep for your records or hand to whoever asks."
@@ -499,12 +500,12 @@ msgstr ""
 "Begge dele af denne skærm ender i compliance-rapporten, det dokument, du "
 "gemmer til dine optegnelser eller giver til den, der spørger."
 
-#: admin/class-dashboard.php:605 admin/class-settings.php:597
+#: admin/class-dashboard.php:661 admin/class-settings.php:597
 #: admin/class-settings.php:816
 msgid "AI systems in use"
 msgstr "AI-systemer i brug"
 
-#: admin/class-dashboard.php:608
+#: admin/class-dashboard.php:664
 msgid ""
 "Installed plugins are matched against a list of known AI tools that ships "
 "with this plugin; chatbots an AI answers in are included. Nothing is "
@@ -517,53 +518,53 @@ msgstr ""
 "under Indstillinger, AI-systemer."
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:613
+#: admin/class-dashboard.php:669
 #, php-format
 msgid "Last scan %s ago."
 msgstr "Seneste scanning for %s siden."
 
-#: admin/class-dashboard.php:617
+#: admin/class-dashboard.php:673
 msgid "The visitor notice is currently off."
 msgstr "Noten til besøgende er slået fra lige nu."
 
-#: admin/class-dashboard.php:639
+#: admin/class-dashboard.php:695
 msgid "No AI system detected or declared yet."
 msgstr "Intet AI-system er fundet eller erklæret endnu."
 
-#: admin/class-dashboard.php:643
+#: admin/class-dashboard.php:699
 msgid "Visible"
 msgstr "Synlig"
 
-#: admin/class-dashboard.php:644 admin/class-settings.php:820
+#: admin/class-dashboard.php:700 admin/class-settings.php:820
 msgid "System"
 msgstr "System"
 
-#: admin/class-dashboard.php:645 admin/class-dashboard.php:721
+#: admin/class-dashboard.php:701 admin/class-dashboard.php:777
 #: admin/class-settings.php:820
 msgid "Category"
 msgstr "Kategori"
 
-#: admin/class-dashboard.php:646 admin/class-settings.php:820
+#: admin/class-dashboard.php:702 admin/class-settings.php:820
 msgid "Articles"
 msgstr "Artikler"
 
-#: admin/class-dashboard.php:647
+#: admin/class-dashboard.php:703
 msgid "Found via"
 msgstr "Fundet via"
 
-#: admin/class-dashboard.php:666 includes/class-notice.php:638
+#: admin/class-dashboard.php:722 includes/class-notice.php:638
 msgid "Remove"
 msgstr "Fjern"
 
-#: admin/class-dashboard.php:706
+#: admin/class-dashboard.php:762
 msgid "Scan installed plugins again"
 msgstr "Scan installerede plugins igen"
 
-#: admin/class-dashboard.php:713
+#: admin/class-dashboard.php:769
 msgid "Possibly AI"
 msgstr "Muligvis AI"
 
-#: admin/class-dashboard.php:714
+#: admin/class-dashboard.php:770
 msgid ""
 "Active plugins the list does not know whose name or description mentions AI."
 " Suggestions only: declare what really is an AI system, ignore the rest."
@@ -572,23 +573,23 @@ msgstr ""
 "nævner AI. Kun forslag: erklær det, der virkelig er et AI-system, og ignorér"
 " resten."
 
-#: admin/class-dashboard.php:716
+#: admin/class-dashboard.php:772
 msgid "No further candidates among the active plugins."
 msgstr "Ingen yderligere kandidater blandt de aktive plugins."
 
-#: admin/class-dashboard.php:720
+#: admin/class-dashboard.php:776
 msgid "Plugin"
 msgstr "Plugin"
 
-#: admin/class-dashboard.php:738
+#: admin/class-dashboard.php:794
 msgid "Declare as AI system"
 msgstr "Erklær som AI-system"
 
-#: admin/class-dashboard.php:748
+#: admin/class-dashboard.php:804
 msgid "Declare another system"
 msgstr "Erklær et andet system"
 
-#: admin/class-dashboard.php:749
+#: admin/class-dashboard.php:805
 msgid ""
 "For tools that are not WordPress plugins: an external service, a script, an "
 "API your theme calls."
@@ -596,19 +597,19 @@ msgstr ""
 "Til værktøjer, der ikke er WordPress-plugins: en ekstern tjeneste, et "
 "script, en API, dit tema kalder."
 
-#: admin/class-dashboard.php:753
+#: admin/class-dashboard.php:809
 msgid "Name of the system"
 msgstr "Systemets navn"
 
-#: admin/class-dashboard.php:759
+#: admin/class-dashboard.php:815
 msgid "Declare"
 msgstr "Erklær"
 
-#: admin/class-dashboard.php:809 admin/class-settings.php:855
+#: admin/class-dashboard.php:865 admin/class-settings.php:855
 msgid "AI-written content"
 msgstr "AI-skrevet indhold"
 
-#: admin/class-dashboard.php:812
+#: admin/class-dashboard.php:868
 msgid ""
 "Every post, page and public custom post type carries an AI level for its "
 "text. The level is set in the editor sidebar, in Quick Edit or for many "
@@ -621,15 +622,15 @@ msgstr ""
 "nedenfor er de almindelige indlægslister filtreret efter niveau, med de "
 "samme værktøjer til Lynrediger og Masserediger."
 
-#: admin/class-dashboard.php:823
+#: admin/class-dashboard.php:879
 msgid "Post type"
 msgstr "Indholdstype"
 
-#: admin/class-dashboard.php:824
+#: admin/class-dashboard.php:880
 msgid "Open list"
 msgstr "Åbn listen"
 
-#: admin/class-dashboard.php:846
+#: admin/class-dashboard.php:902
 msgid ""
 "To unmark many posts at once, select them in the list, choose Bulk Edit and "
 "set the AI level to \"No AI used\" or clear it. The note wording, position "
@@ -640,19 +641,19 @@ msgstr ""
 "rydder det. Notens formulering, position og stil findes under Indstillinger,"
 " AI-skrevet tekst."
 
-#: admin/class-dashboard.php:848
+#: admin/class-dashboard.php:904
 msgid "Text settings"
 msgstr "Tekstindstillinger"
 
-#: admin/class-dashboard.php:879
+#: admin/class-dashboard.php:935
 msgid "AI images and media"
 msgstr "AI-billeder og medier"
 
-#: admin/class-dashboard.php:884
+#: admin/class-dashboard.php:940
 msgid "Media lists"
 msgstr "Medielister"
 
-#: admin/class-dashboard.php:885
+#: admin/class-dashboard.php:941
 msgid ""
 "The media library list view carries the AI column, the filter and the bulk "
 "actions (label, unlabel, confirm, dismiss, declare as camera photo or human "
@@ -662,29 +663,29 @@ msgstr ""
 "massehandlingerne (mærk, fjern mærkning, bekræft, afvis, erklær som "
 "kamerafoto eller menneskeligt arbejde)."
 
-#: admin/class-dashboard.php:887 admin/class-dashboard.php:1003
+#: admin/class-dashboard.php:943 admin/class-dashboard.php:1059
 #: admin/class-settings.php:907
 msgid "Labeled as AI"
 msgstr "Mærket som AI"
 
-#: admin/class-dashboard.php:888
+#: admin/class-dashboard.php:944
 msgid "Review queue"
 msgstr "Gennemgangskø"
 
-#: admin/class-dashboard.php:889
+#: admin/class-dashboard.php:945
 msgid "Declared as not AI"
 msgstr "Erklæret som ikke-AI"
 
-#: admin/class-dashboard.php:890
+#: admin/class-dashboard.php:946
 msgid "Unlabeled"
 msgstr "Uden mærkning"
 
-#: admin/class-dashboard.php:891
+#: admin/class-dashboard.php:947
 msgid "Badge settings"
 msgstr "Badge-indstillinger"
 
 #. translators: %d: number of dismissed files.
-#: admin/class-dashboard.php:898
+#: admin/class-dashboard.php:954
 #, php-format
 msgid ""
 "%d file was dismissed from the review queue and stays unlabeled until you "
@@ -699,15 +700,15 @@ msgstr[1] ""
 "%d filer blev afvist fra gennemgangskøen og forbliver umærkede, indtil du "
 "beslutter andet."
 
-#: admin/class-dashboard.php:923
+#: admin/class-dashboard.php:979
 msgid "TransparAI: Readiness"
 msgstr "TransparAI: Parathed"
 
-#: admin/class-dashboard.php:924
+#: admin/class-dashboard.php:980
 msgid "TransparAI: Numbers"
 msgstr "TransparAI: Tal"
 
-#: admin/class-dashboard.php:961
+#: admin/class-dashboard.php:1017
 msgid ""
 "Every check the plugin can perform is done. Keep the answers current when "
 "the site starts or stops using AI."
@@ -715,52 +716,52 @@ msgstr ""
 "Alle de tjek, pluginet kan udføre, er gennemført. Hold svarene opdaterede, "
 "når webstedet begynder eller holder op med at bruge AI."
 
-#: admin/class-dashboard.php:963
+#: admin/class-dashboard.php:1019
 msgid "Still open"
 msgstr "Stadig åbne"
 
-#: admin/class-dashboard.php:975
+#: admin/class-dashboard.php:1031
 msgid "In force"
 msgstr "I kraft"
 
-#: admin/class-dashboard.php:975
+#: admin/class-dashboard.php:1031
 msgid "Next deadline"
 msgstr "Næste frist"
 
-#: admin/class-dashboard.php:985
+#: admin/class-dashboard.php:1041
 msgid ""
 "Technical self-check of the plugin state. Not legal advice, no liability."
 msgstr ""
 "Teknisk selvtjek af pluginets tilstand. Ikke juridisk rådgivning, intet "
 "ansvar."
 
-#: admin/class-dashboard.php:1005
+#: admin/class-dashboard.php:1061
 msgid "Declared human-made"
 msgstr "Erklæret menneskeskabt"
 
-#: admin/class-dashboard.php:1006
+#: admin/class-dashboard.php:1062
 msgid "Not scanned yet"
 msgstr "Ikke scannet endnu"
 
 #. translators: 1: scanned files, 2: files in the library.
-#: admin/class-dashboard.php:1026
+#: admin/class-dashboard.php:1082
 #, php-format
 msgid "Library: %1$s of %2$s files scanned."
 msgstr "Bibliotek: %1$s af %2$s filer scannet."
 
 #. translators: %s: human time difference.
-#: admin/class-dashboard.php:1034
+#: admin/class-dashboard.php:1090
 #, php-format
 msgid "Last scan finished %s ago."
 msgstr "Seneste scanning blev afsluttet for %s siden."
 
-#: admin/class-dashboard.php:1036
+#: admin/class-dashboard.php:1092
 msgid "No scan has finished yet."
 msgstr "Ingen scanning er afsluttet endnu."
 
 #. translators: 1: AI-assisted posts, 2: AI-generated posts, 3: AI-generated
 #. and reviewed posts.
-#: admin/class-dashboard.php:1045
+#: admin/class-dashboard.php:1101
 #, php-format
 msgid ""
 "Texts: %1$s AI-assisted, %2$s AI-generated, %3$s generated and reviewed."
@@ -769,19 +770,19 @@ msgstr ""
 "gennemgået."
 
 #. translators: 1: systems visitors are told about, 2: inventoried systems.
-#: admin/class-dashboard.php:1058
+#: admin/class-dashboard.php:1114
 #, php-format
 msgid "Systems: %1$s of %2$s shown to visitors."
 msgstr "Systemer: %1$s af %2$s vises for besøgende."
 
 #. translators: 1: date, 2: human time difference.
-#: admin/class-dashboard.php:1113
+#: admin/class-dashboard.php:1169
 #, php-format
 msgid "since %1$s (%2$s)"
 msgstr "siden %1$s (%2$s)"
 
 #. translators: 1: date, 2: human time difference.
-#: admin/class-dashboard.php:1116
+#: admin/class-dashboard.php:1172
 #, php-format
 msgid "%1$s (in %2$s)"
 msgstr "%1$s (om %2$s)"
@@ -2990,7 +2991,7 @@ msgstr ""
 "mærkning skrives under alle omstændigheder. Dette tip er ikke juridisk "
 "rådgivning."
 
-#: admin/class-media-library.php:70
+#: admin/class-dashboard.php:202 admin/class-media-library.php:70
 msgid "Hide this note"
 msgstr "Skjul denne note"
 
@@ -3538,7 +3539,7 @@ msgstr ""
 "Kontrolpanelet holder scoren og de åbne trin synlige. Guiden er fortsat "
 "tilgængelig fra kontrolpanelet og indstillingerne."
 
-#: admin/class-dashboard.php:410 admin/class-settings.php:923
+#: admin/class-dashboard.php:466 admin/class-settings.php:923
 msgid "Export audit JSON"
 msgstr "Eksportér revisions-JSON"
 
@@ -3561,7 +3562,7 @@ msgstr ""
 "afhænger af browseren. Hele mærkaten er stadig tilgængelig for skærmlæsere."
 
 #. translators: 1: documented systems, 2: all systems.
-#: admin/class-dashboard.php:627
+#: admin/class-dashboard.php:683
 #, php-format
 msgid ""
 "%1$d of %2$d systems documented. Open the operator details under a system to"
@@ -3574,12 +3575,12 @@ msgstr ""
 " JSON-eksporten."
 
 #. translators: 1: number of filled fields, 2: number of fields.
-#: admin/class-dashboard.php:678
+#: admin/class-dashboard.php:734
 #, php-format
 msgid "Operator details (%1$d of %2$d filled in)"
 msgstr "Operatøroplysninger (%1$d af %2$d udfyldt)"
 
-#: admin/class-dashboard.php:704
+#: admin/class-dashboard.php:760
 msgid "Save visibility and details"
 msgstr "Gem synlighed og oplysninger"
 
@@ -3688,7 +3689,7 @@ msgid ""
 msgstr ""
 "Hvilke person- eller forretningsdata der når systemet, og hvor de behandles."
 
-#: admin/class-dashboard.php:528
+#: admin/class-dashboard.php:584
 msgid ""
 "Article 4 applies to every provider and deployer, whatever you answered "
 "above: you take measures that help the people who operate or use AI systems "
@@ -3744,3 +3745,19 @@ msgid ""
 msgstr ""
 "Forpligtelser for højrisiko-AI-systemer i bilag III, f.eks. rekruttering, "
 "kreditvurdering og uddannelse (artikel 6(2))."
+
+#: admin/class-dashboard.php:200
+msgid ""
+"Is TransparAI useful on this site? A short rating on wordpress.org helps "
+"other site owners find it."
+msgstr ""
+"Er TransparAI nyttigt på dette websted? En kort bedømmelse på wordpress.org "
+"hjælper andre webstedsejere med at finde det."
+
+#: admin/class-dashboard.php:201
+msgid "Write a rating"
+msgstr "Skriv en bedømmelse"
+
+#: admin/class-dashboard.php:201
+msgid "(opens in a new tab)"
+msgstr "(åbner i en ny fane)"

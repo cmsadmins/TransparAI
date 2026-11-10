@@ -18,6 +18,22 @@ final class DashboardWidgetTest extends TestCase {
 		trai_test_reset();
 	}
 
+	public function test_rating_hint_waits_for_real_use_and_stays_hidden(): void {
+		$now = time();
+		$this->assertFalse( TransparAI_Dashboard::rating_hint_due( $now ), 'empty site log' );
+
+		TransparAI_Meta::log_site( 'settings-saved' );
+		$this->assertFalse( TransparAI_Dashboard::rating_hint_due( $now ), 'settings alone are no use yet' );
+
+		TransparAI_Meta::log_site( 'scan-finished' );
+		$this->assertFalse( TransparAI_Dashboard::rating_hint_due( $now ), 'scan finished today' );
+		$this->assertFalse( TransparAI_Dashboard::rating_hint_due( $now + 13 * DAY_IN_SECONDS ), 'thirteen days later' );
+		$this->assertTrue( TransparAI_Dashboard::rating_hint_due( $now + 14 * DAY_IN_SECONDS ), 'two weeks after the first scan' );
+
+		update_user_meta( get_current_user_id(), TransparAI_Dashboard::USER_RATING_HINT, '1' );
+		$this->assertFalse( TransparAI_Dashboard::rating_hint_due( $now + 30 * DAY_IN_SECONDS ), 'hidden by the user' );
+	}
+
 	public function test_next_milestone_is_the_first_one_still_ahead(): void {
 		$next = TransparAI_Dashboard::next_milestone();
 		$this->assertNotNull( $next );

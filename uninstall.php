@@ -47,6 +47,7 @@ function transparai_uninstall_site(): void {
 	delete_metadata( 'user', 0, 'transparai_setup_skipped', '', true );
 	delete_metadata( 'user', 0, 'transparai_legal_ack', '', true );
 	delete_metadata( 'user', 0, 'transparai_review_hint_dismissed', '', true );
+	delete_metadata( 'user', 0, 'transparai_rating_hint_dismissed', '', true );
 
 	global $wpdb;
 
