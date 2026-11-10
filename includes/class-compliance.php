@@ -105,12 +105,13 @@ final class TransparAI_Compliance {
 	}
 
 	/**
-	 * Article 4 checklist items, in display order. Article 4 asks providers
-	 * and deployers for measures, to their best extent, toward a sufficient
-	 * level of AI literacy of staff and other persons operating or using AI
-	 * systems on their behalf, considering their knowledge, experience,
-	 * education and training, the context of use and the persons affected.
-	 * It prescribes no training format or certificate; these items are the
+	 * Article 4 checklist items, in display order. Article 4, as replaced by
+	 * Regulation (EU) 2026/1744, asks providers and deployers to take measures
+	 * that support the AI literacy of staff and other persons operating or
+	 * using AI systems on their behalf, considering their knowledge,
+	 * experience, education and training, the context of use and the persons
+	 * affected. It does not require any specific level of literacy and
+	 * prescribes no training format or certificate; these items are the
 	 * measures that usually serve as evidence, nothing more.
 	 *
 	 * @return array<string, string>
@@ -126,8 +127,9 @@ final class TransparAI_Compliance {
 	}
 
 	/**
-	 * Key dates of Regulation (EU) 2024/1689 as adopted (Article 113).
-	 * Kept in one place so an amendment is a one-line change.
+	 * Key dates of Regulation (EU) 2024/1689 as amended by Regulation (EU)
+	 * 2026/1744 (Articles 111(4) and 113). Kept in one place so an amendment
+	 * is a one-line change.
 	 *
 	 * @return array<int, array{date:string, title:string, text:string}>
 	 */
@@ -141,7 +143,7 @@ final class TransparAI_Compliance {
 			array(
 				'date'  => '2025-02-02',
 				'title' => __( 'General provisions and prohibited practices apply', 'transparai' ),
-				'text'  => __( 'Chapters I and II: the AI literacy duty for providers and deployers (Article 4) and the ban on prohibited AI practices (Article 5).', 'transparai' ),
+				'text'  => __( 'Chapters I and II: AI literacy measures by providers and deployers (Article 4) and the ban on prohibited AI practices (Article 5).', 'transparai' ),
 			),
 			array(
 				'date'  => '2025-08-02',
@@ -154,7 +156,17 @@ final class TransparAI_Compliance {
 				'text'  => __( 'Transparency obligations for chatbots, AI-generated content and deepfakes (Article 50) and most remaining provisions apply.', 'transparai' ),
 			),
 			array(
-				'date'  => '2027-08-02',
+				'date'  => '2026-12-02',
+				'title' => __( 'Machine-readable marking for older generators', 'transparai' ),
+				'text'  => __( 'Providers of generators that were on the market before 2 August 2026 must mark their output in a machine-readable way (Article 50(2), Article 111(4)). New bans on AI that creates intimate images of real people without consent or child sexual abuse material apply.', 'transparai' ),
+			),
+			array(
+				'date'  => '2027-12-02',
+				'title' => __( 'High-risk AI in sensitive areas', 'transparai' ),
+				'text'  => __( 'Obligations for high-risk AI systems listed in Annex III, such as hiring, credit scoring and education (Article 6(2)).', 'transparai' ),
+			),
+			array(
+				'date'  => '2028-08-02',
 				'title' => __( 'High-risk AI in regulated products', 'transparai' ),
 				'text'  => __( 'Obligations for high-risk AI systems that are safety components of products covered by Annex I (Article 6(1)).', 'transparai' ),
 			),

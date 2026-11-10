@@ -525,7 +525,7 @@ final class TransparAI_Dashboard {
 		?>
 		<section class="trai-card" id="trai-literacy">
 			<h2 class="trai-card-title"><?php esc_html_e( 'AI literacy (Article 4)', 'transparai' ); ?></h2>
-			<p class="description"><?php esc_html_e( 'Article 4 applies since 2 February 2025 to every provider and deployer, whatever you answered above: you take measures, as far as you can, so that the people who operate or use AI systems on your behalf have a sufficient level of AI literacy, considering their background and the context of use. The Act prescribes no particular training or certificate; this checklist records the measures that usually serve as evidence. It counts toward the readiness score and appears in the compliance report with the name and date of the last save.', 'transparai' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Article 4 applies to every provider and deployer, whatever you answered above: you take measures that help the people who operate or use AI systems on your behalf understand them, considering their background and the context of use. Since the amendment of July 2026 no particular level of knowledge is required, and the Act prescribes no training or certificate; this checklist records the measures that usually serve as evidence. It counts toward the readiness score and appears in the compliance report with the name and date of the last save.', 'transparai' ); ?></p>
 			<p class="trai-progress-label">
 			<?php
 			echo esc_html(

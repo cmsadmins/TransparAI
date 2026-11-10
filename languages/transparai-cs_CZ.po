@@ -482,26 +482,6 @@ msgstr ""
 msgid "AI literacy (Article 4)"
 msgstr "Gramotnost v oblasti AI (článek 4)"
 
-#: admin/class-dashboard.php:528
-msgid ""
-"Article 4 applies since 2 February 2025 to every provider and deployer, "
-"whatever you answered above: you take measures, as far as you can, so that "
-"the people who operate or use AI systems on your behalf have a sufficient "
-"level of AI literacy, considering their background and the context of use. "
-"The Act prescribes no particular training or certificate; this checklist "
-"records the measures that usually serve as evidence. It counts toward the "
-"readiness score and appears in the compliance report with the name and date "
-"of the last save."
-msgstr ""
-"Článek 4 platí od 2. února 2025 pro každého poskytovatele a zavádějící "
-"subjekt, ať jste výše odpověděli cokoli: v rámci svých možností přijímáte "
-"opatření, aby osoby, které vaším jménem provozují nebo používají systémy AI,"
-" měly dostatečnou úroveň gramotnosti v oblasti AI, s ohledem na jejich "
-"znalosti a kontext použití. Nařízení nepředepisuje žádné konkrétní školení "
-"ani certifikát; tento kontrolní seznam zaznamenává opatření, která obvykle "
-"slouží jako doklad. Započítává se do skóre připravenosti a ve zprávě o "
-"souladu se objeví se jménem a datem posledního uložení."
-
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:534
 #, php-format
@@ -2295,7 +2275,7 @@ msgstr ""
 "Deklarujte překladový nástroj na stránce Systémy AI; zvažte upozornění na "
 "přeložených stránkách."
 
-#: includes/class-compliance.php:120
+#: includes/class-compliance.php:121
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
@@ -2303,7 +2283,7 @@ msgstr ""
 "Zaměstnanci a přispěvatelé vědí, které nástroje AI tento web používá a k "
 "čemu slouží"
 
-#: includes/class-compliance.php:121
+#: includes/class-compliance.php:122
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
@@ -2311,7 +2291,7 @@ msgstr ""
 "Interní pravidla pro používání AI (co je dovoleno, co vyžaduje kontrolu) "
 "jsou sepsaná"
 
-#: includes/class-compliance.php:122
+#: includes/class-compliance.php:123
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
@@ -2319,13 +2299,13 @@ msgstr ""
 "Lidé, kteří s nástroji AI pracují, absolvovali školení nebo dostali pokyny k"
 " jejich možnostem a mezím"
 
-#: includes/class-compliance.php:123
+#: includes/class-compliance.php:124
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
 "Je stanoveno datum revize používání nástrojů AI, pravidel a těchto deklarací"
 
-#: includes/class-compliance.php:124
+#: includes/class-compliance.php:125
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
@@ -2334,11 +2314,11 @@ msgstr ""
 "zaměstnance zohledněn kontext použití a osoby, kterých se týká (návštěvníci,"
 " zákazníci)"
 
-#: includes/class-compliance.php:138
+#: includes/class-compliance.php:140
 msgid "AI Act enters into force"
 msgstr "AI Act vstupuje v platnost"
 
-#: includes/class-compliance.php:139
+#: includes/class-compliance.php:141
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
@@ -2346,24 +2326,15 @@ msgstr ""
 "Nařízení (EU) 2024/1689 je v platnosti; jeho povinnosti se začínají používat"
 " postupně."
 
-#: includes/class-compliance.php:143
+#: includes/class-compliance.php:145
 msgid "General provisions and prohibited practices apply"
 msgstr "Použijí se obecná ustanovení a zákaz některých praktik"
 
-#: includes/class-compliance.php:144
-msgid ""
-"Chapters I and II: the AI literacy duty for providers and deployers (Article"
-" 4) and the ban on prohibited AI practices (Article 5)."
-msgstr ""
-"Kapitoly I a II: povinnost gramotnosti v oblasti AI pro poskytovatele a "
-"zavádějící subjekty (článek 4) a zákaz zakázaných praktik v oblasti AI "
-"(článek 5)."
-
-#: includes/class-compliance.php:148
+#: includes/class-compliance.php:150
 msgid "General-purpose AI and governance rules apply"
 msgstr "Použijí se pravidla pro obecné modely AI a pro správu"
 
-#: includes/class-compliance.php:149
+#: includes/class-compliance.php:151
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
@@ -2371,11 +2342,11 @@ msgstr ""
 "Povinnosti poskytovatelů obecných modelů AI, oznamující orgány, správa a "
 "sankce (kapitoly V, VII a XII)."
 
-#: includes/class-compliance.php:153
+#: includes/class-compliance.php:155
 msgid "General application, including Article 50"
 msgstr "Obecná použitelnost včetně článku 50"
 
-#: includes/class-compliance.php:154
+#: includes/class-compliance.php:156
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
@@ -2383,11 +2354,11 @@ msgstr ""
 "Použijí se povinnosti transparentnosti pro chatboty, obsah vygenerovaný AI a"
 " deepfaky (článek 50) a většina zbývajících ustanovení."
 
-#: includes/class-compliance.php:158
+#: includes/class-compliance.php:170
 msgid "High-risk AI in regulated products"
 msgstr "Vysoce riziková AI v regulovaných výrobcích"
 
-#: includes/class-compliance.php:159
+#: includes/class-compliance.php:171
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
@@ -2395,91 +2366,91 @@ msgstr ""
 "Povinnosti pro vysoce rizikové systémy AI, které jsou bezpečnostními "
 "komponentami výrobků podle přílohy I (čl. 6 odst. 1)."
 
-#: includes/class-compliance.php:171
+#: includes/class-compliance.php:183
 msgid "Settings saved"
 msgstr "Nastavení bylo uloženo"
 
-#: includes/class-compliance.php:172
+#: includes/class-compliance.php:184
 msgid "Library scan started"
 msgstr "Sken knihovny zahájen"
 
-#: includes/class-compliance.php:173
+#: includes/class-compliance.php:185
 msgid "Library scan finished"
 msgstr "Sken knihovny dokončen"
 
-#: includes/class-compliance.php:174
+#: includes/class-compliance.php:186
 msgid "Auto-repair sweep finished"
 msgstr "Průchod automatické opravy dokončen"
 
-#: includes/class-compliance.php:175
+#: includes/class-compliance.php:187
 msgid "Bulk action: labeled as AI"
 msgstr "Hromadná akce: označeno jako AI"
 
-#: includes/class-compliance.php:176
+#: includes/class-compliance.php:188
 msgid "Bulk action: label removed"
 msgstr "Hromadná akce: označení odebráno"
 
-#: includes/class-compliance.php:177
+#: includes/class-compliance.php:189
 msgid "Bulk action: review confirmed"
 msgstr "Hromadná akce: kontrola potvrzena"
 
-#: includes/class-compliance.php:178
+#: includes/class-compliance.php:190
 msgid "Bulk action: review dismissed"
 msgstr "Hromadná akce: kontrola zamítnuta"
 
-#: includes/class-compliance.php:179
+#: includes/class-compliance.php:191
 msgid "Bulk action: declared as camera photo"
 msgstr "Hromadná akce: deklarováno jako fotografie z fotoaparátu"
 
-#: includes/class-compliance.php:180
+#: includes/class-compliance.php:192
 msgid "Bulk action: declared as human work"
 msgstr "Hromadná akce: deklarováno jako lidská tvorba"
 
-#: includes/class-compliance.php:181
+#: includes/class-compliance.php:193
 msgid "Bulk action: declaration removed"
 msgstr "Hromadná akce: deklarace odebrána"
 
-#: includes/class-compliance.php:182
+#: includes/class-compliance.php:194
 msgid "Setup: badge look chosen"
 msgstr "Nastavení: zvolen vzhled odznaku"
 
-#: includes/class-compliance.php:183
+#: includes/class-compliance.php:195
 msgid "Setup: file writing chosen"
 msgstr "Nastavení: zvolen zápis do souborů"
 
-#: includes/class-compliance.php:184
+#: includes/class-compliance.php:196
 msgid "Setup: last step undone"
 msgstr "Nastavení: poslední krok vrácen zpět"
 
-#: includes/class-compliance.php:185
+#: includes/class-compliance.php:197
 msgid "Setup finished"
 msgstr "Nastavení dokončeno"
 
-#: includes/class-compliance.php:186
+#: includes/class-compliance.php:198
 msgid "Self-assessment saved"
 msgstr "Sebehodnocení uloženo"
 
-#: includes/class-compliance.php:187
+#: includes/class-compliance.php:199
 msgid "AI literacy checklist saved"
 msgstr "Kontrolní seznam gramotnosti v oblasti AI uložen"
 
-#: includes/class-compliance.php:188
+#: includes/class-compliance.php:200
 msgid "AI systems scanned"
 msgstr "Systémy AI prohledány"
 
-#: includes/class-compliance.php:189
+#: includes/class-compliance.php:201
 msgid "AI system declared"
 msgstr "Systém AI deklarován"
 
-#: includes/class-compliance.php:190
+#: includes/class-compliance.php:202
 msgid "AI system declaration removed"
 msgstr "Deklarace systému AI odebrána"
 
-#: includes/class-compliance.php:191
+#: includes/class-compliance.php:203
 msgid "AI systems notice visibility changed"
 msgstr "Změněna viditelnost upozornění na systémy AI"
 
-#: includes/class-compliance.php:445
+#: includes/class-compliance.php:457
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
@@ -2487,7 +2458,7 @@ msgstr ""
 "Text napsaný AI je deklarován: buď sebehodnocení uvádí, že se žádný "
 "nepublikuje, nebo alespoň jeden příspěvek nese úroveň AI"
 
-#: includes/class-compliance.php:448
+#: includes/class-compliance.php:460
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
@@ -2495,7 +2466,7 @@ msgstr ""
 "Nastavte úroveň AI u příspěvků napsaných AI, nebo na otázku o textu "
 "odpovězte ne."
 
-#: includes/class-compliance.php:452
+#: includes/class-compliance.php:464
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
@@ -2504,7 +2475,7 @@ msgstr ""
 "nebo je odznak zapnutý, alespoň jeden soubor je označen a ve frontě ke "
 "kontrole nic nečeká"
 
-#: includes/class-compliance.php:455
+#: includes/class-compliance.php:467
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
@@ -2512,7 +2483,7 @@ msgstr ""
 "Prohledejte knihovnu, zpracujte frontu ke kontrole a ponechte viditelný "
 "odznak zapnutý."
 
-#: includes/class-compliance.php:459
+#: includes/class-compliance.php:471
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
@@ -2520,21 +2491,21 @@ msgstr ""
 "Otázka na chatbota je zodpovězena (ano nebo ne), takže upozornění v chatu se"
 " řídí rozhodnutím"
 
-#: includes/class-compliance.php:462
+#: includes/class-compliance.php:474
 msgid "Answer whether the site runs a chat and who answers in it."
 msgstr "Odpovězte, zda web provozuje chat a kdo v něm odpovídá."
 
-#: includes/class-compliance.php:466
+#: includes/class-compliance.php:478
 msgid "Self-assessment and Article 4 checklist are complete"
 msgstr "Sebehodnocení a kontrolní seznam podle článku 4 jsou úplné"
 
-#: includes/class-compliance.php:469
+#: includes/class-compliance.php:481
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
 "Odpovězte na šest otázek a zaškrtněte položky kontrolního seznamu, které se "
 "vás týkají."
 
-#: includes/class-compliance.php:478
+#: includes/class-compliance.php:490
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
@@ -2542,7 +2513,7 @@ msgstr ""
 "Systémy AI jsou zinventarizované: seznam pluginů byl prohledán a u každého "
 "zjištěného nebo deklarovaného systému je rozhodnuto o viditelnosti"
 
-#: includes/class-compliance.php:481
+#: includes/class-compliance.php:493
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
@@ -2550,15 +2521,15 @@ msgstr ""
 "Spusťte sken na stránce Systémy AI a rozhodněte, o kterých systémech budou "
 "návštěvníci informováni."
 
-#: includes/class-compliance.php:515
+#: includes/class-compliance.php:527
 msgid "Good"
 msgstr "Dobrý"
 
-#: includes/class-compliance.php:516
+#: includes/class-compliance.php:528
 msgid "Needs attention"
 msgstr "Vyžaduje pozornost"
 
-#: includes/class-compliance.php:518
+#: includes/class-compliance.php:530
 msgid "Action required"
 msgstr "Vyžaduje se akce"
 
@@ -3654,7 +3625,7 @@ msgstr ""
 "Na tomto serveru není k dispozici: PHP potřebuje rozšíření GD s podporou "
 "FreeType."
 
-#: includes/class-compliance.php:192
+#: includes/class-compliance.php:204
 msgid "Operator details of AI systems saved"
 msgstr "Údaje provozovatele systémů AI uloženy"
 
@@ -3713,3 +3684,60 @@ msgid ""
 msgstr ""
 "Jaké osobní nebo firemní údaje se do systému dostávají a kde se "
 "zpracovávají."
+
+#: admin/class-dashboard.php:528
+msgid ""
+"Article 4 applies to every provider and deployer, whatever you answered "
+"above: you take measures that help the people who operate or use AI systems "
+"on your behalf understand them, considering their background and the context"
+" of use. Since the amendment of July 2026 no particular level of knowledge "
+"is required, and the Act prescribes no training or certificate; this "
+"checklist records the measures that usually serve as evidence. It counts "
+"toward the readiness score and appears in the compliance report with the "
+"name and date of the last save."
+msgstr ""
+"Článek 4 se vztahuje na každého poskytovatele i zavádějící subjekt bez "
+"ohledu na odpovědi výše: přijímáte opatření, která pomáhají lidem "
+"obsluhujícím nebo používajícím systémy AI vaším jménem jim porozumět, s "
+"ohledem na jejich znalosti a kontext použití. Od změny z července 2026 se "
+"nevyžaduje určitá úroveň znalostí a nařízení nepředepisuje žádné školení ani"
+" certifikát; tento kontrolní seznam zaznamenává opatření, která obvykle "
+"slouží jako doklad. Započítává se do skóre připravenosti a objeví se ve "
+"zprávě o souladu se jménem a datem posledního uložení."
+
+#: includes/class-compliance.php:146
+msgid ""
+"Chapters I and II: AI literacy measures by providers and deployers (Article "
+"4) and the ban on prohibited AI practices (Article 5)."
+msgstr ""
+"Kapitoly I a II: opatření poskytovatelů a zavádějících subjektů na podporu "
+"gramotnosti v oblasti AI (článek 4) a zákaz zakázaných praktik AI (článek "
+"5)."
+
+#: includes/class-compliance.php:160
+msgid "Machine-readable marking for older generators"
+msgstr "Strojově čitelné označení pro starší generátory"
+
+#: includes/class-compliance.php:161
+msgid ""
+"Providers of generators that were on the market before 2 August 2026 must "
+"mark their output in a machine-readable way (Article 50(2), Article 111(4))."
+" New bans on AI that creates intimate images of real people without consent "
+"or child sexual abuse material apply."
+msgstr ""
+"Poskytovatelé generátorů uvedených na trh před 2. srpnem 2026 musí své "
+"výstupy označit strojově čitelným způsobem (čl. 50 odst. 2, čl. 111 odst. "
+"4). Platí nové zákazy pro AI, která bez souhlasu vytváří intimní snímky "
+"skutečných osob nebo materiál zobrazující sexuální zneužívání dětí."
+
+#: includes/class-compliance.php:165
+msgid "High-risk AI in sensitive areas"
+msgstr "Vysoce riziková AI v citlivých oblastech"
+
+#: includes/class-compliance.php:166
+msgid ""
+"Obligations for high-risk AI systems listed in Annex III, such as hiring, "
+"credit scoring and education (Article 6(2))."
+msgstr ""
+"Povinnosti pro vysoce rizikové systémy AI uvedené v příloze III, například "
+"nábor zaměstnanců, hodnocení úvěruschopnosti a vzdělávání (čl. 6 odst. 2)."

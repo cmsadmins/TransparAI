@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-21T19:57:16+00:00\n"
+"POT-Creation-Date: 2026-11-10T08:25:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: transparai\n"
@@ -413,7 +413,7 @@ msgid "AI literacy (Article 4)"
 msgstr ""
 
 #: admin/class-dashboard.php:528
-msgid "Article 4 applies since 2 February 2025 to every provider and deployer, whatever you answered above: you take measures, as far as you can, so that the people who operate or use AI systems on your behalf have a sufficient level of AI literacy, considering their background and the context of use. The Act prescribes no particular training or certificate; this checklist records the measures that usually serve as evidence. It counts toward the readiness score and appears in the compliance report with the name and date of the last save."
+msgid "Article 4 applies to every provider and deployer, whatever you answered above: you take measures that help the people who operate or use AI systems on your behalf understand them, considering their background and the context of use. Since the amendment of July 2026 no particular level of knowledge is required, and the Act prescribes no training or certificate; this checklist records the measures that usually serve as evidence. It counts toward the readiness score and appears in the compliance report with the name and date of the last save."
 msgstr ""
 
 #. translators: 1: done, 2: total.
@@ -2331,203 +2331,219 @@ msgstr ""
 msgid "Declare the translation tool on the AI Systems page; consider a notice on translated pages."
 msgstr ""
 
-#: includes/class-compliance.php:120
+#: includes/class-compliance.php:121
 msgid "Staff and contributors know which AI tools this site uses and what they are used for"
 msgstr ""
 
-#: includes/class-compliance.php:121
+#: includes/class-compliance.php:122
 msgid "An internal policy on AI use (what is allowed, what needs review) is written down"
 msgstr ""
 
-#: includes/class-compliance.php:122
+#: includes/class-compliance.php:123
 msgid "People who work with AI tools have had training or guidance on their capabilities and limits"
 msgstr ""
 
-#: includes/class-compliance.php:123
+#: includes/class-compliance.php:124
 msgid "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
 
-#: includes/class-compliance.php:124
+#: includes/class-compliance.php:125
 msgid "For each AI tool, the context of use and the people it affects (visitors, customers) were considered when deciding what guidance staff need"
 msgstr ""
 
-#: includes/class-compliance.php:138
+#: includes/class-compliance.php:140
 msgid "AI Act enters into force"
 msgstr ""
 
-#: includes/class-compliance.php:139
+#: includes/class-compliance.php:141
 msgid "Regulation (EU) 2024/1689 is in force; its obligations start applying in stages."
 msgstr ""
 
-#: includes/class-compliance.php:143
+#: includes/class-compliance.php:145
 msgid "General provisions and prohibited practices apply"
 msgstr ""
 
-#: includes/class-compliance.php:144
-msgid "Chapters I and II: the AI literacy duty for providers and deployers (Article 4) and the ban on prohibited AI practices (Article 5)."
+#: includes/class-compliance.php:146
+msgid "Chapters I and II: AI literacy measures by providers and deployers (Article 4) and the ban on prohibited AI practices (Article 5)."
 msgstr ""
 
-#: includes/class-compliance.php:148
+#: includes/class-compliance.php:150
 msgid "General-purpose AI and governance rules apply"
 msgstr ""
 
-#: includes/class-compliance.php:149
+#: includes/class-compliance.php:151
 msgid "Obligations for providers of general-purpose AI models, notifying authorities, governance and penalties (Chapters V, VII and XII)."
 msgstr ""
 
-#: includes/class-compliance.php:153
+#: includes/class-compliance.php:155
 msgid "General application, including Article 50"
 msgstr ""
 
-#: includes/class-compliance.php:154
+#: includes/class-compliance.php:156
 msgid "Transparency obligations for chatbots, AI-generated content and deepfakes (Article 50) and most remaining provisions apply."
 msgstr ""
 
-#: includes/class-compliance.php:158
+#: includes/class-compliance.php:160
+msgid "Machine-readable marking for older generators"
+msgstr ""
+
+#: includes/class-compliance.php:161
+msgid "Providers of generators that were on the market before 2 August 2026 must mark their output in a machine-readable way (Article 50(2), Article 111(4)). New bans on AI that creates intimate images of real people without consent or child sexual abuse material apply."
+msgstr ""
+
+#: includes/class-compliance.php:165
+msgid "High-risk AI in sensitive areas"
+msgstr ""
+
+#: includes/class-compliance.php:166
+msgid "Obligations for high-risk AI systems listed in Annex III, such as hiring, credit scoring and education (Article 6(2))."
+msgstr ""
+
+#: includes/class-compliance.php:170
 msgid "High-risk AI in regulated products"
 msgstr ""
 
-#: includes/class-compliance.php:159
+#: includes/class-compliance.php:171
 msgid "Obligations for high-risk AI systems that are safety components of products covered by Annex I (Article 6(1))."
 msgstr ""
 
-#: includes/class-compliance.php:171
+#: includes/class-compliance.php:183
 msgid "Settings saved"
 msgstr ""
 
-#: includes/class-compliance.php:172
+#: includes/class-compliance.php:184
 msgid "Library scan started"
 msgstr ""
 
-#: includes/class-compliance.php:173
+#: includes/class-compliance.php:185
 msgid "Library scan finished"
 msgstr ""
 
-#: includes/class-compliance.php:174
+#: includes/class-compliance.php:186
 msgid "Auto-repair sweep finished"
 msgstr ""
 
-#: includes/class-compliance.php:175
+#: includes/class-compliance.php:187
 msgid "Bulk action: labeled as AI"
 msgstr ""
 
-#: includes/class-compliance.php:176
+#: includes/class-compliance.php:188
 msgid "Bulk action: label removed"
 msgstr ""
 
-#: includes/class-compliance.php:177
+#: includes/class-compliance.php:189
 msgid "Bulk action: review confirmed"
 msgstr ""
 
-#: includes/class-compliance.php:178
+#: includes/class-compliance.php:190
 msgid "Bulk action: review dismissed"
 msgstr ""
 
-#: includes/class-compliance.php:179
+#: includes/class-compliance.php:191
 msgid "Bulk action: declared as camera photo"
 msgstr ""
 
-#: includes/class-compliance.php:180
+#: includes/class-compliance.php:192
 msgid "Bulk action: declared as human work"
 msgstr ""
 
-#: includes/class-compliance.php:181
+#: includes/class-compliance.php:193
 msgid "Bulk action: declaration removed"
 msgstr ""
 
-#: includes/class-compliance.php:182
+#: includes/class-compliance.php:194
 msgid "Setup: badge look chosen"
 msgstr ""
 
-#: includes/class-compliance.php:183
+#: includes/class-compliance.php:195
 msgid "Setup: file writing chosen"
 msgstr ""
 
-#: includes/class-compliance.php:184
+#: includes/class-compliance.php:196
 msgid "Setup: last step undone"
 msgstr ""
 
-#: includes/class-compliance.php:185
+#: includes/class-compliance.php:197
 msgid "Setup finished"
 msgstr ""
 
-#: includes/class-compliance.php:186
+#: includes/class-compliance.php:198
 msgid "Self-assessment saved"
 msgstr ""
 
-#: includes/class-compliance.php:187
+#: includes/class-compliance.php:199
 msgid "AI literacy checklist saved"
 msgstr ""
 
-#: includes/class-compliance.php:188
+#: includes/class-compliance.php:200
 msgid "AI systems scanned"
 msgstr ""
 
-#: includes/class-compliance.php:189
+#: includes/class-compliance.php:201
 msgid "AI system declared"
 msgstr ""
 
-#: includes/class-compliance.php:190
+#: includes/class-compliance.php:202
 msgid "AI system declaration removed"
 msgstr ""
 
-#: includes/class-compliance.php:191
+#: includes/class-compliance.php:203
 msgid "AI systems notice visibility changed"
 msgstr ""
 
-#: includes/class-compliance.php:192
+#: includes/class-compliance.php:204
 msgid "Operator details of AI systems saved"
 msgstr ""
 
-#: includes/class-compliance.php:445
+#: includes/class-compliance.php:457
 msgid "AI-written text is declared: either the assessment says none is published, or at least one post carries an AI level"
 msgstr ""
 
-#: includes/class-compliance.php:448
+#: includes/class-compliance.php:460
 msgid "Set the AI level on your AI-written posts, or answer the text question with no."
 msgstr ""
 
-#: includes/class-compliance.php:452
+#: includes/class-compliance.php:464
 msgid "AI media is labeled: either the assessment says none is used, or the badge is on, at least one file is labeled and nothing waits in the review queue"
 msgstr ""
 
-#: includes/class-compliance.php:455
+#: includes/class-compliance.php:467
 msgid "Scan the library, work through the review queue and keep the visible badge on."
 msgstr ""
 
-#: includes/class-compliance.php:459
+#: includes/class-compliance.php:471
 msgid "The chatbot question is answered (yes or no), so the chat notice follows a decision"
 msgstr ""
 
-#: includes/class-compliance.php:462
+#: includes/class-compliance.php:474
 msgid "Answer whether the site runs a chat and who answers in it."
 msgstr ""
 
-#: includes/class-compliance.php:466
+#: includes/class-compliance.php:478
 msgid "Self-assessment and Article 4 checklist are complete"
 msgstr ""
 
-#: includes/class-compliance.php:469
+#: includes/class-compliance.php:481
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
 
-#: includes/class-compliance.php:478
+#: includes/class-compliance.php:490
 msgid "AI systems are inventoried: the plugin list was scanned and every detected or declared system has a visibility decision"
 msgstr ""
 
-#: includes/class-compliance.php:481
+#: includes/class-compliance.php:493
 msgid "Run the scan on the AI Systems page and decide which systems visitors are told about."
 msgstr ""
 
-#: includes/class-compliance.php:515
+#: includes/class-compliance.php:527
 msgid "Good"
 msgstr ""
 
-#: includes/class-compliance.php:516
+#: includes/class-compliance.php:528
 msgid "Needs attention"
 msgstr ""
 
-#: includes/class-compliance.php:518
+#: includes/class-compliance.php:530
 msgid "Action required"
 msgstr ""
 

@@ -491,27 +491,6 @@ msgstr ""
 msgid "AI literacy (Article 4)"
 msgstr "Alfabetización en IA (artículo 4)"
 
-#: admin/class-dashboard.php:528
-msgid ""
-"Article 4 applies since 2 February 2025 to every provider and deployer, "
-"whatever you answered above: you take measures, as far as you can, so that "
-"the people who operate or use AI systems on your behalf have a sufficient "
-"level of AI literacy, considering their background and the context of use. "
-"The Act prescribes no particular training or certificate; this checklist "
-"records the measures that usually serve as evidence. It counts toward the "
-"readiness score and appears in the compliance report with the name and date "
-"of the last save."
-msgstr ""
-"El artículo 4 se aplica desde el 2 de febrero de 2025 a todo proveedor y "
-"responsable del despliegue, sea cual sea tu respuesta arriba: adoptas "
-"medidas, en la medida de tus posibilidades, para que las personas que operan"
-" o usan sistemas de IA en tu nombre tengan un nivel suficiente de "
-"alfabetización en IA, teniendo en cuenta su formación y el contexto de uso. "
-"El Reglamento no prescribe ninguna formación ni certificado concreto; esta "
-"lista registra las medidas que suelen servir de prueba. Cuenta para la "
-"puntuación de preparación y aparece en el informe de cumplimiento con el "
-"nombre y la fecha del último guardado."
-
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:534
 #, php-format
@@ -2323,7 +2302,7 @@ msgstr ""
 "Declara la herramienta de traducción en la página Sistemas de IA; considera "
 "un aviso en las páginas traducidas."
 
-#: includes/class-compliance.php:120
+#: includes/class-compliance.php:121
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
@@ -2331,7 +2310,7 @@ msgstr ""
 "El personal y los colaboradores saben qué herramientas de IA usa este sitio "
 "y para qué se usan"
 
-#: includes/class-compliance.php:121
+#: includes/class-compliance.php:122
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
@@ -2339,7 +2318,7 @@ msgstr ""
 "Existe por escrito una política interna sobre el uso de IA (qué está "
 "permitido, qué necesita revisión)"
 
-#: includes/class-compliance.php:122
+#: includes/class-compliance.php:123
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
@@ -2347,14 +2326,14 @@ msgstr ""
 "Las personas que trabajan con herramientas de IA han recibido formación u "
 "orientación sobre sus capacidades y límites"
 
-#: includes/class-compliance.php:123
+#: includes/class-compliance.php:124
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
 "Hay una fecha fijada para revisar el uso de las herramientas de IA, la "
 "política y estas declaraciones"
 
-#: includes/class-compliance.php:124
+#: includes/class-compliance.php:125
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
@@ -2363,11 +2342,11 @@ msgstr ""
 "personas afectadas (visitantes, clientes) al decidir qué orientación "
 "necesita el personal"
 
-#: includes/class-compliance.php:138
+#: includes/class-compliance.php:140
 msgid "AI Act enters into force"
 msgstr "El AI Act entra en vigor"
 
-#: includes/class-compliance.php:139
+#: includes/class-compliance.php:141
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
@@ -2375,24 +2354,15 @@ msgstr ""
 "El Reglamento (UE) 2024/1689 está en vigor; sus obligaciones empiezan a "
 "aplicarse por fases."
 
-#: includes/class-compliance.php:143
+#: includes/class-compliance.php:145
 msgid "General provisions and prohibited practices apply"
 msgstr "Se aplican las disposiciones generales y las prácticas prohibidas"
 
-#: includes/class-compliance.php:144
-msgid ""
-"Chapters I and II: the AI literacy duty for providers and deployers (Article"
-" 4) and the ban on prohibited AI practices (Article 5)."
-msgstr ""
-"Capítulos I y II: el deber de alfabetización en IA para proveedores y "
-"responsables del despliegue (artículo 4) y la prohibición de determinadas "
-"prácticas de IA (artículo 5)."
-
-#: includes/class-compliance.php:148
+#: includes/class-compliance.php:150
 msgid "General-purpose AI and governance rules apply"
 msgstr "Se aplican las normas sobre IA de uso general y gobernanza"
 
-#: includes/class-compliance.php:149
+#: includes/class-compliance.php:151
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
@@ -2400,11 +2370,11 @@ msgstr ""
 "Obligaciones para los proveedores de modelos de IA de uso general, "
 "autoridades notificantes, gobernanza y sanciones (capítulos V, VII y XII)."
 
-#: includes/class-compliance.php:153
+#: includes/class-compliance.php:155
 msgid "General application, including Article 50"
 msgstr "Aplicación general, incluido el artículo 50"
 
-#: includes/class-compliance.php:154
+#: includes/class-compliance.php:156
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
@@ -2413,11 +2383,11 @@ msgstr ""
 "generado por IA y deepfakes (artículo 50) y la mayoría de las disposiciones "
 "restantes."
 
-#: includes/class-compliance.php:158
+#: includes/class-compliance.php:170
 msgid "High-risk AI in regulated products"
 msgstr "IA de alto riesgo en productos regulados"
 
-#: includes/class-compliance.php:159
+#: includes/class-compliance.php:171
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
@@ -2425,91 +2395,91 @@ msgstr ""
 "Obligaciones para los sistemas de IA de alto riesgo que son componentes de "
 "seguridad de productos cubiertos por el anexo I (artículo 6, apartado 1)."
 
-#: includes/class-compliance.php:171
+#: includes/class-compliance.php:183
 msgid "Settings saved"
 msgstr "Ajustes guardados"
 
-#: includes/class-compliance.php:172
+#: includes/class-compliance.php:184
 msgid "Library scan started"
 msgstr "Análisis de la biblioteca iniciado"
 
-#: includes/class-compliance.php:173
+#: includes/class-compliance.php:185
 msgid "Library scan finished"
 msgstr "Análisis de la biblioteca terminado"
 
-#: includes/class-compliance.php:174
+#: includes/class-compliance.php:186
 msgid "Auto-repair sweep finished"
 msgstr "Ciclo de reparación automática terminado"
 
-#: includes/class-compliance.php:175
+#: includes/class-compliance.php:187
 msgid "Bulk action: labeled as AI"
 msgstr "Acción en lote: etiquetados como IA"
 
-#: includes/class-compliance.php:176
+#: includes/class-compliance.php:188
 msgid "Bulk action: label removed"
 msgstr "Acción en lote: etiqueta quitada"
 
-#: includes/class-compliance.php:177
+#: includes/class-compliance.php:189
 msgid "Bulk action: review confirmed"
 msgstr "Acción en lote: revisión confirmada"
 
-#: includes/class-compliance.php:178
+#: includes/class-compliance.php:190
 msgid "Bulk action: review dismissed"
 msgstr "Acción en lote: revisión descartada"
 
-#: includes/class-compliance.php:179
+#: includes/class-compliance.php:191
 msgid "Bulk action: declared as camera photo"
 msgstr "Acción en lote: declarados como foto de cámara"
 
-#: includes/class-compliance.php:180
+#: includes/class-compliance.php:192
 msgid "Bulk action: declared as human work"
 msgstr "Acción en lote: declarados como obra humana"
 
-#: includes/class-compliance.php:181
+#: includes/class-compliance.php:193
 msgid "Bulk action: declaration removed"
 msgstr "Acción en lote: declaración quitada"
 
-#: includes/class-compliance.php:182
+#: includes/class-compliance.php:194
 msgid "Setup: badge look chosen"
 msgstr "Configuración: aspecto de la insignia elegido"
 
-#: includes/class-compliance.php:183
+#: includes/class-compliance.php:195
 msgid "Setup: file writing chosen"
 msgstr "Configuración: escritura en archivos elegida"
 
-#: includes/class-compliance.php:184
+#: includes/class-compliance.php:196
 msgid "Setup: last step undone"
 msgstr "Configuración: último paso deshecho"
 
-#: includes/class-compliance.php:185
+#: includes/class-compliance.php:197
 msgid "Setup finished"
 msgstr "Configuración terminada"
 
-#: includes/class-compliance.php:186
+#: includes/class-compliance.php:198
 msgid "Self-assessment saved"
 msgstr "Autoevaluación guardada"
 
-#: includes/class-compliance.php:187
+#: includes/class-compliance.php:199
 msgid "AI literacy checklist saved"
 msgstr "Lista de comprobación de alfabetización en IA guardada"
 
-#: includes/class-compliance.php:188
+#: includes/class-compliance.php:200
 msgid "AI systems scanned"
 msgstr "Sistemas de IA analizados"
 
-#: includes/class-compliance.php:189
+#: includes/class-compliance.php:201
 msgid "AI system declared"
 msgstr "Sistema de IA declarado"
 
-#: includes/class-compliance.php:190
+#: includes/class-compliance.php:202
 msgid "AI system declaration removed"
 msgstr "Declaración de sistema de IA quitada"
 
-#: includes/class-compliance.php:191
+#: includes/class-compliance.php:203
 msgid "AI systems notice visibility changed"
 msgstr "Visibilidad del aviso de sistemas de IA cambiada"
 
-#: includes/class-compliance.php:445
+#: includes/class-compliance.php:457
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
@@ -2517,7 +2487,7 @@ msgstr ""
 "El texto escrito con IA está declarado: o la evaluación indica que no se "
 "publica ninguno, o al menos una entrada lleva un nivel de IA"
 
-#: includes/class-compliance.php:448
+#: includes/class-compliance.php:460
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
@@ -2525,7 +2495,7 @@ msgstr ""
 "Define el nivel de IA en tus entradas escritas con IA, o responde que no a "
 "la pregunta sobre el texto."
 
-#: includes/class-compliance.php:452
+#: includes/class-compliance.php:464
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
@@ -2534,7 +2504,7 @@ msgstr ""
 "ninguno, o la insignia está activada, al menos un archivo está etiquetado y "
 "nada espera en la cola de revisión"
 
-#: includes/class-compliance.php:455
+#: includes/class-compliance.php:467
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
@@ -2542,7 +2512,7 @@ msgstr ""
 "Analiza la biblioteca, revisa la cola de revisión y mantén activada la "
 "insignia visible."
 
-#: includes/class-compliance.php:459
+#: includes/class-compliance.php:471
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
@@ -2550,22 +2520,22 @@ msgstr ""
 "La pregunta sobre el chatbot está respondida (sí o no), así que el aviso del"
 " chat sigue una decisión"
 
-#: includes/class-compliance.php:462
+#: includes/class-compliance.php:474
 msgid "Answer whether the site runs a chat and who answers in it."
 msgstr "Responde si el sitio tiene un chat y quién responde en él."
 
-#: includes/class-compliance.php:466
+#: includes/class-compliance.php:478
 msgid "Self-assessment and Article 4 checklist are complete"
 msgstr ""
 "La autoevaluación y la lista de comprobación del artículo 4 están completas"
 
-#: includes/class-compliance.php:469
+#: includes/class-compliance.php:481
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
 "Responde las seis preguntas y marca los elementos de la lista que "
 "correspondan."
 
-#: includes/class-compliance.php:478
+#: includes/class-compliance.php:490
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
@@ -2573,7 +2543,7 @@ msgstr ""
 "Los sistemas de IA están inventariados: la lista de plugins se ha analizado "
 "y cada sistema detectado o declarado tiene una decisión de visibilidad"
 
-#: includes/class-compliance.php:481
+#: includes/class-compliance.php:493
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
@@ -2581,15 +2551,15 @@ msgstr ""
 "Ejecuta el análisis en la página Sistemas de IA y decide de qué sistemas se "
 "informa a los visitantes."
 
-#: includes/class-compliance.php:515
+#: includes/class-compliance.php:527
 msgid "Good"
 msgstr "Bien"
 
-#: includes/class-compliance.php:516
+#: includes/class-compliance.php:528
 msgid "Needs attention"
 msgstr "Requiere atención"
 
-#: includes/class-compliance.php:518
+#: includes/class-compliance.php:530
 msgid "Action required"
 msgstr "Acción necesaria"
 
@@ -3711,7 +3681,7 @@ msgstr ""
 "No disponible en este servidor: PHP necesita la extensión GD con soporte "
 "para FreeType."
 
-#: includes/class-compliance.php:192
+#: includes/class-compliance.php:204
 msgid "Operator details of AI systems saved"
 msgstr "Datos del operador de los sistemas de IA guardados"
 
@@ -3770,3 +3740,63 @@ msgid ""
 "processed."
 msgstr ""
 "Qué datos personales o empresariales llegan al sistema y dónde se tratan."
+
+#: admin/class-dashboard.php:528
+msgid ""
+"Article 4 applies to every provider and deployer, whatever you answered "
+"above: you take measures that help the people who operate or use AI systems "
+"on your behalf understand them, considering their background and the context"
+" of use. Since the amendment of July 2026 no particular level of knowledge "
+"is required, and the Act prescribes no training or certificate; this "
+"checklist records the measures that usually serve as evidence. It counts "
+"toward the readiness score and appears in the compliance report with the "
+"name and date of the last save."
+msgstr ""
+"El artículo 4 se aplica a todo proveedor y responsable del despliegue, sea "
+"cual sea tu respuesta anterior: adoptas medidas que ayudan a las personas "
+"que manejan o usan sistemas de IA en tu nombre a comprenderlos, teniendo en "
+"cuenta su formación y el contexto de uso. Desde la modificación de julio de "
+"2026 no se exige un nivel de conocimientos concreto, y el reglamento no "
+"prescribe ninguna formación ni certificado; esta lista recoge las medidas "
+"que suelen servir como prueba. Cuenta para la puntuación de preparación y "
+"aparece en el informe de cumplimiento con el nombre y la fecha del último "
+"guardado."
+
+#: includes/class-compliance.php:146
+msgid ""
+"Chapters I and II: AI literacy measures by providers and deployers (Article "
+"4) and the ban on prohibited AI practices (Article 5)."
+msgstr ""
+"Capítulos I y II: medidas de alfabetización en IA de proveedores y "
+"responsables del despliegue (artículo 4) y la prohibición de prácticas de IA"
+" prohibidas (artículo 5)."
+
+#: includes/class-compliance.php:160
+msgid "Machine-readable marking for older generators"
+msgstr "Marcado legible por máquina para generadores anteriores"
+
+#: includes/class-compliance.php:161
+msgid ""
+"Providers of generators that were on the market before 2 August 2026 must "
+"mark their output in a machine-readable way (Article 50(2), Article 111(4))."
+" New bans on AI that creates intimate images of real people without consent "
+"or child sexual abuse material apply."
+msgstr ""
+"Los proveedores de generadores introducidos en el mercado antes del 2 de "
+"agosto de 2026 deben marcar sus resultados de forma legible por máquina "
+"(artículo 50, apartado 2, artículo 111, apartado 4). Entran en vigor nuevas "
+"prohibiciones para la IA que crea sin consentimiento imágenes íntimas de "
+"personas reales o material de abuso sexual infantil."
+
+#: includes/class-compliance.php:165
+msgid "High-risk AI in sensitive areas"
+msgstr "IA de alto riesgo en ámbitos sensibles"
+
+#: includes/class-compliance.php:166
+msgid ""
+"Obligations for high-risk AI systems listed in Annex III, such as hiring, "
+"credit scoring and education (Article 6(2))."
+msgstr ""
+"Obligaciones para los sistemas de IA de alto riesgo del anexo III, como la "
+"selección de personal, la evaluación crediticia y la educación (artículo 6, "
+"apartado 2)."

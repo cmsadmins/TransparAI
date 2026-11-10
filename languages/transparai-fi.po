@@ -487,27 +487,6 @@ msgstr ""
 msgid "AI literacy (Article 4)"
 msgstr "Tekoälylukutaito (4 artikla)"
 
-#: admin/class-dashboard.php:528
-msgid ""
-"Article 4 applies since 2 February 2025 to every provider and deployer, "
-"whatever you answered above: you take measures, as far as you can, so that "
-"the people who operate or use AI systems on your behalf have a sufficient "
-"level of AI literacy, considering their background and the context of use. "
-"The Act prescribes no particular training or certificate; this checklist "
-"records the measures that usually serve as evidence. It counts toward the "
-"readiness score and appears in the compliance report with the name and date "
-"of the last save."
-msgstr ""
-"4 artiklaa on sovellettu 2. helmikuuta 2025 alkaen jokaiseen tarjoajaan ja "
-"käyttöönottajaan riippumatta siitä, mitä vastasit yllä: toteutat "
-"toimenpiteitä, siinä määrin kuin se on mahdollista, jotta niillä "
-"henkilöillä, jotka käyttävät tekoälyjärjestelmiä sinun puolestasi, on "
-"riittävä tekoälylukutaito heidän taustansa ja käyttöyhteyden huomioon "
-"ottaen. Asetus ei määrää tiettyä koulutusta eikä todistusta; tämä "
-"tarkistuslista kirjaa ne toimenpiteet, jotka yleensä kelpaavat näytöksi. Se "
-"vaikuttaa valmiuspisteisiin ja näkyy vaatimustenmukaisuusraportissa "
-"viimeisimmän tallennuksen tekijän nimen ja päivämäärän kanssa."
-
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:534
 #, php-format
@@ -2318,7 +2297,7 @@ msgstr ""
 "Ilmoita käännöstyökalu Tekoälyjärjestelmät-sivulla; harkitse huomautusta "
 "käännetyillä sivuilla."
 
-#: includes/class-compliance.php:120
+#: includes/class-compliance.php:121
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
@@ -2326,7 +2305,7 @@ msgstr ""
 "Henkilöstö ja avustajat tietävät, mitä tekoälytyökaluja tämä sivusto käyttää"
 " ja mihin niitä käytetään"
 
-#: includes/class-compliance.php:121
+#: includes/class-compliance.php:122
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
@@ -2334,7 +2313,7 @@ msgstr ""
 "Tekoälyn käyttöä koskeva sisäinen ohjeistus (mikä on sallittua, mikä vaatii "
 "tarkistuksen) on kirjattu"
 
-#: includes/class-compliance.php:122
+#: includes/class-compliance.php:123
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
@@ -2342,14 +2321,14 @@ msgstr ""
 "Tekoälytyökalujen kanssa työskentelevät ovat saaneet koulutusta tai "
 "opastusta työkalujen kyvyistä ja rajoista"
 
-#: includes/class-compliance.php:123
+#: includes/class-compliance.php:124
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
 "Tekoälytyökalujen käytön, ohjeistuksen ja näiden ilmoitusten tarkistukselle "
 "on sovittu päivämäärä"
 
-#: includes/class-compliance.php:124
+#: includes/class-compliance.php:125
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
@@ -2358,11 +2337,11 @@ msgstr ""
 "henkilöt, joihin se vaikuttaa (kävijät, asiakkaat), kun on päätetty, "
 "millaista opastusta henkilöstö tarvitsee"
 
-#: includes/class-compliance.php:138
+#: includes/class-compliance.php:140
 msgid "AI Act enters into force"
 msgstr "Tekoälyasetus tulee voimaan"
 
-#: includes/class-compliance.php:139
+#: includes/class-compliance.php:141
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
@@ -2370,23 +2349,15 @@ msgstr ""
 "Asetus (EU) 2024/1689 on voimassa; sen velvoitteita aletaan soveltaa "
 "vaiheittain."
 
-#: includes/class-compliance.php:143
+#: includes/class-compliance.php:145
 msgid "General provisions and prohibited practices apply"
 msgstr "Yleisiä säännöksiä ja kiellettyjä käytäntöjä sovelletaan"
 
-#: includes/class-compliance.php:144
-msgid ""
-"Chapters I and II: the AI literacy duty for providers and deployers (Article"
-" 4) and the ban on prohibited AI practices (Article 5)."
-msgstr ""
-"I ja II luku: tarjoajia ja käyttöönottajia koskeva tekoälylukutaitovelvoite "
-"(4 artikla) ja kiellettyjen tekoälykäytäntöjen kielto (5 artikla)."
-
-#: includes/class-compliance.php:148
+#: includes/class-compliance.php:150
 msgid "General-purpose AI and governance rules apply"
 msgstr "Yleiskäyttöistä tekoälyä ja hallintoa koskevia sääntöjä sovelletaan"
 
-#: includes/class-compliance.php:149
+#: includes/class-compliance.php:151
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
@@ -2394,11 +2365,11 @@ msgstr ""
 "Yleiskäyttöisten tekoälymallien tarjoajien velvoitteet, ilmoittamisesta "
 "vastaavat viranomaiset, hallinto ja seuraamukset (V, VII ja XII luku)."
 
-#: includes/class-compliance.php:153
+#: includes/class-compliance.php:155
 msgid "General application, including Article 50"
 msgstr "Yleinen soveltaminen, mukaan lukien 50 artikla"
 
-#: includes/class-compliance.php:154
+#: includes/class-compliance.php:156
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
@@ -2407,11 +2378,11 @@ msgstr ""
 "läpinäkyvyysvelvoitteita (50 artikla) ja useimpia jäljellä olevia säännöksiä"
 " sovelletaan."
 
-#: includes/class-compliance.php:158
+#: includes/class-compliance.php:170
 msgid "High-risk AI in regulated products"
 msgstr "Suuririskinen tekoäly säännellyissä tuotteissa"
 
-#: includes/class-compliance.php:159
+#: includes/class-compliance.php:171
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
@@ -2419,91 +2390,91 @@ msgstr ""
 "Velvoitteet suuririskisille tekoälyjärjestelmille, jotka ovat liitteen I "
 "kattamien tuotteiden turvakomponentteja (6 artiklan 1 kohta)."
 
-#: includes/class-compliance.php:171
+#: includes/class-compliance.php:183
 msgid "Settings saved"
 msgstr "Asetukset tallennettu"
 
-#: includes/class-compliance.php:172
+#: includes/class-compliance.php:184
 msgid "Library scan started"
 msgstr "Kirjaston skannaus aloitettu"
 
-#: includes/class-compliance.php:173
+#: includes/class-compliance.php:185
 msgid "Library scan finished"
 msgstr "Kirjaston skannaus valmis"
 
-#: includes/class-compliance.php:174
+#: includes/class-compliance.php:186
 msgid "Auto-repair sweep finished"
 msgstr "Automaattinen korjausajo valmis"
 
-#: includes/class-compliance.php:175
+#: includes/class-compliance.php:187
 msgid "Bulk action: labeled as AI"
 msgstr "Massatoiminto: merkitty tekoälyksi"
 
-#: includes/class-compliance.php:176
+#: includes/class-compliance.php:188
 msgid "Bulk action: label removed"
 msgstr "Massatoiminto: merkintä poistettu"
 
-#: includes/class-compliance.php:177
+#: includes/class-compliance.php:189
 msgid "Bulk action: review confirmed"
 msgstr "Massatoiminto: tarkistus vahvistettu"
 
-#: includes/class-compliance.php:178
+#: includes/class-compliance.php:190
 msgid "Bulk action: review dismissed"
 msgstr "Massatoiminto: tarkistus hylätty"
 
-#: includes/class-compliance.php:179
+#: includes/class-compliance.php:191
 msgid "Bulk action: declared as camera photo"
 msgstr "Massatoiminto: ilmoitettu kameravalokuvaksi"
 
-#: includes/class-compliance.php:180
+#: includes/class-compliance.php:192
 msgid "Bulk action: declared as human work"
 msgstr "Massatoiminto: ilmoitettu ihmisen työksi"
 
-#: includes/class-compliance.php:181
+#: includes/class-compliance.php:193
 msgid "Bulk action: declaration removed"
 msgstr "Massatoiminto: ilmoitus poistettu"
 
-#: includes/class-compliance.php:182
+#: includes/class-compliance.php:194
 msgid "Setup: badge look chosen"
 msgstr "Käyttöönotto: merkin ulkoasu valittu"
 
-#: includes/class-compliance.php:183
+#: includes/class-compliance.php:195
 msgid "Setup: file writing chosen"
 msgstr "Käyttöönotto: tiedostoihin kirjoittaminen valittu"
 
-#: includes/class-compliance.php:184
+#: includes/class-compliance.php:196
 msgid "Setup: last step undone"
 msgstr "Käyttöönotto: viimeisin vaihe kumottu"
 
-#: includes/class-compliance.php:185
+#: includes/class-compliance.php:197
 msgid "Setup finished"
 msgstr "Käyttöönotto valmis"
 
-#: includes/class-compliance.php:186
+#: includes/class-compliance.php:198
 msgid "Self-assessment saved"
 msgstr "Itsearviointi tallennettu"
 
-#: includes/class-compliance.php:187
+#: includes/class-compliance.php:199
 msgid "AI literacy checklist saved"
 msgstr "Tekoälylukutaidon tarkistuslista tallennettu"
 
-#: includes/class-compliance.php:188
+#: includes/class-compliance.php:200
 msgid "AI systems scanned"
 msgstr "Tekoälyjärjestelmät skannattu"
 
-#: includes/class-compliance.php:189
+#: includes/class-compliance.php:201
 msgid "AI system declared"
 msgstr "Tekoälyjärjestelmä ilmoitettu"
 
-#: includes/class-compliance.php:190
+#: includes/class-compliance.php:202
 msgid "AI system declaration removed"
 msgstr "Tekoälyjärjestelmän ilmoitus poistettu"
 
-#: includes/class-compliance.php:191
+#: includes/class-compliance.php:203
 msgid "AI systems notice visibility changed"
 msgstr "Tekoälyjärjestelmien huomautuksen näkyvyys muuttui"
 
-#: includes/class-compliance.php:445
+#: includes/class-compliance.php:457
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
@@ -2511,7 +2482,7 @@ msgstr ""
 "Tekoälyn kirjoittama teksti on ilmoitettu: joko itsearviointi kertoo, ettei "
 "sellaista julkaista, tai vähintään yhdellä artikkelilla on tekoälytaso"
 
-#: includes/class-compliance.php:448
+#: includes/class-compliance.php:460
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
@@ -2519,7 +2490,7 @@ msgstr ""
 "Aseta tekoälytaso tekoälyn kirjoittamiin artikkeleihisi tai vastaa "
 "tekstikysymykseen ei."
 
-#: includes/class-compliance.php:452
+#: includes/class-compliance.php:464
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
@@ -2528,14 +2499,14 @@ msgstr ""
 "käytetä, tai merkki on päällä, vähintään yksi tiedosto on merkitty eikä "
 "tarkistusjonossa odota mitään"
 
-#: includes/class-compliance.php:455
+#: includes/class-compliance.php:467
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
 msgstr ""
 "Skannaa kirjasto, käy tarkistusjono läpi ja pidä näkyvä merkki päällä."
 
-#: includes/class-compliance.php:459
+#: includes/class-compliance.php:471
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
@@ -2543,21 +2514,21 @@ msgstr ""
 "Chatbot-kysymykseen on vastattu (kyllä tai ei), joten chat-huomautus "
 "perustuu päätökseen"
 
-#: includes/class-compliance.php:462
+#: includes/class-compliance.php:474
 msgid "Answer whether the site runs a chat and who answers in it."
 msgstr "Vastaa, onko sivustolla chat ja kuka siinä vastaa."
 
-#: includes/class-compliance.php:466
+#: includes/class-compliance.php:478
 msgid "Self-assessment and Article 4 checklist are complete"
 msgstr "Itsearviointi ja 4 artiklan tarkistuslista ovat valmiit"
 
-#: includes/class-compliance.php:469
+#: includes/class-compliance.php:481
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
 "Vastaa kuuteen kysymykseen ja rastita ne tarkistuslistan kohdat, jotka "
 "pätevät."
 
-#: includes/class-compliance.php:478
+#: includes/class-compliance.php:490
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
@@ -2566,7 +2537,7 @@ msgstr ""
 "jokaisesta tunnistetusta tai ilmoitetusta järjestelmästä on tehty "
 "näkyvyyspäätös"
 
-#: includes/class-compliance.php:481
+#: includes/class-compliance.php:493
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
@@ -2574,15 +2545,15 @@ msgstr ""
 "Suorita skannaus Tekoälyjärjestelmät-sivulla ja päätä, mistä järjestelmistä "
 "kävijöille kerrotaan."
 
-#: includes/class-compliance.php:515
+#: includes/class-compliance.php:527
 msgid "Good"
 msgstr "Hyvä"
 
-#: includes/class-compliance.php:516
+#: includes/class-compliance.php:528
 msgid "Needs attention"
 msgstr "Vaatii huomiota"
 
-#: includes/class-compliance.php:518
+#: includes/class-compliance.php:530
 msgid "Action required"
 msgstr "Vaatii toimenpiteitä"
 
@@ -3698,7 +3669,7 @@ msgstr ""
 "Ei käytettävissä tällä palvelimella: PHP tarvitsee GD-laajennuksen FreeType-"
 "tuella."
 
-#: includes/class-compliance.php:192
+#: includes/class-compliance.php:204
 msgid "Operator details of AI systems saved"
 msgstr "Tekoälyjärjestelmien ylläpitäjätiedot tallennettu"
 
@@ -3759,3 +3730,62 @@ msgid ""
 msgstr ""
 "Mitkä henkilö- tai liiketoimintatiedot päätyvät järjestelmään ja missä niitä"
 " käsitellään."
+
+#: admin/class-dashboard.php:528
+msgid ""
+"Article 4 applies to every provider and deployer, whatever you answered "
+"above: you take measures that help the people who operate or use AI systems "
+"on your behalf understand them, considering their background and the context"
+" of use. Since the amendment of July 2026 no particular level of knowledge "
+"is required, and the Act prescribes no training or certificate; this "
+"checklist records the measures that usually serve as evidence. It counts "
+"toward the readiness score and appears in the compliance report with the "
+"name and date of the last save."
+msgstr ""
+"Artiklaa 4 sovelletaan jokaiseen tarjoajaan ja käyttöönottajaan riippumatta "
+"yllä olevista vastauksista: toteutat toimia, jotka auttavat puolestasi "
+"tekoälyjärjestelmiä käyttäviä tai ohjaavia henkilöitä ymmärtämään niitä, "
+"ottaen huomioon heidän taustansa ja käyttöympäristön. Heinäkuun 2026 "
+"muutoksen jälkeen tiettyä osaamistasoa ei enää vaadita, eikä asetus edellytä"
+" koulutusta tai todistusta; tämä tarkistuslista kirjaa toimet, jotka yleensä"
+" toimivat näyttönä. Se lasketaan valmiuspisteisiin ja näkyy "
+"vaatimustenmukaisuusraportissa viimeisimmän tallennuksen nimen ja "
+"päivämäärän kanssa."
+
+#: includes/class-compliance.php:146
+msgid ""
+"Chapters I and II: AI literacy measures by providers and deployers (Article "
+"4) and the ban on prohibited AI practices (Article 5)."
+msgstr ""
+"Luvut I ja II: tarjoajien ja käyttöönottajien tekoälylukutaitoa tukevat "
+"toimet (4 artikla) ja kiellettyjen tekoälykäytäntöjen kielto (5 artikla)."
+
+#: includes/class-compliance.php:160
+msgid "Machine-readable marking for older generators"
+msgstr "Koneluettava merkintä vanhemmille generaattoreille"
+
+#: includes/class-compliance.php:161
+msgid ""
+"Providers of generators that were on the market before 2 August 2026 must "
+"mark their output in a machine-readable way (Article 50(2), Article 111(4))."
+" New bans on AI that creates intimate images of real people without consent "
+"or child sexual abuse material apply."
+msgstr ""
+"Ennen 2. elokuuta 2026 markkinoille saatettujen generaattorien tarjoajien on"
+" merkittävä tuotoksensa koneluettavasti (50 artiklan 2 kohta, 111 artiklan 4"
+" kohta). Uudet kiellot koskevat tekoälyä, joka luo ilman suostumusta "
+"intiimejä kuvia todellisista henkilöistä tai lasten seksuaalista "
+"hyväksikäyttöä esittävää materiaalia."
+
+#: includes/class-compliance.php:165
+msgid "High-risk AI in sensitive areas"
+msgstr "Suuririskinen tekoäly herkillä alueilla"
+
+#: includes/class-compliance.php:166
+msgid ""
+"Obligations for high-risk AI systems listed in Annex III, such as hiring, "
+"credit scoring and education (Article 6(2))."
+msgstr ""
+"Velvoitteet liitteessä III luetelluille suuririskisille "
+"tekoälyjärjestelmille, kuten rekrytointi, luottokelpoisuuden arviointi ja "
+"koulutus (6 artiklan 2 kohta)."

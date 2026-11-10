@@ -489,27 +489,6 @@ msgstr ""
 msgid "AI literacy (Article 4)"
 msgstr "MI-jártasság (4. cikk)"
 
-#: admin/class-dashboard.php:528
-msgid ""
-"Article 4 applies since 2 February 2025 to every provider and deployer, "
-"whatever you answered above: you take measures, as far as you can, so that "
-"the people who operate or use AI systems on your behalf have a sufficient "
-"level of AI literacy, considering their background and the context of use. "
-"The Act prescribes no particular training or certificate; this checklist "
-"records the measures that usually serve as evidence. It counts toward the "
-"readiness score and appears in the compliance report with the name and date "
-"of the last save."
-msgstr ""
-"A 4. cikk 2025. február 2. óta minden szolgáltatóra és alkalmazóra "
-"vonatkozik, bármit is válaszolt fent: a lehetőségeihez mérten intézkedéseket"
-" tesz annak érdekében, hogy az MI-rendszereket az Ön nevében működtető vagy "
-"használó személyek megfelelő szintű MI-jártassággal rendelkezzenek, "
-"figyelembe véve a hátterüket és a használat kontextusát. A rendelet nem ír "
-"elő konkrét képzést vagy tanúsítványt; ez az ellenőrzőlista azokat az "
-"intézkedéseket rögzíti, amelyek általában bizonyítékként szolgálnak. "
-"Beleszámít a felkészültségi pontszámba, és az utolsó mentés nevével és "
-"dátumával jelenik meg a megfelelőségi jelentésben."
-
 #. translators: 1: done, 2: total.
 #: admin/class-dashboard.php:534
 #, php-format
@@ -2323,7 +2302,7 @@ msgstr ""
 "Jelentse be a fordítóeszközt az MI-rendszerek oldalon; fontolja meg a "
 "tájékoztatót a lefordított oldalakon."
 
-#: includes/class-compliance.php:120
+#: includes/class-compliance.php:121
 msgid ""
 "Staff and contributors know which AI tools this site uses and what they are "
 "used for"
@@ -2331,7 +2310,7 @@ msgstr ""
 "A munkatársak és a közreműködők tudják, mely MI-eszközöket használja ez a "
 "webhely, és mire használják őket"
 
-#: includes/class-compliance.php:121
+#: includes/class-compliance.php:122
 msgid ""
 "An internal policy on AI use (what is allowed, what needs review) is written"
 " down"
@@ -2339,7 +2318,7 @@ msgstr ""
 "Az MI-használatról szóló belső szabályzat (mi engedélyezett, mi igényel "
 "ellenőrzést) írásba van foglalva"
 
-#: includes/class-compliance.php:122
+#: includes/class-compliance.php:123
 msgid ""
 "People who work with AI tools have had training or guidance on their "
 "capabilities and limits"
@@ -2347,14 +2326,14 @@ msgstr ""
 "Az MI-eszközökkel dolgozó személyek képzést vagy útmutatást kaptak az "
 "eszközök képességeiről és korlátairól"
 
-#: includes/class-compliance.php:123
+#: includes/class-compliance.php:124
 msgid ""
 "A date is set to review AI tool usage, the policy and these declarations"
 msgstr ""
 "Ki van tűzve egy időpont az MI-eszközök használatának, a szabályzatnak és "
 "ezeknek a nyilatkozatoknak a felülvizsgálatára"
 
-#: includes/class-compliance.php:124
+#: includes/class-compliance.php:125
 msgid ""
 "For each AI tool, the context of use and the people it affects (visitors, "
 "customers) were considered when deciding what guidance staff need"
@@ -2363,11 +2342,11 @@ msgstr ""
 "személyeket (látogatók, ügyfelek), amikor eldöntötték, milyen útmutatásra "
 "van szüksége a munkatársaknak"
 
-#: includes/class-compliance.php:138
+#: includes/class-compliance.php:140
 msgid "AI Act enters into force"
 msgstr "Az AI Act hatályba lép"
 
-#: includes/class-compliance.php:139
+#: includes/class-compliance.php:141
 msgid ""
 "Regulation (EU) 2024/1689 is in force; its obligations start applying in "
 "stages."
@@ -2375,24 +2354,16 @@ msgstr ""
 "Az (EU) 2024/1689 rendelet hatályos; kötelezettségei szakaszosan válnak "
 "alkalmazandóvá."
 
-#: includes/class-compliance.php:143
+#: includes/class-compliance.php:145
 msgid "General provisions and prohibited practices apply"
 msgstr "Az általános rendelkezések és a tiltott gyakorlatok alkalmazandók"
 
-#: includes/class-compliance.php:144
-msgid ""
-"Chapters I and II: the AI literacy duty for providers and deployers (Article"
-" 4) and the ban on prohibited AI practices (Article 5)."
-msgstr ""
-"I. és II. fejezet: a szolgáltatókra és alkalmazókra vonatkozó MI-jártassági "
-"kötelezettség (4. cikk) és a tiltott MI-gyakorlatok tilalma (5. cikk)."
-
-#: includes/class-compliance.php:148
+#: includes/class-compliance.php:150
 msgid "General-purpose AI and governance rules apply"
 msgstr ""
 "Az általános célú MI-re és az irányításra vonatkozó szabályok alkalmazandók"
 
-#: includes/class-compliance.php:149
+#: includes/class-compliance.php:151
 msgid ""
 "Obligations for providers of general-purpose AI models, notifying "
 "authorities, governance and penalties (Chapters V, VII and XII)."
@@ -2400,11 +2371,11 @@ msgstr ""
 "Az általános célú MI-modellek szolgáltatóira vonatkozó kötelezettségek, a "
 "bejelentő hatóságok, az irányítás és a szankciók (V., VII. és XII. fejezet)."
 
-#: includes/class-compliance.php:153
+#: includes/class-compliance.php:155
 msgid "General application, including Article 50"
 msgstr "Általános alkalmazás, az 50. cikket is beleértve"
 
-#: includes/class-compliance.php:154
+#: includes/class-compliance.php:156
 msgid ""
 "Transparency obligations for chatbots, AI-generated content and deepfakes "
 "(Article 50) and most remaining provisions apply."
@@ -2413,11 +2384,11 @@ msgstr ""
 "átláthatósági kötelezettségek (50. cikk), valamint a legtöbb fennmaradó "
 "rendelkezés alkalmazandó."
 
-#: includes/class-compliance.php:158
+#: includes/class-compliance.php:170
 msgid "High-risk AI in regulated products"
 msgstr "Nagy kockázatú MI a szabályozott termékekben"
 
-#: includes/class-compliance.php:159
+#: includes/class-compliance.php:171
 msgid ""
 "Obligations for high-risk AI systems that are safety components of products "
 "covered by Annex I (Article 6(1))."
@@ -2426,91 +2397,91 @@ msgstr ""
 "nagy kockázatú MI-rendszerekre vonatkozó kötelezettségek (6. cikk (1) "
 "bekezdés)."
 
-#: includes/class-compliance.php:171
+#: includes/class-compliance.php:183
 msgid "Settings saved"
 msgstr "Beállítások elmentve"
 
-#: includes/class-compliance.php:172
+#: includes/class-compliance.php:184
 msgid "Library scan started"
 msgstr "A médiatár átvizsgálása elindult"
 
-#: includes/class-compliance.php:173
+#: includes/class-compliance.php:185
 msgid "Library scan finished"
 msgstr "A médiatár átvizsgálása befejeződött"
 
-#: includes/class-compliance.php:174
+#: includes/class-compliance.php:186
 msgid "Auto-repair sweep finished"
 msgstr "Az automatikus javítási futás befejeződött"
 
-#: includes/class-compliance.php:175
+#: includes/class-compliance.php:187
 msgid "Bulk action: labeled as AI"
 msgstr "Tömeges művelet: MI-ként címkézve"
 
-#: includes/class-compliance.php:176
+#: includes/class-compliance.php:188
 msgid "Bulk action: label removed"
 msgstr "Tömeges művelet: címke eltávolítva"
 
-#: includes/class-compliance.php:177
+#: includes/class-compliance.php:189
 msgid "Bulk action: review confirmed"
 msgstr "Tömeges művelet: ellenőrzés megerősítve"
 
-#: includes/class-compliance.php:178
+#: includes/class-compliance.php:190
 msgid "Bulk action: review dismissed"
 msgstr "Tömeges művelet: ellenőrzés elvetve"
 
-#: includes/class-compliance.php:179
+#: includes/class-compliance.php:191
 msgid "Bulk action: declared as camera photo"
 msgstr "Tömeges művelet: fényképként bejelentve"
 
-#: includes/class-compliance.php:180
+#: includes/class-compliance.php:192
 msgid "Bulk action: declared as human work"
 msgstr "Tömeges művelet: emberi alkotásként bejelentve"
 
-#: includes/class-compliance.php:181
+#: includes/class-compliance.php:193
 msgid "Bulk action: declaration removed"
 msgstr "Tömeges művelet: nyilatkozat eltávolítva"
 
-#: includes/class-compliance.php:182
+#: includes/class-compliance.php:194
 msgid "Setup: badge look chosen"
 msgstr "Beállítás: jelvénymegjelenés kiválasztva"
 
-#: includes/class-compliance.php:183
+#: includes/class-compliance.php:195
 msgid "Setup: file writing chosen"
 msgstr "Beállítás: fájlba írás kiválasztva"
 
-#: includes/class-compliance.php:184
+#: includes/class-compliance.php:196
 msgid "Setup: last step undone"
 msgstr "Beállítás: utolsó lépés visszavonva"
 
-#: includes/class-compliance.php:185
+#: includes/class-compliance.php:197
 msgid "Setup finished"
 msgstr "A beállítás befejeződött"
 
-#: includes/class-compliance.php:186
+#: includes/class-compliance.php:198
 msgid "Self-assessment saved"
 msgstr "Az önértékelés elmentve"
 
-#: includes/class-compliance.php:187
+#: includes/class-compliance.php:199
 msgid "AI literacy checklist saved"
 msgstr "Az MI-jártassági ellenőrzőlista elmentve"
 
-#: includes/class-compliance.php:188
+#: includes/class-compliance.php:200
 msgid "AI systems scanned"
 msgstr "MI-rendszerek átvizsgálva"
 
-#: includes/class-compliance.php:189
+#: includes/class-compliance.php:201
 msgid "AI system declared"
 msgstr "MI-rendszer bejelentve"
 
-#: includes/class-compliance.php:190
+#: includes/class-compliance.php:202
 msgid "AI system declaration removed"
 msgstr "MI-rendszer bejelentése eltávolítva"
 
-#: includes/class-compliance.php:191
+#: includes/class-compliance.php:203
 msgid "AI systems notice visibility changed"
 msgstr "Az MI-rendszerek tájékoztató láthatósága módosult"
 
-#: includes/class-compliance.php:445
+#: includes/class-compliance.php:457
 msgid ""
 "AI-written text is declared: either the assessment says none is published, "
 "or at least one post carries an AI level"
@@ -2518,7 +2489,7 @@ msgstr ""
 "Az MI által írt szöveg be van jelentve: vagy az önértékelés szerint nem "
 "jelenik meg ilyen, vagy legalább egy bejegyzés MI-szintet hordoz"
 
-#: includes/class-compliance.php:448
+#: includes/class-compliance.php:460
 msgid ""
 "Set the AI level on your AI-written posts, or answer the text question with "
 "no."
@@ -2526,7 +2497,7 @@ msgstr ""
 "Állítsa be az MI-szintet az MI által írt bejegyzésein, vagy válaszoljon "
 "nemmel a szöveges kérdésre."
 
-#: includes/class-compliance.php:452
+#: includes/class-compliance.php:464
 msgid ""
 "AI media is labeled: either the assessment says none is used, or the badge "
 "is on, at least one file is labeled and nothing waits in the review queue"
@@ -2535,7 +2506,7 @@ msgstr ""
 "használatban, vagy a jelvény be van kapcsolva, legalább egy fájl címkézve "
 "van, és semmi sem vár az ellenőrzési sorban"
 
-#: includes/class-compliance.php:455
+#: includes/class-compliance.php:467
 msgid ""
 "Scan the library, work through the review queue and keep the visible badge "
 "on."
@@ -2543,7 +2514,7 @@ msgstr ""
 "Vizsgálja át a médiatárat, dolgozza fel az ellenőrzési sort, és tartsa "
 "bekapcsolva a látható jelvényt."
 
-#: includes/class-compliance.php:459
+#: includes/class-compliance.php:471
 msgid ""
 "The chatbot question is answered (yes or no), so the chat notice follows a "
 "decision"
@@ -2551,21 +2522,21 @@ msgstr ""
 "A chatbot-kérdés meg van válaszolva (igen vagy nem), így a chat-tájékoztató "
 "döntést követ"
 
-#: includes/class-compliance.php:462
+#: includes/class-compliance.php:474
 msgid "Answer whether the site runs a chat and who answers in it."
 msgstr "Válaszolja meg, hogy a webhelyen fut-e chat, és ki válaszol benne."
 
-#: includes/class-compliance.php:466
+#: includes/class-compliance.php:478
 msgid "Self-assessment and Article 4 checklist are complete"
 msgstr "Az önértékelés és a 4. cikk szerinti ellenőrzőlista teljes"
 
-#: includes/class-compliance.php:469
+#: includes/class-compliance.php:481
 msgid "Answer the six questions and tick the checklist items that apply."
 msgstr ""
 "Válaszolja meg a hat kérdést, és jelölje be az ellenőrzőlista vonatkozó "
 "elemeit."
 
-#: includes/class-compliance.php:478
+#: includes/class-compliance.php:490
 msgid ""
 "AI systems are inventoried: the plugin list was scanned and every detected "
 "or declared system has a visibility decision"
@@ -2574,7 +2545,7 @@ msgstr ""
 "vizsgálva, és minden felismert vagy bejelentett rendszernél van láthatósági "
 "döntés"
 
-#: includes/class-compliance.php:481
+#: includes/class-compliance.php:493
 msgid ""
 "Run the scan on the AI Systems page and decide which systems visitors are "
 "told about."
@@ -2582,15 +2553,15 @@ msgstr ""
 "Futtassa az átvizsgálást az MI-rendszerek oldalon, és döntse el, mely "
 "rendszerekről tájékoztatja a látogatókat."
 
-#: includes/class-compliance.php:515
+#: includes/class-compliance.php:527
 msgid "Good"
 msgstr "Jó"
 
-#: includes/class-compliance.php:516
+#: includes/class-compliance.php:528
 msgid "Needs attention"
 msgstr "Figyelmet igényel"
 
-#: includes/class-compliance.php:518
+#: includes/class-compliance.php:530
 msgid "Action required"
 msgstr "Beavatkozás szükséges"
 
@@ -3712,7 +3683,7 @@ msgstr ""
 "Ezen a szerveren nem érhető el: a PHP-nek FreeType-támogatással rendelkező "
 "GD-bővítményre van szüksége."
 
-#: includes/class-compliance.php:192
+#: includes/class-compliance.php:204
 msgid "Operator details of AI systems saved"
 msgstr "Az MI-rendszerek üzemeltetői adatai elmentve"
 
@@ -3772,3 +3743,63 @@ msgid ""
 msgstr ""
 "Milyen személyes vagy üzleti adatok jutnak el a rendszerhez, és hol kezelik "
 "őket."
+
+#: admin/class-dashboard.php:528
+msgid ""
+"Article 4 applies to every provider and deployer, whatever you answered "
+"above: you take measures that help the people who operate or use AI systems "
+"on your behalf understand them, considering their background and the context"
+" of use. Since the amendment of July 2026 no particular level of knowledge "
+"is required, and the Act prescribes no training or certificate; this "
+"checklist records the measures that usually serve as evidence. It counts "
+"toward the readiness score and appears in the compliance report with the "
+"name and date of the last save."
+msgstr ""
+"A 4. cikk minden szolgáltatóra és alkalmazó szervezetre vonatkozik, "
+"függetlenül a fenti válaszoktól: olyan intézkedéseket teszel, amelyek "
+"segítik a nevedben MI-rendszereket üzemeltető vagy használó személyeket azok"
+" megértésében, figyelembe véve hátterüket és a felhasználás körülményeit. A "
+"2026. júliusi módosítás óta nem kötelező egy meghatározott tudásszint, és a "
+"rendelet nem ír elő képzést vagy tanúsítványt; ez az ellenőrzőlista azokat "
+"az intézkedéseket rögzíti, amelyek általában bizonyítékként szolgálnak. "
+"Beleszámít a felkészültségi pontszámba, és a megfelelőségi jelentésben az "
+"utolsó mentés nevével és dátumával jelenik meg."
+
+#: includes/class-compliance.php:146
+msgid ""
+"Chapters I and II: AI literacy measures by providers and deployers (Article "
+"4) and the ban on prohibited AI practices (Article 5)."
+msgstr ""
+"I. és II. fejezet: a szolgáltatók és alkalmazó szervezetek MI-jártasságot "
+"támogató intézkedései (4. cikk) és a tiltott MI-gyakorlatok tilalma (5. "
+"cikk)."
+
+#: includes/class-compliance.php:160
+msgid "Machine-readable marking for older generators"
+msgstr "Géppel olvasható jelölés a régebbi generátorokhoz"
+
+#: includes/class-compliance.php:161
+msgid ""
+"Providers of generators that were on the market before 2 August 2026 must "
+"mark their output in a machine-readable way (Article 50(2), Article 111(4))."
+" New bans on AI that creates intimate images of real people without consent "
+"or child sexual abuse material apply."
+msgstr ""
+"A 2026. augusztus 2. előtt forgalomba hozott generátorok szolgáltatóinak "
+"géppel olvasható módon kell megjelölniük kimenetüket (50. cikk (2) bekezdés,"
+" 111. cikk (4) bekezdés). Új tilalmak vonatkoznak az olyan MI-re, amely "
+"beleegyezés nélkül valós személyekről intim képeket vagy gyermekek szexuális"
+" bántalmazását ábrázoló anyagot hoz létre."
+
+#: includes/class-compliance.php:165
+msgid "High-risk AI in sensitive areas"
+msgstr "Nagy kockázatú MI érzékeny területeken"
+
+#: includes/class-compliance.php:166
+msgid ""
+"Obligations for high-risk AI systems listed in Annex III, such as hiring, "
+"credit scoring and education (Article 6(2))."
+msgstr ""
+"A III. mellékletben felsorolt nagy kockázatú MI-rendszerekre vonatkozó "
+"kötelezettségek, például munkaerő-felvétel, hitelképesség-vizsgálat és "
+"oktatás (6. cikk (2) bekezdés)."
