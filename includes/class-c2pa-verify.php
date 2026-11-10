@@ -53,6 +53,14 @@ final class TransparAI_C2PA_Verify {
 	private const OID_TST_INFO       = "\x2a\x86\x48\x86\xf7\x0d\x01\x09\x10\x01\x04";
 	private const OID_MESSAGE_DIGEST = "\x2a\x86\x48\x86\xf7\x0d\x01\x09\x04";
 	private const OID_RSA_ENCRYPTION = "\x2a\x86\x48\x86\xf7\x0d\x01\x01\x01";
+	private const OID_ED25519        = "\x2b\x65\x70";
+
+	/* Named curve each ECDSA hash goes with (ES256 P-256, ES384 P-384, ES512 P-521). */
+	private const EC_CURVES = array(
+		'sha256' => "\x2a\x86\x48\xce\x3d\x03\x01\x07",
+		'sha384' => "\x2b\x81\x04\x00\x22",
+		'sha512' => "\x2b\x81\x04\x00\x23",
+	);
 
 	/* Extended key usages the C2PA specification accepts for claim signers. */
 	private const SIGNER_EKUS = array( 'E-mail Protection', '1.3.6.1.5.5.7.3.4', 'Document Signing', '1.3.6.1.5.5.7.3.36', '1.3.6.1.4.1.62558.2.1' );
@@ -353,11 +361,11 @@ final class TransparAI_C2PA_Verify {
 				return null;
 			}
 			$spki = self::spki( $leaf );
-			if ( null === $spki || strlen( $signature ) !== 64 ) {
+			if ( null === $spki || ! self::is_ed25519( $spki ) || strlen( $signature ) !== 64 ) {
 				return false;
 			}
 			try {
-				return sodium_crypto_sign_verify_detached( $signature, $data, substr( $spki['key'], -32 ) );
+				return sodium_crypto_sign_verify_detached( $signature, $data, $spki['key'] );
 			} catch ( Throwable $e ) {
 				return false;
 			}
@@ -367,8 +375,13 @@ final class TransparAI_C2PA_Verify {
 			return self::verify_pss( $data, $signature, $leaf, $hash );
 		}
 
-		$key = openssl_pkey_get_public( self::pem( $leaf ) );
+		$key  = openssl_pkey_get_public( self::pem( $leaf ) );
+		$spki = self::spki( $leaf );
 		if ( false === $key || strlen( $signature ) % 2 || ! self::key_is( $key, OPENSSL_KEYTYPE_EC ) ) {
+			return false;
+		}
+		/* RFC 9053 binds each ES algorithm to one curve; a P-384 key under ES256 is refused. */
+		if ( null === $spki || self::EC_CURVES[ $hash ] !== $spki['params'] ) {
 			return false;
 		}
 		$half = intdiv( strlen( $signature ), 2 );
@@ -633,13 +646,17 @@ final class TransparAI_C2PA_Verify {
 			}
 			return in_array( $hash, array( 'sha256', 'sha384', 'sha512' ), true ) && $mgf_hash === $hash && self::verify_pss( $tbs, $signature, $issuer, $hash );
 		}
-		if ( "\x2b\x65\x70" === $oid ) {
+		if ( self::OID_ED25519 === $oid ) {
+			/* RFC 8410: the Ed25519 signature algorithm carries no parameters. */
+			if ( isset( $alg[1] ) ) {
+				return false;
+			}
 			$spki = self::spki( $issuer );
-			if ( null === $spki || ! function_exists( 'sodium_crypto_sign_verify_detached' ) || 64 !== strlen( $signature ) ) {
+			if ( null === $spki || ! self::is_ed25519( $spki ) || ! function_exists( 'sodium_crypto_sign_verify_detached' ) || 64 !== strlen( $signature ) ) {
 				return false;
 			}
 			try {
-				return sodium_crypto_sign_verify_detached( $signature, $tbs, substr( $spki['key'], -32 ) );
+				return sodium_crypto_sign_verify_detached( $signature, $tbs, $spki['key'] );
 			} catch ( Throwable $e ) {
 				return false;
 			}
@@ -740,9 +757,12 @@ final class TransparAI_C2PA_Verify {
 	}
 
 	/**
-	 * The raw public key bits of a DER certificate (subjectPublicKeyInfo BIT STRING content without the unused-bits byte).
+	 * The subjectPublicKeyInfo of a DER certificate: the raw key bits (BIT
+	 * STRING content without the unused-bits byte), the key algorithm OID and
+	 * its parameter OID (the named curve for EC keys, empty otherwise), each
+	 * as DER content bytes. has_params tells whether any parameter is present.
 	 *
-	 * @return array{key:string}|null
+	 * @return array{key:string, alg:string, params:string, has_params:bool}|null
 	 */
 	private static function spki( string $der ): ?array {
 		$cert = self::tlv( $der, 0, strlen( $der ) );
@@ -762,7 +782,23 @@ final class TransparAI_C2PA_Verify {
 		if ( ! isset( $parts[1] ) || 0x03 !== $parts[1]['tag'] ) {
 			return null;
 		}
-		return array( 'key' => substr( $der, $parts[1]['start'] + 1, $parts[1]['end'] - $parts[1]['start'] - 1 ) );
+		$alg = self::children( $der, $parts[0]['start'], $parts[0]['end'] );
+		return array(
+			'key'        => substr( $der, $parts[1]['start'] + 1, $parts[1]['end'] - $parts[1]['start'] - 1 ),
+			'alg'        => isset( $alg[0] ) && 0x06 === $alg[0]['tag'] ? self::content( $der, $alg[0] ) : '',
+			'params'     => isset( $alg[1] ) && 0x06 === $alg[1]['tag'] ? self::content( $der, $alg[1] ) : '',
+			'has_params' => isset( $alg[1] ),
+		);
+	}
+
+	/**
+	 * Whether a subjectPublicKeyInfo holds an Ed25519 key (RFC 8410: OID
+	 * 1.3.101.112, no parameters, 32 key bytes).
+	 *
+	 * @param array{key:string, alg:string, params:string, has_params:bool} $spki From spki().
+	 */
+	private static function is_ed25519( array $spki ): bool {
+		return self::OID_ED25519 === $spki['alg'] && ! $spki['has_params'] && 32 === strlen( $spki['key'] );
 	}
 
 	/* ---------------------------------------------------------------------
